@@ -11,32 +11,32 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
+    title: 'Optimize Acoustics',
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Transform your meeting rooms with expert guidance on sound absorption,
+        echo reduction, and noise control for crystal-clear communication.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: 'Enhance Collaboration',
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Create spaces that foster engagement with optimal layouts, lighting
+        solutions, and technology integration for seamless hybrid meetings.
       </>
     ),
   },
   {
-    title: 'Powered by React',
+    title: 'Boost Productivity',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Reduce meeting fatigue and improve outcomes with ergonomic furniture,
+        proper ventilation, and evidence-based design principles.
       </>
     ),
   },
