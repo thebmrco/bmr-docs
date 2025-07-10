@@ -19,12 +19,12 @@ const sidebars: SidebarsConfig = {
   // But you can create a sidebar manually
   
   tutorialSidebar: [
-    'intro',
+    'Welcome to Better Meeting Rooms',
     'hello',
     {
       type: 'category',
       label: 'Tutorial',
-      items: ['tutorial-basics/create-a-document'],
+      items: ['Tutorials/bmr-acounstics-guide'],
     },
     {
       type: 'category',
