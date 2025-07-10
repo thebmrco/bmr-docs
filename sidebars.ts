@@ -33,6 +33,13 @@ const sidebars: SidebarsConfig = {
         'requirements/system-requirements',
       ],
     },
+    {
+  type: 'category',
+  label: 'Getting Started',
+  items: [
+    'getting-started/account-setup',
+  ],
+},
   ],
    */
 };
