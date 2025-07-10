@@ -34,12 +34,12 @@ const sidebars: SidebarsConfig = {
       ],
     },
     {
-  type: 'category',
-  label: 'Getting Started',
-  items: [
-    'getting-started/account-setup',
-  ],
-},
+      type: 'category',
+      label: 'Getting Started',
+      items: [
+       'getting-started/account-setup',
+      ],
+    },
   ],
 
 };
