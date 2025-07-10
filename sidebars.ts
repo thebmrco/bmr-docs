@@ -31,10 +31,8 @@ const sidebars: SidebarsConfig = {
       label: 'Requirements',
       items: [
         'requirements/system-requirements',
-        'requirements/device-compatibility',
-        'requirements/user-permissions',
       ],
-   },
+    },
   ],
    */
 };
