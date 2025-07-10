@@ -26,11 +26,15 @@ const sidebars: SidebarsConfig = {
       label: 'Tutorial',
       items: ['tutorial-basics/create-a-document'],
     },
-       {
+    {
       type: 'category',
-      label: 'Getting started',
-      items: ['tutorial-basics/create-a-document'],
-    },
+      label: 'Requirements',
+      items: [
+        'requirements/system-requirements',
+        'requirements/device-compatibility',
+        'requirements/user-permissions',
+      ],
+   },
   ],
    */
 };
