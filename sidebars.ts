@@ -37,7 +37,7 @@ const sidebars: SidebarsConfig = {
   type: 'category',
   label: 'Getting Started',
   items: [
-    'Getting Started/account-setup',
+    'getting-tarted/account-setup',
   ],
 },
   ],
