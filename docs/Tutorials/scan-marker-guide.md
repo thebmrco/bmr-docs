@@ -2,6 +2,16 @@
 
 This guide shows how to perform a room scan and place markers using the Better Meeting Rooms iPhone/iPad app.
 
+
+---
+
+### 📑 Table of Contents
+
+- [🚀 Starting a Scan](#starting-a-scan)
+- [🔍 Scanning in Progress](#scanning-in-progress)
+- [📸 Taking Markers](#taking-markers)
+- [✅ Finalizing the Scan](#finalizing-the-scan)
+
 ---
 
 ## 🚀 Starting a Scan
