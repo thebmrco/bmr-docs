@@ -11,8 +11,7 @@ This is the first public beta release of the Better Meeting Rooms solution.
 ## 🛰️ Room Capture & Measurement
 - **Room scanning** using LiDAR technology  
 - **Marker placement** during scanning process  
-- **Acoustic measurement** using external speaker  
-
+- **Acoustic measurement** using external speaker and baloon
 ---
 
 ## 🎨 Design & Collaboration
