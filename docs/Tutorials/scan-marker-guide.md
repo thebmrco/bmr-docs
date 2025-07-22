@@ -30,10 +30,9 @@ You can initiate a scan in two ways:
 
 Once started, follow on-screen instructions to move your phone along the walls of the room.
 
-**Scan screen when beginning:** 
+**Scan screen as you move along. White lineas appear as room geometry is captured:** 
 <img src={require('./scan-guide-images/scan-ongoing.jpg').default} alt="Scan Ongoing" style={{ maxWidth: '400px', borderRadius: '6px' }} />
 
-**White lines appear as room geometry is captured**  
 
 Move around until:
 - White lines have covered all walls and corners
