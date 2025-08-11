@@ -41,4 +41,4 @@ The latest update to the Better Meeting Rooms solution brings powerful enhanceme
 
 ---
 
-Stay tuned for future updates and improvements!
+Stay tuned for future updates and improvements. We continue to improve and add new value. 
