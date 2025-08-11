@@ -1,51 +1,43 @@
-
 ---
 title: August 2025 – Beta Release 02
 ---
 
 # August 2025 – Beta Release 02
 
-Second public beta release of the BMR Solution comes with a lot of improvements both in the App and on the web. Below is an overview of the most important.
+The latest update to the Better Meeting Rooms solution brings powerful enhancements to search, libraries, and room management.
 
 ---
 
 ## 🛰️ Room Capture & Measurement
-- **Room scanning** using LiDAR technology  
-- **Marker placement** during scanning process  
-- **Acoustic measurement** using external speaker and baloon
+- **Acoustic comparison** between measurements, including across different rooms  
+- Added disclaimer and adjusted messaging for balloon acoustic measurements  
+- Improved stability and performance for scans and measurements  
+
 ---
 
 ## 🎨 Design & Collaboration
-- **Design request** submission via the web platform  
-- **Advanced design view** on web including:
-  - Audio coverage  
-  - Camera view  
-  - Screen coverage  
+- **Global search** for all scans, designs, and measurements you have access to  
+- New **Acoustic Library** with room name, date, creator, and search/filter functions  
+- Implemented **Library Page** to view files with associated room names  
 
 ---
 
 ## 📱 App & Platform
-- iPhone/iPad app distributed via **TestFlight**  
-- Web platform for design, process tracking, and room insights  
+- iPhone/iPad app refinements for room status tracking and activity logs  
+- **Show project phase** (Discovery, Design, Deployment) in room details  
+- Create new rooms directly from **Location View**  
+- Updated room list view on the web for faster navigation  
 
 ---
 
 ## 🏗️ Configuration
-- Full setup of:
-  - Room  
-  - Location  
-  - Organization  
-- Configuration supported via both **mobile app** and **web platform**  
+- **Advanced search** on the web for rooms, organizations, and locations  
+- Expanded **organization view** with linked users, rooms, and default room configurations  
 
 ---
 
 ## 👥 Onboarding
-- Initial onboarding and organization setup  
-
----
-
-> ⚠️ **Note**  
-> All users must sign up via the **web** before logging into the iOS app.
+- Streamlined invitation and team member setup process  
 
 ---
 
