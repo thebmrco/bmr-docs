@@ -8,7 +8,7 @@ sidebar_position: 1
 The following speakers are recommended for high-quality audio performance in meeting rooms. These are portable, high-performance speakers suitable for acoustic testing and auralization tasks.
 
 | Picture | Name | Manufacturer | Max room size |  More Information |
-|--------|------|--------------|------------------|
+|--------|------|--------------|------------------|-----------------|
 | <img src="/img/speakers/jbl-xtreme-4-pic.jpeg" width="100"/> | JBL Xtreme 4 | JBL | 70 m2 | [Product descrption](https://www.jbl.es/XTREME-4.html) |
 | <img src="/img/speakers/beosound-explore-pic.jpeg" width="100"/> | Beosound Explore | Bang & Olufsen | 70 m2 | [Product description](https://www.bang-olufsen.com/en/us/speakers/beosound-explore) |
 
