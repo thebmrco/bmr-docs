@@ -1,6 +1,6 @@
 ---
-id: bmr-acoustics-guide
-title: BMR App Acoustics Quick Guide
+id: acoustics-guide
+title: BMR App Acoustics Tutorial
 sidebar_position: 1
 ---
 

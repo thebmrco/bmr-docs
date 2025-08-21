@@ -1,4 +1,5 @@
 ---
+title: Welcome to Better Meeting Rooms
 sidebar_position: 1
 ---
 
