@@ -23,7 +23,7 @@ Our documentation covers various aspects of creating better meeting environments
 
 Browse our tutorials and guides to start improving your meeting spaces:
 
-- [Acoustics Tutorial](Tutorials/bmr-acoustics-guide.md) - Understanding and improving room acoustics
+- [Acoustics Guide](tutorials/acoustics-guide) - Understanding and improving room acoustics
 - More tutorials coming soon...
 
 ## Why Better Meeting Rooms?
