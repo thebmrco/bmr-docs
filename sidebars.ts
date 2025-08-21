@@ -15,6 +15,7 @@ const sidebars: SidebarsConfig = {
       items: [
         'getting-started/account-setup',
         'getting-started/faq',
+        'system-requirements',
       ],
     },
 
