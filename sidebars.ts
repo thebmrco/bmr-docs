@@ -1,17 +1,15 @@
 // sidebars.ts
-import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
+import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
 
 const sidebars: SidebarsConfig = {
-  // Use the default id Docusaurus looks for: "tutorialSidebar"
-  tutorialSidebar: [
-    // Top item: Welcome
-    { type: 'doc', id: 'intro', label: 'Welcome to Better Meeting Rooms' },
+  docs: [
+    // Top doc
+    'intro',
 
     // Getting Started
     {
       type: 'category',
       label: 'Getting Started',
-      collapsed: false,
       items: [
         'getting-started/account-setup',
         'getting-started/faq',
@@ -19,15 +17,15 @@ const sidebars: SidebarsConfig = {
       ],
     },
 
-    // Lifecycle (direct docs, no sub-sub pages)
+    // Lifecycle (open the section page directly, no dropdown levels)
     {
       type: 'category',
       label: 'Lifecycle',
       items: [
-        { type: 'doc', id: 'lifecycle/discovery/index',    label: 'Discovery' },
-        { type: 'doc', id: 'lifecycle/design/index',       label: 'Design' },
-        { type: 'doc', id: 'lifecycle/deployment/index',   label: 'Deployment' },
-        { type: 'doc', id: 'lifecycle/maintenance/index',  label: 'Maintenance' },
+        { type: 'doc', id: 'lifecycle/discovery/index', label: 'Discovery' },
+        { type: 'doc', id: 'lifecycle/design/index', label: 'Design' },
+        { type: 'doc', id: 'lifecycle/deployment/index', label: 'Deployment' },
+        { type: 'doc', id: 'lifecycle/maintenance/index', label: 'Maintenance' },
       ],
     },
 
@@ -35,23 +33,21 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Recommendations',
+      link: { type: 'doc', id: 'recommendations/index' },
+      items: ['recommendations/speakers-for-acoustics'],
+    },
+
+    // Tutorials (no link to tutorials/index; just the existing docs)
+    {
+      type: 'category',
+      label: 'Tutorials',
       items: [
-        { type: 'doc', id: 'recommendations/index',                 label: 'Overview' },
-        { type: 'doc', id: 'recommendations/speakers-for-acoustics', label: 'Speakers for Acoustics' },
+        'tutorials/acoustics-guide',
+        'tutorials/scan-marker-guide',
       ],
     },
 
-    // Tutorials (auto)
-{
-  type: 'category',
-  label: 'Tutorials',
-  items: [
-    'tutorials/acoustics-guide',
-    'tutorials/scan-marker-guide',
-  ],
-}
-
-    // Release Notes (auto)
+    // Release Notes (autogenerate from folder)
     {
       type: 'category',
       label: 'Release Notes',
