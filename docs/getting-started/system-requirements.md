@@ -6,7 +6,7 @@ To get the most out of the Better Meeting Rooms solution, your device must meet 
 
 ## 📱 iPhone / iPad
 
-:::info
+
 ### Supported Models with LiDAR
 
 | Device Type | Supported Models |
@@ -14,14 +14,14 @@ To get the most out of the Better Meeting Rooms solution, your device must meet 
 | **iPhone**  | iPhone 12 Pro<br>iPhone 12 Pro Max<br>iPhone 13 Pro<br>iPhone 13 Pro Max<br>iPhone 14 Pro<br>iPhone 14 Pro Max<br>iPhone 15 Pro<br>iPhone 15 Pro Max |
 | **iPad**    | iPad Pro 11″ (2nd gen, 2020) or newer<br>iPad Pro 12.9″ (4th gen, 2020) or newer |
 
-:::
+
 
 **Operating System:**  
 Requires **iOS 16** or newer  
 We recommend always using the latest iOS version for best compatibility.
 :::
 
-:::caution
+
 **Important:**  
 Only iPhones/iPads with **LiDAR** sensors can be used for scanning rooms.
 :::
@@ -32,13 +32,13 @@ Only iPhones/iPads with **LiDAR** sensors can be used for scanning rooms.
 
 You can access the BMR web dashboard using any modern browser.
 
-:::info
+
 **Supported Browsers:**
 - Google Chrome (latest)
 - Microsoft Edge (latest)
 - Safari (latest)
 - Firefox (latest)
-:::
+
 
 **Recommended PC Specs for Best 3D Performance:**
 
@@ -47,6 +47,6 @@ You can access the BMR web dashboard using any modern browser.
 ✅ Dedicated GPU (optional but improves experience)  
 ✅ Screen resolution 1920x1080 or higher  
 ✅ Good internet connection (10 Mbps+)
-:::
+
 
 ---
