@@ -30,20 +30,27 @@ You'll need:
 - Place the speaker or balloon **away** from the iPhone/iPad
 - Ensure your device's microphone is **uncovered**
 - Place the device on a **stable, non-rattling surface**
-- Multiple measurements = more reliable data
+- ***Multiple measurements = more reliable data***
 
 ![Slide 2](../../static/img/acoustics-tutorial/slide_2.png)
 
 ---
 
-## Starting the App
+## Starting the Measurement 
 
-1. **Launch the app** and press `Continue`.
+1. **Launch the BMR app**
+2. Measurment can be starte :
+   
+   A. Tap on **+ Create** on tab bar
+   
+   B. Go to **Acoustics tab of a room** and tap on **New Measurement**
 
-2. Choose your test method:
+4. Choose your test method:
    - **Sweep**: Plays a test sound via connected speaker
    - **Impulse**: Records a **balloon pop** or **hand clap**
      > ⚠️ Hand claps are inconsistent — use only as a last resort.
+     
+     > ⚠️ ***Baloon pop is BETA - for more reliable measurement use external speaker and sweep**
 
 ![Slide 3](../../static/img/acoustics-tutorial/slide_3.png)
 
@@ -53,9 +60,8 @@ You'll need:
 
 ### Step 1: Connect a Speaker
 
-- Use at least a medium-sized Bluetooth speaker
-- Should fill the room with noticeable sound
-- If your speaker is too small, consider using the balloon method
+- Use one or  our **Recommended speakers" or a speaker that follow the **Recommendations** specification
+- ⚠️ Speakers that are not powerful enough will result in unreiliable measurments 
 
 If the speaker appears in the app:
 - Tap the exclamation mark (!) to open a popup
@@ -78,14 +84,14 @@ If the speaker appears in the app:
 
 - Wait for the **"Measurement Complete"** screen
 - Tap `See Results`
-- If results are poor, increase volume or reduce noise and retry
 
 ![Slide 6](../../static/img/acoustics-tutorial/slide_6.png)
 
-### Step 4: Share Results
+### Step 4: Save Results
 
-- Tap `Share Results`
-- Use your preferred messaging app to send data to BMR
+- Tap `Save Results`
+- If started from a room measurements are saved to that room.
+- If started from `+ Create` you get the option to save where you want.
 
 ![Slide 7](../../static/img/acoustics-tutorial/slide_7.png)
 
@@ -113,7 +119,7 @@ If the speaker appears in the app:
 ### Step 3: View & Share Results
 
 - The app will show the results once the impulse is detected
-- Share results using the same method as above
+- Save results using the same method as above
 
 ![Slide 10](../../static/img/acoustics-tutorial/slide_10.png)
 
