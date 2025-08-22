@@ -19,7 +19,7 @@ A: Yes, but if you are part of a company you will not have access to the same in
 ## 📱 Devices & Requirements
 
 **Q: Which devices support room scanning?**  
-A: Any **iPhone 12 Pro or later** (Pro/Pro Max) and **iPad Pro** models with LiDAR.  
+A: Any **iPhone 12 Pro or later** (Pro/Pro Max), **iPad Pro 11 2nd generation or later** or  **iPad Pro 12.9 4th generation or later** models with LiDAR.
 
 **Q: Can I access BMR on the web?**  
 A: Yes. The web platform supports room management, design requests, acoustic comparisons, and global search.  
