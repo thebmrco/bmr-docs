@@ -6,7 +6,7 @@ Better Meeting Rooms is currently distributed via **TestFlight**, and new users 
 
 ## 🔑 Step 1: Receive a TestFlight Invite
 
-1. Your email must be submitted by your admin or by the BMR team.  
+1. Your email must be submitted by the BMR team. Contact us at support@bettermeetingrooms.com
 2. You will receive an invitation from Apple TestFlight to install the app.  
 3. Open the invitation on your **iPhone or iPad** and follow the link to install.  
 
