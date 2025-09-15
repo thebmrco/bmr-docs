@@ -5,34 +5,50 @@ sidebar_position: 1
 
 # Welcome to Better Meeting Rooms
 
-**Better Meeting Rooms** helps you optimize your meeting spaces for enhanced collaboration, productivity, and comfort.
+**Better Meeting Rooms** is a platform that helps organizations plan, design, and manage high-performing meeting rooms. Our app supports the full lifecycle of a meeting space — from the first scan to long-term maintenance.
 
-## What We Cover
+## What We Offer
 
-Our documentation covers various aspects of creating better meeting environments:
+We guide you through the **four key phases** of meeting room projects:
 
-### Meeting Room Optimization
+### Discovery  
+Capture and understand the current state of the room using scans, photos, and documentation. Measure acoustics, identify challenges, and gather all relevant data — whether the room exists or is still in planning.
 
-- **Acoustics** - Learn how to improve sound quality and reduce noise distractions
-- **Lighting** - Understand optimal lighting conditions for video calls and in-person meetings
-- **Technology** - Choose the right AV equipment and collaboration tools
-- **Furniture** - Select ergonomic and functional furniture for comfort
-- **Layout** - Design spaces that facilitate better communication
+### Design  
+Use the collected data to generate optimized room layouts. Create AR-based mockups, get auto-generated suggestions, or request professional design options — always based on real conditions and best practices.
 
-## Get Started
+### Deployment  
+Turn approved designs into action. Access complete installation details, equipment lists, and cabling diagrams. Reduce delays and confusion by ensuring every stakeholder has exactly what they need.
 
-Browse our tutorials and guides to start improving your meeting spaces:
+### Maintenance  
+Keep rooms performing long after installation. Monitor key components, support troubleshooting, and request room updates based on usage or feedback — all connected to the room’s original context.
 
-- [Acoustics Guide](tutorials/acoustics-guide) - Understanding and improving room acoustics
-- More tutorials coming soon...
+## Best Practices Built In
 
-## Why Better Meeting Rooms?
+Throughout the platform, we embed expert insights on:
 
-In today's hybrid work environment, effective meeting spaces are crucial for:
+- **Acoustics** – Optimize for clarity, reduce noise, and boost speech intelligibility  
+- **Lighting** – Ensure well-lit environments for both video and in-person meetings  
+- **Technology** – Select the right AV gear and collaboration tools  
+- **Furniture** – Choose ergonomic, functional setups  
+- **Layout** – Design spaces that enable better interaction and communication  
 
-- Clear communication between remote and in-person participants
-- Reduced meeting fatigue
-- Increased productivity and engagement
-- Better collaboration outcomes
+You’ll also find **practical guides and templates** for every phase of the room lifecycle.
 
-Start exploring our resources to transform your meeting spaces into environments that inspire collaboration and drive results.
+## Start Here
+
+Browse our documentation to learn how to use the app and improve your meeting spaces:
+
+- [Acoustics Guide](tutorials/acoustics-guide) – Learn how to assess and improve audio performance  
+- More tutorials available in Tutorial and Video Tutorial sections.
+
+## Why It Matters
+
+Well-designed meeting rooms lead to:
+
+- Better hybrid collaboration  
+- Reduced deployment time and project cost  
+- More productive and engaging meetings  
+- Long-term room performance and satisfaction  
+
+Let’s build better meeting rooms — from first scan to final upgrade.
