@@ -1,40 +1,47 @@
 // docusaurus.config.ts
-import type {Config} from '@docusaurus/types';
+import type { Config } from '@docusaurus/types';
 
 const config: Config = {
   title: 'Better Meeting Rooms',
   tagline: 'Documentation',
-  url: 'https://thebmrco.github.io',      // <-- set your site URL
-  baseUrl: '/bmr-docs/',                        // keep as-is if this worked before
-  organizationName: 'thebmrco',
-  projectName: 'bmr-docs',
+  url: 'https://thebmrco.github.io',
+  baseUrl: '/bmr-docs/',
+  organizationName: 'thebmrco',           // ✅ keep as your GitHub org/user
+  projectName: 'bmr-docs',                // ✅ keep as your GitHub repo
   deploymentBranch: 'gh-pages',
   favicon: 'img/favicon.ico',
-
-  // Used by deployment (can be anything you prefer)
-  organizationName: 'better-meeting-rooms',
-  projectName: 'docs',
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
 
-  i18n: { defaultLocale: 'en', locales: ['en'] },
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en'],
+  },
 
   presets: [
     [
       'classic',
       {
         docs: {
-          // IMPORTANT: use the default sidebar id "tutorialSidebar"
           sidebarPath: require.resolve('./sidebars.ts'),
-          // If your docs should live at /docs (default), leave routeBasePath undefined.
-          // routeBasePath: 'docs',
+          // routeBasePath: 'docs', // leave commented if you're using default /docs
         },
         blog: false,
         theme: {
-          // Keep if you have a custom CSS file; otherwise you can remove this line.
           customCss: require.resolve('./src/css/custom.css'),
         },
+      },
+    ],
+  ],
+
+  plugins: [
+    [
+      require.resolve('@easyops-cn/docusaurus-search-local'),
+      {
+        hashed: true,
+        language: ['en'],
+        highlightSearchTermsOnTargetPage: true,
       },
     ],
   ],
@@ -42,10 +49,13 @@ const config: Config = {
   themeConfig: {
     navbar: {
       title: 'Better Meeting Rooms',
-      logo: { alt: 'BMR', src: 'img/logo.svg' }, // optional
+      logo: {
+        alt: 'BMR',
+        src: 'img/logo.svg',
+      },
       items: [
-        // Simple link to docs home/welcome:
         { to: '/docs/intro', label: 'Docs', position: 'left' },
+        { type: 'search', position: 'right' }, // ✅ Search bar in top navbar
       ],
     },
     footer: {
