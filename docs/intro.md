@@ -52,3 +52,4 @@ Well-designed meeting rooms lead to:
 - Long-term room performance and satisfaction  
 
 Let’s build better meeting rooms — from first scan to final upgrade.
+
