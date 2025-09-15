@@ -46,7 +46,17 @@ const sidebars: SidebarsConfig = {
         'tutorials/scan-marker-guide',
       ],
     },
-
+    // Video Tutorials
+    {
+      type: 'category',
+      label: 'Video Tutorials',
+      link: {
+        type: 'generated-index',
+        title: 'Video Tutorials',
+        description: 'Step-by-step video guides for common workflows.',
+      },
+      items: ['video-tutorials/video-acoustics-guide'],
+    },
     // Release Notes (autogenerate from folder)
     {
       type: 'category',
