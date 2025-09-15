@@ -9,7 +9,7 @@ sidebar_position: 1
 Welcome to better **acoustics** for **better meetings** with **BMR Acoustics**.
 
 <iframe 
-  src="https://app.vidcast.io/embed/0e1a56e4-0fb0-4b05-8b57-f68a61c0a6c4" 
+  src="https://app.vidcast.io/share/embed/1308e8dd-e7a6-4325-a6ad-f2df3d01eab4?disableCopyDropdown=1" 
   width="100%" 
   height="500" 
   frameborder="0" 
