@@ -1,0 +1,25 @@
+{
+  "id": "lifecycle/maintenance/index",
+  "title": "Maintenance Phase",
+  "description": "The Maintenance Phase ensures that rooms remain effective and reliable after deployment.",
+  "source": "@site/docs/lifecycle/maintenance/index.md",
+  "sourceDirName": "lifecycle/maintenance",
+  "slug": "/lifecycle/maintenance/",
+  "permalink": "/bmr-docs/docs/lifecycle/maintenance/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Maintenance Phase"
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "Deployment",
+    "permalink": "/bmr-docs/docs/lifecycle/deployment/"
+  },
+  "next": {
+    "title": "Recommendations",
+    "permalink": "/bmr-docs/docs/recommendations/"
+  }
+}

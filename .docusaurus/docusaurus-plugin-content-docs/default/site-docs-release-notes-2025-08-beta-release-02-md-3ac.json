@@ -1,0 +1,25 @@
+{
+  "id": "release-notes/2025-08-beta-release-02",
+  "title": "August 2025 – Beta Release 02",
+  "description": "The latest update to the Better Meeting Rooms solution brings powerful enhancements to search, libraries, and room management.",
+  "source": "@site/docs/release-notes/2025-08-beta-release-02.md",
+  "sourceDirName": "release-notes",
+  "slug": "/release-notes/2025-08-beta-release-02",
+  "permalink": "/bmr-docs/docs/release-notes/2025-08-beta-release-02",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "August 2025 – Beta Release 02"
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "July 2025 – Beta Release 01",
+    "permalink": "/bmr-docs/docs/release-notes/2025-07-beta-release-01"
+  },
+  "next": {
+    "title": "September 2025 – Beta Release 03",
+    "permalink": "/bmr-docs/docs/release-notes/2025-09-beta-release-03"
+  }
+}

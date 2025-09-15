@@ -1,0 +1,25 @@
+{
+  "id": "release-notes/2025-07-beta-release-01",
+  "title": "July 2025 – Beta Release 01",
+  "description": "This is the first public beta release of the Better Meeting Rooms solution.",
+  "source": "@site/docs/release-notes/2025-07-beta-release-01.md",
+  "sourceDirName": "release-notes",
+  "slug": "/release-notes/2025-07-beta-release-01",
+  "permalink": "/bmr-docs/docs/release-notes/2025-07-beta-release-01",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "July 2025 – Beta Release 01"
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "BMR App Video Acoustics Tutorial",
+    "permalink": "/bmr-docs/docs/video-tutorials/video-acoustics-guide"
+  },
+  "next": {
+    "title": "August 2025 – Beta Release 02",
+    "permalink": "/bmr-docs/docs/release-notes/2025-08-beta-release-02"
+  }
+}

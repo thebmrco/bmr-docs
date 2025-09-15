@@ -1,0 +1,23 @@
+{
+  "id": "intro",
+  "title": "Welcome to Better Meeting Rooms",
+  "description": "Better Meeting Rooms helps you optimize your meeting spaces for enhanced collaboration, productivity, and comfort.",
+  "source": "@site/docs/intro.md",
+  "sourceDirName": ".",
+  "slug": "/intro",
+  "permalink": "/bmr-docs/docs/intro",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "Welcome to Better Meeting Rooms",
+    "sidebar_position": 1
+  },
+  "sidebar": "docs",
+  "next": {
+    "title": "Account Setup",
+    "permalink": "/bmr-docs/docs/getting-started/account-setup"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "recommendations/index",
+  "title": "Recommendations",
+  "description": "This section contains practical recommendations to get reliable results during Discovery and beyond.",
+  "source": "@site/docs/recommendations/index.md",
+  "sourceDirName": "recommendations",
+  "slug": "/recommendations/",
+  "permalink": "/bmr-docs/docs/recommendations/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Recommendations"
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "Maintenance",
+    "permalink": "/bmr-docs/docs/lifecycle/maintenance/"
+  },
+  "next": {
+    "title": "Speakers for acoustics",
+    "permalink": "/bmr-docs/docs/recommendations/speakers-for-acoustics"
+  }
+}

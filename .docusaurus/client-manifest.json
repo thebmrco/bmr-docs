@@ -1,0 +1,505 @@
+{
+  "entrypoints": [
+    "main"
+  ],
+  "origins": {
+    "237": [
+      237
+    ],
+    "489": [
+      741,
+      489
+    ],
+    "540": [
+      809,
+      540
+    ],
+    "649": [
+      61,
+      401,
+      869,
+      649
+    ],
+    "741": [
+      489,
+      741
+    ],
+    "809": [
+      540,
+      809
+    ],
+    "17896441": [
+      649,
+      869,
+      401
+    ],
+    "main": [
+      354,
+      869,
+      792
+    ],
+    "runtime~main": [
+      792,
+      869,
+      354
+    ],
+    "03de1aee": [
+      889
+    ],
+    "0e384e19": [
+      976
+    ],
+    "138e0e15": [
+      921
+    ],
+    "14eb3368": [
+      869,
+      969
+    ],
+    "1988952d": [
+      41
+    ],
+    "1a4e3797": [
+      869,
+      138
+    ],
+    "1b2a8d95": [
+      687
+    ],
+    "1df93b7f": [
+      869,
+      583
+    ],
+    "1f391b9e": [
+      649,
+      869,
+      61
+    ],
+    "353b0f39": [
+      410
+    ],
+    "36a89604": [
+      510
+    ],
+    "393be207": [
+      134
+    ],
+    "3ac9ecc1": [
+      447
+    ],
+    "3b8de346": [
+      394
+    ],
+    "5e95c892": [
+      647
+    ],
+    "69e61f52": [
+      45
+    ],
+    "6a482382": [
+      51
+    ],
+    "6dd03e4b": [
+      899
+    ],
+    "7e542de7": [
+      694
+    ],
+    "828807c5": [
+      154
+    ],
+    "8f3415b3": [
+      119
+    ],
+    "a7456010": [
+      235
+    ],
+    "a7bd4aaa": [
+      98
+    ],
+    "a94703ab": [
+      869,
+      48
+    ],
+    "aba21aa0": [
+      742
+    ],
+    "ccea277a": [
+      862
+    ],
+    "d4d9f8fb": [
+      16
+    ],
+    "e33c62b9": [
+      114
+    ],
+    "f80a9d52": [
+      210
+    ],
+    "styles": [
+      48,
+      61,
+      138,
+      354,
+      401,
+      583,
+      649,
+      792,
+      969,
+      869
+    ]
+  },
+  "assets": {
+    "16": {
+      "js": [
+        {
+          "file": "assets/js/d4d9f8fb.b4c396c9.js",
+          "hash": "77b730e289988560",
+          "publicPath": "/bmr-docs/assets/js/d4d9f8fb.b4c396c9.js"
+        }
+      ]
+    },
+    "41": {
+      "js": [
+        {
+          "file": "assets/js/1988952d.3a11d856.js",
+          "hash": "e9707290a9bd30d0",
+          "publicPath": "/bmr-docs/assets/js/1988952d.3a11d856.js"
+        }
+      ]
+    },
+    "45": {
+      "js": [
+        {
+          "file": "assets/js/69e61f52.e45a650d.js",
+          "hash": "94b391f23c55514b",
+          "publicPath": "/bmr-docs/assets/js/69e61f52.e45a650d.js"
+        }
+      ]
+    },
+    "48": {
+      "js": [
+        {
+          "file": "assets/js/a94703ab.fe73e6ba.js",
+          "hash": "42196895543089e7",
+          "publicPath": "/bmr-docs/assets/js/a94703ab.fe73e6ba.js"
+        }
+      ]
+    },
+    "51": {
+      "js": [
+        {
+          "file": "assets/js/6a482382.97dab644.js",
+          "hash": "bba4b5e6d574382a",
+          "publicPath": "/bmr-docs/assets/js/6a482382.97dab644.js"
+        }
+      ]
+    },
+    "61": {
+      "js": [
+        {
+          "file": "assets/js/1f391b9e.1ae0585c.js",
+          "hash": "d528285eb4b5adb0",
+          "publicPath": "/bmr-docs/assets/js/1f391b9e.1ae0585c.js"
+        }
+      ]
+    },
+    "98": {
+      "js": [
+        {
+          "file": "assets/js/a7bd4aaa.6cb313ae.js",
+          "hash": "0c969afff89e2440",
+          "publicPath": "/bmr-docs/assets/js/a7bd4aaa.6cb313ae.js"
+        }
+      ]
+    },
+    "114": {
+      "js": [
+        {
+          "file": "assets/js/e33c62b9.ecd0a256.js",
+          "hash": "ebfc331270d97d8f",
+          "publicPath": "/bmr-docs/assets/js/e33c62b9.ecd0a256.js"
+        }
+      ]
+    },
+    "119": {
+      "js": [
+        {
+          "file": "assets/js/8f3415b3.61805191.js",
+          "hash": "d43ebb33b5d4fbb9",
+          "publicPath": "/bmr-docs/assets/js/8f3415b3.61805191.js"
+        }
+      ]
+    },
+    "134": {
+      "js": [
+        {
+          "file": "assets/js/393be207.a6190199.js",
+          "hash": "e38fd3c34c07bb6a",
+          "publicPath": "/bmr-docs/assets/js/393be207.a6190199.js"
+        }
+      ]
+    },
+    "138": {
+      "js": [
+        {
+          "file": "assets/js/1a4e3797.95f19dba.js",
+          "hash": "6d39ce936ada37f7",
+          "publicPath": "/bmr-docs/assets/js/1a4e3797.95f19dba.js"
+        }
+      ]
+    },
+    "154": {
+      "js": [
+        {
+          "file": "assets/js/828807c5.e4aa9b50.js",
+          "hash": "e9a7b3bae7d4eb2f",
+          "publicPath": "/bmr-docs/assets/js/828807c5.e4aa9b50.js"
+        }
+      ]
+    },
+    "210": {
+      "js": [
+        {
+          "file": "assets/js/f80a9d52.75ab277f.js",
+          "hash": "13daedadaaf53819",
+          "publicPath": "/bmr-docs/assets/js/f80a9d52.75ab277f.js"
+        }
+      ]
+    },
+    "235": {
+      "js": [
+        {
+          "file": "assets/js/a7456010.80ec791f.js",
+          "hash": "913f540362ba45ea",
+          "publicPath": "/bmr-docs/assets/js/a7456010.80ec791f.js"
+        }
+      ]
+    },
+    "237": {
+      "js": [
+        {
+          "file": "assets/js/237.c2b04cf5.js",
+          "hash": "7541b5fcfdda066d",
+          "publicPath": "/bmr-docs/assets/js/237.c2b04cf5.js"
+        }
+      ]
+    },
+    "354": {
+      "js": [
+        {
+          "file": "assets/js/runtime~main.950a2b64.js",
+          "hash": "3b3cbc3a38d98739",
+          "publicPath": "/bmr-docs/assets/js/runtime~main.950a2b64.js"
+        }
+      ]
+    },
+    "394": {
+      "js": [
+        {
+          "file": "assets/js/3b8de346.bdc92fdf.js",
+          "hash": "11aca01c2eace460",
+          "publicPath": "/bmr-docs/assets/js/3b8de346.bdc92fdf.js"
+        }
+      ]
+    },
+    "401": {
+      "js": [
+        {
+          "file": "assets/js/17896441.fd1860a4.js",
+          "hash": "09b19d06b40fb71b",
+          "publicPath": "/bmr-docs/assets/js/17896441.fd1860a4.js"
+        }
+      ]
+    },
+    "410": {
+      "js": [
+        {
+          "file": "assets/js/353b0f39.31363f8b.js",
+          "hash": "e26724753b8d7e10",
+          "publicPath": "/bmr-docs/assets/js/353b0f39.31363f8b.js"
+        }
+      ]
+    },
+    "447": {
+      "js": [
+        {
+          "file": "assets/js/3ac9ecc1.d342d18f.js",
+          "hash": "998ecf9026778ccb",
+          "publicPath": "/bmr-docs/assets/js/3ac9ecc1.d342d18f.js"
+        }
+      ]
+    },
+    "489": {
+      "js": [
+        {
+          "file": "assets/js/489.a6629daf.js",
+          "hash": "92f67cc14f48751e",
+          "publicPath": "/bmr-docs/assets/js/489.a6629daf.js"
+        }
+      ]
+    },
+    "510": {
+      "js": [
+        {
+          "file": "assets/js/36a89604.6ec7407e.js",
+          "hash": "1ffdc7eb3635e82a",
+          "publicPath": "/bmr-docs/assets/js/36a89604.6ec7407e.js"
+        }
+      ]
+    },
+    "540": {
+      "js": [
+        {
+          "file": "assets/js/540.39824370.js",
+          "hash": "c45ffc9712424004",
+          "publicPath": "/bmr-docs/assets/js/540.39824370.js"
+        }
+      ]
+    },
+    "583": {
+      "js": [
+        {
+          "file": "assets/js/1df93b7f.39583933.js",
+          "hash": "bf9d621232e428ad",
+          "publicPath": "/bmr-docs/assets/js/1df93b7f.39583933.js"
+        }
+      ]
+    },
+    "647": {
+      "js": [
+        {
+          "file": "assets/js/5e95c892.a91fbe2b.js",
+          "hash": "98f0f99462f854d2",
+          "publicPath": "/bmr-docs/assets/js/5e95c892.a91fbe2b.js"
+        }
+      ]
+    },
+    "649": {
+      "js": [
+        {
+          "file": "assets/js/649.0b0af0f0.js",
+          "hash": "1104da7212d8645e",
+          "publicPath": "/bmr-docs/assets/js/649.0b0af0f0.js"
+        }
+      ]
+    },
+    "687": {
+      "js": [
+        {
+          "file": "assets/js/1b2a8d95.5dca5eb0.js",
+          "hash": "672948e3c683b6d0",
+          "publicPath": "/bmr-docs/assets/js/1b2a8d95.5dca5eb0.js"
+        }
+      ]
+    },
+    "694": {
+      "js": [
+        {
+          "file": "assets/js/7e542de7.000279fd.js",
+          "hash": "81917bb2dd165d78",
+          "publicPath": "/bmr-docs/assets/js/7e542de7.000279fd.js"
+        }
+      ]
+    },
+    "741": {
+      "js": [
+        {
+          "file": "assets/js/741.9a03ee52.js",
+          "hash": "55d423363676ece1",
+          "publicPath": "/bmr-docs/assets/js/741.9a03ee52.js"
+        }
+      ]
+    },
+    "742": {
+      "js": [
+        {
+          "file": "assets/js/aba21aa0.78bfa2d4.js",
+          "hash": "364f37e47d7b1a91",
+          "publicPath": "/bmr-docs/assets/js/aba21aa0.78bfa2d4.js"
+        }
+      ]
+    },
+    "792": {
+      "js": [
+        {
+          "file": "assets/js/main.c7c62c3d.js",
+          "hash": "25e605335da341c5",
+          "publicPath": "/bmr-docs/assets/js/main.c7c62c3d.js"
+        }
+      ]
+    },
+    "809": {
+      "js": [
+        {
+          "file": "assets/js/809.498c1a1d.js",
+          "hash": "ecb87b5394ab256d",
+          "publicPath": "/bmr-docs/assets/js/809.498c1a1d.js"
+        }
+      ]
+    },
+    "862": {
+      "js": [
+        {
+          "file": "assets/js/ccea277a.896ed1c2.js",
+          "hash": "aaf5b0f3f068e808",
+          "publicPath": "/bmr-docs/assets/js/ccea277a.896ed1c2.js"
+        }
+      ]
+    },
+    "869": {
+      "css": [
+        {
+          "file": "assets/css/styles.fd5011e3.css",
+          "hash": "443d1eaf6625a3c8",
+          "publicPath": "/bmr-docs/assets/css/styles.fd5011e3.css"
+        }
+      ]
+    },
+    "889": {
+      "js": [
+        {
+          "file": "assets/js/03de1aee.8af9a7da.js",
+          "hash": "f90a6df0a9d6f2c3",
+          "publicPath": "/bmr-docs/assets/js/03de1aee.8af9a7da.js"
+        }
+      ]
+    },
+    "899": {
+      "js": [
+        {
+          "file": "assets/js/6dd03e4b.63dbfc21.js",
+          "hash": "3d512cd5880a041a",
+          "publicPath": "/bmr-docs/assets/js/6dd03e4b.63dbfc21.js"
+        }
+      ]
+    },
+    "921": {
+      "js": [
+        {
+          "file": "assets/js/138e0e15.60801075.js",
+          "hash": "1b06390891ce077e",
+          "publicPath": "/bmr-docs/assets/js/138e0e15.60801075.js"
+        }
+      ]
+    },
+    "969": {
+      "js": [
+        {
+          "file": "assets/js/14eb3368.d1a1cc1e.js",
+          "hash": "2efc923349978af1",
+          "publicPath": "/bmr-docs/assets/js/14eb3368.d1a1cc1e.js"
+        }
+      ]
+    },
+    "976": {
+      "js": [
+        {
+          "file": "assets/js/0e384e19.baebd352.js",
+          "hash": "af2244fdb4f1c309",
+          "publicPath": "/bmr-docs/assets/js/0e384e19.baebd352.js"
+        }
+      ]
+    }
+  }
+}

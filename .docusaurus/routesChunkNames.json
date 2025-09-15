@@ -1,0 +1,103 @@
+{
+  "/bmr-docs/markdown-page-f55": {
+    "__comp": "1f391b9e",
+    "__context": {
+      "plugin": "a7456010"
+    },
+    "content": "393be207"
+  },
+  "/bmr-docs/search-795": {
+    "__comp": "1a4e3797",
+    "__context": {
+      "plugin": "138e0e15"
+    }
+  },
+  "/bmr-docs/docs-85e": {
+    "__comp": "5e95c892",
+    "__context": {
+      "plugin": "aba21aa0"
+    }
+  },
+  "/bmr-docs/docs-c45": {
+    "__comp": "a7bd4aaa",
+    "__props": "6a482382"
+  },
+  "/bmr-docs/docs-f44": {
+    "__comp": "a94703ab"
+  },
+  "/bmr-docs/docs/category/video-tutorials-26f": {
+    "__comp": "14eb3368",
+    "__props": "353b0f39"
+  },
+  "/bmr-docs/docs/getting-started/account-setup-9d8": {
+    "__comp": "17896441",
+    "content": "f80a9d52"
+  },
+  "/bmr-docs/docs/getting-started/faq-efb": {
+    "__comp": "17896441",
+    "content": "6dd03e4b"
+  },
+  "/bmr-docs/docs/getting-started/system-requirements-e25": {
+    "__comp": "17896441",
+    "content": "69e61f52"
+  },
+  "/bmr-docs/docs/intro-736": {
+    "__comp": "17896441",
+    "content": "0e384e19"
+  },
+  "/bmr-docs/docs/lifecycle/deployment/-c8a": {
+    "__comp": "17896441",
+    "content": "3b8de346"
+  },
+  "/bmr-docs/docs/lifecycle/design/-107": {
+    "__comp": "17896441",
+    "content": "03de1aee"
+  },
+  "/bmr-docs/docs/lifecycle/discovery/-928": {
+    "__comp": "17896441",
+    "content": "36a89604"
+  },
+  "/bmr-docs/docs/lifecycle/maintenance/-68d": {
+    "__comp": "17896441",
+    "content": "828807c5"
+  },
+  "/bmr-docs/docs/recommendations/-acf": {
+    "__comp": "17896441",
+    "content": "1b2a8d95"
+  },
+  "/bmr-docs/docs/recommendations/speakers-for-acoustics-eef": {
+    "__comp": "17896441",
+    "content": "e33c62b9"
+  },
+  "/bmr-docs/docs/release-notes/2025-07-beta-release-01-955": {
+    "__comp": "17896441",
+    "content": "7e542de7"
+  },
+  "/bmr-docs/docs/release-notes/2025-08-beta-release-02-7c0": {
+    "__comp": "17896441",
+    "content": "3ac9ecc1"
+  },
+  "/bmr-docs/docs/release-notes/2025-09-beta-release-03-759": {
+    "__comp": "17896441",
+    "content": "8f3415b3"
+  },
+  "/bmr-docs/docs/tutorials/acoustics-guide-431": {
+    "__comp": "17896441",
+    "content": "ccea277a"
+  },
+  "/bmr-docs/docs/tutorials/scan-marker-guide-887": {
+    "__comp": "17896441",
+    "content": "1988952d"
+  },
+  "/bmr-docs/docs/video-tutorials/video-acoustics-guide-1fd": {
+    "__comp": "17896441",
+    "content": "d4d9f8fb"
+  },
+  "/bmr-docs/-4a9": {
+    "__comp": "1df93b7f",
+    "__context": {
+      "plugin": "a7456010"
+    },
+    "config": "5e9f5e1a"
+  }
+}
