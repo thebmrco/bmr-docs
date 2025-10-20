@@ -28,3 +28,29 @@
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+/* BMR collapsible release blocks */
+.bmr-details {
+  background: #F1F1E3;
+  border: none;
+  padding: 12px 14px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+/* Make the summary text and the marker green */
+.bmr-summary {
+  color: #206B31;
+  font-weight: 600;
+  font-size: 1.05em;
+  cursor: pointer;
+}
+
+/* WebKit marker (Chrome/Safari/Edge) */
+.bmr-summary::-webkit-details-marker {
+  color: #206B31;
+}
+
+/* Optional: subtle inset border when open */
+.bmr-details[open] {
+  box-shadow: 0 0 0 1px #206B31 inset;
+}
