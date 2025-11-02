@@ -1,5 +1,6 @@
 // docusaurus.config.ts
 import type { Config } from '@docusaurus/types';
+import {docusaurusConfigSchema} from '@docusaurus/types';
 
 const config: Config = {
   title: 'Better Meeting Rooms',
@@ -35,16 +36,18 @@ const config: Config = {
     ],
   ],
 
-  plugins: [
-    [
-      require.resolve('@easyops-cn/docusaurus-search-local'),
-      {
-        hashed: true,
-        language: ['en'],
-        highlightSearchTermsOnTargetPage: true,
-      },
-    ],
+plugins: [
+  [
+    require.resolve('@easyops-cn/docusaurus-search-local'),
+    {
+      // --- fixes the "replace" crash ---
+      indexPages: true,         // ensures .replace() is called on a string
+      hashed: true,
+      language: ['en'],
+      docsRouteBasePath: '/',   // optional; adjust if your docs root is different
+    },
   ],
+],
 
   themeConfig: {
     navbar: {
