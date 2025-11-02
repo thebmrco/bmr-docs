@@ -12,6 +12,9 @@ module.exports = {
   projectName: 'bmr-docs', // GitHub repo
   deploymentBranch: 'gh-pages',
   favicon: 'img/favicon.ico',
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'warn',
+  onBrokenAnchors: 'ignore', 
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
