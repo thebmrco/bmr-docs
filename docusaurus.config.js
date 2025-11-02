@@ -1,18 +1,15 @@
-// docusaurus.config.ts
-import type { Config } from '@docusaurus/types';
-import {docusaurusConfigSchema} from '@docusaurus/types';
+// docusaurus.config.js
+// Clean JavaScript version for universal build compatibility (Node 18–22)
 
-// Auto-generated fallback for CI – do not edit directly
-require('ts-node').register({ transpileOnly: true });
-module.exports = require('./docusaurus.config.ts').default;
+const isCI = !!process.env.CI;
 
-const config: Config = {
+module.exports = {
   title: 'Better Meeting Rooms',
   tagline: 'Documentation',
   url: 'https://thebmrco.github.io',
   baseUrl: '/bmr-docs/',
-  organizationName: 'thebmrco',           // ✅ keep as your GitHub org/user
-  projectName: 'bmr-docs',                // ✅ keep as your GitHub repo
+  organizationName: 'thebmrco', // GitHub org/user
+  projectName: 'bmr-docs', // GitHub repo
   deploymentBranch: 'gh-pages',
   favicon: 'img/favicon.ico',
 
@@ -30,7 +27,6 @@ const config: Config = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.ts'),
-          // routeBasePath: 'docs', // leave commented if you're using default /docs
         },
         blog: false,
         theme: {
@@ -40,20 +36,19 @@ const config: Config = {
     ],
   ],
 
-// Detect if we are running inside GitHub Actions or another CI environment
-const isCI = !!process.env.CI;
-
-plugins: [
-  // Disable local search plugin when building on CI to avoid Node "File is not defined"
-  !isCI && [
-    require.resolve('@easyops-cn/docusaurus-search-local'),
-    {
-      indexPages: true,
-      hashed: true,
-      language: ['en'],
-    },
-  ],
-].filter(Boolean),
+  // ✅ Disable local search in CI builds to prevent Node File API error
+  plugins: !isCI
+    ? [
+        [
+          require.resolve('@easyops-cn/docusaurus-search-local'),
+          {
+            indexPages: true,
+            hashed: true,
+            language: ['en'],
+          },
+        ],
+      ]
+    : [],
 
   themeConfig: {
     navbar: {
@@ -64,7 +59,7 @@ plugins: [
       },
       items: [
         { to: '/docs/intro', label: 'Docs', position: 'left' },
-        { type: 'search', position: 'right' }, // ✅ Search bar in top navbar
+        { type: 'search', position: 'right' },
       ],
     },
     footer: {
@@ -74,5 +69,3 @@ plugins: [
     },
   },
 };
-
-export default config;
