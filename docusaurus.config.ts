@@ -36,18 +36,20 @@ const config: Config = {
     ],
   ],
 
+// Detect if we are running inside GitHub Actions or another CI environment
+const isCI = !!process.env.CI;
+
 plugins: [
-  [
+  // Disable local search plugin when building on CI to avoid Node "File is not defined"
+  !isCI && [
     require.resolve('@easyops-cn/docusaurus-search-local'),
     {
-      // --- fixes the "replace" crash ---
-      indexPages: true,         // ensures .replace() is called on a string
+      indexPages: true,
       hashed: true,
       language: ['en'],
-      docsRouteBasePath: '/',   // optional; adjust if your docs root is different
     },
   ],
-],
+].filter(Boolean),
 
   themeConfig: {
     navbar: {
