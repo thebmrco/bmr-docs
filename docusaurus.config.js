@@ -4,7 +4,7 @@
 const isCI = !!process.env.CI;
 
 module.exports = {
-  title: 'Better Meeting Rooms',
+  title: 'Better Meeting Rooms ',
   tagline: 'Documentation',
   url: 'https://thebmrco.github.io',
   baseUrl: '/bmr-docs/',
