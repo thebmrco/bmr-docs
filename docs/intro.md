@@ -1,11 +1,11 @@
 ---
-title: Welcome to Better Meeting Rooms
+title: Welcome to BETTERMEETINGROOMS
 sidebar_position: 1
 ---
 
-# Welcome to Better Meeting Rooms
+# Welcome to BETTERMEETINGROOMS
 
-**Better Meeting Rooms** is a platform that helps organizations plan, design, and manage high-performing meeting rooms. Our app supports the full lifecycle of a meeting space — from the first scan to long-term maintenance.
+**BETTERMEETINGROOMS** is a platform that helps organizations plan, design, and manage high-performing meeting rooms. Our app supports the full lifecycle of a meeting space — from the first scan to long-term maintenance.
 
 ## What We Offer
 

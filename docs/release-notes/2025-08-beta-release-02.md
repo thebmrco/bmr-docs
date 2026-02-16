@@ -4,7 +4,7 @@ title: August 2025 – Beta Release 02
 
 # August 2025 – Beta Release 02
 
-The latest update to the Better Meeting Rooms solution brings powerful enhancements to search, libraries, and room management.
+The latest update to the BETTERMEETINGROOMS solution brings powerful enhancements to search, libraries, and room management.
 
 ---
 

@@ -1,6 +1,6 @@
 # Account Setup
 
-Better Meeting Rooms is currently distributed via **TestFlight**, and new users must follow the onboarding process below.
+BETTERMEETINGROOMS is currently distributed via **TestFlight**, and new users must follow the onboarding process below.
 
 ---
 
@@ -14,7 +14,7 @@ Better Meeting Rooms is currently distributed via **TestFlight**, and new users 
 
 ## 📱 Step 2: Sign Up via the App (Primary)
 
-New accounts are created directly from the **Better Meeting Rooms iOS app**.  
+New accounts are created directly from the **BETTERMEETINGROOMS iOS app**.  
 When opening the app for the first time, you’ll see the login and sign-up flow.
 
 1. Tap **Login** to begin.  

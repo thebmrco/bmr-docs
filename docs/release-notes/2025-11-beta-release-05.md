@@ -38,4 +38,4 @@ Each phase (Discovery / Design / Deployment) is collapsible and dynamically popu
 
 ---
 
-_Release prepared by the Better Meeting Rooms team – November 2025_
+_Release prepared by the BETTERMEETINGROOMS team – November 2025_

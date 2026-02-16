@@ -4,7 +4,7 @@ title: September 2025 – Beta Release 03
 
 # September 2025 – Beta Release 03
 
-This is the third external beta release of the Better Meeting Rooms solution.
+This is the third external beta release of the BETTERMEETINGROOMS solution.
 
 ---
 
