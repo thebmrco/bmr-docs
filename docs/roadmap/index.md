@@ -4,7 +4,7 @@ title: Roadmap
 
 # BMR Roadmap
 
-Future improvements and upcoming features in the **Better Meeting Rooms** platform.
+Future improvements and upcoming features in the **BETTERMEETINGROOMS** platform.
 
 This roadmap provides a high-level overview of what is coming next across the four phases of the BMR Room Lifecycle Solution:  
 **Discovery, Design, Deployment, and Maintenance.**

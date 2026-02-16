@@ -1,6 +1,6 @@
 # 📐 Room Scanning & Marker Tutorial
 
-This guide shows how to perform a room scan and place markers using the Better Meeting Rooms iPhone/iPad app.
+This guide shows how to perform a room scan and place markers using the BETTERMEETINGROOMS iPhone/iPad app.
 
 
 ---

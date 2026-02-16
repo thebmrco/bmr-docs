@@ -1,6 +1,6 @@
 # System Requirements
 
-To get the most out of the Better Meeting Rooms solution, your device must meet the following system requirements.
+To get the most out of the BETTERMEETINGROOMS solution, your device must meet the following system requirements.
 
 ---
 

@@ -4,7 +4,7 @@ title: October 2025 – Beta Release 04
 
 # October 2025 – Beta Release 04
 
-This is the fourth external beta release of the Better Meeting Rooms solution.
+This is the fourth external beta release of the BETTERMEETINGROOMS solution.
 
 ---
 

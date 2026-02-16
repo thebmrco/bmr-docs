@@ -4,7 +4,7 @@
 const isCI = !!process.env.CI;
 
 module.exports = {
-  title: 'Better Meeting Rooms ',
+  title: 'BETTERMEETINGROOMS',
   tagline: 'Documentation',
   url: 'https://thebmrco.github.io',
   baseUrl: '/bmr-docs/',
@@ -55,7 +55,7 @@ module.exports = {
 
   themeConfig: {
     navbar: {
-      title: 'Better Meeting Rooms',
+      title: 'BETTERMEETINGROOMS',
       logo: {
         alt: 'BMR',
         src: 'img/logo.svg',
@@ -68,7 +68,7 @@ module.exports = {
     footer: {
       style: 'dark',
       links: [],
-      copyright: `© ${new Date().getFullYear()} Better Meeting Rooms`,
+      copyright: `© ${new Date().getFullYear()} BETTERMEETINGROOMS`,
     },
   },
 };

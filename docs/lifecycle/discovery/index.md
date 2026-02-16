@@ -4,7 +4,7 @@ title: Discovery Phase
 
 # 🔎 Discovery Phase
 
-The **Discovery Phase** is the first and most important step in the Better Meeting Rooms lifecycle.  
+The **Discovery Phase** is the first and most important step in the BETTERMEETINGROOMS lifecycle.  
 During Discovery, you capture accurate data about your meeting room, which becomes the foundation for design and deployment.  
 
 ---

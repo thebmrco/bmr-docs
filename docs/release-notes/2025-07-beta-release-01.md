@@ -4,7 +4,7 @@ title: July 2025 – Beta Release 01
 
 # July 2025 – Beta Release 01
 
-This is the first public beta release of the Better Meeting Rooms solution.
+This is the first public beta release of the BETTERMEETINGROOMS solution.
 
 ---
 
