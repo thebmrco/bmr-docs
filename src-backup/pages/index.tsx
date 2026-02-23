@@ -11,19 +11,17 @@ import styles from './index.module.css';
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
   return (
-    <header className={clsx('hero', styles.heroBanner)}>
+    <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
         <Heading as="h1" className="hero__title">
-          Better Meeting Rooms Documentation
+          {siteConfig.title}
         </Heading>
-        <p className="hero__subtitle">
-          Transform every meeting room into a collaboration masterpiece with our comprehensive guides and best practices.
-        </p>
+        <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div className={styles.buttons}>
           <Link
-            className="button button--primary button--lg"
+            className="button button--secondary button--lg"
             to="/docs/intro">
-            Get Started →
+            Get Started with BMR →
           </Link>
         </div>
       </div>
@@ -35,8 +33,8 @@ export default function Home(): ReactNode {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Documentation`}
-      description="Better Meeting Rooms - Lifecycle management for meeting rooms. Create better spaces for work and play.">
+      title={`Hello from ${siteConfig.title}`}
+      description="Description will go into a meta tag in <head />">
       <HomepageHeader />
       <main>
         <HomepageFeatures />

@@ -31,7 +31,7 @@ You can initiate a scan in two ways:
 Once started, follow on-screen instructions to move your phone along the walls of the room.
 
 **Scan screen as you move along. White lineas appear as room geometry is captured:** 
-<img src={require('./scan-guide-images/scan-ongoing.jpg').default} alt="Scan Ongoing" style={{ maxWidth: '400px', borderRadius: '6px' }} />
+<img src={require('./scan-guide-images/scan-ongoing.png').default} alt="Scan Ongoing" style={{ maxWidth: '400px', borderRadius: '6px' }} />
 
 
 Move around until:
@@ -49,7 +49,7 @@ During scanning:
 - Long press a marker in the preview to delete it
 
 **Markers being taken:**  
-<img src={require('./scan-guide-images/markers-taken.jpg').default} alt="Markers Being Taken" style={{ maxWidth: '400px', borderRadius: '6px' }} />
+<img src={require('./scan-guide-images/markers-taken.png').default} alt="Markers Being Taken" style={{ maxWidth: '400px', borderRadius: '6px' }} />
 
 **Marker preview gallery:**  
 <img src={require('./scan-guide-images/markers-preview.jpg').default} alt="Marker Preview" style={{ maxWidth: '400px', borderRadius: '6px' }} />

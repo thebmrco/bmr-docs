@@ -5,52 +5,86 @@ import styles from './styles.module.css';
 
 type FeatureItem = {
   title: string;
-  Svg: React.ComponentType<React.ComponentProps<'svg'>>;
+  icon: string;
   description: ReactNode;
 };
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Optimize Acoustics',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    title: 'Discovery',
+    icon: '🔍',
     description: (
       <>
-        Transform your meeting rooms with expert guidance on sound absorption,
-        echo reduction, and noise control for crystal-clear communication.
+        Survey and assess your existing meeting rooms. Capture detailed information 
+        about space, acoustics, and current technology to establish a baseline 
+        for improvement.
       </>
     ),
   },
   {
-    title: 'Enhance Collaboration',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: 'Digital Twin',
+    icon: '🏢',
     description: (
       <>
-        Create spaces that foster engagement with optimal layouts, lighting
-        solutions, and technology integration for seamless hybrid meetings.
+        Create precise 3D models of your spaces. Work from a single source of 
+        truth and avoid information silos with our digital twin technology.
       </>
     ),
   },
   {
-    title: 'Boost Productivity',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: 'Design',
+    icon: '🎨',
     description: (
       <>
-        Reduce meeting fatigue and improve outcomes with ergonomic furniture,
-        proper ventilation, and evidence-based design principles.
+        Plan your meeting room with 3D visualizations. Test layouts virtually, 
+        identify issues, and optimize your space before any physical changes.
+      </>
+    ),
+  },
+  {
+    title: 'Maintenance',
+    icon: '⚙️',
+    description: (
+      <>
+        Keep your rooms performing at their best. Monitor equipment health, 
+        schedule preventive maintenance, and ensure optimal conditions for 
+        collaboration.
+      </>
+    ),
+  },
+  {
+    title: 'Expert Guidance',
+    icon: '📚',
+    description: (
+      <>
+        Access comprehensive guides on acoustics, technology selection, 
+        deployment strategies, and ongoing maintenance for optimal room performance.
+      </>
+    ),
+  },
+  {
+    title: 'Continuous Improvement',
+    icon: '📊',
+    description: (
+      <>
+        Analyze room performance, understand usage patterns, and maintain 
+        optimal conditions with our analytics and maintenance tools.
       </>
     ),
   },
 ];
 
-function Feature({title, Svg, description}: FeatureItem) {
+function Feature({title, icon, description}: FeatureItem) {
   return (
     <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
-      </div>
-      <div className="text--center padding-horiz--md">
-        <Heading as="h3">{title}</Heading>
-        <p>{description}</p>
+      <div className={styles.featureCard}>
+        <div className={styles.featureIcon}>
+          <span role="img" aria-label={title}>{icon}</span>
+        </div>
+        <div className="text--center padding-horiz--md">
+          <Heading as="h3">{title}</Heading>
+          <p>{description}</p>
+        </div>
       </div>
     </div>
   );
@@ -60,6 +94,14 @@ export default function HomepageFeatures(): ReactNode {
   return (
     <section className={styles.features}>
       <div className="container">
+        <div className="text--center margin-bottom--xl">
+          <Heading as="h2" className={styles.featuresTitle}>
+            Everything You Need to Create Better Meeting Rooms
+          </Heading>
+          <p className={styles.featuresSubtitle}>
+            From initial survey to ongoing maintenance, we've got you covered
+          </p>
+        </div>
         <div className="row">
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />

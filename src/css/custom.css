@@ -1,56 +1,483 @@
 /**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
+ * BMR Documentation - Custom Styles
+ * Matching the brand identity from bettermeetingrooms.com
  */
 
-/* You can override the default Infima variables here. */
+/* Import custom font if needed */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* BMR Brand Colors */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  /* Primary Brand Colors */
+  --ifm-color-primary: #206B31;
+  --ifm-color-primary-dark: #1c5e2b;
+  --ifm-color-primary-darker: #1a5829;
+  --ifm-color-primary-darkest: #154822;
+  --ifm-color-primary-light: #247837;
+  --ifm-color-primary-lighter: #267e39;
+  --ifm-color-primary-lightest: #2e9145;
+  
+  /* Secondary/Accent Colors */
+  --bmr-beige: #F1F1E3;
+  --bmr-beige-dark: #E5E5D5;
+  --bmr-dark-green: #206B31;
+  --bmr-light-green: #2e9145;
+  
+  /* Background Colors */
+  --ifm-background-color: #ffffff;
+  --ifm-background-surface-color: #F1F1E3;
+  
+  /* Text Colors */
+  --ifm-font-color-base: #1a1a1a;
+  --ifm-font-color-secondary: #4a4a4a;
+  
+  /* Typography */
+  --ifm-font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  --ifm-font-size-base: 16px;
+  --ifm-line-height-base: 1.65;
+  --ifm-heading-font-weight: 600;
+  
+  /* Spacing */
+  --ifm-spacing-horizontal: 1.5rem;
+  --ifm-spacing-vertical: 1.5rem;
+  
+  /* Code */
+  --ifm-code-font-size: 90%;
+  --ifm-code-background: #f5f5f5;
+  --ifm-code-border-radius: 6px;
+  --docusaurus-highlighted-code-line-bg: rgba(32, 107, 49, 0.1);
+  
+  /* Navbar */
+  --ifm-navbar-background-color: #ffffff;
+  --ifm-navbar-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --ifm-navbar-height: 70px;
+  
+  /* Footer */
+  --ifm-footer-background-color: #1a1a1a;
+  --ifm-footer-color: #ffffff;
+  
+  /* Links */
+  --ifm-link-color: #206B31;
+  --ifm-link-hover-color: #2e9145;
+  
+  /* Buttons */
+  --ifm-button-border-radius: 8px;
+  
+  /* Cards & Containers */
+  --ifm-card-border-radius: 12px;
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
+/* Dark Mode */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
-}
-/* BMR collapsible release blocks */
-.bmr-details {
-  background: #F1F1E3;
-  border: none;
-  padding: 12px 14px;
-  border-radius: 10px;
-  margin-bottom: 12px;
+  --ifm-color-primary: #2e9145;
+  --ifm-color-primary-dark: #298d3e;
+  --ifm-color-primary-darker: #26853a;
+  --ifm-color-primary-darkest: #1f6e30;
+  --ifm-color-primary-light: #38a051;
+  --ifm-color-primary-lighter: #3fa857;
+  --ifm-color-primary-lightest: #52b569;
+  
+  --ifm-background-color: #1a1a1a;
+  --ifm-background-surface-color: #242424;
+  --bmr-beige: #2a2a24;
+  --bmr-beige-dark: #1f1f1c;
+  
+  --ifm-font-color-base: #e8e8e8;
+  --ifm-font-color-secondary: #b8b8b8;
+  
+  --ifm-navbar-background-color: #1a1a1a;
+  --ifm-footer-background-color: #0d0d0d;
+  
+  --ifm-code-background: #2a2a2a;
+  --docusaurus-highlighted-code-line-bg: rgba(46, 145, 69, 0.2);
 }
 
-/* Green summary text + marker */
+/* Global Typography Improvements */
+body {
+  font-family: var(--ifm-font-family-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--ifm-heading-font-weight);
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+  line-height: 1.3;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  line-height: 1.4;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Navbar Styling */
+.navbar {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.navbar__brand {
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--bmr-dark-green);
+}
+
+.navbar__logo {
+  height: 40px;
+  margin-right: 0.75rem;
+}
+
+.navbar__item {
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.navbar__link {
+  transition: color 0.2s ease;
+}
+
+.navbar__link:hover {
+  color: var(--ifm-color-primary);
+}
+
+.navbar__link--active {
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #F1F1E3 0%, #ffffff 100%);
+  padding: 5rem 0;
+  border-bottom: none;
+}
+
+[data-theme='dark'] .hero {
+  background: linear-gradient(135deg, #242424 0%, #1a1a1a 100%);
+}
+
+.hero__title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--bmr-dark-green);
+  margin-bottom: 1rem;
+  letter-spacing: -0.03em;
+}
+
+[data-theme='dark'] .hero__title {
+  color: var(--ifm-color-primary-light);
+}
+
+.hero__subtitle {
+  font-size: 1.25rem;
+  color: var(--ifm-font-color-secondary);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
+
+/* Buttons */
+.button {
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0;
+  padding: 0.75rem 1.75rem;
+  transition: all 0.3s ease;
+}
+
+.button--primary {
+  background-color: var(--bmr-dark-green);
+  border-color: var(--bmr-dark-green);
+}
+
+.button--primary:hover {
+  background-color: var(--bmr-light-green);
+  border-color: var(--bmr-light-green);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(32, 107, 49, 0.2);
+}
+
+.button--secondary {
+  background-color: transparent;
+  border: 2px solid var(--bmr-dark-green);
+  color: var(--bmr-dark-green);
+}
+
+.button--secondary:hover {
+  background-color: var(--bmr-dark-green);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(32, 107, 49, 0.2);
+}
+
+.button--lg {
+  font-size: 1.1rem;
+  padding: 1rem 2.5rem;
+}
+
+/* Cards & Features */
+.card {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: var(--ifm-card-border-radius);
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Sidebar */
+.menu {
+  font-size: 0.95rem;
+}
+
+.menu__link {
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.menu__link:hover {
+  background-color: var(--bmr-beige);
+  color: var(--bmr-dark-green);
+}
+
+.menu__link--active {
+  background-color: var(--bmr-dark-green);
+  color: white;
+  font-weight: 600;
+}
+
+.menu__link--active:hover {
+  background-color: var(--bmr-light-green);
+}
+
+.menu__list-item-collapsible:hover {
+  background-color: var(--bmr-beige);
+}
+
+/* Table of Contents */
+.table-of-contents {
+  font-size: 0.9rem;
+}
+
+.table-of-contents__link {
+  color: var(--ifm-font-color-secondary);
+  transition: color 0.2s ease;
+}
+
+.table-of-contents__link:hover,
+.table-of-contents__link--active {
+  color: var(--bmr-dark-green);
+  font-weight: 500;
+}
+
+/* Documentation Content */
+.markdown {
+  max-width: 800px;
+}
+
+.markdown > h2 {
+  border-bottom: 2px solid var(--bmr-beige);
+  padding-bottom: 0.5rem;
+}
+
+.markdown a {
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.markdown a:hover {
+  border-bottom-color: var(--ifm-color-primary);
+}
+
+/* Code Blocks */
+div[class^='codeBlockContainer'] {
+  border-radius: var(--ifm-code-border-radius);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+code {
+  background-color: var(--ifm-code-background);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: var(--ifm-code-font-size);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+pre code {
+  border: none;
+  padding: 0;
+}
+
+/* Admonitions (Notes, Warnings, etc.) */
+.admonition {
+  border-radius: var(--ifm-card-border-radius);
+  border-left-width: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.admonition-icon svg {
+  fill: currentColor;
+}
+
+/* BMR Collapsible Release Blocks */
+.bmr-details {
+  background: var(--bmr-beige);
+  border: 1px solid var(--bmr-beige-dark);
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  transition: all 0.2s ease;
+}
+
+.bmr-details:hover {
+  box-shadow: 0 2px 8px rgba(32, 107, 49, 0.1);
+}
+
 .bmr-summary {
-  color: #206B31;
+  color: var(--bmr-dark-green);
   font-weight: 600;
   font-size: 1.05em;
   cursor: pointer;
+  user-select: none;
 }
 
-/* WebKit/Safari/Chrome marker color */
 .bmr-summary::-webkit-details-marker {
-  color: #206B31;
+  color: var(--bmr-dark-green);
 }
 
-/* Optional: subtle inset border when open */
 .bmr-details[open] {
-  box-shadow: 0 0 0 1px #206B31 inset;
+  box-shadow: 0 0 0 2px var(--bmr-dark-green) inset;
+}
+
+.bmr-details[open] .bmr-summary {
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--bmr-beige-dark);
+}
+
+/* Footer */
+.footer {
+  padding: 3rem 0;
+}
+
+.footer__title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.footer__item {
+  padding: 0.25rem 0;
+}
+
+.footer__link-item {
+  color: rgba(255, 255, 255, 0.8);
+  transition: color 0.2s ease;
+}
+
+.footer__link-item:hover {
+  color: var(--ifm-color-primary-light);
+}
+
+/* Pagination */
+.pagination-nav__link {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: var(--ifm-card-border-radius);
+  transition: all 0.3s ease;
+}
+
+.pagination-nav__link:hover {
+  border-color: var(--bmr-dark-green);
+  box-shadow: 0 4px 12px rgba(32, 107, 49, 0.1);
+}
+
+.pagination-nav__label {
+  font-weight: 600;
+}
+
+/* Search */
+.DocSearch-Button {
+  border-radius: 8px;
+  background-color: var(--bmr-beige);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.DocSearch-Button:hover {
+  background-color: var(--bmr-beige-dark);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Tabs */
+.tabs {
+  border-bottom: 2px solid var(--bmr-beige);
+}
+
+.tabs__item {
+  border-radius: 8px 8px 0 0;
+  font-weight: 500;
+}
+
+.tabs__item--active {
+  border-bottom-color: var(--bmr-dark-green);
+  color: var(--bmr-dark-green);
+}
+
+/* Responsive adjustments */
+@media (max-width: 996px) {
+  .hero__title {
+    font-size: 2.25rem;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 3rem 0;
+  }
+  
+  .hero__title {
+    font-size: 1.875rem;
+  }
+  
+  .hero__subtitle {
+    font-size: 1.125rem;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection color */
+::selection {
+  background-color: rgba(32, 107, 49, 0.2);
+  color: var(--ifm-font-color-base);
 }
