@@ -67,6 +67,7 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'Release Notes',
       items: [
+        'release-notes/2026-02-beta-release-09',
         'release-notes/2025-12-beta-release-08',
         'release-notes/2025-12-beta-release-07',
         'release-notes/2025-11-beta-release-06',
