@@ -17,7 +17,7 @@ export {
   // Spaces
   Landmark as IconOrganization,
   Building2 as IconLocation,
-  Cube as IconRoom,
+  Box as IconRoom,
   LandPlot as IconMarker,
   Camera as IconPhoto,
   Rotate3d as Icon3DARDesign,
@@ -94,7 +94,7 @@ export {
  */
 import {
   House, SquareCheckBig, CirclePlus, BookOpen, Shapes, Ellipsis,
-  Landmark, Building2, Cube, LandPlot, Camera, Rotate3d,
+  Landmark, Building2, Box, LandPlot, Camera, Rotate3d,
   Package, AudioLines, Scan,
   RefreshCw, ListFilter, Search, Link, Info, Circle, Check, X, Copy, Download,
   Archive, Trash, Pencil, SquarePen, CheckCheck, Ruler,
@@ -118,7 +118,7 @@ export const iconMap: Record<string, LucideIcon> = {
   // Spaces
   "organization": Landmark,
   "location": Building2,
-  "room": Cube,
+  "room": Box,
   "marker": LandPlot,
   "photo": Camera,
   "3d-ar-design": Rotate3d,
