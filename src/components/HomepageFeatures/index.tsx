@@ -1,85 +1,90 @@
 import type {ReactNode} from 'react';
+import React from 'react';
 import clsx from 'clsx';
 import Heading from '@theme/Heading';
+import type { LucideIcon } from 'lucide-react';
+import {
+  Search, Copy, Rotate3d, Settings, BookMarked, RefreshCcw,
+} from 'lucide-react';
 import styles from './styles.module.css';
 
 type FeatureItem = {
   title: string;
-  icon: string;
+  icon: LucideIcon;
   description: ReactNode;
 };
 
 const FeatureList: FeatureItem[] = [
   {
     title: 'Discovery',
-    icon: '🔍',
+    icon: Search,
     description: (
       <>
-        Survey and assess your existing meeting rooms. Capture detailed information 
-        about space, acoustics, and current technology to establish a baseline 
+        Survey and assess your existing meeting rooms. Capture detailed information
+        about space, acoustics, and current technology to establish a baseline
         for improvement.
       </>
     ),
   },
   {
     title: 'Digital Twin',
-    icon: '🏢',
+    icon: Copy,
     description: (
       <>
-        Create precise 3D models of your spaces. Work from a single source of 
+        Create precise 3D models of your spaces. Work from a single source of
         truth and avoid information silos with our digital twin technology.
       </>
     ),
   },
   {
     title: 'Design',
-    icon: '🎨',
+    icon: Rotate3d,
     description: (
       <>
-        Plan your meeting room with 3D visualizations. Test layouts virtually, 
+        Plan your meeting room with 3D visualizations. Test layouts virtually,
         identify issues, and optimize your space before any physical changes.
       </>
     ),
   },
   {
     title: 'Maintenance',
-    icon: '⚙️',
+    icon: Settings,
     description: (
       <>
-        Keep your rooms performing at their best. Monitor equipment health, 
-        schedule preventive maintenance, and ensure optimal conditions for 
+        Keep your rooms performing at their best. Monitor equipment health,
+        schedule preventive maintenance, and ensure optimal conditions for
         collaboration.
       </>
     ),
   },
   {
     title: 'Expert Guidance',
-    icon: '📚',
+    icon: BookMarked,
     description: (
       <>
-        Access comprehensive guides on acoustics, technology selection, 
+        Access comprehensive guides on acoustics, technology selection,
         deployment strategies, and ongoing maintenance for optimal room performance.
       </>
     ),
   },
   {
     title: 'Continuous Improvement',
-    icon: '📊',
+    icon: RefreshCcw,
     description: (
       <>
-        Analyze room performance, understand usage patterns, and maintain 
+        Analyze room performance, understand usage patterns, and maintain
         optimal conditions with our analytics and maintenance tools.
       </>
     ),
   },
 ];
 
-function Feature({title, icon, description}: FeatureItem) {
+function Feature({title, icon: Icon, description}: FeatureItem) {
   return (
     <div className={clsx('col col--4')}>
       <div className={styles.featureCard}>
         <div className={styles.featureIcon}>
-          <span role="img" aria-label={title}>{icon}</span>
+          <Icon size={40} color="#206B31" aria-label={title} />
         </div>
         <div className="text--center padding-horiz--md">
           <Heading as="h3">{title}</Heading>

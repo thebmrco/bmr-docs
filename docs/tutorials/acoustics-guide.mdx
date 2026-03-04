@@ -1,0 +1,106 @@
+---
+id: acoustics-guide
+title: BMR App Acoustics Tutorial
+sidebar_position: 1
+---
+
+import Icon from '@site/src/components/Icon'
+import StepFlow from '@site/src/components/StepFlow'
+
+# <Icon name="audio-lines" size="1em" /> BMR App Acoustics Tutorial
+
+Capture accurate acoustic data from your meeting room using the BMR iOS app. The measurement gives you **reverberation time (RT60)** and a **Mean Opinion Score** — the foundation for any acoustic improvement recommendation.
+
+---
+
+## <Icon name="circle-check" size="1em" /> Before You Start
+
+**You will need:**
+- iPhone or iPad (with microphone)
+- A Bluetooth or AirPlay speaker — see [Recommended Speakers](../recommendations/speakers-for-acoustics)
+- A quiet room
+
+**Prepare the room:**
+- Close all windows and doors
+- Turn off HVAC, fans, and any noise sources
+- Keep your device's microphone uncovered
+- Place the device on a stable, non-rattling surface
+- Place the speaker **at least 1 metre away** from the device and **away from walls**
+
+:::tip
+Run **3 measurements at different positions** in the room for the most reliable data.
+:::
+
+---
+
+## <Icon name="audio-lines" size="1em" /> Sweep Method (Recommended)
+
+The sweep method plays a test signal through a connected speaker and captures the room's acoustic response. This is the most accurate method.
+
+<StepFlow steps={[
+  {
+    label: "Select output (speaker) and input (microphone) devices, then tap Next",
+    image: "/img/release/2026-01-Acoustic-flow-01.jpg",
+    alt: "Device selection screen"
+  },
+  {
+    label: "Follow the placement guide — speaker and phone at least 1 m apart and away from walls",
+    image: "/img/release/2026-01-Acoustic-flow-02.jpg",
+    alt: "Room setup and placement guidance"
+  },
+  {
+    label: "Adjust speaker volume until the signal level reads ≥ 25 dB above ambient noise",
+    image: "/img/release/2026-01-Acoustic-flow-03.jpg",
+    alt: "Volume adjustment with signal level graph"
+  },
+  {
+    label: "Stay still and silent — tap Start Measurement when ready",
+    image: "/img/release/2026-01-Acoustic-flow-04-2.jpg",
+    alt: "Start measurement screen"
+  },
+  {
+    label: "Review your Mean Opinion Score and RT60 results, then tap Save Results",
+    image: "/img/release/2026-01-Acoustic-flow-05.jpg",
+    alt: "Results screen with MOS score and RT60 graph"
+  },
+]} />
+
+:::note
+Do not move or make any noise during the measurement. If the result looks wrong, check that the volume level was high enough (step 3) and retry.
+:::
+
+---
+
+## <Icon name="scan" size="1em" /> Impulse Method (Balloon Pop)
+
+Use this method when a speaker is not available. A balloon pop or hand clap triggers the measurement.
+
+:::caution
+Hand claps are inconsistent — use only as a last resort. The balloon method is marked **BETA** and is less reliable than the sweep method.
+:::
+
+1. Tap the **Balloon icon** to start. The app shows the ambient noise level — wait until the room is quiet.
+2. When prompted, **pop the balloon** (held ~30 cm from the device) or clap sharply once.
+3. Remain silent for ~3 seconds while the app captures the decay.
+4. Review and save results using the same flow as the sweep method.
+
+---
+
+## <Icon name="star" size="1em" /> Understanding Your Results
+
+| Metric | What it means |
+|---|---|
+| **Mean Opinion Score (MOS)** | Predicted speech quality — 5 = excellent, 1 = poor |
+| **RT60** | Time (seconds) for sound to decay by 60 dB — lower = less reverb |
+| **Average RT60** | Single summary value across all measured frequencies |
+
+A good meeting room typically targets **RT60 < 0.5 s** and **MOS ≥ 3.5**.
+
+---
+
+## <Icon name="chevron-right" size="1em" /> Next Steps
+
+Once saved, your acoustic data is available in the room's **Room Data** and feeds directly into the Design Phase for acoustic treatment recommendations.
+
+- [Design Phase](../lifecycle/design/index) — request a design based on your acoustic data
+- [Recommended Speakers](../recommendations/speakers-for-acoustics) — speakers validated for BMR measurements

@@ -10,12 +10,12 @@
 :root {
   /* Primary Brand Colors */
   --ifm-color-primary: #206B31;
-  --ifm-color-primary-dark: #1c5e2b;
-  --ifm-color-primary-darker: #1a5829;
-  --ifm-color-primary-darkest: #154822;
-  --ifm-color-primary-light: #247837;
-  --ifm-color-primary-lighter: #267e39;
-  --ifm-color-primary-lightest: #2e9145;
+  --ifm-color-primary-dark: #1b5c29;
+  --ifm-color-primary-darker: #164c22;
+  --ifm-color-primary-darkest: #103b1a;
+  --ifm-color-primary-light: #2b7f3d;
+  --ifm-color-primary-lighter: #329845;
+  --ifm-color-primary-lightest: #48FF69;
   
   /* Secondary/Accent Colors */
   --bmr-beige: #F1F1E3;
@@ -28,7 +28,7 @@
   --ifm-background-surface-color: #F1F1E3;
   
   /* Text Colors */
-  --ifm-font-color-base: #1a1a1a;
+  --ifm-font-color-base: #333333;
   --ifm-font-color-secondary: #4a4a4a;
   
   /* Typography */
@@ -41,8 +41,12 @@
   --ifm-spacing-horizontal: 1.5rem;
   --ifm-spacing-vertical: 1.5rem;
   
+    /* Tabs */
+  --ifm-tabs-color-active: #206B31;
+  --ifm-tabs-color-active-border: #206B31;
+  
   /* Code */
-  --ifm-code-font-size: 90%;
+  --ifm-code-font-size: 95%;
   --ifm-code-background: #f5f5f5;
   --ifm-code-border-radius: 6px;
   --docusaurus-highlighted-code-line-bg: rgba(32, 107, 49, 0.1);
@@ -58,13 +62,25 @@
   
   /* Links */
   --ifm-link-color: #206B31;
-  --ifm-link-hover-color: #2e9145;
+  --ifm-link-hover-color: #07C229;
   
   /* Buttons */
   --ifm-button-border-radius: 8px;
   
   /* Cards & Containers */
   --ifm-card-border-radius: 12px;
+
+  /* Admonition: INFO → BMR green (overrides Infima's default blue) */
+  --ifm-color-info: #206B31;
+  --ifm-color-info-dark: #1b5c29;
+  --ifm-color-info-contrast-background: rgba(32, 107, 49, 0.07);
+  --ifm-color-info-contrast-foreground: #0d3b1e;
+
+  /* Admonition: CAUTION/WARNING → BMR orange (overrides Infima's default yellow) */
+  --ifm-color-warning: #F45F0B;
+  --ifm-color-warning-dark: #c44900;
+  --ifm-color-warning-contrast-background: rgba(244, 95, 11, 0.07);
+  --ifm-color-warning-contrast-foreground: #7a2d00;
 }
 
 /* Dark Mode */
@@ -208,7 +224,7 @@ h3 {
   background-color: var(--bmr-light-green);
   border-color: var(--bmr-light-green);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(32, 107, 49, 0.2);
+  box-shadow: 0 0 0 2px rgba(32, 107, 49, 0.3);
 }
 
 .button--secondary {
@@ -258,18 +274,44 @@ h3 {
   color: var(--bmr-dark-green);
 }
 
+/* Active page link: light green tint background + BMR green text */
 .menu__link--active {
-  background-color: var(--bmr-dark-green);
-  color: white;
-  font-weight: 600;
+  background-color: rgba(32, 107, 49, 0.1);
+  color: var(--bmr-dark-green);
+  font-weight: 700;
 }
 
 .menu__link--active:hover {
-  background-color: var(--bmr-light-green);
+  background-color: rgba(32, 107, 49, 0.15);
+  color: var(--bmr-dark-green);
+}
+
+/* Active links inside collapsible category headers — same treatment */
+.menu__list-item-collapsible .menu__link--active {
+  background: none !important;
+  color: var(--bmr-dark-green) !important;
+}
+
+.menu__list-item-collapsible .menu__link--active:hover {
+  background: var(--bmr-beige) !important;
+  color: var(--bmr-dark-green) !important;
 }
 
 .menu__list-item-collapsible:hover {
   background-color: var(--bmr-beige);
+}
+
+/* Ensure the collapse/expand chevron icon is always visible.
+ * Infima's default SVG uses fill="rgba(0,0,0,0.5)" which can become invisible
+ * when a background-color or CSS filter changes. Use a solid colour instead. */
+:root {
+  --ifm-menu-link-sublist-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24"><path fill="%23333333" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>');
+  --ifm-menu-link-sublist-icon-filter: none;
+}
+
+[data-theme='dark'] {
+  --ifm-menu-link-sublist-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24"><path fill="%23e8e8e8" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>');
+  --ifm-menu-link-sublist-icon-filter: none;
 }
 
 /* Table of Contents */
@@ -480,4 +522,116 @@ html {
 ::selection {
   background-color: rgba(32, 107, 49, 0.2);
   color: var(--ifm-font-color-base);
+}
+/* -------- BMR Roadmap Styling -------- */
+
+.bmrRoadmapItem {
+  margin: 0 0 22px 0;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #eef2f6;
+}
+
+.bmrRoadmapTitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.bmrRoadmapDesc {
+  margin: 6px 0 0 28px;
+  font-size: 14px;
+  color: #334155;
+  line-height: 1.5;
+}
+
+.bmrRoadmapItem:last-child {
+  border-bottom: none;
+}
+/* =========================================
+   BMR Release Notes – Clean Details Style
+   =========================================
+   Docusaurus transforms <details> → <Details> which adds `alert alert--info`
+   classes, making the arrow and separator border blue via the CSS variable
+   --docusaurus-details-decoration-color. We override it to BMR green here.
+   ========================================= */
+
+details.bmr-details {
+  /* Arrow and separator: BMR green instead of info-blue */
+  --docusaurus-details-decoration-color: var(--bmr-dark-green);
+
+  border: none !important;
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 0 18px 0;
+}
+
+/* Summary row */
+details.bmr-details > summary.bmr-summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: #333333;
+  list-style: none !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove native disclosure marker (all browsers) */
+details.bmr-details > summary.bmr-summary::-webkit-details-marker {
+  display: none !important;
+}
+details.bmr-details > summary.bmr-summary::marker {
+  content: "" !important;
+}
+
+/* Phone screenshots in tutorial guides — constrain to a readable size */
+.phone-screenshot {
+  text-align: center;
+  margin: 1.25rem 0;
+}
+
+.phone-screenshot img {
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.14);
+  display: inline-block;
+}
+
+/* Horizontal rules (---) in content — BMR green at low opacity */
+.markdown hr {
+  background-color: var(--bmr-dark-green);
+  opacity: 0.25;
+}
+
+/* Breadcrumbs */
+:root {
+  /* Separator arrow in BMR green (#206B31 → %23206B31) */
+  --ifm-breadcrumb-separator: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 256 256"><g><polygon points="79.093,0 48.907,30.187 146.72,128 48.907,225.813 79.093,256 207.093,128" fill="%23206B31"/></g></svg>');
+  --ifm-breadcrumb-separator-filter: none;
+}
+
+.breadcrumbs {
+  font-size: 0.875rem;
+}
+
+.breadcrumbs__item:not(.breadcrumbs__item--active) .breadcrumbs__link {
+  color: var(--ifm-font-color-secondary);
+  transition: color 0.2s ease;
+}
+
+.breadcrumbs__item:not(.breadcrumbs__item--active) .breadcrumbs__link:hover {
+  color: var(--bmr-dark-green);
+}
+
+.breadcrumbs__item--active .breadcrumbs__link {
+  color: var(--bmr-dark-green);
+  font-weight: 600;
+  background: rgba(32, 107, 49, 0.08);
+  border-radius: 4px;
 }

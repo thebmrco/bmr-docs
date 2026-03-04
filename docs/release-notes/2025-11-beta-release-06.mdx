@@ -3,13 +3,15 @@ title: November 2025 – Beta Release 06
 description: Latest improvements across iOS, Web, Back-end, and Design workflows
 ---
 
+import Icon from '@site/src/components/Icon'
+
 # November 2025 – Beta Release 06
 
 This release brings major updates across **iOS**, **Web**, **Backend**, and **3D Design**, improving the Discovery workflow, AR capabilities, markers, task handling, design processing, and the overall user experience.
 
 ---
 
-## 📱 iOS & AR Improvements
+## <Icon name="smartphone" size="1em" /> iOS & AR Improvements
 
 <details className="bmr-details">
 <summary className="bmr-summary">Display Markers Inside 3D Scan View</summary>
@@ -17,11 +19,11 @@ This release brings major updates across **iOS**, **Web**, **Backend**, and **3D
 Users can now view all captured markers directly inside the 3D scan visualization.
 
 **Highlights**
-- Marker icons appear at correct coordinates  
-- Tapping reveals marker thumbnails  
-- Toggle markers on/off  
-- Works for both scan markers and standalone markers  
-- Uses the same UI as the post-marker-placement view  
+- Marker icons appear at correct coordinates
+- Tapping reveals marker thumbnails
+- Toggle markers on/off
+- Works for both scan markers and standalone markers
+- Uses the same UI as the post-marker-placement view
 
 **Screenshots**
 
@@ -39,10 +41,10 @@ Users can now view all captured markers directly inside the 3D scan visualizatio
 Users can now swipe horizontally between markers in fullscreen mode.
 
 **Highlights**
-- Swipe left/right to move between markers  
-- Smooth animated transitions  
-- Loops from last → first  
-- Works across any marker set  
+- Swipe left/right to move between markers
+- Smooth animated transitions
+- Loops from last → first
+- Works across any marker set
 
 **Screenshot**
 
@@ -57,12 +59,12 @@ Users can now swipe horizontally between markers in fullscreen mode.
 
 The app now detects when the device does not support LiDAR and prevents crashes by showing a clear user message.
 
-**What’s new**
-- Stable behaviour on non-LiDAR devices  
+**What's new**
+- Stable behaviour on non-LiDAR devices
 - Clean fallback flows for:
-  - Scanning  
-  - Markers  
-  - AR placement (future)  
+  - Scanning
+  - Markers
+  - AR placement (future)
 
 </details>
 
@@ -71,12 +73,12 @@ The app now detects when the device does not support LiDAR and prevents crashes 
 <details className="bmr-details">
 <summary className="bmr-summary">Improved Acoustic Recording (Raw Audio Mode)</summary>
 
-To support balloon-pop or manual impulse responses, the app now records fully raw audio without Apple’s processing.
+To support balloon-pop or manual impulse responses, the app now records fully raw audio without Apple's processing.
 
 **Includes**
-- `AVAudioSession` measurement mode  
-- Uncompressed PCM  
-- Disabled AGC, noise suppression, and echo cancellation  
+- `AVAudioSession` measurement mode
+- Uncompressed PCM
+- Disabled AGC, noise suppression, and echo cancellation
 
 Results in much more accurate acoustic measurements.
 
@@ -89,9 +91,9 @@ Results in much more accurate acoustic measurements.
 
 Marker captures now store precise metadata:
 
-- Camera position  
-- Camera orientation  
-- Marker 3D coordinates  
+- Camera position
+- Camera orientation
+- Marker 3D coordinates
 
 This enables accurate alignment between markers and the scan model.
 
@@ -99,17 +101,17 @@ This enables accurate alignment between markers and the scan model.
 
 ---
 
-## 🖥️ Web Enhancements
+## <Icon name="monitor" size="1em" /> Web Enhancements
 
 <details className="bmr-details">
 <summary className="bmr-summary">New BMR Web Landing Page (Activity + My Tasks)</summary>
 
 A completely redesigned landing page shows:
 
-- Recent room updates across your organisations  
-- Your open tasks, filtered by organisation  
-- A modern and clean layout  
-- High-priority information surfaced immediately  
+- Recent room updates across your organisations
+- Your open tasks, filtered by organisation
+- A modern and clean layout
+- High-priority information surfaced immediately
 
 **Screenshot**
 
@@ -125,9 +127,9 @@ A completely redesigned landing page shows:
 The platform now automatically extracts equipment information from uploaded GLB files.
 
 **Highlights**
-- Reads `CatalogID` from 3D objects  
-- Auto-generates equipment list  
-- No manual entry needed  
+- Reads `CatalogID` from 3D objects
+- Auto-generates equipment list
+- No manual entry needed
 
 **Screenshot**
 
@@ -142,8 +144,8 @@ The platform now automatically extracts equipment information from uploaded GLB 
 
 Two new Discovery tasks can now be assigned directly from a room:
 
-- **Create Acoustic Measurement**  
-- **Create AR Design** (future feature)  
+- **Create Acoustic Measurement**
+- **Create AR Design** (future feature)
 
 **Screenshot**
 
@@ -159,10 +161,10 @@ Two new Discovery tasks can now be assigned directly from a room:
 Search results are now fully preserved when navigating back.
 
 **Includes**
-- Previous search term  
-- Results list  
-- Scroll position  
-- No reloads required  
+- Previous search term
+- Results list
+- Scroll position
+- No reloads required
 
 </details>
 
@@ -173,11 +175,11 @@ Search results are now fully preserved when navigating back.
 
 The task status section now clearly displays:
 
-- Discovery & Design tasks  
-- Completion timestamps  
-- Task owners  
-- Quick “View [item]” navigation  
-- Collapsible sections  
+- Discovery & Design tasks
+- Completion timestamps
+- Task owners
+- Quick "View [item]" navigation
+- Collapsible sections
 
 </details>
 
@@ -199,7 +201,7 @@ Reduces visual noise and improves clarity.
 
 A confirmation dialog now appears:
 
-> “Send invitation to [email]?”
+> "Send invitation to [email]?"
 
 Users can edit the email before sending — reducing accidental invitations.
 
@@ -221,8 +223,8 @@ The design upload form now requires a description, ensuring consistency and clar
 
 The design list now updates instantly after:
 
-- Approving a design  
-- Requesting changes  
+- Approving a design
+- Requesting changes
 
 No need to refresh manually.
 
@@ -235,26 +237,26 @@ No need to refresh manually.
 
 This release includes fixes to:
 
-- Marker breadcrumbs  
-- My-Tasks visibility for organisation-level tasks  
-- Location deletion  
-- Back/Edit button alignment  
-- Task retrieval across organisations  
+- Marker breadcrumbs
+- My-Tasks visibility for organisation-level tasks
+- Location deletion
+- Back/Edit button alignment
+- Task retrieval across organisations
 
 </details>
 
 ---
 
-## 🎨 UI & Visual Fixes
+## <Icon name="palette" size="1em" /> UI & Visual Fixes
 
 <details className="bmr-details">
 <summary className="bmr-summary">Navigation Bar Visual Improvements (iOS)</summary>
 
 Resolved liquid-glass UI issues affecting:
 
-- Title contrast  
-- Icon alignment  
-- Background appearance  
+- Title contrast
+- Icon alignment
+- Background appearance
 
 Ensures a polished and consistent top navigation bar.
 

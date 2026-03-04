@@ -3,88 +3,112 @@ title: January 2026 – Beta Release 08
 description: New acoustic flow, room progress visibility, and improved app and web workflows.
 ---
 
+import {
+  Mic,
+  Library,
+  ScanLine,
+  Activity,
+  ListChecks,
+  Clock,
+  Building
+} from "lucide-react"
+import Icon from '@site/src/components/Icon'
+
 # January 2026 – Beta Release 08
 
 This release introduces a major new **Acoustic Flow** alongside improvements to room progress visibility, scanning experience, and collaboration workflows — across both the **iOS App** and the **Web Platform**.
 
 ---
 
-## 📱 App (iPhone / iPad)
+## <Icon name="smartphone" size="1em" /> App (iPhone / iPad)
 
-<details class="bmr-details">
-<summary class="bmr-summary">New Acoustic Flow</summary>
+<details className="bmr-details">
+  <summary className="bmr-summary">
+    <Mic size={18} color="#206B31" style={{marginRight: "8px"}} />
+    New Acoustic Flow
+  </summary>
 
-A completely new **Acoustic Flow** has been introduced to guide users step by step through acoustic assessment of a room.
+A completely new **Acoustic Flow** guides users step by step through acoustic assessment of a room.
 
 The flow is designed to be **guided, repeatable, and easy to understand**, helping users perform reliable acoustic measurements directly in the app.
 
 ### Step-by-step Acoustic Flow
 
 #### 1. Room Setup & Measurement Guidance
-Users are guided on how to position the phone and speaker correctly before starting the measurement.
+
+Users are guided on correct phone and speaker positioning before starting the measurement.
 
 ![Room setup guidance](/img/release/2026-01-Acoustic-flow-01.jpg)
 
 ---
 
 #### 2. Device Selection
-The app clearly shows the selected **input device (microphone)** and **output device (speaker)** to ensure correct setup.
+
+The app clearly displays the selected **input device (microphone)** and **output device (speaker)**.
 
 ![Device selection](/img/release/2026-01-Acoustic-flow-02.jpg)
 
 ---
 
 #### 3. Volume Adjustment & Validation
-Users are guided to adjust speaker volume to the recommended level.  
-The app validates the difference between ambient noise and speaker level before allowing the measurement to continue.
+
+Users adjust speaker volume to the recommended level.  
+The app validates ambient noise vs speaker level before proceeding.
 
 ![Adjust volume](/img/release/2026-01-Acoustic-flow-03.jpg)
 
 ---
 
 #### 4. Measurement Preparation
-Clear instructions ensure users remain still and quiet during the measurement to guarantee accurate results.
+
+Clear instructions ensure stillness and silence during the measurement.
 
 ![Measurement preparation](/img/release/2026-01-Acoustic-flow-04.jpg)
 
 ---
 
 #### 5. Measurement in Progress
-Visual feedback confirms that the measurement is ongoing and prevents accidental interruptions.
+
+Visual feedback confirms the measurement is active and prevents accidental interruption.
 
 ![Measuring in progress](/img/release/2026-01-Acoustic-flow-04-2.jpg)
 
 ---
 
 #### 6. Results & MOS Score
-After completion, users receive:
-- A **MOS (Mean Opinion Score)**  
-- An acoustic summary (e.g. RT60)  
-- Frequency-based measurement graphs  
 
-This makes it easy to understand room acoustic quality at a glance.
+After completion, users receive:
+
+- **MOS (Mean Opinion Score)**
+- Acoustic summary (e.g., RT60)
+- Frequency-based measurement graphs
+
+This makes acoustic quality understandable at a glance.
 
 ![Measurement results](/img/release/2026-01-Acoustic-flow-05.jpg)
 
----
-
 ### Key Benefits
+
 - Structured, guided acoustic measurements  
 - Reduced risk of incorrect setup  
-- Clear, understandable results  
+- Clear and understandable results  
 - MOS score based on research with our university partner  
-- Integrated seamlessly into the Discovery phase  
+- Seamlessly integrated into the Discovery phase  
 
 </details>
 
 ---
 
-<details class="bmr-details">
-<summary class="bmr-summary">Designs Available in the Library</summary>
+<details className="bmr-details">
+  <summary className="bmr-summary">
+    <Library size={18} color="#206B31" style={{marginRight: "8px"}} />
+    Designs Available in the Library
+  </summary>
 
 Room designs are now accessible directly from the **Library** in the app.
 
 **What’s new**
+
 - Designs can be viewed and revisited from the Library  
 - Easier comparison of design options  
 - Improved continuity between Discovery and Design phases  
@@ -93,12 +117,16 @@ Room designs are now accessible directly from the **Library** in the app.
 
 ---
 
-<details class="bmr-details">
-<summary class="bmr-summary">Improved Scanning Experience</summary>
+<details className="bmr-details">
+  <summary className="bmr-summary">
+    <ScanLine size={18} color="#206B31" style={{marginRight: "8px"}} />
+    Improved Scanning Experience
+  </summary>
 
 Screen dimming is now disabled during scanning.
 
 **Improvements**
+
 - Better visibility while scanning  
 - Fewer interruptions during the scan process  
 - More reliable scanning in different lighting conditions  
@@ -107,13 +135,17 @@ Screen dimming is now disabled during scanning.
 
 ---
 
-<details class="bmr-details">
-<summary class="bmr-summary">Room Progress Overview</summary>
+<details className="bmr-details">
+  <summary className="bmr-summary">
+    <Activity size={18} color="#206B31" style={{marginRight: "8px"}} />
+    Room Progress Overview
+  </summary>
 
 The app now shows **room progress** across the Discovery and Design phases.
 
 **Highlights**
-- Clear indication of what has been completed  
+
+- Clear indication of completed steps  
 - Visibility into what is still pending  
 - Better understanding of next steps for each room  
 
@@ -121,14 +153,18 @@ The app now shows **room progress** across the Discovery and Design phases.
 
 ---
 
-## 🖥️ Web Platform
+## <Icon name="monitor" size="1em" /> Web Platform
 
-<details class="bmr-details">
-<summary class="bmr-summary">Improved Task Management</summary>
+<details className="bmr-details">
+  <summary className="bmr-summary">
+    <ListChecks size={18} color="#206B31" style={{marginRight: "8px"}} />
+    Improved Task Management
+  </summary>
 
-Task management on the web platform has been improved to support clearer collaboration.
+Task management on the web platform has been refined to support clearer collaboration.
 
 **Benefits**
+
 - Easier overview of assigned tasks  
 - Better tracking of progress across rooms  
 - Improved clarity around responsibilities  
@@ -137,13 +173,17 @@ Task management on the web platform has been improved to support clearer collabo
 
 ---
 
-<details class="bmr-details">
-<summary class="bmr-summary">Recent Activity per Room</summary>
+<details className="bmr-details">
+  <summary className="bmr-summary">
+    <Clock size={18} color="#206B31" style={{marginRight: "8px"}} />
+    Recent Activity per Room
+  </summary>
 
 Each room now includes a **Recent Activity** section in the Details view.
 
 **What’s included**
-- Latest changes and updates for the room  
+
+- Latest changes and updates  
 - Visibility into who performed each action  
 - Clear timeline of recent progress  
 
@@ -151,12 +191,16 @@ Each room now includes a **Recent Activity** section in the Details view.
 
 ---
 
-<details class="bmr-details">
-<summary class="bmr-summary">Improved Organisation and Location Navigation</summary>
+<details className="bmr-details">
+  <summary className="bmr-summary">
+    <Building size={18} color="#206B31" style={{marginRight: "8px"}} />
+    Improved Organisation and Location Navigation
+  </summary>
 
 Navigation between Organisations, Locations, and Rooms has been improved.
 
 **Updates**
+
 - Clearer structure across hierarchy levels  
 - Easier movement between related areas  
 - Reduced friction when working with many rooms  
@@ -165,7 +209,7 @@ Navigation between Organisations, Locations, and Rooms has been improved.
 
 ---
 
-# ⭐ What’s New
+# <Icon name="star" size="1em" /> What’s New
 
 - New guided Acoustic Flow with MOS score  
 - Designs available in the Library on mobile  
@@ -176,4 +220,4 @@ Navigation between Organisations, Locations, and Rooms has been improved.
 
 ---
 
-# ✅ End of Release Notes
+# <Icon name="circle-check" size="1em" /> End of Release Notes
