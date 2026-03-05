@@ -578,6 +578,12 @@ details.bmr-details > summary.bmr-summary {
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
+  padding: 0.75rem 1.25rem;
+}
+
+/* Body content wrapper (Docusaurus wraps children in a div) */
+details.bmr-details > div {
+  padding: 0 1.25rem 0.75rem;
 }
 
 /* Remove native disclosure marker (all browsers) */
