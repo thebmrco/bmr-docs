@@ -589,8 +589,9 @@ details.bmr-details > summary.bmr-summary p {
   margin: 0;
 }
 
-/* Body content wrapper (Docusaurus wraps children in a div) */
-details.bmr-details > div {
+/* Body content wrapper — padding only when open, so the closed card height
+   matches exactly the summary height */
+details.bmr-details[open] > div {
   padding: 0 1.25rem 0.75rem;
 }
 
