@@ -1,0 +1,57 @@
+---
+title: Scanning best practices
+---
+
+import Icon from '@site/src/components/Icon'
+
+# <Icon name="search" size="1em" /> Scanning best practices
+
+A good room scan is the foundation of everything that follows — the more complete and accurate the scan, the better the Room Data, and the faster the Design phase will be. The tips below help you get reliable results first time.
+
+:::tip Top 3 tips for a great scan
+1. **Move slowly** — the single most common cause of gaps and drift is moving too fast. Take your time.
+2. **Cover every corner** — point the device directly into each corner; these are the most frequent source of missing geometry.
+3. **Don't leave the room before checking** — review the scan preview on site and fill any gaps immediately, while the room is still accessible.
+:::
+
+---
+
+## <Icon name="circle-check" size="1em" /> Before you scan
+
+- **Clear the room where possible** — remove temporary furniture, bags, and clutter that won't be part of the permanent layout
+- **Turn the lights on** — good lighting helps the camera texture the scan correctly, even though LiDAR itself works in the dark
+- **Close blinds or curtains** if direct sunlight creates strong glare on walls or floors
+- Note any features that are hard to scan: glass walls, mirrors, and very dark or shiny surfaces need extra attention
+
+---
+
+## <Icon name="scan" size="1em" /> During the scan
+
+- **Move slowly and deliberately** — fast movements cause drift and gaps in the mesh
+- **Keep the device at chest to eye height** and angle it slightly downward to capture floors and wall bases
+- **Scan all four walls fully** — walk along each wall at close range (~1–1.5 m) to capture surfaces accurately
+- **Cover corners carefully** — point the device directly into each corner; these are the most common source of geometry gaps
+- **Scan the ceiling** by tilting the device upward while moving around the room — ceiling height is important for acoustic calculations
+- **Overlap your passes** — revisit areas you're uncertain about; duplicate data is merged automatically
+
+---
+
+## <Icon name="alert-triangle" size="1em" /> Common problem areas
+
+| Surface | Challenge | What to do |
+|---|---|---|
+| Glass walls / windows | LiDAR reflects or passes through glass | Scan close and slow; add a marker to document the glass boundary |
+| Mirrors | Cause phantom geometry | Keep distance and note in a marker |
+| Very dark surfaces | Absorb the LiDAR signal | Move closer and reduce scan speed |
+| Curved walls | Require more passes to capture shape | Walk the curve at close range from multiple angles |
+| Large open rooms | Risk of tracking drift | Break into overlapping sections if the room exceeds ~200 m² |
+
+---
+
+## <Icon name="circle-check" size="1em" /> After the scan
+
+- Review the scan preview in the app before leaving the room — check for obvious holes or misaligned geometry
+- If the scan has gaps, **run a second pass** focused on the missing areas while still on site
+- Capture **markers** immediately after scanning while you still have access to the room — power outlets, network points, existing equipment, and key fixtures
+
+> Returning to a room for a rescan takes significantly more time than spending an extra few minutes on site to get it right the first time.

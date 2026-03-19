@@ -7,48 +7,67 @@ import useBaseUrl from '@docusaurus/useBaseUrl'
 
 # <Icon name="design" size="1em" /> Design Phase
 
-The **Design Phase** turns your room's data into a complete, actionable setup plan — a vision of **what the room could be**. Designs are built on top of the **Room Data** collected during Discovery: the scan, markers, and acoustic measurements.
+The **Design Phase** turns your Room Data into a complete, validated room setup — a vision of what the room should be. All design work happens in **BMR Studio**, the unified 3D workspace where rooms are modeled, refined, and managed across the full lifecycle.
 
 ---
 
-## <Icon name="palette" size="1em" /> BMR Studio Designer
+## <Icon name="palette" size="1em" /> BMR Studio
 
-**BMR Studio Designer** is the primary way to create designs. It is a web-based 3D environment where you plan, place, and configure everything that should go into a meeting room — working directly on top of the Digital Twin.
-
-BMR Studio Designer is focused on **what the room could be**: proposing layouts, selecting equipment, and producing a complete design ready for deployment.
-
-:::info
-BMR Studio Designer lives in the **Design** section of a room. Its counterpart — [BMR Studio Editor](../digital-twin/index.mdx) — lives in the Digital Twin and is used to document the room as it currently exists.
-:::
+**BMR Studio** is the single 3D environment used for all room design work in BMR. There is one version of BMR Studio — it is where you model rooms, place equipment, manage design versions, and eventually mark a design as Deployed.
 
 <img
   src={useBaseUrl('/img/design/bmr-studio-ui.png')}
-  alt="BMR Studio Designer — 3D web design environment"
+  alt="BMR Studio — 3D web design environment"
   style={{width: '100%', borderRadius: '10px', border: '1px solid #E5E5D5', margin: '1rem 0', boxShadow: '0 4px 20px rgba(0,0,0,0.1)'}}
 />
 
-### What you can do in BMR Studio Designer
+### What you can do in BMR Studio
 
-- **Place equipment** from the catalog — cameras, screens, speakers, codecs, furniture, and more
-- **Position and orient** items precisely within the 3D room model
-- **Manage cables** between devices
-- **Switch between versions** to compare design options
-- **Review coverage** — camera view, screen visibility, and audio coverage overlays
+- **Place and configure equipment** from the catalog — cameras, screens, speakers, codecs, furniture, and more
+- **Model room geometry** and document infrastructure, cable routing, and layout
+- **Review coverage overlays** — camera field of view, screen visibility, and audio coverage
+- **Create and compare multiple design versions** for the same room
 - **Generate an equipment list** automatically from placed items
+- **Move a design through approval** and mark it as Deployed when installed
 
-### How to open BMR Studio Designer
+### How to open BMR Studio
 
 1. Open the room on the **web platform**
 2. Navigate to **Design**
-3. Click **Open Studio Designer** — the 3D editor loads with your Digital Twin
+3. Click **Open Studio** — the 3D editor loads with your room scan as the base
 
 :::tip
-The richer your Discovery data — scan quality, marker coverage, acoustic measurements — the more accurately Studio Designer reflects the real room.
+The richer your Discovery data — scan quality, marker coverage, acoustic measurements — the more accurately BMR Studio reflects the real room.
 :::
 
 ---
 
-## <Icon name="help-circle" size="1em" /> Request Assistance
+## <Icon name="copy" size="1em" /> Design Versions
+
+Each room can have **multiple design versions** in BMR Studio. This lets you:
+
+- Explore different equipment configurations or layout options side by side
+- Preserve historical versions as the room evolves
+- Track which version was actually deployed
+
+One design version can be designated as the **Deployed Design** — the authoritative record of the room as it currently exists. All other versions represent proposed or historical states.
+
+---
+
+## <Icon name="3d-ar-design" size="1em" /> AR Design
+
+The BMR App includes an **AR Design mode** that lets you place 3D elements directly into the physical room in real scale. While standing inside the space, you can:
+
+- Position displays, cameras, microphones, and furniture
+- Test placement scenarios at actual scale
+- Evaluate sightlines and spatial constraints
+- Experiment with configurations before committing to a design in BMR Studio
+
+AR Design bridges the gap between concept and physical space — useful for quick exploration before detailed studio work.
+
+---
+
+## <Icon name="help-circle" size="1em" /> Request Design Assistance
 
 If you prefer to have BMR handle the design, you can request assistance through our website. A BMR designer will use your Room Data to produce a complete design package, which is then uploaded to the room for your review.
 
@@ -64,12 +83,13 @@ To request assistance, visit **[bettermeetingrooms.com](https://www.bettermeetin
 
 ## <Icon name="circle-check" size="1em" /> Reviewing & Approving a Design
 
-Whether created in BMR Studio Designer or delivered by BMR, the review process is the same:
+Whether created in BMR Studio or delivered by BMR, the review process is the same:
 
-1. Open the room's **Design** section to view available designs
+1. Open the room's **Design** section to view available versions
 2. Inspect the 3D layout, coverage visuals, and equipment list
 3. Add comments or request adjustments
-4. **Approve** the design when ready to move into Deployment
+4. **Approve** the design when ready
+5. Once physically installed, **mark it as Deployed** — it becomes the Deployed Design and the room's live record
 
 ---
 
@@ -78,13 +98,13 @@ Whether created in BMR Studio Designer or delivered by BMR, the review process i
 - An **approved design** with a complete equipment list
 - **Coverage visuals** — camera view, screen visibility, audio coverage
 - **Acoustic recommendation** based on measurements and use case
-- A **review trail** tied to the room
+- A **full version history** tied to the room
 
 ---
 
 ## <Icon name="alert-triangle" size="1em" /> Prerequisites
 
-- ✅ Completed **scan** and **markers** — Digital Twin ready in Room Data
+- ✅ Completed **scan** and **markers** — Room Data ready
 - ✅ **Acoustic measurement** uploaded (strongly recommended)
 
 > The better the Room Data, the faster the Design — and the fewer revisions needed.

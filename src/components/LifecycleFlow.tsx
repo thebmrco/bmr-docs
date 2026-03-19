@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, Copy, Rotate3d, Wrench, RefreshCw } from 'lucide-react';
+import { Search, Rotate3d, Wrench, RefreshCw } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
 const GREEN = '#206B31';
@@ -15,10 +15,9 @@ type Phase = {
 };
 
 const phases: Phase[] = [
-  { icon: Search,   name: 'Discovery',     label: 'Scan, measure & document the space' },
-  { icon: Copy,     name: 'Digital Twin',  label: 'Precise 3D model of your room' },
-  { icon: Rotate3d, name: 'Design',        label: 'Optimized layout & equipment plan' },
-  { icon: Wrench,   name: 'Maintenance',   label: 'Monitor, maintain & improve' },
+  { icon: Search,   name: 'Discovery', label: 'Scan, measure & document the space' },
+  { icon: Rotate3d, name: 'Design',    label: 'Model, validate & deploy in BMR Studio' },
+  { icon: Wrench,   name: 'Maintain',  label: 'Monitor, maintain & improve' },
 ];
 
 export default function LifecycleFlow() {

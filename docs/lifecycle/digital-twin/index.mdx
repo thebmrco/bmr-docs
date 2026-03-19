@@ -1,84 +1,19 @@
 ---
-title: Digital Twin
+title: Deployed Design (Digital Twin)
 ---
 
 import Icon from '@site/src/components/Icon'
 
-# <Icon name="digital-twin" size="1em" /> Digital Twin
+# <Icon name="circle-check" size="1em" /> Deployed Design
 
-The **Digital Twin** is a precise 3D model of your meeting room as it currently exists — the single source of truth for everything in that space. It is created from the **Room Scan** captured during Discovery and can be progressively enriched with more detail over time.
-
----
-
-## <Icon name="digital-twin" size="1em" /> What the Digital Twin represents
-
-Where the [Design Phase](../design/index.mdx) asks *"what could this room be?"*, the Digital Twin answers *"what is this room right now?"*
-
-It captures:
-
-- **Room geometry** — exact dimensions, walls, windows, and architectural features from the LiDAR scan
-- **Current equipment** — cameras, displays, speakers, codecs, and other installed technology
-- **Furniture and fixtures** — tables, chairs, wall panels, and built-in elements
-- **Infrastructure** — cable routing, power, and network outlet positions from markers
-- **Acoustic profile** — reverberation data from measurements
-
-This makes it the authoritative record for facilities management, IT support, design planning, and ongoing maintenance — all teams working from the same model.
-
----
-
-## <Icon name="palette" size="1em" /> BMR Studio Editor
-
-**BMR Studio Editor** is the 3D tool used to build and maintain the Digital Twin. It uses the same web-based 3D environment as [BMR Studio Designer](../design/index.mdx), but its purpose is different:
-
-| | BMR Studio Editor | BMR Studio Designer |
-|---|---|---|
-| **Found in** | Digital Twin | Design |
-| **Purpose** | Document what the room **is** | Plan what the room **could be** |
-| **Focus** | Accuracy to reality | Optimised future layout |
-
-### What you can do in BMR Studio Editor
-
-- **Place existing equipment** to document what is currently installed
-- **Record cable routing** between devices as-built
-- **Add metadata** to items — model numbers, install dates, configuration notes
-- **Update the twin** after physical changes are made to the room
-- **Verify against markers** — cross-reference with photos taken during scanning
-
-### How to open BMR Studio Editor
-
-1. Open the room on the **web platform**
-2. Navigate to **Digital Twin**
-3. Click **Open Studio Editor** — the 3D editor loads with the room scan as the base
-
----
-
-## <Icon name="circle-check" size="1em" /> Keeping the Digital Twin current
-
-The Digital Twin is only valuable if it reflects reality. Update it whenever the physical room changes:
-
-- Equipment is added, moved, or removed
-- Cabling is changed or extended
-- Furniture layout is rearranged
-- Architectural changes are made (partitions, windows, etc.)
-
-:::tip
-Run a new scan after significant physical changes to update the room geometry. Use BMR Studio Editor to update equipment and cable records between scans.
+:::info
+The concept of the "Digital Twin" is now represented by the **Deployed Design** in BMR Studio. See the [Deploy Phase](../deploy/index.mdx) for full details.
 :::
 
----
+The **Deployed Design** is the design version in BMR Studio that has been approved and physically installed. It is the authoritative record of the room as it currently exists — the single source of truth for equipment, layout, cabling, and infrastructure.
 
-## <Icon name="circle-check" size="1em" /> What the Digital Twin enables
+Only one design version can be the Deployed Design at a time. All other versions represent proposed or historical states.
 
-A complete Digital Twin feeds every downstream phase:
+The Deployed Design is automatically tracked as designs move through the approval and deployment workflow in BMR Studio.
 
-- **Design** — BMR Studio Designer uses it as the 3D canvas for layout proposals
-- **Deployment** — installers reference it for exact placement and cabling
-- **Maintenance** — technicians can see what's installed, where, and how it's connected
-
----
-
-## <Icon name="alert-triangle" size="1em" /> Prerequisites
-
-- ✅ Completed **room scan** from the iOS app (creates the geometric base)
-- ✅ **Markers** captured for key elements (power, network, existing equipment)
-- ✅ Access to the **web platform** to open BMR Studio Editor
+→ [Go to Deploy Phase](../deploy/index.mdx)

@@ -69,6 +69,7 @@ export {
   Palette as IconStudio,
   Copy as IconDigitalTwin,
   RefreshCw as IconLifecycle,
+  LayoutPanelLeft as IconLayout,
 
   // Docs / content sections
   Key as IconKey,
@@ -100,7 +101,7 @@ import {
   Archive, Trash, Pencil, SquarePen, CheckCheck, Ruler,
   ChevronDown, ChevronRight, ChevronUp, ChevronLeft,
   List, MessageCircle, Lock, Bell, FileText, Shield,
-  WifiOff, Settings, User, UserCheck, LogOut, Mail, Palette,
+  WifiOff, Settings, User, UserCheck, LogOut, Mail, Palette, LayoutPanelLeft,
   Key, Smartphone, CircleCheck, Laptop, MapPin, Volume2, Monitor,
   Wrench, Users, Puzzle, Globe, AlertTriangle, HelpCircle, Star,
 } from "lucide-react";
@@ -174,6 +175,8 @@ export const iconMap: Record<string, LucideIcon> = {
   "studio": Palette,
   "digital-twin": Copy,
   "lifecycle": RefreshCw,
+  "layout": LayoutPanelLeft,
+  "layout-panel-left": LayoutPanelLeft,
 
   // Docs / content sections
   "key": Key,

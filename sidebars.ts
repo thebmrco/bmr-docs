@@ -28,7 +28,6 @@ const sidebars: SidebarsConfig = {
       label: 'Lifecycle',
       items: [
         'lifecycle/discovery/index',
-        'lifecycle/digital-twin/index',
         'lifecycle/design/index',
         'lifecycle/maintenance/index',
       ],
@@ -45,15 +44,20 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'Integrations',
       items: [
+        'integrations/cisco-vrc',
         'integrations/webex-control-hub-sync',
       ],
     },
     {
       type: 'category',
       label: 'Recommendations',
+      link: {
+        type: 'doc',
+        id: 'recommendations/index',
+      },
       items: [
-        'recommendations/index',
         'recommendations/speakers-for-acoustics',
+        'recommendations/scanning-best-practices',
       ],
     },
     {
