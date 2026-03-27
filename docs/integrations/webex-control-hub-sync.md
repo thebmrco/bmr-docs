@@ -1,5 +1,9 @@
 # Webex Control Hub Sync
 
+:::info Beta feature — available on request
+Webex Control Hub Sync is currently in **Beta** and available to selected users on request. A full public release is coming soon. Contact the BMR team to get access.
+:::
+
 Keep your rooms and locations in sync between Cisco Webex Control Hub and BETTERMEETINGROOMS — automatically.
 
 ## What It Does
