@@ -1,0 +1,116 @@
+---
+title: March 2026 – Release 10
+description: App Store availability, redesigned room home screen, and guided multi-position acoustic measurement.
+---
+
+import {
+  LayoutDashboard,
+  Mic,
+  Wrench,
+} from "lucide-react";
+import Icon from '@site/src/components/Icon'
+
+# March 2026 – Release 10
+
+This is a major release. The BMR App is now available on the **App Store**, the room home screen has been fully redesigned, and the acoustic measurement flow has been rebuilt from the ground up with multi-position guidance and speaker photo capture.
+
+---
+
+## <Icon name="star" size="1em" /> App Store Availability
+
+The BMR App is now distributed through the **Apple App Store** — no more TestFlight.
+
+Users still require an **invitation link** from the BMR team to access the app after installation. Once installed, the app works the same way — the invitation link unlocks the account and organisation access.
+
+This is a major milestone for the platform, making distribution significantly simpler and more reliable for all users.
+
+---
+
+## App
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <LayoutDashboard size={18} /> Redesigned Room Home Screen
+  </span>
+</summary>
+
+The room home screen has been completely redesigned. Three top-level tabs now structure all room content:
+
+- **Overview** — key room info and a summary of all captured data at a glance
+- **Room Data** — all data gathered from the room (scans, markers, acoustic measurements)
+- **Designs** — all design versions associated with the room
+
+**What you see on Overview:**
+
+- Floor area and AR world map status
+- Who added the room and when
+- Acoustic MOS score (latest measurement)
+- Count of Scans, Markers, and Acoustic measurements — with the date of the last entry and a shortcut to add more
+
+<img src="/bmr-docs/img/release/2026-03-Home-screen-new.jpg" alt="New room home screen" style={{width: '50%', borderRadius: '12px', display: 'block', margin: '1rem 0'}} />
+
+This structure makes it immediately clear what has been captured for a room and what is still missing.
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Mic size={18} /> Guided Multi-Position Acoustic Measurement
+  </span>
+</summary>
+
+The acoustic measurement flow has been rebuilt as a fully guided, 5-step process. The biggest change is that measurements are now taken at **three positions** in the room, giving a significantly more accurate and representative acoustic picture.
+
+**Step 1 — Device selection**
+
+Select the input (microphone) and output (speaker) devices. The app confirms the device position has been found.
+
+**Step 2 — Room setup & speaker photo**
+
+The app shows a 3D illustration of the room with placement guidance: keep the speaker at least **1 m / 3 ft away from the wall**. You are then prompted to **capture a photo of the speaker** — align the crosshair with the speaker and tap to capture.
+
+<div style={{display:'flex', gap:'1rem', margin:'1rem 0'}}>
+  <img src="/bmr-docs/img/release/2026-03-Acoustic-speaker-marker-2.jpg" alt="Speaker placement guidance" style={{width:'50%', borderRadius:'12px'}} />
+  <img src="/bmr-docs/img/release/2026-03-Acoustic-speaker-marker.jpg" alt="Capture speaker photo" style={{width:'50%', borderRadius:'12px'}} />
+</div>
+
+**Steps 3 & 4 — Measurements at three positions**
+
+The app guides you to measure at positions **a**, **b**, and **c** — each shown on a 3D room illustration. Stand at the indicated position and tap **Start Measurement**. Progress is tracked as you complete each position. You can choose to finish early with fewer measurements if needed.
+
+<div style={{display:'flex', gap:'1rem', margin:'1rem 0'}}>
+  <img src="/bmr-docs/img/release/2026-03-Acoustic-measurement-a.jpg" alt="Measurement at position a" style={{width:'50%', borderRadius:'12px'}} />
+  <img src="/bmr-docs/img/release/2026-03-Acoustic-measurement-b.jpg" alt="Measurement at position b" style={{width:'50%', borderRadius:'12px'}} />
+</div>
+
+**Step 5 — Results**
+
+After all measurements are complete, the app shows the Mean Opinion Score, average RT60 based on all positions, and a full RT60 graph across frequency bands. Toggle between the combined average and individual measurement positions. Tap **Save Results** to store in Room Data.
+
+<img src="/bmr-docs/img/release/2026-03-Acoustic-measurement-finished.jpg" alt="Measurement results" style={{width:'50%', borderRadius:'12px', display:'block', margin:'1rem 0'}} />
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Wrench size={18} /> Bug Fixes & UI Improvements
+  </span>
+</summary>
+
+This release includes a number of smaller fixes and visual refinements across the app:
+
+- Multiple bug fixes improving stability and reliability across core workflows
+- UI improvements and visual polish across several screens for a more consistent experience
+
+</details>
+
+---
+
+# <Icon name="circle-check" size="1em" /> End of Release Notes

@@ -5,69 +5,126 @@ sidebar_position: 1
 ---
 
 import Icon from '@site/src/components/Icon'
-import StepFlow from '@site/src/components/StepFlow'
+import Admonition from '@theme/Admonition'
+import StepTabs, { DocImg } from '@site/src/components/StepTabs'
 
 # <Icon name="audio-lines" size="1em" /> BMR App Acoustics Tutorial
 
-Capture accurate acoustic data from your meeting room using the BMR iOS app. The measurement gives you **reverberation time (RT60)** and a **Mean Opinion Score** — the foundation for any acoustic improvement recommendation.
+Capture accurate acoustic data from your meeting room using the BMR iOS app. The measurement gives you **reverberation time (RT60)** and a **Mean Opinion Score (MOS)** — the foundation for any acoustic improvement recommendation.
+
+The app guides you through a **5-step flow**, taking measurements at three positions in the room for a reliable, representative result.
 
 ---
 
 ## <Icon name="circle-check" size="1em" /> Before You Start
 
 **You will need:**
-- iPhone or iPad (with microphone)
+- iPhone or iPad with the BMR app
 - A Bluetooth or AirPlay speaker — see [Recommended Speakers](../recommendations/speakers-for-acoustics)
 - A quiet room
 
 **Prepare the room:**
 - Close all windows and doors
 - Turn off HVAC, fans, and any noise sources
-- Keep your device's microphone uncovered
-- Place the device on a stable, non-rattling surface
-- Place the speaker **at least 1 metre away** from the device and **away from walls**
-
-:::tip
-Run **3 measurements at different positions** in the room for the most reliable data.
-:::
+- Keep the device's microphone uncovered
+- Place the speaker **at least 1 m / 3 ft away from the wall**
 
 ---
 
-## <Icon name="audio-lines" size="1em" /> Sweep Method (Recommended)
+## <Icon name="audio-lines" size="1em" /> The Measurement Flow
 
-The sweep method plays a test signal through a connected speaker and captures the room's acoustic response. This is the most accurate method.
-
-<StepFlow steps={[
+<StepTabs steps={[
   {
-    label: "Select output (speaker) and input (microphone) devices, then tap Next",
-    image: "/img/release/2026-01-Acoustic-flow-01.jpg",
-    alt: "Device selection screen"
+    title: "Device selection",
+    content: (
+      <>
+        <h3>1) Select devices</h3>
+        <p>Select your input (microphone) and output (speaker) devices. Tap the <strong>Output device</strong> card to choose your Bluetooth or AirPlay speaker.</p>
+        <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
+          <div className="phone-screenshot"><DocImg src="/img/release/2026-03-Step1-1-Select-speaker.jpg" alt="Device selection — choose output and input devices" /></div>
+          <div className="phone-screenshot"><DocImg src="/img/release/2026-03-Step1-2-Select-speaker.jpg" alt="Speaker picker — select your Bluetooth speaker" /></div>
+          <div className="phone-screenshot"><DocImg src="/img/release/2026-03-Step1-3-Speaker-selected.jpg" alt="Speaker selected — JBL Xtreme 4 confirmed" /></div>
+        </div>
+      </>
+    ),
   },
   {
-    label: "Follow the placement guide — speaker and phone at least 1 m apart and away from walls",
-    image: "/img/release/2026-01-Acoustic-flow-02.jpg",
-    alt: "Room setup and placement guidance"
+    title: "Room setup",
+    content: (
+      <>
+        <h3>2) Room setup</h3>
+        <p>Keep the speaker at least <strong>1 m / 3 ft from the wall</strong>. Capture a photo of the speaker by aligning the crosshair, then confirm the location.</p>
+        <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
+          <div className="phone-screenshot"><DocImg src="/img/release/2026-03-Step2-1-Room-setup.jpg" alt="Room setup — speaker placement instructions" /></div>
+          <div className="phone-screenshot"><DocImg src="/img/release/2026-03-Step2-2-Capture-speaker.jpg" alt="AR camera — align crosshair with speaker" /></div>
+          <div className="phone-screenshot"><DocImg src="/img/release/2026-03-Step2-3-Speaker-marked.jpg" alt="Speaker location captured with coordinates" /></div>
+        </div>
+      </>
+    ),
   },
   {
-    label: "Adjust speaker volume until the signal level reads ≥ 25 dB above ambient noise",
-    image: "/img/release/2026-01-Acoustic-flow-03.jpg",
-    alt: "Volume adjustment with signal level graph"
+    title: "Adjust volume",
+    content: (
+      <>
+        <h3>3) Adjust volume &amp; noise floor test</h3>
+        <p>Adjust the speaker volume and run the noise floor test. The app compares ambient noise to the speaker level — a minimum difference of <strong>25 dB</strong> is required for accurate measurement.</p>
+        <ul>
+          <li>Be quiet and tap <strong>Test</strong> to start the noise floor check</li>
+          <li>The app plays pink noise and measures the difference against ambient noise</li>
+          <li>When the result shows <strong>≥ 25 dB</strong> with a green checkmark, the volume is correctly adjusted</li>
+        </ul>
+        <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
+          <div className="phone-screenshot"><DocImg src="/img/release/2026-03-Step3-1-Noise-test.jpg" alt="Noise floor test — ready to test" /></div>
+          <div className="phone-screenshot"><DocImg src="/img/release/2026-03-Step3-2-Noise-testing.jpg" alt="Noise floor test — testing in progress" /></div>
+          <div className="phone-screenshot"><DocImg src="/img/release/2026-03-Step3-3-Noise-passed.jpg" alt="Noise floor test — passed with 26.1 dB difference" /></div>
+        </div>
+      </>
+    ),
   },
   {
-    label: "Stay still and silent — tap Start Measurement when ready",
-    image: "/img/release/2026-01-Acoustic-flow-04-2.jpg",
-    alt: "Start measurement screen"
+    title: "Measure",
+    content: (
+      <>
+        <h3>4) Measure at three positions</h3>
+        <p>The app guides you through three measurement positions (A, B, C). At each position, tap <strong>Start Measurement</strong>, then stay still and silent while the sweep plays.</p>
+        <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
+          <div className="phone-screenshot"><DocImg src="/img/release/2026-03-Acoustic-measurement-a.jpg" alt="Measurement at position A" /></div>
+          <div className="phone-screenshot"><DocImg src="/img/release/2026-03-Acoustic-measurement-b.jpg" alt="Measurement at position B" /></div>
+          <div className="phone-screenshot"><DocImg src="/img/release/2026-03-Acoustic-measurement-c.jpg" alt="Measurement at position C" /></div>
+          <div className="phone-screenshot"><DocImg src="/img/release/2026-03-Acoustic-measurement-progress.jpg" alt="Sweep measurement in progress" /></div>
+        </div>
+        <Admonition type="note" title="Important">
+          Do not move or make noise during a measurement. Remain still and silent until the sweep completes. If a result looks incorrect, check that the speaker volume is high enough and that the room was quiet, then retry that position.
+        </Admonition>
+        <p>You can tap <strong>Finish with current measurements</strong> at any time if you are unable to complete all three positions, though three measurements gives the most reliable result.</p>
+      </>
+    ),
   },
   {
-    label: "Review your Mean Opinion Score and RT60 results, then tap Save Results",
-    image: "/img/release/2026-01-Acoustic-flow-05.jpg",
-    alt: "Results screen with MOS score and RT60 graph"
+    title: "Results",
+    content: (
+      <>
+        <h3>5) Review &amp; save results</h3>
+        <p>Review MOS and average RT60 across all positions, then tap <strong>Save Results</strong>.</p>
+        <div className="phone-screenshot">
+          <DocImg src="/img/release/2026-03-Acoustic-measurement-finished.jpg" alt="Results screen showing MOS and average RT60" />
+        </div>
+        <p>Toggle the <strong>Average</strong> switch to move between the combined result and individual measurement positions.</p>
+        <p>Tap <strong>Save Results</strong> to store the measurement in the room's <strong>Room Data</strong>.</p>
+      </>
+    ),
   },
 ]} />
 
-:::note
-Do not move or make any noise during the measurement. If the result looks wrong, check that the volume level was high enough (step 3) and retry.
-:::
+The results screen shows:
+
+| Result | What it means |
+|---|---|
+| **Mean Opinion Score (MOS)** | Predicted speech quality — 5 = excellent, 1 = poor |
+| **Average RT60** | Average reverberation time across all positions taken |
+| **RT60 graph** | T20 reverberation time across frequency bands |
+
+A good meeting room typically targets **RT60 < 0.5 s** and **MOS ≥ 3.5**.
 
 ---
 
@@ -76,25 +133,13 @@ Do not move or make any noise during the measurement. If the result looks wrong,
 Use this method when a speaker is not available. A balloon pop or hand clap triggers the measurement.
 
 :::caution
-Hand claps are inconsistent — use only as a last resort. The balloon method is marked **BETA** and is less reliable than the sweep method.
+Hand claps are inconsistent — use only as a last resort. The balloon method is less reliable than the sweep method.
 :::
 
-1. Tap the **Balloon icon** to start. The app shows the ambient noise level — wait until the room is quiet.
-2. When prompted, **pop the balloon** (held ~30 cm from the device) or clap sharply once.
+1. Tap the **Balloon icon** to start. Wait until the ambient noise level is low.
+2. **Pop the balloon** (held ~30 cm from the device) or clap sharply once when prompted.
 3. Remain silent for ~3 seconds while the app captures the decay.
-4. Review and save results using the same flow as the sweep method.
-
----
-
-## <Icon name="star" size="1em" /> Understanding Your Results
-
-| Metric | What it means |
-|---|---|
-| **Mean Opinion Score (MOS)** | Predicted speech quality — 5 = excellent, 1 = poor |
-| **RT60** | Time (seconds) for sound to decay by 60 dB — lower = less reverb |
-| **Average RT60** | Single summary value across all measured frequencies |
-
-A good meeting room typically targets **RT60 < 0.5 s** and **MOS ≥ 3.5**.
+4. Review and save results.
 
 ---
 

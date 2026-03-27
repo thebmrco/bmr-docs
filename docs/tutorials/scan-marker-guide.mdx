@@ -3,9 +3,8 @@ title: Scan + Marker Capture Flow
 description: Step-by-step walkthrough of the scanning and marker capture workflow in the BMR iOS app.
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 import Admonition from '@theme/Admonition';
+import StepTabs, { DocImg } from '@site/src/components/StepTabs';
 
 # Scan + Marker Capture Flow
 
@@ -13,188 +12,147 @@ This guide walks through the **Scan → Markers → Upload** flow in the BMR iOS
 
 ---
 
-
 <Admonition type="tip" title="Tip">
-You can use the tabs below to jump directly to a step. The flow bar above also works as quick navigation.
+Click any step number to jump to it, or use the **Previous / Next** buttons to navigate through the flow.
 </Admonition>
 
 ---
 
-## FLow overview
-
-<Tabs groupId="scan-marker-flow" queryString="step" defaultValue="step-1" values={[
-  { label: '1) Start scan', value: 'step-1' },
-  { label: '2) Scanning starts', value: 'step-2' },
-  { label: '3) Scan in progress', value: 'step-3' },
-  { label: '4) Review scan', value: 'step-4' },
-  { label: '5) Review markers', value: 'step-5' },
-  { label: '6) Syncing', value: 'step-6' },
-  { label: '7) Uploaded', value: 'step-7' },
-]}>
-
-<TabItem value="step-1">
-
-<a id="step-1"></a>
-### 1) Start scan
-
-Open the room and begin a new scan.
-
-- Navigate to the correct room
-- Go to **Scans**
-- Tap **New Scan**
-
-<div className="phone-screenshot">
-
-![Start scan](/img/tutorials/scan-marker-flow/1-Start-scan.jpg)
-
-</div>
-
-<Admonition type="tip" title="Good practice">
-Make sure you have enough light and a stable connection — syncing starts automatically after capture.
-</Admonition>
-
-**Next:** go to **2) Scanning starts**.
-
-</TabItem>
-
-<TabItem value="step-2">
-
-<a id="step-2"></a>
-### 2) Scanning starts
-
-Move the device to initialize tracking.
-
-- Move in a smooth, steady motion
-- Avoid fast pans / sudden movement
-- Keep edges (walls/doors) in view where possible
-
-<div className="phone-screenshot">
-
-![Scanning starts](/img/tutorials/scan-marker-flow/2-Scanning-starting.jpg)
-
-</div>
-
-**Next:** go to **3) Scan in progress**.
-
-</TabItem>
-
-<TabItem value="step-3">
-
-<a id="step-3"></a>
-### 3) Scan in progress
-
-Continue capturing the space until the model is complete.
-
-- Capture all walls and corners
-- Include major furniture blocks (as applicable)
-- Ensure entrances/doorways are captured clearly
-
-<div className="phone-screenshot">
-
-![Scan in progress](/img/tutorials/scan-marker-flow/3-Scanning-ongoing-generating-model.jpg)
-
-</div>
-
-<Admonition type="note" title="If tracking drops">
-Pause and point the camera at a stable, textured surface until tracking recovers.
-</Admonition>
-
-**Next:** go to **4) Review scan**.
-
-</TabItem>
-
-<TabItem value="step-4">
-
-<a id="step-4"></a>
-### 4) Review scan
-
-Inspect the scan and verify coverage before saving.
-
-- Rotate and inspect the model
-- Check for missing walls/holes
-- Confirm the scan is usable before continuing
-
-<div className="phone-screenshot">
-
-![Review scan](/img/tutorials/scan-marker-flow/4-Review-scan-with-laser-tags.jpg)
-
-</div>
-
-**Next:** go to **5) Review markers**.
-
-</TabItem>
-
-<TabItem value="step-5">
-
-<a id="step-5"></a>
-### 5) Review markers
-
-Validate marker captures and ensure they are positioned correctly.
-
-- Open each marker and confirm the photo is clear
-- Retake if the target is blurry/partially occluded
-- Ensure markers represent meaningful room data points
-
-<div className="phone-screenshot">
-
-![Review markers](/img/tutorials/scan-marker-flow/5-Review-markers-taken.jpg)
-
-</div>
-
-<Admonition type="tip" title="Tip">
-Prefer markers with clear context (what/where) rather than close-ups that are hard to interpret later.
-</Admonition>
-
-**Next:** go to **6) Syncing (background upload)**.
-
-</TabItem>
-
-<TabItem value="step-6">
-
-<a id="step-6"></a>
-### 6) Syncing (background upload)
-
-Uploads run automatically in the background with status feedback.
-
-- Uploads continue even if you navigate away
-- Status is visible via the sync banner
-- If an upload fails, the app keeps data locally for retry
-
-<div className="phone-screenshot">
-
-![Syncing](/img/tutorials/scan-marker-flow/6-Scan-markers-syncing.jpg)
-
-</div>
-
-<Admonition type="note" title="Offline / poor connectivity">
-Complete the capture first — uploads can be retried later without losing the data.
-</Admonition>
-
-**Next:** go to **7) Uploaded (complete)**.
-
-</TabItem>
-
-<TabItem value="step-7">
-
-<a id="step-7"></a>
-### 7) Uploaded (complete)
-
-Upload is finished and the data is available to the platform.
-
-- Scan appears in the room’s **Scans** list
-- Markers appear under **Markers**
-- Continue with Acoustic, AR Design, or Web workflows
-
-<div className="phone-screenshot">
-
-![Uploaded](/img/tutorials/scan-marker-flow/7-Scan-markers-uploaded.jpg)
-
-</div>
-
-<Admonition type="tip" title="Done">
-At this point, the Discovery dataset is available for downstream workflows.
-</Admonition>
-
-</TabItem>
-
-</Tabs>
+## Flow overview
+
+<StepTabs steps={[
+  {
+    title: "Start scan",
+    content: (
+      <>
+        <h3>1) Start scan</h3>
+        <p>Open the room and begin a new scan.</p>
+        <ul>
+          <li>Navigate to the correct room</li>
+          <li>Go to <strong>Scans</strong></li>
+          <li>Tap <strong>New Scan</strong></li>
+        </ul>
+        <div className="phone-screenshot">
+          <DocImg src="/img/tutorials/scan-marker-flow/1-Start-scan.jpg" alt="Start scan" />
+        </div>
+        <Admonition type="tip" title="Good practice">
+          Make sure you have enough light and a stable connection — syncing starts automatically after capture.
+        </Admonition>
+      </>
+    ),
+  },
+  {
+    title: "Scanning starts",
+    content: (
+      <>
+        <h3>2) Scanning starts</h3>
+        <p>Move the device to initialize tracking.</p>
+        <ul>
+          <li>Move in a smooth, steady motion</li>
+          <li>Avoid fast pans / sudden movement</li>
+          <li>Keep edges (walls/doors) in view where possible</li>
+        </ul>
+        <div className="phone-screenshot">
+          <DocImg src="/img/tutorials/scan-marker-flow/2-Scanning-starting.jpg" alt="Scanning starts" />
+        </div>
+      </>
+    ),
+  },
+  {
+    title: "Scan in progress",
+    content: (
+      <>
+        <h3>3) Scan in progress</h3>
+        <p>Continue capturing the space until the model is complete.</p>
+        <ul>
+          <li>Capture all walls and corners</li>
+          <li>Include major furniture blocks (as applicable)</li>
+          <li>Ensure entrances/doorways are captured clearly</li>
+        </ul>
+        <div className="phone-screenshot">
+          <DocImg src="/img/tutorials/scan-marker-flow/3-Scanning-ongoing-generating-model.jpg" alt="Scan in progress" />
+        </div>
+        <Admonition type="note" title="If tracking drops">
+          Pause and point the camera at a stable, textured surface until tracking recovers.
+        </Admonition>
+      </>
+    ),
+  },
+  {
+    title: "Review scan",
+    content: (
+      <>
+        <h3>4) Review scan</h3>
+        <p>Inspect the scan and verify coverage before saving.</p>
+        <ul>
+          <li>Rotate and inspect the model</li>
+          <li>Check for missing walls/holes</li>
+          <li>Confirm the scan is usable before continuing</li>
+        </ul>
+        <div className="phone-screenshot">
+          <DocImg src="/img/tutorials/scan-marker-flow/4-Review-scan-with-laser-tags.jpg" alt="Review scan" />
+        </div>
+      </>
+    ),
+  },
+  {
+    title: "Review markers",
+    content: (
+      <>
+        <h3>5) Review markers</h3>
+        <p>Validate marker captures and ensure they are positioned correctly.</p>
+        <ul>
+          <li>Open each marker and confirm the photo is clear</li>
+          <li>Retake if the target is blurry/partially occluded</li>
+          <li>Ensure markers represent meaningful room data points</li>
+        </ul>
+        <div className="phone-screenshot">
+          <DocImg src="/img/tutorials/scan-marker-flow/5-Review-markers-taken.jpg" alt="Review markers" />
+        </div>
+        <Admonition type="tip" title="Tip">
+          Prefer markers with clear context (what/where) rather than close-ups that are hard to interpret later.
+        </Admonition>
+      </>
+    ),
+  },
+  {
+    title: "Syncing",
+    content: (
+      <>
+        <h3>6) Syncing (background upload)</h3>
+        <p>Uploads run automatically in the background with status feedback.</p>
+        <ul>
+          <li>Uploads continue even if you navigate away</li>
+          <li>Status is visible via the sync banner</li>
+          <li>If an upload fails, the app keeps data locally for retry</li>
+        </ul>
+        <div className="phone-screenshot">
+          <DocImg src="/img/tutorials/scan-marker-flow/6-Scan-markers-syncing.jpg" alt="Syncing" />
+        </div>
+        <Admonition type="note" title="Offline / poor connectivity">
+          Complete the capture first — uploads can be retried later without losing the data.
+        </Admonition>
+      </>
+    ),
+  },
+  {
+    title: "Uploaded",
+    content: (
+      <>
+        <h3>7) Uploaded (complete)</h3>
+        <p>Upload is finished and the data is available to the platform.</p>
+        <ul>
+          <li>Scan appears in the room's <strong>Scans</strong> list</li>
+          <li>Markers appear under <strong>Markers</strong></li>
+          <li>Continue with Acoustic, AR Design, or Web workflows</li>
+        </ul>
+        <div className="phone-screenshot">
+          <DocImg src="/img/tutorials/scan-marker-flow/7-Scan-markers-uploaded.jpg" alt="Uploaded" />
+        </div>
+        <Admonition type="tip" title="Done">
+          At this point, the Discovery dataset is available for downstream workflows.
+        </Admonition>
+      </>
+    ),
+  },
+]} />

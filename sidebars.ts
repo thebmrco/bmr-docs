@@ -71,6 +71,7 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'Release Notes',
       items: [
+        'release-notes/2026-03-beta-release-10',
         'release-notes/2026-02-beta-release-09',
         'release-notes/2025-12-beta-release-08',
         'release-notes/2025-12-beta-release-07',
@@ -82,7 +83,13 @@ const sidebars: SidebarsConfig = {
         'release-notes/2025-07-beta-release-01',
       ],
     },
-    'roadmap/index',
+    {
+      type: 'category',
+      label: 'BMR Product Overview',
+      items: [
+        'roadmap/index',
+      ],
+    },
   ],
 };
 

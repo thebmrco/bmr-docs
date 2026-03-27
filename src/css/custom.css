@@ -70,6 +70,10 @@
   /* Cards & Containers */
   --ifm-card-border-radius: 12px;
 
+  /* Layout width — allow the content area to use available screen space */
+  --ifm-container-width: 1440px;
+  --ifm-container-width-xl: 1600px;
+
   /* Admonition: INFO → BMR green (overrides Infima's default blue) */
   --ifm-color-info: #206B31;
   --ifm-color-info-dark: #1b5c29;
@@ -332,7 +336,7 @@ h3 {
 
 /* Documentation Content */
 .markdown {
-  max-width: 800px;
+  max-width: none;
 }
 
 .markdown > h2 {

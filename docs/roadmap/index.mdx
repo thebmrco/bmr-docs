@@ -1,4 +1,9 @@
+---
+title: BMR Product Roadmap
+---
+
 import RoadmapItem from "@site/src/components/RoadmapItem";
+import Icon from '@site/src/components/Icon'
 import {
   Copy,
   Palette,
@@ -6,37 +11,39 @@ import {
   RefreshCw,
   Shapes,
   ScanSearch,
+  MessageSquare,
+  Compass,
 } from "lucide-react";
 
-# BMR Product Roadmap
+# <Icon name="map-pin" size="1em" /> BMR Product Roadmap
 
 ---
 
-## Next 3 Months (February – April)
+## Now – Release Launch (March – April)
 
 <RoadmapItem icon={Copy} title="Deployed Design & Lifecycle Flow">
-  All designs versioned in BMR Studio with a clear Deployed Design as the authoritative room record. Clear lifecycle flow across the platform.
+  All designs versioned in BMR Studio with a clear Deployed Design as the authoritative room record. Available in Beta — targeting public Release.
 </RoadmapItem>
 
-<RoadmapItem icon={Palette} title="BMR Studio Launch">
-  Web-based Studio environment for design management, version control, and deployment workflows.
+<RoadmapItem icon={Palette} title="BMR Studio">
+  Web-based Studio environment for design management, version control, and deployment workflows. Available in Beta — targeting public Release.
 </RoadmapItem>
 
 <RoadmapItem icon={ScanSearch} title="AR Design Evolution">
-  Real-time 3D placement with structured outputs linked to the Deployed Design.
+  Real-time 3D placement with structured outputs linked to the Deployed Design. Available in Beta — targeting public Release.
 </RoadmapItem>
 
 <RoadmapItem icon={AudioLines} title="Acoustic Workflow Upgrade">
-  Spatially anchored speaker and measurement locations with improved reliability.
+  Spatially anchored speaker and measurement locations with improved reliability. Available in Beta — targeting public Release.
 </RoadmapItem>
 
 <RoadmapItem icon={RefreshCw} title="Webex Room Synchronization">
-  Two-way sync between BMR and Webex for consistent room data.
+  Automatic sync between BMR and Webex Control Hub for locations and rooms. Available in Beta — targeting public Release.
 </RoadmapItem>
 
 ---
 
-## 3–6 Months (May – July)
+## 3–6 Months (May – August)
 
 <RoadmapItem icon={AudioLines} title="Advanced Acoustic Engine">
   Improved noise floor handling, smarter material recommendations, and higher measurement consistency.
@@ -60,6 +67,14 @@ import {
 
 <RoadmapItem icon={ScanSearch} title="Improved Object Detection">
   Enhanced recognition accuracy and reduced manual corrections during capture.
+</RoadmapItem>
+
+<RoadmapItem icon={Compass} title="Compass">
+  Room orientation captured during scan and visualised in BMR Studio to inform lighting and layout decisions.
+</RoadmapItem>
+
+<RoadmapItem icon={MessageSquare} title="Notes">
+  Persistent notes attachable to markers, scans, acoustics, and designs — with speech-to-text input.
 </RoadmapItem>
 
 ---

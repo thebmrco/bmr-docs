@@ -1,0 +1,105 @@
+---
+title: Feature Overview & Availability
+sidebar_label: Feature Overview & Availability
+---
+
+import Icon from '@site/src/components/Icon'
+
+# <Icon name="library" size="1em" /> Feature Overview & Availability
+
+Current availability of every feature in BETTERMEETINGROOMS across all release tracks.
+
+**Tracks** &nbsp;&nbsp; `Internal` — Alpha &nbsp;&nbsp; `Beta` — Validated with beta users &nbsp;&nbsp; `Release` — Stable, public release
+
+**States** &nbsp;&nbsp; ✅ Available (version) &nbsp;&nbsp; 🔀 Toggle &nbsp;&nbsp; 🔧 In development &nbsp;&nbsp; 🗓 Planned &nbsp;&nbsp; — N/A
+
+---
+
+## <Icon name="search" size="1em" /> Discovery
+
+Features for capturing the current state of a room.
+
+| Feature | Platform | Internal | Beta | Release | Notes |
+|---|---|---|---|---|---|
+| [Scan](../tutorials/scan-marker-guide) | iOS | ✅ β01 | ✅ β01 | 🗓 Planned | LiDAR-based 3D room scan. iPhone 12 Pro+ / iPad Pro 2020+. Screen dimming disabled since β08. |
+| [Marker](../tutorials/scan-marker-guide) | iOS | ✅ β01 | ✅ β01 | 🗓 Planned | Photo markers for outlets, displays, cables. Can be added independently of scan since β04. |
+| Marker 360 | iOS | 🔧 In development | 🗓 Planned | 🗓 Planned | 360° photo capture for richer spatial context at marker locations. |
+| Compass | iOS · Web | 🔧 In development | 🗓 Planned | 🗓 Planned | Captures room orientation during scan. Displayed in BMR Studio to inform lighting and layout decisions. |
+| Improved object detection | iOS | 🔧 In development | 🗓 Planned | 🗓 Planned | Enhanced recognition accuracy and reduced manual corrections during room capture. |
+| Room measurements | iOS · Web | ✅ β03 | ✅ β03 | 🗓 Planned | Floor area, volume, and dimensions calculated from scan data and shown in the room overview. |
+| [Acoustic measurement](../tutorials/acoustics-guide) | iOS | ✅ β01 | ✅ β01 | 🗓 Planned | Sweep (recommended) and balloon/impulse methods. Returns RT60 + MOS score. Guided flow added β08. Spatial position recording added β09. |
+
+---
+
+## <Icon name="design" size="1em" /> Design
+
+Features for planning what a room should become.
+
+| Feature | Platform | Internal | Beta | Release | Notes |
+|---|---|---|---|---|---|
+| BMR Studio | Web | ✅ β09 | ✅ β09 | 🗓 Planned | Single web-based 3D environment for room design. Multiple guided modes expose only relevant tools per workflow. |
+| Design comparison *(legacy)* | Web | ✅ β04 | ✅ β04 | 🗓 Planned | Side-by-side comparison of designs in the previous design view. Covers acoustics, layout, and equipment differences. Not available in BMR Studio. |
+| Design comparison in BMR Studio | Web | 🗓 Planned | 🗓 Planned | 🗓 Planned | Side-by-side view mode comparison within BMR Studio. Planned for a future release. |
+| AR design | iOS | ✅ β01 | ✅ β01 | 🗓 Planned | Real-time 3D equipment placement via LiDAR on iOS. Design can be continued in BMR Studio on web. |
+| Cisco VRC | Web | ✅ Available | 🔀 Toggle | 🗓 Planned | Video Room Calculator — Cisco's 2D room design tool, integrated as a second design path focused on Cisco devices. |
+| Deployed design | Web | ✅ β09 | ✅ β09 | 🗓 Planned | The approved, installed design — the authoritative record of the room as it currently exists. Used as the reference for maintenance, troubleshooting, and future design cycles. |
+| Room auralizations | Web | 🗓 Planned | 🗓 Planned | 🗓 Planned | Simulated room acoustics to validate design decisions before deployment. On the 3–6 month roadmap. |
+
+:::info BMR Studio modes
+BMR Studio uses guided modes that expose only the tools relevant for each workflow.
+
+| Mode | Internal | Beta | Release | Notes |
+|---|---|---|---|---|
+| View | ✅ β09 | ✅ β09 | 🗓 Planned | Browse and inspect the 3D room model. Default entry point. |
+| Acoustic | 🔧 In development | 🗓 Planned | 🗓 Planned | Guided acoustic design wizard. Only acoustic-relevant tools shown. |
+| Cable placement | 🗓 Planned | 🗓 Planned | 🗓 Planned | Guided flow for recording cable routing between devices as-built. |
+| Room structure | 🗓 Planned | 🗓 Planned | 🗓 Planned | Guided flow for editing room geometry and architectural elements. |
+:::
+
+---
+
+## <Icon name="catalog" size="1em" /> Catalog & Equipment
+
+Tools for managing the equipment that goes into rooms.
+
+| Feature | Platform | Internal | Beta | Release | Notes |
+|---|---|---|---|---|---|
+| Catalog | Web | ✅ β01 | ✅ β01 | 🗓 Planned | Equipment catalog used in Studio for placing cameras, screens, speakers, codecs, and furniture. |
+| Catalog builder for org admins | Web | 🗓 Planned | 🗓 Planned | 🗓 Planned | Admin tooling to define equipment standards and room templates per organisation. |
+| Equipment list | Web | ✅ β06 | ✅ β06 | 🗓 Planned | Auto-generated from placed equipment in designs. Reads CatalogID from 3D models — no manual entry needed. |
+
+---
+
+## <Icon name="puzzle" size="1em" /> Integrations
+
+Connections to external platforms and tools.
+
+| Feature | Platform | Internal | Beta | Release | Notes |
+|---|---|---|---|---|---|
+| [Webex sync](../integrations/webex-control-hub-sync) | Web | ✅ β09 | ✅ β09 | 🗓 Planned | Cisco Webex Control Hub sync. Imports locations and workspaces automatically. Configurable interval (5 min–24 hrs). Two-way sync on roadmap. |
+
+---
+
+## <Icon name="lifecycle" size="1em" /> Platform & Collaboration
+
+Cross-cutting features that support the full room lifecycle.
+
+| Feature | Platform | Internal | Beta | Release | Notes |
+|---|---|---|---|---|---|
+| Library | iOS · Web | ✅ β02 | ✅ β02 | 🗓 Planned | Cross-room access to scans, designs, acoustic measurements, and markers. Sorted by last modified. Direct room navigation added β09. |
+| Global search | Web | ✅ β02 | ✅ β02 | 🗓 Planned | Search across scans, designs, measurements, rooms, orgs, and locations. Persistent results since β04. |
+| Offline mode | iOS | ✅ β03 | ✅ β03 | 🗓 Planned | Full offline support on iOS. Data captured offline is synced automatically when connectivity is restored. |
+| Task management | iOS · Web | ✅ β03 | ✅ β03 | 🗓 Planned | Assign and track Discovery/Design tasks per room. Visible on iOS since β07. Scheduling and assignment expansion planned. |
+| Room progress | iOS · Web | ✅ β03 | ✅ β03 | 🗓 Planned | Visual progress across Discovery and Design phases. Shows completed steps and pending actions per room. |
+| Activity log | Web | ✅ β08 | ✅ β08 | 🗓 Planned | Recent activity per room — shows latest changes, who performed each action, and a timeline of progress. |
+| Notes | iOS · Web | 🔧 In development | 🗓 Planned | 🗓 Planned | Persistent notes attachable to markers, scans, acoustics, and designs. Includes speech-to-text input. |
+
+---
+
+## <Icon name="wrench" size="1em" /> Maintenance
+
+Features for keeping rooms performing long after installation.
+
+| Feature | Platform | Internal | Beta | Release | Notes |
+|---|---|---|---|---|---|
+| Maintenance workflows | Web | 🗓 Planned | 🗓 Planned | 🗓 Planned | Monitoring, room health insights, and structured maintenance workflows. On the 6–12 month roadmap. |
