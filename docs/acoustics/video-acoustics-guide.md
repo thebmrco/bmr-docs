@@ -1,7 +1,5 @@
 ---
-id: video-acoustics-guide
 title: BMR App Video Acoustics Tutorial
-sidebar_position: 1
 ---
 
 # BMR App Acoustics – Video Guide

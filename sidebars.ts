@@ -27,17 +27,30 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'Lifecycle',
       items: [
-        'lifecycle/discovery/index',
+        {
+          type: 'category',
+          label: 'Discovery',
+          link: {
+            type: 'doc',
+            id: 'lifecycle/discovery/index',
+          },
+          items: [
+            'lifecycle/discovery/scan-marker-guide',
+            'lifecycle/discovery/scanning-best-practices',
+          ],
+        },
         'lifecycle/design/index',
         'lifecycle/maintenance/index',
       ],
     },
     {
       type: 'category',
-      label: 'Tutorials',
+      label: 'Acoustics',
       items: [
-        'tutorials/acoustics-guide',
-        'tutorials/scan-marker-guide',
+        'acoustics/acoustics-guide',
+        'acoustics/video-acoustics-guide',
+        'acoustics/mos-score',
+        'acoustics/speakers-for-acoustics',
       ],
     },
     {
@@ -46,25 +59,6 @@ const sidebars: SidebarsConfig = {
       items: [
         'integrations/cisco-vrc',
         'integrations/webex-control-hub-sync',
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Recommendations',
-      link: {
-        type: 'doc',
-        id: 'recommendations/index',
-      },
-      items: [
-        'recommendations/speakers-for-acoustics',
-        'recommendations/scanning-best-practices',
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Video Tutorials',
-      items: [
-        'video-tutorials/video-acoustics-guide',
       ],
     },
     {

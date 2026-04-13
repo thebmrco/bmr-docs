@@ -86,6 +86,7 @@ export {
   AlertTriangle as IconAlertTriangle,
   HelpCircle as IconHelpCircle,
   Star as IconStar,
+  Brain as IconBrain,
 } from "lucide-react";
 
 /**
@@ -103,7 +104,7 @@ import {
   List, MessageCircle, Lock, Bell, FileText, Shield,
   WifiOff, Settings, User, UserCheck, LogOut, Mail, Palette, LayoutPanelLeft,
   Key, Smartphone, CircleCheck, Laptop, MapPin, Volume2, Monitor,
-  Wrench, Users, Puzzle, Globe, AlertTriangle, HelpCircle, Star,
+  Wrench, Users, Puzzle, Globe, AlertTriangle, HelpCircle, Star, Brain,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -193,4 +194,5 @@ export const iconMap: Record<string, LucideIcon> = {
   "alert-triangle": AlertTriangle,
   "help-circle": HelpCircle,
   "star": Star,
+  "brain": Brain,
 };

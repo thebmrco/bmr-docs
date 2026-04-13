@@ -1,5 +1,6 @@
 import React from 'react';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import Link from '@docusaurus/Link';
 import { Scan, LandPlot, AudioLines } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
@@ -15,6 +16,7 @@ type Activity = {
   bullets: string[];
   image: string;
   imageAlt: string;
+  links?: { label: string; href: string }[];
 };
 
 const activities: Activity[] = [
@@ -29,6 +31,10 @@ const activities: Activity[] = [
     ],
     image: '/img/scan-guide-images/scan-ongoing.png',
     imageAlt: 'Room scanning in progress',
+    links: [
+      { label: 'Scan + Marker Capture Flow', href: '/docs/lifecycle/discovery/scan-marker-guide' },
+      { label: 'Scanning Best Practices', href: '/docs/lifecycle/discovery/scanning-best-practices' },
+    ],
   },
   {
     icon: LandPlot,
@@ -41,6 +47,9 @@ const activities: Activity[] = [
     ],
     image: '/img/lifecycle/markers-app.jpg',
     imageAlt: 'Marker placement in the app',
+    links: [
+      { label: 'Scan + Marker Capture Flow', href: '/docs/lifecycle/discovery/scan-marker-guide' },
+    ],
   },
   {
     icon: AudioLines,
@@ -53,6 +62,9 @@ const activities: Activity[] = [
     ],
     image: '/img/lifecycle/acoustic-measurement.jpg',
     imageAlt: 'Acoustic measurement screen',
+    links: [
+      { label: 'Acoustics Guide', href: '/docs/acoustics/acoustics-guide' },
+    ],
   },
 ];
 
@@ -136,6 +148,28 @@ function ActivityCard({ activity }: { activity: Activity }) {
           ))}
         </ol>
       </div>
+
+      {/* Guide links */}
+      {activity.links && activity.links.length > 0 && (
+        <div style={{
+          padding: '0 1.25rem 0.9rem',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '0.25rem',
+        }}>
+          {activity.links.map((link, i) => (
+            <Link key={i} to={link.href} style={{
+              fontSize: '0.8rem',
+              fontWeight: 600,
+              color: GREEN,
+              textDecoration: 'none',
+              fontFamily: 'var(--ifm-font-family-base)',
+            }}>
+              → {link.label}
+            </Link>
+          ))}
+        </div>
+      )}
 
       {/* Screenshot */}
       <div style={{
