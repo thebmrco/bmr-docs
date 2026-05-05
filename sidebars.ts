@@ -47,6 +47,8 @@ const sidebars: SidebarsConfig = {
             id: 'lifecycle/design/index',
           },
           items: [
+            'lifecycle/design/bmr-studio',
+            'lifecycle/design/ar-design-guide',
             'lifecycle/design/default-room-configuration',
           ],
         },

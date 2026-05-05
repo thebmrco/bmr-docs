@@ -15,6 +15,8 @@ import {
   Compass,
   LayoutGrid,
   Tablet,
+  Navigation,
+  Rotate3d,
 } from "lucide-react";
 
 # May 2026 – Beta Release 11
@@ -234,6 +236,73 @@ Following the launch of the new Acoustic Flow in Beta 08, this release introduce
 - The acoustic list view now shows the **MOS Score** and **output device** for each measurement
 
 These changes make the Acoustic Flow more forgiving, faster to recover from mistakes, and more accurate end-to-end.
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Rotate3d size={18} /> AR Design
+  </span>
+</summary>
+
+You can now **place equipment directly in the physical room using AR** and save the result as a design. The AR Design combines with the room scan so you can continue refining in BMR Studio afterwards.
+
+**How it works**
+
+1. **Find coordinates** — move the iPhone around the room so the app can locate the scan's coordinate space
+2. **Add equipment** — tap the equipment icon to browse the catalog and select items to place
+3. **Choose content** — for screens and displays, select what content to show (still images or video)
+4. **Place in the room** — position the item at the right location in the physical space
+5. **Save** — upload the AR-placed items as a design
+6. **Continue in Studio** — the design appears in the Designs section, ready to refine in BMR Studio
+
+:::caution
+A room scan is required before starting an AR Design. If no scan exists, the app will prompt you to scan the room first — this is essential for combining the AR-placed items with the room model.
+:::
+
+<div style={{display: 'flex', gap: '8px', justifyContent: 'center', flexWrap: 'wrap', margin: '1rem 0'}}>
+  <div className="phone-screenshot" style={{flex: '0 0 140px'}}><img src="/bmr-docs/img/release/2026-05-ar-design-1.jpg" alt="AR Design — finding coordinates" style={{width: '100%', borderRadius: '12px'}} /></div>
+  <div className="phone-screenshot" style={{flex: '0 0 140px'}}><img src="/bmr-docs/img/release/2026-05-ar-design-2.jpg" alt="AR Design — adding equipment from catalog" style={{width: '100%', borderRadius: '12px'}} /></div>
+  <div className="phone-screenshot" style={{flex: '0 0 140px'}}><img src="/bmr-docs/img/release/2026-05-ar-design-3.jpg" alt="AR Design — selecting screen content" style={{width: '100%', borderRadius: '12px'}} /></div>
+  <div className="phone-screenshot" style={{flex: '0 0 140px'}}><img src="/bmr-docs/img/release/2026-05-ar-design-4.jpg" alt="AR Design — item placed in room" style={{width: '100%', borderRadius: '12px'}} /></div>
+  <div className="phone-screenshot" style={{flex: '0 0 140px'}}><img src="/bmr-docs/img/release/2026-05-ar-design-5.jpg" alt="AR Design — uploading design" style={{width: '100%', borderRadius: '12px'}} /></div>
+  <div className="phone-screenshot" style={{flex: '0 0 140px'}}><img src="/bmr-docs/img/release/2026-05-ar-design-6.jpg" alt="AR Design — design uploading" style={{width: '100%', borderRadius: '12px'}} /></div>
+</div>
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Navigation size={18} /> Auto-Fill Location Address
+  </span>
+</summary>
+
+When editing a location, the app can now **automatically fill the address** based on your iPhone's current GPS position. Tap **Update data to current location** and the street address, city, postal code, coordinates, and country are populated instantly.
+
+<div style={{display: 'flex', gap: '24px', alignItems: 'flex-start', flexWrap: 'wrap'}}>
+<div style={{flex: '1 1 350px'}}>
+
+**Why it matters**
+
+- No manual address entry — especially useful when on-site at unfamiliar locations
+- Accurate GPS coordinates for the location map
+- Faster setup when surveying multiple locations in a day
+
+</div>
+<div style={{flex: '0 0 200px'}}>
+
+<div className="phone-screenshot">
+<img src="/bmr-docs/img/release/2026-05-location-auto-address.jpg" alt="Auto-fill location address from GPS" style={{width: '100%', borderRadius: '12px'}} />
+</div>
+
+</div>
+</div>
 
 </details>
 

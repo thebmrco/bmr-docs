@@ -1,0 +1,49 @@
+---
+title: AR Design Guide
+---
+
+import Icon from '@site/src/components/Icon'
+import StepFlow from '@site/src/components/StepFlow'
+
+# <Icon name="3d-ar-design" size="1em" /> AR Design Guide
+
+Place equipment directly into the physical room using augmented reality on your iPhone or iPad. The result is saved as a design and combined with the room scan — ready to continue refining in BMR Studio.
+
+---
+
+## <Icon name="alert-triangle" size="1em" /> Before You Start
+
+A **room scan is required** before starting an AR Design. The scan provides the coordinate space that links AR-placed items to the room model. If no scan exists, the app will prompt you to scan the room first.
+
+---
+
+## <Icon name="scan" size="1em" /> The AR Design Flow
+
+<StepFlow steps={[
+  { label: "Move the iPhone around the room so the app can find the scan's coordinate space. This links your AR session to the existing room model.", image: "/img/release/2026-05-ar-design-1.jpg", alt: "AR Design — finding coordinates by moving iPhone" },
+  { label: "Tap the equipment icon in the bottom-left corner to open the catalog. Browse and select items to place in the room.", image: "/img/release/2026-05-ar-design-2.jpg", alt: "AR Design — adding equipment from catalog" },
+  { label: "For screens and displays, choose what content to show — still images or video. This helps visualise how the room will look in use.", image: "/img/release/2026-05-ar-design-3.jpg", alt: "AR Design — selecting screen content" },
+  { label: "Position the item at the right location in the physical space. You can move and rotate it until the placement is right.", image: "/img/release/2026-05-ar-design-4.jpg", alt: "AR Design — item placed in room" },
+  { label: "When you are happy with the placement, save and upload the design. All AR-placed items are bundled together.", image: "/img/release/2026-05-ar-design-5.jpg", alt: "AR Design — saving and uploading" },
+  { label: "The design is uploaded and will appear in the Designs section of the room. You can then open it in BMR Studio to continue refining.", image: "/img/release/2026-05-ar-design-6.jpg", alt: "AR Design — upload in progress" },
+]} />
+
+---
+
+## <Icon name="circle-check" size="1em" /> After Saving
+
+Once uploaded, the AR Design appears in the room's **Designs** section alongside any designs created in BMR Studio. You can:
+
+- Open it in **BMR Studio** to add more equipment, adjust placement, or refine the layout
+- Compare it with other design versions for the same room
+- Move it through approval and mark it as the **Active Design** when installed
+
+---
+
+## <Icon name="star" size="1em" /> Tips
+
+- **Scan first, design second** — the scan is essential. Without it, AR-placed items cannot be combined with the room model and the design cannot be saved.
+- **Good lighting** helps the app find the scan coordinates faster.
+- **Walk around the room** slowly during the coordinate-finding step — the app needs to recognise surfaces from the original scan.
+- **Place items one at a time** — position each piece before adding the next for the most accurate result.
+- AR Design works best for **initial placement and visualisation**. For detailed configuration, cable routing, and coverage analysis, continue in BMR Studio.
