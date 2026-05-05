@@ -1,0 +1,307 @@
+---
+title: May 2026 – Beta Release 11
+description: BMR Studio with guided modes, redesigned Organization and Location overviews, notes on Web and App, and major Acoustic Flow refinements.
+---
+
+import {
+  Palette,
+  Building2,
+  MapPin,
+  ListChecks,
+  StickyNote,
+  AudioLines,
+  Settings2,
+  Mic,
+  Compass,
+  LayoutGrid,
+  Tablet,
+} from "lucide-react";
+
+# May 2026 – Beta Release 11
+
+This release introduces **BMR Studio** — the unified 3D workspace for all room design work, available on Web, iPhone, and iPad — alongside redesigned **Organization** and **Location** overview pages, **Notes** across all elements on both Web and App, and significant refinements to the **Acoustic Flow**.
+
+---
+
+## Web Platform
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Palette size={18} /> BMR Studio
+  </span>
+</summary>
+
+<div style={{display: 'flex', gap: '24px', alignItems: 'flex-start', flexWrap: 'wrap'}}>
+<div style={{flex: '1 1 400px'}}>
+
+**BMR Studio** is now available — the single 3D environment used for all room design work in BMR. It is accessible on the **Web**, **iPhone**, and **iPad**.
+
+**Modes**
+
+BMR Studio uses dedicated modes so you can focus on one thing at a time:
+
+- **View** — explore the room and review designs
+- **Structurals** — adjust structural components such as walls, windows, doors, and other building elements
+- **Equipment** — add and remove equipment and furniture in the design
+- **Cables** — plan and document cable routing between devices
+
+More modes will be added over time, and existing modes will continue to be refined.
+
+**What you can do**
+
+- Place and configure equipment from the catalog
+- Create and manage multiple design versions for the same room
+- Move a design through approval and mark it as the **Active Design**
+- Generate an equipment list automatically from placed items
+
+Open BMR Studio from the **Design** section of any room — on Web, iPhone, or iPad.
+
+</div>
+<div style={{flex: '0 0 360px'}}>
+
+<img src="/bmr-docs/img/release/2026-05-studio-3d-view.png" alt="BMR Studio — 3D room design view" style={{width: '100%', borderRadius: '10px', border: '1px solid #E5E5D5', boxShadow: '0 4px 16px rgba(0,0,0,0.08)', marginBottom: '12px'}} />
+
+<img src="/bmr-docs/img/release/2026-05-studio-designs-tab.png" alt="BMR Studio — Designs tab overview" style={{width: '100%', borderRadius: '10px', border: '1px solid #E5E5D5', boxShadow: '0 4px 16px rgba(0,0,0,0.08)'}} />
+
+</div>
+</div>
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Building2 size={18} /> New Organization Overview Page
+  </span>
+</summary>
+
+The Organization page has been redesigned with a clear, data-driven overview.
+
+**What's new**
+
+- **Quick stats** — Locations, Rooms, and Users at a glance
+- **Data Completeness** — visual progress bars for Scanned, Markers Captured, Acoustic Measurement, and Design Created across all rooms
+- **Recent Activity** — latest changes across the organization with user attribution and timestamps
+- **Locations list** — direct access to each location with room counts
+- Unified tabs for **Overview**, **Users**, **Rooms**, **Locations**, **Default Room Configurations**, and **Webex Sync**
+
+This gives admins and project leads a clear snapshot of organisational progress without drilling into individual rooms.
+
+<img src="/bmr-docs/img/release/2026-05-org-overview.png" alt="New Organisation Overview page" style={{width: '100%', borderRadius: '10px', border: '1px solid #E5E5D5', margin: '1rem 0', boxShadow: '0 4px 16px rgba(0,0,0,0.08)'}} />
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <MapPin size={18} /> New Location Overview Page
+  </span>
+</summary>
+
+Locations now have a dedicated overview page with the same structure as the Organization view.
+
+**Highlights**
+
+- Interactive **map** showing the location's position
+- **Location details** — address, city, postal code, country, organization, and create date
+- Quick access to all **Rooms** at the location
+- **Data Completeness** scoped to the location
+- **Recent Activity** for the location
+
+This makes it much easier to manage locations across larger portfolios and to communicate progress at the location level.
+
+<img src="/bmr-docs/img/release/2026-05-location-overview.png" alt="New Location Overview page" style={{width: '100%', borderRadius: '10px', border: '1px solid #E5E5D5', margin: '1rem 0', boxShadow: '0 4px 16px rgba(0,0,0,0.08)'}} />
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <ListChecks size={18} /> Updated Assign Task Section on Room Page
+  </span>
+</summary>
+
+The Assign Task section on the Room page has been refined for clarity and faster workflow.
+
+**Improvements**
+
+- Cleaner layout for Discovery and Design tasks
+- Easier assignment and reassignment from the room view
+- More consistent task status indicators across the room page
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <StickyNote size={18} /> Notes on All Elements
+  </span>
+</summary>
+
+You can now add **notes** to elements across the **Web platform** and the **App**.
+
+**Where you can add notes**
+
+- Organizations, Locations, and Rooms
+- Scans, Markers, Acoustic measurements, and Designs
+
+**Why it matters**
+
+- Keep context with the data it relates to
+- Capture decisions, observations, and follow-ups
+- Improve handover between team members across the lifecycle
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <AudioLines size={18} /> MOS Score in the Acoustics List
+  </span>
+</summary>
+
+The Acoustics list now shows the **MOS Score** for each measurement directly in the list view — on both the **Web platform** and the **App**.
+
+This makes it much easier to:
+
+- Compare acoustic quality across rooms at a glance
+- Identify rooms that need acoustic attention
+- Track improvement over time
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Settings2 size={18} /> Default Room Configuration
+  </span>
+</summary>
+
+Organizations can now define **Default Room Configurations** — recommended equipment setups based on room size and usage type.
+
+For example, you can specify that a room between 20–40 square meters should have a Room Bar, dual 65" screens, a table, and 6 chairs. When a user opens **BMR Studio** to design a room that falls within that size range, they are presented with the recommended configuration and can select and place those components directly into the design.
+
+**How it works**
+
+- Define configurations by **room size range**, **usage type**, and **suggested equipment** with quantities
+- Equipment is selected from the full BMR catalog
+- When designing a room in Studio, matching configurations appear as **recommendations** in the sidebar
+- The user can accept the recommendation and place the suggested items, or choose their own
+
+This makes it easy to maintain consistent standards across an organisation — from 10 rooms to 10,000.
+
+Default Room Configurations are managed under the **Default Room Configurations** tab on the Organization page.
+
+<div style={{display: 'flex', gap: '16px', flexWrap: 'wrap', margin: '1rem 0'}}>
+<img src="/bmr-docs/img/release/2026-05-drc-setup.png" alt="Setting up a Default Room Configuration" style={{flex: '1 1 45%', minWidth: '280px', borderRadius: '10px', border: '1px solid #E5E5D5', boxShadow: '0 4px 16px rgba(0,0,0,0.08)'}} />
+<img src="/bmr-docs/img/release/2026-05-drc-studio.png" alt="Default Room Configuration recommendations in BMR Studio" style={{flex: '1 1 45%', minWidth: '280px', borderRadius: '10px', border: '1px solid #E5E5D5', boxShadow: '0 4px 16px rgba(0,0,0,0.08)'}} />
+</div>
+
+</details>
+
+---
+
+## App (iPhone / iPad)
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Mic size={18} /> Acoustic Measurement Flow Refinements
+  </span>
+</summary>
+
+Following the launch of the new Acoustic Flow in Beta 08, this release introduces several reliability and usability improvements.
+
+**What's new**
+
+- The app now **alerts you if no scan exists** before starting a measurement, preventing invalid MOS = 0 results
+- You can **retest during the volume adjustment step** without restarting the flow
+- A **Close (X) button** has been added to all measurement steps for easier cancellation
+- **SNR calibration updated** for more accurate speaker setup
+- The acoustic list view now shows the **MOS Score** and **output device** for each measurement
+
+These changes make the Acoustic Flow more forgiving, faster to recover from mistakes, and more accurate end-to-end.
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Compass size={18} /> Room Compass Orientation
+  </span>
+</summary>
+
+The room's compass orientation is now **captured during scanning** and synced to the backend. The compass is also shown in **BMR Studio**, so the room's real-world orientation is available during the Design phase.
+
+<div style={{display: 'flex', gap: '24px', alignItems: 'flex-start', flexWrap: 'wrap'}}>
+<div style={{flex: '1 1 350px'}}>
+
+**Why it matters**
+
+- Reference walls and equipment using real directions — "the screen is on the west wall"
+- Rooms are displayed in their true geographic orientation in Studio
+- Foundation for spatially aware features — lots of exciting things to come here
+
+</div>
+<div style={{flex: '0 0 200px'}}>
+
+<div className="phone-screenshot">
+<img src="/bmr-docs/img/release/2026-05-compass-app.jpg" alt="Compass orientation in the BMR App" style={{width: '100%', borderRadius: '12px'}} />
+</div>
+
+</div>
+</div>
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <LayoutGrid size={18} /> Room Cell Preview with Counts
+  </span>
+</summary>
+
+Room cards now display counts for **scans, acoustics, markers, and designs** at a glance.
+
+This makes it immediately clear which rooms have complete data and which still need attention — without having to open each room individually.
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Tablet size={18} /> iPad Improvements
+  </span>
+</summary>
+
+Several refinements specifically for iPad users:
+
+- **Edit room** and **photo** buttons added to the iPad room view
+- The **Organisation overview** section has been optimised for iPad screen size
+
+This makes the iPad a more capable device for room management and review work in the field.
+
+</details>
+
+---
+
+# End of Release Notes
