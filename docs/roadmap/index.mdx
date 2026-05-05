@@ -13,52 +13,61 @@ import {
   ScanSearch,
   MessageSquare,
   Compass,
+  CircleCheck,
 } from "lucide-react";
 
 # <Icon name="map-pin" size="1em" /> BMR Product Roadmap
 
 ---
 
-## Now – Release Launch (March – April)
+## Delivered
 
-<RoadmapItem icon={Copy} title="Active Design & Lifecycle Flow">
-  All designs versioned in BMR Studio with a clear Active Design as the authoritative room record. Available in Beta — targeting public Release.
+<RoadmapItem icon={CircleCheck} title="BMR Studio">
+  Web-based Studio environment for design management with dedicated modes (View, Structurals, Equipment, Cables). Available on Web, iPhone, and iPad.
 </RoadmapItem>
 
-<RoadmapItem icon={Palette} title="BMR Studio">
-  Web-based Studio environment for design management, version control, and deployment workflows. Available in Beta — targeting public Release.
+<RoadmapItem icon={CircleCheck} title="Active Design & Lifecycle Flow">
+  All designs versioned in BMR Studio with a clear Active Design as the authoritative room record.
 </RoadmapItem>
 
-<RoadmapItem icon={ScanSearch} title="AR Design Evolution">
-  Real-time 3D placement with structured outputs linked to the Active Design. Available in Beta — targeting public Release.
+<RoadmapItem icon={CircleCheck} title="AR Design">
+  Real-time 3D placement with structured outputs linked to the Active Design. Create designs directly from AR.
 </RoadmapItem>
 
-<RoadmapItem icon={AudioLines} title="Acoustic Workflow Upgrade">
-  Spatially anchored speaker and measurement locations with improved reliability. Available in Beta — targeting public Release.
+<RoadmapItem icon={CircleCheck} title="Acoustic Workflow">
+  Guided multi-position acoustic measurement with spatially anchored speaker locations, ambient noise chart, and Xi20/Xi30 metrics.
 </RoadmapItem>
 
-<RoadmapItem icon={RefreshCw} title="Webex Room Synchronization">
-  Automatic sync between BMR and Webex Control Hub for locations and rooms. Available in Beta — targeting public Release.
+<RoadmapItem icon={CircleCheck} title="Webex Room Synchronization">
+  Automatic sync between BMR and Webex Control Hub for locations and rooms.
+</RoadmapItem>
+
+<RoadmapItem icon={CircleCheck} title="Compass">
+  Room orientation captured during scan and visualised in BMR Studio.
+</RoadmapItem>
+
+<RoadmapItem icon={CircleCheck} title="Notes">
+  Persistent notes on all elements — organisations, locations, rooms, scans, markers, acoustics, and designs. Available on Web and App.
+</RoadmapItem>
+
+<RoadmapItem icon={CircleCheck} title="Default Room Configuration">
+  Organisation admins can define recommended equipment setups by room size and usage type. Recommendations surface in BMR Studio during design.
 </RoadmapItem>
 
 ---
 
-## 3–6 Months (May – August)
+## Next (3–6 Months)
 
 <RoadmapItem icon={AudioLines} title="Advanced Acoustic Engine">
   Improved noise floor handling, smarter material recommendations, and higher measurement consistency.
 </RoadmapItem>
 
 <RoadmapItem icon={Palette} title="Studio Enhancements">
-  Guided design suggestions and improved user interface clarity within BMR Studio.
+  Guided design suggestions, improved user interface clarity, and new modes within BMR Studio.
 </RoadmapItem>
 
 <RoadmapItem icon={Palette} title="BMR Studio Refinement">
   Improved Active Design validation, version handling, and design-to-deployment workflows.
-</RoadmapItem>
-
-<RoadmapItem icon={Shapes} title="Catalog Builder for Organisation Admins">
-  Admin tooling to define equipment standards and room templates per organisation.
 </RoadmapItem>
 
 <RoadmapItem icon={AudioLines} title="Room Auralizations">
@@ -67,14 +76,6 @@ import {
 
 <RoadmapItem icon={ScanSearch} title="Improved Object Detection">
   Enhanced recognition accuracy and reduced manual corrections during capture.
-</RoadmapItem>
-
-<RoadmapItem icon={Compass} title="Compass">
-  Room orientation captured during scan and visualised in BMR Studio to inform lighting and layout decisions.
-</RoadmapItem>
-
-<RoadmapItem icon={MessageSquare} title="Notes">
-  Persistent notes attachable to markers, scans, acoustics, and designs — with speech-to-text input.
 </RoadmapItem>
 
 ---

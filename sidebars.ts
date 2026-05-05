@@ -39,7 +39,17 @@ const sidebars: SidebarsConfig = {
             'lifecycle/discovery/scanning-best-practices',
           ],
         },
-        'lifecycle/design/index',
+        {
+          type: 'category',
+          label: 'Design',
+          link: {
+            type: 'doc',
+            id: 'lifecycle/design/index',
+          },
+          items: [
+            'lifecycle/design/default-room-configuration',
+          ],
+        },
         'lifecycle/maintenance/index',
       ],
     },
