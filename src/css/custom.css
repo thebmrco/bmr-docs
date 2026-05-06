@@ -386,20 +386,22 @@ pre code {
 
 /* BMR Collapsible Release Blocks */
 .bmr-details {
-  background: var(--bmr-beige);
-  border: 1px solid var(--bmr-beige-dark);
-  padding: 1rem 1.25rem;
-  border-radius: 10px;
-  margin-bottom: 1rem;
+  background: transparent;
+  border: none;
+  border-top: 1px solid var(--bmr-beige-dark);
+  border-bottom: 1px solid var(--bmr-beige-dark);
+  border-radius: 0;
+  padding: 0.75rem 0;
+  margin-bottom: 0.5rem;
   transition: all 0.2s ease;
 }
 
 .bmr-details:hover {
-  box-shadow: 0 2px 8px rgba(32, 107, 49, 0.1);
+  box-shadow: none;
 }
 
 .bmr-summary {
-  color: var(--bmr-dark-green);
+  color: #333333;
   font-weight: 600;
   font-size: 1.05em;
   cursor: pointer;
@@ -407,11 +409,11 @@ pre code {
 }
 
 .bmr-summary::-webkit-details-marker {
-  color: var(--bmr-dark-green);
+  color: #333333;
 }
 
 .bmr-details[open] {
-  box-shadow: 0 0 0 2px var(--bmr-dark-green) inset;
+  box-shadow: none;
 }
 
 .bmr-details[open] .bmr-summary {
@@ -564,10 +566,12 @@ html {
    ========================================= */
 
 details.bmr-details {
-  /* Arrow and separator: BMR green instead of info-blue */
-  --docusaurus-details-decoration-color: var(--bmr-dark-green);
+  --docusaurus-details-decoration-color: #ccc;
 
   border: none !important;
+  border-top: 1px solid #e0e0e0 !important;
+  border-bottom: 1px solid #e0e0e0 !important;
+  border-radius: 0 !important;
   background: transparent !important;
   padding: 0 !important;
   margin: 0 0 18px 0;
