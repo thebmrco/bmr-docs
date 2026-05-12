@@ -1,0 +1,88 @@
+---
+title: Catalog
+---
+
+import Icon from '@site/src/components/Icon'
+import useBaseUrl from '@docusaurus/useBaseUrl'
+
+# <Icon name="catalog" size="1em" /> Catalog
+
+The **Equipment Catalog** is the central library of all items available for room design — from video bars and displays to chairs, tables, acoustic panels, and cable outlets. Every item in the catalog includes a **3D model** and associated metadata, so it can be placed accurately in both **BMR Studio** and **AR Design**.
+
+---
+
+## <Icon name="circle-check" size="1em" /> What the Catalog Contains
+
+The catalog is a comprehensive database — not just a list of items, but a rich data layer that powers guidance and automation across the platform. Each catalog item includes:
+
+- **3D model** — a detailed model used for placement and visualisation in BMR Studio and AR Design
+- **Category** — the type of equipment (e.g. Video Bars, Displays, Acoustics, Chairs, Tables, Outlets)
+- **Manufacturer and model** — product identification (e.g. "Cisco Desk Mini", "Vitra HAL RE Stool")
+- **Dimensions and mounting** — physical size, weight, and mounting requirements
+- **Acoustic properties** — absorption coefficients and material characteristics for acoustic treatment items. This data enables the platform to recommend the right acoustic materials for a room based on the acoustic measurement results.
+- **Input/output specifications** — connectors, ports, and signal types for each device. This is used to guide cable routing and ensure correct connections between devices in the design.
+- **Coverage data** — camera field of view, microphone pickup range, speaker coverage area, and display visibility zones
+
+All of this data works together to help users make informed decisions during design. When you place a camera, the platform knows its field of view. When you add an acoustic panel, the platform knows its absorption characteristics. When you connect devices, the platform knows which cables and ports are needed.
+
+<img
+  src={useBaseUrl('/img/design/catalog-overview.png')}
+  alt="Equipment Catalog — BMR Standard Catalog overview"
+  style={{width: '100%', borderRadius: '10px', border: '1px solid #E5E5D5', margin: '1rem 0', boxShadow: '0 4px 20px rgba(0,0,0,0.1)'}}
+/>
+
+---
+
+## <Icon name="scan" size="1em" /> How the Catalog Is Used
+
+The catalog is the shared foundation across several features:
+
+| Feature | How it uses the catalog |
+|---|---|
+| **BMR Studio** | Browse and place items from the catalog into the 3D room design. Metadata drives coverage overlays, cable guidance, and placement rules. |
+| **AR Design** | Select items from the catalog and position them in the physical room using augmented reality |
+| **Default Room Configuration** | Define recommended equipment setups using catalog items, which then surface as suggestions in BMR Studio |
+| **Cable Routing** | Input/output specifications from the catalog determine which cables are needed and how devices connect |
+| **Acoustic Recommender** *(coming soon)* | Acoustic properties in the catalog enable automatic recommendations for acoustic treatment based on a room's measurement results |
+
+---
+
+## <Icon name="equipment" size="1em" /> Default Catalogs
+
+BMR provides two standard catalogs, each designed for its specific use case:
+
+| Catalog | Purpose |
+|---|---|
+| **BMR Standard Catalog — Studio** | Optimised for BMR Studio. Contains the full range of equipment with detailed 3D models for precise placement in the web-based designer. |
+| **BMR Standard Catalog — AR** | Optimised for AR Design on iPhone and iPad. Contains models tuned for real-time augmented reality rendering. |
+
+Both catalogs are maintained by BMR and are kept up to date with new equipment as it becomes available.
+
+---
+
+## <Icon name="organization" size="1em" /> Catalogs and Organisations
+
+Catalogs are assigned at the **organisation level**. An organisation can have one or more catalogs, and users within that organisation can access items from any assigned catalog when designing rooms.
+
+This means:
+
+- Different organisations can have different catalogs tailored to their equipment standards
+- An organisation can have both the Studio and AR catalogs assigned simultaneously
+- Items can be added or removed from a catalog to match the organisation's approved equipment list
+
+---
+
+## <Icon name="admin-settings" size="1em" /> Managing Catalogs
+
+Catalog management is currently handled by the **BMR team**. This includes:
+
+- Adding and removing equipment items
+- Uploading and updating 3D models
+- Editing metadata (manufacturer, model, category, specifications)
+- Assigning catalogs to organisations
+
+If you need items added to or removed from your catalog, contact the BMR team at **support@bettermeetingrooms.com**.
+
+:::info Coming soon
+Self-service catalog management for organisation admins is on the roadmap. This will allow admins to customise their own catalogs — adding approved equipment, removing items that don't meet standards, and managing metadata directly.
+:::
