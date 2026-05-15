@@ -1,0 +1,167 @@
+---
+title: Security & Data Protection
+sidebar_label: Security & Data Protection
+---
+
+import Icon from '@site/src/components/Icon'
+
+# <Icon name="privacy-policy" size="1em" /> Security & Data Protection
+
+A reference Q&A covering how BETTERMEETINGROOMS handles customer data, authentication, hosting, third-party services, and deletion. Intended for IT, security, and procurement reviews.
+
+---
+
+## How long and for what purpose is the data used?
+
+The data is used exclusively for the planning, design, and management of meeting rooms — specifically for creating digital twins, generating design proposals, and conducting acoustic analyses.
+
+Data is retained for the duration of the contractual relationship and subsequently deleted or anonymized in accordance with legal requirements.
+
+---
+
+## Are personal data processed?
+
+Only data required for authentication is processed:
+
+- **Login data:** Username, email address, and (where applicable) IP address are considered personal data. Processing occurs solely for the purpose of authentication and access control.
+- **No passwords are stored** by BetterMeetingRooms. Authentication is fully managed by Auth0, a certified identity provider. Credentials never reach or reside in our systems.
+- **No sensitive personal data** (health, financial, biometric, etc.) is collected or processed.
+
+---
+
+## Who has access to the data?
+
+**By default, only the customer** has access to their data within the BetterMeetingRooms platform. Data isolation is enforced at the technical level — each database query is scoped to the authenticated user's organization. Users cannot access data belonging to other organizations.
+
+**When the customer submits a Support Request**, specific members of the BMR team are granted access to the relevant project data (e.g., scans, markers, room setup) exclusively for the purpose of fulfilling that request.
+
+In the case of room scans and markers, this data may be processed to create a digital twin or support room design and analysis. While general learnings may be extracted from these processes to improve our models and workflows, no actual customer data is retained or reused — only fully anonymized, non-attributable insights.
+
+**The customer retains full ownership and control of their data at all times** and may request complete deletion of all associated data with immediate effect. Upon such a request, BMR will delete all organization data including rooms, scans, designs, equipment, associated files, and support requests.
+
+If external involvement is required for any reason, access is limited, logged, and governed by strict Data Processing Agreements (DPAs) and Non-Disclosure Agreements (NDAs). We are also happy to sign a mutual NDA as an added layer of assurance.
+
+---
+
+## Does the app use artificial intelligence?
+
+Yes, the BetterMeetingRooms app uses artificial intelligence to support specific technical functions:
+
+- **Marker description generation:** Photos taken of room elements (markers) are analyzed to generate textual descriptions that support the room assessment process. This uses OpenAI's API (model: gpt-4o-mini). Only the marker photo is sent — no personal data, user information, or organizational data is included. Data sent via the OpenAI API is not used for model training. This feature can be disabled upon request.
+- **Apple ARKit machine learning:** The app uses on-device machine learning features provided by Apple ARKit for spatial understanding and object detection in augmented reality. All processing occurs locally on the device — no data is sent externally.
+- **Acoustic analysis:** Algorithmic models are used to measure and interpret room acoustics based on scan data. While not strictly AI, these models provide automated analysis of acoustic properties. Processing occurs on our servers — no external services are involved.
+
+**Key commitments:**
+
+- No personal or sensitive user data is processed by AI
+- All AI use is limited to technical analysis of room-related inputs
+- Customer data is never used to train AI models
+- AI-based features can be disabled on request
+
+---
+
+## How is the application system hosted?
+
+BetterMeetingRooms is provided as a **Software as a Service (SaaS)**.
+
+The hosting infrastructure:
+
+- **Cloud provider:** Amazon Web Services (AWS)
+- **Region:** Frankfurt (eu-central-1) — all data remains within the EU
+- **Database:** SQL based storage, hosted in the EU
+- **File storage:** AWS S3 in the EU, delivered via CloudFront CDN
+
+The infrastructure is managed and secured by BMR. Customers can use the solution without managing any infrastructure themselves, while benefiting from a secure, scalable, and high-performance cloud environment.
+
+---
+
+## Is the system accessible from unsecured networks, and what authentication systems are used?
+
+The system is accessible over the internet but **only through encrypted connections (HTTPS/TLS 1.2+)**.
+
+Authentication is based on modern standards:
+
+- **Email and password combinations** with security requirements (managed by Auth0)
+- **Single Sign-On (SSO)** via Webex, Google, Microsoft, or Apple
+- **Role-based access control** with granular permissions per organization, location, and room
+- **Multi-factor authentication (MFA)** is supported by our identity provider (Auth0) and can be enabled on request
+
+All authentication tokens are validated using industry-standard JWT verification. Sessions are managed via encrypted Redis connections in production.
+
+---
+
+## Are cloud-based services offered?
+
+Yes, all components of the solution — room scanning, markers, design, acoustic measurement, and management — are cloud-based.
+
+Data is stored, processed, and managed through secure cloud services, hosted entirely within the EU.
+
+---
+
+## What security measures are in place?
+
+### Encryption
+
+- All data in transit is encrypted via **TLS 1.2+** (HTTPS)
+- File storage uses **AWS S3 server-side encryption**
+- Sensitive integration tokens are encrypted at the application level
+
+### Access Control
+
+- Hierarchical role-based access control (RBAC) with fine-grained permissions
+- Data isolation enforced at the database query level — customers only see their own data
+- API endpoints are protected by authentication; administrative functions require elevated privileges
+
+### Application Security
+
+- Protection against common web vulnerabilities (OWASP Top 10)
+- Restrictive CORS policy
+
+### Audit Trail
+
+- Every data change is tracked with who made the change and when
+- Login events are recorded for security monitoring
+- Soft delete ensures no data is permanently lost without explicit request
+
+### Secrets Management
+
+- No secrets are hardcoded in source code or configuration files
+
+---
+
+## What third-party services are involved?
+
+| Service | Purpose | Data Involvement |
+|---|---|---|
+| Auth0 | Authentication & identity management | Login credentials, email, profile |
+| AWS (S3, SES, CloudFront, ECS) | Hosting, file storage, email, CDN | All application data (EU-hosted) |
+| Cisco Webex | Room booking synchronization | Room data, encrypted tokens |
+| OpenAI | Marker description generation | Marker photos only — no PII |
+| Sentry | Error monitoring & alerting | Error context and stack traces — PII anonymized |
+
+All third-party services are selected for GDPR compliance. Data processing agreements are in place where applicable.
+
+---
+
+## How is data deleted?
+
+### User Account Deletion
+
+Users can delete their own account at any time. Upon deletion:
+
+- The authentication account (Auth0) is immediately removed
+- All personal data is anonymized in our database
+- Profile information (name, email, image) is cleared
+- The anonymized record is retained solely for audit trail purposes
+
+### Customer Data Deletion
+
+Upon request, BMR will delete all data associated with a customer's organization, including:
+
+- All organization, location, and room records
+- Scans, equipment, designs, and digital twins
+- Associated files in cloud storage
+- Support requests and messages
+- User-to-organization assignments
+
+The customer may request complete deletion with immediate effect at any time.

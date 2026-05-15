@@ -14,6 +14,7 @@ import {
   MessageSquare,
   Compass,
   CircleCheck,
+  Gauge,
 } from "lucide-react";
 
 # <Icon name="map-pin" size="1em" /> BMR Product Roadmap
@@ -38,10 +39,6 @@ import {
   Guided multi-position acoustic measurement with spatially anchored speaker locations, ambient noise chart, and Xi20/Xi30 metrics.
 </RoadmapItem>
 
-<RoadmapItem icon={CircleCheck} title="Webex Room Synchronization">
-  Automatic sync between BMR and Webex Control Hub for locations and rooms.
-</RoadmapItem>
-
 <RoadmapItem icon={CircleCheck} title="Compass">
   Room orientation captured during scan and visualised in BMR Studio.
 </RoadmapItem>
@@ -58,16 +55,24 @@ import {
 
 ## Next (3–6 Months)
 
+<RoadmapItem icon={Gauge} title="BMR Room Evaluation (Beta)">
+  First version of a room evaluation engine that uses metrics to score how the technology is placed in a room and the experience it will deliver. Beta release with basic functionality.
+</RoadmapItem>
+
 <RoadmapItem icon={AudioLines} title="Advanced Acoustic Engine">
   Improved noise floor handling, smarter material recommendations, and higher measurement consistency.
 </RoadmapItem>
 
-<RoadmapItem icon={Palette} title="Studio Enhancements">
-  Guided design suggestions, improved user interface clarity, and new modes within BMR Studio.
+<RoadmapItem icon={Palette} title="BMR Studio Mode Refinement">
+  BMR Studio modes (View, Structurals, Equipment, Cables) are already available in the current version. Going forward, each mode will be refined significantly — clearer guidance, sharper tools, and tighter workflows per mode.
 </RoadmapItem>
 
 <RoadmapItem icon={Palette} title="BMR Studio Refinement">
   Improved Active Design validation, version handling, and design-to-deployment workflows.
+</RoadmapItem>
+
+<RoadmapItem icon={RefreshCw} title="Webex Room Synchronization — General Availability">
+  Currently available as a Beta release for testing. The released version will bring stable two-way sync between BMR and Webex Control Hub for locations and rooms.
 </RoadmapItem>
 
 <RoadmapItem icon={AudioLines} title="Room Auralizations">
@@ -81,6 +86,10 @@ import {
 ---
 
 ## 6–12 Months
+
+<RoadmapItem icon={Gauge} title="BMR Room Evaluation — Released">
+  Released version of the room evaluation engine, expanding on the Beta with a broader metric set, refined scoring, and full integration into the design and deployment workflows.
+</RoadmapItem>
 
 <RoadmapItem icon={RefreshCw} title="Lifecycle Automation">
   Smart workflow transitions and automated progression across room phases.

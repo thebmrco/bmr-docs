@@ -71,6 +71,13 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
+      label: 'Security & Compliance',
+      items: [
+        'security/index',
+      ],
+    },
+    {
+      type: 'category',
       label: 'Product Updates',
       items: [
         'roadmap/index',
