@@ -14,7 +14,7 @@ function HomepageHeader() {
     <header className={clsx('hero', styles.heroBanner)}>
       <div className="container">
         <Heading as="h1" className="hero__title">
-          Better Meeting Rooms Documentation
+          BETTERMEETINGROOMS Documentation
         </Heading>
         <p className="hero__subtitle">
           Transform every meeting room into a collaboration masterpiece with our comprehensive guides and best practices.
@@ -36,7 +36,7 @@ export default function Home(): ReactNode {
   return (
     <Layout
       title={`Documentation`}
-      description="Better Meeting Rooms - Lifecycle management for meeting rooms. Create better spaces for work and play.">
+      description="BETTERMEETINGROOMS - Lifecycle management for meeting rooms. Create better spaces for work and play.">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
