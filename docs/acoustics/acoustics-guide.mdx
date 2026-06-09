@@ -70,11 +70,13 @@ The app guides you through a **5-step flow**, taking measurements at three posit
           <li>Be quiet and tap <strong>Test</strong> to start the noise floor check</li>
           <li>The app plays pink noise and measures the difference against ambient noise</li>
           <li>When the result shows <strong>≥ 25 dB</strong> with a green checkmark, the volume is correctly adjusted</li>
+          <li>If the difference is <strong>too low</strong>, an orange warning appears — raise the speaker volume (or reduce ambient noise) and tap <strong>Test again</strong></li>
         </ul>
         <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
           <div className="phone-screenshot"><DocImg src="/img/release/2026-03-Step3-1-Noise-test.jpg" alt="Noise floor test — ready to test" /></div>
-          <div className="phone-screenshot"><DocImg src="/img/release/2026-03-Step3-2-Noise-testing.jpg" alt="Noise floor test — testing in progress" /></div>
-          <div className="phone-screenshot"><DocImg src="/img/release/2026-03-Step3-3-Noise-passed.jpg" alt="Noise floor test — passed with 26.1 dB difference" /></div>
+          <div className="phone-screenshot"><DocImg src="/img/release/2026-06-Step3-2-Noise-testing.jpg" alt="Noise floor test — testing in progress" /></div>
+          <div className="phone-screenshot"><DocImg src="/img/release/2026-06-Step3-3-Noise-passed.jpg" alt="Noise floor test — passed with 42.5 dB difference" /></div>
+          <div className="phone-screenshot"><DocImg src="/img/release/2026-06-Step3-4-Noise-failed.jpg" alt="Noise floor test — failed at 15.2 dB, prompts to adjust volume and retest" /></div>
         </div>
       </>
     ),
