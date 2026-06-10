@@ -9,7 +9,6 @@ import {
   UserCheck, AudioLines, Boxes, MapPin, RefreshCw,
   Smartphone, Globe, Server, ExternalLink,
 } from 'lucide-react';
-import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './styles.module.css';
 
 /* ================================================================
@@ -80,7 +79,9 @@ function PlatformCards(): ReactNode {
             in AR — on iPhone and iPad.
           </p>
           <div className={styles.platformAction}>
-            <span className={styles.platformCaption}>Available on the Apple App Store</span>
+            <a href="#download" className={styles.platformLink}>
+              Scan QR code on top ↑
+            </a>
           </div>
         </div>
       </div>
@@ -124,30 +125,6 @@ function PlatformCards(): ReactNode {
             </Link>
           </div>
         </div>
-      </div>
-    </div>
-  );
-}
-
-function DownloadCTA(): ReactNode {
-  const qrSrc = useBaseUrl('/img/bmr-appstore-qr.png');
-  return (
-    <div className={styles.downloadCTA}>
-      <div className={styles.downloadQR}>
-        <img
-          src={qrSrc}
-          alt="Scan to download the BMR App from the Apple App Store"
-        />
-      </div>
-      <div className={styles.downloadText}>
-        <Heading as="h3" className={styles.downloadHeading}>
-          Download the App here
-        </Heading>
-        <p>
-          Scan the QR code with your iPhone or iPad camera to install BMR from
-          the Apple App Store. Requires an iPhone 12 Pro or newer (Pro / Pro Max),
-          or any iPad Pro with LiDAR.
-        </p>
       </div>
     </div>
   );
@@ -272,7 +249,6 @@ export default function HomepageFeatures(): ReactNode {
             </p>
           </div>
           <PlatformCards />
-          <DownloadCTA />
         </div>
       </section>
 

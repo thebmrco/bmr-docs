@@ -1,6 +1,5 @@
 .heroBanner {
   padding: 5rem 0;
-  text-align: center;
   position: relative;
   overflow: hidden;
   background: linear-gradient(135deg, #F1F1E3 0%, #ffffff 100%);
@@ -8,6 +7,15 @@
 
 [data-theme='dark'] .heroBanner {
   background: linear-gradient(135deg, #242424 0%, #1a1a1a 100%);
+}
+
+.heroInner {
+  position: relative;
+  text-align: center;
+}
+
+.heroText {
+  text-align: center;
 }
 
 .buttons {
@@ -19,16 +27,77 @@
   margin-top: 2rem;
 }
 
+.heroDownload {
+  position: absolute;
+  top: calc(50% + 2.5rem);
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  scroll-margin-top: 80px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme='dark'] .heroDownload {
+  background: #2a2a2a;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.heroQR {
+  width: 130px;
+  height: 130px;
+  display: block;
+  border-radius: 6px;
+  background: white;
+  padding: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.heroDownloadText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  max-width: 180px;
+}
+
+.heroDownloadText strong {
+  color: var(--bmr-dark-green);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+[data-theme='dark'] .heroDownloadText strong {
+  color: var(--ifm-color-primary-light);
+}
+
+.heroDownloadText span {
+  color: var(--ifm-font-color-secondary);
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
 @media screen and (max-width: 996px) {
   .heroBanner {
     padding: 3rem 0;
   }
-  
+
+  .heroDownload {
+    position: static;
+    transform: none;
+    margin: 2rem auto 0;
+    width: fit-content;
+  }
+
   .buttons {
     flex-direction: column;
     gap: 0.75rem;
   }
-  
+
   .buttons a {
     width: 100%;
     max-width: 300px;

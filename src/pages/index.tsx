@@ -1,6 +1,7 @@
 import type {ReactNode} from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
@@ -10,21 +11,37 @@ import styles from './index.module.css';
 
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
+  const qrSrc = useBaseUrl('/img/bmr-appstore-qr.png');
   return (
     <header className={clsx('hero', styles.heroBanner)}>
       <div className="container">
-        <Heading as="h1" className="hero__title">
-          BETTERMEETINGROOMS Documentation
-        </Heading>
-        <p className="hero__subtitle">
-          Transform every meeting room into a collaboration masterpiece with our comprehensive guides and best practices.
-        </p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--primary button--lg"
-            to="/docs/intro">
-            Get Started →
-          </Link>
+        <div className={styles.heroInner}>
+          <div className={styles.heroText}>
+            <Heading as="h1" className="hero__title">
+              BETTERMEETINGROOMS Documentation
+            </Heading>
+            <p className="hero__subtitle">
+              Transform every meeting room into a collaboration masterpiece with our comprehensive guides and best practices.
+            </p>
+            <div className={styles.buttons}>
+              <Link
+                className="button button--primary button--lg"
+                to="/docs/intro">
+                Get Started →
+              </Link>
+            </div>
+          </div>
+          <div className={styles.heroDownload} id="download">
+            <img
+              src={qrSrc}
+              alt="Scan to download the BMR App from the Apple App Store"
+              className={styles.heroQR}
+            />
+            <div className={styles.heroDownloadText}>
+              <strong>Download the BMR App</strong>
+              <span>Scan with your iPhone or iPad camera</span>
+            </div>
+          </div>
         </div>
       </div>
     </header>
