@@ -7,7 +7,9 @@ import type { LucideIcon } from 'lucide-react';
 import {
   Search, Palette, Wrench,
   UserCheck, AudioLines, Boxes, MapPin, RefreshCw,
+  Smartphone, Globe, Server, ExternalLink,
 } from 'lucide-react';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './styles.module.css';
 
 /* ================================================================
@@ -61,7 +63,98 @@ const LifecyclePhases: LifecycleItem[] = [
 ];
 
 /* ================================================================
-   Section 2 — Documentation sections
+   Section 2 — Platform components (App, Web, Back-end)
+   ================================================================ */
+
+function PlatformCards(): ReactNode {
+  return (
+    <div className="row">
+      <div className="col col--4">
+        <div className={styles.platformCard}>
+          <div className={styles.lifecycleIcon}>
+            <Smartphone size={44} color="#206B31" aria-label="BMR App" />
+          </div>
+          <Heading as="h3">BMR App</Heading>
+          <p>
+            Capture rooms, run guided acoustic measurements, and place equipment
+            in AR — on iPhone and iPad.
+          </p>
+          <div className={styles.platformAction}>
+            <span className={styles.platformCaption}>Available on the Apple App Store</span>
+          </div>
+        </div>
+      </div>
+      <div className="col col--4">
+        <div className={styles.platformCard}>
+          <div className={styles.lifecycleIcon}>
+            <Globe size={44} color="#206B31" aria-label="Web Platform" />
+          </div>
+          <Heading as="h3">Web Platform</Heading>
+          <p>
+            Design rooms in BMR Studio, manage organisations and locations, and
+            compare measurements from any browser.
+          </p>
+          <div className={styles.platformAction}>
+            <a
+              href="https://app.bettermeetingrooms.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.platformLink}
+            >
+              app.bettermeetingrooms.com
+              <ExternalLink size={14} aria-hidden="true" />
+            </a>
+          </div>
+        </div>
+      </div>
+      <div className="col col--4">
+        <div className={styles.platformCard}>
+          <div className={styles.lifecycleIcon}>
+            <Server size={44} color="#206B31" aria-label="Secure Back-end" />
+          </div>
+          <Heading as="h3">Secure Back-end</Heading>
+          <p>
+            Every Room Data record, design, and measurement is stored on a
+            resilient, EU-hosted back-end with role-based access, encrypted in
+            transit and at rest.
+          </p>
+          <div className={styles.platformAction}>
+            <Link to="/docs/security/" className={styles.platformLink}>
+              Security &amp; Compliance →
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function DownloadCTA(): ReactNode {
+  const qrSrc = useBaseUrl('/img/bmr-appstore-qr.png');
+  return (
+    <div className={styles.downloadCTA}>
+      <div className={styles.downloadQR}>
+        <img
+          src={qrSrc}
+          alt="Scan to download the BMR App from the Apple App Store"
+        />
+      </div>
+      <div className={styles.downloadText}>
+        <Heading as="h3" className={styles.downloadHeading}>
+          Download the App here
+        </Heading>
+        <p>
+          Scan the QR code with your iPhone or iPad camera to install BMR from
+          the Apple App Store. Requires an iPhone 12 Pro or newer (Pro / Pro Max),
+          or any iPad Pro with LiDAR.
+        </p>
+      </div>
+    </div>
+  );
+}
+
+/* ================================================================
+   Section 3 — Documentation sections
    ================================================================ */
 
 type DocSection = {
@@ -164,6 +257,22 @@ export default function HomepageFeatures(): ReactNode {
               <LifecycleCard key={idx} {...props} />
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Platform section */}
+      <section className={styles.platform}>
+        <div className="container">
+          <div className="text--center margin-bottom--lg">
+            <Heading as="h2" className={styles.sectionTitle}>
+              How It's Delivered
+            </Heading>
+            <p className={styles.sectionSubtitle}>
+              BMR runs on three pieces — an iOS App for the field, a web platform for design and management, and a secure EU-hosted back-end where everything is stored.
+            </p>
+          </div>
+          <PlatformCards />
+          <DownloadCTA />
         </div>
       </section>
 

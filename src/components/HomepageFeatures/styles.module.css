@@ -7,17 +7,26 @@
   background: linear-gradient(180deg, #ffffff 0%, #F8F8F0 100%);
 }
 
+.platform {
+  padding: 2rem 0 3rem;
+  background: #F8F8F0;
+}
+
 .docs {
   padding: 2rem 0 4rem;
-  background: #F8F8F0;
+  background: linear-gradient(180deg, #F8F8F0 0%, #EFEFE2 100%);
 }
 
 [data-theme='dark'] .lifecycle {
   background: linear-gradient(180deg, #1a1a1a 0%, #242424 100%);
 }
 
-[data-theme='dark'] .docs {
+[data-theme='dark'] .platform {
   background: #242424;
+}
+
+[data-theme='dark'] .docs {
+  background: linear-gradient(180deg, #242424 0%, #1f1f1f 100%);
 }
 
 /* ============================================================
@@ -104,6 +113,148 @@
   line-height: 1.6;
   font-size: 0.95rem;
   margin: 0;
+}
+
+/* ============================================================
+   Platform cards (App / Web / Back-end)
+   ============================================================ */
+
+.platformCard {
+  padding: 2rem 1.5rem;
+  height: 100%;
+  background: white;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+[data-theme='dark'] .platformCard {
+  background: #2a2a2a;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.platformCard h3 {
+  color: var(--bmr-dark-green);
+  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+[data-theme='dark'] .platformCard h3 {
+  color: var(--ifm-color-primary-light);
+}
+
+.platformCard p {
+  color: var(--ifm-font-color-secondary);
+  line-height: 1.6;
+  font-size: 0.95rem;
+  margin: 0 0 1.25rem;
+  flex-grow: 1;
+}
+
+.platformAction {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: auto;
+}
+
+.platformCaption {
+  font-size: 0.85rem;
+  color: var(--ifm-font-color-secondary);
+}
+
+.platformLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.6rem 1rem;
+  background: var(--bmr-dark-green);
+  color: white !important;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none !important;
+  transition: background 0.2s ease;
+}
+
+.platformLink:hover {
+  background: #185023;
+  color: white !important;
+  text-decoration: none !important;
+}
+
+/* ============================================================
+   Download CTA — standalone component with QR on left
+   ============================================================ */
+
+.downloadCTA {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding: 1.5rem 1.75rem;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  max-width: 640px;
+}
+
+[data-theme='dark'] .downloadCTA {
+  background: #2a2a2a;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.downloadQR {
+  flex: 0 0 140px;
+}
+
+.downloadQR img {
+  width: 140px;
+  height: 140px;
+  display: block;
+  border-radius: 8px;
+  background: white;
+  padding: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.downloadText {
+  flex: 1 1 auto;
+}
+
+.downloadHeading {
+  color: var(--bmr-dark-green);
+  font-size: 1.5rem;
+  margin: 0 0 0.5rem;
+  font-weight: 700;
+}
+
+[data-theme='dark'] .downloadHeading {
+  color: var(--ifm-color-primary-light);
+}
+
+.downloadText p {
+  color: var(--ifm-font-color-secondary);
+  line-height: 1.55;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+@media (max-width: 700px) {
+  .downloadCTA {
+    flex-direction: column;
+    text-align: center;
+  }
+  .downloadText {
+    text-align: center;
+  }
 }
 
 /* ============================================================
