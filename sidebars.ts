@@ -26,6 +26,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'lifecycle/discovery/scan-marker-guide',
             'lifecycle/discovery/scanning-best-practices',
+            'lifecycle/discovery/compass',
             'acoustics/acoustics-guide',
             'acoustics/video-acoustics-guide',
           ],

@@ -105,7 +105,7 @@ import {
   WifiOff, Settings, User, UserCheck, LogOut, Mail, Palette, LayoutPanelLeft,
   Key, Smartphone, CircleCheck, Laptop, MapPin, Volume2, Monitor,
   Wrench, Users, Puzzle, Globe, AlertTriangle, HelpCircle, Star, Brain,
-  Target,
+  Target, Compass,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -198,4 +198,5 @@ export const iconMap: Record<string, LucideIcon> = {
   "brain": Brain,
   "book-open": BookOpen,
   "target": Target,
+  "compass": Compass,
 };

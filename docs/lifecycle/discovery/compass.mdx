@@ -1,0 +1,70 @@
+---
+title: Compass
+sidebar_label: Compass
+---
+
+import Icon from '@site/src/components/Icon'
+import useBaseUrl from '@docusaurus/useBaseUrl'
+
+# <Icon name="compass" size="1em" /> Compass
+
+The **Compass** captures the room's real-world orientation during scanning, so that walls, equipment, and design elements can be discussed using cardinal directions — north, south, east, west — instead of vague references like "the wall over there" or "the one with the door".
+
+It's a small piece of metadata, but it removes a lot of friction once more than one person is involved in a design.
+
+<div style={{display: 'flex', gap: '24px', alignItems: 'flex-start', flexWrap: 'wrap', margin: '1.5rem 0'}}>
+<div style={{flex: '1 1 350px'}}>
+
+**Why it matters**
+
+- Reference walls and equipment using real directions — "the screen is on the **west wall**" is unambiguous to everyone in the conversation, regardless of who is in the room.
+- Hybrid design reviews work better — designers on web, technicians on-site, and IT remote can all align on the same orientation without needing photos or pointing.
+- Foundation for spatially aware features — natural daylight modelling, AV equipment positioning relative to windows, and other orientation-dependent checks coming next.
+
+</div>
+<div style={{flex: '0 0 200px'}}>
+
+<div className="phone-screenshot">
+<img src={useBaseUrl('/img/release/2026-05-compass-app.jpg')} alt="Compass orientation captured during a room scan in the BMR App" style={{width: '100%', borderRadius: '12px'}} />
+</div>
+
+</div>
+</div>
+
+---
+
+## <Icon name="scan" size="1em" /> How it's captured
+
+The compass orientation is captured **automatically during the room scan** — no separate step is required.
+
+- The BMR App uses the iPhone or iPad's built-in magnetometer to determine which direction the device is facing while you walk through the room.
+- The orientation is stored alongside the scan geometry as part of the room's **Room Data**.
+- It syncs to the back-end so the web platform and BMR Studio can use it during the Design phase.
+
+:::tip Get an accurate reading
+- Hold the device level during scanning. A device tilted heavily up or down gives the magnetometer less to work with.
+- Avoid strong metal masses (large filing cabinets, server racks, structural steel) close to the device while the scan begins — they can deflect the compass.
+- If the captured orientation looks wrong in BMR Studio, re-scan the room from outside any nearby metal influence and the orientation will update.
+:::
+
+---
+
+## <Icon name="palette" size="1em" /> Where you see it later
+
+Compass orientation surfaces wherever the room is shown in 3D:
+
+- **BMR Studio (Web)** — the room appears in its true geographic orientation in the 3D view. A compass widget shows which direction is north so you can always relate the model back to the physical room.
+- **BMR Studio in the BMR App (iPad / iPhone)** — same orientation and compass widget, useful when reviewing a design on-site.
+- **Room Overview** — the captured orientation is part of the room's Room Data and is visible whenever the room is displayed.
+
+This means that anyone opening the room — designer, IT, facilities, or a remote stakeholder — sees the same orientation. Calling out "the camera goes on the **north-east** corner" is then concrete and shared, instead of relying on whoever happened to take the photos.
+
+---
+
+## <Icon name="circle-check" size="1em" /> What's next
+
+Compass orientation is the first of several spatially aware features. Upcoming uses include:
+
+- Daylight and glare considerations driven by the room's orientation relative to the sun.
+- Default Room Configuration recommendations that take orientation into account — for example, suggesting screen placement away from window-facing walls.
+- Equipment placement guidance for cameras and microphones that depends on where windows and doors actually are.
