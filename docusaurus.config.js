@@ -11,7 +11,7 @@ module.exports = {
   organizationName: 'thebmrco', // GitHub org/user
   projectName: 'bmr-docs', // GitHub repo
   deploymentBranch: 'gh-pages',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.png',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   onBrokenAnchors: 'ignore', 
