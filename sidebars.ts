@@ -9,6 +9,7 @@ const sidebars: SidebarsConfig = {
       items: [
         'getting-started/account-setup',
         'getting-started/system-requirements',
+        'getting-started/send-feedback',
         'getting-started/faq',
       ],
     },

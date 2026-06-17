@@ -194,6 +194,7 @@ export const iconMap: Record<string, LucideIcon> = {
   "globe": Globe,
   "alert-triangle": AlertTriangle,
   "help-circle": HelpCircle,
+  "circle-question-mark": HelpCircle,
   "star": Star,
   "brain": Brain,
   "book-open": BookOpen,

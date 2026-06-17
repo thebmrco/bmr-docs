@@ -344,6 +344,11 @@ h3 {
   padding-bottom: 0.5rem;
 }
 
+/* FAQ — highlight each question heading in BMR green */
+body[class*="docs-doc-id-getting-started/faq"] .markdown h4 {
+  color: var(--bmr-dark-green);
+}
+
 .markdown a {
   text-decoration: none;
   border-bottom: 1px solid transparent;
