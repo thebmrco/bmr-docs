@@ -10,7 +10,7 @@ import MosScaleVisual from '@site/src/components/MosScaleVisual'
 After completing an acoustic measurement, BMR gives you a **MOS score** for your room. Here is what it means, and what it is based on.
 
 :::info What changed in release 1.2
-The MOS score now includes a penalty for **Speech-to-Noise Ratio** and an updated treatment of **Bass Ratio**. Earlier releases displayed the underlying frequency-band measurements but did not factor noise into the score. The formula will continue to evolve — Spatial Concentration and Flutter Echo are next on the roadmap — and this page tracks the current state.
+The MOS score now factors in **Bass Ratio** as a penalty on top of the **Reverberation Time** base. Earlier releases displayed Bass Ratio alongside the other measurements but did not feed it into the score. **Speech-to-Noise Ratio** is captured today and will start contributing in the next release; **Spatial Concentration** and **Flutter Echo** follow after that. This page tracks the current state.
 :::
 
 ---
@@ -48,11 +48,11 @@ Traditional acoustic metrics were designed for concert halls and auditoriums, wh
 
 BMR's MOS score is grounded in acoustic research conducted in collaboration with the **Institute of Electronic Music and Acoustics at the University of Music and Performing Arts Graz**.
 
-The research has identified several acoustic properties that together predict how effortful a room feels to communicate in. The formula combines them as:
+The research has identified several acoustic properties that together predict how effortful a room feels to communicate in. The full formula combines them as:
 
 `MOS = A_ReverberationTime + A_SpatialConcentration + A_BassRatio − A_SpeechToNoiseRatio − A_FlutterEcho`
 
-From release 1.2, the score actively uses **Reverberation Time**, **Bass Ratio**, and **Speech-to-Noise Ratio**. **Spatial Concentration** and **Flutter Echo** are measured or simulated where possible and will be folded into the score in upcoming releases.
+In release 1.2, only two terms actively contribute to the score: the **Reverberation Time** base and the **Bass Ratio** penalty. The other terms — **Speech-to-Noise Ratio**, **Spatial Concentration**, and **Flutter Echo** — are measured or computed today and shown alongside the score, but do not yet feed into it. **Speech-to-Noise Ratio** is the next one planned for inclusion; **Spatial Concentration** and **Flutter Echo** follow after that.
 
 ### Reverberation Time (T60)
 
@@ -85,7 +85,11 @@ The MOS formula penalises deviation from a neutral reference of approximately 1.
 
 Speech-to-Noise Ratio (SpNR) compares the loudness of a typical conversation against the steady background noise in the room. That background noise can come from HVAC, projectors, computer fans, traffic, neighbouring rooms, or hallway activity.
 
-When the gap between speech and noise is wide, listeners pick out words effortlessly. When it shrinks, they have to lean in, ask for repeats, or zone out. The MOS score reflects that effort directly: the noisier the room *relative to speech*, the lower the score.
+:::note Coming in the next release
+SpNR is captured today and shown alongside the MOS score, but does **not yet contribute** to the score itself — that changes in the next release. The rest of this section describes how SpNR will affect the MOS score once it is folded into the formula.
+:::
+
+When the gap between speech and noise is wide, listeners pick out words effortlessly. When it shrinks, they have to lean in, ask for repeats, or zone out. The MOS score will reflect that effort directly: the noisier the room *relative to speech*, the lower the score.
 
 | Gap between speech and noise | What it feels like | Typical MOS impact |
 |---|---|---|
@@ -105,10 +109,10 @@ In practice this means treating a room acoustically without also addressing its 
 
 BMR's IEM analyzer derives SpNR from the noise captured in the **brief quiet window just before the test sweep starts**. The earlier calibration step is used for speaker calibration and the ambient noise chart — it does **not** feed SpNR directly.
 
-The speech reference level used in the formula assumes a normal conversational level at typical meeting-room distances. Both values are combined into a single SpNR figure that feeds the MOS score.
+The speech reference level used in the formula assumes a normal conversational level at typical meeting-room distances. Both values are combined into a single SpNR figure that will feed the MOS score once SpNR is part of the formula.
 
 :::caution Stay quiet after the 3-2-1
-Because the SpNR window is short, it is **very important to avoid any noise during the measurement** — once the **3-2-1 countdown** finishes, the room should be as quiet as possible. Talking, chair movement, or a door opening in that window will pull the SpNR down and lower the MOS score for the measurement.
+Because the SpNR window is short, it is **very important to avoid any noise during the measurement** — once the **3-2-1 countdown** finishes, the room should be as quiet as possible. Talking, chair movement, or a door opening in that window will pull the SpNR figure down, and once SpNR is folded into the formula it will lower the MOS score for the measurement.
 :::
 
 :::note
@@ -169,7 +173,7 @@ The MOS score currently focuses on the reverberant characteristics of the physic
 - Network or compression artefacts in video conferencing
 
 :::info Coming soon
-**Spatial Concentration** and **Flutter Echo** are the next acoustic properties planned for inclusion in the MOS score. Both are measured or simulated by BMR today and are visible alongside the other metrics, but they do not yet contribute to the score itself.
+**Speech-to-Noise Ratio** is the next acoustic property planned for inclusion in the MOS score — it is measured today but does not yet contribute to the score. **Spatial Concentration** and **Flutter Echo** follow after that.
 
 **Microphone and speaker quality** in the meeting setup, and **network or compression artefacts** in video conferencing, remain outside the MOS score's scope. Those depend on the conferencing equipment and connection rather than the room.
 :::

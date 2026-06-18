@@ -226,13 +226,13 @@ Default Room Configurations are managed under the **Default Room Configurations*
   </span>
 </summary>
 
-The MOS score now includes a penalty for **Speech-to-Noise Ratio** and an updated treatment of **Bass Ratio** — both reflected in the score shown after every measurement on the App.
+The MOS score now factors in **Bass Ratio** as a penalty on top of the **Reverberation Time** base — reflected in the score shown after every measurement on the App.
 
 **What changed**
 
-- **Speech-to-Noise Ratio (SpNR)** is now a direct input to the score. Earlier releases displayed the underlying frequency-band noise measurements but did not factor noise into the score itself.
-- **Bass Ratio** uses an updated formula that penalises deviation from a neutral reference of about 1.15.
-- **Spatial Concentration** and **Flutter Echo** are next on the roadmap and will be folded into the score in upcoming releases.
+- **Bass Ratio** is now a direct input to the score, penalising deviation from a neutral reference of about 1.15. Earlier releases displayed Bass Ratio alongside the other measurements but did not feed it into the score.
+- **Speech-to-Noise Ratio (SpNR)** is captured today and will start contributing to the score in the next release.
+- **Spatial Concentration** and **Flutter Echo** follow after SpNR.
 
 See [Understanding the MOS Score](/docs/acoustics/mos-score) for the full formula and a breakdown of each factor.
 
