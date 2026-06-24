@@ -1,0 +1,114 @@
+---
+title: Release 1.3 (BETA) 2026 June
+description: Send Feedback and Report an Issue available from both BMR Mobile and the Web, BMR Studio modes show only the relevant tabs, BMR Studio Guidelines let you place recommended equipment in a single click, and minor acoustic measurement improvements.
+---
+
+import Icon from '@site/src/components/Icon'
+import {
+  Headset,
+  LayoutGrid,
+  Lightbulb,
+  Mic,
+} from "lucide-react";
+
+# Release 1.3 (BETA) 2026 June
+
+This release makes it easier to **send feedback or ask for assistance** from both BMR Mobile and the Web, and brings two BMR Studio improvements: **mode-specific tabs** that cut visual clutter, and **Guidelines** that let you place recommended equipment directly into the design.
+
+---
+
+## Web Platform
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Headset size={18} /> Report an Issue from the Web header
+  </span>
+</summary>
+
+Reach the BMR team directly from any page on the Web — a **Report an Issue** button now sits in the header next to the room search. Pick a category (Bug / Feature Request / Question / Other), add a short summary and description, attach screenshots if useful, and optionally scope the report to an Organization, Location, or Room.
+
+Reports go straight to the team's working queue for faster acknowledgement and resolution.
+
+See **[Send Feedback](../getting-started/send-feedback)** for the full walkthrough, including the BMR Mobile entry point.
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <LayoutGrid size={18} /> BMR Studio — Mode-specific tabs
+  </span>
+</summary>
+
+Each **BMR Studio** mode now shows only the tabs relevant to that mode, so you never page through controls that don't apply to what you're doing.
+
+**What changed**
+
+- **View** mode exposes inspection-related tabs only.
+- **Structurals** mode focuses on wall, window, and door tools.
+- **Equipment** mode keeps the catalog and placement tabs front and centre.
+- **Cables** mode shows the cable-routing tools.
+
+The result is a less crowded workspace and fewer accidental detours into tools that would not have worked from the current mode anyway. See the [BMR Studio guide](../lifecycle/design/bmr-studio) for the per-mode tool list.
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Lightbulb size={18} /> BMR Studio Guidelines — Place equipment directly
+  </span>
+</summary>
+
+BMR Studio now surfaces **Guidelines** in Equipment mode — recommended placements drawn from the active **Default Room Configuration** and the room's measured geometry. From a Guideline you can **place equipment directly into the design with a single click**, instead of dragging items from the catalog and aligning them by hand.
+
+**Why it matters**
+
+- Faster designs — the most common items land where they should without manual positioning.
+- Consistency with your organisation's standards — Guidelines respect the **Default Room Configuration** for the room's size band.
+- You still keep full control — Guidelines are suggestions, not enforced placements. Override anything that does not fit the specific room.
+
+See [Default Room Configuration](../lifecycle/design/default-room-configuration) for how the recommendations are defined.
+
+</details>
+
+---
+
+## BMR Mobile (iPhone / iPad)
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Headset size={18} /> Send Feedback from Settings
+  </span>
+</summary>
+
+Reach the BMR team directly from BMR Mobile — **Send Feedback** is in the **Settings** tab. Pick a category (Bug / Feature Request / Question / Other), add a short summary and description, and optionally scope the report to an Organization, Location, or Room. The last 24 hours of app logs are attached automatically.
+
+Reports go straight to the team's working queue for faster acknowledgement and resolution.
+
+See **[Send Feedback](../getting-started/send-feedback)** for the full walkthrough, including the Web entry point.
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Mic size={18} /> Minor Acoustic Measurement Improvements
+  </span>
+</summary>
+
+A handful of small refinements to the acoustic measurement flow in BMR Mobile — clearer in-flow feedback, minor copy and layout adjustments, and a set of bug fixes that smooth out the end-to-end measurement experience. No changes to the underlying MOS formula or the result data.
+
+</details>
+
+---
+
+# End of Release Notes
