@@ -71,9 +71,9 @@ function PlatformCards(): ReactNode {
       <div className="col col--4">
         <div className={styles.platformCard}>
           <div className={styles.lifecycleIcon}>
-            <Smartphone size={44} color="#206B31" aria-label="BMR App" />
+            <Smartphone size={44} color="#206B31" aria-label="BMR Mobile" />
           </div>
-          <Heading as="h3">BMR App</Heading>
+          <Heading as="h3">BMR Mobile</Heading>
           <p>
             Capture rooms, run guided acoustic measurements, and place equipment
             in AR — on iPhone and iPad.
@@ -245,7 +245,7 @@ export default function HomepageFeatures(): ReactNode {
               How It's Delivered
             </Heading>
             <p className={styles.sectionSubtitle}>
-              BMR runs on three pieces — an iOS App for the field, a web platform for design and management, and a secure EU-hosted back-end where everything is stored.
+              BMR runs on three pieces — BMR Mobile on iPhone and iPad for the field, a web platform for design and management, and a secure EU-hosted back-end where everything is stored.
             </p>
           </div>
           <PlatformCards />

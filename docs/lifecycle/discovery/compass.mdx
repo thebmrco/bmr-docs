@@ -25,7 +25,7 @@ It's a small piece of metadata, but it removes a lot of friction once more than 
 <div style={{flex: '0 0 200px'}}>
 
 <div className="phone-screenshot">
-<img src={useBaseUrl('/img/release/2026-05-compass-app.jpg')} alt="Compass orientation captured during a room scan in the BMR App" style={{width: '100%', borderRadius: '12px'}} />
+<img src={useBaseUrl('/img/release/2026-05-compass-app.jpg')} alt="Compass orientation captured during a room scan in BMR Mobile" style={{width: '100%', borderRadius: '12px'}} />
 </div>
 
 </div>
@@ -37,7 +37,7 @@ It's a small piece of metadata, but it removes a lot of friction once more than 
 
 The compass orientation is captured **automatically during the room scan** — no separate step is required.
 
-- The BMR App uses the iPhone or iPad's built-in magnetometer to determine which direction the device is facing while you walk through the room.
+- BMR Mobile uses the iPhone or iPad's built-in magnetometer to determine which direction the device is facing while you walk through the room.
 - The orientation is stored alongside the scan geometry as part of the room's **Room Data**.
 - It syncs to the back-end so the web platform and BMR Studio can use it during the Design phase.
 
@@ -54,7 +54,7 @@ The compass orientation is captured **automatically during the room scan** — n
 Compass orientation surfaces wherever the room is shown in 3D:
 
 - **BMR Studio (Web)** — the room appears in its true geographic orientation in the 3D view. A compass widget shows which direction is north so you can always relate the model back to the physical room.
-- **BMR Studio in the BMR App (iPad / iPhone)** — same orientation and compass widget, useful when reviewing a design on-site.
+- **BMR Studio in BMR Mobile (iPad / iPhone)** — same orientation and compass widget, useful when reviewing a design on-site.
 - **Room Overview** — the captured orientation is part of the room's Room Data and is visible whenever the room is displayed.
 
 This means that anyone opening the room — designer, IT, facilities, or a remote stakeholder — sees the same orientation. Calling out "the camera goes on the **north-east** corner" is then concrete and shared, instead of relying on whoever happened to take the photos.

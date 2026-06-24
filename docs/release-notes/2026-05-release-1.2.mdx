@@ -1,6 +1,6 @@
 ---
 title: Release 1.2 2026 May
-description: BMR Studio with guided modes, redesigned Organization and Location overviews, notes on Web and App, and major Acoustic Flow refinements.
+description: BMR Studio with guided modes, redesigned Organization and Location overviews, notes on Web and BMR Mobile, and major Acoustic Flow refinements.
 ---
 
 import {
@@ -22,7 +22,7 @@ import {
 
 # Release 1.2 2026 May
 
-This release introduces **BMR Studio** — the unified 3D workspace for all room design work, available on Web, iPhone, and iPad — alongside redesigned **Organization** and **Location** overview pages, **Notes** across all elements on both Web and App, and significant refinements to the **Acoustic Flow**.
+This release introduces **BMR Studio** — the unified 3D workspace for all room design work, available on Web, iPhone, and iPad — alongside redesigned **Organization** and **Location** overview pages, **Notes** across all elements on both Web and BMR Mobile, and significant refinements to the **Acoustic Flow**.
 
 ---
 
@@ -150,7 +150,7 @@ The Assign Task section on the Room page has been refined for clarity and faster
   </span>
 </summary>
 
-You can now add **notes** to elements across the **Web platform** and the **App**.
+You can now add **notes** to elements across the **Web platform** and **BMR Mobile**.
 
 **Where you can add notes**
 
@@ -174,7 +174,7 @@ You can now add **notes** to elements across the **Web platform** and the **App*
   </span>
 </summary>
 
-The Acoustics list now shows the **MOS Score** for each measurement directly in the list view — on both the **Web platform** and the **App**.
+The Acoustics list now shows the **MOS Score** for each measurement directly in the list view — on both the **Web platform** and **BMR Mobile**.
 
 This makes it much easier to:
 
@@ -217,7 +217,7 @@ Default Room Configurations are managed under the **Default Room Configurations*
 
 ---
 
-## App (iPhone / iPad)
+## BMR Mobile (iPhone / iPad)
 
 <details className="bmr-details">
 <summary className="bmr-summary">
@@ -226,7 +226,7 @@ Default Room Configurations are managed under the **Default Room Configurations*
   </span>
 </summary>
 
-The MOS score now factors in **Bass Ratio** as a penalty on top of the **Reverberation Time** base — reflected in the score shown after every measurement on the App.
+The MOS score now factors in **Bass Ratio** as a penalty on top of the **Reverberation Time** base — reflected in the score shown after every measurement on BMR Mobile.
 
 **What changed**
 
@@ -251,7 +251,7 @@ Following the launch of the new Acoustic Flow in Beta 08, this release introduce
 
 **What's new**
 
-- The app now **alerts you if no scan exists** before starting a measurement, preventing invalid MOS = 0 results
+- BMR Mobile now **alerts you if no scan exists** before starting a measurement, preventing invalid MOS = 0 results
 - You can **retest during the volume adjustment step** without restarting the flow
 - A **Close (X) button** has been added to all measurement steps for easier cancellation
 - **SNR calibration updated** for more accurate speaker setup
@@ -276,7 +276,7 @@ Once enabled, you can **place equipment directly in the physical room using AR**
 
 **How it works**
 
-1. **Find coordinates** — move the iPhone around the room so the app can locate the scan's coordinate space
+1. **Find coordinates** — move the iPhone around the room so BMR Mobile can locate the scan's coordinate space
 2. **Add equipment** — tap the equipment icon to browse the catalog and select items to place
 3. **Choose content** — for screens and displays, select what content to show (still images or video)
 4. **Place in the room** — position the item at the right location in the physical space
@@ -284,7 +284,7 @@ Once enabled, you can **place equipment directly in the physical room using AR**
 6. **Continue in Studio** — the design appears in the Designs section, ready to refine in BMR Studio
 
 :::caution
-A room scan is required before starting an AR Design. If no scan exists, the app will prompt you to scan the room first — this is essential for combining the AR-placed items with the room model.
+A room scan is required before starting an AR Design. If no scan exists, BMR Mobile will prompt you to scan the room first — this is essential for combining the AR-placed items with the room model.
 :::
 
 <div style={{display: 'flex', gap: '8px', justifyContent: 'center', flexWrap: 'wrap', margin: '1rem 0'}}>
@@ -303,21 +303,21 @@ A room scan is required before starting an AR Design. If no scan exists, the app
 <details className="bmr-details">
 <summary className="bmr-summary">
   <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
-    <Eye size={18} /> Design Preview in the BMR App
+    <Eye size={18} /> Design Preview in BMR Mobile
   </span>
 </summary>
 
-You can now **view and edit designs directly in the BMR App** — the same 3D design environment is available on both **iPhone** and **iPad**.
+You can now **view and edit designs directly in BMR Mobile** — the same 3D design environment is available on both **iPhone** and **iPad**.
 
 <div style={{display: 'flex', gap: '24px', alignItems: 'flex-start', flexWrap: 'wrap'}}>
 <div style={{flex: '1 1 350px'}}>
 
 **What you can do**
 
-- Open any design and review it in 3D from the App
+- Open any design and review it in 3D from BMR Mobile
 - Toggle Measurements, Cables, POIs, and Legend overlays
 - Switch between **2D** and **3D** views
-- Make edits to the design from the App
+- Make edits to the design from BMR Mobile
 
 **iPhone vs iPad**
 
@@ -328,7 +328,7 @@ You can now **view and edit designs directly in the BMR App** — the same 3D de
 <div style={{flex: '0 0 220px'}}>
 
 <div className="phone-screenshot">
-<img src="/bmr-docs/img/release/2026-05-design-preview-app.jpg" alt="Design preview opened in the BMR App showing the 3D room view" style={{width: '100%', borderRadius: '12px'}} />
+<img src="/bmr-docs/img/release/2026-05-design-preview-app.jpg" alt="Design preview opened in BMR Mobile showing the 3D room view" style={{width: '100%', borderRadius: '12px'}} />
 </div>
 
 </div>
@@ -345,7 +345,7 @@ You can now **view and edit designs directly in the BMR App** — the same 3D de
   </span>
 </summary>
 
-When editing a location, the app can now **automatically fill the address** based on your iPhone's current GPS position. Tap **Update data to current location** and the street address, city, postal code, coordinates, and country are populated instantly.
+When editing a location, BMR Mobile can now **automatically fill the address** based on your iPhone's current GPS position. Tap **Update data to current location** and the street address, city, postal code, coordinates, and country are populated instantly.
 
 <div style={{display: 'flex', gap: '24px', alignItems: 'flex-start', flexWrap: 'wrap'}}>
 <div style={{flex: '1 1 350px'}}>
@@ -392,7 +392,7 @@ The room's compass orientation is now **captured during scanning** and synced to
 <div style={{flex: '0 0 200px'}}>
 
 <div className="phone-screenshot">
-<img src="/bmr-docs/img/release/2026-05-compass-app.jpg" alt="Compass orientation in the BMR App" style={{width: '100%', borderRadius: '12px'}} />
+<img src="/bmr-docs/img/release/2026-05-compass-app.jpg" alt="Compass orientation in BMR Mobile" style={{width: '100%', borderRadius: '12px'}} />
 </div>
 
 </div>
@@ -440,7 +440,7 @@ This makes the iPad a more capable device for room management and review work in
 The following issue is known in this release and will be fixed in the next version.
 
 <details className="bmr-details" open>
-<summary className="bmr-summary">BMR App — Notes not available on bundled measurements</summary>
+<summary className="bmr-summary">BMR Mobile — Notes not available on bundled measurements</summary>
 
 The **Notes** feature is currently not available for **bundled acoustic measurements**. A fix will ship in the next release.
 

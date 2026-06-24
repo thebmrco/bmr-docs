@@ -1,8 +1,8 @@
 ---
-title: BMR App Video Acoustics Tutorial
+title: BMR Mobile Video Acoustics Tutorial
 ---
 
-# BMR App Acoustics – Video Guide
+# BMR Mobile Acoustics – Video Guide
 
 Welcome to better **acoustics** for **better meetings** with **BMR Acoustics**.
 

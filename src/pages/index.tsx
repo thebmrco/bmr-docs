@@ -34,11 +34,11 @@ function HomepageHeader() {
           <div className={styles.heroDownload} id="download">
             <img
               src={qrSrc}
-              alt="Scan to download the BMR App from the Apple App Store"
+              alt="Scan to download BMR Mobile from the Apple App Store"
               className={styles.heroQR}
             />
             <div className={styles.heroDownloadText}>
-              <strong>Download the BMR App</strong>
+              <strong>Download BMR Mobile</strong>
               <span>Scan with your iPhone or iPad camera</span>
             </div>
           </div>
