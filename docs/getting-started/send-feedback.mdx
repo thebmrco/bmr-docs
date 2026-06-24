@@ -4,6 +4,7 @@ sidebar_label: Send Feedback
 ---
 
 import Icon from '@site/src/components/Icon'
+import useBaseUrl from '@docusaurus/useBaseUrl'
 
 # <Icon name="comments" size="1em" /> Send Feedback
 
@@ -24,6 +25,25 @@ The same form is available on both surfaces, but lives in a slightly different p
 
 Either entry point opens the same form, and reports land in the same queue with the BMR team.
 
+<div style={{display: 'flex', gap: '32px', justifyContent: 'center', alignItems: 'flex-start', flexWrap: 'wrap', margin: '1.5rem 0'}}>
+  <div style={{flex: '0 1 260px', textAlign: 'center'}}>
+    <h4 style={{color: 'var(--bmr-dark-green)', fontSize: '1.1rem', fontWeight: 700, margin: '0 0 0.75rem'}}>BMR Mobile</h4>
+    <div className="phone-screenshot">
+      <img src={useBaseUrl('/img/send-feedback/bmr-mobile-settings-menu.jpg')} alt="BMR Mobile Settings tab with the Send Feedback row highlighted" style={{width: '100%', borderRadius: '12px'}} />
+    </div>
+    <p style={{marginTop: '0.5rem', fontSize: '0.85rem', color: 'var(--ifm-color-content-secondary)'}}>
+      Settings → Send Feedback
+    </p>
+  </div>
+  <div style={{flex: '1 1 380px', maxWidth: '620px', textAlign: 'center'}}>
+    <h4 style={{color: 'var(--bmr-dark-green)', fontSize: '1.1rem', fontWeight: 700, margin: '0 0 0.75rem'}}>Web</h4>
+    <img src={useBaseUrl('/img/send-feedback/web-header-report-an-issue.png')} alt="Web platform showing the Report an Issue button in the header bar, circled and pointed at with an arrow" style={{width: '100%', borderRadius: '8px', border: '1px solid #E5E5D5'}} />
+    <p style={{marginTop: '0.5rem', fontSize: '0.85rem', color: 'var(--ifm-color-content-secondary)'}}>
+      Header → Report an Issue
+    </p>
+  </div>
+</div>
+
 ---
 
 ## <Icon name="comments" size="1em" /> What you can send
@@ -38,6 +58,25 @@ When you open the form you pick one of four categories:
 | **Other** | Anything that does not fit the categories above. |
 
 Each report needs a short **summary** (one-line subject) and a longer **description**. The description is free text — write whatever helps the team understand what happened or what you want.
+
+<div style={{display: 'flex', gap: '32px', justifyContent: 'center', alignItems: 'flex-start', flexWrap: 'wrap', margin: '1.5rem 0'}}>
+  <div style={{flex: '0 1 260px', textAlign: 'center'}}>
+    <h4 style={{color: 'var(--bmr-dark-green)', fontSize: '1.1rem', fontWeight: 700, margin: '0 0 0.75rem'}}>BMR Mobile</h4>
+    <div className="phone-screenshot">
+      <img src={useBaseUrl('/img/send-feedback/bmr-mobile-send-feedback-form.jpg')} alt="Send Feedback form in BMR Mobile showing the Type picker open with Bug, Feature Request, Question, and Other" style={{width: '100%', borderRadius: '12px'}} />
+    </div>
+    <p style={{marginTop: '0.5rem', fontSize: '0.85rem', color: 'var(--ifm-color-content-secondary)'}}>
+      Send Feedback form
+    </p>
+  </div>
+  <div style={{flex: '0 1 320px', textAlign: 'center'}}>
+    <h4 style={{color: 'var(--bmr-dark-green)', fontSize: '1.1rem', fontWeight: 700, margin: '0 0 0.75rem'}}>Web</h4>
+    <img src={useBaseUrl('/img/send-feedback/web-report-an-issue-form.png')} alt="Report an Issue form on the Web showing the same four categories, summary, description, attachments, and Organization/Location/Room scoping" style={{width: '100%', borderRadius: '12px', border: '1px solid #E5E5D5'}} />
+    <p style={{marginTop: '0.5rem', fontSize: '0.85rem', color: 'var(--ifm-color-content-secondary)'}}>
+      Report an Issue form
+    </p>
+  </div>
+</div>
 
 ---
 
