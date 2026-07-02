@@ -8,6 +8,7 @@ const sidebars: SidebarsConfig = {
       label: 'Getting Started',
       items: [
         'getting-started/account-setup',
+        'getting-started/inviting-users',
         'getting-started/system-requirements',
         'getting-started/send-feedback',
         'getting-started/faq',
