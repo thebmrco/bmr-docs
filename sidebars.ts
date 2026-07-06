@@ -44,6 +44,7 @@ const sidebars: SidebarsConfig = {
             'lifecycle/design/bmr-studio',
             'lifecycle/design/ar-design-guide',
             'lifecycle/design/equipment-catalog',
+            'lifecycle/design/3d-model-standards',
             'lifecycle/design/default-room-configuration',
           ],
         },

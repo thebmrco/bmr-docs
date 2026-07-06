@@ -1,0 +1,59 @@
+---
+title: 3D Model Standards
+sidebar_label: 3D Model Standards
+---
+
+import Icon from '@site/src/components/Icon'
+
+# <Icon name="shapes" size="1em" /> 3D Model Standards
+
+Any 3D model added to the **BMR catalog** needs to meet the standards below. The rules apply whatever 3D application you use — only the final export has to conform.
+
+Follow the summary, tick every box on the pre-flight checklist, then send.
+
+---
+
+## <Icon name="circle-check" size="1em" /> Requirements at a glance
+
+| Area | Requirement |
+|---|---|
+| **Format** | Single **.glb** with embedded textures (preferred). **.fbx** or **.usdz** accepted only if fully self-contained. |
+| **Geometry** | ≤ 50,000 triangles. Origin at the object centre. Model faces **−Y**. Scale & rotation **applied**; location **not** applied. Static geometry only. |
+| **UVs** | One UV channel per mesh, valid and non-overlapping. Screen surfaces fill the full **0–1** UV space. |
+| **Materials** | **PBR metallic-roughness** only. Each material uniquely named — `ProductName_PartName` (e.g. `EasyRoomDesk_Frame`). Any screen material's name must start with `Screen` (e.g. `Screen_ProductName`). |
+| **Textures** | PNG or JPEG, embedded, sized **512 / 1024 / 2048 px** square. **Never above 2048.** Normal maps use the **OpenGL (+Y)** convention, not DirectX. |
+| **Scene** | Mesh + materials only. No lights, cameras, hidden objects, rigs, animation, drivers, or custom properties. |
+
+---
+
+## <Icon name="alert-triangle" size="1em" /> Pre-flight checklist
+
+Tick every box before submitting — this is the definition of *done*.
+
+- ☐ Model is ≤ 50,000 triangles
+- ☐ Origin sits at the object centre; model faces −Y
+- ☐ Scale and rotation applied; location **not** applied
+- ☐ One UV channel per mesh, valid and non-overlapping
+- ☐ Screen surface (if any) fills the full 0–1 UV space
+- ☐ PBR metallic-roughness materials, uniquely named
+- ☐ Screen material (if any) uses the `Screen` prefix
+- ☐ Textures are PNG or JPEG, embedded, ≤ 2048×2048 px
+- ☐ Normal maps use the OpenGL (+Y) convention
+- ☐ No lights, cameras, or hidden objects in the scene
+- ☐ No animation, rigs, skeletons, or keyframes
+- ☐ No drivers, expressions, or custom properties left in
+- ☐ Exported as a single self-contained file (.glb preferred)
+
+---
+
+## <Icon name="mail" size="1em" /> Submitting your model
+
+Once every checklist item is ticked:
+
+1. Export as a **single self-contained file** — `.glb` preferred; `.fbx` or `.usdz` accepted — with all textures embedded.
+2. Include a short description covering **name**, **brand**, and the intended **placement type** (floor / wall / ceiling / tabletop).
+3. Send both to **office@bettermeetingrooms.com**. The BMR team reviews the submission against these standards and reaches out if anything needs adjusting before the model is published.
+
+:::tip Need the full ruleset?
+The complete **BMR 3D Model Submission Standards** document — with per-tool tips for Blender, Maya, and 3ds Max — is available on request. Get in touch at **office@bettermeetingrooms.com**.
+:::
