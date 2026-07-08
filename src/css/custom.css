@@ -146,19 +146,29 @@ h3 {
 
 /* Navbar Styling */
 .navbar {
-  padding: 0.75rem 0;
+  padding: 0.75rem 1.5rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .navbar__brand {
+  display: flex;
+  align-items: center;
   font-weight: 600;
   font-size: 1.25rem;
   color: var(--bmr-dark-green);
 }
 
 .navbar__logo {
-  height: 40px;
-  margin-right: 0.75rem;
+  height: 36px;
+  margin-right: 0.85rem;
+  display: block;
+}
+
+.navbar__logo img,
+.navbar__logo svg {
+  height: 100%;
+  width: auto;
+  display: block;
 }
 
 .navbar__item {

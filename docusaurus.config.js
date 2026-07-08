@@ -61,7 +61,6 @@ module.exports = {
         src: 'img/logo.svg',
       },
       items: [
-        { to: '/docs/intro', label: 'Docs', position: 'left' },
         { type: 'search', position: 'right' },
       ],
     },
