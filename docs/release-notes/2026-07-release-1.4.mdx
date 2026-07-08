@@ -1,0 +1,141 @@
+---
+title: Release 1.4 (BETA) 2026 July
+description: BETA release with clearer room-recognition feedback in BMR Mobile, full offline acoustic measurements, room confirmation before measurement, ambient noise on impulse measurements, a cleaner RT60 chart, notes on grouped measurements, and a notifications badge that finally reflects real state.
+---
+
+import {
+  Scan,
+  WifiOff,
+  CircleCheck,
+  AudioLines,
+  LineChart,
+  StickyNote,
+  Bell,
+} from "lucide-react";
+
+# Release 1.4 (BETA) 2026 July
+
+This is a **BETA** release focused on BMR Mobile — clearer feedback when the room is being recognised, full **offline** acoustic measurements, and a series of smaller refinements across acoustics, notes, and notifications. No Web platform changes in this release.
+
+---
+
+## BMR Mobile (iPhone / iPad)
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Scan size={18} /> See when BMR Mobile recognises your room
+  </span>
+</summary>
+
+Opening **AR Design**, **Add Markers**, or an **Acoustic Measurement** in a scanned room now shows a clear **Verifying room…** indicator, followed by **Room verified** once relocalization succeeds. If BMR Mobile cannot find the room, you can **Retry** or **Continue without verification**.
+
+<div style={{display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', margin: '1rem 0'}}>
+  <div className="phone-screenshot" style={{flex: '0 0 200px'}}>
+    <img src="/bmr-docs/img/release/2026-07-verifying-room.jpg" alt="Verifying room card overlay while BMR Mobile relocalizes against the original scan" style={{width: '100%', borderRadius: '12px'}} />
+  </div>
+  <div className="phone-screenshot" style={{flex: '0 0 200px'}}>
+    <img src="/bmr-docs/img/release/2026-07-room-verified.jpg" alt="Room verified confirmation card overlay after successful relocalization" style={{width: '100%', borderRadius: '12px'}} />
+  </div>
+</div>
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <WifiOff size={18} /> Measure acoustics offline
+  </span>
+</summary>
+
+No connection? Full acoustic measurements — including the **three-position guided flow** — now work without the network. Add a short note describing where you took the measurement, and it queues up in the **Notifications** tab. When you are back online, upload each measurement individually and assign it to the right room.
+
+<div style={{display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', margin: '1rem 0'}}>
+  <div className="phone-screenshot" style={{flex: '0 0 200px'}}>
+    <img src="/bmr-docs/img/release/2026-07-offline-name-room.jpg" alt="No Internet Connection screen with a text field to add a room name or description before saving offline" style={{width: '100%', borderRadius: '12px'}} />
+  </div>
+  <div className="phone-screenshot" style={{flex: '0 0 200px'}}>
+    <img src="/bmr-docs/img/release/2026-07-notifications-pending.jpg" alt="Notifications tab showing pending offline acoustic measurements with an Assign Room action" style={{width: '100%', borderRadius: '12px'}} />
+  </div>
+</div>
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <CircleCheck size={18} /> Room confirmation before acoustic measurements
+  </span>
+</summary>
+
+Before starting an acoustic measurement, BMR Mobile now shows a **Confirm Room** screen with the room's scan thumbnail and name so you can confirm you are physically in the right place before capturing.
+
+<div style={{display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', margin: '1rem 0'}}>
+  <div className="phone-screenshot" style={{flex: '0 0 200px'}}>
+    <img src="/bmr-docs/img/release/2026-07-confirm-room.jpg" alt="Confirm Room screen showing the room name and 3D scan thumbnail with Exit and Confirm buttons" style={{width: '100%', borderRadius: '12px'}} />
+  </div>
+</div>
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <AudioLines size={18} /> Ambient noise on impulse measurements
+  </span>
+</summary>
+
+**Balloon** and **impulse** measurements now surface **ambient noise** alongside the impulse result — bringing them in line with the sweep flow so you have the same context for interpreting the number regardless of the method.
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <LineChart size={18} /> Cleaner RT60 chart
+  </span>
+</summary>
+
+The **T20 graph** now only plots reverberation times the backend considers **valid**, so unreliable bands do not distract from the useful data. Fewer misleading spikes; the shape of the curve is easier to read at a glance. Bands that were excluded are shaded and labelled **Invalid measurement** — you still see the coverage, but the eye is drawn to the trustworthy points.
+
+<img src="/bmr-docs/img/release/2026-07-rt60-chart.png" alt="T20 - Reverberation Time (RT60) chart with the 125 Hz band shaded orange and labelled Invalid measurement while the valid bands from 250 Hz to 8 kHz form a clean curve" style={{width: '100%', maxWidth: '600px', display: 'block', margin: '1rem auto', borderRadius: '8px', border: '1px solid #E5E5D5'}} />
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <StickyNote size={18} /> Notes on grouped acoustic measurements
+  </span>
+</summary>
+
+You can now add and edit **notes** on a **group** of related acoustic measurements — not just on individual ones. Useful when a bundled three-position measurement shares a single story that belongs at the group level rather than repeated on each position.
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Bell size={18} /> Notifications reflect real state
+  </span>
+</summary>
+
+The **bell badge** now counts everything you actually need to act on — unread notifications, tasks, pending no-room archives, failed uploads, and incomplete acoustic measurements. When the badge is 0, there is nothing waiting for you.
+
+</details>
+
+---
+
+# End of Release Notes
