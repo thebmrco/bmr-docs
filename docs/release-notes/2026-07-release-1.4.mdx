@@ -28,7 +28,7 @@ This is a **BETA** release focused on BMR Mobile — clearer feedback when the r
   </span>
 </summary>
 
-Opening **AR Design**, **Add Markers**, or an **Acoustic Measurement** in a scanned room now shows a clear **Verifying room…** indicator, followed by **Room verified** once relocalization succeeds. If BMR Mobile cannot find the room, you can **Retry** or **Continue without verification**.
+When you start a new **AR Design**, add a new **Marker**, or run a new **Acoustic Measurement** in a scanned room, BMR Mobile now relocalizes against the original scan first — so whatever you capture is anchored to the correct spatial position in the room. You see **Verifying room…** while it looks, then **Room verified** once relocalization succeeds. If BMR Mobile cannot find the room, you can **Retry** or **Continue without verification**.
 
 <div style={{display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', margin: '1rem 0'}}>
   <div className="phone-screenshot" style={{flex: '0 0 200px'}}>
@@ -72,7 +72,7 @@ No connection? Full acoustic measurements — including the **three-position gui
   </span>
 </summary>
 
-Before starting an acoustic measurement, BMR Mobile now shows a **Confirm Room** screen with the room's scan thumbnail and name so you can confirm you are physically in the right place before capturing.
+Before starting a new acoustic measurement, BMR Mobile now shows a **Confirm Room** screen with the room's scan thumbnail and name. Confirming here ensures the measurement is tied to the correct room and its scan — if the thumbnail does not match where you actually are, **Exit** and open the right room first.
 
 <div style={{display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', margin: '1rem 0'}}>
   <div className="phone-screenshot" style={{flex: '0 0 200px'}}>
@@ -100,11 +100,11 @@ Before starting an acoustic measurement, BMR Mobile now shows a **Confirm Room**
 <details className="bmr-details">
 <summary className="bmr-summary">
   <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
-    <LineChart size={18} /> Cleaner RT60 chart
+    <LineChart size={18} /> Cleaner T20 (RT60) chart
   </span>
 </summary>
 
-The **T20 graph** now only plots reverberation times the backend considers **valid**, so unreliable bands do not distract from the useful data. Fewer misleading spikes; the shape of the curve is easier to read at a glance. Bands that were excluded are shaded and labelled **Invalid measurement** — you still see the coverage, but the eye is drawn to the trustworthy points.
+The **T20 (RT60) graph** now only plots reverberation times the backend considers **valid**, so unreliable bands do not distract from the useful data. Fewer misleading spikes; the shape of the curve is easier to read at a glance. Bands that were excluded are shaded and labelled **Invalid measurement**.
 
 <img src="/bmr-docs/img/release/2026-07-rt60-chart.png" alt="T20 - Reverberation Time (RT60) chart with the 125 Hz band shaded orange and labelled Invalid measurement while the valid bands from 250 Hz to 8 kHz form a clean curve" style={{width: '100%', maxWidth: '600px', display: 'block', margin: '1rem auto', borderRadius: '8px', border: '1px solid #E5E5D5'}} />
 
