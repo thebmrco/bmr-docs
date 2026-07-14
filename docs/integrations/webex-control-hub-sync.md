@@ -1,84 +1,80 @@
+---
+title: Webex Control Hub Sync
+sidebar_label: Webex Integration
+description: Connect your Webex organization to BETTERMEETINGROOMS and keep locations and rooms in sync automatically.
+---
+
 # Webex Control Hub Sync
 
-:::info Beta feature — available on request
-Webex Control Hub Sync is currently in **Beta** and available to selected users on request. A full public release is coming soon. Contact the BMR team to get access.
+BETTERMEETINGROOMS (BMR) can connect to your Webex organization and automatically import your **locations** and **workspaces (rooms)** from Control Hub. Once connected, the sync runs on a schedule and keeps room names, capacities, and location assignments up to date — no manual data entry.
+
+## Prerequisites
+
+- **Webex side:** a Webex **full administrator** for your organization (needed once, to authorize the app in Control Hub).
+- **BMR side:** edit access to your organization's settings.
+
+## Step 1 — Authorize the Service App in Control Hub
+
+The integration uses a Webex **Service App** called *Better Meeting Rooms*. Your Webex administrator has to approve it once:
+
+1. Sign in to [Webex Control Hub](https://admin.webex.com) as a full administrator.
+2. Go to **Apps → Service Apps** and locate **Better Meeting Rooms**.
+3. Review the requested permissions (read-only access to your organization's locations and workspaces) and click **Authorize**.
+
+:::note
+The app only ever **reads** locations and workspaces. It does not modify anything in your Webex organization.
 :::
 
-Keep your rooms and locations in sync between Cisco Webex Control Hub and BETTERMEETINGROOMS — automatically.
+## Step 2 — Connect your organization
 
-## What It Does
+After the authorization, BMR retrieves a connection token for your organization and provides it to you (your BMR contact will send it or complete this step with you).
 
-The Webex Control Hub integration imports your Webex **locations** and **workspaces** (rooms) into BETTERMEETINGROOMS. Once connected, it syncs automatically on a schedule so your room data stays up to date without any manual work.
+1. In BMR, open your **Organization → Webex Sync**.
+2. Paste the connection token (refresh token) into the **Connect Webex Organization** form.
+3. Click **Connect**. The token is verified against Webex and your organization's name appears in the panel when the connection succeeds.
 
-- Locations from Webex become Locations in BETTERMEETINGROOMS
-- Workspaces from Webex become Rooms in BETTERMEETINGROOMS
-- New items are created, existing items are updated, and optionally removed items can be deleted
+## Step 3 — Configure the sync
 
+| Setting | What it does |
+|---|---|
+| **Enable automatic sync** | Turns the scheduled sync on or off. |
+| **Sync interval** | How often the sync runs, in minutes (5–1440). |
+| **Sync locations** | Imports and updates locations from Control Hub. |
+| **Sync workspaces (rooms)** | Imports and updates rooms from Control Hub workspaces. |
+| **Soft-delete items removed from Webex** | If a location/room disappears from Webex, it is archived here too. |
+| **Default location** | Where rooms land when their workspace has no location in Webex. |
 
+:::warning Before your first sync
+If some of your Webex rooms already exist in BMR (created manually), the first sync will import them **again as duplicates**. Prevent this by adding the Webex workspace ID to each existing room first — see [Avoiding duplicate rooms](#avoiding-duplicate-rooms) below.
+:::
 
-## Getting Started
+Click **Save Settings**, then use **Sync Now** to run the first import immediately.
 
-### Prerequisites
+## Avoiding duplicate rooms
 
-- An **Admin** account in BETTERMEETINGROOMS
-- Access to your organization's **Cisco Webex Control Hub**
+If you already created rooms manually **before** connecting Webex, the sync would import their Webex counterparts as new, duplicate rooms. To prevent that, link each existing room to its workspace first:
 
-### Connecting Your Organization
+1. Open the room for editing and find the **Control Hub Id** field.
+2. Paste the room's **Webex workspace ID** (your BMR contact can provide the list). The helper line below the field decodes the ID so you can double-check it matches the workspace shown in Control Hub.
+3. Save. On the next sync the room is updated in place instead of duplicated.
 
-1. Navigate to your organization in BETTERMEETINGROOMS
-2. Open the **Webex Sync** section
-3. In Webex Control Hub, generate an **activation code** for your organization
-4. Paste the activation code into BETTERMEETINGROOMS and click **Activate**
-5. Your locations and rooms will begin syncing automatically
+Rooms and locations that came from Webex show a **Webex** badge and their synced fields (name, capacity) are managed by the sync.
 
-Once activated, you'll see the connection status and your Webex organization name confirmed in the settings panel.
+## Monitoring and troubleshooting
 
-## Sync Settings
+The Webex Sync panel shows the last sync time, status, and counts of created/updated items.
 
-After activation, you can configure how the sync behaves:
-
-| Setting | Default | What it does |
-|---------|---------|--------------|
-| **Enabled** | On | Turn the sync on or off without disconnecting |
-| **Sync interval** | Every 60 minutes | How often data is pulled from Webex (5 min to 24 hours) |
-| **Sync locations** | On | Import and update locations from Webex |
-| **Sync workspaces** | On | Import and update rooms/workspaces from Webex |
-| **Archive removed items** | Off | Automatically archive rooms or locations that were deleted in Webex |
-| **Default location** | None | Assign a fallback location for Webex workspaces that don't have one |
-
-## Monitoring Sync Status
-
-The Webex Sync overview (available to admins) shows the status of each connected organization:
-
-- **Success** — Last sync completed without issues
-- **Error** — Something went wrong (details are shown inline)
-- **In Progress** — A sync is currently running
-
-You can also see:
-- When the last sync ran
-- How many locations and rooms were created or updated
-- Any error messages from the last sync
-
-### Manual Sync
-
-If you don't want to wait for the next scheduled sync, click **Sync Now** to trigger an immediate sync.
+| Message | What to do |
+|---|---|
+| *The Webex authorization has expired or been revoked* | Have your Webex admin re-authorize the Service App in Control Hub, then reconnect with a fresh token (Step 2). |
+| *Webex couldn't be reached* | Temporary network or Webex outage — try again in a few minutes. |
+| *Webex refused the request (permissions)* | The app's authorization in Control Hub is missing scopes — re-authorize it. |
 
 ## Disconnecting
 
-To disconnect an organization from Webex Control Hub:
+1. In **Organization → Webex Sync**, click **Deactivate**. This stops syncing and deletes the stored token.
+2. To fully revoke the app's access, your Webex administrator should also remove the *Better Meeting Rooms* authorization in **Control Hub → Apps → Service Apps**.
 
-1. Go to your organization's Webex Sync settings
-2. Click **Deactivate**
-3. Confirm the action
-
-This removes the stored credentials and stops all syncing. Your existing rooms and locations in BETTERMEETINGROOMS are **not** deleted — only the connection is removed.
-
-## Troubleshooting
-
-| Problem | What to check |
-|---------|---------------|
-| Sync shows **Error** status | Expand the error message for details. Common causes: expired credentials, Webex API downtime, or network issues. Try deactivating and reactivating. |
-| Rooms are missing a location | Webex workspaces without a location are skipped unless you set a **default location** in the sync settings. |
-| Sync seems stuck (In Progress for a long time) | Syncs that run longer than 30 minutes are automatically reset. If it persists, try triggering a manual sync. |
-| Changes in Webex aren't showing up | Check the sync interval. Changes appear after the next scheduled sync, or use **Sync Now**. |
-| Deleted rooms keep reappearing | Enable **Archive removed items** in the sync settings to automatically archive items removed from Webex. |
+:::info
+Deactivating keeps all already-imported rooms and locations — only the connection is removed.
+:::
