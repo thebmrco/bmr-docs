@@ -48,6 +48,7 @@ const activities: Activity[] = [
     image: '/img/lifecycle/markers-app.jpg',
     imageAlt: 'Marker placement in the app',
     links: [
+      { label: 'Markers Guide', href: '/docs/lifecycle/discovery/markers' },
       { label: 'Scan + Marker Capture Flow', href: '/docs/lifecycle/discovery/scan-marker-guide' },
     ],
   },
