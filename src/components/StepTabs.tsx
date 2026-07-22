@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 const GREEN = '#206B31';
@@ -13,6 +13,12 @@ type StepItem = {
 
 type Props = {
   steps: StepItem[];
+  /**
+   * Hash prefix used for deep-linking to a step, e.g. id="step" makes step 3
+   * addressable at `#step-3`. Defaults to "step". Give each StepTabs on a page
+   * a unique id if there is more than one.
+   */
+  id?: string;
 };
 
 function StepCircle({
@@ -107,11 +113,43 @@ export function DocImg({ src, alt, className }: { src: string; alt: string; clas
   return <img src={resolved} alt={alt} className={className} />;
 }
 
-export default function StepTabs({ steps }: Props) {
+export default function StepTabs({ steps, id = 'step' }: Props) {
   const [active, setActive] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Parse the current URL hash (e.g. "#step-3") into a 0-based step index.
+  const indexFromHash = useCallback((): number | null => {
+    if (typeof window === 'undefined') return null;
+    const match = window.location.hash.match(new RegExp(`^#${id}-(\\d+)$`));
+    if (!match) return null;
+    const idx = parseInt(match[1], 10) - 1;
+    return idx >= 0 && idx < steps.length ? idx : null;
+  }, [id, steps.length]);
+
+  // On mount (and whenever the hash changes) open the linked step and scroll to it.
+  useEffect(() => {
+    const syncFromHash = () => {
+      const idx = indexFromHash();
+      if (idx !== null) {
+        setActive(idx);
+        containerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    };
+    syncFromHash();
+    window.addEventListener('hashchange', syncFromHash);
+    return () => window.removeEventListener('hashchange', syncFromHash);
+  }, [indexFromHash]);
+
+  // Change step and reflect it in the URL so the address bar is copy-pasteable.
+  const goTo = (i: number) => {
+    setActive(i);
+    if (typeof window !== 'undefined') {
+      window.history.replaceState(null, '', `#${id}-${i + 1}`);
+    }
+  };
 
   return (
-    <div>
+    <div ref={containerRef} style={{ scrollMarginTop: '5rem' }}>
       {/* Step indicator bar */}
       <div
         style={{
@@ -128,9 +166,9 @@ export default function StepTabs({ steps }: Props) {
                 number={i + 1}
                 isActive={i === active}
                 isCompleted={i < active}
-                onClick={() => setActive(i)}
+                onClick={() => goTo(i)}
               />
-              <StepLabel title={step.title} isActive={i === active} onClick={() => setActive(i)} />
+              <StepLabel title={step.title} isActive={i === active} onClick={() => goTo(i)} />
             </div>
             {i < steps.length - 1 && <Connector filled={i < active} />}
           </React.Fragment>
@@ -154,7 +192,7 @@ export default function StepTabs({ steps }: Props) {
       {/* Prev / Next buttons */}
       <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '0.75rem' }}>
         <button
-          onClick={() => setActive(Math.max(0, active - 1))}
+          onClick={() => goTo(Math.max(0, active - 1))}
           disabled={active === 0}
           style={{
             background: 'none',
@@ -173,7 +211,7 @@ export default function StepTabs({ steps }: Props) {
           ← Previous
         </button>
         <button
-          onClick={() => setActive(Math.min(steps.length - 1, active + 1))}
+          onClick={() => goTo(Math.min(steps.length - 1, active + 1))}
           disabled={active === steps.length - 1}
           style={{
             background: active === steps.length - 1 ? GREY : GREEN,

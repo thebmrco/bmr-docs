@@ -1,0 +1,48 @@
+---
+title: Notifications
+sidebar_label: Notifications
+description: The Notifications tab and bell badge in BMR Mobile — what the count reflects, and how offline captures queue for upload.
+---
+
+import Icon from '@site/src/components/Icon'
+import useBaseUrl from '@docusaurus/useBaseUrl'
+
+# <Icon name="notifications" size="1em" /> Notifications
+
+The **Notifications** tab in BMR Mobile is where the app collects everything that needs your attention — and the **bell badge** tells you how much of it is outstanding.
+
+---
+
+## <Icon name="target" size="1em" /> The bell badge reflects real state
+
+The number on the bell counts everything you actually need to act on:
+
+- **Unread notifications**
+- **Tasks** assigned to you
+- **Pending no-room archives** — captures saved without a room yet assigned
+- **Failed uploads**
+- **Incomplete acoustic measurements**
+
+When the badge shows **0**, there is nothing waiting for you — the count is a reliable signal rather than a decoration.
+
+---
+
+## <Icon name="offline-mode" size="1em" /> Offline captures queue here
+
+Notifications is also where work you did **offline** waits to be finished:
+
+- An [acoustic measurement taken offline](../acoustics/acoustics-guide#measuring-offline) queues in Notifications with the note you added describing where you took it.
+- When you are back online, **upload each measurement individually** and **assign it to the right room**.
+
+<div style={{display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', margin: '1rem 0'}}>
+  <div className="phone-screenshot" style={{flex: '0 0 200px'}}>
+    <img src={useBaseUrl('/img/release/2026-07-notifications-pending.jpg')} alt="Notifications tab showing pending offline acoustic measurements with an Assign Room action" style={{width: '100%', borderRadius: '12px'}} />
+  </div>
+</div>
+
+---
+
+## <Icon name="chevron-right" size="1em" /> Related
+
+- [BMR Mobile Acoustics Tutorial](../acoustics/acoustics-guide) — including the offline measurement flow.
+- [Scan + Marker Capture Flow](../lifecycle/discovery/scan-marker-guide) — how offline scan and marker uploads are retried.

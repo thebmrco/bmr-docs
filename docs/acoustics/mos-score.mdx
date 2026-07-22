@@ -3,6 +3,7 @@ title: Understanding the MOS Score
 ---
 
 import Icon from '@site/src/components/Icon'
+import useBaseUrl from '@docusaurus/useBaseUrl'
 import MosScaleVisual from '@site/src/components/MosScaleVisual'
 
 # <Icon name="audio-lines" size="1em" /> Understanding the MOS Score
@@ -127,7 +128,21 @@ All metrics — T60, DRR, Bass Ratio, SpNR, Xi20, and Xi30 — are displayed in 
 
 ### Ambient Noise Chart
 
-After a measurement, BMR displays an **ambient noise chart** showing background noise levels across frequency bands. This gives visibility into noise from HVAC, traffic, or adjacent rooms — factors that affect listening effort independently of reverberation.
+After a measurement, BMR displays an **ambient noise chart** showing background noise levels across frequency bands. This gives visibility into noise from HVAC, traffic, or adjacent rooms — factors that affect listening effort independently of reverberation. The chart applies to both sweep and balloon/impulse measurements.
+
+The chart shades **acceptability zones** so you can read the result at a glance:
+
+- **Ideal** — background noise is low enough to have no meaningful impact on speech.
+- **Acceptable** — noise is present but within a workable range for most meetings.
+- **Too loud** — background noise is high enough to degrade the experience and should be addressed.
+
+Because every measurement is plotted against the same zones, you can compare background noise directly across measurements and across frequencies.
+
+<img
+  src={useBaseUrl('/img/release/2026-07-ambient-noise.png')}
+  alt="Ambient Noise chart with Ideal, Acceptable, and Too loud acceptability zones and three measurements plotted across frequencies"
+  style={{width: '100%', maxWidth: '760px', display: 'block', margin: '1rem auto', borderRadius: '8px', border: '1px solid #E5E5D5'}}
+/>
 
 Together, these measurements capture something important: **a room can feel exhausting to communicate in even when speech is technically intelligible**. The MOS score reflects this perceptual reality, not just a technical threshold.
 
@@ -159,9 +174,15 @@ The Green Zone turns an abstract number into something you can see at a glance:
 
 The Green Zone is what makes results comparable across rooms and across time. Two rooms with different MOS scores can be compared directly by looking at where each curve falls relative to the same target band — before treatment and after.
 
-:::info Coming soon
-The Green Zone will be extended to **background noise** measurements next, and progressively to other areas of the platform, so every metric gets the same visual target-band treatment.
-:::
+Only frequency bands the platform considers **valid** are plotted, so unreliable bands do not distract from the useful data. Any band that was excluded is **shaded and labelled "Invalid measurement"** rather than drawn as part of the curve — keeping the shape of the reverberation curve clean and easy to read.
+
+<img
+  src={useBaseUrl('/img/release/2026-07-rt60-chart.png')}
+  alt="T20 — Reverberation Time (RT60) chart with the 125 Hz band shaded and labelled Invalid measurement while the valid bands form a clean curve inside the Green Zone"
+  style={{width: '100%', maxWidth: '560px', display: 'block', margin: '1rem auto', borderRadius: '8px', border: '1px solid #E5E5D5'}}
+/>
+
+The same target-band treatment now extends to the **ambient noise chart**, which shades Ideal / Acceptable / Too loud zones so background noise gets the same at-a-glance visual comparison.
 
 ---
 

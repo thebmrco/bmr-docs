@@ -3,6 +3,7 @@ title: AR Design Guide
 ---
 
 import Icon from '@site/src/components/Icon'
+import useBaseUrl from '@docusaurus/useBaseUrl'
 import StepFlow from '@site/src/components/StepFlow'
 
 # <Icon name="3d-ar-design" size="1em" /> AR Design Guide
@@ -14,6 +15,29 @@ Place equipment directly into the physical room using augmented reality on your 
 ## <Icon name="alert-triangle" size="1em" /> Before You Start
 
 A **room scan is required** before starting an AR Design. The scan provides the coordinate space that links AR-placed items to the room model. If no scan exists, the app will prompt you to scan the room first.
+
+---
+
+## <Icon name="scan" size="1em" /> Room verification
+
+When you start a new AR Design in a scanned room, BMR Mobile first **relocalizes against the original scan** — so whatever you place is anchored to the correct spatial position. Move the device slowly around the space so it can match what it sees to the room scan.
+
+You will see:
+
+- **Verifying room…** while it looks for a match.
+- **Room verified** once relocalization succeeds — you can then place equipment with confidence that it is anchored correctly.
+- If it cannot find the room, you can **Retry** or **Continue without verification**.
+
+<div style={{display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', margin: '1rem 0'}}>
+  <div className="phone-screenshot" style={{flex: '0 0 200px'}}>
+    <img src={useBaseUrl('/img/release/2026-07-verifying-room.jpg')} alt="Verifying room card overlay while BMR Mobile relocalizes against the original scan" style={{width: '100%', borderRadius: '12px'}} />
+  </div>
+  <div className="phone-screenshot" style={{flex: '0 0 200px'}}>
+    <img src={useBaseUrl('/img/release/2026-07-room-verified.jpg')} alt="Room verified confirmation card overlay after successful relocalization" style={{width: '100%', borderRadius: '12px'}} />
+  </div>
+</div>
+
+The same verification also runs when you add a new **marker** or start a new **acoustic measurement** in a scanned room.
 
 ---
 

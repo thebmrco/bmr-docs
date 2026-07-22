@@ -9,6 +9,8 @@ const sidebars: SidebarsConfig = {
       items: [
         'getting-started/account-setup',
         'getting-started/inviting-users',
+        'getting-started/room-page',
+        'getting-started/notifications',
         'getting-started/system-requirements',
         'getting-started/send-feedback',
         'getting-started/faq',
@@ -69,6 +71,7 @@ const sidebars: SidebarsConfig = {
           label: 'Acoustics',
           items: [
             'acoustics/mos-score',
+            'acoustics/reading-acoustic-results',
             'acoustics/speakers-for-acoustics',
           ],
         },
@@ -90,6 +93,7 @@ const sidebars: SidebarsConfig = {
           type: 'category',
           label: 'Release Notes',
           items: [
+            'release-notes/2026-07-release-1.4-final',
             'release-notes/2026-07-release-1.4',
             'release-notes/2026-06-release-1.3',
             'release-notes/2026-05-release-1.2',

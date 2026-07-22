@@ -51,23 +51,39 @@ While viewing a design in BMR Mobile you can switch between **2D** and **3D** vi
 BMR Studio uses dedicated modes so you can focus on one thing at a time:
 
 - **View** — explore the room and review designs. Navigate the 3D model, inspect placed equipment, and get an overview of the current design state.
-- **Structurals** — adjust structural components such as walls, windows, doors, and other building elements. Modify the room geometry to match the real space.
-- **Equipment** — add and remove equipment and furniture in the design. Browse the full catalog, place items, configure quantities, and position everything in the room.
-- **Cables** — plan and document cable routing between devices. Visualise how cables run through the room and document infrastructure requirements.
+- **Structurals** — adjust structural components such as walls, windows, doors, and other building elements. **Windows and doors are shown by default** when you enter the mode, room resizing is smoother, and **surface materials and colours from the scan are applied to the generated design** — so the model more closely resembles the real room.
+- **Equipment** — add and remove equipment and furniture in the design. Browse the full catalog, place items, configure quantities, and position everything in the room. Recommended items from a matching [Default Room Configuration](default-room-configuration) can be placed straight from the **Guidelines** panel.
+- **Cables** — plan and document cable routing between devices. **Outlets are shown in the Cable Guide** for a complete picture of the room's connection points, and two BETA tools speed up routing: **Auto-Route** bundles cables that share a path, branching off only at the final drop, and **Tidy Bundles** cleans up existing routing.
 
 More modes will be added over time, and existing modes will continue to be refined.
+
+<img
+  src={useBaseUrl('/img/release/2026-07-structural-mode.png')}
+  alt="Room design in Structurals mode with doors and windows visible and surface materials applied from the scan"
+  style={{width: '100%', borderRadius: '10px', border: '1px solid #E5E5D5', margin: '1rem 0'}}
+/>
+
+:::info Beta tools in Cables
+**Auto-Route** and **Tidy Bundles** are labelled **BETA** in the Cables mode to indicate their current working state — they are safe to use, and the results are easy to review and adjust by hand.
+:::
+
+<img
+  src={useBaseUrl('/img/release/2026-07-cables-menu.png')}
+  alt="Cables mode menu with Draw Cable, Auto-Route (BETA), Edit Cables, Tidy Bundles (BETA), and Outlets options"
+  style={{width: '100%', maxWidth: '340px', display: 'block', margin: '1rem auto', borderRadius: '8px', border: '1px solid #E5E5D5'}}
+/>
 
 ---
 
 ## <Icon name="equipment" size="1em" /> What You Can Do
 
-- **Place and configure equipment** from the catalog — cameras, screens, speakers, codecs, furniture, and more
-- **Adjust room structure** — walls, windows, doors, and other building elements
-- **Plan cable routing** between devices
-- **Create and compare multiple design versions** for the same room
+- **Place and configure equipment** from the catalog — cameras, screens, speakers, codecs, furniture, and more. Equipment **stays selected while you rotate it**, and newly placed devices are **auto-selected** with their **Advanced properties** shown by default.
+- **Adjust room structure** — walls, windows, doors, and other building elements, with surface materials applied from the scan
+- **Plan cable routing** between devices, including outlets and auto-routing
+- **Work with automatic design versions** for the same room — every save creates a version you can review, rename, activate, or delete
 - **Generate an equipment list** automatically from placed items
 - **Move a design through approval** and mark it as Active when installed
-- **Review Default Room Configuration recommendations** — when a room matches a defined size range, suggested equipment appears in the sidebar
+- **Follow Default Room Configuration guidelines** — when a room matches a defined size range, the **Guidelines** panel shows fulfilled and missing categories with a one-click **Place in room** action
 
 ---
 
@@ -90,11 +106,24 @@ More modes will be added over time, and existing modes will continue to be refin
 
 ## <Icon name="copy" size="1em" /> Design Versions
 
-Each room can have **multiple design versions** in BMR Studio. This lets you:
+Each room can have **multiple design versions** in BMR Studio, and your work is **never overwritten**. This lets you:
 
 - Explore different equipment configurations or layout options side by side
 - Preserve historical versions as the room evolves
 - Track which version was actually deployed
+
+### Automatic versioning
+
+Versions are **created automatically** whenever you save or change mode — you do not have to remember to snapshot your work. Every previous version can be reviewed, **renamed**, **activated**, or **deleted** at any time from the **Versions** tab.
+
+- **Save as New Design** — in the top menu, for when you want a separate design rather than another version of the current one.
+- **Designs are shown as a list** in the room design view, making it easier to identify and open the right one.
+
+<img
+  src={useBaseUrl('/img/release/2026-07-design-versions.png')}
+  alt="Versions tab showing the automatic version history of a design with Activate, Rename, and Delete actions"
+  style={{width: '100%', maxWidth: '340px', display: 'block', margin: '1rem auto', borderRadius: '8px', border: '1px solid #E5E5D5'}}
+/>
 
 One design version can be designated as the **Active Design** — the authoritative record of the room as it currently exists. All other versions represent proposed or historical states.
 
@@ -120,5 +149,5 @@ The richer your Discovery data — scan quality, marker coverage, acoustic measu
 
 - **Start with a scan** — BMR Studio uses the 3D scan as the foundation. A high-quality scan means more accurate placement.
 - **Use modes** — switch between modes rather than trying to do everything at once. Each mode surfaces the tools relevant to that task.
-- **Compare versions** — create multiple design versions to explore options before committing.
+- **Use versions freely** — every save is captured automatically, so you can explore options without fear of losing earlier work. Use **Save as New Design** when you want a separate design rather than another version.
 - **Check Default Room Configurations** — if your organisation has defined recommended setups, they appear automatically in the sidebar when the room size matches.

@@ -1,0 +1,59 @@
+---
+title: The Room Page
+sidebar_label: The Room Page
+description: The redesigned Room Overview on the Web and the Room view in BMR Mobile — room details, ratings, capabilities, and the Active section with the design and its linked data.
+---
+
+import Icon from '@site/src/components/Icon'
+import useBaseUrl from '@docusaurus/useBaseUrl'
+
+# <Icon name="room" size="1em" /> The Room Page
+
+Every room has a home page that brings its data together in one place — on the **Web** as the **Room Overview**, and in **BMR Mobile** as the **Room view**. It is where you check a room's status at a glance and jump into scans, markers, acoustics, and designs.
+
+---
+
+## <Icon name="layout" size="1em" /> Room Overview on the Web
+
+The Room Overview page presents the room's key information up front:
+
+- **Room details, ratings, and capabilities** at a glance.
+- The **acoustic score (MOS)** — always shown, using the linked measurement when one is set and otherwise the latest measurement. See [Reading Acoustic Results](../acoustics/reading-acoustic-results).
+- An **Active** section that previews the **active Design** together with the **scan, acoustic measurements, and markers** it is based on — so you can see, in one view, the design that represents the room and the data behind it.
+
+<img
+  src={useBaseUrl('/img/release/2026-07-room-overview.png')}
+  alt="Room Overview page showing room information, acoustic score, and the Active section with the active design and its linked scan, acoustics, and markers"
+  style={{width: '100%', maxWidth: '900px', display: 'block', margin: '1rem auto', borderRadius: '8px', border: '1px solid #E5E5D5'}}
+/>
+
+---
+
+## <Icon name="smartphone" size="1em" /> Room view in BMR Mobile
+
+The same room is available in **BMR Mobile**, where recent improvements make it easier to work with a room on-site:
+
+- **Newly created rooms are shown at the top** of the room list, so a room you just made is easy to find.
+- The **active Design** and the **linked scan, markers, and acoustic measurement** are clearly marked, so you can tell at a glance what the room is built from.
+- **Designs can be deleted** directly from inside the Room view.
+- A **web-only message** is shown for [VRC designs](../integrations/cisco-vrc), which are edited on the Web.
+
+<div style={{display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', margin: '1rem 0'}}>
+  <div className="phone-screenshot" style={{flex: '0 0 200px'}}>
+    <img src={useBaseUrl('/img/release/2026-07-mobile-room-view.jpg')} alt="Room view in BMR Mobile showing the room overview with Linked badges on the scan, markers, and acoustics connected to the room" style={{width: '100%', borderRadius: '12px'}} />
+  </div>
+</div>
+
+---
+
+## <Icon name="circle-check" size="1em" /> Moving a room
+
+To move a room to a different organisation or location, open the Room Overview page, tap **Edit**, choose the new organisation and location, and save. See the [FAQ](faq) for a quick reference.
+
+---
+
+## <Icon name="chevron-right" size="1em" /> Related
+
+- [Reading Acoustic Results](../acoustics/reading-acoustic-results) — the room's MOS score and measurements.
+- [BMR Studio](../lifecycle/design/bmr-studio) — the active Design and versions.
+- [Markers](../lifecycle/discovery/markers) — the linked markers shown on the room.

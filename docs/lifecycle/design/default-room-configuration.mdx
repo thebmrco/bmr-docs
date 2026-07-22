@@ -3,20 +3,69 @@ title: Default Room Configuration
 ---
 
 import Icon from '@site/src/components/Icon'
+import useBaseUrl from '@docusaurus/useBaseUrl'
 
 # <Icon name="catalog" size="1em" /> Default Room Configuration
 
-Default Room Configurations let organisation admins define **recommended equipment setups** based on room size and usage type. When a user designs a room in BMR Studio, matching configurations surface automatically — making it fast to apply consistent standards across an entire portfolio.
+Default Room Configurations let organisation admins define **recommended equipment setups** for a given **room size range**. When a user designs a room in BMR Studio whose size falls within that range, the matching configuration surfaces automatically — making it fast to apply consistent standards across an entire portfolio.
+
+There are two stages:
+
+1. **Set up a configuration** — an organisation admin defines it once, on the Organisation page.
+2. **Use it in BMR Studio** — when someone designs a matching room, the recommendation surfaces in the Guidelines panel, ready to place.
 
 ---
 
-## <Icon name="circle-check" size="1em" /> How It Works
+## <Icon name="admin-settings" size="1em" /> Part 1 — Setting up a configuration
 
-1. **Define a configuration** — set a name, room size range (minimum and maximum square meters), usage type, and a description.
-2. **Select equipment** — browse the full BMR equipment catalog and pick the recommended items with quantities. Equipment is organised by category (displays, chairs, tables, video bars, etc.).
+Default Room Configurations are set up under the **Default Room Configurations** tab on the Organisation page at **[app.bettermeetingrooms.com](https://app.bettermeetingrooms.com)**. Existing configurations are listed here, and **Create New Room Configuration** starts a new one.
+
+<img
+  src={useBaseUrl('/img/release/2026-07-drc-list.png')}
+  alt="Default Room Configurations tab on the Organisation page listing an existing configuration, with a Create New Room Configuration button"
+  style={{width: '100%', borderRadius: '10px', border: '1px solid #E5E5D5', margin: '1rem 0'}}
+/>
+
+1. **Define the configuration** — set a **name**, a **room size range** (minimum and maximum square meters), and a **description**.
+2. **Select suggested equipment** — search the **catalog** and add the recommended items with quantities. Equipment is organised by category (displays, video bars, tables, chairs, control devices, etc.), and your selection builds up in the **Selected** panel on the left.
 3. **Save** — the configuration is stored at the organisation level and applies to all rooms in the organisation.
 
-When a user opens **BMR Studio** to design a room that falls within the defined size range, the recommended configuration appears in the sidebar under **Room guidelines**. The user can review the suggested items and place them directly into the design — or choose their own equipment instead.
+:::danger The size range is what triggers the configuration
+The **minimum** and **maximum size in square meters** are the most important settings — they decide **which rooms this configuration applies to**. A configuration only surfaces in BMR Studio when the room's size falls **within that range**.
+
+- **Both values are required.** Set the minimum *and* the maximum — a configuration without a valid range will not trigger for any room.
+- **Ranges can overlap.** More than one configuration can apply to the same room size, so a room can match **several configurations** at once — all matching ones surface in BMR Studio.
+- A room whose size falls outside every configured range simply gets no recommendation.
+:::
+
+<img
+  src={useBaseUrl('/img/release/2026-07-drc-create-form.png')}
+  alt="Create New Room Configuration form with name, minimum and maximum size, description, and the suggested equipment picker"
+  style={{width: '100%', borderRadius: '10px', border: '1px solid #E5E5D5', margin: '1rem 0'}}
+/>
+
+<img
+  src={useBaseUrl('/img/release/2026-07-drc-equipment.png')}
+  alt="Suggested equipment selected in a room configuration, grouped by category in the Selected panel with quantities"
+  style={{width: '100%', borderRadius: '10px', border: '1px solid #E5E5D5', margin: '1rem 0'}}
+/>
+
+---
+
+## <Icon name="palette" size="1em" /> Part 2 — Placing the equipment in BMR Studio
+
+When a user opens **BMR Studio** to design a room, any configuration whose size range covers that room appears in the **Guidelines** panel. The panel tracks progress against the configuration:
+
+- **Fulfilled categories** are marked as met, so you can see at a glance what the design already covers.
+- **Missing categories** are listed with a **Place in room** action — one click adds the recommended item directly, without switching to the Catalog.
+
+The user can follow the guidelines exactly, place only the missing items, or choose their own equipment instead — the recommendation is a starting point, not a lock.
+
+<img
+  src={useBaseUrl('/img/release/2026-07-guidelines-default-room-config.png')}
+  alt="Guidelines panel showing Default Room Configuration categories with fulfilled and missing items and a Place in room action"
+  style={{width: '100%', borderRadius: '10px', border: '1px solid #E5E5D5', margin: '1rem 0'}}
+/>
 
 ---
 
@@ -36,21 +85,18 @@ An organisation could define the following configurations:
 
 | Configuration | Size Range | Suggested Equipment |
 |---|---|---|
-| Small Huddle | 10–20 sq m | Room Bar, single 55" display, 4 chairs, 1 table |
-| Medium Meeting | 20–40 sq m | Room Bar, dual 65" displays, 6 chairs, 1 table |
-| Large Boardroom | 40–80 sq m | Codec, 3 ceiling mics, dual 75" displays, 14 chairs, 1 table |
+| Small Huddle | 10–20 m² | Room Bar, single 55" display, 4 chairs, 1 table |
+| Medium Meeting | 20–40 m² | Room Bar, dual 65" displays, 6 chairs, 1 table |
+| Large Boardroom | 40–80 m² | Codec, 3 ceiling mics, dual 75" displays, 14 chairs, 1 table |
 
-When a designer opens a 30 sq m room in BMR Studio, the "Medium Meeting" recommendation appears automatically.
+When a designer opens a **30 m²** room in BMR Studio, its size falls in the 20–40 m² band, so the **"Medium Meeting"** recommendation appears automatically. Ranges can overlap — if another configuration also covered 30 m², both would surface, and the designer chooses which to follow. A room outside every band gets no recommendation.
 
 ---
 
-## <Icon name="admin-settings" size="1em" /> Managing Configurations
+## <Icon name="edit" size="1em" /> Managing Configurations
 
-Default Room Configurations are managed under the **Default Room Configurations** tab on the Organisation page at **[app.bettermeetingrooms.com](https://app.bettermeetingrooms.com)**.
+From the same **Default Room Configurations** tab, organisation admins can also:
 
-Organisation admins can:
-
-- Create new configurations
 - Edit existing configurations (size range, equipment, quantities)
 - Delete configurations that are no longer needed
 

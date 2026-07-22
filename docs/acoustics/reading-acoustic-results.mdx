@@ -1,0 +1,64 @@
+---
+title: Reading Acoustic Results on the Web
+sidebar_label: Reading Acoustic Results
+description: How the redesigned web acoustics page presents a room's acoustic score, RT60, measurement list, and where each measurement was taken.
+---
+
+import Icon from '@site/src/components/Icon'
+import useBaseUrl from '@docusaurus/useBaseUrl'
+
+# <Icon name="acoustics" size="1em" /> Reading Acoustic Results on the Web
+
+Once an [acoustic measurement](acoustics-guide) is uploaded, you review it on the web platform at **[app.bettermeetingrooms.com](https://app.bettermeetingrooms.com)**. The acoustics page is designed to put the most important information first and make it easy to compare measurements.
+
+For how the underlying numbers are calculated, see [Understanding the MOS Score](mos-score).
+
+---
+
+## <Icon name="target" size="1em" /> What the page shows
+
+The acoustics page leads with the two figures that matter most, then supports them with detail:
+
+- **Overall acoustic score** and **average RT60** at the top — the headline read on how the room performs.
+- A **compact measurement list** — every measurement taken in the room, so you can open, compare, and manage them.
+- A **Room scan & measurement positions** view *(beta)* — see below.
+
+The **MOS score is always shown on the Room Overview** too, using the linked measurement when one is set and otherwise the latest measurement. See [The Room Page](../getting-started/room-page).
+
+---
+
+## <Icon name="marker" size="1em" /> Room scan & measurement positions *(beta)*
+
+The page includes a **Room scan & measurement positions** view that shows exactly where each part of the measurement happened, laid over the room's scan:
+
+- The **speaker** position.
+- Each **measurement point** (A, B, C) where a reading was taken.
+
+Because BMR Mobile now pinpoints these locations during the [measurement flow](acoustics-guide), you can see the spatial spread of a measurement — how far apart the points were, and where they sat relative to the speaker and the room — rather than reading numbers in isolation.
+
+<img
+  src={useBaseUrl('/img/release/2026-07-acoustics-positions.png')}
+  alt="Redesigned acoustics page with overall acoustic score, average RT60, measurement list, and a room plan showing the speaker and measurement positions"
+  style={{width: '100%', maxWidth: '900px', display: 'block', margin: '1rem auto', borderRadius: '8px', border: '1px solid #E5E5D5'}}
+/>
+
+:::info Beta view
+The measurement positions view is in **beta**. Positions are shown for measurements taken with a version of BMR Mobile that records them — older measurements may not have position data.
+:::
+
+---
+
+## <Icon name="audio-lines" size="1em" /> Supporting charts
+
+Each measurement also surfaces the detail charts described in [Understanding the MOS Score](mos-score):
+
+- The **T20 (RT60) chart**, plotting only the frequency bands the platform considers valid, with invalid bands shaded and labelled.
+- The **ambient noise chart**, with Ideal / Acceptable / Too loud acceptability zones.
+
+---
+
+## <Icon name="chevron-right" size="1em" /> Related
+
+- [BMR Mobile Acoustics Tutorial](acoustics-guide) — capture a measurement.
+- [Understanding the MOS Score](mos-score) — what the score and charts mean.
+- [The Room Page](../getting-started/room-page) — where the room's MOS score and linked measurement appear.

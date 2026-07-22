@@ -3,6 +3,7 @@ title: BMR Mobile Acoustics Tutorial
 ---
 
 import Icon from '@site/src/components/Icon'
+import useBaseUrl from '@docusaurus/useBaseUrl'
 import Admonition from '@theme/Admonition'
 import StepTabs, { DocImg } from '@site/src/components/StepTabs'
 
@@ -10,7 +11,7 @@ import StepTabs, { DocImg } from '@site/src/components/StepTabs'
 
 Capture accurate acoustic data from your meeting room using BMR Mobile on iPhone or iPad. The measurement gives you **reverberation time (RT60)** and a **Mean Opinion Score (MOS)** — the foundation for any acoustic improvement recommendation.
 
-BMR Mobile guides you through a **5-step flow**, taking measurements at three positions in the room for a reliable, representative result.
+BMR Mobile guides you through a step-by-step flow, taking measurements at three positions in the room for a reliable, representative result. Before the flow begins, a **Confirm Room** screen ties the measurement to the correct room and its scan, and each position is spatially located within the room so the speaker and measurement points can be shown later on the Web.
 
 ---
 
@@ -33,10 +34,27 @@ BMR Mobile guides you through a **5-step flow**, taking measurements at three po
 
 <StepTabs steps={[
   {
+    title: "Confirm room",
+    content: (
+      <>
+        <h3>1) Confirm the room</h3>
+        <p>Before anything else, BMR Mobile shows a <strong>Confirm Room</strong> screen with the room's name and 3D scan thumbnail. This ensures the measurement is tied to the correct room and its scan.</p>
+        <ul>
+          <li>Check that the name and scan thumbnail match the room you are actually in</li>
+          <li>Tap <strong>Confirm</strong> to continue</li>
+          <li>If it does not match, tap <strong>Exit</strong> and open the right room first</li>
+        </ul>
+        <div className="phone-screenshot">
+          <DocImg src="/img/release/2026-07-confirm-room.jpg" alt="Confirm Room screen showing the room name and 3D scan thumbnail with Exit and Confirm buttons" />
+        </div>
+      </>
+    ),
+  },
+  {
     title: "Device selection",
     content: (
       <>
-        <h3>1) Select devices</h3>
+        <h3>2) Select devices</h3>
         <p>Select your input (microphone) and output (speaker) devices. Tap the <strong>Output device</strong> card to choose your speaker — <strong>Bluetooth</strong>, <strong>AirPlay</strong>, <strong>USB-C</strong>, and <strong>HDMI</strong> connections are all supported.</p>
         <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
           <div className="phone-screenshot"><DocImg src="/img/release/2026-03-Step1-1-Select-speaker.jpg" alt="Device selection — choose output and input devices" /></div>
@@ -50,8 +68,8 @@ BMR Mobile guides you through a **5-step flow**, taking measurements at three po
     title: "Room setup",
     content: (
       <>
-        <h3>2) Room setup</h3>
-        <p>Keep the speaker at least <strong>1 m / 3 ft from the wall</strong>. Capture a photo of the speaker by aligning the crosshair, then confirm the location.</p>
+        <h3>3) Room setup</h3>
+        <p>Keep the speaker at least <strong>1 m / 3 ft from the wall</strong>. Capture a photo of the speaker by aligning the crosshair, then confirm the location. Updated room detection pinpoints exactly where the <strong>speaker</strong> — and later each <strong>measurement point</strong> — sits within the room, so their positions can be shown on the Web.</p>
         <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
           <div className="phone-screenshot"><DocImg src="/img/release/2026-03-Step2-1-Room-setup.jpg" alt="Room setup — speaker placement instructions" /></div>
           <div className="phone-screenshot"><DocImg src="/img/release/2026-03-Step2-2-Capture-speaker.jpg" alt="AR camera — align crosshair with speaker" /></div>
@@ -64,7 +82,7 @@ BMR Mobile guides you through a **5-step flow**, taking measurements at three po
     title: "Adjust volume",
     content: (
       <>
-        <h3>3) Adjust volume &amp; noise floor test</h3>
+        <h3>4) Adjust volume &amp; noise floor test</h3>
         <p>Adjust the speaker volume and run the noise floor test. The app compares ambient noise to the speaker level — a minimum difference of <strong>25 dB</strong> is required for accurate measurement.</p>
         <ul>
           <li>Be quiet and tap <strong>Test</strong> to start the noise floor check</li>
@@ -85,7 +103,7 @@ BMR Mobile guides you through a **5-step flow**, taking measurements at three po
     title: "Measure",
     content: (
       <>
-        <h3>4) Measure at three positions</h3>
+        <h3>5) Measure at three positions</h3>
         <p>The app guides you through three measurement positions (A, B, C). At each position, tap <strong>Start Measurement</strong>, then stay still and silent while the sweep plays.</p>
         <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
           <div className="phone-screenshot"><DocImg src="/img/release/2026-03-Acoustic-measurement-a.jpg" alt="Measurement at position A" /></div>
@@ -104,7 +122,7 @@ BMR Mobile guides you through a **5-step flow**, taking measurements at three po
     title: "Results",
     content: (
       <>
-        <h3>5) Review &amp; save results</h3>
+        <h3>6) Review &amp; save results</h3>
         <p>Review MOS and average RT60 across all positions, then tap <strong>Save Results</strong>.</p>
         <div className="phone-screenshot">
           <DocImg src="/img/release/2026-03-Acoustic-measurement-finished.jpg" alt="Results screen showing MOS and average RT60" />
@@ -140,6 +158,25 @@ Hand claps are inconsistent — use only as a last resort. The balloon method is
 2. **Pop the balloon** (held ~30 cm from the device) or clap sharply once when prompted.
 3. Remain silent for ~3 seconds while the app captures the decay.
 4. Review and save results.
+
+Balloon and impulse measurements now surface **ambient noise** alongside the impulse result — the same context you get with the sweep flow — so you can interpret the number the same way regardless of method.
+
+---
+
+## <Icon name="offline-mode" size="1em" /> Measuring Offline
+
+No connection? The full acoustic measurement — including the three-position guided flow — works **without the network**.
+
+- Run the measurement exactly as you would online.
+- Add a short **note** describing where you took the measurement, so you can identify it later.
+- The measurement queues up in the **Notifications** tab.
+- When you are back online, upload each measurement individually and assign it to the right room.
+
+<img
+  src={useBaseUrl('/img/release/2026-07-offline-name-room.jpg')}
+  alt="No Internet Connection screen with a text field to add a room name or description before saving the measurement offline"
+  style={{width: '200px', display: 'block', margin: '1rem auto', borderRadius: '12px'}}
+/>
 
 ---
 

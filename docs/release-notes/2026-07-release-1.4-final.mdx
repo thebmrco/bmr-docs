@@ -1,0 +1,384 @@
+---
+title: Release 1.4 2026 July
+description: A major BMR Studio upgrade with automatic design versioning, improved structural editing with surface materials from the scan, smarter cable routing with outlets and tidy bundles, a redesigned Room Overview and acoustics experience on the Web, and an improved acoustic measurement flow with room confirmation, precise measurement positions, and full offline support in BMR Mobile.
+---
+
+import {
+  LayoutGrid,
+  DoorOpen,
+  History,
+  Cable,
+  AudioLines,
+  LineChart,
+  LayoutDashboard,
+  MapPin,
+  UserPlus,
+  Smartphone,
+  CircleCheck,
+  ListChecks,
+  WifiOff,
+  Scan,
+  StickyNote,
+  Bell,
+} from "lucide-react";
+
+# Release 1.4 2026 July
+
+This release brings a major upgrade to **BMR Studio** — automatic design versioning, improved structural editing, and smarter cable routing — alongside a redesigned **Room Overview**, a new **acoustics experience** on the Web, and an improved acoustic measurement flow in BMR Mobile.
+
+It also includes everything previously shipped in the **1.4 BETA** release.
+
+---
+
+## Web Platform
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <LayoutGrid size={18} /> Equipment & Catalog — Place Default Room Configuration items from Guidelines
+  </span>
+</summary>
+
+Recommended equipment from your **Default Room Configuration** can now be placed straight into the room from the **Guidelines** panel — no need to switch to the Catalog. The panel shows which guideline categories are fulfilled and which items are still missing, with a **Place in room** action for anything below guidelines.
+
+Placement itself is smoother too:
+
+- Equipment **stays selected during rotation**, so you can fine-tune without reselecting.
+- Newly placed devices are **auto-selected** and show **Advanced properties** by default.
+
+<img src="/bmr-docs/img/release/2026-07-guidelines-default-room-config.png" alt="Guidelines panel showing Default Room Configuration categories with a Place in room action for missing chairs" style={{width: '100%', maxWidth: '900px', display: 'block', margin: '1rem auto', borderRadius: '8px', border: '1px solid #E5E5D5'}} />
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <DoorOpen size={18} /> BMR Studio — Structural Mode improvements
+  </span>
+</summary>
+
+Structural editing now gives you the full picture from the start:
+
+- **Windows and doors are shown by default** when entering Structural Mode.
+- **Improved behaviour when resizing the room.**
+- **Surface materials and colors from the scan are applied to the generated design** — markers are used to determine and apply surface color and material to walls and floors, so the design more closely resembles the real room.
+
+<img src="/bmr-docs/img/release/2026-07-structural-mode.png" alt="Room design in Structural Mode with doors and windows visible and surface materials applied from the scan" style={{width: '100%', maxWidth: '900px', display: 'block', margin: '1rem auto', borderRadius: '8px', border: '1px solid #E5E5D5'}} />
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <History size={18} /> BMR Studio — Automatic design versioning
+  </span>
+</summary>
+
+Your work is never overwritten:
+
+- **Versions are automatically created when saving or changing mode.** Previous versions can be reviewed, renamed, activated, or deleted at any time from the **Versions** tab.
+- **Save as New Design** is now an option in the top menu — for when you want a separate design rather than a new version.
+- **Designs are now shown as a list** in the room design view, making it easier to identify and open the right design.
+
+<img src="/bmr-docs/img/release/2026-07-design-versions.png" alt="Versions tab showing the automatic version history of a design with Activate, Rename, and Delete actions" style={{width: '100%', maxWidth: '360px', display: 'block', margin: '1rem auto', borderRadius: '8px', border: '1px solid #E5E5D5'}} />
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Cable size={18} /> BMR Studio — Cables & Auto-Routing
+  </span>
+</summary>
+
+Cable planning gets a cleaner, more realistic result:
+
+- **Outlets are now shown in the Cable Guide overview**, giving a complete picture of the room's cabling and connection points.
+- **Improved auto-route cable bundling** — cables sharing a common path are routed together, branching off only at the final drop.
+- New **Tidy Bundles** option for cleaning up cable routing.
+- **Auto-Route** and **Tidy Bundles** are labeled **BETA** to indicate their current working state.
+
+<img src="/bmr-docs/img/release/2026-07-cables-menu.png" alt="Cables tab with Draw Cable, Auto-Route (BETA), Edit Cables, Tidy Bundles (BETA), and Outlets options" style={{width: '100%', maxWidth: '360px', display: 'block', margin: '1rem auto', borderRadius: '8px', border: '1px solid #E5E5D5'}} />
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <AudioLines size={18} /> Acoustics — Ambient noise graph in measurement results
+  </span>
+</summary>
+
+Acoustic measurement results on the Web now include an **ambient noise graph** with **acceptability zones** (Ideal / Acceptable / Too loud), so you can immediately see how background noise compares across measurements and frequencies.
+
+<img src="/bmr-docs/img/release/2026-07-ambient-noise.png" alt="Ambient Noise graph with Ideal, Acceptable, and Too loud acceptability zones and three measurements plotted across frequencies" style={{width: '100%', maxWidth: '900px', display: 'block', margin: '1rem auto', borderRadius: '8px', border: '1px solid #E5E5D5'}} />
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <LineChart size={18} /> Acoustics — Redesigned acoustics page with measurement positions
+  </span>
+</summary>
+
+The acoustics page has been redesigned to put the most important information first: the **overall acoustic score** and **average RT60** at the top, a compact measurement list, and a new **Room scan & measurement positions** view *(beta)* showing exactly where the **speaker** and each **measurement point** were located in the room.
+
+The **MOS score is now always shown on the Room Overview page** — using the linked measurement when available, otherwise the latest one.
+
+<img src="/bmr-docs/img/release/2026-07-acoustics-positions.png" alt="Redesigned acoustics page with overall acoustic score, average RT60, measurement list, and a room plan showing speaker and measurement positions" style={{width: '100%', maxWidth: '900px', display: 'block', margin: '1rem auto', borderRadius: '8px', border: '1px solid #E5E5D5'}} />
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <LineChart size={18} /> Acoustics — Cleaner T20 (RT60) chart
+  </span>
+</summary>
+
+The **T20 (RT60) graph** now only plots reverberation times the backend considers **valid**, so unreliable bands do not distract from the useful data. Fewer misleading spikes; the shape of the curve is easier to read at a glance. Bands that were excluded are shaded and labelled **Invalid measurement**.
+
+<img src="/bmr-docs/img/release/2026-07-rt60-chart.png" alt="T20 - Reverberation Time (RT60) chart with the 125 Hz band shaded orange and labelled Invalid measurement while the valid bands from 250 Hz to 8 kHz form a clean curve" style={{width: '100%', maxWidth: '600px', display: 'block', margin: '1rem auto', borderRadius: '8px', border: '1px solid #E5E5D5'}} />
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <LayoutDashboard size={18} /> New Room Overview
+  </span>
+</summary>
+
+The Room Overview page has got an overhaul with a **new design and more information** — room details, ratings, and capabilities at a glance, plus an **Active** section previewing the **active Design** and the **linked scan, acoustic measurements, and markers** it is based on.
+
+<img src="/bmr-docs/img/release/2026-07-room-overview.png" alt="New Room Overview page showing room information, acoustic score, and the Active section with the active design and its linked scan, acoustics, and markers" style={{width: '100%', maxWidth: '900px', display: 'block', margin: '1rem auto', borderRadius: '8px', border: '1px solid #E5E5D5'}} />
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <MapPin size={18} /> Improved marker viewing
+  </span>
+</summary>
+
+Working with markers in a room is now faster:
+
+- **Move easily from one marker view to the next.**
+- **View all markers in the room at the same time.**
+- Marker options are available from the **top menu**.
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <UserPlus size={18} /> New user onboarding on the Web
+  </span>
+</summary>
+
+New user onboarding is now available from the Web. Users who sign up **without an invitation** are guided through creating their first **Organisation**, **Location**, and **Room** — landing directly in their new workspace instead of an empty experience.
+
+<img src="/bmr-docs/img/release/2026-07-onboarding-welcome.png" alt="Welcome page explaining the user is not part of any organization, with a Get started button to set up a workspace" style={{width: '100%', maxWidth: '900px', display: 'block', margin: '1rem auto', borderRadius: '8px', border: '1px solid #E5E5D5'}} />
+
+A three-step wizard walks the user through the setup:
+
+<div style={{display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', margin: '1rem 0'}}>
+  <div style={{flex: '1 1 260px', maxWidth: '300px'}}>
+    <img src="/bmr-docs/img/release/2026-07-onboarding-organization.png" alt="Step 1 of the onboarding wizard — Name your organization" style={{width: '100%', borderRadius: '8px', border: '1px solid #E5E5D5'}} />
+  </div>
+  <div style={{flex: '1 1 260px', maxWidth: '300px'}}>
+    <img src="/bmr-docs/img/release/2026-07-onboarding-location.png" alt="Step 2 of the onboarding wizard — Add your first location" style={{width: '100%', borderRadius: '8px', border: '1px solid #E5E5D5'}} />
+  </div>
+  <div style={{flex: '1 1 260px', maxWidth: '300px'}}>
+    <img src="/bmr-docs/img/release/2026-07-onboarding-room.png" alt="Step 3 of the onboarding wizard — Create your first room and create the workspace" style={{width: '100%', borderRadius: '8px', border: '1px solid #E5E5D5'}} />
+  </div>
+</div>
+
+</details>
+
+---
+
+## BMR Mobile (iPhone / iPad)
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Smartphone size={18} /> Room view and data improvements
+  </span>
+</summary>
+
+- **Newly created rooms are shown at the top** of the room list.
+- The **active Design** and the **linked scan, markers, and acoustic measurement** are now clearly marked.
+- **Designs can now be deleted** from inside the Room view.
+- A **web-only message** is now shown for VRC designs.
+
+<div style={{display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', margin: '1rem 0'}}>
+  <div className="phone-screenshot" style={{flex: '0 0 200px'}}>
+    <img src="/bmr-docs/img/release/2026-07-mobile-room-view.jpg" alt="Room view in BMR Mobile showing the room overview with Linked badges on the scan, markers, and acoustics connected to the room" style={{width: '100%', borderRadius: '12px'}} />
+  </div>
+</div>
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <CircleCheck size={18} /> Improved acoustic measurement flow
+  </span>
+</summary>
+
+The acoustic measurement flow now anchors every measurement to the right room and the right position:
+
+- At the start, a **Confirm Room** pop-up with the room's scan thumbnail lets you verify which room you are in before starting the measurement. If the thumbnail does not match where you actually are, **Exit** and open the right room first.
+- During the process, **updated room detection** accurately pinpoints the location of the **speaker** and the **measurement points** within the room — powering the new measurement positions view on the Web.
+
+<div style={{display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', margin: '1rem 0'}}>
+  <div className="phone-screenshot" style={{flex: '0 0 200px'}}>
+    <img src="/bmr-docs/img/release/2026-07-confirm-room.jpg" alt="Confirm Room screen showing the room name and 3D scan thumbnail with Exit and Confirm buttons" style={{width: '100%', borderRadius: '12px'}} />
+  </div>
+</div>
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Scan size={18} /> See when BMR Mobile recognises your room
+  </span>
+</summary>
+
+When you start a new **AR Design**, add a new **Marker**, or run a new **Acoustic Measurement** in a scanned room, BMR Mobile now relocalizes against the original scan first — so whatever you capture is anchored to the correct spatial position in the room. You see **Verifying room…** while it looks, then **Room verified** once relocalization succeeds. If BMR Mobile cannot find the room, you can **Retry** or **Continue without verification**.
+
+<div style={{display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', margin: '1rem 0'}}>
+  <div className="phone-screenshot" style={{flex: '0 0 200px'}}>
+    <img src="/bmr-docs/img/release/2026-07-verifying-room.jpg" alt="Verifying room card overlay while BMR Mobile relocalizes against the original scan" style={{width: '100%', borderRadius: '12px'}} />
+  </div>
+  <div className="phone-screenshot" style={{flex: '0 0 200px'}}>
+    <img src="/bmr-docs/img/release/2026-07-room-verified.jpg" alt="Room verified confirmation card overlay after successful relocalization" style={{width: '100%', borderRadius: '12px'}} />
+  </div>
+</div>
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <ListChecks size={18} /> Marker checklist when scanning
+  </span>
+</summary>
+
+A **marker checklist** now guides you while scanning, helping ensure all key elements of the room are captured before you finish — power outlets, network points, existing AV, walls, and ceiling.
+
+<div style={{display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', margin: '1rem 0'}}>
+  <div className="phone-screenshot" style={{flex: '0 0 200px'}}>
+    <img src="/bmr-docs/img/release/2026-07-marker-checklist.jpg" alt="What to capture checklist during scanning listing power outlets, network points, existing AV, walls, and ceiling" style={{width: '100%', borderRadius: '12px'}} />
+  </div>
+</div>
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <AudioLines size={18} /> Ambient noise on impulse measurements
+  </span>
+</summary>
+
+**Balloon** and **impulse** measurements now surface **ambient noise** alongside the impulse result — bringing them in line with the sweep flow so you have the same context for interpreting the number regardless of the method.
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <StickyNote size={18} /> Notes on grouped acoustic measurements
+  </span>
+</summary>
+
+You can now add and edit **notes** on a **group** of related acoustic measurements — not just on individual ones. Useful when a bundled three-position measurement shares a single story that belongs at the group level rather than repeated on each position.
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <WifiOff size={18} /> Better offline support
+  </span>
+</summary>
+
+- **New information and guidance** when working in offline state.
+- **Improved offline acoustic flow** across scan, acoustics, and markers — including adding notes and upload feedback.
+- Full acoustic measurements — including the **three-position guided flow** — now work without the network. Add a short note describing where you took the measurement, and it queues up in the **Notifications** tab. When you are back online, upload each measurement individually and assign it to the right room.
+
+<div style={{display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', margin: '1rem 0'}}>
+  <div className="phone-screenshot" style={{flex: '0 0 200px'}}>
+    <img src="/bmr-docs/img/release/2026-07-offline-name-room.jpg" alt="No Internet Connection screen with a text field to add a room name or description before saving offline" style={{width: '100%', borderRadius: '12px'}} />
+  </div>
+  <div className="phone-screenshot" style={{flex: '0 0 200px'}}>
+    <img src="/bmr-docs/img/release/2026-07-notifications-pending.jpg" alt="Notifications tab showing pending offline acoustic measurements with an Assign Room action" style={{width: '100%', borderRadius: '12px'}} />
+  </div>
+</div>
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Bell size={18} /> Notifications reflect real state
+  </span>
+</summary>
+
+The **bell badge** now counts everything you actually need to act on — unread notifications, tasks, pending no-room archives, failed uploads, and incomplete acoustic measurements. When the badge is 0, there is nothing waiting for you.
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <UserPlus size={18} /> Onboarding flow for new users
+  </span>
+</summary>
+
+New users are now guided through an **onboarding flow** when opening BMR Mobile for the first time. The flow mirrors the Web onboarding — users signing up without an invitation are guided through creating their first **Organisation**, **Location**, and **Room**, right from their iPhone or iPad.
+
+</details>
+
+---
+
+# End of Release Notes
