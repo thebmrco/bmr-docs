@@ -1,0 +1,85 @@
+---
+title: Anatomy of a Catalog Item
+sidebar_label: Item Anatomy
+---
+
+import Icon from '@site/src/components/Icon'
+
+# <Icon name="layout-panel-left" size="1em" /> Anatomy of a Catalog Item
+
+Every item in the catalog is a small database record: a **3D model** plus a set of **fields** that describe what the item is, how big it is, how it connects, and how it behaves in a room. This page documents the fields that apply to **every** item, whatever its category.
+
+Some categories add extra data on top of this shared backbone — a video collaboration device has ports, an acoustic panel has absorption values. Those differences are covered in [Requirements by Category](category-requirements).
+
+:::info Added by BMR, not by users
+These fields are populated by the **BMR team** when an item is added. Customers read them in the catalog and place the item — they don't edit the data.
+:::
+
+---
+
+## <Icon name="circle-check" size="1em" /> The shared backbone
+
+Fields captured for every catalog item:
+
+| Field | What it is |
+|---|---|
+| **Name** | Stable internal identifier / model key — lowercase and underscored |
+| **Display Name** | The human-facing label shown in the catalog |
+| **Brand** | Manufacturer name |
+| **SKU** | Manufacturer part number *(optional)* |
+| **Category** | One of the fixed set — this drives which extra fields apply |
+| **Material** | Primary materials, comma-separated (e.g. *plastic, glass*) |
+| **Description** | Short functional summary of the item |
+| **Color** | Finish, or a note on available options |
+| **Average Price** | Indicative price *(optional)* |
+| **Measurements** | Physical size — width × height × depth |
+| **Link** | Manufacturer product page *(optional)* |
+| **Equipment Image** | Thumbnail shown in the catalog — JPG / PNG / GIF |
+| **GLB Model** | 3D model used in BMR Studio |
+| **USDZ Model** | AR model used on iPhone and iPad |
+| **Features** | Capability flags — see below |
+| **Mounting Types** | Where the item can be placed — see below |
+| **Tags** | Free-form labels for grouping and search *(optional)* |
+
+---
+
+## <Icon name="scan" size="1em" /> Features
+
+Features are simple **capability flags**. They tell the platform what an item can do, which drives placement rules and guidance. An item can have any combination:
+
+| Flag | Meaning |
+|---|---|
+| **Screen** | Has a display surface |
+| **Camera** | Includes a camera |
+| **Microphone** | Includes one or more microphones |
+| **Has Speaker** | Includes audio output |
+| **Touch** | Screen is touch-capable |
+| **Acoustic** | Provides acoustic treatment (see acoustic properties) |
+| **Resizable** | Can be scaled to different sizes |
+| **Reflectivity** | Has a reflective surface relevant to acoustics or optics |
+| **Is Mount** | Is a mounting bracket or fixture for other equipment |
+
+---
+
+## <Icon name="marker" size="1em" /> Mounting types
+
+Where an item can physically go. Used to validate placement in BMR Studio and AR Design:
+
+**Floor** · **Wall** · **Ceiling** · **Rack** · **Table**
+
+---
+
+## <Icon name="rotate-3d" size="1em" /> The 3D model
+
+Two model files back every item:
+
+- **GLB** — used in **BMR Studio** for detailed placement on the web.
+- **USDZ** — used in **AR Design** for real-time rendering on iPhone and iPad.
+
+Both must meet the [3D Model Standards](3d-model-standards). Where an item exposes ports or contains devices (cameras, microphones, speakers, screens), those are positioned on the model in the [3D Configurator](ports-and-devices).
+
+---
+
+:::note This list will grow
+The catalog is an evolving data layer. As new fields are introduced — for example additional physical, acoustic, or connectivity attributes — they are added here. Fields that exist only to serve a specific external tool are intentionally left out of this first version.
+:::

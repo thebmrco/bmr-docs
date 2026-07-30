@@ -1,0 +1,80 @@
+---
+title: Requirements by Category
+sidebar_label: Category Requirements
+---
+
+import Icon from '@site/src/components/Icon'
+
+# <Icon name="filter" size="1em" /> Requirements by Category
+
+Every item shares the [common backbone](item-anatomy) — name, model, dimensions, image. On top of that, the data an item needs **depends on its category**. A video collaboration device needs ports and placed devices; an acoustic panel needs absorption values; a chair needs none of that.
+
+The catalog has many categories, but they group into a handful of **families** that share a data profile.
+
+---
+
+## <Icon name="equipment" size="1em" /> Category families
+
+### <Icon name="monitor" size="1em" /> AV & Video Collaboration
+
+Screens, video bars, codecs, cameras, microphones, speakers, control devices and other AV gear.
+
+- **Ports** — the connectors the device exposes, used for cable routing
+- **Placed devices** — cameras, microphones, speakers and screens positioned on the 3D model, used for coverage overlays
+- Relevant **feature flags** — Screen, Camera, Microphone, Has Speaker, Touch, Is Mount
+
+### <Icon name="acoustics" size="1em" /> Acoustic Treatment
+
+Panels, clouds and bass traps.
+
+- **Absorption values** per octave band — 125 Hz to 8 kHz
+- **Per-unit toggle** — interpret values per square metre (default) or per unit (bass traps)
+- **Panel width and height** — used for area-based acoustic calculations
+- Feature flag — Acoustic
+
+### <Icon name="room" size="1em" /> Furniture & Décor
+
+Chairs, tables, plants, boxes and similar.
+
+- Size, colour, material, image and 3D model
+- Mounting — typically Floor or Table
+- No ports, no acoustic data
+
+### <Icon name="link" size="1em" /> Connectivity & Mounting
+
+Outlets and mounting hardware.
+
+- **Outlets** carry **ports** and appear in the Cable Guide as connection points
+- **Mounting hardware** sets the **Is Mount** flag and its compatible surfaces
+
+### <Icon name="copy" size="1em" /> Composite & Unclassified
+
+Bundles group several items together; *Other* and *Uncategorized* are the catch-all while an item is being triaged.
+
+---
+
+## <Icon name="circle-check" size="1em" /> Requirement matrix
+
+What each family needs on top of the shared backbone. **●** required · **○** optional / when known · **—** not applicable.
+
+| Data | AV / Video | Acoustic | Furniture | Outlets / Mount |
+|---|:--:|:--:|:--:|:--:|
+| Identity (Name, Display, Brand) | ● | ● | ● | ● |
+| SKU | ○ | ○ | ○ | ○ |
+| Measurements | ● | ● | ● | ● |
+| Material / Color | ○ | ● | ● | ○ |
+| Image | ● | ● | ● | ● |
+| GLB model | ● | ● | ● | ● |
+| USDZ model | ● | ● | ● | ○ |
+| Feature flags | ● | ● | ○ | ● |
+| Mounting types | ● | ● | ● | ● |
+| Ports (In / Out) | ● | — | — | ● |
+| Placed devices (camera / mic / speaker / screen) | ● | — | — | — |
+| Absorption bands (125 Hz – 8 kHz) | — | ● | — | — |
+| Panel width × height | — | ● | — | — |
+
+---
+
+:::note An evolving profile
+As new fields are added to the catalog, they slot into this matrix as new rows — the families stay the same, the data they carry grows over time.
+:::

@@ -1,0 +1,59 @@
+---
+title: Ports, Devices & Configurator
+sidebar_label: Ports & Devices
+---
+
+import Icon from '@site/src/components/Icon'
+
+# <Icon name="link" size="1em" /> Ports, Devices & Configurator
+
+For items that connect to other equipment or sense the room — mainly the [AV & video collaboration family](category-requirements) — a 3D model isn't enough on its own. The platform also needs to know **where the connectors are** and **where the active parts sit**. That's what the **3D Equipment Configurator** captures.
+
+The configurator sits on the item's 3D model and holds two kinds of information: **ports** and **placed devices**.
+
+---
+
+## <Icon name="link" size="1em" /> Ports
+
+A **port** is a physical connector on the item. Each port has:
+
+- **Name** — a label, e.g. *HDMI 1*, *Power 1*
+- **Type** — the connector kind, e.g. HDMI, Power
+- **Direction** — **In**, **Out**, or both
+
+Ports drive **cable routing**. When two items are connected in a design, their ports determine which cables are needed and how they run. **Outlets** are modelled the same way — their ports appear in the Cable Guide as the room's connection points.
+
+---
+
+## <Icon name="scan" size="1em" /> Placed devices
+
+A **device** is an active component positioned on the model — a **camera**, **microphone**, **speaker**, or **screen**. Placing a device records *where* on the item it lives, so the platform can reason about what it covers.
+
+Placed devices drive **coverage overlays** in BMR Studio:
+
+- a **camera** contributes a field of view,
+- a **microphone** a pickup range,
+- a **speaker** a coverage area,
+- a **screen** a visibility zone.
+
+---
+
+## <Icon name="rotate-3d" size="1em" /> How it's configured
+
+Ports and devices are positioned directly on the 3D model using the configurator: pick **Place Port** (or the device type), then click the point on the model surface where it belongs. Each placement is saved with the item, so every instance dropped into a room carries the same connectors and coverage.
+
+:::info Set up by BMR
+Like the rest of an item's data, ports and placed devices are configured by the **BMR team** when the item is added to the catalog.
+:::
+
+---
+
+## <Icon name="info" size="1em" /> Which items need this
+
+| Family | Ports | Placed devices |
+|---|:--:|:--:|
+| AV & Video Collaboration | ● | ● |
+| Connectivity (Outlets) | ● | — |
+| Acoustic, Furniture, Mounting | — | — |
+
+See [Requirements by Category](category-requirements) for the full picture.

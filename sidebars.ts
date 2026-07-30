@@ -46,9 +46,22 @@ const sidebars: SidebarsConfig = {
           items: [
             'lifecycle/design/bmr-studio',
             'lifecycle/design/ar-design-guide',
-            'lifecycle/design/equipment-catalog',
-            'lifecycle/design/3d-model-standards',
             'lifecycle/design/default-room-configuration',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Catalog & 3D Models',
+          link: {
+            type: 'doc',
+            id: 'catalog/index',
+          },
+          items: [
+            'catalog/item-anatomy',
+            'catalog/category-requirements',
+            'catalog/3d-model-standards',
+            'catalog/ports-and-devices',
+            'catalog/requesting-items',
           ],
         },
         'lifecycle/maintenance/index',
