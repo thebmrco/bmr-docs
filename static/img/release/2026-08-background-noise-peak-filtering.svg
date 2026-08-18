@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 400" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" role="img" aria-label="A-weighted background-noise level over time. A wavy black curve with several transient peaks. A dashed grey line labelled BEFORE sits high, near 31 dB(A), pulled up by the peaks. A solid green line labelled NOW sits low, near 27.6 dB(A), tracking the true noise floor once peaks are filtered out.">
+  <!-- background -->
+  <rect x="0" y="0" width="1000" height="400" fill="#f0f0ee" rx="8"/>
+
+  <!-- shaded settling region (right side) -->
+  <rect x="660" y="20" width="320" height="310" fill="#e3e3df"/>
+
+  <!-- horizontal grid lines (28, 30, 32, 34) -->
+  <g stroke="#d7d7d2" stroke-width="1">
+    <line x1="90" y1="278.3" x2="980" y2="278.3"/>
+    <line x1="90" y1="209.4" x2="980" y2="209.4"/>
+    <line x1="90" y1="140.6" x2="980" y2="140.6"/>
+    <line x1="90" y1="71.7"  x2="980" y2="71.7"/>
+  </g>
+
+  <!-- vertical grid lines (1.6 .. 0.0) -->
+  <g stroke="#d7d7d2" stroke-width="1">
+    <line x1="201.25" y1="20" x2="201.25" y2="330"/>
+    <line x1="312.5"  y1="20" x2="312.5"  y2="330"/>
+    <line x1="423.75" y1="20" x2="423.75" y2="330"/>
+    <line x1="535"    y1="20" x2="535"    y2="330"/>
+    <line x1="646.25" y1="20" x2="646.25" y2="330"/>
+    <line x1="757.5"  y1="20" x2="757.5"  y2="330"/>
+    <line x1="868.75" y1="20" x2="868.75" y2="330"/>
+  </g>
+
+  <!-- axes -->
+  <g stroke="#2a2a2a" stroke-width="1.5">
+    <line x1="90" y1="20" x2="90" y2="330"/>
+    <line x1="90" y1="330" x2="980" y2="330"/>
+  </g>
+
+  <!-- BEFORE dashed line -->
+  <line x1="90" y1="168.1" x2="980" y2="168.1" stroke="#8c8c8c" stroke-width="2" stroke-dasharray="12 8"/>
+  <!-- NOW solid green line -->
+  <line x1="90" y1="292.1" x2="980" y2="292.1" stroke="#16a34a" stroke-width="2.5"/>
+
+  <!-- measured level curve -->
+  <path fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"
+    d="M 90,82
+       C 112.2,82 123.4,61.3 145.6,61.3
+       C 190.1,61.3 212.4,171.6 256.9,171.6
+       C 301.4,171.6 323.6,88.9 368.1,88.9
+       C 434.9,88.9 468.2,295.6 535,295.6
+       C 590.6,295.6 618.5,54.4 674.1,54.4
+       C 718.6,54.4 740.8,278.3 785.3,278.3
+       C 796.4,278.3 802,281.7 813.1,281.7
+       C 835.4,281.7 846.5,285 868.75,285
+       C 891.0,285 902.1,278.3 924.4,278.3
+       C 946.6,278.3 957.8,292.1 980,292.1"/>
+
+  <!-- BEFORE / NOW text labels -->
+  <text x="198" y="160" fill="#7c7c7c" font-size="20" font-weight="700" letter-spacing="1">BEFORE</text>
+  <text x="198" y="284" fill="#16a34a" font-size="20" font-weight="700" letter-spacing="1">NOW</text>
+
+  <!-- y-axis tick labels -->
+  <g fill="#3a3a3a" font-size="17" text-anchor="end">
+    <text x="78" y="284">28</text>
+    <text x="78" y="215">30</text>
+    <text x="78" y="146">32</text>
+    <text x="78" y="77">34</text>
+  </g>
+
+  <!-- x-axis tick labels -->
+  <g fill="#3a3a3a" font-size="17" text-anchor="middle">
+    <text x="90"     y="352">1.6</text>
+    <text x="201.25" y="352">1.4</text>
+    <text x="312.5"  y="352">1.2</text>
+    <text x="423.75" y="352">1.0</text>
+    <text x="535"    y="352">0.8</text>
+    <text x="646.25" y="352">0.6</text>
+    <text x="757.5"  y="352">0.4</text>
+    <text x="868.75" y="352">0.2</text>
+    <text x="980"    y="352">0.0</text>
+  </g>
+
+  <!-- axis titles -->
+  <text x="535" y="384" fill="#2a2a2a" font-size="18" text-anchor="middle">time</text>
+  <text x="26" y="175" fill="#2a2a2a" font-size="18" text-anchor="middle" transform="rotate(-90 26 175)">A-weighted level, dB(A)</text>
+</svg>

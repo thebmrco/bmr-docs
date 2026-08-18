@@ -7,33 +7,92 @@ import Icon from '@site/src/components/Icon'
 
 # <Icon name="mail" size="1em" /> Requesting a Catalog Item
 
-The catalog is **managed entirely by the BMR team**. You don't add or edit items yourself — instead you **request** an addition, and BMR builds the complete entry: the data, the 3D model, and any ports or devices.
+The catalog is **managed entirely by the BMR team**. You don't add or edit items yourself — you **request** an addition, and BMR builds the complete entry: the data, the 3D models, and any ports or devices.
+
+This page is the checklist: **exactly what to send us** so an item can be added, broken down by category.
+
+:::tip Send it however you have it
+You don't need to format anything or fill in a form. A **datasheet**, a **product-page link**, or a few lines in an **email** is enough — BMR structures the data and builds the 3D model. The lists below just make sure nothing essential is missing, so your item can be added without back-and-forth.
+:::
 
 ---
 
-## <Icon name="circle-check" size="1em" /> How it works
+## <Icon name="circle-check" size="1em" /> What we always need
 
-1. **You request an item** — via **[Send Feedback](../getting-started/send-feedback)** (*Report an Issue* in the Web header, or *Send Feedback* under Settings in BMR Mobile). Tell us the item's name, brand, and what it's for.
-2. **BMR gathers the data** — dimensions, materials, features, and any category-specific data such as ports or acoustic values. See [Anatomy of a Catalog Item](item-anatomy) and [Requirements by Category](category-requirements) for what that covers.
-3. **BMR prepares the 3D model** — built or sourced and exported to the [3D Model Standards](3d-model-standards), then configured with [ports and devices](ports-and-devices) where relevant.
-4. **The item is published** — added to the appropriate catalog and available to place in BMR Studio and AR Design.
+The essentials that identify and size **any** component:
+
+| Information | Expected format / example |
+|---|---|
+| **SKU / model number** | Manufacturer part number, exactly as printed on the product or label (e.g. `98UH5J-H`). **The most important field** — it uniquely identifies the exact component |
+| **Brand / manufacturer** | Company name (e.g. the maker) |
+| **Product name** | The item's commercial name (e.g. *Display 98"*) |
+| **Category** | One catalog category — display, video bar, acoustic panel, chair, extender, … |
+| **Product link or datasheet** | A manufacturer product-page URL or a datasheet PDF |
+| **Dimensions** | Width × height × depth, in **mm** |
+| **Colour** | Colour name or finish (e.g. *black*); list options if several. Required for **every** item, A/V included |
+| **Material** | Primary materials, comma-separated (e.g. *plastic, glass*) — especially furniture and acoustic items |
+| **Where it goes** | One or more of: floor · wall · ceiling · rack · table |
+| **Photo** *(optional)* | A product image, if handy |
+
+Then, depending on the category, a little more.
 
 ---
 
-## <Icon name="info" size="1em" /> What to include in a request
+## <Icon name="filter" size="1em" /> What we need by category
 
-The more you can tell us, the faster the item is ready:
+### <Icon name="monitor" size="1em" /> Video collaboration & AV devices
 
-- **Name and brand** of the item
-- **Category** it belongs to (display, video bar, acoustic panel, chair, outlet, …)
-- A **product link** or datasheet, if you have one
-- Where it will be **placed** (floor / wall / ceiling / table)
+*Displays, video bars, codecs, cameras, microphones, speakers, control devices, boards, audio/video extenders & converters, other AV gear.*
+
+| What to send | Expected format / example |
+|---|---|
+| **Connectors / ports** | One entry per connector: its **type** and **direction** (input, output, or both). Types — HDMI, USB-C, USB-A, RJ45 (network), HDBaseT, SDI, 3.5 mm, power, … E.g. *HDMI × 2 (in), HDMI (out), RJ45 (in), Power (in)* |
+| **Signal formats — extenders & converters** | For devices that carry or convert signal between formats, list the **input format(s)** and **output format(s)** separately — they often differ. E.g. *HDMI in → HDBaseT/Cat out*, *USB-C in → HDMI out* |
+| **Capabilities** | Which of these it has: **camera · microphone · speaker · screen · touch** |
+| **Spec sheet** | Manufacturer datasheet (PDF) or product-page link — usually lists the ports and capabilities above |
+
+### <Icon name="acoustics" size="1em" /> Acoustic treatment
+
+*Acoustic panels, clouds, bass traps.*
+
+| What to send | Expected format / example |
+|---|---|
+| **Absorption coefficients** | One value per octave band — **125, 250, 500 Hz, 1, 2, 4, 8 kHz** — as decimals `0.00`–`1.00`, or the datasheet that lists them |
+| **Rating basis** | Per **square metre** (default) or per **unit** (typical for bass traps) |
+| **Panel size** | Width × height × **thickness**, in mm |
+| **Mounting** | Wall, ceiling, or free-standing |
+| **Colour / finish options** | Available colours or fabric options |
+
+### <Icon name="room" size="1em" /> Furniture & décor
+
+*Chairs, tables, plants, boxes.*
+
+No extra fields — the essentials above cover it: **dimensions, colour, material,** and where it stands.
+
+### <Icon name="marker" size="1em" /> Mounting hardware
+
+| What to send | Expected format / example |
+|---|---|
+| **What it mounts** | The equipment type it holds (e.g. *display*, *video bar*) |
+| **Compatible surfaces** | One or more of: wall · ceiling · floor · rack |
+| **Load / size limits** *(if specified)* | Max weight or screen size supported |
 
 ---
 
-## <Icon name="rotate-3d" size="1em" /> Supplying a 3D model
+## <Icon name="rotate-3d" size="1em" /> What BMR handles — you don't send these
 
-If you or a manufacturer already have a 3D model, it can be submitted directly — as long as it meets the [3D Model Standards](3d-model-standards). BMR reviews every model against those standards before it's published.
+- The **3D models** — GLB for BMR Studio and USDZ for AR — built to our [3D Model Standards](3d-model-standards)
+- Placement of **ports and devices** on the model (see [Ports & Devices](ports-and-devices))
+- The internal identifier and all catalog wiring
+- Catalog **images**, which we can usually pull from the product page
+
+If you *already have* a 3D model, send it too — we'll check it against the [3D Model Standards](3d-model-standards) before publishing.
+
+---
+
+## <Icon name="mail" size="1em" /> How to send a request
+
+Use **[Send Feedback](../getting-started/send-feedback)** — *Report an Issue* in the Web header, or *Send Feedback* under Settings in BMR Mobile. Attach the datasheet or link and we'll take it from there.
 
 :::info Self-service is on the roadmap
 Today all catalog changes go through the BMR team. Self-service catalog management for organisation admins is planned, which will let admins curate their own catalogs directly.

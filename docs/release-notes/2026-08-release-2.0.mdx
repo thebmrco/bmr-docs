@@ -1,0 +1,272 @@
+---
+title: Release 2.0 2026 August
+description: A full Liquid Glass redesign of the iOS app (iOS 26), a role-aware home screen, a rebuilt AR Design flow (beta), new cabling infrastructure with auto-generated documentation in BMR Studio (beta), read-only design sharing, and a smarter MOS score that now factors in the room's background noise.
+---
+
+import {
+  Sparkles,
+  LayoutDashboard,
+  Rotate3d,
+  Cable,
+  Replace,
+  Save,
+  Share2,
+  AudioLines,
+  Filter,
+  Gauge,
+} from "lucide-react";
+
+# Release 2.0 2026 August
+
+The iOS app has been rebuilt and adapted to Apple's **Liquid Glass** design language, and the **MOS score** now includes the room's **background noise**.
+
+:::info The App Store app is now named "BMR (Legacy)"
+This release ships to the existing iOS app, which has been **renamed to BMR (Legacy)** in the App Store. It is the same app you already use, still available through your existing **download link** — it is not searchable in the App Store.
+
+Over the coming weeks we will publish a brand-new, **publicly searchable app called BMR Mobile**. Once it is available it becomes the app to install going forward, and these docs will point you to it. Until then, keep using **BMR (Legacy)**.
+:::
+
+---
+
+## BMR Mobile (iPhone / iPad)
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Sparkles size={18} /> Full Liquid Glass redesign (iOS 26)
+  </span>
+</summary>
+
+The entire app has been rebuilt on the **iOS 26 SDK** and now adopts Apple's **Liquid Glass** design language across every screen.
+
+- All screens and flows — navigation bars, tab bars, sheets, alerts, buttons, and controls — adopt the modern Liquid Glass appearance.
+- The app feels native and consistent with the rest of iOS 26.
+- BETTERMEETINGROOMS brand colors, logo, and design language are preserved within the new look.
+- Full support for **light and dark mode**, plus the iOS accessibility settings **Reduce Transparency** and **Reduce Motion**.
+- A visual update only — all existing functionality works exactly as before.
+
+<div style={{display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', margin: '1rem 0'}}>
+  <div className="phone-screenshot" style={{flex: '0 0 200px'}}>
+    <img src="/bmr-docs/img/release/2026-08-liquid-glass.jpg" alt="BMR Mobile home screen redesigned with Apple's Liquid Glass design language on iOS 26" style={{width: '100%', borderRadius: '12px'}} />
+  </div>
+</div>
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <LayoutDashboard size={18} /> Home screen adapts to your role and access
+  </span>
+</summary>
+
+The home screen now automatically adapts to your role and the organisations, locations, and rooms you belong to:
+
+- **Org Admins** see the full homepage for their organisation(s).
+- **Location Admins** see only the locations they manage, without organisation-wide overviews.
+- **Room Managers** get a focused home screen with the rooms they have access to.
+- **New users** without any memberships are guided straight into the setup wizard.
+- No variant ever exposes organisations, locations, or rooms outside your access.
+
+This ensures every user sees exactly what is relevant to them — nothing more, nothing less.
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Rotate3d size={18} /> AR Design rebuilt around a new user flow (BETA)
+  </span>
+</summary>
+
+AR Design has been reworked from the ground up to minimize interruptions and let you focus on designing.
+
+:::info BETA
+AR Design is currently in beta. To get access, contact the BMR team at [support@bettermeetingrooms.com](mailto:support@bettermeetingrooms.com).
+:::
+
+- Starting a session **automatically creates a design** — no naming prompt required.
+- Placing equipment **auto-saves the design**; you are never asked to save mid-flow.
+- A new **design drawer** manages the current design, screenshots, and additional designs.
+- **Screen content** for supported devices can be updated directly from the drawer, with changes reflected immediately in the AR scene.
+- A single design **uploads directly on exit** — the review step only appears when you have created multiple designs.
+
+<div style={{display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', margin: '1rem 0'}}>
+  <div className="phone-screenshot" style={{flex: '0 0 200px'}}>
+    <img src="/bmr-docs/img/release/2026-08-ar-design-drawer.jpg" alt="New AR Design drawer in BMR Mobile managing the current design, screenshots, and additional designs" style={{width: '100%', borderRadius: '12px'}} />
+  </div>
+</div>
+
+</details>
+
+---
+
+## Web Platform
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Cable size={18} /> Cabling infrastructure & auto-generated cabling documentation (BMR Studio) (BETA)
+  </span>
+</summary>
+
+Plan the full cabling infrastructure of a room in **BMR Studio** and generate professional cabling documentation from it — built for installers and AV/IT teams.
+
+:::info BETA
+Cabling and Cabling Docs are in beta, but available to all users.
+:::
+
+**Placement in Studio (Cables mode)**
+
+- Place **floorboxes, ceiling boxes, and conduits** alongside existing devices and outlets.
+- Boxes snap to their correct surface; outlets can be mounted in boxes and conduits terminate at boxes/outlets.
+- Every outlet, box, and conduit gets an **auto-numbered label** (e.g. `D-04`, `P-02`, `FB-1`, `CB-3`), with per-port labels for multi-port outlets and support for manual overrides.
+
+Power outlets can now also be placed on **floors and tables** — not just walls — so floor boxes and table-mounted outlets are represented accurately and act as connection points in the cabling workflow.
+
+<img src="/bmr-docs/img/release/2026-08-cabling-studio.jpg" alt="BMR Studio Cables mode with floorboxes, ceiling boxes, and conduits placed and auto-numbered labels applied" style={{width: '100%', maxWidth: '900px', display: 'block', margin: '1rem auto', borderRadius: '8px', border: '1px solid #E5E5D5'}} />
+
+**Cabling Docs**
+
+A new **Cabling Docs** area generates documentation directly from the saved design:
+
+- **Placement diagrams** — floor plan, wall elevations, and reflected ceiling plan, annotated with labels.
+- **Cable diagram** — a schematic view of what plugs into what, grouped by conduit with fill counts.
+- **Patching plan** — a printable patch schedule, pre-created for every ethernet outlet-port.
+
+All diagrams reuse the labels entered once in Studio, can be viewed in the app, and exported as **PDF**. Built-in consistency checks warn about unlabelled outlets, duplicate labels, missing patch targets, and over-filled conduits.
+
+<img src="/bmr-docs/img/release/2026-08-cabling-docs.png" alt="Cabling Docs area generating placement diagrams, a cable diagram, and a patching plan from the saved design" style={{width: '100%', maxWidth: '900px', display: 'block', margin: '1rem auto', borderRadius: '8px', border: '1px solid #E5E5D5'}} />
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Replace size={18} /> Replace detected objects with generic equipment (BMR Studio)
+  </span>
+</summary>
+
+Objects detected in the room scan can now be **replaced with generic equipment** — no need to delete and recreate them.
+
+- Detected objects ("boxes") can be swapped for generic equipment using the **same workflow as catalog equipment**.
+- The replacement **inherits the position, orientation, and placement** of the detected object.
+- One consistent replacement experience, whether the item comes from the catalog or the generic equipment library.
+
+<img src="/bmr-docs/img/release/2026-08-replace-objects.jpg" alt="A detected object in a room scan being replaced with generic equipment in BMR Studio" style={{width: '100%', maxWidth: '900px', display: 'block', margin: '1rem auto', borderRadius: '8px', border: '1px solid #E5E5D5'}} />
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Save size={18} /> Auto-save on mode switch (BMR Studio)
+  </span>
+</summary>
+
+Switching between modes in BMR Studio no longer interrupts you with a save confirmation.
+
+- Unsaved changes are **saved automatically** when you switch modes.
+- The "Do you want to save?" pop-up is gone — mode switches happen directly.
+- If an auto-save fails (e.g. network error), you are notified and your changes are kept.
+- Manual save remains available and unchanged.
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Share2 size={18} /> Share a design with read-only access
+  </span>
+</summary>
+
+Share an individual design with anyone using a **read-only link**.
+
+- Share a specific design by link; recipients open it in BMR Studio in **View mode**.
+- They can navigate the 3D design and inspect the inventory list — **without being able to make changes**.
+- Access is limited strictly to the shared design; no broader access to the organization, location, or room is granted.
+- The person who shared the design can **revoke access at any time**.
+
+<img src="/bmr-docs/img/release/2026-08-share-readonly.png" alt="A design opened in BMR Studio View mode via a read-only share link, with the 3D design and inventory list visible but not editable" style={{width: '100%', maxWidth: '900px', display: 'block', margin: '1rem auto', borderRadius: '8px', border: '1px solid #E5E5D5'}} />
+
+</details>
+
+---
+
+## Acoustics
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <AudioLines size={18} /> Background noise now included in the MOS score
+  </span>
+</summary>
+
+The room's **background noise** is now factored into the **MOS score** as a penalty, so scores more accurately reflect real-world speech intelligibility.
+
+- Background noise is applied as a **Speech-to-Noise Ratio penalty** in the MOS calculation — a noisier room lowers the score according to the acoustic model.
+- Implemented entirely in the **back-end**: the iOS app and web platform automatically receive the updated MOS values, with existing measurements remaining fully compatible.
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Filter size={18} /> More resilient background-noise measurement
+  </span>
+</summary>
+
+We've improved how the room's **background noise** is calculated during an acoustic measurement, making it more **resilient to transient sounds**.
+
+- The measurement now **filters out short peaks** in the background-noise window — a clap, a cough, or a brief comment during the quiet measurement period is removed rather than inflating the result.
+- The result better reflects the room's true, **steady-state noise floor**.
+- This is about removing **peaks** only. A **consistent** noise lasting the whole measurement — for example someone talking loudly right next to the microphone throughout, or persistent HVAC — cannot be filtered out and will still affect the result.
+
+The graph below illustrates the effect: **BEFORE**, brief peaks pulled the measured background noise upward; **NOW**, those peaks are filtered out and the value tracks the actual noise floor.
+
+<img src="/bmr-docs/img/release/2026-08-background-noise-peak-filtering.svg" alt="A-weighted background-noise level over time. A wavy black curve with several transient peaks. A dashed grey BEFORE line sits high because the peaks inflate it, while a solid green NOW line sits low, tracking the room's true noise floor once the peaks are filtered out." style={{width: '100%', maxWidth: '800px', display: 'block', margin: '1rem auto', borderRadius: '8px', border: '1px solid #E5E5D5'}} />
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Gauge size={18} /> MOS variant shown under the score circle
+  </span>
+</summary>
+
+Because the MOS calculation evolves as we add more acoustic factors, the MOS score circle now shows **which variant** a measurement was made with:
+
+- **RT** — Reverberation Time
+- **RT-BR** — Reverberation Time + Bass Ratio
+- **RT-BR-N** — Reverberation Time + Bass Ratio + Background Noise *(new in this release)*
+
+The variant label is displayed **under the score ring**, replacing the "out of 5" indication, and is shown consistently in both the **Library list** and the **acoustic measurement view**.
+
+<div style={{display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', margin: '1rem 0'}}>
+  <div className="phone-screenshot" style={{flex: '0 0 200px'}}>
+    <img src="/bmr-docs/img/release/2026-08-mos-variant.jpg" alt="MOS score circle in BMR Mobile with the RT-BR-N variant label shown under the score ring" style={{width: '100%', borderRadius: '12px'}} />
+  </div>
+</div>
+
+Read more about MOS, the variants, and how we measure acoustics in [Understanding the MOS Score](/docs/acoustics/mos-score).
+
+</details>
+
+---
+
+# End of Release Notes

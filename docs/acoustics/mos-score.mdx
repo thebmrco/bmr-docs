@@ -10,15 +10,17 @@ import MosScaleVisual from '@site/src/components/MosScaleVisual'
 
 After completing an acoustic measurement, BMR gives you a **MOS score** for your room. Here is what it means, and what it is based on.
 
-:::info What changed in release 1.2
-The MOS score now factors in **Bass Ratio** as a penalty on top of the **Reverberation Time** base. Earlier releases displayed Bass Ratio alongside the other measurements but did not feed it into the score. **Speech-to-Noise Ratio** is captured today and will start contributing in the next release; **Spatial Concentration** and **Flutter Echo** follow after that. This page tracks the current state.
+:::info What changed in Release 2.0
+The MOS score now includes a **Background Noise** (Speech-to-Noise Ratio) penalty, on top of the existing **Reverberation Time** base and **Bass Ratio** penalty. This is the newest **MOS variant**, labelled **RT-BR-N**. **Spatial Concentration** and **Flutter Echo** are measured today but do not yet contribute. This page tracks the current state.
+
+To get a MOS score that includes the background-noise penalty, take the measurement with the **latest version of BMR Mobile**. Measurements taken with older versions keep their original variant (RT or RT-BR) and remain fully valid — see [The MOS variants](#the-mos-variants) below.
 :::
 
 ---
 
 ## <Icon name="help-circle" size="1em" /> What is a MOS score?
 
-**MOS** stands for **Mean Opinion Score**. It is a rating from **1 to 5** that describes how comfortable a room feels to communicate in.
+**MOS** stands for **Mean Opinion Score**. It is a rating up to **5** — the higher the better — that describes how comfortable a room feels to communicate in.
 
 <MosScaleVisual />
 
@@ -27,9 +29,29 @@ The MOS score now factors in **Bass Ratio** as a penalty on top of the **Reverbe
 | 4.6 – 5.0 | Excellent | Effortless to follow conversation |
 | 3.6 – 4.5 | Good | Easy to communicate, minor fatigue over time |
 | 3.0 – 3.5 | Fair | Understandable, but requires noticeable effort |
-| 1.0 – 2.9 | Poor | Hard to follow — tiring in longer meetings |
+| 0 – 2.9 | Poor | Hard to follow — tiring in longer meetings |
 
-The MOS score is not just about whether you can *hear* what someone is saying — it is about how much mental effort it takes to follow a conversation.
+The MOS score is not just about whether you can *hear* what someone is saying — it is about how much mental effort it takes to follow a conversation. The score circle is shown as a **complete ring**, coloured by rating.
+
+---
+
+## <Icon name="star" size="1em" /> The MOS variants {#the-mos-variants}
+
+The MOS calculation evolves as we fold in more acoustic factors. So that scores stay comparable, each measurement records **which variant** its score was calculated with. The variant is shown as a small label **under the MOS score circle**, in both the Library list and the acoustic measurement view.
+
+| Variant | Factors in the score | Introduced |
+|---|---|---|
+| **RT** | Reverberation Time | Base |
+| **RT-BR** | Reverberation Time + Bass Ratio | Release 1.2 |
+| **RT-BR-N** | Reverberation Time + Bass Ratio + Background Noise | Release 2.0 |
+
+- **RT** — the reverberation-time base only.
+- **RT-BR** — adds the **Bass Ratio** penalty for boomy, bass-heavy rooms.
+- **RT-BR-N** — adds the **Background Noise** (Speech-to-Noise Ratio) penalty, so a noisier room scores lower.
+
+:::info You need the latest app version for RT-BR-N
+The background-noise penalty is applied to measurements taken with the **latest version of BMR Mobile**. Update the app so new measurements are scored with the **RT-BR-N** variant. Older measurements keep the variant they were taken with and stay comparable — the label under each score tells you exactly which factors it already includes.
+:::
 
 ---
 
@@ -53,7 +75,7 @@ The research has identified several acoustic properties that together predict ho
 
 `MOS = A_ReverberationTime + A_SpatialConcentration + A_BassRatio − A_SpeechToNoiseRatio − A_FlutterEcho`
 
-In release 1.2, only two terms actively contribute to the score: the **Reverberation Time** base and the **Bass Ratio** penalty. The other terms — **Speech-to-Noise Ratio**, **Spatial Concentration**, and **Flutter Echo** — are measured or computed today and shown alongside the score, but do not yet feed into it. **Speech-to-Noise Ratio** is the next one planned for inclusion; **Spatial Concentration** and **Flutter Echo** follow after that.
+As of Release 2.0, three terms actively contribute to the score: the **Reverberation Time** base, the **Bass Ratio** penalty, and the **Speech-to-Noise Ratio** (background noise) penalty. The remaining terms — **Spatial Concentration** and **Flutter Echo** — are measured or computed today and shown alongside the score, but do not yet feed into it.
 
 ### Reverberation Time (T60)
 
@@ -86,11 +108,11 @@ The MOS formula penalises deviation from a neutral reference of approximately 1.
 
 Speech-to-Noise Ratio (SpNR) compares the loudness of a typical conversation against the steady background noise in the room. That background noise can come from HVAC, projectors, computer fans, traffic, neighbouring rooms, or hallway activity.
 
-:::note Coming in the next release
-SpNR is captured today and shown alongside the MOS score, but does **not yet contribute** to the score itself — that changes in the next release. The rest of this section describes how SpNR will affect the MOS score once it is folded into the formula.
+:::info Now included — Release 2.0
+As of Release 2.0, SpNR is folded into the MOS score as the **Background Noise** penalty — the **RT-BR-N** variant. Take the measurement with the **latest version of BMR Mobile** to have this penalty applied.
 :::
 
-When the gap between speech and noise is wide, listeners pick out words effortlessly. When it shrinks, they have to lean in, ask for repeats, or zone out. The MOS score will reflect that effort directly: the noisier the room *relative to speech*, the lower the score.
+When the gap between speech and noise is wide, listeners pick out words effortlessly. When it shrinks, they have to lean in, ask for repeats, or zone out. The MOS score reflects that effort directly: the noisier the room *relative to speech*, the lower the score.
 
 | Gap between speech and noise | What it feels like | Typical MOS impact |
 |---|---|---|
@@ -110,10 +132,12 @@ In practice this means treating a room acoustically without also addressing its 
 
 BMR's IEM analyzer derives SpNR from the noise captured in the **brief quiet window just before the test sweep starts**. The earlier calibration step is used for speaker calibration and the ambient noise chart — it does **not** feed SpNR directly.
 
-The speech reference level used in the formula assumes a normal conversational level at typical meeting-room distances. Both values are combined into a single SpNR figure that will feed the MOS score once SpNR is part of the formula.
+The speech reference level used in the formula assumes a normal conversational level at typical meeting-room distances. Both values are combined into a single SpNR figure that feeds the MOS score as the background-noise penalty.
 
 :::caution Stay quiet after the 3-2-1
-Because the SpNR window is short, it is **very important to avoid any noise during the measurement** — once the **3-2-1 countdown** finishes, the room should be as quiet as possible. Talking, chair movement, or a door opening in that window will pull the SpNR figure down, and once SpNR is folded into the formula it will lower the MOS score for the measurement.
+Because the SpNR window is short, it is **very important to avoid any noise during the measurement** — once the **3-2-1 countdown** finishes, the room should be as quiet as possible. Sustained talking, chair movement, or a door left open in that window pulls the SpNR figure down and lowers the MOS score for the measurement.
+
+The measurement now **filters out brief peaks** in the background-noise window — a single clap or a short comment is removed rather than inflating the reading — but a **consistent** noise throughout the window (someone talking right next to the microphone, or persistent HVAC) cannot be filtered out and will still count.
 :::
 
 :::note
@@ -194,7 +218,7 @@ The MOS score currently focuses on the reverberant characteristics of the physic
 - Network or compression artefacts in video conferencing
 
 :::info Coming soon
-**Speech-to-Noise Ratio** is the next acoustic property planned for inclusion in the MOS score — it is measured today but does not yet contribute to the score. **Spatial Concentration** and **Flutter Echo** follow after that.
+**Speech-to-Noise Ratio** (background noise) is now included in the MOS score as of Release 2.0 — the **RT-BR-N** variant. **Spatial Concentration** and **Flutter Echo** are the next acoustic properties planned for inclusion; they are measured today but do not yet contribute.
 
 **Microphone and speaker quality** in the meeting setup, and **network or compression artefacts** in video conferencing, remain outside the MOS score's scope. Those depend on the conferencing equipment and connection rather than the room.
 :::

@@ -17,7 +17,7 @@ The catalog has many categories, but they group into a handful of **families** t
 
 ### <Icon name="monitor" size="1em" /> AV & Video Collaboration
 
-Screens, video bars, codecs, cameras, microphones, speakers, control devices and other AV gear.
+Screens, video bars, codecs, cameras, microphones, speakers, control devices, audio/video extenders and converters, and other AV gear.
 
 - **Ports** — the connectors the device exposes, used for cable routing
 - **Placed devices** — cameras, microphones, speakers and screens positioned on the 3D model, used for coverage overlays
@@ -60,9 +60,10 @@ What each family needs on top of the shared backbone. **●** required · **○*
 | Data | AV / Video | Acoustic | Furniture | Outlets / Mount |
 |---|:--:|:--:|:--:|:--:|
 | Identity (Name, Display, Brand) | ● | ● | ● | ● |
-| SKU | ○ | ○ | ○ | ○ |
+| **SKU** (component identifier) | ● | ● | ● | ● |
 | Measurements | ● | ● | ● | ● |
-| Material / Color | ○ | ● | ● | ○ |
+| **Color** | ● | ● | ● | ● |
+| Material | ○ | ● | ● | ○ |
 | Image | ● | ● | ● | ● |
 | GLB model | ● | ● | ● | ● |
 | USDZ model | ● | ● | ● | ○ |
@@ -75,6 +76,14 @@ What each family needs on top of the shared backbone. **●** required · **○*
 
 ---
 
+:::tip SKU is the key identifier
+The **SKU / model number** is how an exact component is identified — always capture it when an item has one. It's the single most valuable field for telling near-identical variants apart.
+:::
+
 :::note An evolving profile
 As new fields are added to the catalog, they slot into this matrix as new rows — the families stay the same, the data they carry grows over time.
 :::
+
+---
+
+Requesting an item? See **[Requesting a Catalog Item](requesting-items)** for the plain-language checklist of exactly what to send us, by category.

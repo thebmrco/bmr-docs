@@ -1,56 +1,50 @@
 import React from 'react';
 
-const GREEN = '#206B31';
-const ORANGE = '#D4870E';
-const RED = '#C0392B';
+// Rating colors — matched to the MOS score circle shown in BMR Mobile.
+const ORANGE = '#C2571E'; // Poor
+const GOLD = '#C79A1E'; // Fair
+const GREEN_DARK = '#2E6B3E'; // Good
+const GREEN = '#3E9E55'; // Excellent
 
 type Level = {
   label: string;
   range: string;
-  /** Fraction of the arc to fill (0–1) */
+  /** Fraction of the ring to fill (0–1) */
   fill: number;
   color: string;
 };
 
 const levels: Level[] = [
-  { label: 'Poor',      range: '1.0 – 2.9',   fill: 0.25, color: RED },
-  { label: 'Fair',      range: '3.0 – 3.5',  fill: 0.50, color: ORANGE },
-  { label: 'Good',      range: '3.6 – 4.5',  fill: 0.75, color: GREEN },
-  { label: 'Excellent', range: '4.6 – 5.0',  fill: 1.0,  color: GREEN },
+  { label: 'Poor',      range: '0 – 2.9',   fill: 0.25, color: ORANGE },
+  { label: 'Fair',      range: '3.0 – 3.5', fill: 0.50, color: GOLD },
+  { label: 'Good',      range: '3.6 – 4.5', fill: 0.75, color: GREEN_DARK },
+  { label: 'Excellent', range: '4.6 – 5.0', fill: 1.0,  color: GREEN },
 ];
 
-function ArcGauge({ fill, color, size = 48 }: { fill: number; color: string; size?: number }) {
+/** A full 360° ring, filled clockwise from the top — matching the app's MOS score circle. */
+function RingGauge({ fill, color, size = 40 }: { fill: number; color: string; size?: number }) {
   const stroke = 4;
   const radius = (size - stroke) / 2;
   const cx = size / 2;
   const cy = size / 2;
-
-  // Arc spans 240° (from 150° to 390°)
-  const startAngle = 150;
-  const totalArc = 240;
-  const endAngle = startAngle + totalArc * fill;
-
-  const toRad = (deg: number) => (deg * Math.PI) / 180;
-  const pointOnArc = (deg: number) => ({
-    x: cx + radius * Math.cos(toRad(deg)),
-    y: cy + radius * Math.sin(toRad(deg)),
-  });
-
-  const bgStart = pointOnArc(startAngle);
-  const bgEnd = pointOnArc(startAngle + totalArc);
-  const bgLargeArc = totalArc > 180 ? 1 : 0;
-  const bgPath = `M ${bgStart.x} ${bgStart.y} A ${radius} ${radius} 0 ${bgLargeArc} 1 ${bgEnd.x} ${bgEnd.y}`;
-
-  const fillArc = totalArc * fill;
-  const fStart = pointOnArc(startAngle);
-  const fEnd = pointOnArc(endAngle);
-  const fLargeArc = fillArc > 180 ? 1 : 0;
-  const fillPath = `M ${fStart.x} ${fStart.y} A ${radius} ${radius} 0 ${fLargeArc} 1 ${fEnd.x} ${fEnd.y}`;
+  const circumference = 2 * Math.PI * radius;
+  const clamped = Math.max(0, Math.min(1, fill));
 
   return (
-    <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
-      <path d={bgPath} fill="none" stroke="#E5E5E5" strokeWidth={stroke} strokeLinecap="round" />
-      <path d={fillPath} fill="none" stroke={color} strokeWidth={stroke} strokeLinecap="round" />
+    <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} role="img" aria-hidden="true">
+      <circle cx={cx} cy={cy} r={radius} fill="none" stroke="#E5E5E5" strokeWidth={stroke} />
+      <circle
+        cx={cx}
+        cy={cy}
+        r={radius}
+        fill="none"
+        stroke={color}
+        strokeWidth={stroke}
+        strokeLinecap="round"
+        strokeDasharray={circumference}
+        strokeDashoffset={circumference * (1 - clamped)}
+        transform={`rotate(-90 ${cx} ${cy})`}
+      />
     </svg>
   );
 }
@@ -76,7 +70,7 @@ export default function MosScaleVisual() {
           gap: '0.4rem',
           padding: '0.5rem 0.75rem',
         }}>
-          <ArcGauge fill={level.fill} color={level.color} size={40} />
+          <RingGauge fill={level.fill} color={level.color} size={40} />
           <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.3 }}>
             <span style={{
               fontWeight: 700,
