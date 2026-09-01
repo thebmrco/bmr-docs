@@ -726,6 +726,43 @@ details.bmr-details > summary.bmr-summary::marker {
   line-height: 1.45;
 }
 
+/* Choice cards (e.g. Account Setup) — larger title + bullet points */
+.choice-card .intro-card-title {
+  font-size: 1.2rem;
+}
+
+.intro-card .choice-points {
+  margin: 0.15rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.intro-card .choice-points li {
+  position: relative;
+  padding-left: 1.15rem;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--ifm-font-color-secondary);
+}
+
+.intro-card .choice-points li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.55em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--bmr-dark-green);
+}
+
+[data-theme='dark'] .intro-card .choice-points li::before {
+  background: var(--ifm-color-primary-light);
+}
+
 /* Latest-release highlight */
 .intro-feature {
   display: block;
