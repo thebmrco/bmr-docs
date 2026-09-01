@@ -11,6 +11,7 @@ import {
   Replace,
   Save,
   Share2,
+  SlidersHorizontal,
   AudioLines,
   Filter,
   Gauge,
@@ -20,10 +21,10 @@ import {
 
 The iOS app has been rebuilt and adapted to Apple's **Liquid Glass** design language, and the **MOS score** now includes the room's **background noise**.
 
-:::info The App Store app is now named "BMR (Legacy)"
-This release ships to the existing iOS app, which has been **renamed to BMR (Legacy)** in the App Store. It is the same app you already use, still available through your existing **download link** — it is not searchable in the App Store.
+:::info The App Store app is now named "BMR Mobile Private"
+This release ships to the existing iOS app, which has been **renamed to BMR Mobile Private** in the App Store. It is the same app you already use, still available through your existing **download link** — it is not searchable in the App Store.
 
-Over the coming weeks we will publish a brand-new, **publicly searchable app called BMR Mobile**. Once it is available it becomes the app to install going forward, and these docs will point you to it. Until then, keep using **BMR (Legacy)**.
+Over the coming weeks we will publish a brand-new, **publicly searchable app called BMR Mobile**. Once it is available it becomes the app to install going forward, and these docs will point you to it. Until then, keep using **BMR Mobile Private**.
 :::
 
 ---
@@ -208,6 +209,32 @@ Share an individual design with anyone using a **read-only link**.
 <details className="bmr-details">
 <summary className="bmr-summary">
   <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <SlidersHorizontal size={18} /> Choose your acoustic measurement flow — Advanced or Basic
+  </span>
+</summary>
+
+You can now choose how much context BMR captures during an acoustic measurement, under **Settings → Acoustic Settings → Advanced Measurement Mode**.
+
+- **Advanced (recommended)** — captures the **position of each measurement** and of the **speaker** during the flow, including a **photo of the speaker**. Requires a **room scan** and an **internet connection**.
+- **Basic** — runs the measurement without capturing the measurement or speaker positions.
+
+<div style={{display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', margin: '1rem 0'}}>
+  <div className="phone-screenshot" style={{flex: '0 0 240px'}}>
+    <img src="/bmr-docs/img/release/2026-08-acoustic-settings.png" alt="Acoustic Settings screen in BMR Mobile with the Advanced Measurement Mode toggle, which captures a photo of the speaker during measurement and requires a room scan and internet connection" style={{width: '100%', borderRadius: '12px'}} />
+  </div>
+</div>
+
+:::tip Why we recommend Advanced
+The position and speaker data captured in Advanced mode is more than record-keeping. In upcoming releases it will be used to **further improve the quality of the acoustic measurement**, and to enable **Auralisation** — letting you *listen* to how a room actually sounds. Measurements you take in Advanced mode today will be ready to take advantage of these features as they arrive.
+:::
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
     <AudioLines size={18} /> Background noise now included in the MOS score
   </span>
 </summary>
@@ -269,4 +296,4 @@ Read more about MOS, the variants, and how we measure acoustics in [Understandin
 
 ---
 
-# End of Release Notes
+<p className="release-end">End of Release Notes</p>

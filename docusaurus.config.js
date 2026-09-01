@@ -2,6 +2,10 @@
 // Clean JavaScript version for universal build compatibility (Node 18–22)
 
 const isCI = !!process.env.CI;
+// Google Analytics (gtag) only injects its script in production builds. Enabling
+// it in dev makes client-side navigation throw "window.gtag is not a function",
+// so restrict it to production.
+const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = {
   title: 'BETTERMEETINGROOMS',
@@ -35,10 +39,12 @@ module.exports = {
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
-        gtag: {
-          trackingID: 'G-BQ0J57GZ8K',
-          anonymizeIP: true,
-        },
+        gtag: isProd
+          ? {
+              trackingID: 'G-BQ0J57GZ8K',
+              anonymizeIP: true,
+            }
+          : undefined,
       },
     ],
   ],
