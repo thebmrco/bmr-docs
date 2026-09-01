@@ -3,17 +3,66 @@ title: Design Phase
 ---
 
 import Icon from '@site/src/components/Icon'
+import Link from '@docusaurus/Link'
 import useBaseUrl from '@docusaurus/useBaseUrl'
 
 # <Icon name="design" size="1em" /> Design Phase
 
-The **Design Phase** turns your Room Data into a complete, validated room setup. BMR offers two design tools — **BMR Studio** for detailed 3D design work on any device, and **AR Design** for placing equipment directly in the physical room using augmented reality.
+The **Design Phase** turns a room into a complete, validated setup. You can **create a design on the web** or **design in AR** on your phone — either way it lands in the room's Designs, ready to refine, version, and approve in **BMR Studio**.
+
+<div className="intro-grid">
+  <Link to="/docs/lifecycle/design/bmr-studio" className="intro-card choice-card">
+    <span className="intro-card-title"><Icon name="palette" size="1em" /> Create a design on the web</span>
+    <ul className="choice-points">
+      <li>Choose a method — <strong>BMR Studio</strong> (recommended) or <strong>VRC (Workspace Designer)</strong></li>
+      <li>Base it on a <strong>Scan</strong>, an <strong>Existing Design</strong>, or a <strong>Custom Room</strong></li>
+      <li>Built and refined in <strong>BMR Studio</strong></li>
+    </ul>
+  </Link>
+  <Link to="/docs/lifecycle/design/ar-design-guide" className="intro-card choice-card">
+    <span className="intro-card-title"><Icon name="3d-ar-design" size="1em" /> Design in AR (mobile)</span>
+    <ul className="choice-points">
+      <li>Place equipment in the <strong>real room</strong> on iPhone or iPad</li>
+      <li>Requires a <strong>room scan</strong> first</li>
+      <li><strong>Imported into BMR Studio</strong> to finish</li>
+    </ul>
+  </Link>
+</div>
+
+---
+
+## <Icon name="add-new" size="1em" /> Creating a design on the web
+
+When you add a design on the web, the **Create Design** dialog asks for two choices:
+
+**Design method**
+
+- **BMR Studio** *(recommended)* — create and edit the design in BMR Studio's built-in 3D editor.
+- **VRC (Workspace Designer)** — use Cisco's **Video Room Calculator / Workspace Designer** to create the room layout.
+
+**Based on** — what the design starts from:
+
+- **Scan** — an existing room scan, for an accurate model of the real space.
+- **Existing Design** — start from a copy of another design for the room.
+- **Custom Room** — a blank room you size yourself, when there is no scan yet.
+
+Add a **Name** (required) and an optional **Description**, then **Save**.
+
+<img
+  src={useBaseUrl('/img/design/BMR-Design-start-design.png')}
+  alt="Create Design dialog: Design Method with BMR Studio (recommended) and VRC (Workspace Designer); a Based on choice of Scan, Existing Design, or Custom Room; plus Name and Description fields"
+  style={{width: '100%', maxWidth: '760px', display: 'block', margin: '1rem auto', borderRadius: '8px', border: '1px solid #E5E5D5'}}
+/>
 
 ---
 
 ## <Icon name="palette" size="1em" /> BMR Studio
 
-The unified 3D workspace for all room design work. Available on **Web**, **iPhone**, and **iPad**.
+The unified 3D workspace for all room design work.
+
+:::tip Design on a computer
+BMR Studio is best used **on the web, on a computer** — the large screen and precise pointer make detailed design far easier. It also runs on **iPad**, though that isn't recommended for serious design work, and it is **not optimised for iPhone**.
+:::
 
 <img
   src={useBaseUrl('/img/design/bmr-studio-ui.png')}
@@ -31,7 +80,7 @@ BMR Studio uses dedicated **modes** — View, Structurals, Equipment, and Cables
 
 Place equipment directly into the physical room using augmented reality on your iPhone or iPad. Items are positioned at real scale in the actual space, and the result is saved as a design that you can continue refining in BMR Studio.
 
-AR Design requires a **room scan first** — the scan provides the coordinate space that links AR-placed items to the room model. Once saved, the AR Design appears alongside Studio designs and can be opened in BMR Studio for further work.
+AR Design requires a **room scan first** — the scan provides the coordinate space that links AR-placed items to the room model. Once uploaded, the AR Design is **imported into BMR Studio**, appearing alongside your Studio designs so you can refine, version, and finish it there.
 
 **[Read the full AR Design guide &rarr;](ar-design-guide)**
 
