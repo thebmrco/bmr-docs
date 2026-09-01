@@ -9,6 +9,8 @@ import Heading from '@theme/Heading';
 
 import styles from './index.module.css';
 
+const APP_STORE_URL = 'https://apps.apple.com/app/bmr-mobile/id6804977641';
+
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
   const qrSrc = useBaseUrl('/img/bmr-appstore-qr.png');
@@ -32,14 +34,28 @@ function HomepageHeader() {
             </div>
           </div>
           <div className={styles.heroDownload} id="download">
-            <img
-              src={qrSrc}
-              alt="Scan to download BMR Mobile from the Apple App Store"
-              className={styles.heroQR}
-            />
+            <a
+              href={APP_STORE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.heroQRLink}
+              aria-label="Download BMR Mobile on the Apple App Store">
+              <img
+                src={qrSrc}
+                alt="Scan to download BMR Mobile from the Apple App Store"
+                className={styles.heroQR}
+              />
+            </a>
             <div className={styles.heroDownloadText}>
               <strong>Download BMR Mobile</strong>
               <span>Scan with your iPhone or iPad camera</span>
+              <a
+                href={APP_STORE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.appStoreLink}>
+                Open in the App Store →
+              </a>
             </div>
           </div>
         </div>

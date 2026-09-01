@@ -81,6 +81,32 @@
   line-height: 1.4;
 }
 
+.heroQRLink {
+  display: block;
+  border-radius: 6px;
+}
+
+.heroQRLink:focus-visible {
+  outline: 2px solid var(--bmr-dark-green);
+  outline-offset: 3px;
+}
+
+.appStoreLink {
+  margin-top: 0.35rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--bmr-dark-green);
+  text-decoration: none;
+}
+
+.appStoreLink:hover {
+  text-decoration: underline;
+}
+
+[data-theme='dark'] .appStoreLink {
+  color: var(--ifm-color-primary-light);
+}
+
 @media screen and (max-width: 996px) {
   .heroBanner {
     padding: 3rem 0;
