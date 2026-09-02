@@ -68,7 +68,7 @@ module.exports = {
       title: 'BETTERMEETINGROOMS',
       logo: {
         alt: 'BMR',
-        src: 'img/logo.svg',
+        src: 'img/logo-green.svg',
       },
       items: [
         { type: 'search', position: 'right' },

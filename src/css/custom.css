@@ -166,6 +166,12 @@ h3 {
   color: var(--bmr-dark-green);
 }
 
+/* Nudge the title down slightly so it aligns with the wordmark inside the logo */
+.navbar__title {
+  position: relative;
+  top: 3px;
+}
+
 .navbar__logo {
   height: 36px;
   margin-right: 0.85rem;
