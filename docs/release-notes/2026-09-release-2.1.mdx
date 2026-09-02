@@ -1,15 +1,22 @@
 ---
 title: Release 2.1 2026 September
-description: BMR Mobile is now publicly available in the Apple App Store — the first public release, with the same feature set as Release 2.0.
+description: BMR Mobile is now publicly available in the Apple App Store, and the Web Platform gets a new acoustics analysis view, an organization Branding tab, better photorealistic rendering, and more control in the editor.
 ---
 
 import {
   Rocket,
+  ChartColumn,
+  Building2,
+  Aperture,
+  Eye,
+  SlidersHorizontal,
 } from "lucide-react";
 
 # Release 2.1 2026 September
 
 **BMR Mobile is now public.** Version 2.1 is the first release of BMR Mobile available to everyone directly from the **Apple App Store**. It is the **same app as [Release 2.0](/docs/release-notes/2026-08-release-2.0)** — the same redesign and the same features — now publicly available.
+
+Alongside the public app launch, the **Web Platform** receives its September update: a new acoustics analysis view, a restructured organization admin area with a Branding tab, a major quality pass on photorealistic rendering, and more direct control in the editor.
 
 :::info BMR Mobile is now on the App Store
 Find and install **BMR Mobile** directly from the Apple App Store — no download link required. This is the app to use going forward.
@@ -34,6 +41,98 @@ BMR Mobile is now available to everyone in the Apple App Store.
 - This is the **first public release** of the app.
 - Functionally it is **identical to Release 2.0** — 2.1 is the public launch of that same app, not a new set of features.
 - For the full feature set, see **[Release 2.0 (2026 August)](/docs/release-notes/2026-08-release-2.0)**: the Liquid Glass redesign, the role-aware home screen, the rebuilt AR Design flow (beta), cabling infrastructure in BMR Studio (beta), read-only design sharing, the background-noise-aware MOS score, and the choice of acoustic measurement flow.
+
+</details>
+
+---
+
+## Web Platform (2026.09.0)
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <ChartColumn size={18} /> New acoustics analysis view
+  </span>
+</summary>
+
+Acoustic results are now broken down as **MOS impact per parameter**, making it easy to see exactly what is dragging a room's score down — and what to fix first.
+
+- Each acoustic parameter is shown with its **individual impact on the MOS score**, instead of a flat list of raw values.
+- Individual measurements can now be **deleted from a measurement group** — no need to discard the whole group over one bad take.
+
+:::info Web only for now
+The new acoustics analysis view is available on the Web Platform. It is **coming to BMR Mobile soon**.
+:::
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Building2 size={18} /> Organization admin & branding
+  </span>
+</summary>
+
+The organization admin area has been restructured, and branding gets a dedicated home.
+
+- The admin page now uses a clearer **two-level navigation**, so settings are easier to find as organizations grow.
+- A new **Branding tab** is where you upload your **logo** — moved out of BMR Studio into the organization settings where it belongs.
+- A placed logo can now be **resized in BMR Studio**, so it fits naturally into any design.
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Aperture size={18} /> Better photorealistic rendering
+  </span>
+</summary>
+
+The photorealistic (path-traced) render mode in BMR Studio received a major quality and stability pass.
+
+- **Correct lighting** throughout the traced scene.
+- **Faster renders at high resolutions**, including 4K.
+- **Cleaner denoising** — no more artifacts at the edges of the image.
+- **Broader browser support** — photorealistic rendering now works reliably across more browsers and devices.
+- Wall transparency and the openings toggle now work in photorealistic mode too.
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Eye size={18} /> New View menu
+  </span>
+</summary>
+
+A persistent **View menu** replaces the old visualizations dropdown in BMR Studio.
+
+- Switching between view modes is always **one click away**.
+- The menu stays available while you work, instead of hiding options behind a dropdown.
+- Measurements have moved into the View menu as well, replacing the footer legend.
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <SlidersHorizontal size={18} /> More control in the editor
+  </span>
+</summary>
+
+Several editor improvements give you more direct control over a design.
+
+- **Resize any element on all three axes** directly from the context toolbar — width, depth, and height.
+- **Curtain drop height** can now be set manually, instead of being derived from the ceiling. Curtains can also be resized from each end independently.
+- **Doors now default to a glass door**, matching the most common choice in modern meeting rooms.
 
 </details>
 
