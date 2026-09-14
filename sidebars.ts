@@ -71,6 +71,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'integrations/cisco-vrc',
             'integrations/webex-control-hub-sync',
+            'integrations/microsoft-365',
           ],
         },
       ],
