@@ -1,0 +1,116 @@
+---
+title: Release 2.2 2026 September
+description: BMR Mobile gets a new room recognition flow, the choice between an Advanced and Basic acoustic measurement, in-app guidance that shows you what to do and in which sequence, and in-place highlights of new features after an update.
+---
+
+import {
+  ScanSearch,
+  SlidersHorizontal,
+  Compass,
+  Sparkles,
+} from "lucide-react";
+
+# Release 2.2 2026 September
+
+Version 2.2 of **BMR Mobile** makes the app easier to use: a new **room recognition flow**, the choice between an **Advanced** and a **Basic** acoustic measurement, and **in-app guidance** that shows you what to do — and in which sequence.
+
+---
+
+## BMR Mobile (iPhone / iPad)
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <ScanSearch size={18} /> New room recognition flow
+  </span>
+</summary>
+
+Room recognition detects which room you are in by matching the camera view against the room's scan. It is what anchors your work to the 3D room:
+
+- **AR Design** — merges what you do in AR with the scan.
+- **Markers** — positions markers added outside a scan.
+- **Acoustic measurements** — positions the speaker and each measurement.
+
+The redesigned flow gives live feedback while it runs: a **"% of room seen"** indicator, directional hints (*"Keep turning left"*), and a clear **"Room recognised"** confirmation.
+
+<div style={{display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', margin: '1rem 0'}}>
+  <div className="phone-screenshot" style={{flex: '0 0 200px'}}>
+    <img src="/bmr-docs/img/release/2026-09-room-recognition-1.jpg" alt="Room recognition in progress in BMR Mobile: the live camera view shows 12% of room seen and a Keep turning left hint" style={{width: '100%', borderRadius: '12px'}} />
+  </div>
+  <div className="phone-screenshot" style={{flex: '0 0 200px'}}>
+    <img src="/bmr-docs/img/release/2026-09-room-recognition-2.jpg" alt="Room recognised confirmation in BMR Mobile: a green checkmark confirms the room was recognised" style={{width: '100%', borderRadius: '12px'}} />
+  </div>
+</div>
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <SlidersHorizontal size={18} /> Advanced and Basic acoustic measurement — Advanced by default
+  </span>
+</summary>
+
+The acoustic measurement now runs in one of two modes. The difference is **position detection** — the acoustic result is identical.
+
+- **Advanced (default)** — detects the position of the **speaker** (with a photo) and of **each measurement**, placing them in the 3D room. Requires a room scan and an internet connection.
+- **Basic** — skips position detection entirely. The measurement starts faster and works offline.
+
+The app picks Advanced automatically whenever possible and falls back to Basic otherwise. Manual control: **Settings → Acoustic Settings → Advanced Measurement Mode**.
+
+<div style={{display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', margin: '1rem 0'}}>
+  <div className="phone-screenshot" style={{flex: '0 0 200px'}}>
+    <img src="/bmr-docs/img/release/2026-09-acoustic-settings.jpg" alt="Acoustic Settings screen in BMR Mobile with the Advanced Measurement Mode toggle turned on" style={{width: '100%', borderRadius: '12px'}} />
+  </div>
+</div>
+
+:::tip Why we recommend Advanced
+Position data will power upcoming features — better measurement quality and **Auralisation**, letting you *listen* to how a room sounds.
+:::
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Compass size={18} /> New in-app guidance
+  </span>
+</summary>
+
+The app now shows you **what to do and in which sequence**:
+
+- The room overview always shows the **next step** — from *"Start here — Scan the room"* to *"Finish design in BMR Studio on web"*.
+- Completed steps are **ticked off**, and each card explains its step in one line.
+- A one-time guided tour introduces the sequence: **Scan → Acoustics → AR Design**.
+
+<div style={{display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', margin: '1rem 0'}}>
+  <div className="phone-screenshot" style={{flex: '0 0 200px'}}>
+    <img src="/bmr-docs/img/release/2026-09-in-app-guidance-1.jpg" alt="Room overview of a new room in BMR Mobile with a Start here — Scan the room banner" style={{width: '100%', borderRadius: '12px'}} />
+  </div>
+  <div className="phone-screenshot" style={{flex: '0 0 200px'}}>
+    <img src="/bmr-docs/img/release/2026-09-in-app-guidance-final.jpg" alt="Room overview of a completed room in BMR Mobile with all steps ticked off and a Next step — Finish design in BMR Studio on web banner" style={{width: '100%', borderRadius: '12px'}} />
+  </div>
+</div>
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Sparkles size={18} /> New features highlighted after an update
+  </span>
+</summary>
+
+After an update, new features are pointed out **right where they live**: a one-time spotlight highlights the new control with a short explanation. Dismiss it and continue working.
+
+</details>
+
+---
+
+<p className="release-end">End of Release Notes</p>

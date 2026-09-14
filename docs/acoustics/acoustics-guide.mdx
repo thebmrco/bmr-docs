@@ -11,7 +11,27 @@ import StepTabs, { DocImg } from '@site/src/components/StepTabs'
 
 Capture accurate acoustic data from your meeting room using BMR Mobile on iPhone or iPad. The measurement gives you **reverberation time (RT60)** and a **Mean Opinion Score (MOS)** — the foundation for any acoustic improvement recommendation.
 
-BMR Mobile guides you through a step-by-step flow, taking measurements at three positions in the room for a reliable, representative result. Before the flow begins, a **Confirm Room** screen ties the measurement to the correct room and its scan, and each position is spatially located within the room so the speaker and measurement points can be shown later on the Web.
+BMR Mobile guides you through a step-by-step flow, taking measurements at three positions in the room for a reliable, representative result.
+
+---
+
+## <Icon name="sliders-horizontal" size="1em" /> Advanced vs Basic
+
+The measurement runs in one of two modes. **Advanced is the default** — the app picks it automatically whenever it is possible, and falls back to Basic otherwise.
+
+| | Advanced (default) | Basic |
+|---|---|---|
+| **Speaker photo & position** | Captured during room setup | Not captured |
+| **Room recognition step** | Yes — the room is recognised so everything is placed in the 3D room | Skipped |
+| **Measurement positions** | Recorded in the 3D room, visible on the Web | Not recorded |
+| **Requirements** | Room scan + internet connection | None |
+| **Acoustic result (MOS, RT60)** | Identical | Identical |
+
+The mode can be controlled manually under **Settings → Acoustic Settings → Advanced Measurement Mode**. If the room has no scan yet, or you are offline, the app automatically runs the Basic flow and shows a hint explaining how to get Advanced back.
+
+:::tip Why we recommend Advanced
+The position and speaker data captured in Advanced mode will be used in upcoming releases to further improve measurement quality and to enable **Auralisation** — letting you *listen* to how a room actually sounds.
+:::
 
 ---
 
@@ -32,34 +52,17 @@ BMR Mobile guides you through a step-by-step flow, taking measurements at three 
 
 ## <Icon name="audio-lines" size="1em" /> The Measurement Flow
 
+The flow below shows the **Advanced** flow — six steps, tracked by the step indicator at the top of every screen. In the **Basic** flow, step 2 has no speaker photo and step 3 (room recognition) is skipped entirely; everything else is identical.
+
 <StepTabs steps={[
-  {
-    title: "Confirm room",
-    content: (
-      <>
-        <h3>1) Confirm the room</h3>
-        <p>Before anything else, BMR Mobile shows a <strong>Confirm Room</strong> screen with the room's name and 3D scan thumbnail. This ensures the measurement is tied to the correct room and its scan.</p>
-        <ul>
-          <li>Check that the name and scan thumbnail match the room you are actually in</li>
-          <li>Tap <strong>Confirm</strong> to continue</li>
-          <li>If it does not match, tap <strong>Exit</strong> and open the right room first</li>
-        </ul>
-        <div className="phone-screenshot">
-          <DocImg src="/img/release/2026-07-confirm-room.jpg" alt="Confirm Room screen showing the room name and 3D scan thumbnail with Exit and Confirm buttons" />
-        </div>
-      </>
-    ),
-  },
   {
     title: "Device selection",
     content: (
       <>
-        <h3>2) Select devices</h3>
+        <h3>1) Select devices</h3>
         <p>Select your input (microphone) and output (speaker) devices. Tap the <strong>Output device</strong> card to choose your speaker — <strong>Bluetooth</strong>, <strong>AirPlay</strong>, <strong>USB-C</strong>, and <strong>HDMI</strong> connections are all supported.</p>
-        <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <div className="phone-screenshot"><DocImg src="/img/release/2026-03-Step1-1-Select-speaker.jpg" alt="Device selection — choose output and input devices" /></div>
-          <div className="phone-screenshot"><DocImg src="/img/release/2026-03-Step1-2-Select-speaker.jpg" alt="Speaker picker — pick the connected Bluetooth, AirPlay, USB-C, or HDMI speaker" /></div>
-          <div className="phone-screenshot"><DocImg src="/img/release/2026-03-Step1-3-Speaker-selected.jpg" alt="Speaker selected — JBL Xtreme 4 confirmed" /></div>
+        <div className="phone-screenshot">
+          <DocImg src="/img/release/2026-09-acoustic-flow-1.jpg" alt="Device selection screen with the iPhone Microphone as input device and a JBL Xtreme 4 as output device" />
         </div>
       </>
     ),
@@ -68,12 +71,30 @@ BMR Mobile guides you through a step-by-step flow, taking measurements at three 
     title: "Room setup",
     content: (
       <>
-        <h3>3) Room setup</h3>
-        <p>Keep the speaker at least <strong>1 m / 3 ft from the wall</strong>. Capture a photo of the speaker by aligning the crosshair, then confirm the location. Updated room detection pinpoints exactly where the <strong>speaker</strong> — and later each <strong>measurement point</strong> — sits within the room, so their positions can be shown on the Web.</p>
-        <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <div className="phone-screenshot"><DocImg src="/img/release/2026-03-Step2-1-Room-setup.jpg" alt="Room setup — speaker placement instructions" /></div>
-          <div className="phone-screenshot"><DocImg src="/img/release/2026-03-Step2-2-Capture-speaker.jpg" alt="AR camera — align crosshair with speaker" /></div>
-          <div className="phone-screenshot"><DocImg src="/img/release/2026-03-Step2-3-Speaker-marked.jpg" alt="Speaker location captured with coordinates" /></div>
+        <h3>2) Room setup</h3>
+        <p>Place the speaker at least <strong>1 m / 3 ft from the wall</strong>, as shown in the 3D illustration.</p>
+        <p><strong>Advanced flow:</strong> tap <strong>Capture speaker photo</strong> and photograph the speaker. This records the speaker's exact position in the room, so it can be shown alongside the measurement points on the Web.</p>
+        <p><strong>Basic flow:</strong> there is no photo capture — check the speaker placement and tap <strong>Next</strong>.</p>
+        <div className="phone-screenshot">
+          <DocImg src="/img/release/2026-09-acoustic-flow-2.jpg" alt="Room setup screen with a 3D room illustration, the instruction to keep the speaker at least 1 m / 3 ft away from the wall, and a Capture speaker photo button" />
+        </div>
+      </>
+    ),
+  },
+  {
+    title: "Recognise room",
+    content: (
+      <>
+        <h3>3) Recognising this room <em>(Advanced only)</em></h3>
+        <p>The app matches what the camera sees against the room's saved map, so your measurement is placed correctly in the 3D room. Slowly look around the room and follow the live feedback:</p>
+        <ul>
+          <li>The <strong>"% of room seen"</strong> indicator shows how much of the room has been matched so far</li>
+          <li><strong>Directional hints</strong> such as <em>"Keep turning left"</em> tell you where to point the camera next</li>
+          <li>When the room is recognised, a <strong>green checkmark</strong> confirms it and you can continue</li>
+        </ul>
+        <p>You can tap <strong>Skip positioning</strong> to continue without placement. In the <strong>Basic</strong> flow this step is skipped entirely.</p>
+        <div className="phone-screenshot">
+          <DocImg src="/img/release/2026-09-acoustic-flow-3.jpg" alt="Recognising this room screen showing the live camera view, a 12% of room seen indicator, and a Keep turning left hint" />
         </div>
       </>
     ),
@@ -83,18 +104,15 @@ BMR Mobile guides you through a step-by-step flow, taking measurements at three 
     content: (
       <>
         <h3>4) Adjust volume &amp; noise floor test</h3>
-        <p>Adjust the speaker volume and run the noise floor test. The app compares ambient noise to the speaker level — a minimum difference of <strong>25 dB</strong> is required for accurate measurement.</p>
+        <p>Set the speaker volume — the app shows a <strong>recommended volume</strong> for your speaker — and run the noise floor test. The app compares ambient noise to the speaker level; a minimum difference of <strong>25 dB</strong> is required for accurate measurement.</p>
         <ul>
           <li>Be quiet and tap <strong>Test</strong> to start the noise floor check</li>
           <li>The app plays pink noise and measures the difference against ambient noise</li>
-          <li>When the result shows <strong>≥ 25 dB</strong> with a green checkmark, the volume is correctly adjusted</li>
-          <li>If the difference is <strong>too low</strong>, an orange warning appears — raise the speaker volume (or reduce ambient noise) and tap <strong>Test again</strong></li>
+          <li>When the difference is large enough, a green checkmark confirms the volume is correctly adjusted</li>
+          <li>If the difference is <strong>too low</strong>, raise the speaker volume (or reduce ambient noise) and tap <strong>Test</strong> again</li>
         </ul>
-        <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <div className="phone-screenshot"><DocImg src="/img/release/2026-03-Step3-1-Noise-test.jpg" alt="Noise floor test — ready to test" /></div>
-          <div className="phone-screenshot"><DocImg src="/img/release/2026-06-Step3-2-Noise-testing.jpg" alt="Noise floor test — testing in progress" /></div>
-          <div className="phone-screenshot"><DocImg src="/img/release/2026-06-Step3-3-Noise-passed.jpg" alt="Noise floor test — passed with 42.5 dB difference" /></div>
-          <div className="phone-screenshot"><DocImg src="/img/release/2026-06-Step3-4-Noise-failed.jpg" alt="Noise floor test — failed at 15.2 dB, prompts to adjust volume and retest" /></div>
+        <div className="phone-screenshot">
+          <DocImg src="/img/release/2026-09-acoustic-flow-4.jpg" alt="Adjust volume screen with a speaker volume slider at 65, a recommended volume of about 50, and a Test button for the noise floor check" />
         </div>
       </>
     ),
@@ -104,12 +122,10 @@ BMR Mobile guides you through a step-by-step flow, taking measurements at three 
     content: (
       <>
         <h3>5) Measure at three positions</h3>
-        <p>The app guides you through three measurement positions (A, B, C). At each position, tap <strong>Start Measurement</strong>, then stay still and silent while the sweep plays.</p>
-        <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <div className="phone-screenshot"><DocImg src="/img/release/2026-03-Acoustic-measurement-a.jpg" alt="Measurement at position A" /></div>
-          <div className="phone-screenshot"><DocImg src="/img/release/2026-03-Acoustic-measurement-b.jpg" alt="Measurement at position B" /></div>
-          <div className="phone-screenshot"><DocImg src="/img/release/2026-03-Acoustic-measurement-c.jpg" alt="Measurement at position C" /></div>
-          <div className="phone-screenshot"><DocImg src="/img/release/2026-03-Acoustic-measurement-progress.jpg" alt="Sweep measurement in progress" /></div>
+        <p>The app guides you through three measurement positions (<strong>a</strong>, <strong>b</strong>, <strong>c</strong>), each shown in the 3D room illustration. Stand at the indicated location, tap <strong>Start Measurement</strong>, then stay still and silent while the sweep plays.</p>
+        <p>In the <strong>Advanced</strong> flow, a <strong>Found device position</strong> banner confirms your device's position is being tracked — this improves measurement accuracy and records each measurement point in the 3D room.</p>
+        <div className="phone-screenshot">
+          <DocImg src="/img/release/2026-09-acoustic-flow-5.jpg" alt="Measurement 1 of 3 screen with a Found device position banner and a 3D room illustration marking measurement position a" />
         </div>
         <Admonition type="note" title="Important">
           Do not move or make noise during a measurement. Remain still and silent until the sweep completes. If a result looks incorrect, check that the speaker volume is high enough and that the room was quiet, then retry that position.
@@ -123,12 +139,15 @@ BMR Mobile guides you through a step-by-step flow, taking measurements at three 
     content: (
       <>
         <h3>6) Review &amp; save results</h3>
-        <p>Review MOS and average RT60 across all positions, then tap <strong>Save Results</strong>.</p>
+        <p>Review the results, then tap <strong>Save Results</strong> to store the measurement in the room's <strong>Room Data</strong>.</p>
+        <ul>
+          <li>The <strong>MOS score circle</strong> shows the Mean Opinion Score with its variant label underneath (e.g. <strong>RT+BR+N</strong> — see <a href="/docs/acoustics/mos-score">Understanding the MOS Score</a>)</li>
+          <li>The <strong>Acoustic Summary</strong> shows the average RT60 across all positions</li>
+          <li>Toggle <strong>Expert Mode</strong> to switch between essential metrics and the full set of graphs and parameters</li>
+        </ul>
         <div className="phone-screenshot">
-          <DocImg src="/img/release/2026-03-Acoustic-measurement-finished.jpg" alt="Results screen showing MOS and average RT60" />
+          <DocImg src="/img/release/2026-09-acoustic-flow-6.jpg" alt="Results screen with a MOS score of 3.6 labelled Good, the RT+BR+N variant, an Acoustic Summary showing average RT60 of 0.45 seconds, an Expert Mode toggle, and a T20 reverberation time graph" />
         </div>
-        <p>Toggle the <strong>Average</strong> switch to move between the combined result and individual measurement positions.</p>
-        <p>Tap <strong>Save Results</strong> to store the measurement in the room's <strong>Room Data</strong>.</p>
       </>
     ),
   },
@@ -139,8 +158,10 @@ The results screen shows:
 | Result | What it means |
 |---|---|
 | **Mean Opinion Score (MOS)** | Predicted speech quality — 5 = excellent, 1 = poor |
+| **MOS variant** | Which factors the score includes (e.g. **RT+BR+N** = Reverberation Time + Bass Ratio + Background Noise) — see [Understanding the MOS Score](mos-score) |
 | **Average RT60** | Average reverberation time across all positions taken |
 | **RT60 graph** | T20 reverberation time across frequency bands |
+| **Expert Mode** | Off shows the essential metrics only; on reveals the full set of graphs and parameters |
 
 A good meeting room typically targets **RT60 < 0.5 s** and **MOS ≥ 3.5**.
 
@@ -165,7 +186,7 @@ Balloon and impulse measurements now surface **ambient noise** alongside the imp
 
 ## <Icon name="offline-mode" size="1em" /> Measuring Offline
 
-No connection? The full acoustic measurement — including the three-position guided flow — works **without the network**.
+No connection? The full acoustic measurement — including the three-position guided flow — works **without the network**. Offline measurements run as the **Basic flow**, since the Advanced flow requires an internet connection.
 
 - Run the measurement exactly as you would online.
 - Add a short **note** describing where you took the measurement, so you can identify it later.
