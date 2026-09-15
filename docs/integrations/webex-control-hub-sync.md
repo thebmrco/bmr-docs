@@ -27,11 +27,9 @@ The app only ever **reads** locations and workspaces. It does not modify anythin
 
 ## Step 2 — Connect your organization
 
-After the authorization, BMR retrieves a connection token for your organization and provides it to you (your BMR contact will send it or complete this step with you).
-
-1. In BMR, open your **Organization → Webex Sync**.
-2. Paste the connection token (refresh token) into the **Connect Webex Organization** form.
-3. Click **Connect**. The token is verified against Webex and your organization's name appears in the panel when the connection succeeds.
+1. In BMR, open **Organization → Integrations → Webex**.
+2. Paste the organization's **refresh token** into the **Connect Webex Organization** form — it is available on [developer.webex.com](https://developer.webex.com) after the authorization (your BMR contact can help with this step).
+3. Click **Connect**. The token is verified against Webex; your Webex organization's name appears when the connection succeeds.
 
 ## Step 3 — Configure the sync
 
@@ -67,12 +65,13 @@ The Webex Sync panel shows the last sync time, status, and counts of created/upd
 | Message | What to do |
 |---|---|
 | *The Webex authorization has expired or been revoked* | Have your Webex admin re-authorize the Service App in Control Hub, then reconnect with a fresh token (Step 2). |
-| *Webex couldn't be reached* | Temporary network or Webex outage — try again in a few minutes. |
-| *Webex refused the request (permissions)* | The app's authorization in Control Hub is missing scopes — re-authorize it. |
+| *Couldn't reach Webex* / *Webex didn't respond as expected* | Temporary network or Webex outage — try again in a few minutes. |
+| *Webex refused the request* | The app's authorization in Control Hub is missing scopes — re-authorize it. |
+| *The last sync took too long and was cancelled* | Try again — if it keeps timing out, your Webex organization may be too large for a single sync. |
 
 ## Disconnecting
 
-1. In **Organization → Webex Sync**, click **Deactivate**. This stops syncing and deletes the stored token.
+1. In **Organization → Integrations → Webex**, click **Deactivate**. This stops syncing and deletes the stored token.
 2. To fully revoke the app's access, your Webex administrator should also remove the *Better Meeting Rooms* authorization in **Control Hub → Apps → Service Apps**.
 
 :::info

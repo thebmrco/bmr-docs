@@ -195,12 +195,12 @@ export default function HomepageFeatures(): ReactNode {
       <section className={styles.whatsNew}>
         <div className="container">
           <div className={styles.whatsNewInner}>
-            <Link className="intro-feature" to="/docs/release-notes/2026-09-release-2.1">
+            <Link className="intro-feature" to="/docs/release-notes/2026-09-release-2.2">
               <span className="intro-feature-badge">Latest release · September 2026</span>
-              <span className="intro-feature-title">BMR Mobile 2.1 — now on the App Store</span>
+              <span className="intro-feature-title">BMR Mobile 2.2 — easier to use, harder to get lost</span>
               <span className="intro-feature-desc">
-                The first public release of BMR Mobile — the same app as 2.0, now
-                available to everyone in the Apple App Store.
+                A new room recognition flow, Advanced and Basic acoustic
+                measurement, and in-app guidance that shows you what to do next.
               </span>
               <span className="intro-feature-link">Read the release notes →</span>
             </Link>
