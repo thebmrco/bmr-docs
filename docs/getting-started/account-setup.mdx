@@ -4,32 +4,38 @@ import StepFlow from '@site/src/components/StepFlow'
 
 # Account Setup
 
-There are two ways to start using BETTERMEETINGROOMS — pick the one that fits.
+There are **exactly two ways** to start using BETTERMEETINGROOMS. Which one is yours comes down to a single question:
+
+## Does your company already use BETTERMEETINGROOMS?
 
 <div className="intro-grid">
   <a href="#by-invitation" className="intro-card choice-card">
-    <span className="intro-card-title"><Icon name="user-check" size="1em" /> Join your organisation</span>
+    <span className="intro-card-title"><Icon name="user-check" size="1em" /> Yes — join your organisation</span>
     <ul className="choice-points">
-      <li>Invited by your company as an <strong>Org Admin</strong>, <strong>Location Manager</strong>, or <strong>Room Manager</strong></li>
-      <li>Best when your company already uses BMR</li>
-      <li>You land alongside your colleagues' rooms and data</li>
+      <li>A colleague <strong>invites you</strong> — you build nothing</li>
+      <li>You join your company's <strong>existing workspace</strong>, alongside your colleagues' rooms and data</li>
+      <li>Your invitation carries your <strong>role</strong>: Org Admin, Location Manager, or Room Manager</li>
     </ul>
   </a>
   <a href="#create-your-own" className="intro-card choice-card">
-    <span className="intro-card-title"><Icon name="add-new" size="1em" /> Start your own</span>
+    <span className="intro-card-title"><Icon name="add-new" size="1em" /> No — start your own</span>
     <ul className="choice-points">
-      <li>Sign up directly on the <strong>Web</strong> or in the <strong>App</strong></li>
-      <li>A short wizard creates your own <strong>Organisation → Location → Room</strong></li>
-      <li>Best when you're bringing BMR to your team</li>
+      <li>You <strong>start from nothing</strong> — no invitation needed</li>
+      <li>Sign up yourself and <strong>build a new organisation</strong>: a short wizard creates your Organisation → Location → Room</li>
+      <li>You are bringing BMR to your team</li>
     </ul>
   </a>
 </div>
 
+:::caution Don't create a second organisation
+If anyone at your company already uses BETTERMEETINGROOMS, ask for an **invitation**. Starting your own creates a separate, empty workspace — you won't see your colleagues' rooms and data.
+:::
+
 ---
 
-## <Icon name="user-check" size="1em" /> Join your organisation {#by-invitation}
+## <Icon name="user-check" size="1em" /> Option 1 — Join your organisation (by invitation) {#by-invitation}
 
-When your company already uses BMR, an admin invites you into the organisation with a **role** that scopes what you can see and manage.
+Your company already uses BMR — you don't create anything. An admin invites you into the **existing organisation** with a **role** that scopes what you can see and manage.
 
 | Role | Scope | What you can do |
 |---|---|---|
@@ -51,7 +57,7 @@ Sign up with the **exact email the invitation was sent to** — that's the addre
 
 Once your password is set, log in via **BMR Mobile** or the **Web** — both use the same Welcome screen.
 
-**Via BMR Mobile** — install **BMR Mobile** from the Apple App Store and tap **Login**:
+**Via BMR Mobile** — install **[BMR Mobile](https://apps.apple.com/app/bmr-mobile/id6804977641)** from the Apple App Store and tap **Login**:
 
 <StepFlow steps={[
   { label: "Tap Login to begin", image: "/img/account-setup/Account-setup-app-1.png", alt: "App Login Screen" },
@@ -61,21 +67,40 @@ Once your password is set, log in via **BMR Mobile** or the **Web** — both use
 
 **Via the Web** — go to **[app.bettermeetingrooms.com](https://app.bettermeetingrooms.com)**, enter your email and password on the Welcome screen, and you're in. The web platform gives you room management, acoustic comparisons, and **BMR Studio**.
 
----
+<div style={{display: 'flex', alignItems: 'center', gap: '1.25rem', margin: '3.5rem 0'}}>
+  <div style={{flex: 1, height: '1px', background: 'var(--ifm-color-emphasis-300)'}}></div>
+  <strong style={{fontSize: '1.1rem', letterSpacing: '0.1em'}}>OR</strong>
+  <div style={{flex: 1, height: '1px', background: 'var(--ifm-color-emphasis-300)'}}></div>
+</div>
 
-## <Icon name="add-new" size="1em" /> Start your own {#create-your-own}
+## <Icon name="add-new" size="1em" /> Option 2 — Start your own (from nothing) {#create-your-own}
 
-No invitation needed. Sign up directly — on the **Web** or in **BMR Mobile** — and BMR guides you through creating your own workspace instead of dropping you into an empty account.
+Nobody at your company uses BMR yet — you build the workspace yourself, from nothing.
 
-### <Icon name="mail" size="1em" /> Step 1 — Confirm your email
+### <Icon name="user" size="1em" /> Step 1 — Sign up
 
-Right after signing up you'll receive a **confirmation email** at the address you registered with. Confirm it — onboarding can't start until you do.
+Sign up either way — both lead to the same place:
+
+- **Web** — go to **[app.bettermeetingrooms.com](https://app.bettermeetingrooms.com)**
+- **App** — install **[BMR Mobile](https://apps.apple.com/app/bmr-mobile/id6804977641)** from the Apple App Store and open it
+
+Both show the same **Welcome** screen. Tap **Sign up** (below the Continue button), then enter the **email address** and **password** you want to use on the next screen.
+
+<img
+  src={useBaseUrl('/img/account-setup/Account-setup-sign-up.png')}
+  alt="The Welcome screen on web and in BMR Mobile, with an arrow pointing at the Sign up link below the Continue button"
+  style={{width: '100%', maxWidth: '320px', display: 'block', margin: '1rem auto', borderRadius: '12px', border: '1px solid #E5E5D5'}}
+/>
+
+### <Icon name="mail" size="1em" /> Step 2 — Confirm your email
+
+After signing up you'll receive a **confirmation email** at the address you registered with. Confirm it — you can't continue until you do.
 
 :::caution No email?
 Check your spam folder, and make sure you signed up with the address you meant to. The confirmation goes to exactly the address you registered.
 :::
 
-### <Icon name="add-new" size="1em" /> Step 2 — Create your workspace
+### <Icon name="add-new" size="1em" /> Step 3 — Sign in and create your workspace
 
 Sign in after confirming. A welcome screen explains that you're not part of any organisation yet, with a **Get started** button that opens a short three-step wizard.
 
@@ -94,10 +119,6 @@ The wizard walks you through the three levels of the [data hierarchy](../lifecyc
 ]} />
 
 You land directly in your new workspace with your first room ready to scan. The same flow is available on **iPhone and iPad** — mobile onboarding mirrors the Web.
-
-:::tip Joining a company that already uses BMR?
-Prefer an **invitation** (or sign up with your **company email**) rather than creating a brand-new organisation — otherwise you'll end up in a separate workspace and won't see your colleagues' rooms and data.
-:::
 
 ---
 
