@@ -664,7 +664,7 @@ export function score(speaker: Speaker, room: Room): Result {
   if (status !== 'no' && margin_db < band_db) {
     caveats.push({
       id: 'full_volume',
-      text: 'It only just gets there, so play at full volume on a full battery. A limiter changes the gain during the sweep and the analysis cannot separate that out.',
+      text: 'It only just gets there, so the volume setting decides it. Turning a portable up to its limit is not the answer either: a limiter changes the gain during the sweep and the analysis cannot separate that out. Keep the battery full.',
       uncertainty_db: 0,
     })
   }

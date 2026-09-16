@@ -101,7 +101,7 @@ export const SWEEP_LEVEL_OFFSET_DB = -12
  * the distance it was measured at and a wattage. One published figure counts once, so the Logitech Rally Bar and
  * Rally Bar Mini, which publish the identical 99 dB / 0.5 m / 8 W, are one observation and not two:
  *   Marshall Middleton 69.2, Beosound Explore 73.2, Beosound A1 2nd Gen 74.2, Teufel MYND 79.6,
- *   Logitech Rally Bar 84.0 dB/W/m — median 74.2, SD 5.8, span 14.7 dB.
+ *   Logitech Rally Bar 84.0 dB/W/m — median 74.2, SD 5.8, span 14.8 dB.
  * The test 'takes the level per watt from the datasheets that publish both, and its spread with it' pins the
  * list and both numbers to those datasheets.
  *
@@ -156,9 +156,8 @@ export const NOISE_BAND_OFFSET_DB: Record<number, number> = {
  *     15.7 / √12 = 4.5 dB. DESIGN CHOICE; single recordings span −21.2 … +1.4 dB, but they mix device and volume.
  * √(4.7² + 4.5²) = 6.5 dB, and that is a FLOOR, not the whole error. A third term is in neither part: the same
  * loudspeaker measured on different days drifts by 4.1 dB (pooled SD over sessions), because the volume setting was
- * never recorded and k is built from one day per device. It is left out deliberately — it is the user's own control,
- * and the tool tells them to play at full volume — but it is named on the method page rather than hidden. Adding it
- * in quadrature would give 7.7 dB. Both shrink when k is measured per device at a known volume.
+ * never recorded and k is built from one day per device. It is left out deliberately — the volume setting is the user's
+ * own control — but it is named on the method page rather than hidden. Adding it in quadrature would give 7.7 dB. Both shrink when k is measured per device at a known volume.
  */
 export const MODEL_ERROR_DB = 4.7
 export const SWEEP_OFFSET_UNCERTAINTY_DB = (0.3 - -15.4) / Math.sqrt(12)
