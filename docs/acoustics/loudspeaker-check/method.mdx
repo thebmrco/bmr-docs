@@ -1,0 +1,182 @@
+---
+title: Loudspeaker Check — Method
+sidebar_label: Method
+---
+
+import {
+  CENTER_FREQUENCIES,
+  DEFAULT_Q,
+  FEW_MEASUREMENTS_ABOVE_M2,
+  PREDICTION_UNCERTAINTY_DB,
+  REQUIRED_SPAN_HZ,
+  SNR_CLEAN_DB,
+  SNR_GATE_DB,
+  SNR_RELIABLE_DB,
+  SWEEP_ANALYSIS_GAIN_DB,
+  SWEEP_LEVEL_OFFSET_DB,
+} from '@site/src/components/LoudspeakerCheck/lib/constants'
+import {
+  LowBandOffsets,
+  MaxVolume,
+  NoiseOffsetTable,
+  RoomPresetTable,
+  SourcesList,
+  Tex,
+  TierTable,
+  WorkedExample,
+} from '@site/src/components/LoudspeakerCheck/MethodParts'
+
+# Method
+
+The [Loudspeaker Check](./index.mdx) predicts the signal-to-noise ratio a BMR measurement will reach and compares it
+with what the BMR analysis requires. The constants come from the literature, from the BMR analysis, or from BMR's
+stored measurements.
+
+## Symbols
+
+| Symbol | Quantity | Unit |
+|---|---|---|
+| <Tex>{String.raw`L_{1\,\mathrm{m}}`}</Tex> | Datasheet maximum level, referred to 1 m | dB SPL |
+| <Tex>{String.raw`L_\mathrm{sw}`}</Tex> | Broadband sweep level at 1 m, full volume | dB SPL |
+| <Tex>{String.raw`L_\mathrm{mic}`}</Tex> | Sweep level at the microphone | dB SPL |
+| <Tex>{'L_A'}</Tex> | Background noise, A-weighted | dB(A) |
+| <Tex>{'L_{N,b}'}</Tex> | Background noise in octave band b | dB SPL |
+| <Tex>{String.raw`A,\ V,\ d`}</Tex> | Floor area, volume, source–microphone distance | m², m³, m |
+| <Tex>{'T'}</Tex> | Reverberation time | s |
+| <Tex>{'Q'}</Tex> | Directivity factor, {DEFAULT_Q} (loudspeaker near a surface) | — |
+| <Tex>{String.raw`\mathrm{SNR}_b`}</Tex> | Signal-to-noise ratio in band b | dB |
+| <Tex>{String.raw`M,\ \beta,\ \sigma`}</Tex> | Margin to the threshold; borderline zone; uncertainty of the datasheet level | dB |
+
+## What the measurement requires
+
+The BMR analysis needs a minimum signal-to-noise ratio in each octave band. The reverberation time is built from the
+500 Hz and 1 kHz bands, so the lower of the two decides.
+
+<TierTable />
+
+{SNR_GATE_DB}, {SNR_CLEAN_DB} and 38 dB are where the BMR analysis acts. {SNR_RELIABLE_DB} dB is this tool's own line:
+the minimum plus 3 dB, so that "works" does not mean "only just". Between {SNR_RELIABLE_DB} and {SNR_CLEAN_DB} dB the
+analysis may warn that the signal is close to the noise floor. ISO 3382-1 and -2 ask for a decay that starts at least
+35 dB above the noise for T20 and 45 dB for T30; that is a level at the start of the decay, which is not the same
+quantity as the average signal-to-noise ratio used here. In BMR's stored measurements, T20 between 28 and 35 dB read
+about 2 % longer than recordings of the same room at 38 dB or more, within the scatter between those recordings themselves, though that scatter was wider between 31 and 35 dB; two of the three recordings below 28 dB read 18–19 % longer, one about half as long. The {SNR_RELIABLE_DB} dB line is a practical choice, not a
+standard.
+
+## Full result: the bands the MOS score needs
+
+The headline room size is the largest room in which the measurement gives the **full result**: 500 Hz and 1 kHz at
+{SNR_RELIABLE_DB} dB **and** 125 Hz and 250 Hz at {SNR_GATE_DB} dB. The MOS score's Bass Ratio,
+<Tex>{String.raw`(T_{125} + T_{250}) / (T_{500} + T_{1000})`}</Tex>, needs a reverberation time in all four bands, and a
+band below {SNR_GATE_DB} dB returns none. Just above that line it can still be missing: in BMR's measurements 125 Hz
+returned no reverberation time in about one in four recordings between 25 and 28 dB. The tool keeps its caution in the loudspeaker level and the far-corner microphone instead of adding a third
+margin here, so the Bass Ratio is not certain at the headline size: where the tool said a room works, 43 of 54 BMR recordings
+got the full result, and the others lost the 125 Hz band.
+
+Loudspeakers arrive weaker in the low bands than a flat model assumes. In BMR's calibrated recordings the median
+shortfall against 500 Hz is <LowBandOffsets />. The median is applied to every loudspeaker, and the spread widens the
+uncertainty of those two bands.
+
+If 125 Hz or 250 Hz is outside the loudspeaker's range, for example a speakerphone in its voice mode, the MOS score
+has no Bass Ratio and the answer says so. The room size stays the one its level allows with that band played:
+switching a band off does not make a room bigger.
+
+The range given with the room size shows how far the size moves when every uncertain part (the model's error against
+stored measurements, the unknown sweep level, the spread of the low bands) is moved to its cautious or its optimistic
+end. It is not a probability. In large rooms a few decibels change the size several-fold, so the range is wide.
+
+The check covers rooms up to <MaxVolume />: DIN 18041 states its A4 target, which lists the video-conference room as an
+example, for rooms up to that volume and calls A4 unsuitable above it. As a floor area that is <MaxVolume /> divided by
+the ceiling height. The reverberation time is still estimated with the A3 target, as BMR's analysis does.
+
+## From the datasheet to the microphone
+
+<Tex display n="2">{String.raw`L_{1\,\mathrm{m}} = L(d_\mathrm{ref}) + 20\log_{10} d_\mathrm{ref}`}</Tex>
+<Tex display n="3">{String.raw`L_\mathrm{sw} = L_{1\,\mathrm{m}} + k, \qquad k = ` + SWEEP_LEVEL_OFFSET_DB + String.raw`\ \mathrm{dB}`}</Tex>
+
+<Tex>{'k'}</Tex> is the level a sine sweep reaches at full volume relative to the maximum-SPL rating, and the least
+certain number here. Manufacturer ratings are mostly pink noise at full drive, reported as the highest peak (Weinzierl,
+ch. 17); a sweep has a 3 dB crest factor, so crest factor alone would put <Tex>{'k'}</Tex> near −3 dB. In BMR's
+recordings of loudspeakers with a published level, played at an unknown volume, the offset per device lay between −15
+and 0 dB; a Jabra Speak2 75 about −12 dB. The −12 dB used is a cautious choice from that; a full-volume measurement per
+device will replace it.
+
+<Tex display n="4">{'d = \\sqrt{A/2}'}</Tex>
+
+Source centred, microphone in the farthest corner of a square room.
+
+<Tex display n="5">{String.raw`T = a\log_{10} V + b \qquad \text{(DIN 18041, A3: } a = 0.32,\ b = -0.17)`}</Tex>
+
+Used when the reverberation time has not been measured. In BMR rooms the measured value is 0.95 × this target (median over 77 rooms;
+half of them lie between 0.78 and 1.12), so real rooms are a little livelier than the target at the low end and a
+little drier at the high end.
+
+<Tex display n="6">{String.raw`L_\mathrm{mic} = L_\mathrm{sw} - 10\log_{10}\frac{Q}{4\pi} + 10\log_{10}\!\left(\frac{Q}{4\pi d^2} + \frac{25\,T}{V}\right)`}</Tex>
+
+Direct sound plus the reverberant field. Both reach the microphone, so both count. Where only the microphone moved,
+BMR's measured level fell far less with distance than the direct sound alone predicts (slope near 0 against −1).
+Equation (6) predicts −0.3 to −0.5 there, so its distance dependence is not confirmed either.
+
+## The SNR the measurement will reach
+
+<Tex display n="7">{'L_{N,b} = L_A + \\Delta N_b'}</Tex>
+
+<NoiseOffsetTable />
+
+Median over 157 calibrated BMR measurements; room noise is highest in the low bands.
+
+<Tex display n="8">{String.raw`\mathrm{SNR}_b = L_\mathrm{mic} - L_{N,b} + G, \qquad G = ` + SWEEP_ANALYSIS_GAIN_DB.toFixed(1) + String.raw`\ \mathrm{dB}`}</Tex>
+
+<Tex>{'G'}</Tex> is a fixed property of the BMR measurement signal and its analysis, checked on simulated rooms to within
+±1 dB from 500 Hz to 8 kHz.
+
+<Tex display n="9">{String.raw`M = \min(\mathrm{SNR}_{500}, \mathrm{SNR}_{1000}) - \mathrm{SNR}_\mathrm{req}`}</Tex>
+<Tex display n="10">{String.raw`\text{works if } M \ge \beta, \quad \text{borderline if } |M| < \beta, \quad \text{does not work if } M \le -\beta, \qquad \beta = ` + PREDICTION_UNCERTAINTY_DB.toFixed(1) + String.raw`\ \mathrm{dB}`}</Tex>
+
+<Tex>{'\\beta'}</Tex> is how far the prediction can be trusted: {PREDICTION_UNCERTAINTY_DB.toFixed(1)} dB. It combines
+the model's error against stored measurements (4.5 dB) with the unknown sweep offset <Tex>{'k'}</Tex>, which in BMR's
+recordings lay between −15 and 0 dB per device (4.5 dB if every value in that range is equally likely). It shrinks once
+<Tex>{'k'}</Tex> is measured per device. <Tex>{'\\sigma'}</Tex> is subtracted from the loudspeaker's level when the datasheet leaves something open: 3 dB when it omits the measuring distance, 2–4 dB when the level is derived from a wattage. Nothing is subtracted from the prediction.
+
+For the Jabra Speak2 75 in the 28 m² Aquarium (37–39 dB(A), T = 0.45 s) the tool predicts about 33 dB at 500 Hz; the
+two recordings measured 30.7 and 31.5 dB, both below the 35 dB warning line. That agrees, but it is not
+an independent check: <Tex>{'k'}</Tex> was chosen with the same recordings in view. Of the 77 rooms with a stored SNR, 7 are
+larger than {FEW_MEASUREMENTS_ABOVE_M2} m².
+
+"No noise warning" means none in the 500 Hz and 1 kHz bands. Other bands can still warn, most often 125 Hz, and the
+analysis is stricter when the microphone is very close to the loudspeaker.
+
+The largest floor area for a tier is the <Tex>{'A'}</Tex> at which <Tex>{'M = 0'}</Tex>. Beyond the reverberation
+radius the level falls only with <Tex>{String.raw`10\log_{10}(T/V)`}</Tex>, so a few decibels change that area
+several-fold: treat it as a guide and the verdict for the actual room as the answer.
+
+## Frequency coverage
+
+A datasheet's frequency limit is where the output is down by a few dB (usually 3, sometimes 10), not where it stops.
+A band therefore counts when its centre <Tex>{'f_c'}</Tex> lies inside the stated range, and is marked partial when the
+limit falls between <Tex>{'f_c/\\sqrt{2}'}</Tex> and <Tex>{'f_c\\sqrt{2}'}</Tex>: measured, but weaker. In BMR's
+measurements, room systems rated from 100 Hz reached 24–34 dB in the 125 Hz band, and a speakerphone rated from 250 Hz
+3–23 dB. A partial band on a driver smaller than 60 mm is flagged, because that is where the band really does run out.
+The BMR app reports 125 Hz – 8 kHz ({REQUIRED_SPAN_HZ[0].toFixed(1)} – {REQUIRED_SPAN_HZ[1].toFixed(0)} Hz); its bands
+are {CENTER_FREQUENCIES.join(', ')} Hz, and 63 Hz is not measured because the sweep starts at 80 Hz.
+
+## What it does not include
+
+- The loudspeaker's own frequency response and directivity, beyond the typical low-band shortfall above.
+- Rooms that are not diffuse, where the model behind equation (6) does not hold. EN 12354-6 §5 notes that for its own
+  absorption model the real reverberation time can then be up to twice the prediction.
+- Rooms that are long and narrow. The tool assumes a square room.
+- The volume actually set, limiters, and battery state. This is what <Tex>{'k'}</Tex> stands in for.
+
+## Room presets
+
+<RoomPresetTable />
+
+p75 of floor area per capacity class in BMR's room database; height is the class median.
+
+## Worked example
+
+<WorkedExample />
+
+## Sources
+
+<SourcesList />
