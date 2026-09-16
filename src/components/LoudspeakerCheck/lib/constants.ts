@@ -11,7 +11,7 @@
 // the level at which the integrated noise sits on the Schroeder energy decay curve.
 export const SNR_GATE_DB = 25 // below this in 500 Hz or 1 kHz: "No RTs calculated"
 /**
- * The headline tier: the gate plus 3 dB. DESIGN CHOICE (Benny, 2026-09-15), own, no source. A result that
+ * The headline tier: the gate plus 3 dB. DESIGN CHOICE (2026-09-15), own, no source. A result that
  * only just clears 25 dB is not what a customer means by "it works"; 3 dB is about 1.5 × the spread of real
  * rooms' absorption area for their size (1.9 dB, from BMR measurements). Between this and
  * SNR_CLEAN_DB the analysis still warns.
@@ -92,6 +92,35 @@ export const SWEEP_ANALYSIS_GAIN_DB = -3.91
 export const SWEEP_LEVEL_OFFSET_DB = -12
 
 /**
+ * Level per watt a finished loudspeaker actually reaches, for the datasheets that publish a wattage but no
+ * maximum level: L_1m = this + 10·log10(W).
+ *
+ * It is NOT a driver sensitivity. A driver's 1 W / 1 m figure ignores the compression, limiting and excursion
+ * limits that decide the maximum, which is why an assumed 80 dB/W/m sized loudspeakers about 8 dB too high.
+ * This is backed out of the finished product instead, from every datasheet here that publishes a maximum level,
+ * the distance it was measured at and a wattage. One published figure counts once, so the Logitech Rally Bar and
+ * Rally Bar Mini, which publish the identical 99 dB / 0.5 m / 8 W, are one observation and not two:
+ *   Marshall Middleton 69.2, Beosound Explore 73.2, Beosound A1 2nd Gen 74.2, Teufel MYND 79.6,
+ *   Logitech Rally Bar 84.0 dB/W/m — median 74.2, SD 5.8, span 14.7 dB.
+ * The test 'takes the level per watt from the datasheets that publish both, and its spread with it' pins the
+ * list and both numbers to those datasheets.
+ *
+ * Checked out of sample against BMR recordings of a device that is not in the list: for the JBL Xtreme 4 (70 W)
+ * it gives a sweep level of 74.9 dB at 1 m, and 73 calibrated recordings imply 74.4 dB as played — a lower
+ * bound, since the volume setting was never recorded. Devices with a published maximum level sit at −11.3,
+ * +0.7 and +1.8 dB on the same comparison, so +0.5 dB is inside that family. Read that as evidence that the
+ * constant is not 8 dB high, not as evidence that it is right: the band is 13 dB wide, comes from three devices
+ * with two or three recordings each on one day, and its upper end is the device k itself was chosen from.
+ *
+ * LIMITS, and they are real: n = 5 datasheets, three of them 60 W devices, so the wattage term itself is
+ * untested — only the level it is anchored at. "Watts" also means different things (amplifier total or driver,
+ * RMS or peak, battery or AC). A result built on it is an estimate and the answer says so.
+ */
+export const DERIVED_SENSITIVITY_DB_W_M = 74.2
+/** SD of those datasheets. Subtracted from the level, like every other datasheet doubt. */
+export const DERIVED_SENSITIVITY_SPREAD_DB = 5.8
+
+/**
  * Octave-band background noise relative to the A-weighted background level (L90) of the BMR measurement. A hand-held
  * meter showing LAeq reads higher, so entering that value makes the prediction err low.
  * BMR measurements: 157 calibrated recordings, median of
@@ -110,18 +139,37 @@ export const NOISE_BAND_OFFSET_DB: Record<number, number> = {
 // --- How sure the prediction is -----------------------------------------
 /**
  * Half-width of the borderline zone, before datasheet uncertainty. Two independent parts:
- *   - model error: spread of predicted vs stored SNR at fixed volume, 4.5 dB, the upper end of 4.2–4.6 dB from an
- *     earlier recomputation (BMR measurements). No saved query yet: OPEN, and kept with the internal method notes.
+ *   - model error: what the prediction misses once the loudspeaker's own level is taken out. BMR measurements:
+ *     136 calibrated recordings with stored positions, 4 devices, 20 rooms of 5–28 m², grouped into 18 sessions of
+ *     one loudspeaker on one day; one free level per session, so the unknown playback volume is not counted twice
+ *     here and again in k. Pooled within-session SD 4.68 dB (cluster bootstrap over sessions, 95 % CI 4.11–5.30).
+ *     Baseline: the same recordings scatter by 5.42 dB with no room and no noise term at all, so the model earns
+ *     a quarter of the variance, not more. Substituting each recording's own measured reverberation time for the
+ *     DIN 18041 target makes it worse (5.19 dB), so the target is not the weak link. The saved query is kept with
+ *     the internal method notes.
+ *     What it does NOT cover, all three worth knowing before quoting it: rooms above 28 m² are not in it; two of
+ *     its four devices are laptops (21 of the 136 recordings) and none of them has a published maximum SPL, so it
+ *     is measured beside the tool's main path rather than on it; and the residual still tracks the background
+ *     level (Spearman +0.30, p = 0.0004), so the noise path has structure the model does not have.
  *   - the sweep offset k: the span of per-device medians at the far-corner reading, the geometry the tool itself
  *     assumes: −15.4 (Room Kit EQ) … +0.3 dB (Jabra Speak2 40), from BMR measurements. Uniform over it:
  *     15.7 / √12 = 4.5 dB. DESIGN CHOICE; single recordings span −21.2 … +1.4 dB, but they mix device and volume.
- * √(4.5² + 4.5²) = 6.4 dB. Shrinks when k is measured per device.
+ * √(4.7² + 4.5²) = 6.5 dB, and that is a FLOOR, not the whole error. A third term is in neither part: the same
+ * loudspeaker measured on different days drifts by 4.1 dB (pooled SD over sessions), because the volume setting was
+ * never recorded and k is built from one day per device. It is left out deliberately — it is the user's own control,
+ * and the tool tells them to play at full volume — but it is named on the method page rather than hidden. Adding it
+ * in quadrature would give 7.7 dB. Both shrink when k is measured per device at a known volume.
  */
-export const MODEL_ERROR_DB = 4.5
+export const MODEL_ERROR_DB = 4.7
 export const SWEEP_OFFSET_UNCERTAINTY_DB = (0.3 - -15.4) / Math.sqrt(12)
 export const PREDICTION_UNCERTAINTY_DB = Math.hypot(MODEL_ERROR_DB, SWEEP_OFFSET_UNCERTAINTY_DB)
-/** BMR measurements: of 77 rooms with a stored SNR, 63 are ≤ 30 m² and 7 exceed 45 m². */
+/** BMR measurements: of the 75 rooms with a stored SNR and a floor area, 63 are ≤ 30 m² and 7 exceed 45 m². */
 export const FEW_MEASUREMENTS_ABOVE_M2 = 45
+/**
+ * Largest room BMR has a stored SNR for. The headline can state sizes above this — the volume cap allows 175 m²
+ * at a 2.8 m ceiling — so every answer that does says on its face that nothing that size has been measured.
+ */
+export const LARGEST_MEASURED_ROOM_M2 = 140
 /**
  * Above this the late decay reaches the tail of the analysis window, where the noise is estimated, so the
  * SNR saturates below the prediction (seen on simulated rooms at T = 0.8 s and high SNR). DESIGN CHOICE,
@@ -130,8 +178,15 @@ export const FEW_MEASUREMENTS_ABOVE_M2 = 45
 export const LONG_RT_S = 1.2
 
 export const SPEED_OF_SOUND_MS = 343 // m/s   as used by the BMR analysis
-export const DEFAULT_Q = 2 // -     the default of the BMR analysis, described there as talker directivity
-export const DIFFUSE_COEFF = 25 // -     the 25·T/V reverberant term of the BMR speech level model
+/**
+ * Directivity factor. DESIGN CHOICE: 2 to match the BMR analysis, which uses the same value and describes it as
+ * talker directivity. A loudspeaker is not a talker, but the point of this check is to predict what that analysis
+ * will return, so the two agree by construction. What it costs is on the method page: a loudspeaker that is more
+ * directional than Q = 2 puts 10·log10(Q/2) dB less into the reverberant field than assumed here.
+ */
+export const DEFAULT_Q = 2
+/** The classical reverberant term 4/A, with Sabine A = 0.161·V/T: 4/0.161 = 24.8, carried as 25 by the BMR analysis. */
+export const DIFFUSE_COEFF = 25
 export const SABINE_COEFF = 0.161 // s/m  Sabine, A = 0.161·V/T  (standard; used only for the reverberation radius)
 
 /**
@@ -163,22 +218,37 @@ export const LOW_BAND_SPREAD_DB: Record<number, number> = { 125: 8.4, 250: 3.9 }
  * 15 m², 94 Hz at 100 m²), where a single microphone position varies far more than a diffuse field would.
  */
 /**
- * Line the low bands must clear: the gate, where the analysis returns a T20 at all. DESIGN CHOICE (Benny,
- * 2026-09-15): the tool's caution sits in the sweep offset k and the far-corner microphone; a 28 dB line here as
+ * Line the low bands must clear: the gate, where the analysis returns a T20 at all. DESIGN CHOICE
+ * (2026-09-15): the tool's caution sits in the sweep offset k and the far-corner microphone; a 28 dB line here as
  * well stacked a third margin and cut the Jabra Speak2 75 from about 50 to 20 m². Stated openly: the analysis also
  * drops a band whose decay curve never falls 25 dB — a change of 2026-06-17 that also lowered the band gate from
  * 28 to 25 dB. BMR measurements, recordings from that date, duplicates collapsed: no T20 at 125 Hz in 25 % at 25–28 dB (7 of 28) and 5.3 % at ≥ 28 dB (14 of 264);
  * at 250 Hz 0 of 29 and 1 of 328. So at the headline size the Bass Ratio can still be missing, mostly at 125 Hz.
  */
 export const LOW_BAND_SNR_DB = SNR_GATE_DB
+/**
+ * Above this predicted SNR in the Bass Ratio bands the answer is not marked down in color. This is a MEASURED
+ * failure rate, not a propagated uncertainty. BMR measurements, recordings from 2026-06-17 on with duplicates
+ * collapsed: the analysis returned no T20 at 125 Hz in 5.3 % of recordings at 28 dB or more (14 of 264) and in
+ * 25 % between 25 and 28 dB (7 of 28); at 250 Hz 1 of 328 and 0 of 29.
+ *
+ * The color used to require the Bass Ratio margin to clear its whole half-width, 10.6 dB, of which 8.4 dB is the
+ * 125 Hz room-mode spread — something no loudspeaker can influence. At 35 m² and 35 dB(A) that made 7 of the 9
+ * worked examples amber, one of them by 0.1 dB, so the color carried no information about the loudspeaker.
+ * DESIGN CHOICE (2026-09-16): the borderline zone still widens the size RANGE and the tier ladder and the caveat
+ * still says the band can go missing; it no longer decides the color.
+ */
+export const BASS_RATIO_SAFE_SNR_DB = 28
 
 /** Largest area the solver looks at. Beyond the room presets it is a statement about the model, not about data. */
 export const AREA_SEARCH_MAX_M2 = 1000
 
 /**
  * DIN 18041:2016-03, 4.2.3, equations (1)–(6): T_soll = a·log10(V/m³) + b.
- * BMR measurements: measured T20mid over the A3 target is 0.97 (median, 82 rooms with a stored SNR) to
- * 1.08 (per-room median, 344 rooms), so the target is a fair estimate of these rooms, not only a goal.
+ * BMR measurements: measured T20mid over the A3 target has a per-room median of 0.92 (413 recordings, 75 rooms
+ * of 8–386 m³ with a stored SNR; half the rooms between 0.72 and 1.10, 64 % of them drier than the target), so
+ * the target is a fair estimate of these rooms and errs a little live. One saved query, with the internal method
+ * notes; two different figures for this were in circulation before 2026-09-16 and neither had one.
  */
 export const DIN18041_TARGET_RT: Record<string, [number, number]> = {
   A1: [0.45, 0.07], // Musik                                        30 <= V < 1000 m³
@@ -269,10 +339,8 @@ export const RT_BAND_INDICES = [3, 4] as const
 /** What the frequency slider offers: 20 Hz to Nyquist of the 48 kHz recording. Input only — scoring uses REQUIRED_SPAN_HZ. */
 export const FREQ_INPUT_RANGE_HZ: [number, number] = [20, 24000]
 
+/** Where the BMR sweep starts and stops. 63 Hz is below it, so that band is not measured. */
 export const SWEEP_NOMINAL_HZ: [number, number] = [80, 24000]
-/** …and what it measures, 0.5 %/99.5 % of cumulative energy. */
-export const SWEEP_MEASURED_HZ: [number, number] = [84.5, 23300]
-export const SAMPLE_RATE_HZ = 48000
 
 /** Octave band edges: f_c/√2 … f_c·√2. */
 export function bandEdges(centre: number): [number, number] {

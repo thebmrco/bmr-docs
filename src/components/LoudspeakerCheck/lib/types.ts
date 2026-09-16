@@ -4,7 +4,6 @@ import type { TierKey } from './constants'
 export type Provenance = 'datasheet' | 'assumed' | 'derived'
 export type PowerKind = 'amplifier' | 'speaker'
 export type Connection = 'bluetooth' | 'wired' | 'both' | 'unknown'
-export type PowerMode = 'battery' | 'mains'
 
 export interface Speaker {
   name: string
@@ -16,15 +15,12 @@ export interface Speaker {
   /** Required. */
   freq_low_hz: number
   freq_high_hz: number
-  /** Optional. Only used to derive a level when no SPL is published. */
+  /** Optional. Sets the level when no maximum SPL is published: DERIVED_SENSITIVITY_DB_W_M + 10·log10(W). */
   power_watt: number | null
+  /** Amplifier/total or driver power. Does not change the level; a driver rating is flagged instead. */
   power_kind: PowerKind | null
-  /** How it will be running during the measurement. Portables publish two ratings. */
-  power_mode: PowerMode
   /** Optional. Diameter of the largest (bass) driver, in mm. */
   woofer_mm: number | null
-  sensitivity_db_1w_1m: number | null
-  sensitivity_estimated: boolean
   connection: Connection
   bluetooth_codec: string
   note?: string

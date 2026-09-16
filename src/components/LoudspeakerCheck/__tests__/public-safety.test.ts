@@ -29,9 +29,12 @@ const FORBIDDEN: RegExp[] = [
   /speech-level/,
   /rtStandard/,
   /\.sql\b/,
+  /\.py\b/, // the analyses live in the internal archive and are never named here
   /\.csv\b/,
   /analysis\//,
   /criterion\.md/,
+  /Aquarium/i, // a BMR room nickname. Rooms, people and customers do not belong in these files; this list
+  //              catches the ones that got in once, it cannot catch a name nobody has written yet.
   /origin\/develop/,
   /bmr_git/,
   /\bdocker\b/i,

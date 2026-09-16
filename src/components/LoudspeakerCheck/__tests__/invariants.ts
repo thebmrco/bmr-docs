@@ -22,7 +22,14 @@ export function checkInvariants(x: Result) {
   const hasLevel = Number.isFinite(x.spl_at_1m_db)
   const missingRt = x.bands.some((b) => b.critical && !b.covered)
   if (!hasLevel) {
-    expect(x.light).toBe('red')
+    // No published maximum level: no size, no SNR, and nothing that reads as a verdict on the room.
+    expect(x.light).toBe(missingRt ? 'red' : 'yellow')
+    expect(x.headline).toBe(missingRt ? 'Does not work' : 'No room size')
+    expect(x.speaker.spl_peak_db === null && !x.speaker.power_watt).toBe(true)
+    expect(x.headline_range).toBe('')
+    expect(x.reach).toHaveLength(0)
+    for (const t of x.tiers) expect(t.max_area_m2).toBe(0)
+    expect(x.full.max_area_m2).toBe(0)
     return
   }
 

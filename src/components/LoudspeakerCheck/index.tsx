@@ -23,14 +23,15 @@ const DEFAULT_ROOM: Room = {
 export default function LoudspeakerCheck() {
   const [speaker, setSpeaker] = useState<Speaker>(EMPTY_SPEAKER)
   const [room, setRoom] = useState<Room>(DEFAULT_ROOM)
-  const ready = speaker.spl_peak_db !== null || (speaker.sensitivity_db_1w_1m !== null && speaker.power_watt !== null)
+  // A frequency range alone is enough to answer the band question; the room size needs a level or a wattage.
+  const ready = speaker.spl_peak_db !== null || speaker.power_watt !== null || speaker.freq_low_hz > 0
   const result = useMemo(() => (ready ? score(speaker, room) : null), [ready, speaker, room])
 
   return (
     <div className={`${styles.root} ${styles.stack}`}>
       <SpeakerForm speaker={speaker} onChange={setSpeaker} />
       <RoomPanel room={room} onChange={setRoom} />
-      {result ? <ResultCard result={result} /> : <div className={styles.empty}>The answer appears here once there is a maximum sound level.</div>}
+      {result ? <ResultCard result={result} /> : <div className={styles.empty}>The answer appears here once there is a maximum sound level, a wattage, or a frequency range.</div>}
     </div>
   )
 }

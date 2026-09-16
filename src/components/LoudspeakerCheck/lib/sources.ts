@@ -22,8 +22,8 @@ export const SOURCES: Source[] = [
   },
   {
     id: 'room_level',
-    citation: 'Weinzierl (ed.), Handbuch der Audiotechnik, 2nd ed., ch. 11 (Ahnert & Weinzierl), Eq. (24).',
-    what: 'Direct plus reverberant sound pressure level in a room: L = L_source + 10·log10(Q/(4πr²) + 25·T/V).',
+    citation: 'Weinzierl (ed.), Handbuch der Audiotechnik, 2nd ed., ch. 11 (Ahnert & Weinzierl), Eq. (24), printed p. 226.',
+    what: 'Direct plus reverberant sound pressure in a room, for an omnidirectional source: the direct term falls as 1/(4πr²) and the reverberant term is the classical 4/A, which with Sabine\'s A = 0.161·V/T is 25·T/V. The directivity factor Q in the equation this tool uses is not in Eq. (24); it is the tool\'s own, set to 2 to match the BETTERMEETINGROOMS analysis.',
   },
   {
     id: 'din18041',
@@ -37,7 +37,7 @@ export const SOURCES: Source[] = [
   },
   {
     id: 'en12354_6',
-    citation: 'EN 12354-6:2003, §4.6 and §5.',
+    citation: 'EN 12354-6:2003, (4.6) and (5).',
     what: 'Validity of diffuse-field predictions: in rooms that are not diffuse the real reverberation time can be up to twice the prediction of that standard\'s model.',
   },
   {
@@ -59,9 +59,15 @@ export const SOURCES: Source[] = [
     url: 'https://teufel.de/mynd-107002004',
   },
   {
+    id: 'pohler_2025',
+    citation:
+      'Pohler, Room Acoustic Analysis and Material Estimation Using Reduced Measurement Setup, Master thesis (MEng), supervisors Prof. Dr. F. Melchior (Stuttgart Media University) and Univ. Prof. Dr. techn. A. Sontacchi (Institute of Electronic Music and Acoustics, University of Music and Performing Arts Graz), 2025.',
+    what: 'Parallel measurements of real meeting rooms with professional reference equipment and a smartphone and Bluetooth loudspeaker chain; finds the advantages and the limitations of a mobile setup.',
+  },
+  {
     id: 'derived',
-    citation: 'Derived in this tool.',
-    what: 'SPL from sensitivity and power; octave band edges at f_c/√2 … f_c·√2.',
+    citation: 'Derived in this tool, from the datasheets listed on the method page.',
+    what: 'Level per watt at 1 m for a loudspeaker with no published maximum, the median of the datasheets here that publish a maximum level, its distance and a wattage (69.2, 73.2, 74.2, 79.6, 84.0 dB per watt). Also the octave band edges, f_c/√2 … f_c·√2.',
   },
 ]
 

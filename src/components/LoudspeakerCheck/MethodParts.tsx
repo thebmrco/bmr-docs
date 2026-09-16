@@ -110,21 +110,6 @@ const K = C as unknown as Record<string, unknown>
 function num(v: unknown, digits = 1): string {
   return typeof v === 'number' && Number.isFinite(v) ? Math.abs(v).toFixed(digits) : '—'
 }
-function band(name: string, b: number): unknown {
-  const m = K[name] as Record<number, number> | undefined
-  return m ? m[b] : undefined
-}
-
-/** "3.6 dB at 125 Hz (spread 6.3 dB) and 1.6 dB at 250 Hz (spread 3.9 dB)", from the engine constants. */
-export function LowBandOffsets() {
-  return (
-    <>
-      {num(band('LOW_BAND_LEVEL_OFFSET_DB', 125))} dB at 125 Hz (spread {num(band('LOW_BAND_SPREAD_DB', 125))} dB) and{' '}
-      {num(band('LOW_BAND_LEVEL_OFFSET_DB', 250))} dB at 250 Hz (spread {num(band('LOW_BAND_SPREAD_DB', 250))} dB)
-    </>
-  )
-}
-
 export function MaxVolume() {
   return <>{num(K.MAX_VOLUME_M3, 0)} m³</>
 }

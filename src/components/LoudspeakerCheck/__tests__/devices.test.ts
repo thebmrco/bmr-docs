@@ -1,23 +1,19 @@
 /// <reference types="node" />
 /**
- * Real datasheets through the engine, entered the way a customer would: what is published, "not stated"
- * ticked where the distance is missing, and — where only watts are published — the estimated-sensitivity
- * path the form offers. Every result must hold the shared invariants; the expectations below are what
- * the datasheets themselves imply.
+ * Real datasheets through the engine, entered the way a customer would: what is published, and "not stated"
+ * ticked where the distance is missing. Every result must hold the shared invariants; the expectations below
+ * are what the datasheets themselves imply.
  */
 import { writeFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
+import { DERIVED_SENSITIVITY_DB_W_M, DERIVED_SENSITIVITY_SPREAD_DB } from '../lib/constants'
 import { EXAMPLES } from '../lib/examples'
 import { score } from '../lib/scoring'
 import type { Room, Speaker } from '../lib/types'
 import { DEVICES, type DeviceSheet } from './fixtures/devices'
 import { checkInvariants } from './invariants'
 
-/** The form's own default for a guessed sensitivity when only watts are published. */
-const ESTIMATED_SENSITIVITY_DB = 80
-
 function asEntered(d: DeviceSheet): Speaker {
-  const onlyWatts = d.spl_db === null && d.power_w !== null
   return {
     ...EXAMPLES[0].speaker,
     name: d.name,
@@ -27,9 +23,6 @@ function asEntered(d: DeviceSheet): Speaker {
     freq_low_hz: d.freq_low_hz ?? 0,
     freq_high_hz: d.freq_high_hz ?? 0,
     power_watt: d.power_w,
-    power_mode: d.category === 'portable' ? 'battery' : 'mains',
-    sensitivity_db_1w_1m: d.sensitivity_db ?? (onlyWatts ? ESTIMATED_SENSITIVITY_DB : null),
-    sensitivity_estimated: d.sensitivity_db === null && onlyWatts,
     woofer_mm: d.woofer_mm,
     connection: d.category === 'portable' ? 'bluetooth' : 'wired',
   }
@@ -46,12 +39,67 @@ describe('real datasheets', () => {
     })
   }
 
-  it('says "not enough information" only when neither a level nor watts are published', () => {
+  it('gives a room size exactly when the datasheet publishes a level or a wattage', () => {
     for (const d of DEVICES) {
       const r = score(asEntered(d), ROOMS[1])
-      const noInput = d.spl_db === null && d.power_w === null
-      expect(r.headline === 'Not enough information').toBe(noInput)
+      expect(r.headline === 'No room size').toBe(d.spl_db === null && d.power_w === null)
     }
+  })
+
+  /**
+   * The saved query behind DERIVED_SENSITIVITY_DB_W_M. It is not a driver sensitivity: it is what a finished
+   * loudspeaker reaches per watt, read off every datasheet here that publishes a maximum level, the distance it
+   * was measured at and a wattage. An assumed driver sensitivity of 80 dB/W/m sized such loudspeakers about 8 dB
+   * too high against BMR's own recordings, which is why the constant is read off datasheets and not guessed.
+   *
+   * One published figure counts once. Logitech prints the identical 99 dB / 0.5 m / 8 W for the Rally Bar and the
+   * Rally Bar Mini, so it is one observation; counting it twice would put a manufacturer's copy-paste into the
+   * constant. The rule is on the triple, not on a list of names, so a new datasheet cannot be dropped silently.
+   */
+  it('takes the level per watt from the datasheets that publish both, and its spread with it', () => {
+    // A level published without its distance would enter the fit at an assumed 1 m, which is the one thing
+    // sigma exists to stop. The filter says so rather than leaving it to which datasheets happen to be here.
+    const qualifying = [...DEVICES.map(asEntered), ...EXAMPLES.map((e) => e.speaker)].filter(
+      (s) => s.spl_peak_db !== null && s.spl_ref_distance_stated && s.power_watt,
+    )
+    const byFigure = new Map<string, { name: string; dbw: number }>()
+    for (const s of qualifying) {
+      const key = `${s.spl_peak_db}@${s.spl_ref_distance_m}/${s.power_watt}`
+      if (!byFigure.has(key)) {
+        byFigure.set(key, { name: s.name, dbw: s.spl_peak_db! + 20 * Math.log10(s.spl_ref_distance_m) - 10 * Math.log10(s.power_watt!) })
+      }
+    }
+    expect(qualifying).toHaveLength(6) // both Rally Bars, and the Cisco bars publish no wattage
+    expect([...byFigure.values()].map((p) => p.name).sort()).toEqual([
+      'Beosound A1 2nd Gen',
+      'Beosound Explore',
+      'Logitech Rally Bar',
+      'Marshall Middleton',
+      'Teufel MYND',
+    ])
+
+    const v = [...byFigure.values()].map((p) => p.dbw).sort((a, b) => a - b)
+    const median = v[(v.length - 1) / 2]
+    const mean = v.reduce((a, b) => a + b, 0) / v.length
+    const sd = Math.sqrt(v.reduce((a, b) => a + (b - mean) ** 2, 0) / (v.length - 1))
+    expect(median).toBeCloseTo(DERIVED_SENSITIVITY_DB_W_M, 1)
+    expect(sd).toBeCloseTo(DERIVED_SENSITIVITY_SPREAD_DB, 1)
+    // Three of the five are 60 W devices: the wattage term is anchored, not tested. Say so where it is used.
+    expect(v[v.length - 1] - v[0]).toBeGreaterThan(10)
+  })
+
+  it('still answers the frequency question with neither a level nor a wattage', () => {
+    const d = DEVICES.find((x) => x.id === 'jabra-panacast-50')!
+    expect([d.spl_db, d.power_w]).toEqual([null, null])
+    const r = score(asEntered(d), ROOMS[1])
+    expect(r.headline).toBe('No room size')
+    expect(r.light).toBe('yellow')
+    expect(r.bands.filter((b) => b.covered).length).toBeGreaterThan(0)
+  })
+
+  it('separates a 7 W portable from a 70 W one, as the wattage does', () => {
+    const at = (w: number) => score({ ...EXAMPLES[0].speaker, spl_peak_db: null, power_watt: w, freq_low_hz: 50, freq_high_hz: 20000 }, ROOMS[1])
+    expect(at(70).sweep_level_1m_db - at(7).sweep_level_1m_db).toBeCloseTo(10, 6)
   })
 
   it('never calls a missing frequency range "does not work"', () => {

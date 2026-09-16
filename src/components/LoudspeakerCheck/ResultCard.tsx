@@ -178,10 +178,12 @@ function BandChart({ result }: { result: R }) {
 
 export function ResultCard({ result }: { result: R }) {
   // The header leads with what the loudspeaker can do; the line below answers for the room the user chose. The
-  // colour is the more cautious of the two, so an amber room verdict is never hidden behind a green size.
+  // color is the more cautious of the two, so an amber room verdict is never hidden behind a green size.
   const rank = { green: 0, yellow: 1, red: 2 } as const
   const light = LIGHT[rank[result.room_light] > rank[result.light] ? result.room_light : result.light]
   const Icon = light.Icon
+  // Without a published maximum level there is no level, no SNR and no size; the frequency bands still stand.
+  const sized = Number.isFinite(result.spl_at_1m_db)
 
   return (
     <Card flush>
@@ -206,16 +208,27 @@ export function ResultCard({ result }: { result: R }) {
       </header>
 
       <div className={styles.resultBody}>
-        <Details icon={DoorOpen} summary={`Your room, ${result.room.area_m2} m²: ${result.room_verdict.replace(' in this room', '').toLowerCase()}`}>
-          <YourRoom result={result} />
-        </Details>
+        {sized && (
+          <Details icon={DoorOpen} summary={`Selected room, ${result.room.area_m2} m²: ${result.room_verdict.replace(' in this room', '').toLowerCase()}`}>
+            <YourRoom result={result} />
+          </Details>
+        )}
 
+        {sized && (
         <Details icon={Gauge} summary="How close it is">
           <SnrScale result={result} />
           <TierLadder result={result} />
           <dl className={styles.kv}>
-            <dt>Sweep level at 1 m, full volume</dt>
-            <dd>{n1(result.sweep_level_1m_db)} dB SPL</dd>
+            <dt>{result.spl_at_1m_provenance === 'derived' ? 'Maximum at 1 m, estimated from the wattage' : 'Datasheet maximum at 1 m'}</dt>
+            <dd>{n1(result.spl_at_1m_db)} dB SPL</dd>
+            <dt>Sweep at 1 m, full volume</dt>
+            <dd>
+              {n1(result.sweep_level_1m_db)} dB SPL{' '}
+              <span className={styles.muted} style={{ fontWeight: 400 }}>
+                (−{n1(result.spl_at_1m_db - result.sweep_level_1m_db)} dB: a sweep sits below a peak rating
+                {result.margin_uncertainty_db > 0 ? ', and the datasheet doubt is taken off here' : ''})
+              </span>
+            </dd>
             <dt>At the far corner, {n1(result.distance_m)} m</dt>
             <dd>{n1(result.level_at_mic_db)} dB SPL</dd>
             <dt>Noise, 500 Hz / 1 kHz band</dt>
@@ -236,6 +249,7 @@ export function ResultCard({ result }: { result: R }) {
             </dd>
           </dl>
         </Details>
+        )}
 
         <Details icon={AudioLines} summary="Frequency bands">
           <BandChart result={result} />
@@ -255,7 +269,7 @@ export function ResultCard({ result }: { result: R }) {
         )}
 
         <Details icon={Sigma} summary="The working">
-          <Working trace={result.trace} />
+          {sized && <Working trace={result.trace} />}
           <Link to="/docs/acoustics/loudspeaker-check/method" className={styles.link}>
             Method, formulas and sources
           </Link>

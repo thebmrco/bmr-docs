@@ -12,7 +12,10 @@
  */
 import {
   AREA_SEARCH_MAX_M2,
+  DERIVED_SENSITIVITY_DB_W_M,
+  DERIVED_SENSITIVITY_SPREAD_DB,
   BASS_RATIO_BANDS_HZ,
+  BASS_RATIO_SAFE_SNR_DB,
   LOW_BAND_LEVEL_OFFSET_DB,
   LOW_BAND_SNR_DB,
   LOW_BAND_SPREAD_DB,
@@ -20,6 +23,7 @@ import {
   SNR_RELIABLE_DB,
   CENTER_FREQUENCIES,
   FEW_MEASUREMENTS_ABOVE_M2,
+  LARGEST_MEASURED_ROOM_M2,
   LONG_RT_S,
   DEFAULT_Q,
   DIFFUSE_COEFF,
@@ -296,16 +300,17 @@ export function score(speaker: Speaker, room: Room): Result {
   const caveats: Caveat[] = []
 
   // --- the level the datasheet implies at 1 m ------------------------------
-  let spl_at_1m_db: number
+  // A published maximum level first. Failing that, the wattage, through the level-per-watt that finished
+  // loudspeakers actually reach (DERIVED_SENSITIVITY_DB_W_M) — not a driver sensitivity, which is what the
+  // earlier version used and which sized these loudspeakers about 8 dB too high.
+  let spl_at_1m_db = Number.NaN
   let spl_at_1m_provenance: Provenance = 'datasheet'
   if (speaker.spl_peak_db !== null) {
     spl_at_1m_db = splAt1m(speaker.spl_peak_db, speaker.spl_ref_distance_m)
     spl_at_1m_provenance = speaker.spl_ref_distance_stated ? 'datasheet' : 'assumed'
-  } else if (speaker.sensitivity_db_1w_1m !== null && speaker.power_watt) {
-    spl_at_1m_db = speaker.sensitivity_db_1w_1m + 10 * log10(speaker.power_watt)
+  } else if (speaker.power_watt) {
+    spl_at_1m_db = DERIVED_SENSITIVITY_DB_W_M + 10 * log10(speaker.power_watt)
     spl_at_1m_provenance = 'derived'
-  } else {
-    spl_at_1m_db = Number.NaN
   }
 
   // --- uncertainty on that level, in dB, before anything else uses it ------
@@ -319,16 +324,27 @@ export function score(speaker: Speaker, room: Room): Result {
   if (spl_at_1m_provenance === 'derived') {
     caveats.push({
       id: 'derived_spl',
-      text: speaker.sensitivity_estimated
-        ? 'No maximum level is published, so it was built from the wattage and an estimated sensitivity. Small drivers span roughly 76–84 dB at 1 W / 1 m: ±4 dB on the result.'
-        : 'The level comes from a published sensitivity and wattage, not a measured maximum: ±2 dB.',
-      uncertainty_db: speaker.sensitivity_estimated ? 4 : 2,
+      text: `No maximum sound level is published, so the level was estimated from the ${speaker.power_watt} W rating at ${DERIVED_SENSITIVITY_DB_W_M} dB per watt at 1 m, the median of the datasheets that publish both. Those spread across about 15 dB, so ${DERIVED_SENSITIVITY_SPREAD_DB} dB is taken off and the size is an estimate rather than a specification.`,
+      uncertainty_db: DERIVED_SENSITIVITY_SPREAD_DB,
+    })
+  }
+  if (spl_at_1m_provenance === 'derived' && speaker.power_kind === 'speaker') {
+    caveats.push({
+      id: 'driver_watts',
+      text: `${speaker.power_watt} W is entered as driver power, but the estimate is built from datasheets that give a total device rating, so this reads low. One loudspeaker here publishes both and they are four times apart. Use the total figure if the datasheet has one.`,
+      uncertainty_db: 0,
+    })
+  }
+  if (!Number.isFinite(spl_at_1m_db)) {
+    caveats.push({
+      id: 'no_published_level',
+      text: 'The datasheet gives neither a maximum sound level nor a wattage, so there is nothing to size a room from. Everything below about the frequency bands still holds.',
+      uncertainty_db: 0,
     })
   }
   const margin_uncertainty_db = Math.sqrt(caveats.reduce((acc, c) => acc + c.uncertainty_db ** 2, 0))
   // What the datasheet leaves open counts against the loudspeaker: the level is taken at the cautious end of the
-  // guess instead of widening the borderline zone. DESIGN CHOICE (Benny, 2026-09-15): otherwise a 7 W speaker with an
-  // estimated sensitivity came out louder than a speakerphone with a published level.
+  // guess instead of widening the borderline zone, so the borderline zone stays one number for every loudspeaker.
   const sweep_level_1m_db = spl_at_1m_db + SWEEP_LEVEL_OFFSET_DB - margin_uncertainty_db
 
   // --- the room -------------------------------------------------------------
@@ -358,9 +374,12 @@ export function score(speaker: Speaker, room: Room): Result {
     label: 'Datasheet level at 1 m',
     tex:
       spl_at_1m_provenance === 'derived'
-        ? `L_{1\\,\\mathrm{m}} = ${speaker.sensitivity_db_1w_1m} + 10\\log_{10} ${speaker.power_watt}`
-        : `L_{1\\,\\mathrm{m}} = ${speaker.spl_peak_db} - 20\\log_{10}\\frac{1}{${speaker.spl_ref_distance_m}}`,
-    value: `${round(spl_at_1m_db)} dB`,
+        ? `L_{1\\,\\mathrm{m}} = ${DERIVED_SENSITIVITY_DB_W_M} + 10\\log_{10} ${speaker.power_watt}`
+        : Number.isFinite(spl_at_1m_db)
+          ? `L_{1\\,\\mathrm{m}} = ${speaker.spl_peak_db} - 20\\log_{10}\\frac{1}{${speaker.spl_ref_distance_m}}`
+          : `L_{1\\,\\mathrm{m}} = \\text{neither a level nor a wattage}`,
+    value: Number.isFinite(spl_at_1m_db) ? `${round(spl_at_1m_db)} dB` : '—',
+    result_tex: Number.isFinite(spl_at_1m_db) ? undefined : '',
     source: spl_at_1m_provenance === 'derived' ? 'derived' : undefined,
   })
   trace.push({
@@ -521,7 +540,7 @@ export function score(speaker: Speaker, room: Room): Result {
   if (partialBands.length > 0) {
     caveats.push({
       id: 'partial_bands',
-      text: `The ${partialBands.map((b) => b.centre_hz + ' Hz').join(' and ')} band is at the edge of the stated range (${speaker.freq_low_hz}–${speaker.freq_high_hz} Hz). A stated limit is where the output is down by a few dB, not where it stops, so the band is measured, but weaker. In BMR's measurements, room systems rated from 100 Hz reached 24–34 dB at 125 Hz, so it can drop out in a noisy room.`,
+      text: `The ${partialBands.map((b) => b.centre_hz + ' Hz').join(' and ')} band is at the edge of the stated range (${speaker.freq_low_hz}–${speaker.freq_high_hz} Hz). A stated limit is where the output is a few dB down, not where it stops, so the band is measured but weaker, and it can drop out in a noisy room.`,
       uncertainty_db: 0,
     })
   }
@@ -529,7 +548,7 @@ export function score(speaker: Speaker, room: Room): Result {
   if (weakLow.length > 0 && Number.isFinite(sweep_level_1m_db)) {
     caveats.push({
       id: 'low_band_snr',
-      text: `Room noise is highest in the low bands, so ${weakLow.map((b) => b.centre_hz + ' Hz').join(' and ')} is likely to be dropped even where the reverberation time is fine. In BMR's measurements 125 Hz fell below the gate in about 1 in 10 recordings with at least 35 dB at 500 Hz and 1 kHz.`,
+      text: `Room noise is highest in the low bands, so ${weakLow.map((b) => b.centre_hz + ' Hz').join(' and ')} can be dropped even where the reverberation time is fine.`,
       uncertainty_db: 0,
     })
   }
@@ -580,7 +599,7 @@ export function score(speaker: Speaker, room: Room): Result {
   if (lowBands && full.binding !== 'rt' && fullStatus !== 'yes' && Number.isFinite(sweep_level_1m_db)) {
     caveats.push({
       id: 'low_band_decides',
-      text: `The ${full.binding} Hz band decides this answer, and it is the least predictable one: in rooms of this size it lies around the frequency where a room stops behaving diffusely, so a single microphone position can differ by several dB. Expect the Bass Ratio to be missing in some recordings.`,
+      text: `The ${full.binding} Hz band decides this answer, and the loudspeaker's low end is not what decides it: rooms are about ${round(bandNoise(0, full.binding) - bandNoise(0, 500))} dB noisier there than at 500 Hz, and a single microphone position varies by several dB. Expect the Bass Ratio to be missing in some recordings.`,
       uncertainty_db: 0,
     })
   }
@@ -608,10 +627,15 @@ export function score(speaker: Speaker, room: Room): Result {
       uncertainty_db: 0,
     })
   }
-  if (room.area_m2 > FEW_MEASUREMENTS_ABOVE_M2) {
+  // Fires on every size the answer STATES, not only on the room the customer picked: the headline and the
+  // "rough estimate" range both quote sizes far above anything BMR has measured, and a caveat that waited for
+  // someone to type a big room would miss all of them.
+  const reliableArea = tiers.find((t) => t.key === 'reliable')?.max_area_m2 ?? 0
+  const largestStated = Math.max(room.area_m2, full.max_area_m2, full.area_range_m2[1], reliableArea)
+  if (largestStated > FEW_MEASUREMENTS_ABOVE_M2) {
     caveats.push({
       id: 'few_measurements',
-      text: `BMR has few measurements in rooms above ${FEW_MEASUREMENTS_ABOVE_M2} m² (7 of the 77 rooms with a stored SNR), so there is little to check this prediction against.`,
+      text: `${LARGEST_MEASURED_ROOM_M2} m² is the largest room BMR has measured, and there is little data above ${FEW_MEASUREMENTS_ABOVE_M2} m². A larger size here is what the model says, not something that has been checked.`,
       uncertainty_db: 0,
     })
   }
@@ -640,7 +664,7 @@ export function score(speaker: Speaker, room: Room): Result {
   if (status !== 'no' && margin_db < band_db) {
     caveats.push({
       id: 'full_volume',
-      text: 'It only just gets there, which means full volume. Portable speakers limit hard at the top of their range, and a limiter changes the gain during the sweep, which the analysis cannot separate out. Keep the battery full.',
+      text: 'It only just gets there, so play at full volume on a full battery. A limiter changes the gain during the sweep and the analysis cannot separate that out.',
       uncertainty_db: 0,
     })
   }
@@ -658,9 +682,7 @@ export function score(speaker: Speaker, room: Room): Result {
     margin_uncertainty_db === 0
       ? 'Level from the datasheet'
       : spl_at_1m_provenance === 'derived'
-        ? speaker.sensitivity_estimated
-          ? 'No maximum SPL published — estimated from the wattage'
-          : 'Level from sensitivity and wattage'
+        ? 'No maximum level published — estimated from the wattage'
         : 'Datasheet does not state the measuring distance'
 
   // --- the answer for the user's room --------------------------------------
@@ -678,15 +700,15 @@ export function score(speaker: Speaker, room: Room): Result {
   let verdict: string
   let recommendation: string
   let light: Result['light']
-  if (!Number.isFinite(spl_at_1m_db)) {
-    light = 'red'
-    verdict = 'Not enough information'
-    recommendation = 'Enter a maximum sound level, or a sensitivity together with a wattage.'
-  } else if (missingCritical.length > 0) {
+  if (missingCritical.length > 0) {
     light = 'red'
     verdict = 'Does not work'
     recommendation =
       'It cannot play the 500 Hz and 1 kHz bands the reverberation time is built from. Check whether a voice mode is switched on.'
+  } else if (!Number.isFinite(spl_at_1m_db)) {
+    light = 'yellow'
+    verdict = 'No room size'
+    recommendation = 'Its datasheet gives neither a maximum sound level nor a wattage, so there is no room size. The frequency bands below still hold.'
   } else if (gate.status === 'no') {
     light = 'red'
     verdict = 'Does not work in this room'
@@ -707,8 +729,12 @@ export function score(speaker: Speaker, room: Room): Result {
     verdict = 'Works, with warnings'
     recommendation = `The BMR analysis will probably return a reverberation time in ${where}, but not ${goal[selected.key]}. ${selected.label} ${upTo}.`
   }
-  if (Number.isFinite(spl_at_1m_db) && missingCritical.length === 0 && gate.status !== 'no' && lowBands && full.binding !== 'rt' && fullStatus !== 'yes') {
-    recommendation += ` The ${full.binding} Hz band ${fullStatus === 'no' ? 'will probably' : 'may'} drop out, and the MOS score is then calculated without its Bass Ratio.`
+  // Marked down on how often BMR's recordings actually lost the band, not on the width of the borderline zone:
+  // that width is mostly room modes, so it made every loudspeaker amber for something none of them controls.
+  const lowBandSnr = Math.min(r.snr_125, r.snr_250)
+  if (Number.isFinite(spl_at_1m_db) && missingCritical.length === 0 && gate.status !== 'no' && lowBands && lowBandSnr < BASS_RATIO_SAFE_SNR_DB) {
+    const band = r.snr_125 <= r.snr_250 ? 125 : 250
+    recommendation += ` The ${band} Hz band ${lowBandSnr < LOW_BAND_SNR_DB ? 'will probably' : 'may'} drop out, and the MOS score is then calculated without its Bass Ratio.`
     if (light === 'green') light = 'yellow'
   }
   if (Number.isFinite(spl_at_1m_db) && missingCritical.length === 0 && missingOther.length > 0) {
@@ -723,11 +749,13 @@ export function score(speaker: Speaker, room: Room): Result {
   }
   const A = round(room.area_m2, 0)
   const room_headline: string = {
-    'Works in this room': `Works in your room (${A} m²)`,
-    'Borderline in this room': `Borderline in your room (${A} m²)`,
-    'Works, with warnings': `Works with warnings in your room (${A} m²)`,
-    'Does not work in this room': `Does not work in your room (${A} m²)`,
-    'Outside this check': `Your room (${round(r.volume_m3, 0)} m³) is outside this check`,
+    // "selected" rather than a bare size: the headline above quotes a different number, and without it nobody
+    // can tell that this one came from the room control rather than from the loudspeaker.
+    'Works in this room': `Works in the selected ${A} m² room`,
+    'Borderline in this room': `Borderline in the selected ${A} m² room`,
+    'Works, with warnings': `Works with warnings in the selected ${A} m² room`,
+    'Does not work in this room': `Does not work in the selected ${A} m² room`,
+    'Outside this check': `The selected room (${round(r.volume_m3, 0)} m³) is outside this check`,
   }[verdict] ?? verdict
 
   // --- the headline: which room sizes ---------------------------------------
@@ -746,7 +774,7 @@ export function score(speaker: Speaker, room: Room): Result {
   if (!Number.isFinite(spl_at_1m_db) || missingCritical.length > 0) {
     headline = verdict
     headline_text = recommendation
-    headline_light = 'red'
+    headline_light = missingCritical.length > 0 ? 'red' : 'yellow'
   } else if (gate.max_area_m2 === 0) {
     headline = 'Too quiet for a measurement'
     headline_text = `Even in a small room at ${room.noise_floor_db} dB(A) background it stays below what the BMR analysis needs.`
@@ -764,12 +792,24 @@ export function score(speaker: Speaker, room: Room): Result {
       span = works.max_area_m2 > 0 ? works.area_range_m2 : gate.area_range_m2
     } else if (r.volume_m3 > MAX_VOLUME_M3) {
       headline = `Rooms up to ${capped(full.max_area_m2)}`
-      headline_text = `This check answers up to ${MAX_VOLUME_M3} m³ (${cap} m² at ${room.height_m} m). A larger room has to be measured.`
+      headline_text =
+        `This check answers up to ${MAX_VOLUME_M3} m³ (${cap} m² at ${room.height_m} m). A larger room has to be measured. ` +
+        (clean.max_area_m2 >= cap
+          ? 'No noise warning anywhere it does cover.'
+          : clean.max_area_m2 === 0
+            ? 'Expect a noise warning.'
+            : `No noise warning up to ${capped(clean.max_area_m2)}.`)
       span = full.area_range_m2
     } else {
       headline = `Rooms up to ${capped(full.max_area_m2)}`
-      const noWarn = clean.max_area_m2 > 0 && clean.max_area_m2 < full.max_area_m2 ? ` No noise warning up to ${capped(clean.max_area_m2)}.` : clean.max_area_m2 === 0 ? ' Expect a noise warning.' : ''
-      headline_text = `Full result with Bass Ratio at ${bg}.${noWarn}`
+      // Three cases, and every one of them says where the noise warning stands: silence there reads as if the
+      // question had not been asked. At the cap the headline is the largest room the check covers, not the largest
+      // the model reaches, and saying so is what stops it looking like a contradiction next to a smaller number.
+      headline_text =
+        clean.max_area_m2 >= cap
+          ? `Full result with Bass Ratio and no noise warning anywhere this check covers, up to ${cap} m² at ${bg}.`
+          : `Full result with Bass Ratio${full.max_area_m2 >= cap ? ` up to the ${cap} m² this check covers,` : ''} at ${bg}.` +
+            (clean.max_area_m2 === 0 ? ' Expect a noise warning.' : ` No noise warning up to ${capped(clean.max_area_m2)}.`)
       span = full.area_range_m2
     }
     const hi = Math.min(span[1], cap)

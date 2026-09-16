@@ -35,8 +35,6 @@ function synthSpeaker(r: () => number): Speaker {
     freq_low_hz: pick([20, 40, 52, 60, 80, 88, 95, 120, 150, 400]),
     freq_high_hz: pick([8000, 11000, 12000, 14000, 16000, 20000, 24000]),
     power_watt: hasLevel ? pick([null, 10, 40]) : pick([5, 10, 30, 60, 100, 200]),
-    sensitivity_db_1w_1m: hasLevel ? null : Math.round(74 + r() * 16),
-    sensitivity_estimated: r() > 0.5,
     woofer_mm: pick([null, 40, 58, 90, 130]),
     connection: pick(['bluetooth', 'wired', 'both', 'unknown'] as const),
   }
@@ -122,8 +120,8 @@ describe('fleet: extreme inputs', () => {
     ['tiny room at sport-hall usage', s, { ...room, area_m2: 2, height_m: 2.3, usage: 'A5' }],
     ['no frequency range', { ...s, freq_low_hz: 0, freq_high_hz: 0 }, room],
     ['inverted frequency range', { ...s, freq_low_hz: 20000, freq_high_hz: 100 }, room],
-    ['no level at all', { ...s, spl_peak_db: null, sensitivity_db_1w_1m: null, power_watt: null }, room],
-    ['zero watts', { ...s, spl_peak_db: null, sensitivity_db_1w_1m: 85, power_watt: 0 }, room],
+    ['no level at all', { ...s, spl_peak_db: null, power_watt: null }, room],
+    ['watts but no published level', { ...s, spl_peak_db: null, power_watt: 200 }, room],
   ]
 
   for (const [name, sp, rm] of extremes) {

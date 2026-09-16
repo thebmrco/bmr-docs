@@ -30,6 +30,11 @@ import {
   SNR_T30_DB,
   SWEEP_ANALYSIS_GAIN_DB,
   SWEEP_LEVEL_OFFSET_DB,
+  BASS_RATIO_SAFE_SNR_DB,
+  DERIVED_SENSITIVITY_SPREAD_DB,
+  FEW_MEASUREMENTS_ABOVE_M2,
+  MODEL_ERROR_DB,
+  NOISE_PRESETS,
   SWEEP_OFFSET_UNCERTAINTY_DB,
   TIERS,
 } from '../lib/constants'
@@ -105,17 +110,39 @@ describe('borderline zone', () => {
     expect(bar.sweep_level_1m_db).toBeCloseTo(93 + SWEEP_LEVEL_OFFSET_DB - 3, 9)
   })
 
-  it('does not size a 7 W portable with a guessed sensitivity above a speakerphone with a published level', () => {
+  it('does not size a 7 W portable estimated from watts above a speakerphone with a published level', () => {
     const clip = score(speaker('jbl-clip-5'), room())
     const jabra = score(speaker('jabra-speak2-75'), room())
-    expect(clip.sweep_level_1m_db).toBeLessThanOrEqual(jabra.sweep_level_1m_db + 1)
+    expect(clip.speaker.power_watt).toBe(7)
+    expect(clip.sweep_level_1m_db).toBeLessThan(jabra.sweep_level_1m_db)
+  })
+
+  /**
+   * The color follows how often BMR's recordings actually lost the 125 Hz T20 (5.3 % at 28 dB or more), not the
+   * width of the borderline zone. That width is 10.6 dB, of which 8.4 dB is the room-mode spread at 125 Hz, so the
+   * old rule made a loudspeaker amber for something it cannot influence: 7 of the 9 worked examples, one by 0.1 dB.
+   */
+  it('colors the Bass Ratio on the measured failure rate, not on the borderline zone', () => {
+    const jbl = score(speaker('jbl-xtreme-4'), room())
+    expect(jbl.snr_125_db).toBeGreaterThan(BASS_RATIO_SAFE_SNR_DB)
+    expect(jbl.full.status).toBe('borderline') // the zone is still wider than the margin ...
+    expect(jbl.full.margins.b125).toBeLessThan(Math.hypot(jbl.band_db, 8.4))
+    expect(jbl.room_light).toBe('green') // ... and the color no longer follows it
+    expect(jbl.room_recommendation).not.toContain('Bass Ratio')
+
+    const weak = score(speaker('jbl-portable-average'), room())
+    expect(weak.snr_125_db).toBeLessThan(BASS_RATIO_SAFE_SNR_DB)
+    expect(weak.room_light).toBe('yellow')
+    expect(weak.room_recommendation).toContain('125 Hz band may drop out')
+    // A missing Bass Ratio is never red: a reverberation time still comes back. Red stays "no measurement".
+    for (const id of ['jbl-clip-5', 'jbl-portable-average']) expect(score(speaker(id), room()).room_light).not.toBe('red')
   })
 
   it('answers for the chosen room in the header, and calls a room above 500 m³ outside the check', () => {
-    expect(score(speaker('jabra-speak2-75'), room()).room_headline).toMatch(/in your room \(35 m²\)$/)
+    expect(score(speaker('jabra-speak2-75'), room()).room_headline).toMatch(/ in the selected 35 m² room$/)
     const big = score(speaker('teufel-mynd'), room({ area_m2: 200, height_m: 5 }))
     expect(big.room_verdict).toBe('Outside this check')
-    expect(big.room_headline).toBe('Your room (1000 m³) is outside this check')
+    expect(big.room_headline).toBe('The selected room (1000 m³) is outside this check')
   })
 })
 
@@ -247,15 +274,35 @@ describe('the headline answers which room sizes', () => {
     expect(r.caveats.some((c) => c.id === 'check_cap')).toBe(true)
   })
 
-  it('keeps the headline text short', () => {
-    for (const id of ['jabra-speak2-75', 'jabra-speak2-75-speak', 'teufel-mynd', 'jbl-clip-5', 'cisco-room-bar']) {
-      expect(score(speaker(id), room()).headline_text.length).toBeLessThanOrEqual(120)
+  /**
+   * Over every room preset and noise preset, not one room: the clauses about a weak edge band and a missing band
+   * are appended AFTER the sentence is built, so a check at 35 m² / 35 dB(A) alone never saw the long cases.
+   * 160 characters is about three lines in the card at phone width.
+   */
+  it('keeps the headline text short, and always says where the noise warning stands', () => {
+    let checked = 0
+    for (const e of EXAMPLES) {
+      for (const rc of ROOM_CLASSES) {
+        for (const n of NOISE_PRESETS) {
+          const where = `${e.id} ${rc.area_m2} m² ${n.db} dB(A)`
+          const r = score(e.speaker, room({ class_key: rc.key, area_m2: rc.area_m2, height_m: rc.height_m, noise_floor_db: n.db }))
+          expect(r.headline_text.length, where).toBeLessThanOrEqual(160)
+          if (r.full.max_area_m2 > 0 && r.full.bass_ratio_possible) expect(r.headline_text, where).toMatch(/noise warning/)
+          checked++
+        }
+      }
     }
+    // And the branch the room presets never reach: a room past the volume cap.
+    const big = score(EXAMPLES[0].speaker, room({ area_m2: 200, height_m: 2.8 }))
+    expect(big.headline_text).toMatch(/noise warning/)
+    expect(big.headline_text.length).toBeLessThanOrEqual(160)
+    expect(checked).toBe(EXAMPLES.length * ROOM_CLASSES.length * NOISE_PRESETS.length)
   })
 
-  it('takes the sweep-offset uncertainty from per-device far-corner medians, −15.4 … +0.3 dB (from BMR measurements)', () => {
+  it('builds the borderline zone from the model error and the sweep offset, and from nothing else', () => {
     expect(SWEEP_OFFSET_UNCERTAINTY_DB).toBeCloseTo(15.7 / Math.sqrt(12), 9)
-    expect(score(speaker('teufel-mynd'), room()).band_db).toBeCloseTo(6.39, 2)
+    expect(MODEL_ERROR_DB).toBe(4.7) // pooled within-session SD of predicted against stored SNR (saved query)
+    expect(score(speaker('teufel-mynd'), room()).band_db).toBeCloseTo(6.53, 2)
   })
 
   it('brackets that size with the borderline zone', () => {
@@ -309,15 +356,41 @@ describe('inputs and uncertainty', () => {
     expect(r.caveats.some((c) => c.id === 'assumed_ref_distance')).toBe(true)
   })
 
-  it('a level estimated from watts carries 4 dB and low confidence', () => {
+  /**
+   * Out-of-sample check on DERIVED_SENSITIVITY_DB_W_M: the JBL Xtreme 4 is not one of the datasheets the
+   * constant is read from, and BMR has 73 calibrated recordings of it. Those imply a sweep level of 74.4 dB at
+   * 1 m as played — a lower bound, the volume setting was never recorded. Devices with a published maximum level
+   * sit at −11.3, +0.7 and +1.8 dB on the same comparison, so the estimate has to land in that family, not 8 dB
+   * above it as the assumed 80 dB/W/m did.
+   */
+  it('lands within 3 dB of what 73 BMR recordings imply for the JBL Xtreme 4', () => {
     const r = score(speaker('jbl-xtreme-4'), room())
-    expect(r.margin_uncertainty_db).toBeCloseTo(4, 9)
-    expect(r.confidence).toBe('low')
+    expect(r.spl_at_1m_provenance).toBe('derived')
+    expect(r.margin_uncertainty_db).toBeCloseTo(DERIVED_SENSITIVITY_SPREAD_DB, 9)
+    expect(r.sweep_level_1m_db - 74.4).toBeGreaterThan(0)
+    expect(r.sweep_level_1m_db - 74.4).toBeLessThan(3)
   })
 
-  it('says when BMR has few measurements in rooms this large', () => {
-    expect(score(speaker('teufel-mynd'), room({ area_m2: 60 })).caveats.some((c) => c.id === 'few_measurements')).toBe(true)
-    expect(score(speaker('teufel-mynd'), room({ area_m2: 35 })).caveats.some((c) => c.id === 'few_measurements')).toBe(false)
+  /**
+   * The caveat follows the largest size the answer STATES, not the room the customer typed. A loud loudspeaker
+   * in a small room still gets a headline of 175 m², and BMR's largest measured room is 140 m², so the answer
+   * has to say that on its face rather than only when someone types a big room.
+   */
+  it('says when BMR has few measurements at the size it is quoting', () => {
+    const fires = (id: string, over = {}) => score(speaker(id), room(over)).caveats.some((c) => c.id === 'few_measurements')
+    expect(fires('teufel-mynd', { area_m2: 60 })).toBe(true) // the room is large
+    expect(fires('teufel-mynd')).toBe(true) // the room is not, but the headline says 175 m²
+
+    // The quiet ones too: the JBL Clip 5's headline is about 10 m², and its range still reads "up to 175+ m²".
+    const clip = score(speaker('jbl-clip-5'), room())
+    expect(clip.full.max_area_m2).toBeLessThan(FEW_MEASUREMENTS_ABOVE_M2)
+    expect(clip.headline_range).toContain('175+')
+    expect(fires('jbl-clip-5')).toBe(true)
+
+    // Only when the answer states no size above 45 m² anywhere does it go quiet.
+    const noisy = score(speaker('jbl-clip-5'), room({ noise_floor_db: 45 }))
+    expect(Math.max(noisy.full.area_range_m2[1], noisy.tiers.find((t) => t.key === 'reliable')!.max_area_m2)).toBeLessThan(FEW_MEASUREMENTS_ABOVE_M2)
+    expect(noisy.caveats.some((c) => c.id === 'few_measurements')).toBe(false)
   })
 })
 
@@ -329,7 +402,7 @@ describe('the full result: the bands the Bass Ratio needs', () => {
     expect(r.snr_500_db - r.snr_250_db).toBeCloseTo(-1.7 + 4.7 + 1.6, 9)
   })
 
-  it('reproduces the Jabra Speak2 75 in the Aquarium: the Bass Ratio at the edge', () => {
+  it('reproduces the Jabra Speak2 75 in that room: the Bass Ratio at the edge', () => {
     // BMR measurements 2026-07-22, 27.67 m², 2.37 m, T20mid 0.45 s, 37.3–39.0 dB(A): 125 Hz SNR 29.8 and 23.6 dB, so one of the
     // two recordings returned no T20 at 125 Hz and its MOS score lost the Bass Ratio.
     const r = score(speaker('jabra-speak2-75'), room({ area_m2: 27.67, height_m: 2.37, noise_floor_db: 38.15, rt_override_s: 0.45 }))
@@ -338,8 +411,8 @@ describe('the full result: the bands the Bass Ratio needs', () => {
     expect(Math.abs(r.snr_125_db - (29.8 + 23.6) / 2)).toBeLessThan(3)
   })
 
-  it('gives the Jabra Speak2 75 a much smaller headline room than the RT bands alone, and never rules out the Aquarium', () => {
-    // Field: a reverberation time in the 28 m² Aquarium and in about 40 m², with warnings; the full result there in one
+  it('gives the Jabra Speak2 75 a much smaller headline room than the RT bands alone, and never rules out that room', () => {
+    // Field: a reverberation time in a 28 m² BMR meeting room and in about 40 m², with warnings; the full result there in one
     // of two recordings. Its own recordings scaled by BMR room absorption put 125 Hz at 28 dB near 34 m² at 35 dB(A)
     // (from BMR measurements); the pooled low-band shortfall makes the tool more cautious than that.
     const r = score(speaker('jabra-speak2-75'), room())
@@ -391,8 +464,8 @@ describe('the full result: the bands the Bass Ratio needs', () => {
 })
 
 describe('devices', () => {
-  it('reproduces what the Jabra Speak2 75 did in the Aquarium: Compatible, Reliable borderline', () => {
-    // BMR measurements 2026-07-22, room "Aquarium": 27.67 m², 2.37 m, T20mid 0.45 s, 37.3–39.0 dB(A).
+  it('reproduces what the Jabra Speak2 75 did in that room: Compatible, Reliable borderline', () => {
+    // BMR measurements 2026-07-22, a 27.67 m² room, 2.37 m, T20mid 0.45 s, 37.3–39.0 dB(A).
     // Measured 500 Hz SNR 30.7 / 31.5 dB with "close to noise floor" warnings.
     const r = score(speaker('jabra-speak2-75'), room({ area_m2: 27.67, height_m: 2.37, noise_floor_db: 38.15, rt_override_s: 0.45 }))
     expect(r.tiers[0].status).toBe('yes')
@@ -412,7 +485,8 @@ describe('devices', () => {
     const r = score(speaker('jbl-clip-5'), room())
     expect(r.bands[0]).toMatchObject({ covered: true, partial: true })
     expect(r.light).not.toBe('green')
-    expect(r.headline_text).toContain('125 Hz')
+    expect(r.caveats.find((c) => c.id === 'partial_bands')!.text).toContain('125 Hz')
+    expect(r.caveats.map((c) => c.id)).toContain('small_woofer')
   })
 
   it('a speaker without 500 Hz or 1 kHz is red however loud it is', () => {

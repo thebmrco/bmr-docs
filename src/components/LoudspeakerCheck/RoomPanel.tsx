@@ -1,8 +1,7 @@
-import { DEFAULT_NOISE_FLOOR_DB, DEFAULT_ROOM_CLASS, NOISE_PRESETS, ROOM_CLASSES, TIERS } from './lib/constants'
-import type { TierKey } from './lib/constants'
+import { DEFAULT_NOISE_FLOOR_DB, DEFAULT_ROOM_CLASS, NOISE_PRESETS, ROOM_CLASSES } from './lib/constants'
 import { targetRtDin18041 } from './lib/scoring'
 import type { Room } from './lib/types'
-import { Card, CardTitle, Chip, Disclosure, Field, NumberInput, Select } from './ui'
+import { Card, CardTitle, Chip, Disclosure, Field, Info, NumberInput, Select } from './ui'
 import styles from './styles.module.css'
 
 /**
@@ -13,7 +12,6 @@ export function RoomPanel({ room, onChange }: { room: Room; onChange: (r: Room) 
   const set = <K extends keyof Room>(k: K, v: Room[K]) => onChange({ ...room, [k]: v })
   const cls = ROOM_CLASSES.find((c) => c.key === room.class_key)
   const volume = room.area_m2 * room.height_m
-  const noiseLabel = NOISE_PRESETS.find((p) => p.db === room.noise_floor_db)?.label
 
   const pickClass = (key: string) => {
     const c = ROOM_CLASSES.find((x) => x.key === key)
@@ -26,15 +24,15 @@ export function RoomPanel({ room, onChange }: { room: Room; onChange: (r: Room) 
   return (
     <Card>
       <CardTitle
-        title="Your room"
-        sub={`Optional. If you leave it, the check uses a standard meeting room: ${std.area_m2} m², ${std.height_m} m ceiling, ${DEFAULT_NOISE_FLOOR_DB} dB(A) background.`}
+        title="Room"
+        sub="Optional. Left alone, the check answers for a standard meeting room."
       />
       <Disclosure
         summary={`${isStandard ? 'Standard meeting room' : cls ? cls.label : 'Custom room'}: ${room.area_m2} m² · ${room.noise_floor_db} dB(A) background`}
-        detail={`${noiseLabel ?? 'Custom noise level'}. Change the size or the background noise here — the noise also changes the room sizes in the answer.`}
+        detail={`${room.height_m} m ceiling. The background noise moves the room sizes in the answer more than anything else here.`}
       >
-        <Field label="Room size" hint="Pick the biggest room you would want to measure. The result also lists every size the speaker reaches.">
-          <div className={styles.grid3}>
+        <Field label="Room size" hint="Pick the biggest room you would want to measure." info="The answer also lists every size the loudspeaker reaches, so a smaller room is covered by a bigger one.">
+          <div className={styles.chipGrid}>
             {ROOM_CLASSES.map((c) => (
               <Chip key={c.key} active={c.key === room.class_key} onClick={() => pickClass(c.key)}>
                 <span className={styles.chipTitle}>{c.label}</span>
@@ -50,12 +48,12 @@ export function RoomPanel({ room, onChange }: { room: Room; onChange: (r: Room) 
           <Field label="Floor area" hint="Override if you know it.">
             <NumberInput value={room.area_m2} onChange={(v) => onChange({ ...room, area_m2: v ?? 40, class_key: 'custom' })} suffix="m²" />
           </Field>
-          <Field label="Ceiling height">
+          <Field label="Ceiling height" hint="Floor to ceiling.">
             <NumberInput value={room.height_m} onChange={(v) => onChange({ ...room, height_m: v ?? 3.1, class_key: 'custom' })} step="0.1" suffix="m" />
           </Field>
         </div>
 
-        <Field label="Background noise" hint="This sets the whole target: the sweep has to be this much above it. If you have measured it, type the value.">
+        <Field label="Background noise" hint="The sweep has to be this much above it." info="This sets the whole target, so it moves the answer more than anything else here. If you have measured the room, type the value instead of picking a preset.">
           <Select
             value={String(room.noise_floor_db)}
             onChange={(v) => set('noise_floor_db', Number(v))}
@@ -63,26 +61,10 @@ export function RoomPanel({ room, onChange }: { room: Room; onChange: (r: Room) 
           />
         </Field>
 
-        <Disclosure summary="Advanced" detail="Criterion, reverberation time">
-          <Field label="What the measurement has to achieve">
-            <div className={styles.stackSm}>
-              {TIERS.map((t) => (
-                <button
-                  key={t.key}
-                  type="button"
-                  onClick={() => set('tier', t.key as TierKey)}
-                  className={`${styles.tierBtn} ${room.tier === t.key ? styles.tierBtnActive : ''}`}
-                >
-                  <span className={styles.tierHead}>
-                    <span>{t.label}</span>
-                    <span>SNR ≥ {t.snrDb} dB</span>
-                  </span>
-                  <span className={styles.tierMeans}>{t.means}</span>
-                </button>
-              ))}
-            </div>
-          </Field>
-
+        {/* The criterion ladder used to be selectable here. It only ever moved the secondary room line — the
+            headline is the full result and does not read it — and the answer already shows the whole ladder under
+            "How close it is". What is left are the two inputs that genuinely change the prediction. */}
+        <Disclosure summary="Advanced" detail="Room usage type, and a reverberation time you have measured yourself.">
           <div className={styles.grid2}>
             <Field label="Room usage type (DIN 18041)" hint="Only used to estimate the reverberation time.">
               <Select

@@ -1,15 +1,23 @@
 import { FREQ_INPUT_RANGE_HZ } from './lib/constants'
-import { EXAMPLES } from './lib/examples'
-import type { Connection, PowerKind, PowerMode, Speaker } from './lib/types'
-import { Badge, Card, CardTitle, Disclosure, Field, LogRangeSlider, NumberInput, Select, TextInput } from './ui'
+import { EMPTY_SPEAKER, EXAMPLES } from './lib/examples'
+import type { Connection, PowerKind, Speaker } from './lib/types'
+import { Badge, Card, CardTitle, Disclosure, Field, Info, LogRangeSlider, NumberInput, Select, TextInput } from './ui'
 import styles from './styles.module.css'
 
 /**
  * Three things are required and nothing substitutes for them: a level, the distance that level was
  * measured at, and a frequency range. Everything else sharpens the answer and lives behind a disclosure.
  */
+/** Field-by-field, so that editing any one of them drops the example's highlight by itself. */
+function same(a: Speaker, b: Speaker): boolean {
+  const keys = new Set([...Object.keys(a), ...Object.keys(b)]) as Set<keyof Speaker>
+  return [...keys].every((k) => a[k] === b[k])
+}
+
 export function SpeakerForm({ speaker, onChange }: { speaker: Speaker; onChange: (s: Speaker) => void }) {
   const set = <K extends keyof Speaker>(k: K, v: Speaker[K]) => onChange({ ...speaker, [k]: v })
+  // Highlighted only while the form still holds that example exactly. Clicking it again clears the form.
+  const selected = EXAMPLES.find((e) => same(e.speaker, speaker))?.id
   // Typed numbers are taken as given, but an implausible one is worth saying out loud rather than answering with
   // a confident room size.
   const warnings: string[] = []
@@ -25,7 +33,7 @@ export function SpeakerForm({ speaker, onChange }: { speaker: Speaker; onChange:
 
   return (
     <Card>
-      <CardTitle title="Your loudspeaker" sub="Three numbers from the datasheet." />
+      <CardTitle title="Loudspeaker" sub="The fields marked * are what the answer is built from." />
       {warnings.length > 0 && (
         <div className={styles.stackSm}>
           {warnings.map((w) => (
@@ -37,15 +45,36 @@ export function SpeakerForm({ speaker, onChange }: { speaker: Speaker; onChange:
       )}
 
       <div className={styles.stack}>
-        <Field label="Name" hint="For your own notes. It does not affect the result.">
+        <Field label="Name" hint="For the notes. It does not affect the result.">
           <TextInput value={speaker.name} onChange={(e) => set('name', e.target.value)} placeholder="e.g. Teufel MYND, Cisco Room Bar, Jabra Speak2 75" />
         </Field>
 
         <div className={styles.grid2}>
-          <Field label="Maximum sound level" hint="Listed as max SPL, peak audio output, or maximaler Schalldruck.">
+          <Field
+            label="Maximum sound level"
+            required
+            hint="Listed as max SPL or peak audio output."
+            info={
+              <>
+                On a German datasheet, <em>maximaler Schalldruck</em>. Not the &ldquo;signal-to-noise ratio&rdquo; line — that is a ratio
+                between the device and its own noise, not a level, and it lands in the same range as a real one, so nothing here
+                can catch the mistake for you.
+              </>
+            }
+          >
             <NumberInput value={speaker.spl_peak_db} onChange={(v) => set('spl_peak_db', v)} suffix="dB" />
           </Field>
-          <Field label="…measured at" hint="Printed next to it as @ 0.5 m or /1m.">
+          <Field
+            label="…measured at"
+            hint="Printed next to it as @ 0.5 m or /1m."
+            info={
+              <>
+                Datasheets that give a level often leave the distance out. If it was measured at 0.5 m the figure is 6 dB
+                optimistic, so with &ldquo;not stated&rdquo; ticked 3 dB is taken off the level — halfway between the two. Entering the
+                real distance removes that and makes the room size larger.
+              </>
+            }
+          >
             <NumberInput
               value={speaker.spl_ref_distance_m}
               onChange={(v) => set('spl_ref_distance_m', v ?? 1)}
@@ -57,13 +86,14 @@ export function SpeakerForm({ speaker, onChange }: { speaker: Speaker; onChange:
             <span className={styles.check}>
               <input type="checkbox" checked={!speaker.spl_ref_distance_stated} onChange={(e) => set('spl_ref_distance_stated', !e.target.checked)} />
               <span>
-                Not stated — assume 1 m {!speaker.spl_ref_distance_stated && <Badge tone="warn">assumed</Badge>}
+                Not stated — assume 1 m {!speaker.spl_ref_distance_stated && <Badge tone="warn">−3 dB</Badge>}
               </span>
             </span>
+
           </Field>
         </div>
 
-        <Field label="Frequency range" hint="The loudspeaker line, not the microphone one. On a conference system look for the speaker frequency response.">
+        <Field label="Frequency range" required hint="The loudspeaker line, not the microphone one." info="On a conference system look for the speaker frequency response. A stated limit is where the output is a few dB down, not where it stops, so a band whose centre is inside the range still counts.">
           <LogRangeSlider
             low={speaker.freq_low_hz}
             high={speaker.freq_high_hz}
@@ -78,25 +108,31 @@ export function SpeakerForm({ speaker, onChange }: { speaker: Speaker; onChange:
           </div>
         </Field>
 
-        <Disclosure summary="More from the datasheet (optional)" detail="Power, driver size and connection sharpen the check.">
+        <p className={styles.footnote}>
+          * No maximum sound level on the datasheet? Many portables publish none. Enter the output power under &ldquo;More from the
+          datasheet&rdquo; instead and the check estimates the level from it — as an estimate, with the wider doubt shown on the answer.
+        </p>
+
+        <Disclosure
+          summary={speaker.spl_peak_db === null ? 'More from the datasheet — the power is used here' : 'More from the datasheet (optional)'}
+          detail={
+            speaker.spl_peak_db === null
+              ? 'With no maximum sound level published, the output power is what the room size is built from. Driver size and connection sharpen the rest.'
+              : 'Power, driver size and connection sharpen the check.'
+          }
+        >
           <div className={styles.grid2}>
-            <Field label="Running on" hint="Portable devices publish two ratings and deliver the lower one unplugged. Room systems are always on mains.">
-              <Select
-                value={speaker.power_mode}
-                onChange={(v) => set('power_mode', v as PowerMode)}
-                options={[
-                  { value: 'battery', label: 'Battery' },
-                  { value: 'mains', label: 'Mains / AC power' },
-                ]}
-              />
-            </Field>
             <Field
               label="Output power"
-              hint={speaker.power_mode === 'battery' ? 'Total RMS. Use the battery-mode figure where the datasheet gives both.' : 'Total RMS, AC-mode figure.'}
+              hint="Total RMS."
+              info="Used only when no maximum sound level is published. Take the figure for how it will run: a portable delivers less on battery than on mains, and most datasheets print both."
             >
               <NumberInput value={speaker.power_watt} onChange={(v) => set('power_watt', v)} suffix="W" />
             </Field>
-            <Field label="What kind of watts">
+            <Field
+              label="What kind of watts"
+              info="The estimate is fitted on total device ratings, so a per-driver figure reads low. One datasheet here prints both, four times apart: a 2 \u00d7 38 W amplifier driving 2 \u00d7 10 W drivers. Picking the driver figure does not change the number \u2014 it adds a warning instead."
+            >
               <Select
                 value={speaker.power_kind ?? 'amplifier'}
                 onChange={(v) => set('power_kind', v as PowerKind)}
@@ -121,14 +157,7 @@ export function SpeakerForm({ speaker, onChange }: { speaker: Speaker; onChange:
                 ]}
               />
             </Field>
-            <Field label="Sensitivity" hint="dB at 1 W / 1 m. Rarely published — only needed if there is no SPL figure.">
-              <NumberInput value={speaker.sensitivity_db_1w_1m} onChange={(v) => set('sensitivity_db_1w_1m', v)} suffix="dB" />
-              <span className={styles.check}>
-                <input type="checkbox" checked={speaker.sensitivity_estimated} onChange={(e) => set('sensitivity_estimated', e.target.checked)} />
-                <span>This is my estimate, not a published figure.</span>
-              </span>
-            </Field>
-            <Field label="Bluetooth codec" hint="Recorded for your notes. It does not affect the result.">
+            <Field label="Bluetooth codec" hint="Recorded with the answer. It does not affect the result.">
               <TextInput value={speaker.bluetooth_codec} onChange={(e) => set('bluetooth_codec', e.target.value)} placeholder="SBC, AAC, LDAC…" />
             </Field>
           </div>
@@ -138,7 +167,13 @@ export function SpeakerForm({ speaker, onChange }: { speaker: Speaker; onChange:
           <p>Or try one we have looked up</p>
           <div className={styles.pills}>
             {EXAMPLES.map((e) => (
-              <button key={e.id} type="button" className={styles.pill} onClick={() => onChange(e.speaker)}>
+              <button
+                key={e.id}
+                type="button"
+                aria-pressed={selected === e.id}
+                className={`${styles.pill} ${selected === e.id ? styles.pillActive : ''}`}
+                onClick={() => onChange(selected === e.id ? EMPTY_SPEAKER : e.speaker)}
+              >
                 {e.speaker.name}
               </button>
             ))}

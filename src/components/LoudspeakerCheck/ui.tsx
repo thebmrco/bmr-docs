@@ -17,11 +17,47 @@ export function CardTitle({ title, sub }: { title: string; sub?: string }) {
   )
 }
 
-export function Field({ label, hint, children }: { label: string; hint?: string; children: ReactNode }) {
+/**
+ * The long form of a hint, behind an (i). It is always rendered, so that what it explains — a ticked box, an
+ * assumed distance — can change without the form reflowing under the cursor.
+ */
+export function Info({ children }: { children: ReactNode }) {
+  return (
+    <span className={styles.infoWrap}>
+      <button type="button" className={styles.infoBtn} aria-label="What this means" onClick={(e) => e.preventDefault()}>
+        i
+      </button>
+      <span className={styles.infoBubble} role="tooltip">
+        {children}
+      </span>
+    </span>
+  )
+}
+
+export function Field({
+  label,
+  hint,
+  info,
+  required,
+  children,
+}: {
+  label: string
+  hint?: string
+  info?: ReactNode
+  /** Marks the field with a * and explains itself in the note under the three of them. */
+  required?: boolean
+  children: ReactNode
+}) {
   return (
     <label className={styles.field}>
-      <span className={styles.fieldLabel}>{label}</span>
-      {hint && <span className={styles.fieldHint}>{hint}</span>}
+      <span className={styles.fieldLabel}>
+        {label}
+        {required && <span className={styles.req}>*</span>}
+        {info && <Info>{info}</Info>}
+      </span>
+      {/* Always rendered so that every field has the same three children, which is what the .grid2 subgrid rule in
+          styles.module.css needs to line a pair of side-by-side inputs up. An empty hint has no height of its own. */}
+      <span className={styles.fieldHint}>{hint}</span>
       <div className={styles.fieldBody}>{children}</div>
     </label>
   )
