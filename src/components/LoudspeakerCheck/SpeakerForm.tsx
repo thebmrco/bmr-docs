@@ -132,7 +132,14 @@ export function SpeakerForm({ speaker, onChange }: { speaker: Speaker; onChange:
                 ]}
               />
             </Field>
-            <Field label="Bass driver diameter" hint="The largest driver. A small one runs out in the low bands first.">
+            <Field
+              label="Bass driver diameter"
+              hint={
+                speaker.woofer_mm
+                  ? `The largest driver — ${speaker.woofer_mm} mm ≈ ${(speaker.woofer_mm * 0.0393701).toFixed(1)} in.`
+                  : 'The largest driver, in mm. A small one runs out in the low bands first.'
+              }
+            >
               <NumberInput value={speaker.woofer_mm} onChange={(v) => set('woofer_mm', v)} suffix="mm" />
             </Field>
             <Field label="Connection" hint="A wired input takes the Bluetooth path out of the measurement.">

@@ -23,15 +23,53 @@ const sign = (v: number) => (v >= 0 ? '+' : '')
 const DOT: Record<Status, string> = { yes: styles.dotYes, borderline: styles.dotBorderline, no: styles.dotNo }
 const WORD: Record<Status, string> = { yes: 'yes', borderline: 'borderline', no: 'no' }
 
+/* Dual units: metric is what BMR uses; the imperial approximation rides along muted. */
+const SQFT = 10.7639
+const FT = 3.28084
+const sig3 = new Intl.NumberFormat('en-US', { maximumSignificantDigits: 3 })
+const sqft = (a: number) => sig3.format(a * SQFT)
+const ft = (m: number) => new Intl.NumberFormat('en-US', { maximumSignificantDigits: 2 }).format(m * FT)
+const Imp = ({ children }: { children: React.ReactNode }) => <span className={styles.imperial}>{children}</span>
+
+/** Renders engine copy, appending the sq ft equivalent after every "N m²" it contains. */
+function DualText({ text }: { text: string }) {
+  const parts = text.split(/(\d[\d,.]*\s?m²)/g)
+  return (
+    <>
+      {parts.map((p, i) => {
+        const m = p.match(/^(\d[\d,.]*)\s?m²$/)
+        if (!m) return <span key={i}>{p}</span>
+        const v = Number(m[1].replace(/,/g, ''))
+        return (
+          <span key={i}>
+            {p} <Imp>(≈{sqft(v)} sq ft)</Imp>
+          </span>
+        )
+      })}
+    </>
+  )
+}
+
 /** "(35–175+)": a range edge at or beyond the volume cap is shown as the cap with a plus. */
 function span([lo, hi]: [number, number], cap?: number) {
   const edge = (x: number) => (cap !== undefined && x >= cap ? `${Math.floor(cap)}+` : String(x))
   return ` (${edge(lo)}–${edge(hi)})`
 }
 
-function area(a: number, cap?: number) {
-  if (cap !== undefined && a >= cap) return `up to ${Math.floor(cap)}+ m²`
-  return a >= AREA_SEARCH_MAX_M2 ? `> ${AREA_SEARCH_MAX_M2} m²` : a > 0 ? `up to ${a} m²` : '—'
+function area(a: number, cap?: number): React.ReactNode {
+  if (cap !== undefined && a >= cap)
+    return (
+      <>
+        up to {Math.floor(cap)}+ m² <Imp>(≈{sqft(cap)}+ sq ft)</Imp>
+      </>
+    )
+  if (a >= AREA_SEARCH_MAX_M2) return `> ${AREA_SEARCH_MAX_M2} m²`
+  if (a <= 0) return '—'
+  return (
+    <>
+      up to {a} m² <Imp>(≈{sqft(a)} sq ft)</Imp>
+    </>
+  )
 }
 
 /** Predicted SNR with its borderline zone, against the analysis lines. */
@@ -199,9 +237,9 @@ export function ResultCard({ result }: { result: R }) {
           {sized && <span className={`${styles.verdictPill} ${v.cls}`}>{v.label}</span>}
           <span className={styles.verdictName}>{result.speaker.name || 'Your loudspeaker'}</span>
         </div>
-        <h2 className={styles.bigHeadline}>{result.headline}</h2>
-        <p className={styles.bigSub}>{result.headline_text}</p>
-        {result.headline_range && <p className={styles.resultSmall}>{result.headline_range}</p>}
+        <h2 className={styles.bigHeadline}><DualText text={result.headline} /></h2>
+        <p className={styles.bigSub}><DualText text={result.headline_text} /></p>
+        {result.headline_range && <p className={styles.resultSmall}><DualText text={result.headline_range} /></p>}
         {result.margin_uncertainty_db > 0 && (
           <p className={styles.estimateNote}>
             {result.confidence_reason} — less certain by ±{n1(result.margin_uncertainty_db)} dB. Treat the room sizes as rough.
@@ -221,7 +259,7 @@ export function ResultCard({ result }: { result: R }) {
               return (
                 <div key={r.key} className={`${styles.roomCard} ${k === 'no' ? styles.roomCardMuted : ''}`}>
                   <div className={styles.roomCardMeta}>
-                    {r.people} · {r.area_m2} m²
+                    {r.people} · {r.area_m2} m² <Imp>(≈{sqft(r.area_m2)} sq ft)</Imp>
                   </div>
                   <div className={styles.roomCardName}>{r.label}</div>
                   <span className={`${styles.roomBadge} ${badge}`}>{label}</span>
@@ -251,7 +289,7 @@ export function ResultCard({ result }: { result: R }) {
             ))}
           </div>
           <p className={styles.variantFoot}>
-            Room sizes for a typical meeting room: {result.room.noise_floor_db} dB(A) background noise, {result.room.height_m} m ceiling. Score
+            Room sizes for a typical meeting room: {result.room.noise_floor_db} dB(A) background noise, {result.room.height_m} m ({ft(result.room.height_m)} ft) ceiling. Score
             variants as described in <Link to="/docs/acoustics/mos-score">Understanding the MOS Score</Link>.
           </p>
         </div>
@@ -281,7 +319,7 @@ export function ResultCard({ result }: { result: R }) {
                     {result.margin_uncertainty_db > 0 ? ', and the datasheet doubt is taken off here' : ''})
                   </span>
                 </dd>
-                <dt>At the far corner, {n1(result.distance_m)} m</dt>
+                <dt>At the far corner, {n1(result.distance_m)} m ({ft(result.distance_m)} ft)</dt>
                 <dd>{n1(result.level_at_mic_db)} dB SPL</dd>
                 <dt>Noise, 500 Hz / 1 kHz band</dt>
                 <dd>

@@ -349,7 +349,7 @@ details[open] > .summary .chevron { transform: rotate(180deg); }
 .variantTagOn { background: var(--lsc-forest); color: #fff; }
 .variantTagOff { border: 1px solid var(--lsc-stone); color: var(--lsc-muted); }
 .variantDesc { font-size: 0.8rem; color: var(--lsc-muted); margin-top: 0.15rem; text-wrap: pretty; }
-.variantUpTo { font-weight: 700; font-size: 0.9rem; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.variantUpTo { font-weight: 700; font-size: 0.9rem; font-variant-numeric: tabular-nums; text-align: right; max-width: 11rem; }
 .variantFoot { font-size: 0.75rem; color: var(--lsc-muted); margin-top: 0.5rem; }
 
 /* Details toggle + stacked sections */
@@ -364,3 +364,6 @@ details[open] > .summary .chevron { transform: rotate(180deg); }
 .detailsToggleOpen svg { transform: rotate(180deg); }
 .detailSections { display: flex; flex-direction: column; gap: 2rem; border-top: 2px solid var(--lsc-hairline); padding-top: 1.5rem; }
 .detailSectionTitle { margin: 0 0 0.25rem; font-size: 1.05rem; font-weight: 700; border: 0; padding: 0; }
+
+/* Dual units: the imperial approximation, muted, never uppercase even inside the caps meta line */
+.imperial { color: var(--lsc-muted); font-weight: 400; text-transform: none; letter-spacing: normal; }
