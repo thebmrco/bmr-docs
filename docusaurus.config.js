@@ -49,19 +49,34 @@ module.exports = {
     ],
   ],
 
-  // ✅ Disable local search in CI builds to prevent Node File API error
-  plugins: !isCI
-    ? [
-        [
-          require.resolve('@easyops-cn/docusaurus-search-local'),
-          {
-            indexPages: true,
-            hashed: true,
-            language: ['en'],
-          },
+  plugins: [
+    // Pages merged into the three Discovery areas — keep their old URLs working.
+    [
+      require.resolve('@docusaurus/plugin-client-redirects'),
+      {
+        redirects: [
+          { from: '/docs/lifecycle/discovery/scan-marker-guide', to: '/docs/lifecycle/discovery/room-scan#capture-flow' },
+          { from: '/docs/lifecycle/discovery/scanning-best-practices', to: '/docs/lifecycle/discovery/room-scan#best-practices' },
+          { from: '/docs/lifecycle/discovery/compass', to: '/docs/lifecycle/discovery/room-scan#compass-orientation' },
+          { from: '/docs/lifecycle/discovery/markers-capture', to: '/docs/lifecycle/discovery/markers' },
+          { from: '/docs/acoustics/video-acoustics-guide', to: '/docs/acoustics/acoustics-guide#video' },
         ],
-      ]
-    : [],
+      },
+    ],
+    // ✅ Disable local search in CI builds to prevent Node File API error
+    ...(!isCI
+      ? [
+          [
+            require.resolve('@easyops-cn/docusaurus-search-local'),
+            {
+              indexPages: true,
+              hashed: true,
+              language: ['en'],
+            },
+          ],
+        ]
+      : []),
+  ],
 
   themeConfig: {
     navbar: {

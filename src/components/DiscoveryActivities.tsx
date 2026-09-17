@@ -33,8 +33,8 @@ const activities: Activity[] = [
     imageAlt: 'Room scanning in progress',
     links: [
       { label: 'Room Scan', href: '/docs/lifecycle/discovery/room-scan' },
-      { label: 'Scan + Marker Capture Flow', href: '/docs/lifecycle/discovery/scan-marker-guide' },
-      { label: 'Scanning Best Practices', href: '/docs/lifecycle/discovery/scanning-best-practices' },
+      { label: 'Capture flow, step by step', href: '/docs/lifecycle/discovery/room-scan#capture-flow' },
+      { label: 'Scanning best practices', href: '/docs/lifecycle/discovery/room-scan#best-practices' },
     ],
   },
   {
@@ -50,7 +50,6 @@ const activities: Activity[] = [
     imageAlt: 'Marker placement in the app',
     links: [
       { label: 'Markers', href: '/docs/lifecycle/discovery/markers' },
-      { label: 'Capturing markers', href: '/docs/lifecycle/discovery/markers-capture' },
     ],
   },
   {

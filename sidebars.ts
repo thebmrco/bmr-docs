@@ -28,28 +28,9 @@ const sidebars: SidebarsConfig = {
             id: 'lifecycle/discovery/index',
           },
           items: [
-            {
-              type: 'category',
-              label: 'Room Scan',
-              link: { type: 'doc', id: 'lifecycle/discovery/room-scan' },
-              items: [
-                'lifecycle/discovery/scan-marker-guide',
-                'lifecycle/discovery/scanning-best-practices',
-                'lifecycle/discovery/compass',
-              ],
-            },
-            {
-              type: 'category',
-              label: 'Markers',
-              link: { type: 'doc', id: 'lifecycle/discovery/markers' },
-              items: ['lifecycle/discovery/markers-capture'],
-            },
-            {
-              type: 'category',
-              label: 'Acoustic Measurement',
-              link: { type: 'doc', id: 'acoustics/acoustics-guide' },
-              items: ['acoustics/video-acoustics-guide'],
-            },
+            'lifecycle/discovery/room-scan',
+            'lifecycle/discovery/markers',
+            'acoustics/acoustics-guide',
           ],
         },
         {
@@ -63,21 +44,6 @@ const sidebars: SidebarsConfig = {
             'lifecycle/design/bmr-studio',
             'lifecycle/design/ar-design-guide',
             'lifecycle/design/default-room-configuration',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Catalog & 3D Models',
-          link: {
-            type: 'doc',
-            id: 'catalog/index',
-          },
-          items: [
-            'catalog/item-anatomy',
-            'catalog/category-requirements',
-            'catalog/3d-model-standards',
-            'catalog/ports-and-devices',
-            'catalog/requesting-items',
           ],
         },
         'lifecycle/maintenance/index',
@@ -96,6 +62,21 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'Technology & Concepts',
       items: [
+        {
+          type: 'category',
+          label: 'Catalog & 3D Models',
+          link: {
+            type: 'doc',
+            id: 'catalog/index',
+          },
+          items: [
+            'catalog/item-anatomy',
+            'catalog/category-requirements',
+            'catalog/3d-model-standards',
+            'catalog/ports-and-devices',
+            'catalog/requesting-items',
+          ],
+        },
         {
           type: 'category',
           label: 'Acoustics',

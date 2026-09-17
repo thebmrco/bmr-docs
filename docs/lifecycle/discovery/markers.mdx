@@ -1,7 +1,7 @@
 ---
 title: Markers
 sidebar_label: Markers
-description: What markers are, why they matter, and what to capture during Discovery.
+description: What markers are, why they matter, what to capture, and how to take a good one.
 ---
 
 import Icon from '@site/src/components/Icon'
@@ -27,10 +27,6 @@ A scan captures the *shape* of the room. Markers capture the *context*.
     <figcaption style={{fontSize: '0.8rem', color: '#555', marginTop: '0.5rem'}}>Each marker keeps its photo and note</figcaption>
   </figure>
 </div>
-
-:::tip Capture them while you are still in the room
-Markers are most valuable when placed **during the scan**, or straight after it before you leave. See [Capturing markers](./markers-capture).
-:::
 
 ---
 
@@ -67,13 +63,83 @@ While scanning, BMR Mobile shows a **"What to capture" checklist** — power out
 
 ---
 
-## <Icon name="palette" size="1em" /> Markers shape the design, not just the record
+## <Icon name="scan" size="1em" /> When to capture
 
-Markers do more than document the room — they help **generate** it. In BMR Studio's Structurals mode, markers are used to determine and apply **surface colour and material** to walls and floors, so the generated design more closely resembles the real space.
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1rem', margin: '1.5rem 0'}}>
+
+<div style={{padding: '1.25rem', borderRadius: 12, border: '1px solid #d5e4dc', background: 'rgba(32, 107, 49, 0.06)'}}>
+<strong>✅ Best — during the scan</strong>
+<div style={{margin: '0.5rem 0 0', fontSize: '0.9rem', lineHeight: 1.5}}>
+Tap the camera button as you walk past each item. You are already looking at it, the device is already tracking, and the marker lands in the correct spatial position without any extra effort.
+</div>
+</div>
+
+<div style={{padding: '1.25rem', borderRadius: 12, border: '1px solid #e4dfcf', background: 'rgba(200, 170, 60, 0.10)'}}>
+<strong>👍 Acceptable — right after the scan</strong>
+<div style={{margin: '0.5rem 0 0', fontSize: '0.9rem', lineHeight: 1.5}}>
+If it was awkward to mark during the walk, do it as soon as the scan finishes — <em>before</em> you leave the room. Everything is still fresh and the room is still accessible.
+</div>
+</div>
+
+<div style={{padding: '1.25rem', borderRadius: 12, border: '1px solid #e4d0cf', background: 'rgba(180, 60, 60, 0.08)'}}>
+<strong>⚠️ Avoid — after leaving the room</strong>
+<div style={{margin: '0.5rem 0 0', fontSize: '0.9rem', lineHeight: 1.5}}>
+Adding markers after the site visit means a second trip — and by then details are forgotten and small items get missed. Treat this as a last resort.
+</div>
+</div>
+
+</div>
+
+BMR Mobile recommends at least **10 markers** covering the whole room and its key areas. The [capture flow](./room-scan#capture-flow) shows where the marker controls sit in the app.
+
+---
+
+## <Icon name="circle-check" size="1em" /> Markers and the room scan
+
+A marker is only anchored in 3D if the app knows where you are standing. That depends on the room having a scan:
+
+| Situation | What happens |
+|---|---|
+| **Marking during a scan** | The marker is placed directly in the scan's coordinates. Nothing extra to do. |
+| **Adding markers later, room already scanned** | The app **recognises the room** first — point the camera around the space until it matches the saved scan, then capture as usual. |
+| **No scan yet** | *Limited mode*: markers are saved as photos without coordinates. The app offers **Scan & Add Markers** so you get both in one pass. |
+
+:::tip Recognising the room on a later visit
+When you add markers to an already-scanned room, the app matches the live camera view against the room's saved map — a **"% of room seen"** indicator and directional hints show progress, and a **"Room verified"** confirmation means captured content will sync to this room's scan. If it cannot match the space, you can still **continue without verification**, and the markers are saved without coordinates.
+:::
+
+---
+
+## <Icon name="photo" size="1em" /> Taking a good marker
+
+- **Frame the context, not just the item.** A close-up of a socket without any surrounding wall makes it hard to place later — step back so the wall and nearby features are visible too.
+- **Hold steady.** A blurry marker is much less useful than a sharp one. Pause for a moment before capture.
+- **Write a short, specific note.** "Floor box — 2× power, 1× data" beats "power".
+- **One marker per item.** Don't try to cram several things into a single marker — split them so each can be found and read on its own.
+- **Retake if you're not sure.** It is much faster to retake on the spot than to come back later.
+
+---
+
+## <Icon name="palette" size="1em" /> Where markers show up
+
+Once uploaded, markers become part of the room's **Room Data** and appear:
+
+- In the room's **Markers** list in BMR Mobile and on the web.
+- Anchored to the 3D scan in **BMR Studio**, so designers can see each marker in its true position when placing equipment.
+- In room-level **Data Completeness** indicators, alongside scan, acoustic measurement, and design status.
+
+Reviewing markers on the web is fast: you can **move straight from one marker to the next**, **view all markers in the room at once**, and reach marker options from the **top menu** rather than hunting per-marker.
+
+Markers also do more than document the room — they help **generate** it. In BMR Studio's Structurals mode, markers are used to determine and apply **surface colour and material** to walls and floors, so the generated design more closely resembles the real space.
+
+<figure style={{margin: '1.5rem 0', textAlign: 'center'}}>
+  <img src={useBaseUrl('/img/lifecycle/markers-bmr-studio.png')} alt="BMR Studio showing the Markers panel and marker positions anchored to the 3D scan of a room" style={{width: '100%', maxWidth: 900, borderRadius: '12px', boxShadow: '0 2px 12px rgba(0,0,0,0.10)'}} />
+  <figcaption style={{fontSize: '0.85rem', color: '#555', marginTop: '0.5rem'}}>Markers in BMR Studio — the panel lists every marker, and each is anchored in its real position on the 3D scan.</figcaption>
+</figure>
 
 ---
 
 ## <Icon name="chevron-right" size="1em" /> Next
 
-- **[Capturing markers](./markers-capture)** — when to capture, how to take a good marker, and what happens without a scan.
-- **[Scan + Marker Capture Flow](./scan-marker-guide)** — where the marker controls sit in the app.
+- **[Room Scan](./room-scan)** — the scan that gives markers their coordinates.
+- **[Acoustic Measurement](../../acoustics/acoustics-guide)** — measure the room's RT60 and MOS score.

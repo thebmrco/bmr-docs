@@ -1,10 +1,13 @@
 ---
 title: Room Scan
 sidebar_label: Room Scan
-description: What a room scan captures, what it unlocks, and how to get a good one.
+description: What a room scan captures, the step-by-step capture flow, and how to get a good scan first time.
 ---
 
 import Icon from '@site/src/components/Icon'
+import useBaseUrl from '@docusaurus/useBaseUrl'
+import Admonition from '@theme/Admonition'
+import StepTabs, { DocImg } from '@site/src/components/StepTabs'
 
 # <Icon name="scan" size="1em" /> Room Scan
 
@@ -15,10 +18,10 @@ The scan is the **first thing you do in a room** and the foundation for everythi
 | Captured | Used for |
 |---|---|
 | **3D geometry** (walls, floor, ceiling, openings) | The room model in BMR Studio; room volume for acoustic calculations |
-| **Compass orientation** | Referencing walls by direction — see [Compass](./compass) |
+| **Compass orientation** | Referencing walls by direction — see [Compass orientation](#compass-orientation) below |
 | **AR world map** | Recognising the room on later visits, so markers, acoustic measurements and AR designs land in their true positions |
 
-## <Icon name="alert-triangle" size="1em" /> What the scan unlocks
+### What the scan unlocks
 
 Without a scan, the room works in a limited way:
 
@@ -28,14 +31,256 @@ Without a scan, the room works in a limited way:
 
 This is why the app's guidance starts with **"Start here — Scan the room"**, and why scanning and marker capture are best done in the same visit.
 
-## <Icon name="smartphone" size="1em" /> What you need
+### What you need
 
 - An iPhone or iPad with **LiDAR** — iPhone 12 Pro or newer, iPad Pro (2020) or newer
 - **iOS 26** or newer
 - Reasonable lighting — LiDAR works in the dark, but the camera needs light to texture the scan
 
-## <Icon name="chevron-right" size="1em" /> In this section
+---
 
-- **[Scan + Marker Capture Flow](./scan-marker-guide)** — the step-by-step walkthrough, screen by screen.
-- **[Scanning best practices](./scanning-best-practices)** — how to get a complete scan first time, and what to do when a scan is interrupted.
-- **[Compass](./compass)** — the room orientation captured alongside the geometry.
+## <Icon name="scan" size="1em" /> Capture flow, step by step {#capture-flow}
+
+This is the **Scan → Markers → Upload** flow in BMR Mobile. Click any step number to jump to it, or use **Previous / Next** to move through it.
+
+<StepTabs steps={[
+  {
+    title: "Start scan",
+    content: (
+      <>
+        <h3>1) Start scan</h3>
+        <p>Open the room and begin a new scan.</p>
+        <ul>
+          <li>Navigate to the correct room</li>
+          <li>Go to <strong>Scans</strong></li>
+          <li>Tap <strong>New Scan</strong></li>
+        </ul>
+        <div className="phone-screenshot">
+          <DocImg src="/img/tutorials/scan-marker-flow/1-Start-scan.jpg" alt="Start scan" />
+        </div>
+        <Admonition type="tip" title="Good practice">
+          Make sure you have enough light and a stable connection — syncing starts automatically after capture.
+        </Admonition>
+      </>
+    ),
+  },
+  {
+    title: "Scanning starts",
+    content: (
+      <>
+        <h3>2) Scanning starts</h3>
+        <p>Move the device to initialize tracking.</p>
+        <ul>
+          <li>Move in a smooth, steady motion</li>
+          <li>Avoid fast pans / sudden movement</li>
+          <li>Keep edges (walls/doors) in view where possible</li>
+        </ul>
+        <div className="phone-screenshot">
+          <DocImg src="/img/tutorials/scan-marker-flow/2-Scanning-starting.jpg" alt="Scanning starts" />
+        </div>
+      </>
+    ),
+  },
+  {
+    title: "Scan in progress",
+    content: (
+      <>
+        <h3>3) Scan in progress</h3>
+        <p>Continue capturing the space until the model is complete.</p>
+        <ul>
+          <li>Capture all walls and corners</li>
+          <li>Include major furniture blocks (as applicable)</li>
+          <li>Ensure entrances/doorways are captured clearly</li>
+        </ul>
+        <div className="phone-screenshot">
+          <DocImg src="/img/tutorials/scan-marker-flow/3-Scanning-ongoing-generating-model.jpg" alt="Scan in progress" />
+        </div>
+        <Admonition type="note" title="If tracking drops">
+          Pause and point the camera at a stable, textured surface until tracking recovers.
+        </Admonition>
+        <Admonition type="tip" title="Marker checklist">
+          A <strong>&quot;What to capture&quot;</strong> checklist guides you while scanning, so you finish with all the key room elements marked — <strong>power outlets, network points, existing AV, walls, and ceiling</strong>. Work through it before you leave the room.
+          <div className="phone-screenshot" style={{ maxWidth: 200, marginTop: '0.75rem' }}>
+            <DocImg src="/img/release/2026-07-marker-checklist.jpg" alt="What to capture checklist during scanning listing power outlets, network points, existing AV, walls, and ceiling" />
+          </div>
+        </Admonition>
+      </>
+    ),
+  },
+  {
+    title: "Review scan",
+    content: (
+      <>
+        <h3>4) Review scan</h3>
+        <p>Inspect the scan and verify coverage before saving.</p>
+        <ul>
+          <li>Rotate and inspect the model</li>
+          <li>Check for missing walls/holes</li>
+          <li>Confirm the scan is usable before continuing</li>
+        </ul>
+        <div className="phone-screenshot">
+          <DocImg src="/img/tutorials/scan-marker-flow/4-Review-scan-with-laser-tags.jpg" alt="Review scan" />
+        </div>
+      </>
+    ),
+  },
+  {
+    title: "Review markers",
+    content: (
+      <>
+        <h3>5) Review markers</h3>
+        <p>Validate marker captures and ensure they are positioned correctly.</p>
+        <ul>
+          <li>Open each marker and confirm the photo is clear</li>
+          <li>Retake if the target is blurry/partially occluded</li>
+          <li>Ensure markers represent meaningful room data points</li>
+        </ul>
+        <div className="phone-screenshot">
+          <DocImg src="/img/tutorials/scan-marker-flow/5-Review-markers-taken.jpg" alt="Review markers" />
+        </div>
+        <Admonition type="tip" title="Tip">
+          Prefer markers with clear context (what/where) rather than close-ups that are hard to interpret later.
+        </Admonition>
+      </>
+    ),
+  },
+  {
+    title: "Syncing",
+    content: (
+      <>
+        <h3>6) Syncing (background upload)</h3>
+        <p>Uploads run automatically in the background with status feedback.</p>
+        <ul>
+          <li>Uploads continue even if you navigate away</li>
+          <li>Status is visible via the sync banner</li>
+          <li>If an upload fails, the app keeps data locally for retry</li>
+        </ul>
+        <div className="phone-screenshot">
+          <DocImg src="/img/tutorials/scan-marker-flow/6-Scan-markers-syncing.jpg" alt="Syncing" />
+        </div>
+        <Admonition type="note" title="Offline / poor connectivity">
+          Complete the capture first — uploads can be retried later without losing the data. This applies across scan, markers, and acoustics: an <strong>acoustic measurement taken offline</strong> queues in the <strong>Notifications</strong> tab, where you can upload it and assign it to the right room once you are back online.
+        </Admonition>
+      </>
+    ),
+  },
+  {
+    title: "Uploaded",
+    content: (
+      <>
+        <h3>7) Uploaded (complete)</h3>
+        <p>Upload is finished and the data is available to the platform.</p>
+        <ul>
+          <li>Scan appears in the room's <strong>Scans</strong> list</li>
+          <li>Markers appear under <strong>Markers</strong></li>
+          <li>Continue with Acoustic, AR Design, or Web workflows</li>
+        </ul>
+        <div className="phone-screenshot">
+          <DocImg src="/img/tutorials/scan-marker-flow/7-Scan-markers-uploaded.jpg" alt="Uploaded" />
+        </div>
+      </>
+    ),
+  },
+]} />
+
+---
+
+## <Icon name="circle-check" size="1em" /> Best practices {#best-practices}
+
+:::tip Top 3 tips for a great scan
+1. **Move slowly** — the single most common cause of gaps and drift is moving too fast. Take your time.
+2. **Cover every corner** — point the device directly into each corner; these are the most frequent source of missing geometry.
+3. **Don't leave the room before checking** — review the scan preview on site and fill any gaps immediately, while the room is still accessible.
+:::
+
+**Before you scan**
+
+- **Clear the room where possible** — remove temporary furniture, bags, and clutter that won't be part of the permanent layout
+- **Turn the lights on** — good lighting helps the camera texture the scan correctly, even though LiDAR itself works in the dark
+- **Close blinds or curtains** if direct sunlight creates strong glare on walls or floors
+- Note any features that are hard to scan: glass walls, mirrors, and very dark or shiny surfaces need extra attention
+
+**During the scan**
+
+- **Move slowly and deliberately** — fast movements cause drift and gaps in the mesh
+- **Keep the device at chest to eye height** and angle it slightly downward to capture floors and wall bases
+- **Scan all four walls fully** — walk along each wall at close range (~<U m={[1,1.5]} />) to capture surfaces accurately
+- **Cover corners carefully** — point the device directly into each corner; these are the most common source of geometry gaps
+- **Scan the ceiling** by tilting the device upward while moving around the room — ceiling height is important for acoustic calculations
+- **Overlap your passes** — revisit areas you're uncertain about; duplicate data is merged automatically
+
+**After the scan**
+
+- Review the scan preview in the app before leaving the room — check for obvious holes or misaligned geometry
+- If the scan has gaps, **run a second pass** focused on the missing areas while still on site
+- Capture [markers](./markers) immediately after scanning while you still have access to the room
+
+### Common problem areas
+
+| Surface | Challenge | What to do |
+|---|---|---|
+| Glass walls / windows | LiDAR reflects or passes through glass | Scan close and slow; add a marker to document the glass boundary |
+| Mirrors | Cause phantom geometry | Keep distance and note in a marker |
+| Very dark surfaces | Absorb the LiDAR signal | Move closer and reduce scan speed |
+| Curved walls | Require more passes to capture shape | Walk the curve at close range from multiple angles |
+| Large open rooms | Risk of tracking drift | Break into overlapping sections if the room exceeds ~<U m2={200} /> |
+
+> Returning to a room for a rescan takes significantly more time than spending an extra few minutes on site to get it right the first time.
+
+---
+
+## <Icon name="alert-triangle" size="1em" /> If the scan stops unexpectedly
+
+iOS can end a scanning session on its own — usually after a tracking failure or when the device is under pressure. BMR Mobile tells you which case you are in:
+
+| What you see | What it means | What to do |
+|---|---|---|
+| **Scanning Interrupted** alert, with Retry / Exit | The session stopped before anything usable was captured | Tap **Retry** and start again, moving more slowly |
+| The same alert suggesting you **close and reopen the app** | Scanning has stopped repeatedly in a row | Relaunch BMR Mobile, then scan again |
+| **"Scanning ended early"** notice on the review screen | The session stopped, but usable geometry was already captured | Review what was captured — keep it if the room is complete, otherwise rescan |
+
+The app will not save a scan with no geometry, so if nothing was captured you are prompted to scan again rather than ending up with an empty room model.
+
+---
+
+## <Icon name="compass" size="1em" /> Compass orientation {#compass-orientation}
+
+The scan also captures the room's real-world orientation, so walls, equipment, and design elements can be discussed using cardinal directions — north, south, east, west — instead of "the wall over there".
+
+<div style={{display: 'flex', gap: '24px', alignItems: 'flex-start', flexWrap: 'wrap', margin: '1.5rem 0'}}>
+<div style={{flex: '1 1 350px'}}>
+
+**Why it matters**
+
+- Reference walls and equipment using real directions — "the screen is on the **west wall**" is unambiguous to everyone in the conversation.
+- Hybrid design reviews work better — designers on web, technicians on-site, and IT remote all align on the same orientation.
+- Foundation for spatially aware features — daylight modelling, AV positioning relative to windows, and other orientation-dependent checks.
+
+**How it's captured**
+
+Automatically, during the scan — no separate step. BMR Mobile uses the device's magnetometer, stores the orientation with the scan geometry, and syncs it so BMR Studio can use it during Design.
+
+</div>
+<div style={{flex: '0 0 200px'}}>
+
+<div className="phone-screenshot">
+<img src={useBaseUrl('/img/release/2026-05-compass-app.jpg')} alt="Compass orientation captured during a room scan in BMR Mobile" style={{width: '100%', borderRadius: '12px'}} />
+</div>
+
+</div>
+</div>
+
+:::tip Get an accurate reading
+- Hold the device level during scanning. A device tilted heavily up or down gives the magnetometer less to work with.
+- Avoid strong metal masses (large filing cabinets, server racks, structural steel) close to the device while the scan begins — they can deflect the compass.
+- If the captured orientation looks wrong in BMR Studio, re-scan the room away from any nearby metal influence and the orientation will update.
+:::
+
+In **BMR Studio** the room appears in its true geographic orientation, with a compass widget showing north. The orientation is part of the room's Room Data and is visible wherever the room is displayed, in BMR Mobile and on the web.
+
+---
+
+## <Icon name="chevron-right" size="1em" /> Next
+
+- **[Markers](./markers)** — capture the context the mesh cannot show.
+- **[Acoustic Measurement](../../acoustics/acoustics-guide)** — measure the room's RT60 and MOS score.
