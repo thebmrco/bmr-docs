@@ -48,6 +48,20 @@ A good room scan is the foundation of everything that follows — the more compl
 
 ---
 
+## <Icon name="alert-triangle" size="1em" /> If the scan stops unexpectedly
+
+iOS can end a scanning session on its own — usually after a tracking failure or when the device is under pressure. BMR Mobile tells you which case you are in:
+
+| What you see | What it means | What to do |
+|---|---|---|
+| **Scanning Interrupted** alert, with Retry / Exit | The session stopped before anything usable was captured | Tap **Retry** and start again, moving more slowly |
+| The same alert suggesting you **close and reopen the app** | Scanning has stopped repeatedly in a row | Relaunch BMR Mobile, then scan again |
+| **"Scanning ended early"** notice on the review screen | The session stopped, but usable geometry was already captured | Review what was captured — keep it if the room is complete, otherwise rescan |
+
+The app will not save a scan with no geometry, so if nothing was captured you are prompted to scan again rather than ending up with an empty room model.
+
+---
+
 ## <Icon name="circle-check" size="1em" /> After the scan
 
 - Review the scan preview in the app before leaving the room — check for obvious holes or misaligned geometry

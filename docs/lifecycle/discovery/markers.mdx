@@ -1,7 +1,7 @@
 ---
 title: Markers
 sidebar_label: Markers
-description: What markers are, why they matter, and when to capture them during Discovery.
+description: What markers are, why they matter, and what to capture during Discovery.
 ---
 
 import Icon from '@site/src/components/Icon'
@@ -9,7 +9,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl'
 
 # <Icon name="marker" size="1em" /> Markers
 
-**Markers** are geo-tagged photos with a short note, placed against the 3D scan of a room. They record the things the mesh alone cannot tell you — where the power is, which display is already mounted, what cabling is in place, where the network points are, and any constraint that will matter later in Design.
+**Markers** are photos with a short note, placed against the 3D scan of a room. They record the things the mesh alone cannot tell you — where the power is, which display is already mounted, what cabling is in place, where the network points are, and any constraint that will matter later in Design.
 
 A scan captures the *shape* of the room. Markers capture the *context*.
 
@@ -28,8 +28,8 @@ A scan captures the *shape* of the room. Markers capture the *context*.
   </figure>
 </div>
 
-:::tip Take markers during the scan whenever you can
-Markers are much more valuable when placed **while you are still in the room and actively scanning**. You can also add them straight after the scan finishes, before you leave. Returning later means another site visit — and by then the small details that make a marker useful are easy to forget.
+:::tip Capture them while you are still in the room
+Markers are most valuable when placed **during the scan**, or straight after it before you leave. See [Capturing markers](./markers-capture).
 :::
 
 ---
@@ -39,15 +39,15 @@ Markers are much more valuable when placed **while you are still in the room and
 Markers are one of the most important parts of the Discovery data set. Without them, designers and installers are working from geometry alone and have to guess at everything else.
 
 - **They unblock Design.** A designer looking at the scan in BMR Studio needs to know where the outlet is before they can place a display, and where the existing camera is before they can suggest a replacement. Markers answer those questions without another site visit.
-- **They reduce revisions.** Missing markers are the single most common reason a design has to be reworked. Capturing them once, on site, avoids back-and-forth later.
-- **They preserve on-site knowledge.** The person doing the scan sees things a designer never will — a loose cable tray, an obstructed wall, a light switch in an awkward place. A quick marker locks that observation into the room's record forever.
-- **They speed up installation.** Installers arriving on site can see, ahead of time, exactly where power, network, and existing equipment are — no surprises on the day.
+- **They reduce revisions.** Missing markers are the single most common reason a design has to be reworked.
+- **They preserve on-site knowledge.** The person doing the scan sees things a designer never will — a loose cable tray, an obstructed wall, a light switch in an awkward place.
+- **They speed up installation.** Installers can see, ahead of time, exactly where power, network, and existing equipment are.
 
 ---
 
 ## <Icon name="marker" size="1em" /> What to mark
 
-Aim for coverage of the room's *constraints* and *existing equipment*, not decorative detail. Typical markers include:
+Aim for coverage of the room's *constraints* and *existing equipment*, not decorative detail:
 
 | Category | Examples |
 |---|---|
@@ -62,72 +62,18 @@ Aim for coverage of the room's *constraints* and *existing equipment*, not decor
 If you find yourself wondering "should I mark this?" — the answer is almost always **yes**. An extra marker costs seconds; a missing marker can cost a site revisit.
 
 :::tip Guided while you scan
-While scanning, BMR Mobile shows a **"What to capture" checklist** covering the essentials — power outlets, network points, existing AV, walls, and ceiling — so you finish with the key elements marked. See the [Scan + Marker Capture Flow](./scan-marker-guide).
+While scanning, BMR Mobile shows a **"What to capture" checklist** — power outlets (including floor boxes and behind furniture), network points, existing AV, one overview shot per wall, and the ceiling — counting off each one as you capture it.
 :::
 
 ---
 
-## <Icon name="scan" size="1em" /> When to capture markers
+## <Icon name="palette" size="1em" /> Markers shape the design, not just the record
 
-<div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1rem', margin: '1.5rem 0'}}>
-
-<div style={{padding: '1.25rem', borderRadius: 12, border: '1px solid #d5e4dc', background: 'rgba(32, 107, 49, 0.06)'}}>
-<strong>✅ Best — during the scan</strong>
-<p style={{margin: '0.5rem 0 0', fontSize: '0.9rem', lineHeight: 1.5}}>
-Tap the marker button as you walk past each item. You are already looking at it, the device is already tracking, and the marker lands in the correct spatial position without any extra effort.
-</p>
-</div>
-
-<div style={{padding: '1.25rem', borderRadius: 12, border: '1px solid #e4dfcf', background: 'rgba(200, 170, 60, 0.10)'}}>
-<strong>👍 Acceptable — right after the scan</strong>
-<p style={{margin: '0.5rem 0 0', fontSize: '0.9rem', lineHeight: 1.5}}>
-If it was awkward to mark during the walk, do it as soon as the scan finishes — <em>before</em> you leave the room. Everything is still fresh and the room is still accessible.
-</p>
-</div>
-
-<div style={{padding: '1.25rem', borderRadius: 12, border: '1px solid #e4d0cf', background: 'rgba(180, 60, 60, 0.08)'}}>
-<strong>⚠️ Avoid — after leaving the room</strong>
-<p style={{margin: '0.5rem 0 0', fontSize: '0.9rem', lineHeight: 1.5}}>
-Adding markers after the site visit means a second trip — and by then details are forgotten and small items get missed. Treat this as a last resort.
-</p>
-</div>
-
-</div>
+Markers do more than document the room — they help **generate** it. In BMR Studio's Structurals mode, markers are used to determine and apply **surface colour and material** to walls and floors, so the generated design more closely resembles the real space.
 
 ---
 
-## <Icon name="photo" size="1em" /> Taking a good marker
+## <Icon name="chevron-right" size="1em" /> Next
 
-- **Frame the context, not just the item.** A close-up of a socket without any surrounding wall makes it hard to place later — step back so the wall and nearby features are visible too.
-- **Hold steady.** A blurry marker is much less useful than a sharp one. Pause for a moment before capture.
-- **Write a short, specific note.** "Floor box — 2× power, 1× data" beats "power".
-- **One marker per item.** Don't try to cram several things into a single marker — split them so each can be found and read on its own.
-- **Retake if you're not sure.** It is much faster to retake on the spot than to come back later.
-
----
-
-## <Icon name="circle-check" size="1em" /> Where markers show up
-
-Once uploaded, markers become part of the room's **Room Data** and appear:
-
-- In the room's **Markers** list in BMR Mobile and on the web.
-- Anchored to the 3D scan in **BMR Studio**, so designers can see each marker in its true position when placing equipment.
-- In room-level **Data Completeness** indicators, alongside scan, acoustic measurement, and design status.
-
-Reviewing markers on the web is now faster: you can **move straight from one marker to the next**, **view all markers in the room at once**, and reach marker options from the **top menu** rather than hunting per-marker.
-
-:::tip Markers shape the design, not just the record
-Markers now do more than document the room — they help **generate** it. In BMR Studio's Structurals mode, markers are used to determine and apply **surface colour and material** to walls and floors, so the generated design more closely resembles the real space.
-:::
-
-<figure style={{margin: '1.5rem 0', textAlign: 'center'}}>
-  <img src={useBaseUrl('/img/lifecycle/markers-bmr-studio.png')} alt="BMR Studio showing the Markers panel and marker positions anchored to the 3D scan of a room" style={{width: '100%', maxWidth: 900, borderRadius: '12px', boxShadow: '0 2px 12px rgba(0,0,0,0.10)'}} />
-  <figcaption style={{fontSize: '0.85rem', color: '#555', marginTop: '0.5rem'}}>Markers in BMR Studio — the panel lists every marker, and each is anchored in its real position on the 3D scan.</figcaption>
-</figure>
-
----
-
-## <Icon name="scan" size="1em" /> Next
-
-- Follow the step-by-step [Scan + Marker Capture Flow](./scan-marker-guide) to see exactly where the marker controls sit in the app.
-- Review the [Scanning best practices](./scanning-best-practices) so the scan itself gives your markers a solid foundation.
+- **[Capturing markers](./markers-capture)** — when to capture, how to take a good marker, and what happens without a scan.
+- **[Scan + Marker Capture Flow](./scan-marker-guide)** — where the marker controls sit in the app.

@@ -1,0 +1,41 @@
+---
+title: Room Scan
+sidebar_label: Room Scan
+description: What a room scan captures, what it unlocks, and how to get a good one.
+---
+
+import Icon from '@site/src/components/Icon'
+
+# <Icon name="scan" size="1em" /> Room Scan
+
+The scan is the **first thing you do in a room** and the foundation for everything else. Using the LiDAR sensor in an iPhone or iPad, BMR Mobile builds a 3D model of the space in a few minutes.
+
+## <Icon name="circle-check" size="1em" /> What the scan captures
+
+| Captured | Used for |
+|---|---|
+| **3D geometry** (walls, floor, ceiling, openings) | The room model in BMR Studio; room volume for acoustic calculations |
+| **Compass orientation** | Referencing walls by direction — see [Compass](./compass) |
+| **AR world map** | Recognising the room on later visits, so markers, acoustic measurements and AR designs land in their true positions |
+
+## <Icon name="alert-triangle" size="1em" /> What the scan unlocks
+
+Without a scan, the room works in a limited way:
+
+- **Markers** are stored as photos only, without coordinates.
+- **Acoustic measurements** run in the Basic flow — no speaker or measurement positions.
+- **AR Design** can be explored but designs cannot be saved.
+
+This is why the app's guidance starts with **"Start here — Scan the room"**, and why scanning and marker capture are best done in the same visit.
+
+## <Icon name="smartphone" size="1em" /> What you need
+
+- An iPhone or iPad with **LiDAR** — iPhone 12 Pro or newer, iPad Pro (2020) or newer
+- **iOS 26** or newer
+- Reasonable lighting — LiDAR works in the dark, but the camera needs light to texture the scan
+
+## <Icon name="chevron-right" size="1em" /> In this section
+
+- **[Scan + Marker Capture Flow](./scan-marker-guide)** — the step-by-step walkthrough, screen by screen.
+- **[Scanning best practices](./scanning-best-practices)** — how to get a complete scan first time, and what to do when a scan is interrupted.
+- **[Compass](./compass)** — the room orientation captured alongside the geometry.

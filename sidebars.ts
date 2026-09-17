@@ -28,12 +28,28 @@ const sidebars: SidebarsConfig = {
             id: 'lifecycle/discovery/index',
           },
           items: [
-            'lifecycle/discovery/scan-marker-guide',
-            'lifecycle/discovery/scanning-best-practices',
-            'lifecycle/discovery/markers',
-            'lifecycle/discovery/compass',
-            'acoustics/acoustics-guide',
-            'acoustics/video-acoustics-guide',
+            {
+              type: 'category',
+              label: 'Room Scan',
+              link: { type: 'doc', id: 'lifecycle/discovery/room-scan' },
+              items: [
+                'lifecycle/discovery/scan-marker-guide',
+                'lifecycle/discovery/scanning-best-practices',
+                'lifecycle/discovery/compass',
+              ],
+            },
+            {
+              type: 'category',
+              label: 'Markers',
+              link: { type: 'doc', id: 'lifecycle/discovery/markers' },
+              items: ['lifecycle/discovery/markers-capture'],
+            },
+            {
+              type: 'category',
+              label: 'Acoustic Measurement',
+              link: { type: 'doc', id: 'acoustics/acoustics-guide' },
+              items: ['acoustics/video-acoustics-guide'],
+            },
           ],
         },
         {
