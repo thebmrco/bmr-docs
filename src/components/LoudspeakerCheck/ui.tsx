@@ -1,5 +1,5 @@
 import type { InputHTMLAttributes, ReactNode } from 'react'
-import { ChevronDown, type LucideIcon } from 'lucide-react'
+import { ChevronDown, MousePointerClick, type LucideIcon } from 'lucide-react'
 import styles from './styles.module.css'
 
 const cx = (...c: (string | false | undefined)[]) => c.filter(Boolean).join(' ')
@@ -117,16 +117,26 @@ export function Badge({ tone = 'neutral', children }: { tone?: 'neutral' | 'warn
   return <span className={cx(styles.badge, t)}>{children}</span>
 }
 
-/** A collapsed section that states its current value on the summary line. */
-export function Disclosure({ summary, detail, children, open }: { summary: string; detail?: string; children: ReactNode; open?: boolean }) {
+/** A collapsed section that states its current value on the summary line. `alt` marks it as the
+ *  highlighted alternative path (tinted box) rather than a quiet optional extra. */
+export function Disclosure({ summary, detail, children, open, alt }: { summary: string; detail?: string; children: ReactNode; open?: boolean; alt?: boolean }) {
   return (
-    <details open={open} className={styles.disclosure}>
+    <details open={open} className={cx(styles.disclosure, alt && styles.disclosureAlt)}>
       <summary className={styles.summary}>
         <span className={styles.summaryText}>
           <span className={styles.summaryTitle}>{summary}</span>
           {detail && <span className={styles.summaryDetail}>{detail}</span>}
         </span>
-        <ChevronDown size={16} className={styles.chevron} aria-hidden />
+        {alt ? (
+          <span className={styles.tapCue}>
+            <MousePointerClick size={14} aria-hidden />
+            <span className={styles.tapOpenLabel}>Tap to open</span>
+            <span className={styles.tapCloseLabel}>Close</span>
+            <ChevronDown size={14} className={styles.chevron} aria-hidden />
+          </span>
+        ) : (
+          <ChevronDown size={16} className={styles.chevron} aria-hidden />
+        )}
       </summary>
       <div className={styles.disclosureBody}>{children}</div>
     </details>

@@ -57,9 +57,8 @@ export function SpeakerForm({ speaker, onChange }: { speaker: Speaker; onChange:
         title="How loud can it play?"
         sub={
           <>
-            On the datasheet this is called <strong>max SPL</strong>, <strong>maximum sound level</strong> or{' '}
-            <strong>peak audio output</strong>. It is a number in dB, often followed by &ldquo;@ 1 m&rdquo; or &ldquo;@ 0.5 m&rdquo;. Not the
-            &ldquo;signal-to-noise ratio&rdquo; line — that is the electronics&rsquo; own noise, not a level.
+            Enter the datasheet&rsquo;s <strong>maximum sound level</strong> — or, if none is published,{' '}
+            <strong>expand the box below</strong> and use the output power instead.
           </>
         }
       >
@@ -73,15 +72,26 @@ export function SpeakerForm({ speaker, onChange }: { speaker: Speaker; onChange:
           </div>
         )}
         <div className={styles.grid2} style={{ maxWidth: '32rem' }}>
-          <Field label="Maximum sound level">
+          <Field
+            label="Maximum sound level"
+            hint="Listed as max SPL or peak audio output."
+            info={
+              <>
+                On a German datasheet, <em>maximaler Schalldruck</em>. Not the &ldquo;signal-to-noise ratio&rdquo; line — that is a ratio
+                between the device and its own noise, not a level, and it lands in the same range as a real one, so nothing here
+                can catch the mistake for you.
+              </>
+            }
+          >
             <NumberInput value={speaker.spl_peak_db} onChange={(v) => set('spl_peak_db', v)} suffix="dB" placeholder="e.g. 88" />
           </Field>
           <Field
             label="…measured at"
+            hint="Printed next to the level as “@ 1 m” or “@ 0.5 m”."
             info={
               <>
                 Datasheets that give a level often leave the distance out. If it was measured at 0.5 m the figure is 6 dB
-                optimistic, so with &ldquo;not stated&rdquo; ticked 3 dB is taken off the level — halfway between the two. Entering the
+                optimistic, so by default 1 m is assumed and 3 dB is taken off the level — halfway between the two. Entering the
                 real distance removes that and makes the room size larger.
               </>
             }
@@ -95,20 +105,24 @@ export function SpeakerForm({ speaker, onChange }: { speaker: Speaker; onChange:
               disabled={!speaker.spl_ref_distance_stated}
             />
             <span className={styles.check}>
-              <input type="checkbox" checked={!speaker.spl_ref_distance_stated} onChange={(e) => set('spl_ref_distance_stated', !e.target.checked)} />
-              <span>
-                Not stated — assume 1 m {!speaker.spl_ref_distance_stated && <Badge tone="warn">−3 dB</Badge>}
-              </span>
+              <input type="checkbox" checked={speaker.spl_ref_distance_stated} onChange={(e) => set('spl_ref_distance_stated', e.target.checked)} />
+              <span>The datasheet states the distance — enter it above</span>
             </span>
+            {!speaker.spl_ref_distance_stated && (
+              <span className={styles.defaultNote}>
+                Default in use: <strong>1 m assumed</strong> <Badge tone="warn">−3 dB</Badge>
+              </span>
+            )}
           </Field>
         </div>
 
         <Disclosure
-          summary={speaker.spl_peak_db === null ? 'No maximum sound level on the datasheet? — the power is used' : 'No maximum sound level on the datasheet?'}
+          alt
+          summary={speaker.spl_peak_db === null && speaker.power_watt !== null ? 'Alternative in use: level estimated from the output power' : 'No maximum sound level on the datasheet? Use the output power instead'}
           detail={
             speaker.spl_peak_db === null && speaker.power_watt !== null
               ? 'With no maximum sound level published, the output power is what the room size is built from.'
-              : 'Many portable speakers publish only the output power. Enter it here and the level is estimated from it, with a wider margin of doubt on the answer. Driver size and connection sharpen the rest.'
+              : 'Expand and enter the output power — the level is estimated from it, with a wider margin of doubt on the answer.'
           }
         >
           <div className={styles.grid2}>

@@ -367,3 +367,29 @@ details[open] > .summary .chevron { transform: rotate(180deg); }
 
 /* Dual units: the imperial approximation, muted, never uppercase even inside the caps meta line */
 .imperial { color: var(--lsc-muted); font-weight: 400; text-transform: none; letter-spacing: normal; }
+
+/* The explicit default shown when the measuring distance is not stated */
+.defaultNote { display: block; margin-top: 0.4rem; font-size: 0.75rem; color: var(--lsc-text); }
+
+/* The highlighted alternative path: a tinted, bordered box instead of quiet hairlines */
+.disclosureAlt {
+  border: 1.5px dashed var(--lsc-forest);
+  border-radius: 12px;
+  background: var(--lsc-forest-tint);
+  padding: 0.75rem 1rem;
+  max-width: 40rem;
+}
+.disclosureAlt .summaryTitle { color: var(--lsc-forest); }
+.disclosureAlt .chevron { color: var(--lsc-forest); }
+.disclosureAlt[open] { border-style: solid; }
+
+/* "Tap to open" pill on the alternative box — a visible button, not just a chevron */
+.tapCue {
+  flex-shrink: 0; display: inline-flex; align-items: center; gap: 0.35rem;
+  background: var(--lsc-forest); color: #fff; border-radius: 999px;
+  padding: 0.35rem 0.8rem; font-size: 0.75rem; font-weight: 600; white-space: nowrap;
+}
+.tapCue .chevron { color: #fff; }
+.tapCloseLabel { display: none; }
+details[open] > .summary .tapOpenLabel { display: none; }
+details[open] > .summary .tapCloseLabel { display: inline; }
