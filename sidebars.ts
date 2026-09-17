@@ -87,6 +87,15 @@ const sidebars: SidebarsConfig = {
             'acoustics/mos-score',
             'acoustics/reading-acoustic-results',
             'acoustics/speakers-for-acoustics',
+            {
+              type: 'category',
+              label: 'Loudspeaker Check',
+              link: {
+                type: 'doc',
+                id: 'acoustics/loudspeaker-check/index',
+              },
+              items: ['acoustics/loudspeaker-check/method'],
+            },
           ],
         },
       ],
