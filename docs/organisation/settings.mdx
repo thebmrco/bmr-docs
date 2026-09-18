@@ -1,0 +1,71 @@
+---
+title: Organisation settings
+sidebar_label: Organisation settings
+description: The organisation admin area — Overview, Users, Directory, Preferences and Integrations.
+---
+
+import Icon from '@site/src/components/Icon'
+
+# <Icon name="admin-settings" size="1em" /> Organisation settings
+
+Open your organisation on the web and choose **Organization settings**. The admin area is one pill row, and the groups that hold more than one page show a second row of tabs beneath it.
+
+| Group | What it is for |
+|---|---|
+| **Overview** | Counts, Data Completeness, Recent Activity and the location list — see [Organisation structure](./) |
+| **Users** | Who has access, and with which role — see [Inviting Users](../getting-started/inviting-users) |
+| **Directory** | The **Locations** and **Rooms** in the organisation |
+| **Preferences** | Organisation-wide settings — the tabs below |
+| **Integrations** | [Webex Control Hub Sync](../integrations/webex-control-hub-sync) and [Microsoft 365](../integrations/microsoft-365) |
+
+:::note Who can change these
+Organisation settings require edit access to the organisation — in practice, an **Org Admin**.
+:::
+
+---
+
+## <Icon name="admin-settings" size="1em" /> Preferences
+
+### General
+
+The organisation's identity and its most destructive action.
+
+- **Organization ID** — the identifier to quote when contacting support.
+- **Delete this organization** — removes the organisation together with its locations, rooms and everything in them. This cannot be undone.
+
+### Room Configurations
+
+The default equipment recommendations applied to rooms by size band — for example a Room Bar and a single display for a small huddle room. When a designer opens a room in BMR Studio, the configuration matching the room's size is suggested automatically.
+
+Fully documented in **[Default Room Configuration](../lifecycle/design/default-room-configuration)**.
+
+### Acoustic
+
+Defaults applied when taking acoustic measurements in this organisation. Measurements already taken are not changed.
+
+| Setting | What it does |
+|---|---|
+| **Default measurement mode** | Whether measurements run in **Advanced** or **Basic** — see [Acoustic Measurement](../acoustics/acoustics-guide) |
+| **Target MOS** | The Mean Opinion Score the organisation aims for, from 1.0 to 5.0. Data analysis views flag rooms that fall below it |
+| **Default room usage type** | The DIN 18041 usage class pre-selected when a room is created |
+
+:::tip How the measurement mode is decided
+The app resolves the mode in this order: a **device setting** in BMR Mobile (Settings → Acoustic Settings → Advanced Measurement Mode) wins if it has been set; otherwise the **organisation default** from this tab applies; otherwise **Advanced**. Set it here to steer everyone in the organisation, and leave the app toggle alone.
+:::
+
+### Catalog
+
+The equipment catalogs available to the organisation, with the number of items in each. Catalogs are **view only** — they are curated and maintained by BETTERMEETINGROOMS. Select one to see the equipment it contains.
+
+See [Catalog & 3D Models](../catalog/) for what a catalog item holds and how to request an addition.
+
+### Branding
+
+Upload the organisation's **logo**, which can then be placed and resized in designs in BMR Studio.
+
+---
+
+## <Icon name="chevron-right" size="1em" /> Related
+
+- **[Organisation structure](./)** — how Organisation, Location and Room fit together.
+- **[Inviting Users](../getting-started/inviting-users)** — roles and what each one can see.

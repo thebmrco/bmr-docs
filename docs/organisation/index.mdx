@@ -1,0 +1,55 @@
+---
+title: Organisation structure
+sidebar_label: Organisation structure
+description: How Organisation, Location and Room fit together, what data lives at each level, and what rolls up.
+---
+
+import Icon from '@site/src/components/Icon'
+
+# <Icon name="organization" size="1em" /> Organisation structure
+
+Everything in BETTERMEETINGROOMS lives in a three-level hierarchy. Each level contains the next, and data captured at the bottom rolls up to the top.
+
+**Organisation → Location → Room**
+
+| Level | What it is | What it holds |
+|---|---|---|
+| **Organisation** | Your company or business unit — the top level, and the boundary for access and settings | Locations, users and roles, organisation-wide preferences, catalogs, integrations |
+| **Location** | A physical site: an office, a building, a campus | The rooms at that site, and its address |
+| **Room** | A single meeting room | Scans, markers, acoustic measurements, designs — everything from Discovery onwards |
+
+An organisation is created for you when you are invited into one, or by the onboarding wizard when you [start your own](../getting-started/account-setup). Most companies need only one.
+
+---
+
+## <Icon name="circle-check" size="1em" /> What rolls up
+
+Room data is captured in the room, but it is summarised at the organisation level so you can see progress across the estate without opening rooms one by one.
+
+- **Data Completeness** — the share of rooms that have been scanned, have markers, have an acoustic measurement, and have a design. Each row links through to the rooms behind it.
+- **Recent Activity** — the latest changes across every location, with who made them and when.
+- **Counts** — locations, rooms, and users with active roles.
+
+These are views of the same room data described in [Discovery](../lifecycle/discovery/), not a separate record.
+
+---
+
+## <Icon name="permissions" size="1em" /> Access follows the hierarchy
+
+Roles are scoped to a level, and a role grants access to everything inside it:
+
+| Role | Sees and manages |
+|---|---|
+| **Org Admin** | The whole organisation — every location and room, plus settings and users |
+| **Location Manager** | One location and the rooms inside it |
+| **Room Manager** | A single room |
+
+No role ever exposes data outside its level. See [Inviting Users](../getting-started/inviting-users) for how roles are assigned.
+
+---
+
+## <Icon name="admin-settings" size="1em" /> Set once, applies everywhere
+
+Anything configured at the organisation level applies to every location and room beneath it — measurement defaults, the equipment catalogs available, branding, and integrations.
+
+See **[Organisation settings](./settings)** for what can be configured and where.

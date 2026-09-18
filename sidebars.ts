@@ -18,7 +18,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: 'BMR Solution',
+      label: 'Room Lifecycle',
       items: [
         {
           type: 'category',
@@ -47,6 +47,14 @@ const sidebars: SidebarsConfig = {
           ],
         },
         'lifecycle/maintenance/index',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Organisation',
+      link: { type: 'doc', id: 'organisation/index' },
+      items: [
+        'organisation/settings',
         {
           type: 'category',
           label: 'Integrations',
@@ -97,13 +105,7 @@ const sidebars: SidebarsConfig = {
         },
       ],
     },
-    {
-      type: 'category',
-      label: 'Security & Compliance',
-      items: [
-        'security/index',
-      ],
-    },
+    'security/index',
     {
       type: 'category',
       label: 'Product Updates',
