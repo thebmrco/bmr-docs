@@ -18,3 +18,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Generated dir for production builds (keeps the dev server's .docusaurus intact)
+.docusaurus-build
