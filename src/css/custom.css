@@ -737,6 +737,30 @@ details.bmr-details > summary.bmr-summary::marker {
 .bmr-diagram .dg-pill { fill: var(--dg-accent-soft); }
 .bmr-diagram .dg-pill-text { font-size: 11.5px; font-weight: 700; fill: var(--dg-accent); }
 
+/* Room-at-the-centre: containers recede, the room carries the weight */
+.bmr-diagram .dg-frame {
+  fill: none;
+  stroke: var(--dg-line);
+  stroke-width: 1.5;
+  stroke-dasharray: 5 4;
+}
+.bmr-diagram .dg-frame--inner { stroke-dasharray: 4 3; }
+.bmr-diagram .dg-frame-label {
+  font-size: 12px;
+  font-weight: 600;
+  fill: var(--dg-muted);
+  letter-spacing: 0.04em;
+}
+.bmr-diagram .dg-room-quiet rect { fill: var(--dg-surface); stroke: var(--dg-line); stroke-width: 1.5; }
+.bmr-diagram .dg-room-quiet text { font-size: 13px; fill: var(--dg-muted); }
+.bmr-diagram .dg-room-focus { fill: var(--dg-accent); }
+.bmr-diagram .dg-room-focus-title { font-size: 19px; font-weight: 800; fill: #ffffff; }
+[data-theme='dark'] .bmr-diagram .dg-room-focus-title { fill: #16281b; }
+.bmr-diagram .dg-room-pill { fill: rgba(255, 255, 255, 0.18); }
+[data-theme='dark'] .bmr-diagram .dg-room-pill { fill: rgba(0, 0, 0, 0.18); }
+.bmr-diagram .dg-room-pill-text { font-size: 12px; font-weight: 600; fill: #ffffff; }
+[data-theme='dark'] .bmr-diagram .dg-room-pill-text { fill: #16281b; }
+
 .diagram-card img {
   display: block;
   width: 100%;

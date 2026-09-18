@@ -9,7 +9,6 @@ const sidebars: SidebarsConfig = {
       items: [
         'getting-started/account-setup',
         'getting-started/inviting-users',
-        'getting-started/room-page',
         'getting-started/notifications',
         'getting-started/system-requirements',
         'getting-started/send-feedback',
@@ -51,19 +50,27 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: 'Organisation',
-      link: { type: 'doc', id: 'organisation/index' },
+      label: 'Structure',
+      link: { type: 'doc', id: 'structure/index' },
       items: [
-        'organisation/settings',
         {
           type: 'category',
-          label: 'Integrations',
+          label: 'Organisation',
+          link: { type: 'doc', id: 'structure/organisation' },
           items: [
-            'integrations/cisco-vrc',
-            'integrations/webex-control-hub-sync',
-            'integrations/microsoft-365',
+            {
+              type: 'category',
+              label: 'Integrations',
+              items: [
+                'integrations/cisco-vrc',
+                'integrations/webex-control-hub-sync',
+                'integrations/microsoft-365',
+              ],
+            },
           ],
         },
+        'structure/location',
+        'structure/room',
       ],
     },
     {

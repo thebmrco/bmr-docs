@@ -1,0 +1,57 @@
+---
+title: Organisation, Location & Room
+sidebar_label: Structure
+description: The structural entities BETTERMEETINGROOMS uses to organise information — Organisation, Location and Room — and what each one is for.
+---
+
+import Icon from '@site/src/components/Icon'
+
+# <Icon name="layout" size="1em" /> Organisation, Location & Room
+
+**It is all about the room.** The name is not an accident: BETTERMEETINGROOMS exists to make individual meeting rooms better, and the room is where every scan, measurement and design lives.
+
+The other two levels are there to hold rooms and make sense of them at scale. Each one contains the next:
+
+**Organisation → Location → Room**
+
+| Entity | What it is | What it holds | Example |
+|---|---|---|---|
+| **[Organisation](./organisation)** | Your company or business unit. The top level, and the boundary for access and settings | Locations, users and roles, organisation-wide preferences, catalogs, integrations | *BETTERMEETINGROOMS GmbH* |
+| **[Location](./location)** | A physical site | The rooms at that site, and its address and coordinates | *Schanzstrasse 14, Vienna* |
+| **[Room](./room)** | A single meeting room | Scans, markers, acoustic measurements, designs | *Aquarium demo* |
+
+---
+
+## <Icon name="room" size="1em" /> Everything is captured in a room
+
+Scans, markers, acoustic measurements and designs all belong to a **room**. Nothing is captured at the location or organisation level — those levels have no data of their own.
+
+What they give you is **grouping and overview**: a location shows how its rooms are doing, and an organisation shows the same across every location. It is the same room data, summarised at two heights.
+
+So when you are deciding where something belongs, the answer is almost always the room. The structure above it exists to find that room, control who can reach it, and report on it.
+
+---
+
+## <Icon name="circle-check" size="1em" /> What each level is for
+
+**Access.** Roles are scoped to a level, and grant access to everything inside it:
+
+| Role | Sees and manages |
+|---|---|
+| **Org Admin** | The whole organisation — every location and room, plus settings and users |
+| **Location Manager** | One location and the rooms inside it |
+| **Room Manager** | A single room |
+
+No role ever exposes data outside its level. See [Inviting Users](../getting-started/inviting-users).
+
+**Settings.** Anything configured on the organisation applies to every location and room beneath it — measurement defaults, the catalogs available, branding and integrations. Set once, applies everywhere.
+
+**Overview.** Both the organisation and the location show **Data Completeness** — how many of their rooms are scanned, have markers, have an acoustic measurement and have a design — plus **Recent Activity** across everything they contain.
+
+---
+
+## <Icon name="chevron-right" size="1em" /> The entities in detail
+
+- **[Organisation](./organisation)** — settings, users, preferences and integrations.
+- **[Location](./location)** — the site, its address, and setting it from where you stand.
+- **[Room](./room)** — where scans, markers, measurements and designs come together.
