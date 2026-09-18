@@ -1,0 +1,187 @@
+---
+title: AR World Map
+sidebar_label: AR World Map
+description: What the AR World Map is, how the room scan creates it, how to tell whether a room has one, and what to do when the app cannot recognise the room.
+---
+
+import Icon from '@site/src/components/Icon'
+import useBaseUrl from '@docusaurus/useBaseUrl'
+import CoordinateSpace from '@site/src/components/diagrams/CoordinateSpace'
+import Relocalization from '@site/src/components/diagrams/Relocalization'
+
+# <Icon name="target" size="1em" /> AR World Map
+
+A single room collects many kinds of data over time — a 3D scan, markers, acoustic measurements, and AR designs — often captured on different visits. For all of it to line up in 3D, every capture has to share **one coordinate system**. This page explains how BMR keeps a room's data aligned, why the app **detects the room** before you place anything new, and what to do when detection fails.
+
+:::info AR World Map — "AR Map" for short
+The **AR World Map** is the set of visual feature points that lets a device recognise a room it has seen before. It is created by the **room scan** — no scan, no AR Map. BMR Mobile shows it as **AR Map** on the room page.
+:::
+
+---
+
+## <Icon name="room" size="1em" /> One coordinate space per room
+
+**Everything starts with the [room scan](../lifecycle/discovery/room-scan).** The first LiDAR scan of a room does two things at once:
+
+1. It builds the **3D model** of the room.
+2. It establishes the room's **coordinate space** — an origin and axes — and saves the **AR World Map**: the visual feature points a device uses to recognise the room on a later visit.
+
+Both come from that one scan. Until a room has been scanned it has no coordinate space and no AR Map, so nothing captured in it can be positioned in 3D.
+
+Everything captured afterwards is **anchored to that same space**. A marker's `x, y, z`, an acoustic measurement's position, and an AR-placed display all refer to the same origin — which is exactly why they can be shown together, compared, and combined in BMR Studio.
+
+<div className="diagram-card">
+  <CoordinateSpace />
+  <p className="diagram-caption">Every capture is pinned to the room's shared origin — so it all lines up later.</p>
+</div>
+
+### <Icon name="smartphone" size="1em" /> The two states: with and without
+
+A room is always in one of two states, and BMR Mobile shows which on the room's **Overview**. Check it before you start — it decides what will work.
+
+<div className="state-grid">
+
+<div className="state-card state-card--yes">
+  <p className="state-head">✅ <strong>With an AR World Map</strong></p>
+  <p className="state-sub">The room has been scanned, and the map was captured.</p>
+  <img src={useBaseUrl('/img/technology/AR-map-present.jpg')} alt="Room overview in BMR Mobile with a green tick beside AR map, meaning the room has an AR World Map" />
+  <ul>
+    <li><strong>Markers</strong> get real <code>x, y, z</code> coordinates</li>
+    <li><strong>Acoustic measurements</strong> can run the Advanced flow, recording speaker and measurement positions</li>
+    <li><strong>AR designs</strong> can be placed and saved against the room</li>
+  </ul>
+</div>
+
+<div className="state-card state-card--no">
+  <p className="state-head">❌ <strong>Without an AR World Map</strong></p>
+  <p className="state-sub">The room has not been scanned yet — or the scan carries no map.</p>
+  <img src={useBaseUrl('/img/technology/AR-map-not-present.jpg')} alt="Room overview in BMR Mobile with a grey cross beside AR map, meaning the room has no AR World Map" />
+  <ul>
+    <li><strong>Markers</strong> are stored as photos only, without coordinates</li>
+    <li><strong>Acoustic measurements</strong> fall back to the Basic flow</li>
+    <li><strong>AR designs</strong> can be explored but not saved</li>
+  </ul>
+  <p className="state-fix"><strong>To fix it:</strong> <a href="/docs/lifecycle/discovery/room-scan">scan the room</a>.</p>
+</div>
+
+</div>
+
+:::note Floor area is not proof
+A room can show a floor area from an earlier scan and still have no usable AR World Map — for example if the room was re-created, or the scan predates the map being stored. The **AR map** indicator is the reliable check.
+:::
+
+---
+
+## <Icon name="scan" size="1em" /> Why the app detects the room first
+
+When you start a new **AR Design** — or add a **marker**, or run an **acoustic measurement** — the device has no idea where it is relative to the room's saved AR Map. It first has to **relocalize**: match what the camera sees now to the feature points stored during the original scan, and from that recover the room's coordinate space.
+
+Only once that match succeeds can new data be placed in the **same** coordinate space as everything else. Skip it, and a new item would sit in an unrelated coordinate system — misaligned with the scan and every other capture.
+
+<div className="diagram-card">
+  <Relocalization />
+  <p className="diagram-caption">Detection matches today's view to the AR Map saved by the scan, and recovers the coordinates.</p>
+</div>
+
+### What you see
+
+<div style={{display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', margin: '1rem 0'}}>
+  <div className="phone-screenshot" style={{flex: '0 0 200px'}}>
+    <img src={useBaseUrl('/img/release/2026-07-verifying-room.jpg')} alt="Verifying room card overlay while BMR Mobile relocalizes against the original scan" style={{width: '100%', borderRadius: '12px'}} />
+  </div>
+  <div className="phone-screenshot" style={{flex: '0 0 200px'}}>
+    <img src={useBaseUrl('/img/release/2026-07-room-verified.jpg')} alt="Room verified confirmation card overlay after successful relocalization" style={{width: '100%', borderRadius: '12px'}} />
+  </div>
+</div>
+
+- **Verifying room…** while it looks for a match.
+- **Room verified** once it recovers the coordinate space.
+- If it can't match, you can **Retry** or **Continue without verification**.
+
+---
+
+## <Icon name="alert-triangle" size="1em" /> Why detection sometimes fails
+
+Detection works by matching **visual features**, so anything that makes the room look different from the original scan makes a match harder to find:
+
+<div className="concept-grid">
+  <div className="concept-card">
+    <h4><Icon name="info" size="1em" /> Different lighting</h4>
+    <ul>
+      <li>Daylight vs. evening</li>
+      <li>Blinds open vs. closed</li>
+      <li>Lights on vs. off</li>
+    </ul>
+  </div>
+  <div className="concept-card">
+    <h4><Icon name="room" size="1em" /> The room has changed</h4>
+    <ul>
+      <li>Furniture moved</li>
+      <li>Walls repainted</li>
+      <li>Large objects added or removed</li>
+      <li>A screen now on instead of off</li>
+    </ul>
+  </div>
+  <div className="concept-card">
+    <h4><Icon name="scan" size="1em" /> Blank or reflective surfaces</h4>
+    <ul>
+      <li>Plain, untextured walls</li>
+      <li>Glass and mirrors</li>
+      <li>Glossy or polished finishes</li>
+    </ul>
+  </div>
+  <div className="concept-card">
+    <h4><Icon name="compass" size="1em" /> Too little movement, or too fast</h4>
+    <ul>
+      <li>Standing still</li>
+      <li>Sweeping the camera too quickly</li>
+      <li>Too little of the room seen</li>
+    </ul>
+  </div>
+  <div className="concept-card">
+    <h4><Icon name="map-pin" size="1em" /> Starting somewhere new</h4>
+    <ul>
+      <li>Far from where the scan began</li>
+      <li>Facing a different direction</li>
+      <li>Little overlap with the stored view</li>
+    </ul>
+  </div>
+  <div className="concept-card">
+    <h4><Icon name="smartphone" size="1em" /> Glare &amp; motion blur</h4>
+    <ul>
+      <li>Strong reflections or backlight</li>
+      <li>A dirty lens</li>
+      <li>A shaky, blurred image</li>
+    </ul>
+  </div>
+</div>
+
+---
+
+## <Icon name="circle-check" size="1em" /> Getting a reliable match
+
+- **Start where the scan started** — stand roughly where the original scan began and face a similar direction.
+- **Aim at feature-rich areas** — corners, furniture, fixtures and posters match well; blank walls, glass and mirrors don't.
+- **Move slowly and steadily** — give the device a few seconds of gentle movement rather than a quick sweep.
+- **Match the lighting** — recreate the original conditions where you can (same blinds, same lights on), and add light to a dark room.
+- **Hold steady** — avoid fast motion so the image stays sharp.
+
+---
+
+## <Icon name="info" size="1em" /> If it still can't find the room
+
+:::tip You have three options
+- **Retry** — move to a more recognisable part of the room (with more visual detail) and try again.
+- **Continue without verification** — you can still place items, but they may not align precisely with the existing scan and data. Best kept for quick visualisation only.
+- **Re-scan the room** — if the space has changed substantially (renovation, new furniture, a repaint), the stored AR Map no longer matches. A fresh scan re-establishes the coordinate space for everything that follows.
+:::
+
+---
+
+## <Icon name="puzzle" size="1em" /> Where this applies
+
+Room detection runs whenever new spatial data is added to a scanned room, so it stays aligned with everything already captured:
+
+- Starting an **[AR Design](../lifecycle/design/ar-design-guide)**
+- Adding a **marker**
+- Running an **acoustic measurement**

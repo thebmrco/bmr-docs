@@ -70,6 +70,7 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'Technology & Concepts',
       items: [
+        'technology/ar-world-map',
         {
           type: 'category',
           label: 'Catalog & 3D Models',
