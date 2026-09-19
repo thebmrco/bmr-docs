@@ -26,6 +26,11 @@ function Step({ n, title, sub, children }: { n: number; title: string; sub: Reac
   )
 }
 
+/** Unticked, the distance goes back to the 1 m the form says it assumes; a typed 0.5 m would otherwise stay in use. */
+export function withDistanceStated(speaker: Speaker, stated: boolean): Speaker {
+  return { ...speaker, spl_ref_distance_stated: stated, spl_ref_distance_m: stated ? speaker.spl_ref_distance_m : 1 }
+}
+
 export function SpeakerForm({ speaker, onChange }: { speaker: Speaker; onChange: (s: Speaker) => void }) {
   const set = <K extends keyof Speaker>(k: K, v: Speaker[K]) => onChange({ ...speaker, [k]: v })
   // Typed numbers are taken as given, but an implausible one is worth saying out loud rather than answering with
@@ -105,7 +110,7 @@ export function SpeakerForm({ speaker, onChange }: { speaker: Speaker; onChange:
               disabled={!speaker.spl_ref_distance_stated}
             />
             <span className={styles.check}>
-              <input type="checkbox" checked={speaker.spl_ref_distance_stated} onChange={(e) => set('spl_ref_distance_stated', e.target.checked)} />
+              <input type="checkbox" checked={speaker.spl_ref_distance_stated} onChange={(e) => onChange(withDistanceStated(speaker, e.target.checked))} />
               <span>The datasheet states the distance — enter it above</span>
             </span>
             {!speaker.spl_ref_distance_stated && (

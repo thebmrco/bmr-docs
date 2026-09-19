@@ -183,12 +183,17 @@ function BandChart({ result }: { result: R }) {
 }
 
 /** Verdict pill, from the same areas the design mock keys on — the engine's real numbers. */
-function verdict(areaFull: number, areaWorks: number, areaMin: number) {
-  if (areaFull >= 25) return { label: 'Suitable', cls: styles.verdictYes }
+function verdict(areaFull: number, areaWorks: number, areaMin: number, light: Result['light']) {
+  // Never greener than the engine: its colour also carries the band checks, which the areas know nothing about.
+  if (light === 'red') return { label: 'Not suitable', cls: styles.verdictNo }
+  if (areaFull >= 25 && light === 'green') return { label: 'Suitable', cls: styles.verdictYes }
   if (areaWorks >= 25) return { label: 'Suitable with limits', cls: styles.verdictLimits }
   if (areaMin >= 15) return { label: 'Borderline', cls: styles.verdictLimits }
   return { label: 'Not suitable', cls: styles.verdictNo }
 }
+
+const worstLight = (a: Result['light'], b: Result['light']): Result['light'] =>
+  a === 'red' || b === 'red' ? 'red' : a === 'yellow' || b === 'yellow' ? 'yellow' : 'green'
 
 export function ResultCard({ result }: { result: R }) {
   const [open, setOpen] = useState(false)
@@ -200,8 +205,10 @@ export function ResultCard({ result }: { result: R }) {
   const bassPossible = result.full?.bass_ratio_possible !== false
   // A room only counts as "full result" when the Bass Ratio is measurable at all.
   const areaFull = sized && bassPossible ? result.full?.max_area_m2 ?? 0 : 0
-  const areaWorks = sized ? tierArea('reliable') : 0
-  const v = verdict(areaFull, areaWorks, sized ? tierArea('compatible') : 0)
+  // Without the Bass Ratio bands the engine still sizes the room on the level those bands would get, and its
+  // headline quotes that size; the level-only tier would offer larger rooms than the headline.
+  const areaWorks = !sized ? 0 : bassPossible ? tierArea('reliable') : result.full?.max_area_m2 ?? 0
+  const v = verdict(areaFull, areaWorks, sized ? tierArea('compatible') : 0, worstLight(result.light, result.room_light))
 
   const variants = sized
     ? [
