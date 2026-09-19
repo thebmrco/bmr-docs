@@ -94,6 +94,25 @@ export const EXAMPLES: Example[] = [
       'https://www.cisco.com/c/en/us/products/collateral/collaboration-endpoints/webex-room-series/webex-room-bar-ds.html',
   },
   {
+    id: 'cisco-room-kit-eq',
+    speaker: {
+      name: 'Cisco Room Kit EQ (Quad Camera)',
+      spl_peak_db: 90,
+      spl_ref_distance_m: 1,
+      spl_ref_distance_stated: false,
+      freq_low_hz: 100,
+      freq_high_hz: 20000,
+      power_watt: null,
+      power_kind: null,
+      woofer_mm: null,
+      connection: 'unknown',
+      bluetooth_codec: 'n/a (room system)',
+      note: 'Cisco data sheet (updated 30 April 2026), Quad Camera loudspeakers: "Max output level: SPL 90dB", no distance; "Frequency response: 100Hz to 20kHz", no tolerance; a single full-range driver and dual low-frequency drivers; 1 RCA output for a subwoofer.',
+    },
+    why: 'The Quad Camera\'s built-in loudspeakers, 3 dB below the Room Bar. Like the other Cisco systems it gives its level without a distance, so 1 m is assumed. Its 100 Hz lower limit sits inside the 125 Hz octave, so that band is played, but weaker.',
+    sourceUrl: 'https://www.cisco.com/c/en/us/products/collateral/collaboration-endpoints/spark-room-kit-series/room-kit-eq-ds.html',
+  },
+  {
     id: 'jbl-xtreme-4',
     speaker: {
       name: 'JBL Xtreme 4',
