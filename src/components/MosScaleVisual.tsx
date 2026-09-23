@@ -15,7 +15,7 @@ type Level = {
 };
 
 const levels: Level[] = [
-  { label: 'Poor',      range: '0 – 2.9',   fill: 0.25, color: ORANGE },
+  { label: 'Poor',      range: '1.0 – 2.9', fill: 0.25, color: ORANGE },
   { label: 'Fair',      range: '3.0 – 3.5', fill: 0.50, color: GOLD },
   { label: 'Good',      range: '3.6 – 4.5', fill: 0.75, color: GREEN_DARK },
   { label: 'Excellent', range: '4.6 – 5.0', fill: 1.0,  color: GREEN },
