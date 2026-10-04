@@ -1,0 +1,145 @@
+---
+title: Release 2.3 2026 October
+description: BMR Studio on the Web Platform gets a presentation mode with saved views, a High quality render mode, clearer links between scans, measurements and designs, a catalog picker with favourites and search, deletable notifications, and a smoother editing experience.
+---
+
+import {
+  Presentation,
+  Sparkles,
+  Link2,
+  Star,
+  BellMinus,
+  Cable,
+  Move,
+} from "lucide-react";
+
+# Release 2.3 2026 October
+
+Version 2.3 brings the **Web Platform** its October update. **BMR Studio** can now **present a design** full screen, step by step, with your own saved views. A new **render mode control** adds **High quality** rendering. Scans, markers, measurements and designs show **what they are linked to**, the **catalog picker** is easier to search, and **notifications** can be deleted.
+
+---
+
+## Web Platform (2026.09.3 and 2026.10.0)
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Presentation size={18} /> Present a design, with your own saved views
+  </span>
+</summary>
+
+BMR Studio has a new **Present** button at the end of the mode switcher at the bottom (shortcut **Shift + F**). It takes the design full screen and steps through it one view at a time — ready to walk a customer or a colleague through the room.
+
+- The presentation shows the **standard views** first (Overview, Floor plan, …), then **your saved views**, in order.
+- To save a view, open the **Presentation** tab in **View** mode, position the camera and click **Save current view**. Saved views can be renamed, reordered, replaced with the current camera position or removed.
+- While presenting, step with **← / →** (or Page Up / Page Down), **jump to any view** from the presentation bar, **take a screenshot**, and press **Esc** to stop.
+- People you share a design with read-only can present it too.
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Sparkles size={18} /> Render mode control and High quality rendering
+  </span>
+</summary>
+
+In **View** mode, a new **render mode control** in the toolbar lets you choose how the room is drawn:
+
+- **Standard** — plain rendering, the quickest to work with.
+- **High quality** — adds bounce lighting and ambient occlusion, for a more realistic look without waiting for a render.
+
+The finer settings — quality presets, bounce light, ambient occlusion, exposure and colour response — are in the **Rendering** panel in the sidebar.
+
+The 3D viewer now runs on **WebGPU** in browsers that support it, and falls back automatically in those that do not.
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Link2 size={18} /> See what each scan, measurement and design is linked to
+  </span>
+</summary>
+
+Every scan, marker, acoustic measurement and design now shows **what it belongs to**, so you can see at a glance how a room's data fits together.
+
+- In the room's data, each item shows a **Linked to** or **Built on** label — for example *Scan 12 Sep*, *via* a scan, *Custom room* or *Not linked*.
+- An item that is not linked can be connected with **Link to a scan**.
+- The same information appears on the **Designs**, **Scans** and **Acoustic Measurements** pages.
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Star size={18} /> Catalog picker with favourites and search
+  </span>
+</summary>
+
+Choosing a catalog in BMR Studio is quicker.
+
+- **One searchable list** replaces the separate Favourites, Recent and Browse tabs.
+- **Starred favourites come first**, and each catalog shows its owner and number of items.
+- The catalog in use is marked **Current**. Click a catalog to select it.
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <BellMinus size={18} /> Delete notifications
+  </span>
+</summary>
+
+Notifications can now be cleared away.
+
+- Delete a single notification from the **Notifications** page or straight from the **bell** in the header.
+- Use **Delete all read** (next to *Mark all as read*) to clear every notification you have already read in one go.
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Cable size={18} /> Cables mode is marked Beta
+  </span>
+</summary>
+
+The **Cables** mode in BMR Studio now carries a **Beta** label, as do its **Auto-Route** and **Tidy Bundles** tools. Cabling works as before — the label is a reminder to **check a route before you build from it**.
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Move size={18} /> Smoother editing in BMR Studio
+  </span>
+</summary>
+
+A set of smaller improvements makes working in BMR Studio feel more natural.
+
+- **Walls and the ceiling push back** — an item you drag stops at a wall or the ceiling, then gives way if you keep pushing.
+- **A hint in View mode** — try to drag equipment in View mode and BMR Studio tells you how to switch to Equipment mode.
+- **The View menu opens in View mode** and stays collapsed in the editing modes, out of your way.
+- **2D plan view** — switching to 2D centres the room and fits it to the canvas, and equipment and furniture are drawn with clear outlines.
+- **Added walls** reach the ceiling and snap to the existing walls.
+- **Arrow keys nudge** doors, windows and openings along their wall.
+
+</details>
+
+---
+
+<p className="release-end">End of Release Notes</p>
