@@ -1048,3 +1048,209 @@ details.bmr-details > summary.bmr-summary::marker {
   font-size: 0.875rem;
 }
 [data-theme='dark'] .state-card .state-fix { border-top-color: rgba(255, 255, 255, 0.12); }
+
+/* ==========================================================================
+   Figure, Callouts, FactGrid
+   The shared furniture for images and reference pages. Every docs image goes
+   through <Figure>, so these rules are the single place to restyle them all.
+   See docs/contributing/style for when to use which.
+   ========================================================================== */
+
+.bmr-figure {
+  margin: 1.75rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.bmr-figure__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  border: 1px solid var(--bmr-beige-dark);
+}
+
+[data-theme='dark'] .bmr-figure__img { border-color: rgba(255, 255, 255, 0.12); }
+
+.bmr-figure__caption {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--ifm-color-emphasis-700);
+}
+
+/* -- variants ------------------------------------------------------------- */
+
+/* full: the default, spans the content column */
+.bmr-figure--full { max-width: 100%; }
+
+/* inset: centred and capped — dialogs, panels, menus */
+.bmr-figure--inset {
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.bmr-figure--inset .bmr-figure__img { border-radius: 8px; }
+.bmr-figure--inset .bmr-figure__caption { text-align: center; }
+
+/* phone: portrait BMR Mobile captures */
+.bmr-figure--phone {
+  max-width: 240px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.bmr-figure--phone .bmr-figure__img { border-radius: 12px; }
+.bmr-figure--phone .bmr-figure__caption { text-align: center; }
+
+/* pair: two captures, shared caption naming the difference */
+.bmr-figure--pair { max-width: 100%; }
+.bmr-figure__panes {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.bmr-figure__pane {
+  flex: 1 1 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  min-width: 0;
+}
+.bmr-figure__img--pane {
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+.bmr-figure__label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--ifm-color-emphasis-700);
+}
+
+/* -- Callouts: annotated screenshot --------------------------------------- */
+
+.bmr-callouts__frame {
+  position: relative;
+  line-height: 0;
+}
+
+.bmr-callouts__pin {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--bmr-dark-green);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 26px;
+  text-align: center;
+  box-shadow: 0 0 0 2.5px #fff, 0 1px 4px rgba(0, 0, 0, 0.3);
+  font-family: var(--ifm-font-family-base);
+}
+
+[data-theme='dark'] .bmr-callouts__pin {
+  background: var(--bmr-light-green);
+  color: #10200f;
+  box-shadow: 0 0 0 2.5px #1b1b1b, 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.bmr-callouts__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.bmr-callouts__item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  font-size: 0.925rem;
+  line-height: 1.5;
+}
+
+.bmr-callouts__num {
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--bmr-dark-green);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 20px;
+  text-align: center;
+  position: relative;
+  top: 0.18em;
+}
+
+[data-theme='dark'] .bmr-callouts__num {
+  background: var(--bmr-light-green);
+  color: #10200f;
+}
+
+/* -- FactGrid: at a glance ------------------------------------------------ */
+
+.bmr-factgrid {
+  margin: 1.5rem 0 2rem;
+  border: 1px solid var(--bmr-beige-dark);
+  border-radius: 12px;
+  background: var(--bmr-beige);
+  padding: 1.15rem 1.25rem 1.25rem;
+}
+
+[data-theme='dark'] .bmr-factgrid {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.bmr-factgrid__title {
+  margin: 0 0 0.9rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bmr-dark-green);
+}
+
+[data-theme='dark'] .bmr-factgrid__title { color: var(--bmr-light-green); }
+
+.bmr-factgrid__items {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 1rem 1.5rem;
+}
+
+.bmr-factgrid__item { min-width: 0; }
+
+.bmr-factgrid__label {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.bmr-factgrid__value {
+  margin: 0.2rem 0 0;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.bmr-factgrid__note {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--ifm-color-emphasis-700);
+  margin-top: 0.15rem;
+}

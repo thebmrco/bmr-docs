@@ -45,6 +45,7 @@ const sidebars: SidebarsConfig = {
             'lifecycle/design/default-room-configuration',
           ],
         },
+        'lifecycle/deploy/index',
         'lifecycle/maintenance/index',
       ],
     },
@@ -114,11 +115,13 @@ const sidebars: SidebarsConfig = {
       ],
     },
     'security/index',
+    'contributing/style',
     {
       type: 'category',
       label: 'Product Updates',
       items: [
         'roadmap/index',
+        'roadmap/feature-overview',
         {
           type: 'category',
           label: 'Release Notes',

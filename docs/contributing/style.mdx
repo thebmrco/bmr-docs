@@ -1,0 +1,195 @@
+---
+title: Style Guide
+sidebar_label: Style Guide
+description: The rulings every BMR docs page follows — page archetypes, the five illustration forms, spelling, headings, and the components to build with.
+---
+
+import Icon from '@site/src/components/Icon'
+import FactGrid from '@site/src/components/FactGrid'
+import Figure, { FigurePair } from '@site/src/components/Figure'
+import Callouts from '@site/src/components/Callouts'
+
+# <Icon name="book-open" size="1em" /> Style Guide
+
+Consistency needs decisions, not preferences. This page holds the decisions so that the next page does not have to make them again.
+
+<FactGrid title="The short version" facts={[
+  {label: 'Spelling', value: 'British English', note: 'organisation, colour, centre, recognise'},
+  {label: 'Headings', value: 'Sentence case', note: 'H2 and H3 alike'},
+  {label: 'Images', value: '<Figure>, always', note: 'Never an inline style; a caption is required'},
+  {label: 'Frontmatter', value: 'title + description', note: 'On every page, without exception'},
+  {label: 'Each concept', value: 'One owner page', note: 'Everywhere else links to it'},
+]} />
+
+---
+
+## <Icon name="layout" size="1em" /> Pick an archetype first
+
+Every page is one of four shapes. The archetype decides what the page opens with, what illustration it must carry, and how long it is allowed to get. Three of the four make an illustration mandatory.
+
+| Archetype | Answers | Must carry | Length | Examples |
+|---|---|---|---|---|
+| **Concept** | "What is this thing?" | A mechanism diagram | ≤500 words | Structure, Technology, phase overviews |
+| **Task** | "How do I do it?" | A step strip | ≤700 words | Room Scan, Markers, Acoustics, AR Design |
+| **Surface** | "What does this screen do?" | An annotated screenshot | ≤600 words | BMR Studio, Room, Location, Notifications |
+| **Reference** | "Give me the full data." | An at-a-glance fact grid | No cap | MOS Score, Method, Security, Catalog |
+
+The word caps are a smell test, not a hard limit. A Concept page running to 900 words is usually two pages, or a page that has absorbed detail belonging somewhere else.
+
+Reference pages have no cap on purpose. [MOS Score](../acoustics/mos-score) and [Method](../acoustics/loudspeaker-check/method) are long because an acoustician needs to check the maths — that is the job. They still need a fact grid at the top so a non-specialist gets the answer without reading the derivation.
+
+---
+
+## <Icon name="photo" size="1em" /> The five illustration forms
+
+"More illustrations" fails if it means more screenshots. These five carry information; anything else is decoration.
+
+| Form | Built from | Use it when |
+|---|---|---|
+| **Mechanism diagram** | Inline SVG in `currentColor` | The prose says *linked to*, *built on*, *based on*, *syncs*, *falls back*, or *requires*. Those words describe a graph — draw the graph. |
+| **Annotated screenshot** | `<Callouts>` | The page's job is "where is the thing". Replaces bulleted feature lists. |
+| **Decision matrix** | A plain Markdown table | A paragraph says "if… then… but if…". That is a matrix that has not been drawn yet. |
+| **Step strip** | `<StepTabs>` or `<StepFlow>` | The content is genuinely ordered. Numbering that encodes no real sequence is decoration. |
+| **Comparison pair** | `<FigurePair>` | Two states differ visually — Standard vs High quality, good vs poor coverage, before vs after. |
+
+Rules that apply to all five:
+
+- **One figure, one claim.** If a drawing needs two captions, it is two drawings.
+- **Label every arrow.** An unlabelled arrow says "related somehow"; `built on` says something.
+- **Name the difference in a comparison caption.** Without it, a pair is just two pictures.
+- **Draw the mechanism, not its name.** A box labelled "cache" says less than the sentence it replaced.
+- **Diagrams are SVG**, so they stay sharp, stay small, and theme themselves.
+
+---
+
+## <Icon name="edit" size="1em" /> Writing rulings
+
+| Question | Ruling |
+|---|---|
+| Spelling | **British English** — organisation, colour, centre, recognise, optimise, behaviour, analyse. Quote vendor terms as the vendor spells them: Webex *Organization*, Microsoft *Authorize*. |
+| Heading case | **Sentence case** for every H2 and H3. |
+| Page H1 | `<Icon>` + title, no exceptions. |
+| Headings start at | `##`. Never open a page's sections at `###` — the right-hand table of contents is built from H2–H3, so deeper openings produce no navigation. |
+| Frontmatter | `title` and `description` on **every** page — the description drives search snippets and link previews. Add `sidebar_label` only when the sidebar needs something shorter than the title. |
+| Product names | **BMR Mobile** · **BMR Studio** · **BETTERMEETINGROOMS** on first mention, **BMR** after. Never "the app" or "the iOS app". |
+| Defined terms | Capitalised: Active Design, Room Overview, Default Room Configuration, Equipment Catalog. |
+| Emoji and ticks | Only in the [Feature Overview](../roadmap/feature-overview) status columns, where they are a legend. Elsewhere use an admonition. |
+| Links | No file extension — `[Room](../structure/room)`, not `room.mdx`. |
+| One concept, one owner | Every concept has exactly one page that explains it. Everywhere else states it in one line and links. |
+
+:::tip Why British English
+It already wins on weight of use across the docs, and BMR is a European company. The ruling exists to stop the drift, not because either variant is better.
+:::
+
+---
+
+## <Icon name="equipment" size="1em" /> Building with the components
+
+### Images
+
+Never write `<img>` with an inline `style` object. Every image goes through `<Figure>`, which is why the whole site can be restyled from one block in `custom.css`.
+
+```jsx
+import Figure, { FigurePair } from '@site/src/components/Figure'
+
+<Figure
+  src="/img/design/bmr-studio-ui.webp"
+  alt="The BMR Studio window with the mode switcher at the bottom"
+  caption="BMR Studio opens in View mode."
+/>
+```
+
+| Variant | For |
+|---|---|
+| `full` *(default)* | Wide UI captures, spanning the content column |
+| `inset` | Dialogs, menus and panels — centred, capped at 420 px |
+| `phone` | Portrait BMR Mobile captures |
+
+A caption is **required**. If an image does not need one, it is decoration and does not belong on the page.
+
+Here is `inset` in use — the variant for a dialog:
+
+<Figure
+  src="/img/design/BMR-Design-start-design.png"
+  alt="The Create Design dialog with BMR Studio selected as the design method, a name and description field, and Scan chosen under Based on"
+  variant="inset"
+  maxWidth={460}
+  caption="Create Design — the dialog that starts every design."
+/>
+
+### Comparison pairs
+
+```jsx
+<FigurePair
+  a={{src: '/img/design/render-standard.webp', alt: '…', label: 'Standard'}}
+  b={{src: '/img/design/render-high-quality.webp', alt: '…', label: 'High quality'}}
+  caption="High quality adds bounce lighting and contact shadows under the furniture."
+/>
+```
+
+Both images must share a crop and a size, or the reader compares the framing instead of the thing. See it in use on [BMR Studio](../lifecycle/design/bmr-studio#render-modes).
+
+### Annotated screenshots
+
+`x` and `y` are percentages of the image box from its top left, so pins stay put as the image scales.
+
+```jsx
+import Callouts from '@site/src/components/Callouts'
+
+<Callouts
+  src="/img/design/bmr-studio-ui.webp"
+  alt="The BMR Studio window"
+  caption="BMR Studio in View mode."
+  pins={[
+    {x: 74, y: 11, title: 'Render mode', text: 'Standard or High quality.'},
+    {x: 66, y: 93, title: 'Present', text: 'Full screen, step by step (Shift + F).'},
+  ]}
+/>
+```
+
+And in use:
+
+<Callouts
+  src="/img/design/catalog-overview.png"
+  alt="The Equipment Catalog page for the BMR Standard Catalog — Studio, with an item count, a searchable Available Equipment panel on the left, and Catalog Contents on the right"
+  caption="The Equipment Catalog, with four pins instead of four bullets."
+  pins={[
+    {x: 24.5, y: 14, title: 'Item count', text: 'How many items this catalog holds.'},
+    {x: 16.5, y: 28.5, title: 'Search and filter', text: 'Find equipment by name or category.'},
+    {x: 47, y: 24.5, title: 'Catalog contents', text: 'What the catalog contains — drag equipment here to add it.'},
+    {x: 90.5, y: 35, title: 'Row actions', text: 'Comment on, tag, or remove an item.'},
+  ]}
+/>
+
+### Fact grids
+
+Required on every reference page. Between three and eight facts — more than that is a table. The grid at the top of this page is one.
+
+```jsx
+import FactGrid from '@site/src/components/FactGrid'
+
+<FactGrid facts={[
+  {label: 'Hosting', value: 'AWS Frankfurt', note: 'eu-central-1'},
+  {label: 'Identity', value: 'Auth0', note: 'No passwords stored by BMR'},
+]} />
+```
+
+---
+
+## <Icon name="photo" size="1em" /> Image assets
+
+| Rule | Value |
+|---|---|
+| Format | **WebP** for screenshots · **SVG** for diagrams · JPG only for photographs |
+| Size | ≤300 KB and ≤1600 px wide |
+| Location | `static/img/<section>/<subject>-<variant>.webp` |
+| Naming | kebab-case, undated — `studio-render-standard.webp` |
+
+`static/img/release/` is a **dated archive for release notes only**. An evergreen page must never reference it: release assets get cleaned up, and an evergreen page that depends on one breaks silently.
+
+---
+
+## <Icon name="chevron-right" size="1em" /> Related
+
+- [Feature Overview](../roadmap/feature-overview) — the one place emoji status markers belong.
+- [Release Notes](../release-notes/2026-10-release-2.3) — a dated archive. Apply these rulings to new entries only; do not rewrite published ones.

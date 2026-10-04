@@ -63,6 +63,7 @@ module.exports = {
           { from: '/docs/organisation', to: '/docs/structure' },
           { from: '/docs/organisation/settings', to: '/docs/structure/organisation' },
           { from: '/docs/getting-started/room-page', to: '/docs/structure/room' },
+          { from: '/docs/lifecycle/digital-twin', to: '/docs/lifecycle/deploy' },
         ],
       },
     ],
