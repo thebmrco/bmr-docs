@@ -195,12 +195,13 @@ export default function HomepageFeatures(): ReactNode {
       <section className={styles.whatsNew}>
         <div className="container">
           <div className={styles.whatsNewInner}>
-            <Link className="intro-feature" to="/docs/release-notes/2026-09-release-2.2">
-              <span className="intro-feature-badge">Latest release · September 2026</span>
-              <span className="intro-feature-title">BMR Mobile 2.2 — easier to use, harder to get lost</span>
+            <Link className="intro-feature" to="/docs/release-notes/2026-10-release-2.3">
+              <span className="intro-feature-badge">Latest release · October 2026</span>
+              <span className="intro-feature-title">BMR Studio 2.3 — present a design, in high quality</span>
               <span className="intro-feature-desc">
-                A new room recognition flow, Advanced and Basic acoustic
-                measurement, and in-app guidance that shows you what to do next.
+                Present a design full screen with your own saved views, switch on
+                High quality rendering, and see what every scan, measurement and
+                design is linked to.
               </span>
               <span className="intro-feature-link">Read the release notes →</span>
             </Link>

@@ -40,6 +40,8 @@ Features for planning what a room should become.
 |---|---|---|---|---|---|
 | BMR Studio | Web | ✅ β09 | ✅ β09 | ✅ 1.4 | Single web-based 3D environment for room design. Multiple guided modes expose only relevant tools per workflow. |
 | Design versioning | Web | ✅ 1.4 | ✅ 1.4 | ✅ 1.4 | Versions created automatically on save or mode change. Review, rename, activate, or delete from the Versions tab. Save as New Design for a separate design. |
+| Presentation mode | Web | ✅ 2.3 | ✅ 2.3 | ✅ 2.3 | Full-screen, step-by-step presentation of a design (**Shift + F**). Standard views first, then your own saved views, managed from the Presentation tab in View mode. Read-only shares can present too. |
+| Render modes | Web | ✅ 2.3 | ✅ 2.3 | ✅ 2.3 | Standard and High quality rendering, chosen from the toolbar in View mode. High quality adds bounce lighting and ambient occlusion. Finer settings in the Rendering panel. Viewer runs on WebGPU where supported. |
 | Design comparison *(legacy)* | Web | ✅ β04 | ✅ β04 | ✅ 1.4 | Side-by-side comparison of designs in the previous design view. Covers acoustics, layout, and equipment differences. Not available in BMR Studio. |
 | Design comparison in BMR Studio | Web | 🗓 Planned | 🗓 Planned | 🗓 Planned | Side-by-side view mode comparison within BMR Studio. Planned for a future release. |
 | AR design | iOS | ✅ β01 | ✅ β01 | ✅ 1.4 | Real-time 3D equipment placement via LiDAR on iOS. Design can be continued in BMR Studio on web. |
@@ -52,10 +54,10 @@ BMR Studio uses guided modes that expose only the tools relevant for each workfl
 
 | Mode | Internal | Beta | Release | Notes |
 |---|---|---|---|---|
-| View | ✅ β09 | ✅ β09 | ✅ 1.4 | Browse and inspect the 3D room model. Default entry point. |
+| View | ✅ β09 | ✅ β09 | ✅ 1.4 | Browse and inspect the 3D room model. Default entry point. Render mode control and the Presentation tab live here; the View menu opens automatically. |
 | Structurals | ✅ 1.4 | ✅ 1.4 | ✅ 1.4 | Edit room geometry — walls, windows, and doors shown by default. Improved resizing; surface materials and colors applied from the scan. |
 | Equipment | ✅ 1.4 | ✅ 1.4 | ✅ 1.4 | Place and configure equipment from the catalog. Place Default Room Configuration items directly from the Guidelines panel. |
-| Cables | ✅ 1.4 | ✅ 1.4 | ✅ 1.4 | Cable routing between devices, with outlets in the Cable Guide. Auto-Route and Tidy Bundles available as **BETA**. |
+| Cables *(Beta)* | ✅ 1.4 | ✅ 1.4 | ✅ 1.4 | Cable routing between devices, with outlets in the Cable Guide. The mode carries a **Beta** label since 2.3, as do Auto-Route and Tidy Bundles. |
 | Acoustic | 🔧 In development | 🗓 Planned | 🗓 Planned | Guided acoustic design wizard. Only acoustic-relevant tools shown. |
 :::
 
@@ -67,7 +69,7 @@ Tools for managing the equipment that goes into rooms.
 
 | Feature | Platform | Internal | Beta | Release | Notes |
 |---|---|---|---|---|---|
-| Catalog | Web | ✅ β01 | ✅ β01 | ✅ 1.4 | Equipment catalog used in Studio for placing cameras, screens, speakers, codecs, and furniture. |
+| Catalog | Web | ✅ β01 | ✅ β01 | ✅ 1.4 | Equipment catalog used in Studio for placing cameras, screens, speakers, codecs, and furniture. Catalog picker is one searchable list with starred favourites, owner, and item count since 2.3. |
 | Default Room Configuration | Web | ✅ β10 | ✅ β10 | ✅ 1.4 | Org-defined recommended setups by room size. Surface in the Guidelines panel showing fulfilled vs. missing categories, with a Place in room action. |
 | Catalog builder for org admins | Web | 🗓 Planned | 🗓 Planned | 🗓 Planned | Admin tooling to define equipment standards and room templates per organisation. |
 | Equipment list | Web | ✅ β06 | ✅ β06 | ✅ 1.4 | Auto-generated from placed equipment in designs. Reads CatalogID from 3D models — no manual entry needed. |
@@ -91,6 +93,7 @@ Cross-cutting features that support the full room lifecycle.
 | Feature | Platform | Internal | Beta | Release | Notes |
 |---|---|---|---|---|---|
 | Room Overview | iOS · Web | ✅ 1.4 | ✅ 1.4 | ✅ 1.4 | Redesigned room page — details, ratings, and capabilities at a glance, plus an Active section previewing the active Design and its linked scan, acoustics, and markers. MOS always shown. |
+| Linked scans, measurements & designs | Web | ✅ 2.3 | ✅ 2.3 | ✅ 2.3 | Every scan, marker, measurement, and design shows what it is **Linked to** or **Built on**, with **Link to a scan** for unlinked items. Shown in the room and on the Designs, Scans, and Acoustic Measurements pages. |
 | Onboarding | iOS · Web | ✅ 1.4 | ✅ 1.4 | ✅ 1.4 | Users who sign up without an invitation are guided through creating their first Organisation, Location, and Room. |
 | Library | iOS · Web | ✅ β02 | ✅ β02 | ✅ 1.4 | Cross-room access to scans, designs, acoustic measurements, and markers. Sorted by last modified. Direct room navigation added β09. |
 | Global search | Web | ✅ β02 | ✅ β02 | ✅ 1.4 | Search across scans, designs, measurements, rooms, orgs, and locations. Persistent results since β04. |

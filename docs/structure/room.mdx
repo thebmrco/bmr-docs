@@ -24,6 +24,27 @@ A room belongs to a [location](./location), and holds everything the [Discovery]
 
 ---
 
+## <Icon name="link" size="1em" /> How a room's data is linked
+
+The pieces above are not just a list — each one records **what it belongs to**, so you can see at a glance how a room's data fits together.
+
+- Every scan, marker, acoustic measurement and design shows a **Linked to** or **Built on** label — for example *Scan 12 Sep*, *via* a scan, *Custom room*, or *Not linked*.
+- A design built from a scan shows **which scan**, and how many markers and measurements that scan has.
+- An item that is not linked can be connected at any time with **Link to a scan**.
+- The same labels appear on the **Designs**, **Scans** and **Acoustic Measurements** pages, not only inside the room.
+
+<img
+  src={useBaseUrl('/img/release/2026-10-built-on.png')}
+  alt="The Designs list with a Built on column showing, for each design, the scan it was built on and how many markers and measurements that scan has"
+  style={{width: '100%', borderRadius: '10px', border: '1px solid #E5E5D5', margin: '1rem 0'}}
+/>
+
+:::tip Link what you capture
+A design built on a scan carries the room's real geometry, its marker photos and its acoustic results with it. An unlinked item still holds its own data, but it is not tied to the rest of the room's record — so link it to a scan when you can.
+:::
+
+---
+
 ## <Icon name="layout" size="1em" /> The room page
 
 Every room has a home page that brings its data together in one place — on the **Web** as the **Room Overview**, and in **BMR Mobile** as the **Room view**. It is where you check a room's status at a glance and jump into scans, markers, acoustics, and designs.
