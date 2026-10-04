@@ -1,21 +1,21 @@
 ---
 title: Release 2.3 2026 October
-description: BMR Studio on the Web Platform gets a presentation mode with saved views, a High quality render mode, clearer links between scans, measurements and designs, a catalog picker with favourites and search, deletable notifications, and a smoother editing experience.
+description: BMR Studio on the Web Platform gets a presentation mode with saved views, a High quality render mode, clearer links between scans, measurements and designs, a catalog picker with favourites and search, and a smoother editing experience.
 ---
 
+import useBaseUrl from '@docusaurus/useBaseUrl'
 import {
   Presentation,
   Sparkles,
   Link2,
   Star,
-  BellMinus,
   Cable,
   Move,
 } from "lucide-react";
 
 # Release 2.3 2026 October
 
-Version 2.3 brings the **Web Platform** its October update. **BMR Studio** can now **present a design** full screen, step by step, with your own saved views. A new **render mode control** adds **High quality** rendering. Scans, markers, measurements and designs show **what they are linked to**, the **catalog picker** is easier to search, and **notifications** can be deleted.
+Version 2.3 brings the **Web Platform** its October update. **BMR Studio** can now **present a design** full screen, step by step, with your own saved views. A new **render mode control** adds **High quality** rendering. Scans, markers, measurements and designs show **what they are linked to**, and the **catalog picker** is easier to search.
 
 ---
 
@@ -35,6 +35,12 @@ BMR Studio has a new **Present** button at the end of the mode switcher at the b
 - While presenting, step with **← / →** (or Page Up / Page Down), **jump to any view** from the presentation bar, **take a screenshot**, and press **Esc** to stop.
 - People you share a design with read-only can present it too.
 
+<img
+  src={useBaseUrl('/img/release/2026-10-presentation-bar.webp')}
+  alt="A meeting room design presented full screen in BMR Studio, with the presentation bar at the bottom showing the view counter, previous and next arrows, the High quality and Photoreal options, a screenshot button and close"
+  style={{width: '100%', borderRadius: '10px', border: '1px solid #E5E5D5', margin: '1rem 0'}}
+/>
+
 </details>
 
 ---
@@ -50,6 +56,17 @@ In **View** mode, a new **render mode control** in the toolbar lets you choose h
 
 - **Standard** — plain rendering, the quickest to work with.
 - **High quality** — adds bounce lighting and ambient occlusion, for a more realistic look without waiting for a render.
+
+<div style={{display: 'flex', gap: '16px', flexWrap: 'wrap', margin: '1rem 0'}}>
+  <figure style={{flex: '1 1 260px', margin: 0}}>
+    <img src={useBaseUrl('/img/release/2026-10-render-standard.webp')} alt="A meeting room design in BMR Studio drawn in Standard render mode, with flat, even lighting" style={{width: '100%', aspectRatio: '3 / 2', objectFit: 'cover', borderRadius: '10px', border: '1px solid #E5E5D5'}} />
+    <figcaption style={{textAlign: 'center', fontSize: '0.9em'}}>Standard</figcaption>
+  </figure>
+  <figure style={{flex: '1 1 260px', margin: 0}}>
+    <img src={useBaseUrl('/img/release/2026-10-render-high-quality.webp')} alt="The same meeting room design in High quality render mode, with bounce lighting and soft shadows under the chairs and table" style={{width: '100%', aspectRatio: '3 / 2', objectFit: 'cover', borderRadius: '10px', border: '1px solid #E5E5D5'}} />
+    <figcaption style={{textAlign: 'center', fontSize: '0.9em'}}>High quality</figcaption>
+  </figure>
+</div>
 
 The finer settings — quality presets, bounce light, ambient occlusion, exposure and colour response — are in the **Rendering** panel in the sidebar.
 
@@ -72,6 +89,12 @@ Every scan, marker, acoustic measurement and design now shows **what it belongs 
 - An item that is not linked can be connected with **Link to a scan**.
 - The same information appears on the **Designs**, **Scans** and **Acoustic Measurements** pages.
 
+<img
+  src={useBaseUrl('/img/release/2026-10-built-on.png')}
+  alt="The Designs list with a Built on column showing, for each design, the scan it was built on and how many markers and measurements that scan has"
+  style={{width: '100%', borderRadius: '10px', border: '1px solid #E5E5D5', margin: '1rem 0'}}
+/>
+
 </details>
 
 ---
@@ -89,21 +112,11 @@ Choosing a catalog in BMR Studio is quicker.
 - **Starred favourites come first**, and each catalog shows its owner and number of items.
 - The catalog in use is marked **Current**. Click a catalog to select it.
 
-</details>
-
----
-
-<details className="bmr-details">
-<summary className="bmr-summary">
-  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
-    <BellMinus size={18} /> Delete notifications
-  </span>
-</summary>
-
-Notifications can now be cleared away.
-
-- Delete a single notification from the **Notifications** page or straight from the **bell** in the header.
-- Use **Delete all read** (next to *Mark all as read*) to clear every notification you have already read in one go.
+<img
+  src={useBaseUrl('/img/release/2026-10-catalog-picker.png')}
+  alt="The Select a catalog dialog with one searchable list of catalogs, each showing its owner and number of items, with starred favourites at the top"
+  style={{width: '100%', maxWidth: '420px', display: 'block', margin: '1rem auto', borderRadius: '8px', border: '1px solid #E5E5D5'}}
+/>
 
 </details>
 
