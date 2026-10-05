@@ -18,21 +18,21 @@
 
 .lifecycle {
   padding: 4rem 0 2rem;
-  background: linear-gradient(180deg, #ffffff 0%, #F8F8F0 100%);
+  background: linear-gradient(180deg, var(--ifm-background-color) 0%, var(--bmr-panel) 100%);
 }
 
 .platform {
   padding: 2rem 0 3rem;
-  background: #F8F8F0;
+  background: var(--bmr-panel);
 }
 
 .docs {
   padding: 2rem 0 4rem;
-  background: linear-gradient(180deg, #F8F8F0 0%, #EFEFE2 100%);
+  background: linear-gradient(180deg, var(--bmr-panel) 0%, var(--bmr-panel-line) 100%);
 }
 
 [data-theme='dark'] .lifecycle {
-  background: linear-gradient(180deg, #1a1a1a 0%, #242424 100%);
+  background: linear-gradient(180deg, var(--ifm-background-color) 0%, var(--bmr-panel) 100%);
 }
 
 [data-theme='dark'] .platform {
@@ -160,12 +160,12 @@
   align-items: center;
   justify-content: center;
   gap: 12px;
-  background: #F1F1E3;
+  background: var(--bmr-panel);
   padding: 16px;
 }
 
 [data-theme='dark'] .previewImageWrap {
-  background: #23241f;
+  background: var(--bmr-panel);
 }
 
 .previewImage {
@@ -298,16 +298,34 @@
    ============================================================ */
 
 .docCard {
-  padding: 1.1rem 1.5rem;
+  padding: 1.25rem 1.5rem;
   height: 100%;
   background: white;
-  border-radius: 10px;
+  border-radius: var(--bmr-radius-sm);
   border: 1px solid rgba(0, 0, 0, 0.06);
   transition: all 0.2s ease;
   margin-bottom: 1.5rem;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 1rem;
+}
+
+.docCardText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.docCardText h4 {
+  margin: 0;
+}
+
+.docCardDesc {
+  margin: 0;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--ifm-color-emphasis-700);
 }
 
 [data-theme='dark'] .docCard {

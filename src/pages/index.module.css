@@ -2,11 +2,11 @@
   padding: 5rem 0;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, #F1F1E3 0%, #ffffff 100%);
+  background: linear-gradient(135deg, var(--bmr-panel) 0%, var(--ifm-background-color) 100%);
 }
 
 [data-theme='dark'] .heroBanner {
-  background: linear-gradient(135deg, #242424 0%, #1a1a1a 100%);
+  background: linear-gradient(135deg, var(--bmr-panel) 0%, var(--ifm-background-color) 100%);
 }
 
 .heroInner {
@@ -16,6 +16,22 @@
 
 .heroText {
   text-align: center;
+}
+
+.heroLede {
+  max-width: 54ch;
+  margin: 0.75rem auto 0;
+  font-size: 1.02rem;
+  line-height: 1.6;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.heroDownloadNote {
+  display: block;
+  margin-top: 0.6rem;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: var(--ifm-color-emphasis-600);
 }
 
 .buttons {

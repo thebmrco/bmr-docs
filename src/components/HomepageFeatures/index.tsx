@@ -120,19 +120,52 @@ const DocSections: DocSection[] = [
     link: '/docs/getting-started/account-setup',
     description: (
       <>
-        Account setup, system requirements, and frequently asked questions.
-        Everything you need to get up and running.
+        Set up your account, invite your team, check device requirements, and
+        find answers to the questions we are asked most.
       </>
     ),
   },
   {
-    title: 'Technology & Concepts',
-    icon: AudioLines,
-    link: '/docs/acoustics/mos-score',
+    title: 'Room Lifecycle',
+    icon: Search,
+    link: '/docs/lifecycle/discovery/',
     description: (
       <>
-        Understand the science behind BMR — the MOS score, acoustic measurement,
-        recommended speakers, and the technology that drives better rooms.
+        Discovery, Design, Deploy and Maintain — what you capture in a room and
+        what each phase produces.
+      </>
+    ),
+  },
+  {
+    title: 'BMR Studio',
+    icon: Palette,
+    link: '/docs/lifecycle/design/bmr-studio',
+    description: (
+      <>
+        Design and validate rooms in the unified 3D workspace — modes, render
+        modes, versions, and presenting a design.
+      </>
+    ),
+  },
+  {
+    title: 'Acoustics',
+    icon: AudioLines,
+    link: '/docs/acoustics/acoustics-guide',
+    description: (
+      <>
+        Run guided measurements and read MOS and RT60 results against the Green
+        Zone, with the science behind the score.
+      </>
+    ),
+  },
+  {
+    title: 'Catalog & 3D Models',
+    icon: Boxes,
+    link: '/docs/catalog/',
+    description: (
+      <>
+        What the equipment catalog stores for every item, the 3D model
+        standards, and how new items are added.
       </>
     ),
   },
@@ -142,13 +175,12 @@ const DocSections: DocSection[] = [
     link: '/docs/roadmap/',
     description: (
       <>
-        Roadmap and release notes. See what's been delivered, what's coming
-        next, and the details of every release.
+        Roadmap and release notes. What has been delivered, what is coming next,
+        and the detail of every release.
       </>
     ),
   },
 ];
-
 /* ================================================================
    Components
    ================================================================ */
@@ -173,7 +205,7 @@ function LifecycleCard({title, icon: Icon, images, link}: LifecycleItem) {
   );
 }
 
-function DocSectionCard({title, icon: Icon, link}: DocSection) {
+function DocSectionCard({title, icon: Icon, link, description}: DocSection) {
   return (
     <div className={clsx('col col--4')}>
       <Link to={link} className={styles.cardLink}>
@@ -181,7 +213,10 @@ function DocSectionCard({title, icon: Icon, link}: DocSection) {
           <div className={styles.docIcon}>
             <Icon size={24} color="#206B31" aria-hidden="true" />
           </div>
-          <Heading as="h4">{title}</Heading>
+          <div className={styles.docCardText}>
+            <Heading as="h4">{title}</Heading>
+            <p className={styles.docCardDesc}>{description}</p>
+          </div>
         </div>
       </Link>
     </div>

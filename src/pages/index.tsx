@@ -20,16 +20,27 @@ function HomepageHeader() {
         <div className={styles.heroInner}>
           <div className={styles.heroText}>
             <Heading as="h1" className="hero__title">
-              BETTERMEETINGROOMS Documentation
+              BETTERMEETINGROOMS
             </Heading>
             <p className="hero__subtitle">
-              Transform every meeting room into a collaboration masterpiece with our comprehensive guides and best practices.
+              Expert-level meeting-room measurement and design — from a phone.
+            </p>
+            <p className={styles.heroLede}>
+              Scan a room in 3D, run a scientifically validated acoustic
+              measurement, and design the fit-out in BMR Studio. No specialist
+              kit, no consultant on-site — and one connected record for every
+              room.
             </p>
             <div className={styles.buttons}>
               <Link
                 className="button button--primary button--lg"
                 to="/docs/getting-started/account-setup">
-                Get Started →
+                Get started →
+              </Link>
+              <Link
+                className="button button--secondary button--lg"
+                to="/docs/release-notes/2026-10-release-2.3">
+                See what's new in 2.3
               </Link>
             </div>
           </div>
@@ -56,6 +67,10 @@ function HomepageHeader() {
                 className={styles.appStoreLink}>
                 Open in the App Store →
               </a>
+              <span className={styles.heroDownloadNote}>
+                BMR Mobile Private is no longer supported — delete it and
+                install BMR Mobile.
+              </span>
             </div>
           </div>
         </div>
@@ -68,8 +83,8 @@ export default function Home(): ReactNode {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Documentation`}
-      description="BETTERMEETINGROOMS - Lifecycle management for meeting rooms. Create better spaces for work and play.">
+      title="Documentation"
+      description="Scan a room in 3D, run a validated acoustic measurement, and design the fit-out in BMR Studio — one connected record for every room.">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
