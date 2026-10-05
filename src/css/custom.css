@@ -9,27 +9,49 @@
 /* BMR Brand Colors */
 :root {
   /* Primary Brand Colors */
-  --ifm-color-primary: #206B31;
+  /* ============================================================
+     BMR brand layer — shared with the web platform.
+     Mirrors abmrdb/src/main/webapp/content/scss/variables.scss.
+     Change a value here only if it changes there too.
+     ============================================================ */
+  --bmr-green: #206B31;           /* abmrdb $main-green        */
+  --bmr-green-mid: #07C229;       /* abmrdb $middle-green      */
+  --bmr-green-bright: #48FF69;    /* abmrdb $bright-green      */
+  --bmr-green-hover: #DAF9E2;     /* abmrdb $green-light-hover */
+  --bmr-orange: #F45F0B;          /* abmrdb $bright-orange     */
+  --bmr-text: #2D3748;            /* abmrdb $text              */
+  --bmr-text-strong: #131820;     /* abmrdb $text-dark         */
+  --bmr-text-muted: #6D767E;      /* abmrdb $text-inactive     */
+  --bmr-panel: #F8F9FA;           /* abmrdb $link-bg-color     */
+  --bmr-panel-line: #E9ECEF;      /* abmrdb $link-border-color */
+  --bmr-line: rgba(0, 0, 0, 0.1); /* abmrdb $light-border-color*/
+  --bmr-radius: 12px;             /* abmrdb $border-radius     */
+  --bmr-radius-sm: 10px;          /* abmrdb $border-radius-sm  */
+  --bmr-radius-lg: 15px;          /* abmrdb $border-radius-lg  */
+
+  --ifm-color-primary: var(--bmr-green);
   --ifm-color-primary-dark: #1b5c29;
   --ifm-color-primary-darker: #164c22;
   --ifm-color-primary-darkest: #103b1a;
   --ifm-color-primary-light: #2b7f3d;
   --ifm-color-primary-lighter: #329845;
-  --ifm-color-primary-lightest: #48FF69;
+  --ifm-color-primary-lightest: var(--bmr-green-bright);
   
   /* Secondary/Accent Colors */
-  --bmr-beige: #F1F1E3;
-  --bmr-beige-dark: #E5E5D5;
-  --bmr-dark-green: #206B31;
-  --bmr-light-green: #2e9145;
+  /* Surface aliases. Kept so existing rules need no edit; the values
+     now come from the shared layer above rather than a docs-only beige. */
+  --bmr-beige: var(--bmr-panel);
+  --bmr-beige-dark: var(--bmr-panel-line);
+  --bmr-dark-green: var(--bmr-green);
+  --bmr-light-green: #2e9145; /* docs-only: the dark-theme green */
   
   /* Background Colors */
   --ifm-background-color: #ffffff;
-  --ifm-background-surface-color: #F1F1E3;
+  --ifm-background-surface-color: var(--bmr-panel);
   
   /* Text Colors */
-  --ifm-font-color-base: #333333;
-  --ifm-font-color-secondary: #4a4a4a;
+  --ifm-font-color-base: var(--bmr-text);
+  --ifm-font-color-secondary: var(--bmr-text-muted);
   
   /* Typography */
   --ifm-font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
@@ -42,8 +64,8 @@
   --ifm-spacing-vertical: 1.5rem;
   
     /* Tabs */
-  --ifm-tabs-color-active: #206B31;
-  --ifm-tabs-color-active-border: #206B31;
+  --ifm-tabs-color-active: var(--bmr-green);
+  --ifm-tabs-color-active-border: var(--bmr-green);
   
   /* Code */
   --ifm-code-font-size: 95%;
@@ -61,14 +83,14 @@
   --ifm-footer-color: #ffffff;
   
   /* Links */
-  --ifm-link-color: #206B31;
-  --ifm-link-hover-color: #07C229;
+  --ifm-link-color: var(--bmr-green);
+  --ifm-link-hover-color: var(--bmr-green-mid);
   
   /* Buttons */
-  --ifm-button-border-radius: 8px;
+  --ifm-button-border-radius: var(--bmr-radius-sm);
   
   /* Cards & Containers */
-  --ifm-card-border-radius: 12px;
+  --ifm-card-border-radius: var(--bmr-radius);
 
   /* Collapsible release blocks (bmr-details) */
   --bmr-details-border: #e0e0e0;
@@ -79,13 +101,13 @@
   --ifm-container-width-xl: 1600px;
 
   /* Admonition: INFO → BMR green (overrides Infima's default blue) */
-  --ifm-color-info: #206B31;
+  --ifm-color-info: var(--bmr-green);
   --ifm-color-info-dark: #1b5c29;
   --ifm-color-info-contrast-background: rgba(32, 107, 49, 0.07);
   --ifm-color-info-contrast-foreground: #0d3b1e;
 
   /* Admonition: CAUTION/WARNING → BMR orange (overrides Infima's default yellow) */
-  --ifm-color-warning: #F45F0B;
+  --ifm-color-warning: var(--bmr-orange);
   --ifm-color-warning-dark: #c44900;
   --ifm-color-warning-contrast-background: rgba(244, 95, 11, 0.07);
   --ifm-color-warning-contrast-foreground: #7a2d00;
@@ -103,8 +125,11 @@
   
   --ifm-background-color: #1a1a1a;
   --ifm-background-surface-color: #242424;
-  --bmr-beige: #2a2a24;
-  --bmr-beige-dark: #1f1f1c;
+  --bmr-panel: #23262B;
+  --bmr-panel-line: #31353C;
+  --bmr-line: rgba(255, 255, 255, 0.12);
+  --bmr-text: #E8E8E8;
+  --bmr-text-muted: #9BA1A8;
   
   --ifm-font-color-base: #e8e8e8;
   --ifm-font-color-secondary: #b8b8b8;
@@ -494,7 +519,7 @@ pre code {
 
 /* Search */
 .DocSearch-Button {
-  border-radius: 8px;
+  border-radius: var(--bmr-radius-sm);
   background-color: var(--bmr-beige);
   border: 1px solid rgba(0, 0, 0, 0.08);
 }
@@ -510,7 +535,7 @@ pre code {
 }
 
 .tabs__item {
-  border-radius: 8px 8px 0 0;
+  border-radius: var(--bmr-radius-sm) var(--bmr-radius-sm) 0 0;
   font-weight: 500;
 }
 
@@ -665,7 +690,7 @@ details.bmr-details > summary.bmr-summary::marker {
 .diagram-card {
   background: #f6f6ef;
   border: 1px solid var(--bmr-beige-dark);
-  border-radius: 12px;
+  border-radius: var(--bmr-radius);
   padding: 1.1rem 1.25rem 0.9rem;
   margin: 1.5rem 0;
 }
@@ -762,7 +787,7 @@ details.bmr-details > summary.bmr-summary::marker {
 
 .concept-card {
   border: 1px solid var(--bmr-beige-dark);
-  border-radius: 10px;
+  border-radius: var(--bmr-radius);
   padding: 1rem 1.15rem;
   background: var(--ifm-background-surface-color);
 }
@@ -1013,7 +1038,7 @@ details.bmr-details > summary.bmr-summary::marker {
 .state-card {
   border: 1px solid var(--bmr-beige-dark);
   border-top-width: 4px;
-  border-radius: 12px;
+  border-radius: var(--bmr-radius);
   padding: 1rem 1.15rem 1.15rem;
   background: var(--ifm-background-surface-color);
 }
@@ -1034,7 +1059,7 @@ details.bmr-details > summary.bmr-summary::marker {
 .state-card img {
   display: block;
   width: 100%;
-  border-radius: 8px;
+  border-radius: var(--bmr-radius-sm);
   border: 1px solid var(--bmr-beige-dark);
   margin-bottom: 0.9rem;
 }
@@ -1067,7 +1092,7 @@ details.bmr-details > summary.bmr-summary::marker {
   display: block;
   width: 100%;
   height: auto;
-  border-radius: 10px;
+  border-radius: var(--bmr-radius);
   border: 1px solid var(--bmr-beige-dark);
 }
 
@@ -1090,7 +1115,7 @@ details.bmr-details > summary.bmr-summary::marker {
   margin-left: auto;
   margin-right: auto;
 }
-.bmr-figure--inset .bmr-figure__img { border-radius: 8px; }
+.bmr-figure--inset .bmr-figure__img { border-radius: var(--bmr-radius-sm); }
 .bmr-figure--inset .bmr-figure__caption { text-align: center; }
 
 /* phone: portrait BMR Mobile captures */
@@ -1099,7 +1124,7 @@ details.bmr-details > summary.bmr-summary::marker {
   margin-left: auto;
   margin-right: auto;
 }
-.bmr-figure--phone .bmr-figure__img { border-radius: 12px; }
+.bmr-figure--phone .bmr-figure__img { border-radius: var(--bmr-radius-lg); }
 .bmr-figure--phone .bmr-figure__caption { text-align: center; }
 
 /* pair: two captures, shared caption naming the difference */
@@ -1200,7 +1225,7 @@ details.bmr-details > summary.bmr-summary::marker {
 .bmr-factgrid {
   margin: 1.5rem 0 2rem;
   border: 1px solid var(--bmr-beige-dark);
-  border-radius: 12px;
+  border-radius: var(--bmr-radius);
   background: var(--bmr-beige);
   padding: 1.15rem 1.25rem 1.25rem;
 }

@@ -176,6 +176,32 @@ import FactGrid from '@site/src/components/FactGrid'
 
 ---
 
+## <Icon name="palette" size="1em" /> The brand layer
+
+These docs and the **web platform** are two front ends for one product, so the tokens that carry brand identity are defined identically in both places:
+
+| Token | Value | In the web platform |
+|---|---|---|
+| `--bmr-green` | `#206B31` | `$main-green` |
+| `--bmr-green-mid` | `#07C229` | `$middle-green` |
+| `--bmr-green-bright` | `#48FF69` | `$bright-green` |
+| `--bmr-green-hover` | `#DAF9E2` | `$green-light-hover` |
+| `--bmr-orange` | `#F45F0B` | `$bright-orange` |
+| `--bmr-text` | `#2D3748` | `$text` |
+| `--bmr-panel` | `#F8F9FA` | `$link-bg-color` |
+| `--bmr-panel-line` | `#E9ECEF` | `$link-border-color` |
+| `--bmr-radius` · `-sm` · `-lg` | `12px` · `10px` · `15px` | `$border-radius` and friends |
+
+Both sides also use **Inter** and **Lucide** icons.
+
+:::caution Changing a brand token
+The block at the top of `custom.css` mirrors `abmrdb/src/main/webapp/content/scss/variables.scss`. Change a value in one place only if it changes in the other, or the two drift apart again. Everything else in `custom.css` should reference these tokens rather than repeat a hex.
+:::
+
+What is **deliberately different** is what the medium needs: the docs set body text at 16px / 1.65 for long-form reading where the platform uses 14px / 1.5 for interface density, and the docs have a dark theme where the platform has none.
+
+---
+
 ## <Icon name="photo" size="1em" /> Image assets
 
 | Rule | Value |
