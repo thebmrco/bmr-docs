@@ -858,7 +858,7 @@ details.bmr-details > summary.bmr-summary::marker {
   gap: 0.4rem;
   padding: 1.1rem 1.25rem;
   border: 1px solid var(--bmr-beige-dark);
-  border-radius: 12px;
+  border-radius: var(--bmr-radius);
   background: var(--ifm-background-surface-color);
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
@@ -935,7 +935,7 @@ details.bmr-details > summary.bmr-summary::marker {
   display: block;
   padding: 1.4rem 1.6rem;
   margin: 1rem 0;
-  border-radius: 14px;
+  border-radius: var(--bmr-radius-lg);
   border: 1px solid var(--bmr-beige-dark);
   background: linear-gradient(135deg, rgba(32, 107, 49, 0.08), rgba(32, 107, 49, 0.02));
   transition: transform 0.2s ease, box-shadow 0.2s ease;

@@ -6,7 +6,7 @@ Published at **https://thebmrco.github.io/bmr-docs/**
 
 ## Before you write a page
 
-Read **[the Style Guide](docs/contributing/style.mdx)** first. It holds the decisions every page follows — which of the four page archetypes you are writing, which of the five illustration forms to reach for, and the rulings on spelling, headings, frontmatter and image assets.
+Read **[the Style Guide](docs/contributing/style.mdx)** first — or view it rendered, with live component examples, at `/docs/contributing/style` on a running site. It is deliberately unlisted, so it never appears in the reader-facing navigation or search. It holds the decisions every page follows — which of the four page archetypes you are writing, which of the five illustration forms to reach for, and the rulings on spelling, headings, frontmatter and image assets.
 
 The short version:
 
@@ -63,10 +63,10 @@ There is nothing to run by hand — in particular, do not use `npm run deploy`. 
 | Path | What lives there |
 |---|---|
 | `docs/` | The documentation pages, as MDX |
-| `docs/contributing/style.mdx` | The style guide — read before writing |
+| `docs/contributing/style.mdx` | The style guide — read before writing. Unlisted: not in the sidebar |
 | `docs/release-notes/` | A dated archive. Apply new rulings to new entries only |
 | `src/components/` | Shared components — `Figure`, `Callouts`, `FactGrid`, `StepTabs`, `Icon` |
 | `src/css/custom.css` | Brand tokens and all component styling |
 | `static/img/<section>/` | Page assets, named by subject |
 | `static/img/release/` | Release-note assets, dated. Not for evergreen pages |
-| `sidebars.ts` | Navigation. Every page must appear here |
+| `sidebars.ts` | Navigation. Every reader-facing page must appear here |

@@ -115,7 +115,6 @@ const sidebars: SidebarsConfig = {
       ],
     },
     'security/index',
-    'contributing/style',
     {
       type: 'category',
       label: 'Product Updates',
