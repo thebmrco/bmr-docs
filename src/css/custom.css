@@ -1279,3 +1279,94 @@ details.bmr-details > summary.bmr-summary::marker {
   color: var(--ifm-color-emphasis-700);
   margin-top: 0.15rem;
 }
+
+/* ==========================================================================
+   PdfViewer — a PDF shown inline, with its download bar above it
+   ========================================================================== */
+
+.bmr-pdf {
+  margin: 1.5rem 0 2rem;
+  border: 1px solid var(--bmr-beige-dark);
+  border-radius: var(--bmr-radius);
+  overflow: hidden;
+  background: var(--bmr-beige);
+}
+
+[data-theme='dark'] .bmr-pdf { border-color: rgba(255, 255, 255, 0.12); }
+
+.bmr-pdf__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 0.85rem 1.1rem;
+  border-bottom: 1px solid var(--bmr-beige-dark);
+}
+
+[data-theme='dark'] .bmr-pdf__bar { border-bottom-color: rgba(255, 255, 255, 0.12); }
+
+.bmr-pdf__meta {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.35;
+  min-width: 0;
+}
+
+.bmr-pdf__meta strong { font-size: 0.98rem; }
+
+.bmr-pdf__meta span {
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.bmr-pdf__download {
+  flex: 0 0 auto;
+  display: inline-block;
+  padding: 0.5rem 1.1rem;
+  border-radius: var(--bmr-radius-sm);
+  background: var(--bmr-dark-green);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+
+.bmr-pdf__download:hover,
+.bmr-pdf__download:focus {
+  background: var(--ifm-color-primary-dark);
+  color: #fff;
+  text-decoration: none;
+}
+
+[data-theme='dark'] .bmr-pdf__download {
+  background: var(--bmr-light-green);
+  color: #10200f;
+}
+
+.bmr-pdf__frame {
+  display: block;
+  width: 100%;
+  border: 0;
+  background: var(--ifm-background-color);
+}
+
+.bmr-pdf__fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+}
+
+.bmr-pdf__fallback p {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--ifm-color-emphasis-700);
+  max-width: 40ch;
+}

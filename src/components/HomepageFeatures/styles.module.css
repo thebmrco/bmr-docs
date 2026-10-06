@@ -394,3 +394,110 @@
     margin-bottom: 1rem;
   }
 }
+
+/* ---------------------------------------------------------------
+   First run — the room capture guide, fronted for new users
+   --------------------------------------------------------------- */
+
+.firstRun {
+  padding: 2.5rem 0 0;
+}
+
+.firstRunCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 1.75rem 2rem;
+  border-radius: var(--bmr-radius);
+  border: 1px solid var(--bmr-dark-green);
+  background: var(--bmr-green-hover);
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s ease;
+}
+
+.firstRunCard:hover {
+  text-decoration: none;
+  color: inherit;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(32, 107, 49, 0.18);
+}
+
+[data-theme='dark'] .firstRunCard {
+  background: rgba(95, 196, 120, 0.1);
+  border-color: var(--bmr-light-green);
+}
+
+.firstRunIcon {
+  flex: 0 0 56px;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--bmr-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bmr-dark-green);
+  color: #fff;
+}
+
+[data-theme='dark'] .firstRunIcon {
+  background: var(--bmr-light-green);
+  color: #10200f;
+}
+
+.firstRunText {
+  min-width: 0;
+}
+
+.firstRunText h2 {
+  margin: 0.3rem 0 0.4rem;
+  font-size: 1.5rem;
+  color: var(--bmr-dark-green);
+}
+
+[data-theme='dark'] .firstRunText h2 {
+  color: var(--bmr-light-green);
+}
+
+.firstRunText p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--ifm-font-color-base);
+  max-width: 62ch;
+}
+
+.firstRunBadge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bmr-dark-green);
+}
+
+[data-theme='dark'] .firstRunBadge {
+  color: var(--bmr-light-green);
+}
+
+.firstRunLink {
+  display: inline-block;
+  margin-top: 0.85rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--bmr-dark-green);
+}
+
+[data-theme='dark'] .firstRunLink {
+  color: var(--bmr-light-green);
+}
+
+@media (max-width: 640px) {
+  .firstRunCard {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+}

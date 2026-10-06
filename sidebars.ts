@@ -16,6 +16,13 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
+      label: 'User Guides',
+      items: [
+        'user-guides/room-capture',
+      ],
+    },
+    {
+      type: 'category',
       label: 'Room Lifecycle',
       items: [
         {

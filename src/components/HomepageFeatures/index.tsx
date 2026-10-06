@@ -7,7 +7,7 @@ import type { LucideIcon } from 'lucide-react';
 import {
   Search, Palette, Wrench,
   UserCheck, AudioLines, Boxes, MapPin, RefreshCw,
-  Smartphone, Globe, Server, ExternalLink,
+  Smartphone, Globe, Server, ExternalLink, BookOpen, Scan,
 } from 'lucide-react';
 import styles from './styles.module.css';
 
@@ -126,6 +126,17 @@ const DocSections: DocSection[] = [
     ),
   },
   {
+    title: 'User Guides',
+    icon: BookOpen,
+    link: '/docs/user-guides/room-capture',
+    description: (
+      <>
+        Step-by-step walkthroughs for the field — starting with capturing your
+        first room, with a printable version to take along.
+      </>
+    ),
+  },
+  {
     title: 'Room Lifecycle',
     icon: Search,
     link: '/docs/lifecycle/discovery/',
@@ -226,6 +237,27 @@ function DocSectionCard({title, icon: Icon, link, description}: DocSection) {
 export default function HomepageFeatures(): ReactNode {
   return (
     <>
+      {/* First time here — the room capture guide */}
+      <section className={styles.firstRun}>
+        <div className="container">
+          <Link to="/docs/user-guides/room-capture" className={styles.firstRunCard}>
+            <div className={styles.firstRunIcon}>
+              <Scan size={28} aria-hidden="true" />
+            </div>
+            <div className={styles.firstRunText}>
+              <span className={styles.firstRunBadge}>New here? Start with this</span>
+              <Heading as="h2">Capture your first room</Heading>
+              <p>
+                One room, five steps, about 20–30 minutes. The walkthrough for
+                anyone invited to an organisation and sent out to record a room
+                — with a printable PDF to take with you.
+              </p>
+              <span className={styles.firstRunLink}>Open the guide →</span>
+            </div>
+          </Link>
+        </div>
+      </section>
+
       {/* What's new — latest release highlight */}
       <section className={styles.whatsNew}>
         <div className="container">
