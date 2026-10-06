@@ -126,7 +126,6 @@ const sidebars: SidebarsConfig = {
       label: 'Product Updates',
       items: [
         'roadmap/index',
-        'roadmap/feature-overview',
         {
           type: 'category',
           label: 'Release Notes',
