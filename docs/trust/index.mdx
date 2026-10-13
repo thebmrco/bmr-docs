@@ -1,0 +1,118 @@
+---
+title: Trust & Security
+sidebar_label: Trust & Security
+description: How BETTERMEETINGROOMS protects customer data — EU hosting, encryption, identity, backups, secure development and deployment, GDPR, and how to report a security issue.
+---
+
+import Icon from '@site/src/components/Icon'
+import FactGrid from '@site/src/components/FactGrid'
+import StepFlow from '@site/src/components/StepFlow'
+
+# <Icon name="privacy-policy" size="1em" /> Trust & Security
+
+BETTERMEETINGROOMS helps organisations design, measure and manage their meeting rooms. Your room plans, scans and account data are part of how your workplace runs, so this page explains how BMR protects that data: where it is stored, how it is secured, how changes reach production, and how to reach us about privacy or security.
+
+For the detailed questionnaire-style answers — third-party services, AI use, access to data and deletion — see [Security & Data Protection](../security).
+
+<FactGrid title="At a glance" facts={[
+  {label: 'Hosting', value: 'AWS Frankfurt', note: 'eu-central-1'},
+  {label: 'Encryption', value: 'TLS 1.2+ and at rest', note: 'In transit and in storage'},
+  {label: 'Identity', value: 'Auth0', note: 'SSO with Microsoft, Google, Webex or Apple'},
+  {label: 'Backups', value: 'Daily, encrypted', note: 'Restores tested'},
+  {label: 'Releases', value: 'Reviewed and automated', note: 'Protected main branch, CI/CD'},
+  {label: 'Certification', value: 'None yet', note: 'Questionnaires answered on request'},
+]} />
+
+---
+
+## <Icon name="globe" size="1em" /> Data we process
+
+| Product | Data processed | Personal data |
+|---|---|---|
+| BMR Studio (web) | Room models, layouts, AV plans, project metadata | User names and email addresses |
+| BMR Mobile | Room scans and captures, acoustic and light measurements, photos | Only if people appear in a capture |
+| Accounts and API | Accounts, organisations, roles, usage logs | Yes |
+
+## <Icon name="location" size="1em" /> Hosting
+
+Production customer data — user accounts, room designs and captured room scans — is hosted on **Amazon Web Services in Frankfurt (eu-central-1)**. The full list of third-party services and what each one receives is on [Security & Data Protection](../security#what-third-party-services-are-involved).
+
+## <Icon name="permissions" size="1em" /> Encryption
+
+- **In transit:** all traffic between BMR Studio, BMR Mobile and our services is encrypted with TLS 1.2+ (HTTPS).
+- **At rest:** databases and file storage holding customer data are encrypted.
+
+## <Icon name="key" size="1em" /> Identity and access
+
+Sign-in to BMR is handled through **Auth0**, a dedicated identity platform; BMR never stores passwords. Customers can sign in with their existing **Microsoft 365 / Entra ID**, Google, Webex or Apple accounts via single sign-on, so your organisation keeps control over who has access, including your own multi-factor authentication (MFA) and offboarding policies.
+
+## <Icon name="archive" size="1em" /> Backups and resilience
+
+BMR takes **automated, encrypted backups daily** and regularly tests that they can be restored.
+
+---
+
+## <Icon name="lifecycle" size="1em" /> Secure development and deployment
+
+Every change to BMR follows the same controlled path from code to production. No change reaches customers without review and automated checks.
+
+<StepFlow steps={[
+  {label: 'Design and review'},
+  {label: 'Pull request'},
+  {label: 'Automated checks'},
+  {label: 'Staging'},
+  {label: 'Production'},
+]} />
+
+| Stage | What happens |
+|---|---|
+| **Design and review** | Security is considered when features are designed and reviewed, using the OWASP Top 10 as the baseline. |
+| **Pull request** | All code lives on GitHub. The main branch is protected: changes arrive only through pull requests, and each one is reviewed before it can be merged. Multi-factor authentication is enforced for everyone in the GitHub organisation. |
+| **Automated checks** | GitHub Actions builds and tests every pull request. Dependency scanning flags vulnerable libraries, secret scanning catches credentials before they land in code, and container images are scanned before they are deployed. |
+| **Staging** | Changes are deployed to a staging environment and verified there before release. |
+| **Production** | Production deployments run automatically from the CI pipeline. BMR Mobile releases are tested through TestFlight before they are published on the App Store. |
+
+- **Separate environments:** production, staging and development are isolated from one another and use separate credentials.
+- **Secrets management:** API keys and credentials are kept in a secrets manager, never in source code.
+
+---
+
+## <Icon name="privacy-policy" size="1em" /> Privacy and GDPR
+
+BETTERMEETINGROOMS GmbH is an Austrian company and processes personal data in accordance with the EU General Data Protection Regulation (GDPR). For the data you store in BMR, we act as your processor: we process it only to provide our services and do not sell it.
+
+- **Data Processing Agreement:** a DPA under Art. 28 GDPR is available on request for business customers.
+- **Subprocessors:** listed on [Security & Data Protection](../security#what-third-party-services-are-involved); ask us for the current dated list.
+- **Your rights:** access, correction, deletion, portability, restriction and objection. See the [privacy policy](https://www.bettermeetingrooms.com/privacy-policy) for details.
+
+## <Icon name="users" size="1em" /> Shared responsibility
+
+Security works best when it is clear who controls what. As a customer, you:
+
+- manage your users, roles and single sign-on configuration;
+- enforce MFA through your identity provider when using SSO;
+- decide what is captured and uploaded from your rooms;
+- grant and revoke consent for calendar and Microsoft 365 / Google integrations.
+
+## <Icon name="circle-check" size="1em" /> Certifications and security reviews
+
+BMR does not currently hold a formal security certification such as ISO 27001 or SOC 2. We are happy to complete your security questionnaire and walk your IT or procurement team through our setup.
+
+---
+
+## <Icon name="alert-triangle" size="1em" /> Report a security issue
+
+If you believe you have found a security vulnerability in our website, apps or services, please email **[security@bettermeetingrooms.com](mailto:security@bettermeetingrooms.com)** so we can investigate and fix it. Please do not access or modify other users' data, and give us reasonable time to respond before disclosing publicly.
+
+## <Icon name="mail" size="1em" /> Contact
+
+| For | Contact |
+|---|---|
+| Security issues | [security@bettermeetingrooms.com](mailto:security@bettermeetingrooms.com) |
+| Privacy, DPA and security reviews | [office@bettermeetingrooms.com](mailto:office@bettermeetingrooms.com) |
+
+BETTERMEETINGROOMS GmbH · Bucklreuthstrasse 9/2 · 5020 Salzburg · Austria · FN 616007v, Landesgericht Salzburg · UID ATU80062735
+
+## <Icon name="chevron-right" size="1em" /> Related
+
+- [Security & Data Protection](../security) — the full reference Q&A for IT, security and procurement reviews.
