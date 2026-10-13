@@ -120,6 +120,7 @@ const sidebars: SidebarsConfig = {
         },
       ],
     },
+    'trust/index',
     'security/index',
     {
       type: 'category',
