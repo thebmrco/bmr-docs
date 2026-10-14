@@ -248,7 +248,7 @@ export default function HomepageFeatures(): ReactNode {
               <span className={styles.firstRunBadge}>New here? Start with this</span>
               <Heading as="h2">Capture your first room</Heading>
               <p>
-                One room, five steps, about 20–30 minutes. The walkthrough for
+                One room, five steps, about 10–15 minutes. The walkthrough for
                 anyone invited to an organisation and sent out to record a room
                 — with a printable PDF to take with you.
               </p>

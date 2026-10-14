@@ -28,6 +28,8 @@ type PdfViewerProps = {
   label: string;
   /** Human-readable file size, e.g. "4.5 MB". */
   size?: string;
+  /** Document version, e.g. "v2". Shown beside the file size. */
+  version?: string;
   /** Height of the inline view. Defaults to a comfortable reading height. */
   height?: string;
 };
@@ -36,6 +38,7 @@ export default function PdfViewer({
   file,
   label,
   size,
+  version,
   height = "min(82vh, 900px)",
 }: PdfViewerProps) {
   const src = useBaseUrl(file);
@@ -45,7 +48,9 @@ export default function PdfViewer({
       <div className="bmr-pdf__bar">
         <div className="bmr-pdf__meta">
           <strong>{label}</strong>
-          <span>PDF{size ? ` · ${size}` : ""}</span>
+          <span>
+            {["PDF", version, size].filter(Boolean).join(" · ")}
+          </span>
         </div>
         <a className="bmr-pdf__download" href={src} download>
           Download the PDF
