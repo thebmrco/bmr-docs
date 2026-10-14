@@ -10,11 +10,10 @@ const isProd = process.env.NODE_ENV === 'production';
 module.exports = {
   title: 'BETTERMEETINGROOMS',
   tagline: 'Documentation',
-  url: 'https://thebmrco.github.io',
-  baseUrl: '/bmr-docs/',
+  url: 'https://docs.bettermeetingrooms.com',
+  baseUrl: '/',
   organizationName: 'thebmrco', // GitHub org/user
   projectName: 'bmr-docs', // GitHub repo
-  deploymentBranch: 'gh-pages',
   favicon: 'img/favicon.png',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
