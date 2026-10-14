@@ -27,21 +27,21 @@ const LifecyclePhases: LifecycleItem[] = [
     title: 'Discovery',
     icon: Search,
     images: [
-      '/bmr-docs/img/lifecycle/discovery-scan.png',
-      '/bmr-docs/img/lifecycle/discovery-acoustics.png',
+      '/img/lifecycle/discovery-scan.png',
+      '/img/lifecycle/discovery-acoustics.png',
     ],
     link: '/docs/lifecycle/discovery/',
   },
   {
     title: 'Design',
     icon: Palette,
-    images: ['/bmr-docs/img/design/bmr-studio-ui.png'],
+    images: ['/img/design/bmr-studio-ui.png'],
     link: '/docs/lifecycle/design/',
   },
   {
     title: 'Maintain',
     icon: Wrench,
-    images: ['/bmr-docs/img/release/2026-07-room-overview.png'],
+    images: ['/img/release/2026-07-room-overview.png'],
     link: '/docs/lifecycle/maintenance/',
   },
 ];

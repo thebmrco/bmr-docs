@@ -2,7 +2,7 @@
 
 The public documentation site for BETTERMEETINGROOMS, built with [Docusaurus](https://docusaurus.io/).
 
-Published at **https://thebmrco.github.io/bmr-docs/**
+Published at **https://docs.bettermeetingrooms.com/**
 
 ## Before you write a page
 
@@ -28,7 +28,7 @@ npm install
 npm start
 ```
 
-Serves the site at **http://localhost:3000/bmr-docs/** with hot reload.
+Serves the site at **http://localhost:3000/** with hot reload.
 
 ## Build
 
