@@ -1,0 +1,102 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.area {
+  padding: 1.1rem 1.25rem 1rem;
+  border: 1px solid var(--bmr-panel-line);
+  border-radius: var(--bmr-radius);
+  background: var(--bmr-panel);
+}
+
+.areaTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0 0 0.75rem;
+  font-size: 1.05rem;
+}
+
+.areaIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(32, 107, 49, 0.1);
+  color: var(--bmr-green);
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.list li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.3rem 0;
+  border-top: 1px solid var(--bmr-panel-line);
+  font-size: 0.92rem;
+}
+
+.list li:first-child {
+  border-top: 0;
+}
+
+.tagField,
+.tagAdmin,
+.tagGeneral {
+  flex-shrink: 0;
+  white-space: nowrap;
+  padding: 0.05rem 0.45rem;
+  /* the logo's cut corner */
+  clip-path: polygon(4px 0, 100% 0, 100% 100%, 0 100%, 0 4px);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.tagField {
+  background: var(--bmr-green);
+}
+
+.tagAdmin {
+  background: var(--bmr-text-strong);
+}
+
+/* For everyone: the template's light green, dark text */
+.tagGeneral {
+  background: #bfe3ae;
+  color: #1f2a22;
+}
+
+.more {
+  margin: 0.5rem 0 0;
+  color: var(--bmr-text-muted);
+  font-size: 0.82rem;
+}
+
+[data-theme='dark'] .areaIcon {
+  background: rgba(95, 196, 120, 0.15);
+  color: var(--bmr-light-green);
+}
+
+[data-theme='dark'] .tagField {
+  background: var(--bmr-light-green);
+  color: #131820;
+}
+
+[data-theme='dark'] .tagAdmin {
+  background: #e6e9ec;
+  color: #131820;
+}

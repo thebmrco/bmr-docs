@@ -23,7 +23,7 @@ const activities: Activity[] = [
   {
     icon: Scan,
     title: 'Room Scan',
-    description: 'Use your iPhone or iPad (LiDAR) to build a precise 3D model of the space. Do this first.',
+    description: 'Capture a 3D model of the space with your iPhone or iPad (LiDAR). Do this first.',
     bullets: [
       'Open the room and tap New Scan',
       'Move slowly to capture walls, corners and ceiling',

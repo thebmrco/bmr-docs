@@ -1,0 +1,43 @@
+---
+title: Manage & Design
+sidebar_label: Manage & Design home
+description: Manage & Design — set up locations and rooms, send out the people who capture them, see the state of every room, analyse the acoustics and design improvements in BMR Studio.
+hide_table_of_contents: true
+---
+
+import Icon from '@site/src/components/Icon'
+import { LinkTiles } from '@site/src/components/PictureSteps'
+
+# <Icon name="admin-settings" size="1em" /> Manage & Design
+
+<PageIntro illustration="room-state" meta={['Web platform on a laptop']}>
+
+Know how every room is doing, and what to fix. Most of it happens on the web at **[app.bettermeetingrooms.com](https://app.bettermeetingrooms.com)**.
+
+</PageIntro>
+
+<IllustratedSteps steps={[
+  { illustration: 'organise', title: 'Set up locations and rooms', hint: 'One location per building', link: '/docs/structure' },
+  { illustration: 'invite', title: 'Invite your team', hint: 'Admin, Location Manager or Room Manager', link: '/docs/getting-started/inviting-users' },
+  { illustration: 'scan', title: 'Send out the room capturers', hint: 'Forward them the Field guide', link: '/docs/field' },
+  { illustration: 'room-state', title: 'See the state of each room', hint: 'Score, scan, markers, design', link: '/docs/structure/room' },
+  { illustration: 'analyse', title: 'Analyse the acoustics', hint: 'Score, RT60, where each was measured', link: '/docs/acoustics/reading-acoustic-results' },
+  { illustration: 'design-studio', title: 'Design improvements', hint: 'In BMR Studio, on the real room', link: '/docs/lifecycle/design/bmr-studio' },
+]} />
+
+## <Icon name="more" size="1em" /> Everything else
+
+<LinkTiles tiles={[
+  { label: 'Organisation settings', icon: 'organization', link: '/docs/structure/organisation' },
+  { label: 'Microsoft 365', icon: 'puzzle', link: '/docs/integrations/microsoft-365' },
+  { label: 'Webex Control Hub', icon: 'puzzle', link: '/docs/integrations/webex-control-hub-sync' },
+  { label: 'Cisco VRC', icon: 'puzzle', link: '/docs/integrations/cisco-vrc' },
+  { label: 'Default Room Configuration', icon: 'sliders-horizontal', link: '/docs/lifecycle/design/default-room-configuration' },
+  { label: 'Catalog & 3D Models', icon: 'catalog', link: '/docs/catalog' },
+  { label: 'Deploy', icon: 'digital-twin', link: '/docs/lifecycle/deploy' },
+  { label: 'Maintain', icon: 'wrench', link: '/docs/lifecycle/maintenance' },
+  { label: 'MOS Score', icon: 'acoustics', link: '/docs/acoustics/mos-score' },
+  { label: 'Trust', icon: 'permissions', link: '/docs/trust' },
+  { label: 'Security', icon: 'key', link: '/docs/security' },
+  { label: "What's new", icon: 'sync-now', link: '/docs/release-notes/2026-10-release-2.3' },
+]} />

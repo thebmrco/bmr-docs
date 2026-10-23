@@ -1,0 +1,65 @@
+---
+title: Illustration library
+description: Every reusable BMR illustration with its name, and the page components that use them.
+unlisted: true
+hide_table_of_contents: true
+---
+
+import Icon from '@site/src/components/Icon'
+import { IllustrationGallery } from '@site/src/components/illustrations'
+
+# <Icon name="palette" size="1em" /> Illustration library
+
+<PageIntro illustration="design-studio" meta={['src/components/illustrations']}>
+
+One look for every page: flat shapes in the three template greens on an off-white ground, with devices in a near-black bezel. Pick a drawing by name. Don't add screenshots where a drawing will do.
+
+</PageIntro>
+
+## <Icon name="photo" size="1em" /> All illustrations
+
+<IllustrationGallery />
+
+## <Icon name="equipment" size="1em" /> Using them on a page
+
+These work on every page without an import.
+
+**Open the page.** Straight under the H1, wrap the first paragraph:
+
+```mdx
+<PageIntro illustration="scan" meta={['BMR Mobile on iPhone or iPad', '5 minutes']}>
+
+The scan is the first thing you do in a room…
+
+</PageIntro>
+```
+
+**Steps on a hub page.** Each card links to the page that explains the step:
+
+```mdx
+<IllustratedSteps
+  steps={[
+    { illustration: 'find-room', title: 'Find the room', hint: 'Search, or browse', link: '/docs/…' },
+    { illustration: 'scan', title: 'Scan', hint: 'Every wall', link: '/docs/…' },
+  ]}
+  done={['Scan', 'Markers']}
+/>
+```
+
+**A checklist** as a row of icons, and **a "Stuck?" list**:
+
+```mdx
+<IconRow items={[{ icon: 'Smartphone', label: 'BMR Mobile installed' }]} />
+
+<FixList items={[{ problem: 'Room not found', fix: 'Browse via the building' }]} />
+```
+
+**One drawing on its own:** `<Illustration name="acoustics" />`.
+
+## <Icon name="edit" size="1em" /> Adding an illustration
+
+1. Build it from the parts in `parts.tsx`: `Phone`, `PhoneLandscape`, `Laptop`, `RoomView`, `ScanFrame`, `Pin`, `Speaker`, `Waves`, `Ring`, `Box3D`, `CheckBadge`, `Person`, `CutTile`, `TextLine`.
+2. Add it to `scenes.tsx` with a short kebab-case name and a label that says what it shows.
+3. Use only the palette in `parts.tsx` (`C`). No outlines, no gradients, no new colours. Orange (`C.warn`) means "needs attention", nothing else.
+
+It appears on this page automatically.

@@ -1370,3 +1370,51 @@ details.bmr-details > summary.bmr-summary::marker {
   color: var(--ifm-color-emphasis-700);
   max-width: 40ch;
 }
+
+/* Sidebar change badges — set with newDoc()/updatedDoc() in sidebars.ts */
+.badge-new > .menu__link::after,
+.badge-new > .menu__list-item-collapsible > .menu__link::after,
+.badge-updated > .menu__link::after,
+.badge-updated > .menu__list-item-collapsible > .menu__link::after {
+  margin-left: 0.5rem;
+  padding: 0.05rem 0.4rem;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* A category link's ::after is normally its caret, which Infima rotates and
+   sizes. Undo that so the badge reads horizontally. */
+.badge-new > .menu__list-item-collapsible > .menu__link::after,
+.badge-updated > .menu__list-item-collapsible > .menu__link::after {
+  width: auto;
+  height: auto;
+  min-width: 0;
+  transform: none;
+  background-image: none;
+  filter: none;
+  line-height: 1.4;
+}
+
+.badge-new > .menu__link::after,
+.badge-new > .menu__list-item-collapsible > .menu__link::after {
+  content: 'New';
+  background: var(--bmr-green);
+  color: #fff;
+}
+
+.badge-updated > .menu__link::after,
+.badge-updated > .menu__list-item-collapsible > .menu__link::after {
+  content: 'Updated';
+  background: var(--bmr-green-hover);
+  color: var(--bmr-green);
+}
+
+[data-theme='dark'] .badge-updated > .menu__link::after,
+[data-theme='dark'] .badge-updated > .menu__list-item-collapsible > .menu__link::after {
+  background: rgba(95, 196, 120, 0.15);
+  color: var(--bmr-light-green);
+}
