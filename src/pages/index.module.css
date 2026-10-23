@@ -1,5 +1,5 @@
 .heroBanner {
-  padding: 5rem 0;
+  padding: 3rem 0 2rem;
   position: relative;
   overflow: hidden;
   background: linear-gradient(135deg, var(--bmr-panel) 0%, var(--ifm-background-color) 100%);
@@ -144,4 +144,34 @@
     width: 100%;
     max-width: 300px;
   }
+}
+
+/* Quick links under the hero question */
+.quickLinks {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.25rem;
+}
+
+.quickLink {
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid var(--bmr-panel-line);
+  background: var(--ifm-background-surface-color);
+  color: var(--bmr-dark-green);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.quickLink:hover {
+  background: var(--bmr-green-hover);
+  color: var(--bmr-dark-green);
+  text-decoration: none;
+}
+
+[data-theme='dark'] .quickLink {
+  border-color: rgba(255, 255, 255, 0.12);
+  color: var(--bmr-light-green);
 }

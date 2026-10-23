@@ -1,0 +1,150 @@
+/* ---------- PictureSteps: numbered picture cards ---------- */
+
+.stepGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.stepCard {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--bmr-panel-line);
+  border-radius: var(--bmr-radius);
+  overflow: hidden;
+  background: var(--ifm-background-surface-color);
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+a.stepCard:hover {
+  color: inherit;
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(32, 107, 49, 0.15);
+}
+
+.stepImageWrap {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: var(--bmr-panel);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem;
+}
+
+.stepImage {
+  position: absolute;
+  inset: 0.75rem;
+  width: calc(100% - 1.5rem);
+  height: calc(100% - 1.5rem);
+  object-fit: contain;
+}
+
+.stepNumber {
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 50%;
+  background: var(--bmr-green);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stepText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.75rem 0.9rem 0.9rem;
+}
+
+.stepText strong {
+  color: var(--bmr-green);
+}
+
+.stepText span {
+  font-size: 0.85rem;
+  color: var(--bmr-text-muted);
+}
+
+[data-theme='dark'] .stepCard {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+[data-theme='dark'] .stepImageWrap {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+[data-theme='dark'] .stepText strong {
+  color: var(--bmr-light-green);
+}
+
+@media (max-width: 996px) {
+  .stepGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .stepGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Slide: one full-width illustration ---------- */
+
+.slide {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 1rem 0;
+  border-radius: var(--bmr-radius);
+  border: 1px solid var(--bmr-panel-line);
+}
+
+/* ---------- LinkTiles: icon + label grid ---------- */
+
+.tileGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 0.75rem;
+  margin: 1rem 0 2rem;
+}
+
+.tile {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.8rem 0.9rem;
+  border: 1px solid var(--bmr-panel-line);
+  border-radius: var(--bmr-radius-sm);
+  color: var(--bmr-green);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+
+.tile:hover {
+  background: var(--bmr-green-hover);
+  color: var(--bmr-green);
+  text-decoration: none;
+}
+
+[data-theme='dark'] .tile {
+  border-color: rgba(255, 255, 255, 0.12);
+  color: var(--bmr-light-green);
+}
+
+[data-theme='dark'] .tile:hover {
+  background: rgba(95, 196, 120, 0.1);
+}

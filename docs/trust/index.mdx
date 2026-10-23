@@ -10,16 +10,20 @@ import StepFlow from '@site/src/components/StepFlow'
 
 # <Icon name="privacy-policy" size="1em" /> Trust & Security
 
+<PageIntro illustration="security">
+
 BETTERMEETINGROOMS helps organisations design, measure and manage their meeting rooms. Your room plans, scans and account data are part of how your workplace runs, so this page explains how BMR protects that data: where it is stored, how it is secured, how changes reach production, and how to reach us about privacy or security.
+
+</PageIntro>
 
 For the detailed questionnaire-style answers — third-party services, AI use, access to data and deletion — see [Security & Data Protection](../security).
 
 <FactGrid title="At a glance" facts={[
   {label: 'Hosting', value: 'AWS Frankfurt', note: 'eu-central-1'},
   {label: 'Encryption', value: 'TLS 1.2+ and at rest', note: 'In transit and in storage'},
-  {label: 'Identity', value: 'Auth0', note: 'SSO with Microsoft, Google, Webex or Apple'},
+  {label: 'Identity', value: 'Auth0 (EU)', note: 'SSO with Microsoft, Google, Webex or Apple'},
   {label: 'Backups', value: 'Daily, encrypted', note: 'Restores tested'},
-  {label: 'Releases', value: 'Reviewed and automated', note: 'Protected main branch, CI/CD'},
+  {label: 'Releases', value: 'Reviewed and tested', note: 'Pull requests, CI tests, staged releases'},
   {label: 'Certification', value: 'None yet', note: 'Questionnaires answered on request'},
 ]} />
 
@@ -32,6 +36,7 @@ For the detailed questionnaire-style answers — third-party services, AI use, a
 | BMR Studio (web) | Room models, layouts, AV plans, project metadata | User names and email addresses |
 | BMR Mobile | Room scans and captures, acoustic and light measurements, photos | Only if people appear in a capture |
 | Accounts and API | Accounts, organisations, roles, usage logs | Yes |
+| Error reports and feature flags | Error context, feature-flag targeting | User email and username |
 
 ## <Icon name="location" size="1em" /> Hosting
 
@@ -44,7 +49,7 @@ Production customer data — user accounts, room designs and captured room scans
 
 ## <Icon name="key" size="1em" /> Identity and access
 
-Sign-in to BMR is handled through **Auth0**, a dedicated identity platform; BMR never stores passwords. Customers can sign in with their existing **Microsoft 365 / Entra ID**, Google, Webex or Apple accounts via single sign-on, so your organisation keeps control over who has access, including your own multi-factor authentication (MFA) and offboarding policies.
+Sign-in to BMR is handled through **Auth0**, a dedicated identity platform, on an EU tenant; BMR never stores passwords. Customers can sign in with their existing **Microsoft 365 / Entra ID**, Google, Webex or Apple accounts via single sign-on, so your organisation keeps control over who has access, including your own multi-factor authentication (MFA) and offboarding policies.
 
 ## <Icon name="archive" size="1em" /> Backups and resilience
 
@@ -54,7 +59,7 @@ BMR takes **automated, encrypted backups daily** and regularly tests that they c
 
 ## <Icon name="lifecycle" size="1em" /> Secure development and deployment
 
-Every change to BMR follows the same controlled path from code to production. No change reaches customers without review and automated checks.
+Every change to BMR follows the same controlled path from code to production: it is reviewed and tested in a pull request, verified on staging, and released to production by the team.
 
 <StepFlow steps={[
   {label: 'Design and review'},
@@ -68,9 +73,9 @@ Every change to BMR follows the same controlled path from code to production. No
 |---|---|
 | **Design and review** | Security is considered when features are designed and reviewed, using the OWASP Top 10 as the baseline. |
 | **Pull request** | All code lives on GitHub. The main branch is protected: changes arrive only through pull requests, and each one is reviewed before it can be merged. Multi-factor authentication is enforced for everyone in the GitHub organisation. |
-| **Automated checks** | GitHub Actions builds and tests every pull request. Dependency scanning flags vulnerable libraries, secret scanning catches credentials before they land in code, and container images are scanned before they are deployed. |
+| **Automated checks** | GitHub Actions builds and tests every pull request before it can be merged. |
 | **Staging** | Changes are deployed to a staging environment and verified there before release. |
-| **Production** | Production deployments run automatically from the CI pipeline. BMR Mobile releases are tested through TestFlight before they are published on the App Store. |
+| **Production** | Production releases are started by the team through the CI pipeline, after the release has been verified on staging. BMR Mobile releases are tested through TestFlight before they are published on the App Store. |
 
 - **Separate environments:** production, staging and development are isolated from one another and use separate credentials.
 - **Secrets management:** API keys and credentials are kept in a secrets manager, never in source code.
@@ -91,8 +96,10 @@ Security works best when it is clear who controls what. As a customer, you:
 
 - manage your users, roles and single sign-on configuration;
 - enforce MFA through your identity provider when using SSO;
-- decide what is captured and uploaded from your rooms;
-- grant and revoke consent for calendar and Microsoft 365 / Google integrations.
+- decide what is captured and uploaded from your rooms, make sure you have the right to scan, photograph and record the premises, and inform people who are present;
+- grant and revoke consent for the Microsoft 365 (Entra ID) and Webex Control Hub integrations.
+
+BMR is a planning and documentation tool. Room models, acoustic results, designs and equipment lists support your decisions; they are not certified measurements, construction drawings or installation plans. Before ordering, installing or building, verify dimensions on site and have designs checked by qualified persons.
 
 ## <Icon name="circle-check" size="1em" /> Certifications and security reviews
 

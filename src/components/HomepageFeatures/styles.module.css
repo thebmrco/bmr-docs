@@ -501,3 +501,486 @@
     padding: 1.5rem;
   }
 }
+
+/* ================================================================
+   Homepage: two doors, what's new, browse all topics, help
+   ================================================================ */
+
+.sectionHead {
+  margin-bottom: 1.25rem;
+}
+
+.sectionHead p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--bmr-text-muted);
+}
+
+.blockTitle {
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+  color: var(--bmr-dark-green);
+}
+
+[data-theme='dark'] .blockTitle {
+  color: var(--bmr-light-green);
+}
+
+/* ---------- Two doors ---------- */
+
+.doors {
+  padding: 2.5rem 0 1.5rem;
+}
+
+.doorGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.doorCard,
+.newsFeature,
+.topicCard {
+  display: flex;
+  border: 1px solid var(--bmr-panel-line);
+  border-radius: var(--bmr-radius-lg);
+  overflow: hidden;
+  background: var(--ifm-background-surface-color);
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.doorCard:hover,
+.newsFeature:hover,
+.topicCard:hover {
+  color: inherit;
+  text-decoration: none;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(32, 107, 49, 0.16);
+}
+
+.doorCard {
+  flex-direction: column;
+  border-width: 2px;
+}
+
+.doorField {
+  --door-accent: var(--bmr-green);
+  --door-tint: var(--bmr-green-hover);
+}
+
+.doorAdmin {
+  --door-accent: var(--bmr-text-strong);
+  --door-tint: var(--bmr-panel);
+}
+
+.doorField:hover,
+.doorAdmin:hover {
+  border-color: var(--door-accent);
+}
+
+.doorArt {
+  position: relative;
+  height: 190px;
+  padding: 1.75rem 1.5rem 0.75rem;
+  overflow: hidden;
+  background: #f3f5f0; /* template ground */
+}
+
+/* Corner facets from the presentation template */
+.doorFacets {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.doorPicture {
+  position: relative;
+  height: 100%;
+}
+
+.doorRole {
+  position: absolute;
+  top: 0.9rem;
+  left: 1rem;
+  z-index: 1;
+  padding: 0.25rem 0.75rem 0.25rem 0.9rem;
+  /* the logo's cut corner */
+  clip-path: polygon(7px 0, 100% 0, 100% 100%, 0 100%, 0 7px);
+  background: var(--door-accent);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.doorText {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.25rem 1.5rem 1.4rem;
+}
+
+.doorText h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.5rem;
+  color: var(--door-accent);
+}
+
+.doorLearn {
+  margin: 0.6rem 0 0.35rem;
+  color: var(--bmr-text-muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.doorTasks {
+  list-style: none;
+  margin: 0 0 0.9rem;
+  padding: 0;
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.92rem;
+}
+
+.doorTasks li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.doorTasks svg {
+  flex: 0 0 auto;
+  color: var(--bmr-green);
+}
+
+.doorTypical {
+  margin: 0 0 1.1rem;
+  font-size: 0.84rem;
+  color: var(--bmr-text-muted);
+}
+
+.doorFoot {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.doorDevice {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.84rem;
+  color: var(--bmr-text-muted);
+}
+
+.doorButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: var(--bmr-radius-sm);
+  background: var(--door-accent);
+  color: #fff;
+  font-weight: 700;
+}
+
+[data-theme='dark'] .doorField {
+  --door-accent: var(--bmr-light-green);
+  --door-tint: rgba(95, 196, 120, 0.1);
+}
+
+[data-theme='dark'] .doorAdmin {
+  --door-accent: #e6e9ec;
+  --door-tint: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme='dark'] .doorArt {
+  background: #1d2620;
+}
+
+[data-theme='dark'] .doorFacets {
+  opacity: 0.4;
+}
+
+[data-theme='dark'] .doorAdmin .doorRole,
+[data-theme='dark'] .doorAdmin .doorButton {
+  color: #131820;
+}
+
+/* ---------- What's new ---------- */
+
+.newsSection {
+  padding: 2.5rem 0 1.5rem;
+}
+
+.newsGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1.5rem;
+}
+
+.newsFeature {
+  flex-direction: column;
+  background: var(--bmr-panel);
+}
+
+.newsReadMore {
+  margin-top: 0.4rem;
+  font-weight: 600;
+  color: var(--bmr-dark-green);
+}
+
+.newsFeatureText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1.25rem 1.5rem;
+  font-size: 0.9rem;
+  color: var(--bmr-text-muted);
+}
+
+.newsFeatureText strong {
+  font-size: 1.1rem;
+  color: var(--ifm-font-color-base);
+}
+
+.newsBadge {
+  align-self: flex-start;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  background: var(--bmr-green-hover);
+  color: var(--bmr-dark-green);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.newsList {
+  display: flex;
+  flex-direction: column;
+}
+
+.newsRow {
+  display: flex;
+  gap: 1rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--bmr-panel-line);
+  color: var(--ifm-font-color-base);
+  font-size: 0.92rem;
+}
+
+.newsRow:hover {
+  color: var(--bmr-dark-green);
+  text-decoration: none;
+}
+
+.newsDate {
+  flex: 0 0 5.5rem;
+  color: var(--bmr-text-muted);
+  font-size: 0.82rem;
+  padding-top: 0.1rem;
+}
+
+.newsMore {
+  display: flex;
+  gap: 1.5rem;
+  padding-top: 0.9rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.newsMore a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* ---------- Browse all topics ---------- */
+
+.topicsSection {
+  padding: 2.5rem 0 1rem;
+}
+
+.topicGrid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.topicCard {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 0.9rem;
+  border-radius: var(--bmr-radius);
+}
+
+.topicIcon {
+  flex: 0 0 2.4rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bmr-green-hover);
+  color: var(--bmr-dark-green);
+}
+
+.topicText {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  font-size: 0.8rem;
+  line-height: 1.35;
+  color: var(--bmr-text-muted);
+}
+
+.topicText strong {
+  font-size: 0.92rem;
+  color: var(--ifm-font-color-base);
+}
+
+/* ---------- Help strip ---------- */
+
+.helpStrip {
+  padding: 2rem 0 3.5rem;
+}
+
+.helpLinks {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.75rem;
+  padding: 1.1rem;
+  border-radius: var(--bmr-radius);
+  background: var(--bmr-panel);
+  font-weight: 600;
+}
+
+.helpLinks span {
+  color: var(--bmr-text-muted);
+}
+
+.helpLinks a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* ---------- Dark theme ---------- */
+
+[data-theme='dark'] .doorCard,
+[data-theme='dark'] .newsFeature,
+[data-theme='dark'] .topicCard {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+[data-theme='dark'] .newsReadMore {
+  color: var(--bmr-light-green);
+}
+
+[data-theme='dark'] .topicIcon {
+  background: rgba(95, 196, 120, 0.15);
+  color: var(--bmr-light-green);
+}
+
+[data-theme='dark'] .newsFeature {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+[data-theme='dark'] .newsBadge {
+  background: rgba(95, 196, 120, 0.15);
+  color: var(--bmr-light-green);
+}
+
+[data-theme='dark'] .newsRow {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* ---------- Narrow screens ---------- */
+
+@media (max-width: 1200px) {
+  .topicGrid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 996px) {
+  .doorGrid,
+  .newsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .topicGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .doorCard,
+  .newsFeature {
+    flex-direction: column;
+  }
+
+  .topicGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ---------- Topic guide tags ---------- */
+
+.topicTagField,
+.topicTagAdmin,
+.topicTagGeneral {
+  align-self: flex-start;
+  margin-top: 0.35rem;
+  white-space: nowrap;
+  padding: 0.05rem 0.45rem;
+  /* the logo's cut corner */
+  clip-path: polygon(4px 0, 100% 0, 100% 100%, 0 100%, 0 4px);
+  color: #fff;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.topicTagField {
+  background: var(--bmr-green);
+}
+
+.topicTagAdmin {
+  background: var(--bmr-text-strong);
+}
+
+.topicTagGeneral {
+  background: #bfe3ae;
+  color: #1f2a22;
+}
+
+[data-theme='dark'] .topicTagField {
+  background: var(--bmr-light-green);
+  color: #131820;
+}
+
+[data-theme='dark'] .topicTagAdmin {
+  background: #e6e9ec;
+  color: #131820;
+}
+
+.allDocsLink {
+  margin: 1rem 0 0;
+  text-align: right;
+  font-weight: 600;
+}

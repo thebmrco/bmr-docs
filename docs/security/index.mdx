@@ -8,13 +8,17 @@ import Icon from '@site/src/components/Icon'
 
 # <Icon name="privacy-policy" size="1em" /> Security & Data Protection
 
+<PageIntro illustration="security">
+
 A reference Q&A covering how BETTERMEETINGROOMS (BMR for short) handles customer data, authentication, hosting, third-party services, and deletion. Intended for IT, security, and procurement reviews.
+
+</PageIntro>
 
 ---
 
 ## How long and for what purpose is the data used?
 
-The data is used exclusively for the planning, design, and management of meeting rooms — specifically for creating digital twins, generating design proposals, and conducting acoustic analyses.
+The data is used exclusively for the planning, design, and management of meeting rooms — specifically for creating 3D room models, generating design proposals, and conducting acoustic analyses.
 
 Data is retained for the duration of the contractual relationship and subsequently deleted or anonymized in accordance with legal requirements.
 
@@ -22,39 +26,46 @@ Data is retained for the duration of the contractual relationship and subsequent
 
 ## Are personal data processed?
 
-Only data required for authentication is processed:
+BMR processes the personal data needed to run accounts and support the service:
 
-- **Login data:** Username, email address, and (where applicable) IP address are considered personal data. Processing occurs solely for the purpose of authentication and access control.
-- **No passwords are stored** by BMR. Authentication is fully managed by Auth0, a certified identity provider. Credentials never reach or reside in our systems.
+- **Login data:** Username, email address, and (where applicable) IP address. Processing occurs for authentication and access control.
+- **Error reports and feature flags:** the user's email address and username are attached to error reports (Sentry) and used to target feature flags (Flagsmith), so problems can be traced and features rolled out to the right users.
+- **Feedback:** when a user sends feedback, the message, their email address and any attachments are sent to our helpdesk.
+- **Room captures:** photos and scans show whatever is in the room. They contain personal data only if people appear in them.
+- **No passwords are stored** by BMR. Authentication is managed by Auth0, a dedicated identity provider. Credentials never reach or reside in our systems. Personal API tokens, where used, are stored only as a hash.
 - **No sensitive personal data** (health, financial, biometric, etc.) is collected or processed.
 
 ---
 
 ## Who has access to the data?
 
-**By default, only the customer** has access to their data within the BMR platform. Data isolation is enforced at the technical level — each database query is scoped to the authenticated user's organization. Users cannot access data belonging to other organizations.
+**Within the BMR platform, customers only see their own organisation's data.** Separation between organisations is enforced by the application on every request. Users cannot access data belonging to other organisations.
 
-**When the customer submits a Support Request**, specific members of the BMR team are granted access to the relevant project data (e.g., scans, markers, room setup) exclusively for the purpose of fulfilling that request.
+**BMR staff with platform administrator rights** can access data across organisations to operate and support the service, for example to answer a support question or fix a problem. BMR also uses an internal dashboard of aggregated platform usage.
 
-In the case of room scans and markers, this data may be processed to create a digital twin or support room design and analysis. While general learnings may be extracted from these processes to improve our models and workflows, no actual customer data is retained or reused — only fully anonymized, non-attributable insights.
+**When you send feedback or report a problem**, your message is handled as a ticket in our helpdesk. The BMR team members working on it may look at the related project data (e.g., scans, markers, room setup) for that purpose only.
 
-**The customer retains full ownership and control of their data at all times** and may request complete deletion of all associated data with immediate effect. Upon such a request, BMR will delete all organization data including rooms, scans, designs, equipment, associated files, and support requests.
+In the case of room scans and markers, this data may be processed to create a 3D room model or support room design and analysis. While general learnings may be extracted from these processes to improve our models and workflows, no actual customer data is retained or reused — only fully anonymized, non-attributable insights.
+
+**The customer retains full ownership and control of their data at all times** and may request complete deletion of all associated data. See [How is data deleted?](#how-is-data-deleted)
 
 If external involvement is required for any reason, access is limited, logged, and governed by strict Data Processing Agreements (DPAs) and Non-Disclosure Agreements (NDAs). We are also happy to sign a mutual NDA as an added layer of assurance.
 
 ---
 
-## Does the app use artificial intelligence?
+## Does the platform use artificial intelligence? {#does-the-app-use-artificial-intelligence}
 
-Yes, BMR Mobile uses artificial intelligence to support specific technical functions:
+Yes, for specific technical functions. AI requests are made from BMR's servers to the OpenAI API (model: GPT-5.5). Data sent via the OpenAI API is not used for model training.
 
-- **Marker description generation:** Photos taken of room elements (markers) are analyzed to generate textual descriptions that support the room assessment process. This uses OpenAI's API (model: gpt-4o-mini). Only the marker photo is sent — no personal data, user information, or organizational data is included. Data sent via the OpenAI API is not used for model training. This feature can be disabled upon request.
-- **Apple ARKit machine learning:** The app uses on-device machine learning features provided by Apple ARKit for spatial understanding and object detection in augmented reality. All processing occurs locally on the device — no data is sent externally.
-- **Acoustic analysis:** Algorithmic models are used to measure and interpret room acoustics based on scan data. While not strictly AI, these models provide automated analysis of acoustic properties. Processing occurs on our servers — no external services are involved.
+- **Marker titles and descriptions:** photos taken of room elements (markers) are analyzed to suggest a short title and description for each marker.
+- **Surface material detection:** to suggest the materials of walls, floor and ceiling for acoustic design, BMR sends up to 12 marker photos of the room (scaled down to at most 1024 px) and images rendered from the room's 3D scan.
+- **Apple ARKit machine learning:** BMR Mobile uses on-device machine learning provided by Apple ARKit for spatial understanding in augmented reality. This processing occurs locally on the device — no data is sent externally.
+- **Acoustic analysis:** algorithmic models measure and interpret room acoustics from the recorded measurement. While not AI, these models provide automated analysis of acoustic properties. This processing runs on BMR's own servers.
 
 **Key commitments:**
 
-- No personal or sensitive user data is processed by AI
+- Only images of the room are sent to the AI service — no account, user or organisation details
+- Photos show whatever is in the room, so avoid capturing people in marker photos
 - All AI use is limited to technical analysis of room-related inputs
 - Customer data is never used to train AI models
 - AI-based features can be disabled on request
@@ -68,11 +79,11 @@ BMR is provided as a **Software as a Service (SaaS)**.
 The hosting infrastructure:
 
 - **Cloud provider:** Amazon Web Services (AWS)
-- **Region:** Frankfurt (eu-central-1) — all data remains within the EU
+- **Region:** Frankfurt (eu-central-1) — application data and files are stored within the EU
 - **Database:** SQL based storage, hosted in the EU
 - **File storage:** AWS S3 in the EU, delivered via CloudFront CDN
 
-The infrastructure is managed and secured by BMR. Customers can use the solution without managing any infrastructure themselves, while benefiting from a secure, scalable, and high-performance cloud environment.
+The infrastructure is managed and secured by BMR. Customers can use the solution without managing any infrastructure themselves.
 
 ---
 
@@ -82,10 +93,11 @@ The system is accessible over the internet but **only through encrypted connecti
 
 Authentication is based on modern standards:
 
-- **Email and password combinations** with security requirements (managed by Auth0)
+- **Email and password combinations** with security requirements, managed by Auth0 (EU tenant). New accounts must verify their email address before they can use the platform.
 - **Single Sign-On (SSO)** via Webex, Google, Microsoft, or Apple
-- **Role-based access control** with granular permissions per organization, location, and room
+- **Role-based access control** with permissions per organization, location, and room
 - **Multi-factor authentication (MFA)** is supported by our identity provider (Auth0) and can be enabled on request
+- **Personal API tokens** for integrations, available only to users granted API access. Tokens expire after at most 365 days, can be limited to read-only, and are stored only as a hash.
 
 All authentication tokens are validated using industry-standard JWT verification. Sessions are managed via encrypted Redis connections in production.
 
@@ -95,7 +107,7 @@ All authentication tokens are validated using industry-standard JWT verification
 
 Yes, all components of the solution — room scanning, markers, design, acoustic measurement, and management — are cloud-based.
 
-Data is stored, processed, and managed through secure cloud services, hosted entirely within the EU.
+Data is stored, processed, and managed through cloud services hosted in the EU. The third-party services below receive only the data listed for each.
 
 ---
 
@@ -109,20 +121,20 @@ Data is stored, processed, and managed through secure cloud services, hosted ent
 
 ### Access Control
 
-- Hierarchical role-based access control (RBAC) with fine-grained permissions
-- Data isolation enforced at the database query level — customers only see their own data
+- Role-based access control (RBAC) by organization, location and room
+- Separation between organisations enforced by the application on every request — customers only see their own data
 - API endpoints are protected by authentication; administrative functions require elevated privileges
 
 ### Application Security
 
 - Protection against common web vulnerabilities (OWASP Top 10)
-- Restrictive CORS policy
+- Restrictive CORS policy and Content Security Policy
 
 ### Audit Trail
 
 - Every data change is tracked with who made the change and when
 - Login events are recorded for security monitoring
-- Soft delete ensures no data is permanently lost without explicit request
+- Deleted items go to the **Trash** first, where they can be restored during the organisation's retention period (7 days by default). After that they are permanently deleted.
 
 ### Secrets Management
 
@@ -134,11 +146,14 @@ Data is stored, processed, and managed through secure cloud services, hosted ent
 
 | Service | Purpose | Data Involvement |
 |---|---|---|
-| Auth0 | Authentication & identity management | Login credentials, email, profile |
+| Auth0 (EU tenant) | Authentication & identity management | Login credentials, email, profile |
 | AWS (S3, SES, CloudFront, ECS) | Hosting, file storage, email, CDN | All application data (EU-hosted) |
-| Cisco Webex | Room booking synchronization | Room data, encrypted tokens |
-| OpenAI | Marker description generation | Marker photos only — no PII |
-| Sentry | Error monitoring & alerting | Error context and stack traces — PII anonymized |
+| Cisco Webex | Read-only import of locations and workspaces from Webex Control Hub, when the integration is set up | Location and workspace data, encrypted tokens |
+| OpenAI | Marker titles and descriptions, surface material detection | Marker photos and images rendered from the room scan |
+| Sentry (EU) | Error monitoring & alerting | Error context and stack traces, with the user's email and username |
+| Flagsmith | Feature flags | Username and email address, to target features |
+| JetBrains YouTrack | Helpdesk for feedback and support | Feedback messages, sender's email, attachments |
+| OpenStreetMap | Map tiles on location pages | The map area being viewed |
 
 All third-party services are selected for GDPR compliance. Data processing agreements are in place where applicable.
 
@@ -157,12 +172,9 @@ Users can delete their own account at any time. Upon deletion:
 
 ### Customer Data Deletion
 
-Upon request, BMR will delete all data associated with a customer's organization, including:
+An organisation's Admin can delete the organisation in its settings. It goes to the Trash first, the other Admins are notified by email, and it can be restored until the retention period ends. BMR can also delete an organisation on request. Deletion covers:
 
 - All organization, location, and room records
-- Scans, equipment, designs, and digital twins
+- Scans, equipment, designs, and room models
 - Associated files in cloud storage
-- Support requests and messages
 - User-to-organization assignments
-
-The customer may request complete deletion with immediate effect at any time.

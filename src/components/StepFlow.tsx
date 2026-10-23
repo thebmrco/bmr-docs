@@ -103,7 +103,45 @@ function StepCard({ step, number, isLast }: { step: StepItem; number: number; is
   );
 }
 
+// Steps without screenshots: a compact row of numbered labels instead of
+// empty placeholder cards. Wraps on narrow screens.
+function CompactFlow({ steps }: Props) {
+  return (
+    <ol style={{
+      display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.5rem 0',
+      listStyle: 'none', padding: 0, margin: '0.75rem 0 1.25rem',
+    }}>
+      {steps.map((step, index) => (
+        <li key={index} style={{ display: 'flex', alignItems: 'center', margin: 0 }}>
+          <span style={{
+            display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+            padding: '0.35rem 0.85rem 0.35rem 0.4rem',
+            border: '1px solid var(--bmr-panel-line)', borderRadius: 999,
+            background: 'var(--bmr-panel)', fontSize: '0.88rem', fontWeight: 600,
+            fontFamily: 'var(--ifm-font-family-base)',
+          }}>
+            <span style={{
+              width: 22, height: 22, borderRadius: '50%', backgroundColor: GREEN, color: 'white',
+              display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+              fontSize: 12, fontWeight: 700, flexShrink: 0,
+            }}>
+              {index + 1}
+            </span>
+            {step.label}
+          </span>
+          {index < steps.length - 1 && (
+            <span aria-hidden="true" style={{ color: GREEN, opacity: 0.55, padding: '0 0.4rem', fontSize: '1.1rem' }}>›</span>
+          )}
+        </li>
+      ))}
+    </ol>
+  );
+}
+
 export default function StepFlow({ steps }: Props) {
+  if (steps.every((s) => !s.image && !(s.images && s.images.length))) {
+    return <CompactFlow steps={steps} />;
+  }
   return (
     <div style={{ overflowX: 'auto', paddingBottom: '0.5rem' }}>
       <div style={{ display: 'flex', alignItems: 'flex-start', width: 'max-content', padding: '0.25rem 0 0.75rem' }}>

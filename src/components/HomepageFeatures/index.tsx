@@ -1,321 +1,230 @@
 import type {ReactNode} from 'react';
 import React from 'react';
-import clsx from 'clsx';
 import Link from '@docusaurus/Link';
+import clsx from 'clsx';
+import {Illustration, Facets} from '../illustrations';
 import Heading from '@theme/Heading';
-import type { LucideIcon } from 'lucide-react';
 import {
-  Search, Palette, Wrench,
-  UserCheck, AudioLines, Boxes, MapPin, RefreshCw,
-  Smartphone, Globe, Server, ExternalLink, BookOpen, Scan,
+  ArrowRight, Smartphone, Laptop, Puzzle, ShieldCheck, CircleHelp,
+  MessageSquare, Map, Rocket, Scan, AudioLines, Rotate3d, Palette, Users,
+  Boxes, Wrench, Check,
 } from 'lucide-react';
+import type {LucideIcon} from 'lucide-react';
 import styles from './styles.module.css';
 
-/* ================================================================
-   Section 1 — The BMR Lifecycle (3 phases)
-   ================================================================ */
-
-type LifecycleItem = {
-  title: string;
-  icon: LucideIcon;
-  images: string[];
-  link: string;
-};
-
-const LifecyclePhases: LifecycleItem[] = [
-  {
-    title: 'Discovery',
-    icon: Search,
-    images: [
-      '/img/lifecycle/discovery-scan.png',
-      '/img/lifecycle/discovery-acoustics.png',
-    ],
-    link: '/docs/lifecycle/discovery/',
-  },
-  {
-    title: 'Design',
-    icon: Palette,
-    images: ['/img/design/bmr-studio-ui.png'],
-    link: '/docs/lifecycle/design/',
-  },
-  {
-    title: 'Maintain',
-    icon: Wrench,
-    images: ['/img/release/2026-07-room-overview.png'],
-    link: '/docs/lifecycle/maintenance/',
-  },
-];
-
-/* ================================================================
-   Section 2 — Platform components (App, Web, Back-end)
-   ================================================================ */
-
-function PlatformCards(): ReactNode {
+function SectionHead({title, text}: {title: string; text: string}) {
   return (
-    <div className="row">
-      <div className="col col--4">
-        <div className={styles.platformCard}>
-          <div className={styles.platformHeading}>
-            <Smartphone size={24} color="#206B31" aria-hidden="true" />
-            <Heading as="h3">BMR Mobile</Heading>
-          </div>
-          <div className={styles.platformAction}>
-            <a href="#download" className={styles.platformLink}>
-              Scan QR code on top ↑
-            </a>
-          </div>
-        </div>
-      </div>
-      <div className="col col--4">
-        <div className={styles.platformCard}>
-          <div className={styles.platformHeading}>
-            <Globe size={24} color="#206B31" aria-hidden="true" />
-            <Heading as="h3">Web Platform</Heading>
-          </div>
-          <div className={styles.platformAction}>
-            <a
-              href="https://app.bettermeetingrooms.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.platformLink}
-            >
-              app.bettermeetingrooms.com
-              <ExternalLink size={14} aria-hidden="true" />
-            </a>
-          </div>
-        </div>
-      </div>
-      <div className="col col--4">
-        <div className={styles.platformCard}>
-          <div className={styles.platformHeading}>
-            <Server size={24} color="#206B31" aria-hidden="true" />
-            <Heading as="h3">Secure Back-end</Heading>
-          </div>
-          <div className={styles.platformAction}>
-            <Link to="/docs/security/" className={styles.platformLink}>
-              Security &amp; Compliance →
-            </Link>
-          </div>
-        </div>
-      </div>
+    <div className={styles.sectionHead}>
+      <Heading as="h2" className={styles.blockTitle}>{title}</Heading>
+      <p>{text}</p>
     </div>
   );
 }
 
 /* ================================================================
-   Section 3 — Documentation sections
+   1 — Two doors. Like Microsoft 365, Google Workspace and Calendly, the role
+   is named first and the tasks under it say what the path covers. The
+   illustration shows the situation (on site with a phone / at a desk
+   running the organisation), not product screenshots.
    ================================================================ */
 
-type DocSection = {
+type Door = {
+  role: string;
   title: string;
-  icon: LucideIcon;
-  description: ReactNode;
+  tasks: string[];
+  typical: string;
+  device: string;
+  cta: string;
   link: string;
+  variant: 'field' | 'admin';
 };
 
-const DocSections: DocSection[] = [
+const Doors: Door[] = [
   {
-    title: 'Getting Started',
-    icon: UserCheck,
-    link: '/docs/getting-started/account-setup',
-    description: (
-      <>
-        Set up your account, invite your team, check device requirements, and
-        find answers to the questions we are asked most.
-      </>
-    ),
+    role: 'Field',
+    title: 'I capture rooms on site',
+    tasks: ['Find the room in BMR Mobile', 'Scan it and add markers', 'Measure the acoustics', 'Take the room photo'],
+    typical: 'Caretakers, sales, technicians',
+    device: 'BMR Mobile on iPhone or iPad',
+    cta: 'Open the Field guide',
+    link: '/docs/field',
+    variant: 'field',
   },
   {
-    title: 'User Guides',
-    icon: BookOpen,
-    link: '/docs/user-guides/room-capture',
-    description: (
-      <>
-        Step-by-step walkthroughs for the field — starting with capturing your
-        first room, with a printable version to take along.
-      </>
-    ),
-  },
-  {
-    title: 'Room Lifecycle',
-    icon: Search,
-    link: '/docs/lifecycle/discovery/',
-    description: (
-      <>
-        Discovery, Design, Deploy and Maintain — what you capture in a room and
-        what each phase produces.
-      </>
-    ),
-  },
-  {
-    title: 'BMR Studio',
-    icon: Palette,
-    link: '/docs/lifecycle/design/bmr-studio',
-    description: (
-      <>
-        Design and validate rooms in the unified 3D workspace — modes, render
-        modes, versions, and presenting a design.
-      </>
-    ),
-  },
-  {
-    title: 'Acoustics',
-    icon: AudioLines,
-    link: '/docs/acoustics/acoustics-guide',
-    description: (
-      <>
-        Run guided measurements and read MOS and RT60 results against the Green
-        Zone, with the science behind the score.
-      </>
-    ),
-  },
-  {
-    title: 'Catalog & 3D Models',
-    icon: Boxes,
-    link: '/docs/catalog/',
-    description: (
-      <>
-        What the equipment catalog stores for every item, the 3D model
-        standards, and how new items are added.
-      </>
-    ),
-  },
-  {
-    title: 'Product Updates',
-    icon: RefreshCw,
-    link: '/docs/roadmap/',
-    description: (
-      <>
-        Roadmap and release notes. What has been delivered, what is coming next,
-        and the detail of every release.
-      </>
-    ),
+    role: 'Manage & Design',
+    title: 'I manage, analyse and design rooms',
+    tasks: ['See the state of every room', 'Analyse and compare acoustic results', 'Design improvements in BMR Studio', 'Set up locations, rooms and people'],
+    typical: 'IT and AV leads, integrator project managers',
+    device: 'Web platform on a laptop',
+    cta: 'Open the Manage & Design guide',
+    link: '/docs/admin',
+    variant: 'admin',
   },
 ];
+
+function DoorCard({role, title, tasks, typical, device, cta, link, variant}: Door) {
+  const isField = variant === 'field';
+  const DeviceIcon = isField ? Smartphone : Laptop;
+  return (
+    <Link to={link} className={clsx(styles.doorCard, isField ? styles.doorField : styles.doorAdmin)}>
+      <div className={styles.doorArt}>
+        <Facets className={styles.doorFacets} />
+        <span className={styles.doorRole}>{role}</span>
+        <div className={styles.doorPicture}>
+          <Illustration name={isField ? 'field-work' : 'admin-work'} />
+        </div>
+      </div>
+      <div className={styles.doorText}>
+        <Heading as="h2">{title}</Heading>
+        <p className={styles.doorLearn}>Learn how to</p>
+        <ul className={styles.doorTasks}>
+          {tasks.map((t) => (
+            <li key={t}><Check size={16} aria-hidden="true" /> {t}</li>
+          ))}
+        </ul>
+        <p className={styles.doorTypical}>Typically: {typical}</p>
+        <div className={styles.doorFoot}>
+          <span className={styles.doorDevice}><DeviceIcon size={15} aria-hidden="true" /> {device}</span>
+          <span className={styles.doorButton}>{cta} <ArrowRight size={16} aria-hidden="true" /></span>
+        </div>
+      </div>
+    </Link>
+  );
+}
+
 /* ================================================================
-   Components
+   2 — What's new: the latest release large, the ones before as a dated list
    ================================================================ */
 
-function LifecycleCard({title, icon: Icon, images, link}: LifecycleItem) {
+const LatestRelease = {
+  date: 'October 2026',
+  title: 'Release 2.3: present a design, in high quality',
+  text: 'Presentation mode with saved views, High quality rendering, and clearer links between scans, measurements and designs.',
+  link: '/docs/release-notes/2026-10-release-2.3',
+};
+
+const EarlierReleases = [
+  {date: 'Sep 2026', title: '2.2: room recognition, Basic or Advanced acoustics, in-app guidance', link: '/docs/release-notes/2026-09-release-2.2'},
+  {date: 'Sep 2026', title: '2.1: BMR Mobile in the App Store, new acoustics view on the web', link: '/docs/release-notes/2026-09-release-2.1'},
+  {date: 'Aug 2026', title: '2.0: Liquid Glass redesign, role-aware home, AR Design (beta)', link: '/docs/release-notes/2026-08-release-2.0'},
+];
+
+function WhatsNew() {
   return (
-    <div className={clsx('col col--4')}>
-      <Link to={link} className={styles.cardLink}>
-        <div className={styles.previewCard}>
-          <div className={styles.previewImageWrap}>
-            {images.map((src) => (
-              <img key={src} src={src} alt="" className={styles.previewImage} loading="lazy" />
+    <section className={styles.newsSection}>
+      <div className="container">
+        <SectionHead title="What's new" text="The latest release, and the ones before it." />
+        <div className={styles.newsGrid}>
+          <Link to={LatestRelease.link} className={styles.newsFeature}>
+            <div className={styles.newsFeatureText}>
+              <span className={styles.newsBadge}>New · {LatestRelease.date}</span>
+              <strong>{LatestRelease.title}</strong>
+              <span>{LatestRelease.text}</span>
+              <span className={styles.newsReadMore}>Read the release notes →</span>
+            </div>
+          </Link>
+          <div className={styles.newsList}>
+            {EarlierReleases.map((r) => (
+              <Link key={r.link} to={r.link} className={styles.newsRow}>
+                <span className={styles.newsDate}>{r.date}</span>
+                <span>{r.title}</span>
+              </Link>
             ))}
-          </div>
-          <div className={styles.previewHeading}>
-            <Icon size={22} color="#206B31" aria-hidden="true" />
-            <Heading as="h3">{title}</Heading>
+            <div className={styles.newsMore}>
+              <Link to="/docs/release-notes/2026-10-release-2.3">All release notes →</Link>
+              <Link to="/docs/roadmap/"><Map size={14} aria-hidden="true" /> Roadmap →</Link>
+            </div>
           </div>
         </div>
-      </Link>
-    </div>
+      </div>
+    </section>
   );
 }
 
-function DocSectionCard({title, icon: Icon, link, description}: DocSection) {
+/* ================================================================
+   3 — Browse everything: one illustrated card per area
+   ================================================================ */
+
+type Topic = {
+  title: string;
+  text: string;
+  link: string;
+  icon: LucideIcon;
+  /** The guide whose menu the page opens in */
+  guide: 'Field' | 'Admin' | 'General';
+};
+
+const Topics: Topic[] = [
+  {title: 'Getting started', guide: 'General', text: 'Account, devices, sign-in', link: '/docs/getting-started/account-setup', icon: Rocket},
+  {title: 'Room capture', guide: 'Field', text: 'Scan, markers, room photo', link: '/docs/lifecycle/discovery/', icon: Scan},
+  {title: 'Acoustics', guide: 'Field', text: 'Measure, read the score', link: '/docs/acoustics/acoustics-guide', icon: AudioLines},
+  {title: 'AR Design', guide: 'Field', text: 'Place equipment on site', link: '/docs/lifecycle/design/ar-design-guide', icon: Rotate3d},
+  {title: 'BMR Studio', guide: 'Admin', text: 'Design on the real room', link: '/docs/lifecycle/design/bmr-studio', icon: Palette},
+  {title: 'Organisation & users', guide: 'Admin', text: 'Locations, rooms, roles', link: '/docs/structure', icon: Users},
+  {title: 'Catalog & 3D models', guide: 'Admin', text: 'The equipment library', link: '/docs/catalog/', icon: Boxes},
+  {title: 'Deploy & maintain', guide: 'Admin', text: 'Keep every room current', link: '/docs/lifecycle/deploy', icon: Wrench},
+  {title: 'Integrations', guide: 'Admin', text: 'Microsoft 365, Webex, Cisco', link: '/docs/integrations/microsoft-365', icon: Puzzle},
+  {title: 'Trust & security', guide: 'Admin', text: 'Hosting, data, access', link: '/docs/trust', icon: ShieldCheck},
+];
+
+/** Shown names of the guides; the keys stay short for code and CSS. */
+const GuideLabel = {Field: 'Field', Admin: 'Manage & Design', General: 'General'} as const;
+
+function TopicCard({title, text, link, icon: Icon, guide}: Topic) {
   return (
-    <div className={clsx('col col--4')}>
-      <Link to={link} className={styles.cardLink}>
-        <div className={styles.docCard}>
-          <div className={styles.docIcon}>
-            <Icon size={24} color="#206B31" aria-hidden="true" />
-          </div>
-          <div className={styles.docCardText}>
-            <Heading as="h4">{title}</Heading>
-            <p className={styles.docCardDesc}>{description}</p>
-          </div>
-        </div>
-      </Link>
-    </div>
+    <Link to={link} className={styles.topicCard}>
+      <span className={styles.topicIcon}>
+        <Icon size={20} aria-hidden="true" />
+      </span>
+      <span className={styles.topicText}>
+        <strong>{title}</strong>
+        <span>{text}</span>
+        <span className={styles[`topicTag${guide}`]}>{GuideLabel[guide]}</span>
+      </span>
+    </Link>
   );
 }
+
+/* ================================================================
+   Page
+   ================================================================ */
 
 export default function HomepageFeatures(): ReactNode {
   return (
     <>
-      {/* First time here — the room capture guide */}
-      <section className={styles.firstRun}>
+      <section className={styles.doors}>
         <div className="container">
-          <Link to="/docs/user-guides/room-capture" className={styles.firstRunCard}>
-            <div className={styles.firstRunIcon}>
-              <Scan size={28} aria-hidden="true" />
-            </div>
-            <div className={styles.firstRunText}>
-              <span className={styles.firstRunBadge}>New here? Start with this</span>
-              <Heading as="h2">Capture your first room</Heading>
-              <p>
-                One room, five steps, about 10–15 minutes. The walkthrough for
-                anyone invited to an organisation and sent out to record a room
-                — with a printable PDF to take with you.
-              </p>
-              <span className={styles.firstRunLink}>Open the guide →</span>
-            </div>
-          </Link>
-        </div>
-      </section>
-
-      {/* What's new — latest release highlight */}
-      <section className={styles.whatsNew}>
-        <div className="container">
-          <div className={styles.whatsNewInner}>
-            <Link className="intro-feature" to="/docs/release-notes/2026-10-release-2.3">
-              <span className="intro-feature-badge">Latest release · October 2026</span>
-              <span className="intro-feature-title">BMR Studio 2.3 — present a design, in high quality</span>
-              <span className="intro-feature-desc">
-                Present a design full screen with your own saved views, switch on
-                High quality rendering, and see what every scan, measurement and
-                design is linked to.
-              </span>
-              <span className="intro-feature-link">Read the release notes →</span>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Lifecycle section */}
-      <section className={styles.lifecycle}>
-        <div className="container">
-          <div className="text--center margin-bottom--lg">
-            <Heading as="h2" className={styles.sectionTitle}>
-              The BMR Solution
-            </Heading>
-          </div>
-          <div className="row">
-            {LifecyclePhases.map((props, idx) => (
-              <LifecycleCard key={idx} {...props} />
+          <SectionHead title="Start here" text="Which of these describes your work?" />
+          <div className={styles.doorGrid}>
+            {Doors.map((door) => (
+              <DoorCard key={door.link} {...door} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* Platform section */}
-      <section className={styles.platform}>
+      <WhatsNew />
+
+      <section className={styles.topicsSection}>
         <div className="container">
-          <div className="text--center margin-bottom--lg">
-            <Heading as="h2" className={styles.sectionTitle}>
-              How It's Delivered
-            </Heading>
+          <SectionHead title="Browse by topic" text="The tag shows who each topic is for." />
+          <div className={styles.topicGrid}>
+            {Topics.map((t) => (
+              <TopicCard key={t.link} {...t} />
+            ))}
           </div>
-          <PlatformCards />
+          <p className={styles.allDocsLink}>
+            <Link to="/docs/all">See every page in one list →</Link>
+          </p>
         </div>
       </section>
 
-      {/* Documentation section */}
-      <section className={styles.docs}>
+      <section className={styles.helpStrip}>
         <div className="container">
-          <div className="text--center margin-bottom--lg">
-            <Heading as="h2" className={styles.sectionTitle}>
-              Documentation
-            </Heading>
-          </div>
-          <div className="row">
-            {DocSections.map((props, idx) => (
-              <DocSectionCard key={idx} {...props} />
-            ))}
+          <div className={styles.helpLinks}>
+            <span>Still need help?</span>
+            <Link to="/docs/getting-started/faq"><CircleHelp size={16} aria-hidden="true" /> FAQ</Link>
+            <Link to="/docs/getting-started/send-feedback"><MessageSquare size={16} aria-hidden="true" /> Send feedback</Link>
           </div>
         </div>
       </section>

@@ -40,6 +40,12 @@ Reference pages have no cap on purpose. [MOS Score](../acoustics/mos-score) and 
 
 ---
 
+## <Icon name="scan" size="1em" /> Every page opens the same way
+
+Under the H1, the first paragraph goes in a `<PageIntro>` with an illustration from the [illustration library](illustrations). Hub pages then lay out their path with `<IllustratedSteps>`. Use the library's drawings for these openings, not screenshots or slides: they share one look, and they explain the idea before the detail. Screenshots belong further down, where the page shows the actual screen.
+
+---
+
 ## <Icon name="photo" size="1em" /> The five illustration forms
 
 "More illustrations" fails if it means more screenshots. These five carry information; anything else is decoration.
@@ -76,6 +82,8 @@ Rules that apply to all five:
 | Emoji and ticks | Only in the [Feature Overview](../roadmap/feature-overview) status columns, where they are a legend. Elsewhere use an admonition. |
 | Links | No file extension — `[Room](../structure/room)`, not `room.mdx`. |
 | One concept, one owner | Every concept has exactly one page that explains it. Everywhere else states it in one line and links. |
+| Claims about results | Describe what the user does and gets. Avoid *perfect*, *precise*, *accurate*, *guaranteed* and *certified* about BMR's scans, measurements or designs unless BMR can prove it in a dispute: "Capture a 3D model of the space", not "Create a precise 3D model". |
+| Notices | Where a page shows dimensions, acoustic results, coverage, designs, equipment lists, catalog data or a preview feature, add the matching one-line `<Notice kind="…" />` (`dimensions`, `acoustics`, `simulation`, `design`, `catalog`, `preview`). The texts live in `src/components/Notice.tsx` and match the product — never write your own version. |
 
 :::tip Why British English
 It already wins on weight of use across the docs, and BMR is a European company. The ruling exists to stop the drift, not because either variant is better.

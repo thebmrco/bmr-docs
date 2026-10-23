@@ -1,0 +1,59 @@
+---
+title: Capture a room
+sidebar_label: Field home
+description: For the person in the room with BMR Mobile — one room, five steps, about 10–15 minutes.
+hide_table_of_contents: true
+---
+
+import Icon from '@site/src/components/Icon'
+import { LinkTiles } from '@site/src/components/PictureSteps'
+
+# <Icon name="scan" size="1em" /> Capture a room
+
+<PageIntro illustration="scan" meta={['BMR Mobile on iPhone or iPad', '10–15 minutes']}>
+
+One room, five steps. No AV knowledge needed.
+
+</PageIntro>
+
+<IllustratedSteps
+  steps={[
+    { illustration: 'find-room', title: 'Find the room', hint: 'Search, or browse building → room', link: '/docs/user-guides/room-capture' },
+    { illustration: 'markers', title: 'Scan + markers', hint: 'Every wall, then mark outlets, AV, cables', link: '/docs/lifecycle/discovery/room-scan' },
+    { illustration: 'save-scan', title: 'Save', hint: 'All walls there? Save. Gaps? Retake.', link: '/docs/lifecycle/discovery/room-scan' },
+    { illustration: 'acoustics', title: 'Acoustics', hint: 'Speaker 1 m from the wall, test 3 spots', link: '/docs/acoustics/acoustics-guide' },
+    { illustration: 'room-photo', title: 'Room photo', hint: 'Whole room, no people, landscape', link: '/docs/user-guides/room-capture' },
+  ]}
+  done={['Scan', 'Markers', 'Acoustics', 'Room photo']}
+/>
+
+## <Icon name="circle-check" size="1em" /> Before you go
+
+<IconRow items={[
+  { icon: 'Smartphone', label: 'BMR Mobile installed' },
+  { icon: 'Mail', label: 'Your invitation email' },
+  { icon: 'Speaker', label: 'A speaker' },
+  { icon: 'BatteryCharging', label: 'Battery and Wi-Fi' },
+  { icon: 'DoorClosed', label: 'Room booked and quiet' },
+]} />
+
+Scanning needs an iPhone or iPad with LiDAR. [Supported devices →](/docs/getting-started/system-requirements)
+
+## <Icon name="help-circle" size="1em" /> Stuck?
+
+<FixList items={[
+  { problem: 'No rooms, or the app is empty', fix: 'Sign in with your company account' },
+  { problem: 'Room not found', fix: 'Browse via the building, or add the room' },
+  { problem: 'Forgot markers', fix: 'Room → Markers → +, while still in the room' },
+  { problem: 'Volume never ticks', fix: 'Louder speaker, centre of the room, noise off' },
+  { problem: 'Upload failed', fix: 'Nothing is lost. Try again later' },
+]} />
+
+## <Icon name="more" size="1em" /> More
+
+<LinkTiles tiles={[
+  { label: 'Full guide with screenshots', icon: 'export', link: '/docs/user-guides/room-capture' },
+  { label: 'Design on site (AR)', icon: '3d-ar-design', link: '/docs/lifecycle/design/ar-design-guide' },
+  { label: 'FAQ', icon: 'circle-question-mark', link: '/docs/getting-started/faq' },
+  { label: 'Send feedback', icon: 'comments', link: '/docs/getting-started/send-feedback' },
+]} />
