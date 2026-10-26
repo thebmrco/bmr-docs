@@ -94,7 +94,7 @@ module.exports = {
         { type: 'docSidebar', sidebarId: 'adminSidebar', label: 'Manage & Design', position: 'left' },
         // Every page, by area. Pages keep the view you chose (see src/components/guideView.ts).
         { type: 'docSidebar', sidebarId: 'allSidebar', label: 'All docs', position: 'left' },
-        { label: "What's new", to: '/docs/release-notes/2026-10-release-2.3', position: 'left' },
+        { label: "What's new", to: '/docs/release-notes/2026-10-release-2.4', position: 'left' },
         { type: 'search', position: 'right' },
       ],
     },
@@ -122,7 +122,7 @@ module.exports = {
         {
           title: 'Product',
           items: [
-            { label: "What's new", to: '/docs/release-notes/2026-10-release-2.3' },
+            { label: "What's new", to: '/docs/release-notes/2026-10-release-2.4' },
             { label: 'Roadmap', to: '/docs/roadmap/' },
             { label: 'Trust & security', to: '/docs/trust' },
           ],
