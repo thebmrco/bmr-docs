@@ -4,11 +4,13 @@ import {
   Illustration, PageIntro, IllustratedSteps, IconRow, FixList,
 } from '@site/src/components/illustrations'
 import Notice from '@site/src/components/Notice'
+import FeatureToggle, {FeatureToggleTag} from '@site/src/components/FeatureToggle'
 
 /**
  * Global MDX scope: <U m2={175} /> and the illustration library
  * (<PageIntro>, <Illustration>, <IllustratedSteps>, <IconRow>, <FixList>)
- * and <Notice kind="…"/> work on any docs page without an import.
+ * <Notice kind="…"/> and <FeatureToggle/> / <FeatureToggleTag/> work on any
+ * docs page without an import.
  */
 export default {
   ...MDXComponents,
@@ -19,4 +21,6 @@ export default {
   IconRow,
   FixList,
   Notice,
+  FeatureToggle,
+  FeatureToggleTag,
 }

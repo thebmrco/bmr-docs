@@ -1,0 +1,403 @@
+---
+title: Release 2.4 2026 October
+description: Cable mode rebuilt around a Connections panel with an unfolded-room 2D view, reusable equipment bundles, acoustic optimisation proposals, your own pictures printed on acoustic panels, a Documents tab with inventory and bill of materials, Room Configurations and a redesigned Room page.
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl'
+import {
+  Compass,
+  Cable,
+  Package,
+  Wand2,
+  FileText,
+  LayoutGrid,
+  Image,
+  Move,
+  MinusCircle,
+  Wrench,
+} from "lucide-react";
+
+# Release 2.4 2026 October
+
+Version 2.4 brings the **Web Platform** its second October update (released 22 October). **Cable mode** is rebuilt around a **Connections** panel and a flat **unfolded-room** view. **Bundles** let you save a group of equipment and place it again in one go. Measured rooms get an **acoustic optimisation proposal**, and each room gets a **Documents** tab with its **inventory** and **bill of materials**.
+
+The matching app release is [BMR Mobile 2.3](2026-10-release-2.3#bmr-mobile-23).
+
+Features marked <FeatureToggleTag /> are switched on per organisation.
+
+---
+
+## Web Platform (2026.10.1)
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Cable size={18} /> Cable mode, rebuilt around connections
+  </span>
+</summary>
+
+Cabling in BMR Studio now starts from **what needs to be connected**, not from drawing cables.
+
+- **Connections panel.** Every device lists its connections, the **required** ones first and the rest under **More**. Choose a port from the list — **Use another port** or **Connect to another port** — or remove a cable. **Reset connections** starts over.
+- **Required connections are drawn for you** when you open Cable mode. Ethernet always runs through an outlet, and **PoE** is supported.
+- **Warnings sit on the device** they are about — for example *Power missing*, *PoE missing* or *no free port* — with the fix one click away.
+- **Filter by cable type** — Power, HDMI, Network, USB and Other — each with its own colour, the same in 3D, 2D and **Plans** (formerly Cabling Docs).
+- **Unfolded room.** Switch between **2D**, **Split** and **3D**. The 2D view lays the walls, floor and ceiling out flat: select a cable and reshape it on the grid, move sockets and equipment along guides (arrow keys nudge), and place sockets on any surface.
+- **See-through 3D.** In Cable mode, furniture is hidden and walls are faded so the cables stand out.
+- **Cables save as you go**, and rerouting runs in the background, about six times faster.
+- Side panels **minimise to a rail** to give the room more space. Designs you can't edit open Cable mode **read-only**.
+
+<figure style={{margin: '1rem 0'}}>
+  <img
+    src={useBaseUrl('/img/release/2026-10-cable-connections-3d.jpg')}
+    alt="Cable mode in BMR Studio: the Connections panel on the left lists each device's ports with the connected port, cable type filters at the top and short warnings such as no free port, next to a see-through 3D room with the cables drawn in colour"
+    style={{width: '100%', borderRadius: '10px', border: '1px solid #E5E5D5'}}
+  />
+  <figcaption style={{textAlign: 'center', fontSize: '0.9em'}}>The Connections panel, with the see-through 3D view</figcaption>
+</figure>
+
+<figure style={{margin: '1rem 0'}}>
+  <img
+    src={useBaseUrl('/img/release/2026-10-cable-split-view.jpg')}
+    alt="Cable mode in Split view: the unfolded room on the left, with the walls laid out in a row between the ceiling and the floor and the cables drawn on them, and the same room in 3D on the right"
+    style={{width: '100%', borderRadius: '10px', border: '1px solid #E5E5D5'}}
+  />
+  <figcaption style={{textAlign: 'center', fontSize: '0.9em'}}>Split view: the unfolded room next to 3D</figcaption>
+</figure>
+
+Cable mode still carries the **Beta** label — check a route before you build from it.
+
+:::note Removed
+**Draw Cable**, **Auto-Route**, **Tidy Bundles**, editing cables point by point, guided cabling and **Renumber outlets** are gone — the Connections panel and the 2D view replace them. **Conduits** are hidden for now; existing conduit data is kept.
+:::
+
+<Notice kind="design" />
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Package size={18} /> Bundles: place a set of equipment in one go <FeatureToggleTag />
+  </span>
+</summary>
+
+<FeatureToggle />
+
+A **bundle** is a reusable kit — say a *Huddle room kit* with a video bar, display, mount and table microphone. Save it once, then place the whole set in any room.
+
+**Create a bundle**
+
+1. In BMR Studio, select **at least two** items in the room.
+2. Choose **Create bundle**, give it a **Bundle name** and an optional description.
+3. Tick the **catalogs** it should be available in, choose what it **Mounts to** — Floor, Wall or Ceiling — and click **Save bundle**.
+
+**Place a bundle**
+
+- In **Equipment** mode, open the **Bundles** tab (next to Generic, Catalog and Branding), search, and drag the bundle into the room.
+- Each placed item shows **Part of "…"**. The placed copy is independent — editing the bundle later does not change rooms that already use it.
+
+**Manage bundles**
+
+- **Organisation › Preferences › Bundles** lists every bundle your organisation can place: its own, public ones and ones shared with it. Your own can be edited there.
+- A bundle opens in its own small room — **one wall, the floor in front of it and the ceiling above** — so you can arrange the kit before you use it.
+- A bundle can be **shared** with other organisations, which can place it but not change it.
+- **Room Configurations** can include bundles, so a recommended setup can bring a whole kit.
+
+<figure style={{margin: '1rem 0'}}>
+  <img
+    src={useBaseUrl('/img/release/2026-10-bundles-list.jpg')}
+    alt="Organisation › Preferences › Bundles on the Web Platform: a searchable list of bundles with a thumbnail, name, number of items, what each mounts to, the catalogs it is in and its owner, with buttons to edit, change settings, share and delete, and a New bundle button"
+    style={{width: '100%', borderRadius: '10px', border: '1px solid #E5E5D5'}}
+  />
+  <figcaption style={{textAlign: 'center', fontSize: '0.9em'}}>Organisation › Preferences › Bundles</figcaption>
+</figure>
+
+<figure style={{margin: '1rem 0'}}>
+  <img
+    src={useBaseUrl('/img/release/2026-10-bundle-editor.jpg')}
+    alt="A bundle open in BMR Studio in its own small room — one wall with the floor in front of it — holding two displays, a video bar and a stand, with the Equipment sidebar on the right showing the Generic, Catalog, Bundles and Branding tabs"
+    style={{width: '100%', borderRadius: '10px', border: '1px solid #E5E5D5'}}
+  />
+  <figcaption style={{textAlign: 'center', fontSize: '0.9em'}}>Arranging a bundle in BMR Studio, in its own one-wall room</figcaption>
+</figure>
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Wand2 size={18} /> Acoustic optimisation proposal <FeatureToggleTag />
+  </span>
+</summary>
+
+<FeatureToggle />
+
+See what acoustic treatment from your catalog would do for a room, before you design it.
+
+- A measurement page now has two tabs: **Measured results** and **Optimisation proposal**.
+- Click **Optimise this room** and enter **how many people use this room**. BMR simulates the room, matches materials from your catalog and scores the treated room.
+- The proposal shows the **acoustic score after treatment**, the **average RT60** before and after, whether the room lands **inside the DIN 18041 tolerance band**, and the **recommended materials**. Estimated values are marked **Estimated · not measured**.
+- **Create new acoustic design in BMR Studio** turns the proposal into a design you can refine.
+- A room **without a measurement** gets a **Simulated** acoustics page, estimated from assumed materials — a starting point until the room is measured with the app.
+- The room overview shows the score **with this design** and **vs potential**.
+- **Organisation › Preferences › Acoustic** has a **Default acoustics catalog** for proposals.
+
+<Notice kind="acoustics" />
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <FileText size={18} /> Documents: inventory and bill of materials for every room
+  </span>
+</summary>
+
+Each room has a new **Documents** tab with two views: the **Inventory** — what is in the room today — and the **BOM** — what each design needs.
+
+**Build the inventory from your markers**
+
+The inventory starts from the marker photos taken in the room. Click **Review N markers** to go through them one by one. After a new scan, **Carry over the items of the previous inventory** to start from what was there before.
+
+<figure style={{margin: '1rem 0'}}>
+  <img
+    src={useBaseUrl('/img/release/2026-10-documents-inventory-start.jpg')}
+    alt="An empty inventory in the Documents tab, marked Not verified yet, 0 of 15 markers reviewed, with a Review 15 markers button and Carry over the items of the previous inventory"
+    style={{width: '100%', maxWidth: '100%', display: 'block', margin: '0 auto', borderRadius: '10px', border: '1px solid #E5E5D5'}}
+  />
+  <figcaption style={{textAlign: 'center', fontSize: '0.9em'}}>A new inventory: review the room&apos;s markers, or carry over the previous one</figcaption>
+</figure>
+
+For each marker, **Review marker** shows the photo next to the catalog:
+
+- Answer **What does this photo show?** with a quick choice — Display, Video bar, Microphone, Speaker, Touch controller, Power outlet, Light switch — or search the catalog.
+- **Add** the matching item and set **how many** the photo shows. The catalog item is shown beside the photo, with **View in 3D**.
+- **Nothing to record** skips a photo with nothing to list. **Done, next** moves to the next marker.
+
+<div style={{display: 'flex', gap: '16px', flexWrap: 'wrap', margin: '1rem 0'}}>
+  <figure style={{flex: '1 1 300px', margin: 0}}>
+    <img src={useBaseUrl('/img/release/2026-10-documents-review-marker-search.jpg')} alt="Review marker: a photo of wall power outlets on the right, and on the left a search for outlet with catalog results such as Ethernet Outlet, Power Outlet and USB-C Outlet, each with an Add button" style={{width: '100%', borderRadius: '10px', border: '1px solid #E5E5D5'}} />
+    <figcaption style={{textAlign: 'center', fontSize: '0.9em'}}>Match the photo to the catalog</figcaption>
+  </figure>
+  <figure style={{flex: '1 1 300px', margin: 0}}>
+    <img src={useBaseUrl('/img/release/2026-10-documents-review-marker-linked.jpg')} alt="Review marker with the catalog Power Outlet shown in 3D next to the marker photo, linked with a quantity of 3, and the buttons Nothing to record and Done, next" style={{width: '100%', borderRadius: '10px', border: '1px solid #E5E5D5'}} />
+    <figcaption style={{textAlign: 'center', fontSize: '0.9em'}}>The linked item, with how many the photo shows</figcaption>
+  </figure>
+</div>
+
+**The inventory**
+
+- Every item shows its **category**, **manufacturer**, **SKU**, **quantity**, a note, whether it is **verified**, and the **marker it came from**.
+- When every marker is reviewed, the inventory is marked **Inventory verified**. Each change is kept as a **version**.
+- **Add** an item by hand — choose it from the catalog or type it in. A photo is optional: it makes a marker, and the item counts as verified.
+- Switch between a **list** and a **photo grid**, and **download** the inventory.
+
+<figure style={{margin: '1rem 0'}}>
+  <img
+    src={useBaseUrl('/img/release/2026-10-documents-inventory-verified.jpg')}
+    alt="A verified inventory: 4 of 4 markers reviewed and Inventory verified, listing light switches, an air condition output, a power outlet and an ethernet outlet with category, manufacturer, quantity, verification, date and the marker each came from"
+    style={{width: '100%', maxWidth: '100%', display: 'block', margin: '0 auto', borderRadius: '10px', border: '1px solid #E5E5D5'}}
+  />
+  <figcaption style={{textAlign: 'center', fontSize: '0.9em'}}>A verified inventory, with the marker each item came from</figcaption>
+</figure>
+<figure style={{margin: '1rem 0'}}>
+  <img
+    src={useBaseUrl('/img/release/2026-10-documents-add-equipment.jpg')}
+    alt="The Add equipment dialog: an optional photo, Select from catalog, and fields for name, category, manufacturer, SKU, quantity and note"
+    style={{width: '100%', maxWidth: '900px', display: 'block', margin: '0 auto', borderRadius: '10px', border: '1px solid #E5E5D5'}}
+  />
+  <figcaption style={{textAlign: 'center', fontSize: '0.9em'}}>Add an item by hand — from the catalog or typed in</figcaption>
+</figure>
+
+**The bill of materials (BOM)**
+
+- The **BOM** lists what a design needs — equipment with category, manufacturer, SKU and quantity, and the **cables** by type and length.
+- It mirrors the design: **Edit in design** jumps to BMR Studio to change it. Pick another design to see its BOM.
+- **Download** the BOM, and tick two versions or two designs to **compare** them.
+
+<figure style={{margin: '1rem 0'}}>
+  <img
+    src={useBaseUrl('/img/release/2026-10-documents-bom.jpg')}
+    alt="The BOM of the active design: eight pieces of equipment with category, manufacturer, SKU and quantity, each with Edit in design, and cables listed by type with their lengths"
+    style={{width: '100%', maxWidth: '100%', display: 'block', margin: '0 auto', borderRadius: '10px', border: '1px solid #E5E5D5'}}
+  />
+  <figcaption style={{textAlign: 'center', fontSize: '0.9em'}}>The BOM of the active design, with its cables</figcaption>
+</figure>
+
+<Notice kind="design" />
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <LayoutGrid size={18} /> Room Configurations, and a redesigned Room page
+  </span>
+</summary>
+
+**Room Configurations** is now its own tab in the organisation, with **Yours** and **BMR Defaults**.
+
+- **Add a room configuration** — **Start from scratch** or **Start from an existing one**.
+- A configuration has **placed** equipment, arranged in BMR Studio, and an **unplaced** list.
+- In a design, **Place configuration** drops the whole layout on the wall you point at — press **R** to turn it to the next wall.
+
+The **Room page** has a new top area:
+
+- **Where**, **Room** and **Size** at a glance, each edited in a pop-up. Size is measured from the scan, not typed in.
+- **Add hero pic**, **Use a marker photo** or go back to **Earlier hero pics**.
+- The **⋯** menu holds **Edit all details** and **Delete room**.
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Image size={18} /> Acoustic panel murals: your own picture on acoustic panels
+  </span>
+</summary>
+
+**Acoustic panels** improve how a room sounds — and now they can show **your own picture** too. A **panel mural** spreads one image across a group of acoustic panels, so the treatment that fixes the room's acoustics also carries your brand, a city skyline or any artwork you choose.
+
+**Create a mural** in **Organisation › Preferences › Branding › Panel murals** with **New mural**:
+
+- **Upload the picture** — drag and drop a PNG or JPEG, up to 150 MB.
+- **Choose the acoustic panel** — a product from your catalog that allows branding, or a **custom size** — and the grid, from **1 × 1** up to **3 × 3**.
+- **Set the panels** — width, height, depth, the **gap** between panels and the **bleed** for printing.
+- **Decide how the picture meets the gaps** — let it **run behind the gaps**, or **split it at the panel edges** to keep the whole picture. You can also **wrap the sides** with a mirror of each panel's edge.
+- **Place the picture** — **Fill wall** or **Fit inside**, with a background colour. The dialog shows the **wall size**, the **print size per panel** and the **print density**.
+
+**Use it**
+
+- In BMR Studio, the mural is in the **Branding** tab in Equipment mode — place it on the wall like any other item.
+- It appears in the bill of materials as **Custom print**.
+- **Download print files** for the panels, at the print density you choose (for example 150 dpi).
+
+<figure style={{margin: '1rem 0'}}>
+  <img
+    src={useBaseUrl('/img/release/2026-10-panel-murals-branding.jpg')}
+    alt="Organisation › Preferences › Branding on the Web Platform, with Logos at the top and Panel murals below: spread a picture across a grid of acoustic panels, with a print density setting and a New mural button"
+    style={{width: '100%', borderRadius: '10px', border: '1px solid #E5E5D5'}}
+  />
+  <figcaption style={{textAlign: 'center', fontSize: '0.9em'}}>Panel murals sit under Branding, next to your logos</figcaption>
+</figure>
+
+<figure style={{margin: '1rem 0'}}>
+  <img
+    src={useBaseUrl('/img/release/2026-10-panel-mural-new.jpg')}
+    alt="The New panel mural dialog: an upload area for the picture, and settings for the panel product, grid presets from 1 × 1 to 3 × 3, columns and rows, panel width, height and depth, gap and bleed, how the picture meets the gaps, picture placement, and the resulting wall size and print size per panel"
+    style={{width: '100%', maxWidth: '720px', display: 'block', margin: '0 auto', borderRadius: '10px', border: '1px solid #E5E5D5'}}
+  />
+  <figcaption style={{textAlign: 'center', fontSize: '0.9em'}}>New panel mural: the picture, the acoustic panels and how they are printed</figcaption>
+</figure>
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Move size={18} /> Smoother design in BMR Studio
+  </span>
+</summary>
+
+- **Doors** have a **Hinge side (from inside)** — Left or Right — and **Opens** Inward or Outward, with the swing drawn in 3D.
+- **Live dimensions** on walls, doors and windows while you draw or resize them.
+- **Walls** show their handles as soon as you select them, with a new centre handle. Hold **Shift** to snap the ends to 22.5°. Wall-mounted items stay on their wall.
+- **Mounting points.** Equipment snaps onto a mount — VESA, rack or camera screw — and moves with it. Drag it off to detach.
+- A **new design opens straight in BMR Studio** after you save it.
+- BMR Studio draws only when something changes, so it stays quicker on large rooms.
+
+<div style={{display: 'flex', gap: '16px', flexWrap: 'wrap', margin: '1rem 0'}}>
+  <figure style={{flex: '1 1 300px', margin: 0}}>
+    <img src={useBaseUrl('/img/release/2026-10-studio-door.jpg')} alt="A door selected in BMR Studio, seen from above, with its swing drawn on the floor, and the Properties panel showing Hinge side (from inside) Left or Right and Opens Inward or Outward" style={{width: '100%', borderRadius: '10px', border: '1px solid #E5E5D5'}} />
+    <figcaption style={{textAlign: 'center', fontSize: '0.9em'}}>Hinge side and opening direction, with the swing drawn</figcaption>
+  </figure>
+  <figure style={{flex: '1 1 300px', margin: 0}}>
+    <img src={useBaseUrl('/img/release/2026-10-studio-wall-handles.jpg')} alt="A wall selected in BMR Studio, highlighted, with handles at both ends and a new centre handle, next to the Properties panel with rotation, wall material and wall colour" style={{width: '100%', borderRadius: '10px', border: '1px solid #E5E5D5'}} />
+    <figcaption style={{textAlign: 'center', fontSize: '0.9em'}}>A selected wall shows its handles at once, including the new centre handle</figcaption>
+  </figure>
+</div>
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Compass size={18} /> Guided tours
+  </span>
+</summary>
+
+New users are shown around the Web Platform with short guided tours — a few words at a time, pointing at the part of the screen they are about.
+
+- **Welcome tour** — nine steps through the navigation: **Overview**, your organisations, locations and rooms, **My Tasks**, **Scans**, **Designs**, **Acoustics**, **Send feedback** and **Notifications**.
+- **BMR Studio tours** — an overview the first time you open BMR Studio, and a short tour of **Structurals**, **Equipment** and **Cables** the first time you use each mode.
+- Step through with **Next** and **Previous**, or **Skip** or close a tour at any time.
+- Tours show for users who joined from **15 October 2026**. The new **Cable mode** tour shows for everyone.
+
+<img
+  src={useBaseUrl('/img/release/2026-10-tour-welcome.jpg')}
+  alt="The first step of the Welcome tour on the Web Platform: a card reading 1 of 9, Welcome! This is the navigation, next to the highlighted navigation on the left, with Skip and Next"
+  style={{width: '100%', maxWidth: '640px', display: 'block', margin: '1rem auto', borderRadius: '10px', border: '1px solid #E5E5D5'}}
+/>
+
+<div style={{display: 'flex', gap: '16px', flexWrap: 'wrap', margin: '1rem 0'}}>
+  <figure style={{flex: '1 1 260px', margin: 0}}>
+    <img src={useBaseUrl('/img/release/2026-10-tour-overview.jpg')} alt="Step 2 of 9 of the Welcome tour, pointing at Overview: your start page, what is happening in your rooms and what needs your attention" style={{width: '100%', borderRadius: '10px', border: '1px solid #E5E5D5'}} />
+  </figure>
+  <figure style={{flex: '1 1 260px', margin: 0}}>
+    <img src={useBaseUrl('/img/release/2026-10-tour-send-feedback.jpg')} alt="Step 8 of 9 of the Welcome tour, pointing at the Send Feedback button: something not working, or an idea? Tell us here" style={{width: '100%', borderRadius: '10px', border: '1px solid #E5E5D5'}} />
+  </figure>
+</div>
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <MinusCircle size={18} /> Removed
+  </span>
+</summary>
+
+- **Design requests** — the **Request Design** questionnaire, the room's **Design Requests** tab and the Webex team-room post.
+- The separate **Floor Plan** and **Ceiling Plan** pages in Plans — their content is in the unfolded room view.
+- The floating **Add equipment** button on the BMR Studio canvas — use the Equipment mode sidebar.
+- The old marker details page — markers open in the **Review marker** panel.
+- **Overall score**, **Tech score** and **Description** at the top of the Room page.
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Wrench size={18} /> Fixes
+  </span>
+</summary>
+
+- Copying a design or saving a version keeps logos, groups, floor area and ceiling height.
+- **Exports:** the Webex export has the right room height, Workspace Designer exports are rotated and centred correctly, DXF line breaks are fixed, and CSV exports are protected against formula injection.
+- Replacing a scan file saves the new version.
+- Shared catalogs can be added to favourites.
+
+</details>
+
+---
+
+<p className="release-end">End of Release Notes</p>

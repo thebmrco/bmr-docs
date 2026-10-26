@@ -18,7 +18,8 @@ const releaseNotes = {
   type: 'category' as const,
   label: 'Release Notes',
   items: [
-    newDoc('release-notes/2026-10-release-2.3'),
+    newDoc('release-notes/2026-10-release-2.4'),
+    updatedDoc('release-notes/2026-10-release-2.3'),
     'release-notes/2026-09-release-2.2',
     'release-notes/2026-09-release-2.1',
     'release-notes/2026-08-release-2.0',

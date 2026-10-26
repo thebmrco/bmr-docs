@@ -98,15 +98,15 @@ function DoorCard({role, title, tasks, typical, device, cta, link, variant}: Doo
 
 const LatestRelease = {
   date: 'October 2026',
-  title: 'Release 2.3: present a design, in high quality',
-  text: 'Presentation mode with saved views, High quality rendering, and clearer links between scans, measurements and designs.',
-  link: '/docs/release-notes/2026-10-release-2.3',
+  title: 'Release 2.4: cables by connection, bundles and acoustic proposals',
+  text: 'Cable mode rebuilt around a Connections panel, reusable equipment bundles, acoustic optimisation proposals, and a Documents tab with inventory and bill of materials.',
+  link: '/docs/release-notes/2026-10-release-2.4',
 };
 
 const EarlierReleases = [
+  {date: 'Oct 2026', title: '2.3: BMR Mobile 2.3 room photo and clearer acoustics, presentation mode in Studio', link: '/docs/release-notes/2026-10-release-2.3'},
   {date: 'Sep 2026', title: '2.2: room recognition, Basic or Advanced acoustics, in-app guidance', link: '/docs/release-notes/2026-09-release-2.2'},
   {date: 'Sep 2026', title: '2.1: BMR Mobile in the App Store, new acoustics view on the web', link: '/docs/release-notes/2026-09-release-2.1'},
-  {date: 'Aug 2026', title: '2.0: Liquid Glass redesign, role-aware home, AR Design (beta)', link: '/docs/release-notes/2026-08-release-2.0'},
 ];
 
 function WhatsNew() {
@@ -131,7 +131,7 @@ function WhatsNew() {
               </Link>
             ))}
             <div className={styles.newsMore}>
-              <Link to="/docs/release-notes/2026-10-release-2.3">All release notes →</Link>
+              <Link to="/docs/release-notes/2026-10-release-2.4">All release notes →</Link>
               <Link to="/docs/roadmap/"><Map size={14} aria-hidden="true" /> Roadmap →</Link>
             </div>
           </div>

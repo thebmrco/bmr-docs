@@ -1,10 +1,14 @@
 ---
 title: Release 2.3 2026 October
-description: BMR Studio on the Web Platform gets a presentation mode with saved views, a High quality render mode, clearer links between scans, measurements and designs, a catalog picker with favourites and search, and a smoother editing experience.
+description: BMR Mobile 2.3 adds a new way to take the room photo and shows clearer acoustic results; BMR Studio on the Web Platform gets a presentation mode with saved views, High quality rendering, clearer links between scans, measurements and designs, and a smoother editing experience.
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'
 import {
+  Camera,
+  AudioLines,
+  Share2,
+  SquarePlus,
   Presentation,
   Sparkles,
   Link2,
@@ -15,7 +19,7 @@ import {
 
 # Release 2.3 2026 October
 
-Version 2.3 brings the **Web Platform** its October update. **BMR Studio** can now **present a design** full screen, step by step, with your own saved views. A new **render mode control** adds **High quality** rendering. Scans, markers, measurements and designs show **what they are linked to**, and the **catalog picker** is easier to search.
+Version 2.3 brings **BMR Mobile 2.3** (released 22 October) and the **Web Platform**'s October update. In the app, there is a **new way to add the room photo**, acoustic results are **easier to read**, and you can **share a link to a room** from the app. On the web, **BMR Studio** can now **present a design** full screen, step by step, with your own saved views. A new **render mode control** adds **High quality** rendering. Scans, markers, measurements and designs show **what they are linked to**, and the **catalog picker** is easier to search.
 
 ---
 
@@ -131,6 +135,10 @@ Choosing a catalog in BMR Studio is quicker.
 
 The **Cables** mode in BMR Studio now carries a **Beta** label, as do its **Auto-Route** and **Tidy Bundles** tools. Cabling works as before — the label is a reminder to **check a route before you build from it**.
 
+:::note Changed in Release 2.4
+Cable mode was rebuilt around a **Connections** panel in [Release 2.4](2026-10-release-2.4). Auto-Route and Tidy Bundles were removed.
+:::
+
 </details>
 
 ---
@@ -150,6 +158,116 @@ A set of smaller improvements makes working in BMR Studio feel more natural.
 - **2D plan view** — switching to 2D centres the room and fits it to the canvas, and equipment and furniture are drawn with clear outlines.
 - **Added walls** reach the ceiling and snap to the existing walls.
 - **Arrow keys nudge** doors, windows and openings along their wall.
+
+</details>
+
+---
+
+## BMR Mobile (2.3)
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Camera size={18} /> A new way to add the room photo
+  </span>
+</summary>
+
+A room without a photo now shows a **camera icon** on its picture. Tap it to open **Hero pic** and choose:
+
+- **Take photo** — photograph the room now.
+- **Pick from markers** — use one of the room's marker photos, so you don't need a new picture.
+- **Pick from library** — use a photo from your device.
+
+The room photo is also a step in the **Next step** banner, after the scan, the markers and the acoustics: **Add a room photo · tap the camera**. When all four are done, the banner says **Room captured**, with **Continue on the web** to carry on in BMR Studio.
+
+<div style={{display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', margin: '1rem 0'}}>
+  <div className="phone-screenshot" style={{flex: '0 0 220px'}}>
+    <img src={useBaseUrl('/img/release/2026-10-mobile-next-step-room-photo.jpg')} alt="A room's Overview in BMR Mobile with a camera icon on the room picture and the Next step banner reading Add a room photo, tap the camera, above the ticked Scans and Markers cards" style={{width: '100%', borderRadius: '12px'}} />
+  </div>
+  <div className="phone-screenshot" style={{flex: '0 0 220px'}}>
+    <img src={useBaseUrl('/img/release/2026-10-mobile-hero-pic-sheet.jpg')} alt="The Hero pic sheet in BMR Mobile with three choices: Take photo, Pick from markers and Pick from library" style={{width: '100%', borderRadius: '12px'}} />
+  </div>
+</div>
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <AudioLines size={18} /> Clearer acoustic results
+  </span>
+</summary>
+
+- **Measured results** now show **Reverberation**, **Bass balance** (Boomy, Balanced or Tight) and **Speech to noise** on colour scale bars. Tap a bar to see what it measures and which end is better.
+- **Scores match the Web Platform.** The score bands and the combined result of the three measurement positions now come from BMR's servers, so the app and the web show the same score.
+- **Compare 2 or 3 measurements.** In the room's **Acoustics** tab, tick the measurements you want, then tap **Compare**. The bar shows how many are selected.
+- **An animated room** guides each measurement: it shows the speaker and how to move between the measurement spots. The speaker placement is also easier to read on iPad.
+- The room confirmation screen shows the **room name** and the **scan date** separately, so a room named after a date is not mistaken for the scan.
+
+<div style={{display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', margin: '1rem 0'}}>
+  <div className="phone-screenshot" style={{flex: '0 0 220px'}}>
+    <img src={useBaseUrl('/img/release/2026-10-mobile-acoustic-results.jpg')} alt="The Results screen in BMR Mobile: a Mean Opinion Score of 4.2, rated Good, above Measured results with colour scale bars for Reverberation, Bass balance from Boomy to Tight, and Speech to noise, followed by the average RT60" style={{width: '100%', borderRadius: '12px'}} />
+  </div>
+  <div className="phone-screenshot" style={{flex: '0 0 220px'}}>
+    <img src={useBaseUrl('/img/release/2026-10-mobile-acoustic-animated-room.jpg')} alt="Measurement 1 of 3 in BMR Mobile, with the input and output device, and an animated room showing the speaker and a person walking to a measurement spot, above the Start Measurement button" style={{width: '100%', borderRadius: '12px'}} />
+  </div>
+</div>
+
+<Notice kind="acoustics" />
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Share2 size={18} /> Share a link to a room
+  </span>
+</summary>
+
+Send a room from BMR Mobile to a computer or anyone on your team, and open it there straight away.
+
+- When a room is captured, the banner says **Room captured** — tap **Continue on the web**.
+- Or use **Share Room** in the room's **⋯** menu, or in the menu of any room in the room list.
+- The standard iPhone and iPad share sheet opens: send the link with **Messages**, **Mail**, **AirDrop** or any other app, or **Copy** it.
+- The link opens the room on the Web Platform in any browser — ready to continue in **BMR Studio** on a computer. On an iPhone or iPad with BMR Mobile 2.3, it opens the room in the app.
+
+<div style={{display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', margin: '1rem 0'}}>
+  <div className="phone-screenshot" style={{flex: '0 0 220px'}}>
+    <img src={useBaseUrl('/img/release/2026-10-mobile-room-captured.jpg')} alt="A room's Overview in BMR Mobile with the banner Room captured and the button Continue on the web" style={{width: '100%', borderRadius: '12px'}} />
+  </div>
+  <div className="phone-screenshot" style={{flex: '0 0 220px'}}>
+    <img src={useBaseUrl('/img/release/2026-10-mobile-share-sheet.jpg')} alt="The iPhone share sheet for the room's link on app.bettermeetingrooms.com, with AirDrop, Messages, Mail, Webex, Copy and Open in Chrome. The row of contacts is blurred" style={{width: '100%', borderRadius: '12px'}} />
+  </div>
+</div>
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <SquarePlus size={18} /> A new + Create menu
+  </span>
+</summary>
+
+Tap **+ Create** to start anything from one place.
+
+- **New room** — create the room first, then scan, mark, measure and design it.
+- **In a room** — go straight to **Scan room**, **Add markers** or **Acoustic measurement**, then choose the room.
+- **Structure** — **New location** and **New organisation**. Options your role can't use are shown greyed out, so the menu looks the same for everyone.
+
+Creating needs an internet connection; without one, the options are greyed out.
+
+<div style={{display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', margin: '1rem 0'}}>
+  <div className="phone-screenshot" style={{flex: '0 0 220px'}}>
+    <img src={useBaseUrl('/img/release/2026-10-mobile-create-menu.jpg')} alt="The Create menu in BMR Mobile: New room at the top, then In a room with Scan room, Add markers and Acoustic measurement, and Structure with New location and New organisation" style={{width: '100%', borderRadius: '12px'}} />
+  </div>
+</div>
 
 </details>
 
