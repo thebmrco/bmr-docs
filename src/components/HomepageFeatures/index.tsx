@@ -156,13 +156,13 @@ type Topic = {
 
 const Topics: Topic[] = [
   {title: 'Getting started', guide: 'General', text: 'Account, devices, sign-in', link: '/docs/getting-started/account-setup', icon: Rocket},
-  {title: 'Room capture', guide: 'Field', text: 'Scan, markers, room photo', link: '/docs/lifecycle/discovery/', icon: Scan},
+  {title: 'Discovery', guide: 'Field', text: 'Scan, markers, inventory', link: '/docs/lifecycle/discovery/', icon: Scan},
   {title: 'Acoustics', guide: 'Field', text: 'Measure, read the score', link: '/docs/acoustics/acoustics-guide', icon: AudioLines},
   {title: 'AR Design', guide: 'Field', text: 'Place equipment on site', link: '/docs/lifecycle/design/ar-design-guide', icon: Rotate3d},
   {title: 'BMR Studio', guide: 'Admin', text: 'Design on the real room', link: '/docs/lifecycle/design/bmr-studio', icon: Palette},
   {title: 'Organisation & users', guide: 'Admin', text: 'Locations, rooms, roles', link: '/docs/structure', icon: Users},
   {title: 'Catalog & 3D models', guide: 'Admin', text: 'The equipment library', link: '/docs/catalog/', icon: Boxes},
-  {title: 'Deploy & maintain', guide: 'Admin', text: 'Keep every room current', link: '/docs/lifecycle/deploy', icon: Wrench},
+  {title: 'Maintenance', guide: 'Admin', text: 'Keep every room current', link: '/docs/lifecycle/maintenance', icon: Wrench},
   {title: 'Integrations', guide: 'Admin', text: 'Microsoft 365, Webex, Cisco', link: '/docs/integrations/microsoft-365', icon: Puzzle},
   {title: 'Trust & security', guide: 'Admin', text: 'Hosting, data, access', link: '/docs/trust', icon: ShieldCheck},
 ];

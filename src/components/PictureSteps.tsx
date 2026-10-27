@@ -4,6 +4,9 @@
  * <PictureSteps> — numbered cards, each a screenshot, a short title and an
  * optional one-line caption. The whole card links to the page that explains
  * the step. Use it where the reader needs the order of things at a glance.
+ * Add `tall` for portrait screenshots (BMR Mobile, dialogs): four to a row,
+ * in portrait frames. Add `pairs` as well for screenshots with small text
+ * (web dialogs): two to a row, so they stay readable.
  *
  * <Slide> — one full-width illustration (for example a page of the Room
  * Capture Guide) with rounded corners and a border, used inside StepTabs.
@@ -49,9 +52,18 @@ function StepCard({step, number}: {step: PictureStep; number: number}) {
   );
 }
 
-export default function PictureSteps({steps}: {steps: PictureStep[]}) {
+export default function PictureSteps({
+  steps,
+  tall = false,
+  pairs = false,
+}: {
+  steps: PictureStep[];
+  tall?: boolean;
+  pairs?: boolean;
+}) {
+  const classes = [styles.stepGrid, tall && styles.tall, pairs && styles.pairs].filter(Boolean).join(' ');
   return (
-    <div className={styles.stepGrid}>
+    <div className={classes}>
       {steps.map((step, i) => (
         <StepCard key={step.title} step={step} number={i + 1} />
       ))}

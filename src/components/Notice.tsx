@@ -7,6 +7,7 @@
  * so every page stays in step with the product.
  *
  * Usage on any MDX page (no import needed): <Notice kind="dimensions" />
+ * Several on one line: <Notice kind={['design', 'preview']} />
  */
 import React from 'react';
 import {Info} from 'lucide-react';
@@ -24,11 +25,16 @@ export const NoticeTexts = {
 
 export type NoticeKind = keyof typeof NoticeTexts;
 
-export default function Notice({kind}: {kind: NoticeKind}) {
-  const text = NoticeTexts[kind];
-  if (!text) {
-    throw new Error(`Unknown notice "${kind}". See src/components/Notice.tsx.`);
-  }
+export default function Notice({kind}: {kind: NoticeKind | NoticeKind[]}) {
+  const kinds = Array.isArray(kind) ? kind : [kind];
+  const text = kinds
+    .map(k => {
+      if (!NoticeTexts[k]) {
+        throw new Error(`Unknown notice "${k}". See src/components/Notice.tsx.`);
+      }
+      return NoticeTexts[k];
+    })
+    .join(' ');
   return (
     <p className={styles.notice} role="note">
       <Info size={15} aria-hidden="true" />

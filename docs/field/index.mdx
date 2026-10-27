@@ -16,10 +16,26 @@ One room, five steps. No AV knowledge needed.
 
 </PageIntro>
 
+## <Icon name="circle-check" size="1em" /> Before you go
+
+<Checklist items={[
+  { label: 'iPhone or iPad with LiDAR', link: '/docs/getting-started/system-requirements', linkLabel: 'Which' },
+  { label: 'Signed in to BMR Mobile', link: '/docs/getting-started/account-setup#by-invitation', linkLabel: 'How' },
+  { label: 'A speaker that works', link: '/docs/acoustics/loudspeaker-check', linkLabel: 'Check' },
+  { label: 'Battery charged' },
+  { label: 'Room booked and quiet' },
+]} />
+
+---
+
+## <Icon name="scan" size="1em" /> In the room
+
+Five steps. Tap a step for the details.
+
 <IllustratedSteps
   steps={[
     { illustration: 'find-room', title: 'Find the room', hint: 'Search, or browse building → room', link: '/docs/user-guides/room-capture' },
-    { illustration: 'markers', title: 'Scan + markers', hint: 'Every wall, then mark outlets, AV, cables', link: '/docs/lifecycle/discovery/room-scan' },
+    { illustration: 'markers', title: 'Scan + markers', hint: 'Every wall. Close-ups of outlets, AV, cables', link: '/docs/lifecycle/discovery/room-scan' },
     { illustration: 'save-scan', title: 'Save', hint: 'All walls there? Save. Gaps? Retake.', link: '/docs/lifecycle/discovery/room-scan' },
     { illustration: 'acoustics', title: 'Acoustics', hint: 'Speaker 1 m from the wall, test 3 spots', link: '/docs/acoustics/acoustics-guide' },
     { illustration: 'room-photo', title: 'Room photo', hint: 'Whole room, no people, landscape', link: '/docs/user-guides/room-capture' },
@@ -27,27 +43,21 @@ One room, five steps. No AV knowledge needed.
   done={['Scan', 'Markers', 'Acoustics', 'Room photo']}
 />
 
-## <Icon name="circle-check" size="1em" /> Before you go
+Back at your desk: turn your close-ups into the room's inventory. [Build the inventory →](/docs/lifecycle/discovery/inventory)
 
-<IconRow items={[
-  { icon: 'Smartphone', label: 'BMR Mobile installed' },
-  { icon: 'Mail', label: 'Your invitation email' },
-  { icon: 'Speaker', label: 'A speaker' },
-  { icon: 'BatteryCharging', label: 'Battery and Wi-Fi' },
-  { icon: 'DoorClosed', label: 'Room booked and quiet' },
-]} />
-
-Scanning needs an iPhone or iPad with LiDAR. [Supported devices →](/docs/getting-started/system-requirements)
+---
 
 ## <Icon name="help-circle" size="1em" /> Stuck?
 
 <FixList items={[
-  { problem: 'No rooms, or the app is empty', fix: 'Sign in with your company account' },
+  { problem: 'No rooms, or the app is empty', fix: 'Sign in with the invited email, or ask your admin for access' },
   { problem: 'Room not found', fix: 'Browse via the building, or add the room' },
   { problem: 'Forgot markers', fix: 'Room → Markers → +, while still in the room' },
   { problem: 'Volume never ticks', fix: 'Louder speaker, centre of the room, noise off' },
   { problem: 'Upload failed', fix: 'Nothing is lost. Try again later' },
 ]} />
+
+---
 
 ## <Icon name="more" size="1em" /> More
 

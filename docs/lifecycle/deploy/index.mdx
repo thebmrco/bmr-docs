@@ -1,77 +1,88 @@
 ---
-title: Deploy Phase
-description: What happens when an approved design is installed, and how marking it Active makes it the room's authoritative record.
+title: Deploy
+description: The last step of Design. When the room is built, activate the design so it becomes the room's Active Design — its record of what is in the room.
 ---
 
 import Icon from '@site/src/components/Icon'
+import Figure from '@site/src/components/Figure'
 
-# <Icon name="circle-check" size="1em" /> Deploy Phase
+# <Icon name="circle-check" size="1em" /> Deploy
 
 <PageIntro illustration="deploy">
 
-The **Deploy Phase** is when an approved design transitions from plan to reality. Once a design is physically installed, it is marked as **Active** in BMR Studio — becoming the authoritative record of the room as it currently exists.
+The last step of Design. The room is built to a design: **Activate** it, and it becomes the room's **Active Design**.
 
 </PageIntro>
 
 <Notice kind="design" />
 
+<IllustratedSteps steps={[
+  { illustration: 'design-studio', title: 'Finish the design', hint: 'Equipment, layout, cables', link: '/docs/lifecycle/design/bmr-studio' },
+  { illustration: 'field-work', title: 'Install it', hint: 'Use the BOM and Plans', link: '#-deployment-outputs' },
+  { illustration: 'deploy', title: 'Activate it', hint: 'Room › Designs › Activate', link: '#-marking-a-design-as-active' },
+  { illustration: 'room-state', title: 'Mark verified', hint: 'Checked on-site', link: '#-marking-a-design-as-active' },
+]} />
+
 ---
 
 ## <Icon name="circle-check" size="1em" /> The Active Design
 
-Within BMR Studio, each room can have multiple design versions. The design that has been approved and physically installed is marked as the **Active Design**.
+A room can have many designs. **One** can be Active: the design the room is built to.
 
-The Active Design is:
-
-- The **authoritative record** of the room as it stands today
-- The **single source of truth** for equipment, layout, cable routing, and infrastructure
-- A record of the room as it is installed
-- The reference used by facilities, IT, and support teams going forward
-
-All other design versions represent proposed or historical states. Only one design can be the Active Design at a time.
-
-:::info
-The Active Design is tracked automatically as designs move through the approval and deployment workflow in BMR Studio. You do not need to maintain a separate document — the platform keeps the record up to date.
-:::
+- The record of what is installed, where, and how it is connected.
+- The starting point for the next change.
+- Every other design is a **proposal**, or **was active** before.
 
 ---
 
-## <Icon name="circle-check" size="1em" /> Deployment Outputs
+## <Icon name="circle-check" size="1em" /> Deployment outputs
 
-When a design is approved and ready for deployment, it can include:
+| Output | Where |
+|---|---|
+| **Bill of materials** — equipment and cables, by type and length | Room › **Documents** › **BOM** · Studio **BOM** tab |
+| **Cable plans** | **Plans** |
+| **Versions** of the design | Studio **Versions** tab |
 
-- **Detailed equipment list** — all components placed in BMR Studio, structured and ready for procurement or handover
-- **Structured cabling guide** — cable types, lengths, and routing logic derived from the design
-- **Coverage visuals** — camera, screen, and audio coverage for reference during installation
-- **Full version history** — versions are captured automatically as the design evolves, and every prior version remains accessible from the **Versions** tab for audit and reference
+The BOM can be **downloaded**, and two designs or versions **compared**.
 
-This ensures a clear, unambiguous handover from design to installation, reducing deployment risk.
+<Figure
+  src="/img/release/2026-10-documents-bom.jpg"
+  alt="The BOM of the active design: eight pieces of equipment with category, manufacturer, SKU and quantity, each with Edit in design, and cables listed by type with their lengths"
+  caption="The BOM of the active design, with its cables."
+/>
 
 ---
 
-## <Icon name="palette" size="1em" /> Marking a Design as Active
+## <Icon name="palette" size="1em" /> Marking a design as Active
 
-When installation is complete:
+When the room is installed:
 
-1. Open the room in **BMR Studio**
-2. Select the design version that matches the installed state
-3. Move it through the **approval workflow**
-4. Mark it as **Active**
+1. Open the room's **Designs** tab.
+2. **Activate** the design that matches the room. In BMR Studio: **Set as active design**.
+3. On-site, check the room against it, then **Mark verified** on the active design.
 
-The design is now the Active Design — the room's live record. Future changes to the room start a new design version, which becomes the new Active Design once installed.
+| Action | What it does |
+|---|---|
+| **Activate** | Makes this design the Active Design. The previous one is replaced. |
+| **Delete** | Not possible for the Active Design: activate another one first. |
+| **Activation History** | Who activated which design, and when. |
+| **Mark verified** | Confirms the room was checked against this design. Click again to undo. |
+
+The next change to the room starts as a new design; activate it once it is built.
 
 ---
 
 ## <Icon name="circle-check" size="1em" /> What the Active Design enables
 
-- **Maintenance** — technicians and facilities teams see what is installed, where, and how it is connected
-- **Upgrades** — new design iterations are built on top of the current Active Design
-- **Compliance & governance** — portfolio managers can view the active state of every room in the organization
+- **Maintenance** — see what is installed and how it is connected.
+- **Upgrades** — build the next design on top of it.
+- **Portfolio view** — the active state of every room in the organisation.
 
 ---
 
 ## <Icon name="alert-triangle" size="1em" /> Prerequisites
 
-- ✅ Completed **design** in BMR Studio with equipment, layout, and cabling
-- ✅ Design has been **approved** through the review workflow
-- ✅ Physical **installation** is complete and matches the design
+<Checklist items={[
+  { label: 'Design finished in BMR Studio — equipment, layout, cables', link: '/docs/lifecycle/design/bmr-studio', linkLabel: 'BMR Studio' },
+  { label: 'Installation done, and it matches the design' },
+]} />

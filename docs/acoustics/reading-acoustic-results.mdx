@@ -1,65 +1,111 @@
 ---
 title: Reading Acoustic Results on the Web
 sidebar_label: Reading Acoustic Results
-description: How the redesigned web acoustics page presents a room's acoustic score, RT60, measurement list, and where each measurement was taken.
+description: How the web acoustics page presents a room's acoustic score, RT60, measurement list, measurement positions and the optimisation proposal.
 ---
 
 import Icon from '@site/src/components/Icon'
-import useBaseUrl from '@docusaurus/useBaseUrl'
+import Figure from '@site/src/components/Figure'
 
 # <Icon name="acoustics" size="1em" /> Reading Acoustic Results on the Web
 
 <PageIntro illustration="analyse" meta={['Web platform']}>
 
-Once an [acoustic measurement](acoustics-guide) is uploaded, you review it on the web platform at **[app.bettermeetingrooms.com](https://app.bettermeetingrooms.com)**. The acoustics page is designed to put the most important information first and make it easy to compare measurements.
+Once an [acoustic measurement](acoustics-guide) is uploaded, review it on **[app.bettermeetingrooms.com](https://app.bettermeetingrooms.com)** — the most important figures first, then the detail.
 
 </PageIntro>
 
 <Notice kind="acoustics" />
 
-For how the underlying numbers are calculated, see [Understanding the MOS Score](mos-score).
+For what the score means, see [Understanding the MOS Score](mos-score).
 
 ---
 
 ## <Icon name="target" size="1em" /> What the page shows
 
-The acoustics page leads with the two figures that matter most, then supports them with detail:
+<Figure
+  src="/img/release/2026-07-acoustics-positions.png"
+  alt="Acoustics page with overall acoustic score, average RT60, measurement list, and a room plan showing the speaker and measurement positions"
+  caption="Score and RT60 first, then the measurements and where they were taken."
+/>
 
-- **Overall acoustic score** and **average RT60** at the top — the headline read on how the room performs.
-- A **compact measurement list** — every measurement taken in the room, so you can open, compare, and manage them.
-- A **Room scan & measurement positions** view *(beta)* — see below.
+| Part | What it tells you |
+|---|---|
+| **Overall acoustic score** | The MOS of the measurement. For a group of spots, the **average** of the spots |
+| **Average RT60** and **Ambient Noise** | Reverberation time and background noise, averaged |
+| **Acoustic Score incl. Ambient Noise** *(Beta)* | Shown beside the overall score when the background noise was measured |
+| **Measurement list** | Every measurement in the room — open, compare or manage them |
+| **Room scan & measurement positions** | Where the speaker and each spot were — see below |
 
-The **MOS score is always shown on the Room Overview** too, using the linked measurement when one is set and otherwise the latest measurement. See [Room](../structure/room).
+**Compare** up to **4** at a time. A whole group counts as one, its average.
+
+The **Room Overview** shows the score of the room's **newest measurement that has a score**. See [Room](../structure/room).
 
 ---
 
-## <Icon name="marker" size="1em" /> Room scan & measurement positions *(beta)*
+## <Icon name="marker" size="1em" /> Room scan & measurement positions {#-room-scan--measurement-positions-beta}
 
-The page includes a **Room scan & measurement positions** view that shows where each part of the measurement happened, laid over the room's scan:
+The room's scan with the **speaker** and each **measurement spot** on it — so you see how far apart the spots were, and where they sat relative to the speaker.
 
-- The **speaker** position.
-- Each **measurement point** (A, B, C) where a reading was taken.
+| View | Shows |
+|---|---|
+| **2D** | Top-down floor plan |
+| **3D scan** | The 3D room scan, including furniture |
+| **3D mesh** | The raw scanned mesh |
 
-Because BMR Mobile now pinpoints these locations during the [measurement flow](acoustics-guide), you can see the spatial spread of a measurement — how far apart the points were, and where they sat relative to the speaker and the room — rather than reading numbers in isolation.
-
-<img
-  src={useBaseUrl('/img/release/2026-07-acoustics-positions.png')}
-  alt="Redesigned acoustics page with overall acoustic score, average RT60, measurement list, and a room plan showing the speaker and measurement positions"
-  style={{width: '100%', maxWidth: '900px', display: 'block', margin: '1rem auto', borderRadius: '8px', border: '1px solid #E5E5D5'}}
-/>
-
-:::info Beta view
-The measurement positions view is in **beta**. Positions are shown for measurements taken with a version of BMR Mobile that records them — older measurements may not have position data.
-:::
+Positions are recorded only in the **Advanced** flow of the [measurement](acoustics-guide#-advanced-vs-basic). Older measurements and Basic measurements have none.
 
 ---
 
 ## <Icon name="audio-lines" size="1em" /> Supporting charts
 
-Each measurement also surfaces the detail charts described in [Understanding the MOS Score](mos-score):
+| Chart | Read it like this |
+|---|---|
+| **T20 (RT60)** | The curve against the **DIN 18041 tolerance bands** and the **Target RT60** — inside is good, above is too reverberant |
+| **Ambient noise** | Background noise against **Ideal / Acceptable / Too loud** zones |
 
-- The **T20 (RT60) chart**, plotting only the frequency bands the platform considers valid, with invalid bands shaded and labelled.
-- The **ambient noise chart**, with Ideal / Acceptable / Too loud acceptability zones.
+More on both: [The Green Zone](mos-score#-the-green-zone) and [Ambient Noise Chart](mos-score#ambient-noise-chart).
+
+---
+
+## <Icon name="sliders-horizontal" size="1em" /> Score split by cause <FeatureToggleTag /> {#score-split-by-cause}
+
+<FeatureToggle />
+
+One ring splits the score into what holds it back:
+
+| In the ring | Means |
+|---|---|
+| **Your score** | What the room delivers today — reverberation, bass and ambient noise all counted |
+| **Room acoustics** | Points lost to reverberation and bass — absorbers win these back |
+| **Ambient noise** | Points lost to background noise — only a quieter room wins these back |
+
+Bars for **reverberation**, **bass** and **noise** show each lever. A warning line appears when the capture looks wrong — noise too low to be real, very high, or varying a lot between spots. Measure again before you trust that score.
+
+---
+
+## <Icon name="wrench" size="1em" /> Optimisation proposal <FeatureToggleTag /> {#optimisation-proposal}
+
+<FeatureToggle />
+
+See what acoustic treatment from your catalog would do for a room, before you design it.
+
+1. Open a measurement — it has two tabs: **Measured results** and **Optimisation proposal**.
+2. Click **Optimise this room** and enter **how many people use this room**.
+3. BMR simulates the room, matches materials from your catalog and scores the treated room.
+4. **Create new acoustic design in BMR Studio** turns the proposal into a design you can refine.
+
+| The proposal shows | |
+|---|---|
+| **Acoustic score after treatment** | Estimated, from your score today |
+| **Average RT60** | Before and after |
+| **DIN 18041** | Whether the room lands inside the tolerance band |
+| **Recommended materials** | From your catalog — change the catalog to recalculate |
+
+Estimated values are marked **Estimated · not measured**.
+
+- A room **without a measurement** gets a **Simulated** acoustics page, estimated from assumed materials — a starting point until the room is measured with the app.
+- **Organisation › Preferences › Acoustic** has a **Default acoustics catalog** for proposals.
 
 ---
 
@@ -67,4 +113,4 @@ Each measurement also surfaces the detail charts described in [Understanding the
 
 - [BMR Mobile Acoustics Tutorial](acoustics-guide) — capture a measurement.
 - [Understanding the MOS Score](mos-score) — what the score and charts mean.
-- [Room](../structure/room) — where the room's MOS score and linked measurement appear.
+- [Room](../structure/room) — where the room's MOS score appears.

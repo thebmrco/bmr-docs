@@ -1,90 +1,128 @@
 ---
 title: Room
 sidebar_label: Room
-description: The room is where every capture lives — scans, markers, acoustic measurements and designs — and the room page is where they come together.
+description: The room page on the web and in BMR Mobile — the overview, the four tabs, the active design and what it is built on, moving and deleting a room.
 ---
 
 import Icon from '@site/src/components/Icon'
-import useBaseUrl from '@docusaurus/useBaseUrl'
+import Figure, { FigurePair } from '@site/src/components/Figure'
+import Callouts from '@site/src/components/Callouts'
 
 # <Icon name="room" size="1em" /> Room
 
-:::tip The room is the point
-BETTERMEETINGROOMS is named after what it is for. The [organisation and location](./) exist to hold rooms and report on them — but the **room** is the subject, and the only level where anything is actually captured.
-:::
+<PageIntro illustration="room-state" meta={['Web platform', 'BMR Mobile']}>
 
-A room belongs to a [location](./location), and holds everything the [Discovery](../lifecycle/discovery/) and Design phases produce:
+**Everything is captured in a room**: scans, markers, acoustics, designs and documents. A room belongs to a [location](./location).
 
-| What a room holds | Captured by |
+</PageIntro>
+
+## <Icon name="layout" size="1em" /> The room page {#-the-room-page}
+
+<a id="room-overview-on-the-web" />
+
+<Callouts
+  src="/img/structure/room-overview.jpg"
+  alt="A room's Overview on the web: the tabs Overview, Room Data, Designs and Documents; a room photo; Where, Room and Size details; the Acoustic Score 4.8 MOS with Optimise this room; Capabilities; and the Active row with the Active Design, Room Scan, Measurement Group and 10 markers linked"
+  caption="The room's Overview on the web."
+  pins={[
+    {x: 1.6, y: 9, title: 'Tabs', text: 'Overview, Room Data, Designs, Documents. See below.'},
+    {x: 4, y: 15.5, title: 'Room photo', text: 'Pencil: upload one, use a marker photo, or go back to an earlier one.'},
+    {x: 20.5, y: 13.5, title: 'Where', text: 'Organisation, location, floor. Pencil to move the room.'},
+    {x: 40.5, y: 13.5, title: 'Room', text: 'Type, people, usage. The usage sets the acoustic target.'},
+    {x: 60.5, y: 13.5, title: 'Size', text: 'Measured from the scan or the active design, not typed in.'},
+    {x: 81.5, y: 15.5, title: 'Acoustic Score', text: <>The room's MOS. <a href="../acoustics/reading-acoustic-results">Reading the results</a></>},
+    {x: 96.5, y: 26, title: 'Optimise this room', text: 'What treatment would bring the score to. Feature toggle.'},
+    {x: 3, y: 36, title: 'Capabilities', text: 'Sharing, meeting provider, booking.'},
+    {x: 3, y: 52.5, title: 'Active', text: 'The active design, and the scan, measurement and markers it is built on.'},
+    {x: 17, y: 93.5, title: 'Counts', text: 'Click to open all designs, scans, measurements or markers.'},
+    {x: 95.5, y: 3.3, title: 'Delete room', text: <><a href="#deleting-a-room">Deleting a room</a></>},
+  ]}
+/>
+
+---
+
+## <Icon name="layout-panel-left" size="1em" /> Four tabs
+
+| Tab | What you find |
 |---|---|
-| **3D scan**, compass orientation and [AR World Map](../technology/ar-world-map) | [Room Scan](../lifecycle/discovery/room-scan) |
-| **Markers** — photos of outlets, AV, constraints | [Markers](../lifecycle/discovery/markers) |
-| **Acoustic measurements** — RT60 and MOS | [Acoustic Measurement](../acoustics/acoustics-guide) |
-| **Designs** — AR designs and designs from BMR Studio | [Design](../lifecycle/design/) |
+| **Overview** | The room at a glance, above. Below the Active row: **Notes**, **Tasks**, **Recent Activity** |
+| **Room Data** | Everything captured, newest first. Filter by type. Tick two scans or two measurements to **Compare** |
+| **Designs** | All designs and **New Design**. **Activate** one, then **Mark verified** once checked on site |
+| **Documents** | **Inventory**: what is in the room. **BOM**: what each design needs. See [Room Inventory](../lifecycle/discovery/inventory) |
+
+<FigurePair
+  a={{src: '/img/release/2026-10-documents-inventory-verified.jpg', alt: 'A verified inventory in the Documents tab listing light switches, an air condition output, a power outlet and an ethernet outlet with category, manufacturer, quantity, verification, date and the marker each came from', label: 'Inventory'}}
+  b={{src: '/img/release/2026-10-documents-bom.jpg', alt: 'The BOM of the active design: equipment with category, manufacturer, SKU and quantity, each with Edit in design, and cables listed by type with their lengths', label: 'BOM'}}
+  caption="Documents: the inventory is what is there, built from the markers. The BOM is what the design needs."
+/>
+
+<Notice kind="design" />
 
 ---
 
-## <Icon name="link" size="1em" /> How a room's data is linked
+## <Icon name="link" size="1em" /> Active: what the design is built on {#-how-a-rooms-data-is-linked}
 
-The pieces above are not just a list — each one records **what it belongs to**, so you can see at a glance how a room's data fits together.
+The **Active** row shows the room's record: the active design and the **scan, measurement and markers** it is built on. Each card says **Linked**.
 
-- Every scan, marker, acoustic measurement and design shows a **Linked to** or **Built on** label — for example *Scan 12 Sep*, *via* a scan, *Custom room*, or *Not linked*.
-- A design built from a scan shows **which scan**, and how many markers and measurements that scan has.
-- An item that is not linked can be connected at any time with **Link to a scan**.
-- The same labels appear on the **Designs**, **Scans** and **Acoustic Measurements** pages, not only inside the room.
+The same link shows everywhere as **Built on** or **Linked to**. Not linked? **Link to a scan**.
 
-<img
-  src={useBaseUrl('/img/release/2026-10-built-on.png')}
+<Figure
+  src="/img/release/2026-10-built-on.png"
   alt="The Designs list with a Built on column showing, for each design, the scan it was built on and how many markers and measurements that scan has"
-  style={{width: '100%', borderRadius: '10px', border: '1px solid #E5E5D5', margin: '1rem 0'}}
+  caption="Built on: the scan behind each design, with its markers and measurements."
 />
 
-:::tip Link what you capture
-A design built on a scan carries the room's real geometry, its marker photos and its acoustic results with it. An unlinked item still holds its own data, but it is not tied to the rest of the room's record — so link it to a scan when you can.
-:::
+Linked to a scan, a design carries the room's real shape, marker photos and acoustics with it.
 
 ---
 
-## <Icon name="layout" size="1em" /> The room page
+## <Icon name="smartphone" size="1em" /> Room view in BMR Mobile {#room-view-in-bmr-mobile}
 
-Every room has a home page that brings its data together in one place — on the **Web** as the **Room Overview**, and in **BMR Mobile** as the **Room view**. It is where you check a room's status at a glance and jump into scans, markers, acoustics, and designs.
+A **Next step** banner walks you through the capture: scan → markers → acoustics → **room photo**. When all four are done it says **Room captured**, with **Continue on the web**.
 
-### Room Overview on the Web
-
-The Room Overview page presents the room's key information up front:
-
-- **Room details, ratings, and capabilities** at a glance.
-- The **acoustic score (MOS)** — always shown, using the linked measurement when one is set and otherwise the latest measurement. See [Reading Acoustic Results](../acoustics/reading-acoustic-results).
-- An **Active** section that previews the **active Design** together with the **scan, acoustic measurements, and markers** it is based on — so you can see, in one view, the design that represents the room and the data behind it.
-
-<img
-  src={useBaseUrl('/img/release/2026-07-room-overview.png')}
-  alt="Room Overview page showing room information, acoustic score, and the Active section with the active design and its linked scan, acoustics, and markers"
-  style={{width: '100%', maxWidth: '900px', display: 'block', margin: '1rem auto', borderRadius: '8px', border: '1px solid #E5E5D5'}}
-/>
-
----
-
-### Room view in BMR Mobile
-
-The same room is available in **BMR Mobile**, where recent improvements make it easier to work with a room on-site:
-
-- **Newly created rooms are shown at the top** of the room list, so a room you just made is easy to find.
-- The **active Design** and the **linked scan, markers, and acoustic measurement** are clearly marked, so you can tell at a glance what the room is built from.
-- **Designs can be deleted** directly from inside the Room view.
-- A **web-only message** is shown for [VRC designs](../integrations/cisco-vrc), which are edited on the Web.
-
-<div style={{display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', margin: '1rem 0'}}>
-  <div className="phone-screenshot" style={{flex: '0 0 200px'}}>
-    <img src={useBaseUrl('/img/release/2026-07-mobile-room-view.jpg')} alt="Room view in BMR Mobile showing the room overview with Linked badges on the scan, markers, and acoustics connected to the room" style={{width: '100%', borderRadius: '12px'}} />
-  </div>
+<div style={{display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap'}}>
+  <Figure
+    src="/img/release/2026-10-mobile-next-step-room-photo.jpg"
+    alt="A room's Overview in BMR Mobile with a camera icon on the room picture and the Next step banner reading Add a room photo, tap the camera, above the ticked Scans and Markers cards"
+    variant="phone"
+    maxWidth={210}
+    caption="Next step: add a room photo."
+  />
+  <Figure
+    src="/img/release/2026-10-mobile-hero-pic-sheet.jpg"
+    alt="The Hero pic sheet in BMR Mobile with three choices: Take photo, Pick from markers and Pick from library"
+    variant="phone"
+    maxWidth={210}
+    caption="Take photo, pick from markers or from your library."
+  />
+  <Figure
+    src="/img/release/2026-10-mobile-room-captured.jpg"
+    alt="A room's Overview in BMR Mobile with the banner Room captured and the button Continue on the web"
+    variant="phone"
+    maxWidth={210}
+    caption="Room captured — continue on the web."
+  />
 </div>
+
+- The active design and what it's linked to are marked, as on the web.
+- **⋯ → Share Room** sends a link that opens the room on the web or in BMR Mobile.
 
 ---
 
 ## <Icon name="circle-check" size="1em" /> Moving a room
 
-To move a room to a different organisation or location, open the Room Overview page, tap **Edit**, choose the new organisation and location, and save. See the [FAQ](../getting-started/faq) for a quick reference.
+**Pencil** next to **Where** → pick the location and floor → save.
+
+- Within the **same organisation** only.
+- You need edit rights on the room, and to be Location Manager of the new location, or Admin.
+
+---
+
+## <Icon name="delete" size="1em" /> Deleting a room {#deleting-a-room}
+
+The **bin** at the top right. Location Managers and Admins can delete rooms.
+
+The room goes to the trash. Restoring it from **Trash** is a <FeatureToggleTag /> feature: without it, there is no way back.
 
 ---
 
@@ -93,3 +131,4 @@ To move a room to a different organisation or location, open the Room Overview p
 - [Reading Acoustic Results](../acoustics/reading-acoustic-results) — the room's MOS score and measurements.
 - [BMR Studio](../lifecycle/design/bmr-studio) — the active Design and versions.
 - [Markers](../lifecycle/discovery/markers) — the linked markers shown on the room.
+- [Room Inventory](../lifecycle/discovery/inventory) — the Documents tab, step by step.

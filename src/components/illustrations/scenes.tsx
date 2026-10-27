@@ -53,6 +53,27 @@ export const Scenes: Record<string, Scene> = {
       </>
     ),
   },
+  inventory: {
+    label: 'A close-up marker photo of a wall outlet becoming a ticked list of items',
+    draw: () => (
+      <>
+        <rect x="12" y="24" width="54" height="62" rx="4" fill={C.wash} />
+        <rect x="23" y="42" width="32" height="24" rx="3" fill="#fff" stroke={C.silverShade} strokeWidth="1.5" />
+        <circle cx="33" cy="54" r="4" fill={C.silverShade} />
+        <circle cx="45" cy="54" r="4" fill={C.silverShade} />
+        <Pin x={62} y={34} size={0.6} />
+        <path d="M72 55 H86 M81 50 L87 55 L81 60" fill="none" stroke={C.mid} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+        <rect x="92" y="16" width="58" height="78" rx="4" fill="#fff" stroke={C.grey} strokeWidth="1.5" />
+        {[28, 48, 68].map((y, i) => (
+          <g key={y}>
+            <rect x="98" y={y} width="9" height="9" rx="1.5" fill={i === 0 ? C.mid : C.light} />
+            <TextLine x={111} y={y + 2.5} w={[22, 18, 24][i]} />
+            <CheckBadge cx={141} cy={y + 4.5} r={4.5} />
+          </g>
+        ))}
+      </>
+    ),
+  },
   'save-scan': {
     label: 'A phone showing the finished 3D scan with a save button',
     draw: () => (

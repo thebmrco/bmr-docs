@@ -4,19 +4,31 @@ description: What the MOS score means, the variants behind it, and how reverbera
 ---
 
 import Icon from '@site/src/components/Icon'
-import useBaseUrl from '@docusaurus/useBaseUrl'
+import Figure from '@site/src/components/Figure'
+import FactGrid from '@site/src/components/FactGrid'
 import MosScaleVisual from '@site/src/components/MosScaleVisual'
 
 # <Icon name="audio-lines" size="1em" /> Understanding the MOS Score
 
-After completing an acoustic measurement, BMR gives you a **MOS score** for your room. Here is what it means, and what it is based on.
+<PageIntro illustration="acoustics" meta={['BMR Mobile', 'Web platform']}>
+
+After an acoustic measurement, BMR gives your room a **MOS score**. Here is what it means, and what it is based on.
+
+</PageIntro>
 
 <Notice kind="acoustics" />
 
-:::info What changed in Release 2.0
-The MOS score now includes a **Background Noise** (Speech-to-Noise Ratio) penalty, on top of the existing **Reverberation Time** base and **Bass Ratio** penalty. This is the newest **MOS variant**, labelled **RT-BR-N**. **Spatial Concentration** and **Flutter Echo** are measured today but do not yet contribute. This page tracks the current state.
+<FactGrid title="At a glance" facts={[
+  {label: 'Scale', value: '1 to 5', note: 'Higher is better'},
+  {label: 'Good from', value: '3.6', note: 'Recommended for hybrid meetings'},
+  {label: 'Current variant', value: 'RT+BR+N', note: 'Reverberation + Bass balance + Noise'},
+  {label: 'Several spots', value: 'Averaged', note: 'One score for the group'},
+]} />
 
-To get a MOS score that includes the background-noise penalty, take the measurement with the **latest version of BMR Mobile**. Measurements taken with older versions keep their original variant (RT or RT-BR) and remain fully valid — see [The MOS variants](#the-mos-variants) below.
+:::info What changed in Release 2.0
+The MOS score now includes a **Background Noise** (Speech-to-Noise Ratio) penalty, on top of the existing **Reverberation Time** base and **Bass Ratio**. This is the newest **MOS variant**, labelled **RT+BR+N**. **Spatial Concentration** and **Flutter Echo** do not yet contribute. This page tracks the current state.
+
+To get a MOS score that includes the background-noise penalty, take the measurement with the **latest version of BMR Mobile**. Measurements taken with older versions keep their original variant (RT or RT+BR) and remain fully valid — see [The MOS variants](#the-mos-variants) below.
 :::
 
 ---
@@ -34,7 +46,7 @@ To get a MOS score that includes the background-noise penalty, take the measurem
 | 3.0 – 3.5 | Fair | Understandable, but requires noticeable effort |
 | 1.0 – 2.9 | Poor | Hard to follow — tiring in longer meetings |
 
-The MOS score is not just about whether you can *hear* what someone is saying — it is about how much mental effort it takes to follow a conversation. The score circle is shown as a **complete ring**, coloured by rating.
+The MOS score is not just about whether you can *hear* what someone is saying — it is about how much mental effort it takes to follow a conversation. BMR Mobile and the web colour the score the same way: **red** for Poor, **amber** for Fair, **green** for Good and Excellent.
 
 ---
 
@@ -45,15 +57,17 @@ The MOS calculation evolves as we fold in more acoustic factors. So that scores 
 | Variant | Factors in the score | Introduced |
 |---|---|---|
 | **RT** | Reverberation Time | Base |
-| **RT-BR** | Reverberation Time + Bass Ratio | Release 1.2 |
-| **RT-BR-N** | Reverberation Time + Bass Ratio + Background Noise | Release 2.0 |
+| **RT+BR** | Reverberation Time + Bass Ratio | Release 1.2 |
+| **RT+BR+N** | Reverberation Time + Bass Ratio + Background Noise | Release 2.0 |
 
 - **RT** — the reverberation-time base only.
-- **RT-BR** — adds the **Bass Ratio** penalty for boomy, bass-heavy rooms.
-- **RT-BR-N** — adds the **Background Noise** (Speech-to-Noise Ratio) penalty, so a noisier room scores lower.
+- **RT+BR** — adds **bass balance**: boomy bass lowers the score, tight bass helps it a little.
+- **RT+BR+N** — adds the **Background Noise** (Speech-to-Noise Ratio) penalty, so a noisier room scores lower.
 
-:::info You need the latest app version for RT-BR-N
-The background-noise penalty is applied to measurements taken with the **latest version of BMR Mobile**. Update the app so new measurements are scored with the **RT-BR-N** variant. Older measurements keep the variant they were taken with and stay comparable — the label under each score tells you exactly which factors it already includes.
+If the background noise of a measurement cannot be trusted, its score stays **RT+BR**, even with the latest app.
+
+:::info You need the latest app version for RT+BR+N
+The background-noise penalty is applied to measurements taken with the **latest version of BMR Mobile**. Update the app so new measurements are scored with the **RT+BR+N** variant. Older measurements keep the variant they were taken with and stay comparable — the label under each score tells you exactly which factors it already includes.
 :::
 
 ---
@@ -78,17 +92,17 @@ The research has identified several acoustic properties that together predict ho
 
 `MOS = A_ReverberationTime + A_SpatialConcentration + A_BassRatio − A_SpeechToNoiseRatio − A_FlutterEcho`
 
-As of Release 2.0, three terms actively contribute to the score: the **Reverberation Time** base, the **Bass Ratio** penalty, and the **Speech-to-Noise Ratio** (background noise) penalty. The remaining terms — **Spatial Concentration** and **Flutter Echo** — are measured or computed today and shown alongside the score, but do not yet feed into it.
+As of Release 2.0, three terms contribute to the score: the **Reverberation Time** base, **Bass Ratio** (bass balance) and the **Speech-to-Noise Ratio** (background noise) penalty. **Spatial Concentration** and **Flutter Echo** are not yet part of the score.
 
 ### Reverberation Time (T60)
 
 This is how long sound lingers in a room after it is produced — the "echo" effect you notice in an empty stairwell or a large tiled bathroom. A shorter reverberation time generally means a cleaner, more comfortable listening environment. Longer reverberation makes it harder for the brain to separate words and follow conversation.
 
-### Direct-to-Reverberant Ratio (DRR)
+### Spatial Concentration {#direct-to-reverberant-ratio-drr}
 
-The DRR is BMR's measurement of the room's **Spatial Concentration** — the balance between the sound that reaches you directly from the speaker, versus the reflected sound bouncing off walls, ceiling, and floor. A higher ratio — more direct sound relative to reflected sound — makes speech feel clearer and less fatiguing.
+**Spatial Concentration** is the balance between the sound that reaches you directly from the speaker and the sound reflected off walls, ceiling and floor. More direct sound makes speech feel clearer and less tiring.
 
-From release 1.2, DRR is displayed alongside the MOS score but **does not yet contribute to it**. Spatial Concentration is on the roadmap for inclusion in an upcoming release.
+It is **not yet part of the score** and is not shown in the results. It is on the roadmap for an upcoming release.
 
 ### Bass Ratio
 
@@ -98,32 +112,33 @@ The Bass Ratio describes the relationship between reverberation in the bass regi
 
 In an ideal meeting room the T20 curve is flat across these bands, giving a Bass Ratio close to 1.0. When the bass region rises, the room sounds boomy — low-frequency energy lingers and masks speech, which increases listening effort.
 
-| Bass Ratio | Feel | MOS impact |
+| Bass balance (in the app) | Bass Ratio | MOS impact |
 |---|---|---|
-| Below 0.9 | Thin, lacking warmth | Small penalty |
-| 0.9 – 1.1 | Balanced — target range | No penalty |
-| 1.1 – 1.3 | Slightly warm, still comfortable | Minimal penalty |
-| Above 1.3 | Boomy, low-end overhangs speech | Strong penalty |
+| **Tight** | Below about 1.15 | Adds a little — bass is the only factor that can raise the score |
+| **Balanced** | About 1.15 | None |
+| **Boomy** | Above about 1.15 | Lowers the score — the boomier, the more |
 
-The MOS formula penalises deviation from a neutral reference of approximately 1.15. Most well-treated meeting rooms land between 0.9 and 1.1.
+Most well-treated meeting rooms land between 0.9 and 1.1, on the tight side.
 
 ### Speech-to-Noise Ratio
 
 Speech-to-Noise Ratio (SpNR) compares the loudness of a typical conversation against the steady background noise in the room. That background noise can come from HVAC, projectors, computer fans, traffic, neighbouring rooms, or hallway activity.
 
 :::info Now included — Release 2.0
-As of Release 2.0, SpNR is folded into the MOS score as the **Background Noise** penalty — the **RT-BR-N** variant. Take the measurement with the **latest version of BMR Mobile** to have this penalty applied.
+As of Release 2.0, SpNR is folded into the MOS score as the **Background Noise** penalty — the **RT+BR+N** variant. Take the measurement with the **latest version of BMR Mobile** to have this penalty applied.
 :::
 
 When the gap between speech and noise is wide, listeners pick out words effortlessly. When it shrinks, they have to lean in, ask for repeats, or zone out. The MOS score reflects that effort directly: the noisier the room *relative to speech*, the lower the score.
 
-| Gap between speech and noise | What it feels like | Typical MOS impact |
+| Gap between speech and noise | What it feels like | Impact on an otherwise excellent room |
 |---|---|---|
-| Around 30 dB or more | Very quiet — recording-studio territory | No penalty |
-| Around 20 dB | Quiet office, soft HVAC | Small penalty |
-| Around 15 dB | Open office, audible fan | Moderate penalty |
-| Around 10 dB | Noisy HVAC, hallway noise leaking in | Strong penalty |
-| Around 3 dB or below | Speech and noise nearly equal | Penalty saturates — exhausting to follow |
+| Around 40 dB or more | Very quiet — recording-studio territory | None |
+| Around 30 dB | Quiet room, soft HVAC | Noticeable |
+| Around 20 dB | Quiet office, audible fan | Large |
+| Around 10–15 dB | Noisy HVAC, hallway noise leaking in | Very large |
+| A few dB | Speech and noise nearly equal | The score drops to the bottom — exhausting to follow |
+
+A weaker room loses less to the same noise — see below.
 
 #### Why noise hurts good rooms more
 
@@ -147,11 +162,14 @@ The measurement now **filters out brief peaks** in the background-noise window �
 SpNR is position-dependent in the same way reverberation is. Running measurements at more than one location in the room captures variations from one corner to another. The recommended three-position flow does this automatically.
 :::
 
-### Additional Metrics: Xi20 and Xi30
+### Additional Metrics: Xi20 {#additional-metrics-xi20-and-xi30}
 
-BMR also measures **Xi20** and **Xi30** — metrics derived from the early part of the impulse response that describe how sound energy is distributed in the first critical milliseconds after it arrives. These complement T60 and DRR by capturing finer details about how the room shapes speech clarity.
+**Xi20** shows how well the T20 reverberation time fits the measured decay in each band. **Lower is better** — a high value means that band's reverberation time is less certain.
 
-All metrics — T60, DRR, Bass Ratio, SpNR, Xi20, and Xi30 — are displayed in the measurement results alongside the MOS score.
+| Where | Metrics beside the MOS score |
+|---|---|
+| BMR Mobile, **Expert Mode** on | T20, ambient noise, C50, D50, centre time (TS), SNR, Xi20 |
+| Web | T20 (or T30), C50, D50, SNR, centre time (TS), ambient noise |
 
 ### Ambient Noise Chart
 
@@ -165,10 +183,10 @@ The chart shades **acceptability zones** so you can read the result at a glance:
 
 Because every measurement is plotted against the same zones, you can compare background noise directly across measurements and across frequencies.
 
-<img
-  src={useBaseUrl('/img/release/2026-07-ambient-noise.png')}
+<Figure
+  src="/img/release/2026-07-ambient-noise.png"
   alt="Ambient Noise chart with Ideal, Acceptable, and Too loud acceptability zones and three measurements plotted across frequencies"
-  style={{width: '100%', maxWidth: '760px', display: 'block', margin: '1rem auto', borderRadius: '8px', border: '1px solid #E5E5D5'}}
+  caption="Ambient noise against the Ideal, Acceptable and Too loud zones."
 />
 
 Together, these measurements capture something important: **a room can feel exhausting to communicate in even when speech is technically intelligible**. The MOS score reflects this perceptual reality, not just a technical threshold.
@@ -177,21 +195,21 @@ Together, these measurements capture something important: **a room can feel exha
 
 ## <Icon name="circle-check" size="1em" /> What a good score looks like
 
-A well-designed meeting room typically targets a MOS in the **Good** range (3.6 or above). A **Fair** score (3.0 – 3.5) is still acceptable for **in-person meetings**, but is **not recommended for hybrid use** — remote participants are far more sensitive to acoustic quality and will notice the extra effort even when in-room participants do not. Rooms scoring **Poor** are likely causing unnecessary listening fatigue in any setting — something acoustic treatment, furniture placement, or equipment changes can often improve.
+A well-designed meeting room targets a MOS in the **Good** range (3.6 or above). A **Fair** score (3.0 – 3.5) is still acceptable for **in-person meetings**, but is **not recommended for hybrid use** — remote participants are far more sensitive to acoustic quality and will notice the extra effort even when in-room participants do not. Rooms scoring **Poor** are likely causing unnecessary listening fatigue in any setting — something acoustic treatment, furniture placement, or equipment changes can often improve.
 
 The acoustic measurement in BMR captures the data needed to calculate your room's MOS score. Running multiple measurements at different positions in the room gives a more complete picture of how the space performs overall.
 
 :::tip
 For the most reliable results, run measurements at different positions — near and far from where participants typically sit. Acoustic conditions can vary significantly across a room.
 
-The app guides you through a multi-measurement process where three measurements are bundled together. The recommended positions for the speaker and iPhone are shown before each measurement.
+BMR Mobile bundles three measurements into one result. You choose the spots — far apart, and at least 1 m from walls and the speaker. A group's score is the average of its spots.
 :::
 
 ---
 
 ## <Icon name="target" size="1em" /> The Green Zone
 
-After a measurement, BMR plots the **reverberation time across frequency bands** as a curve. Alongside it, the app shades a **Green Zone** — the target band the measurement should ideally sit within for comfortable meeting-room acoustics.
+After a measurement, BMR plots the **reverberation time across frequency bands** as a curve. Alongside it, BMR shades a **Green Zone** — the target band from **DIN 18041** for a room of this size. On the web it is labelled **DIN 18041 tolerance bands**, with a **Target RT60** line.
 
 The Green Zone turns an abstract number into something you can see at a glance:
 
@@ -201,12 +219,14 @@ The Green Zone turns an abstract number into something you can see at a glance:
 
 The Green Zone is what makes results comparable across rooms and across time. Two rooms with different MOS scores can be compared directly by looking at where each curve falls relative to the same target band — before treatment and after.
 
-Only frequency bands the platform considers **valid** are plotted, so unreliable bands do not distract from the useful data. Any band that was excluded is **shaded and labelled "Invalid measurement"** rather than drawn as part of the curve — keeping the shape of the reverberation curve clean and easy to read.
+Only **valid** frequency bands are drawn as part of the curve. In BMR Mobile, a band that was left out is **shaded and labelled "Invalid measurement"**.
 
-<img
-  src={useBaseUrl('/img/release/2026-07-rt60-chart.png')}
-  alt="T20 — Reverberation Time (RT60) chart with the 125 Hz band shaded and labelled Invalid measurement while the valid bands form a clean curve inside the Green Zone"
-  style={{width: '100%', maxWidth: '560px', display: 'block', margin: '1rem auto', borderRadius: '8px', border: '1px solid #E5E5D5'}}
+<Figure
+  src="/img/release/2026-07-rt60-chart.png"
+  alt="T20 — Reverberation Time (RT60) chart in BMR Mobile: the result curve runs around 0.8 to 0.95 seconds, above the green target band around 0.4 seconds, and the 125 Hz band is shaded and labelled Invalid measurement"
+  variant="inset"
+  maxWidth={460}
+  caption="BMR Mobile: this curve sits above the Green Zone — the room is too reverberant. The 125 Hz band is marked invalid."
 />
 
 The same target-band treatment now extends to the **ambient noise chart**, which shades Ideal / Acceptable / Too loud zones so background noise gets the same at-a-glance visual comparison.
@@ -215,13 +235,13 @@ The same target-band treatment now extends to the **ambient noise chart**, which
 
 ## <Icon name="alert-triangle" size="1em" /> What the score does not cover
 
-The MOS score currently focuses on the reverberant characteristics of the physical space — reverberation time and the balance between direct and reflected sound. It does not account for:
+The MOS score describes the room itself — reverberation, bass balance and background noise. It does not account for:
 
 - The quality of microphones and speakers used in the meeting setup
 - Network or compression artefacts in video conferencing
 
 :::info Coming soon
-**Speech-to-Noise Ratio** (background noise) is now included in the MOS score as of Release 2.0 — the **RT-BR-N** variant. **Spatial Concentration** and **Flutter Echo** are the next acoustic properties planned for inclusion; they are measured today but do not yet contribute.
+**Speech-to-Noise Ratio** (background noise) is now included in the MOS score as of Release 2.0 — the **RT+BR+N** variant. **Spatial Concentration** and **Flutter Echo** are the next acoustic properties planned for inclusion.
 
 **Microphone and speaker quality** in the meeting setup, and **network or compression artefacts** in video conferencing, remain outside the MOS score's scope. Those depend on the conferencing equipment and connection rather than the room.
 :::

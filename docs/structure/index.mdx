@@ -21,7 +21,7 @@ The other two levels are there to hold rooms and make sense of them at scale. Ea
 | Entity | What it is | What it holds | Example |
 |---|---|---|---|
 | **[Organisation](./organisation)** | Your company or business unit. The top level, and the boundary for access and settings | Locations, users and roles, organisation-wide preferences, catalogs, integrations | *BETTERMEETINGROOMS GmbH* |
-| **[Location](./location)** | A physical site | The rooms at that site, and its address and coordinates | *Schanzstrasse 14, Vienna* |
+| **[Location](./location)** | A physical site | The rooms at that site, grouped by floor, and its address and coordinates | *Schanzstrasse 14, Vienna* |
 | **[Room](./room)** | A single meeting room | Scans, markers, acoustic measurements, designs | *Aquarium demo* |
 
 ---
@@ -42,9 +42,9 @@ So when you are deciding where something belongs, the answer is almost always th
 
 | Role | Sees and manages |
 |---|---|
-| **Org Admin** | The whole organisation — every location and room, plus settings and users |
-| **Location Manager** | One location and the rooms inside it |
-| **Room Manager** | A single room |
+| **Admin** | The whole organisation — every location and room, plus settings and users |
+| **Location Manager** | One location and the rooms inside it — including adding and deleting rooms there |
+| **Room Manager** | A single room — its scans, markers, measurements and designs |
 
 No role ever exposes data outside its level. See [Inviting Users](../getting-started/inviting-users).
 

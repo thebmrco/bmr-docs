@@ -5,98 +5,90 @@ description: How to send the BMR team a bug report, feature request or question 
 ---
 
 import Icon from '@site/src/components/Icon'
-import useBaseUrl from '@docusaurus/useBaseUrl'
+import Figure from '@site/src/components/Figure'
 
 # <Icon name="comments" size="1em" /> Send Feedback
 
-Anywhere in BMR, you can send the team a **Bug report**, **Feature request**, **Question**, or **Other** message — directly from the product. It is the fastest way to get something in front of the BMR team without leaving the app.
+<PageIntro illustration="help" meta={['BMR Mobile', 'Web platform']}>
 
-Called **Send Feedback** in BMR Mobile (under **Settings**) and **Report an Issue** on the Web (in the **header**). Both open the same form with the same four categories.
+A bug, an idea or a question? Tell the BMR team with **Send Feedback**, without leaving BMR.
+
+</PageIntro>
 
 ---
 
 ## <Icon name="circle-check" size="1em" /> Where to find it
 
-The same form is available on both surfaces, but lives in a slightly different place:
+| Platform | Where |
+|---|---|
+| **Web** (`app.bettermeetingrooms.com`) | **Send Feedback** button in the **header**, on every page |
+| **BMR Mobile** (iPhone / iPad) | **Settings** → **Send Feedback** |
 
-| Platform | Label | Where |
-|---|---|---|
-| **Web** (`app.bettermeetingrooms.com`) | **Report an Issue** | In the **header bar**, next to the room search and notification bell. Available from any page. |
-| **BMR Mobile** (iPhone / iPad) | **Send Feedback** | Open **Settings** and tap **Send Feedback**. It is not pinned in the header — you reach it from Settings. |
-
-Either entry point opens the same form, and reports land in the same queue with the BMR team.
-
-<div style={{display: 'flex', gap: '32px', justifyContent: 'center', alignItems: 'flex-start', flexWrap: 'wrap', margin: '1.5rem 0'}}>
-  <div style={{flex: '0 1 260px', textAlign: 'center'}}>
-    <h4 style={{color: 'var(--bmr-dark-green)', fontSize: '1.1rem', fontWeight: 700, margin: '0 0 0.75rem'}}>BMR Mobile</h4>
-    <div className="phone-screenshot">
-      <img src={useBaseUrl('/img/send-feedback/bmr-mobile-settings-menu.jpg')} alt="BMR Mobile Settings tab with the Send Feedback row highlighted" style={{width: '100%', borderRadius: '12px'}} />
-    </div>
-    <p style={{marginTop: '0.5rem', fontSize: '0.85rem', color: 'var(--ifm-color-content-secondary)'}}>
-      Settings → Send Feedback
-    </p>
-  </div>
-  <div style={{flex: '1 1 380px', maxWidth: '620px', textAlign: 'center'}}>
-    <h4 style={{color: 'var(--bmr-dark-green)', fontSize: '1.1rem', fontWeight: 700, margin: '0 0 0.75rem'}}>Web</h4>
-    <img src={useBaseUrl('/img/send-feedback/web-header-report-an-issue.png')} alt="Web platform showing the Report an Issue button in the header bar, circled and pointed at with an arrow" style={{width: '100%', borderRadius: '8px', border: '1px solid #E5E5D5'}} />
-    <p style={{marginTop: '0.5rem', fontSize: '0.85rem', color: 'var(--ifm-color-content-secondary)'}}>
-      Header → Report an Issue
-    </p>
-  </div>
+<div style={{display: 'flex', gap: '24px', justifyContent: 'center', alignItems: 'flex-start', flexWrap: 'wrap'}}>
+  <Figure
+    src="/img/release/2026-10-tour-send-feedback.jpg"
+    alt="The Web Platform header with the Send Feedback button highlighted by the Welcome tour: something not working, or an idea? Tell us here"
+    variant="inset"
+    maxWidth={520}
+    caption="Web: Send Feedback, in the header."
+  />
+  <Figure
+    src="/img/send-feedback/bmr-mobile-settings-menu.jpg"
+    alt="BMR Mobile Settings tab with the Send Feedback row highlighted"
+    variant="phone"
+    maxWidth={240}
+    caption="BMR Mobile: Settings → Send Feedback."
+  />
 </div>
+
+Both go to the same BMR team.
 
 ---
 
 ## <Icon name="comments" size="1em" /> What you can send
 
-When you open the form you pick one of four categories:
+Pick a **Type**, write a short **summary** and a **description**.
 
-| Category | When to use it |
+| Type | When to use it |
 |---|---|
-| **Bug** | Something is not working the way you expect — a button does nothing, data looks wrong, a flow breaks. |
-| **Feature Request** | Something is missing or could be better. Use this for "It would be great if BMR also did X." |
-| **Question** | A how-to or clarification — "Can BMR do X?" or "How should I handle Y?" |
-| **Other** | Anything that does not fit the categories above. |
+| **Bug** | Something doesn't work — a button does nothing, data looks wrong, a flow breaks. |
+| **Feature Request** | Something is missing or could be better. The Web button starts here. |
+| **Question** | "Can BMR do X?" or "How should I handle Y?" |
+| **Other** | Anything else. |
 
-Each report needs a short **summary** (one-line subject) and a longer **description**. The description is free text — write whatever helps the team understand what happened or what you want.
+| | Web | BMR Mobile |
+|---|---|---|
+| Type, summary, description | Yes | Yes |
+| Attachments | Up to **5 files**, 10 MB each — or paste a screenshot | — |
+| Organisation, location or room | Optional | — |
+| App logs | — | The **last 24 hours** are attached automatically |
 
-<div style={{display: 'flex', gap: '32px', justifyContent: 'center', alignItems: 'flex-start', flexWrap: 'wrap', margin: '1.5rem 0'}}>
-  <div style={{flex: '0 1 260px', textAlign: 'center'}}>
-    <h4 style={{color: 'var(--bmr-dark-green)', fontSize: '1.1rem', fontWeight: 700, margin: '0 0 0.75rem'}}>BMR Mobile</h4>
-    <div className="phone-screenshot">
-      <img src={useBaseUrl('/img/send-feedback/bmr-mobile-send-feedback-form.jpg')} alt="Send Feedback form in BMR Mobile showing the Type picker open with Bug, Feature Request, Question, and Other" style={{width: '100%', borderRadius: '12px'}} />
-    </div>
-    <p style={{marginTop: '0.5rem', fontSize: '0.85rem', color: 'var(--ifm-color-content-secondary)'}}>
-      Send Feedback form
-    </p>
-  </div>
-  <div style={{flex: '0 1 320px', textAlign: 'center'}}>
-    <h4 style={{color: 'var(--bmr-dark-green)', fontSize: '1.1rem', fontWeight: 700, margin: '0 0 0.75rem'}}>Web</h4>
-    <img src={useBaseUrl('/img/send-feedback/web-report-an-issue-form.png')} alt="Report an Issue form on the Web showing the same four categories, summary, description, attachments, and Organization/Location/Room scoping" style={{width: '100%', borderRadius: '12px', border: '1px solid #E5E5D5'}} />
-    <p style={{marginTop: '0.5rem', fontSize: '0.85rem', color: 'var(--ifm-color-content-secondary)'}}>
-      Report an Issue form
-    </p>
-  </div>
-</div>
+<Figure
+  src="/img/send-feedback/bmr-mobile-send-feedback-form.jpg"
+  alt="Send Feedback form in BMR Mobile showing the Type picker open with Bug, Feature Request, Question, and Other"
+  variant="phone"
+  maxWidth={240}
+  caption="BMR Mobile: Type, summary and description."
+/>
+
+:::tip Hit an error on the Web?
+Many error messages have a **Report this issue** button. It opens the form as a **Bug**, with the error details already filled in.
+:::
 
 ---
 
-## <Icon name="map-pin" size="1em" /> Scoping the report
+## <Icon name="map-pin" size="1em" /> Scoping the report {#-scoping-the-report}
 
-Below the description you can optionally tell us **what the report relates to**:
-
-- **Organization** — applies to a whole organisation
-- **Location** — applies to a specific site or building
-- **Room** — applies to a single room
-
-Scoping is optional, but it is very useful for bug reports — it lets the BMR team open the same room or scan that you were looking at when you noticed the issue.
+Web only. Below the description, optionally pick what the report is about — an **Organization**, a **Location** or a **Room**. For a bug, this lets the team open the same room you were looking at.
 
 ---
 
-## <Icon name="star" size="1em" /> Tips for a useful report
+## <Icon name="list-checks" size="1em" /> Tips for a useful report {#-tips-for-a-useful-report}
 
-- **Be specific.** "Acoustic measurement keeps cancelling at step 3 with JBL Xtreme 4" is far easier to act on than "acoustic broken".
-- **Say what you did and what you expected.** A short before/after is usually all the team needs.
-- **Mention device and version when reporting a Bug.** "iPad Pro 12.9" (2022), release 1.2" gives the team something to reproduce against.
-- **For Feature Requests, describe the underlying need.** Knowing *why* you want a feature helps the team design the right thing, not just the literal request.
-- **Scope it to the room when relevant** — especially for Bug reports tied to specific data.
+<FixList items={[
+  {problem: 'Vague', fix: '“Acoustic measurement cancels at step 3 with JBL Xtreme 4” beats “acoustic broken”.'},
+  {problem: 'No before and after', fix: 'Say what you did, and what you expected instead.'},
+  {problem: 'A bug with no device', fix: 'Name the device and the version — “iPad Pro 12.9″ (2022), BMR Mobile 2.3”.'},
+  {problem: 'A feature with no reason', fix: 'Describe the need behind it, not only the button you want.'},
+  {problem: 'A bug about one room', fix: 'On the Web, scope it to that room. Add a screenshot.'},
+]} />
