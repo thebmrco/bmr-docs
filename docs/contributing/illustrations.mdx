@@ -46,10 +46,12 @@ The scan is the first thing you do in a room…
 />
 ```
 
-**A checklist** as a row of icons, and **a "Stuck?" list**:
+**A checklist** in one box, with tick boxes, and **a "Stuck?" list**:
 
 ```mdx
-<IconRow items={[{ icon: 'Smartphone', label: 'BMR Mobile installed' }]} />
+<Checklist items={[{ icon: 'Smartphone', label: 'BMR Mobile installed' }]}>
+An optional note at the bottom of the box.
+</Checklist>
 
 <FixList items={[{ problem: 'Room not found', fix: 'Browse via the building' }]} />
 ```

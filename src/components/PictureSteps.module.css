@@ -88,6 +88,23 @@ a.stepCard:hover {
   color: var(--bmr-light-green);
 }
 
+/* Portrait screenshots: phones and dialogs */
+.tall {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.tall .stepImageWrap {
+  aspect-ratio: 3 / 4;
+}
+
+.tall.pairs {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.tall.pairs .stepImageWrap {
+  aspect-ratio: 1000 / 1149;
+}
+
 @media (max-width: 996px) {
   .stepGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));

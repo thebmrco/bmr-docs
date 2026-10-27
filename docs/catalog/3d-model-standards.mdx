@@ -8,9 +8,13 @@ import Icon from '@site/src/components/Icon'
 
 # <Icon name="rotate-3d" size="1em" /> 3D Model Standards
 
-Every catalog item has two halves: the **data** BMR stores about it (see [Anatomy of a Catalog Item](item-anatomy)) and the **3D model** itself. This page covers the model. Any model added to the **BMR catalog** must meet the standards below — the rules apply whatever 3D application you use, only the final export has to conform.
+<PageIntro illustration="catalog" meta={['For 3D modellers', 'Any 3D application']}>
 
-Follow the summary, tick every box on the pre-flight checklist, then send.
+The rules every model must meet before it enters the **BMR catalog**. Use any tool — only the exported file has to conform.
+
+</PageIntro>
+
+A catalog item is **data** (see [Anatomy of a Catalog Item](item-anatomy)) plus the **3D model**. This page covers the model. Read the summary, tick the checklist, then send.
 
 ---
 
@@ -29,34 +33,35 @@ Follow the summary, tick every box on the pre-flight checklist, then send.
 
 ## <Icon name="alert-triangle" size="1em" /> Pre-flight checklist
 
-Tick every box before submitting — this is the definition of *done*.
+Tick every box before you send — this is the definition of *done*.
 
-- ☐ Model is ≤ 50,000 triangles
-- ☐ Origin sits at the object centre; model faces −Y
-- ☐ Scale and rotation applied; location **not** applied
-- ☐ One UV channel per mesh, valid and non-overlapping
-- ☐ Screen surface (if any) fills the full 0–1 UV space
-- ☐ PBR metallic-roughness materials, uniquely named
-- ☐ Screen material (if any) uses the `Screen` prefix
-- ☐ Textures are PNG or JPEG, embedded, ≤ 2048×2048 px
-- ☐ Normal maps use the OpenGL (+Y) convention
-- ☐ No lights, cameras, or hidden objects in the scene
-- ☐ No animation, rigs, skeletons, or keyframes
-- ☐ No drivers, expressions, or custom properties left in
-- ☐ Exported as a single self-contained file (.glb preferred)
+<Checklist items={[
+  {label: 'Model is ≤ 50,000 triangles'},
+  {label: 'Origin at the object centre; model faces −Y'},
+  {label: 'Scale and rotation applied; location not applied'},
+  {label: 'One UV channel per mesh, valid and non-overlapping'},
+  {label: 'Screen surface (if any) fills the full 0–1 UV space'},
+  {label: 'PBR metallic-roughness materials, uniquely named'},
+  {label: 'Screen material (if any) starts with "Screen"'},
+  {label: 'Textures are PNG or JPEG, embedded, ≤ 2048 × 2048 px'},
+  {label: 'Normal maps use the OpenGL (+Y) convention'},
+  {label: 'No lights, cameras or hidden objects in the scene'},
+  {label: 'No animation, rigs, skeletons or keyframes'},
+  {label: 'No drivers, expressions or custom properties left in'},
+  {label: 'Exported as one self-contained file (.glb preferred)'},
+]} />
 
 ---
 
 ## <Icon name="mail" size="1em" /> Submitting your model
 
-Once every checklist item is ticked:
+1. Export **one self-contained file** — `.glb` preferred, `.usdz` accepted — with all textures embedded.
+2. Add a short description: **name**, **brand**, **SKU**, and **where it goes** — floor, wall, ceiling, table, rack, on top of a display, or on a mount (VESA or camera screw).
+3. Making a **mount** or bracket? Say where equipment attaches and what fits there (VESA, rack, ¼"-20 camera screw). BMR places the [mounting points](ports-and-devices#-mounting-points).
+4. Send it to **support@bettermeetingrooms.com**. BMR checks it against these standards and gets back to you if anything needs changing.
 
-1. Export as a **single self-contained file** — `.glb` preferred; `.usdz` accepted — with all textures embedded.
-2. Include a short description covering **name**, **brand**, and the intended **placement type** (floor / wall / ceiling / tabletop).
-3. Send both to **office@bettermeetingrooms.com**. The BMR team reviews the submission against these standards and reaches out if anything needs adjusting before the model is published.
-
-The model is only half of a catalog entry. For how a full item — model **and** data — gets added, see [Requesting a Catalog Item](requesting-items).
+The model is half of a catalog entry. For the whole item — model **and** data — see [Requesting a Catalog Item](requesting-items).
 
 :::tip Need the full ruleset?
-The complete **BMR 3D Model Submission Standards** document — with per-tool tips for Blender, Maya, and 3ds Max — is available on request. Get in touch at **office@bettermeetingrooms.com**.
+The complete **BMR 3D Model Submission Standards** — with tips for Blender, Maya and 3ds Max — is available on request at **support@bettermeetingrooms.com**.
 :::

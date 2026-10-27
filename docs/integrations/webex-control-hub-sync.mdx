@@ -14,6 +14,12 @@ BETTERMEETINGROOMS (BMR) can connect to your Webex organization and automaticall
 
 </PageIntro>
 
+<IllustratedSteps steps={[
+  { illustration: 'security', title: 'Authorize in Control Hub', hint: 'Once, by a Webex full admin' },
+  { illustration: 'integrations', title: 'Connect in BMR', hint: 'Integrations → Webex Sync' },
+  { illustration: 'organise', title: 'Configure and sync', hint: 'Link existing rooms first' },
+]} done={['Locations and rooms show a Webex badge']} />
+
 ## Prerequisites
 
 - **Webex side:** a Webex **full administrator** for your organization (needed once, to authorize the app in Control Hub).
@@ -21,10 +27,10 @@ BETTERMEETINGROOMS (BMR) can connect to your Webex organization and automaticall
 
 ## Step 1 — Authorize the Service App in Control Hub
 
-The integration uses a Webex **Service App** called *Better Meeting Rooms*. Your Webex administrator has to approve it once:
+The integration uses a Webex **Service App** called *BETTERMEETINGROOMS*. Your Webex administrator has to approve it once:
 
 1. Sign in to [Webex Control Hub](https://admin.webex.com) as a full administrator.
-2. Go to **Apps → Service Apps** and locate **Better Meeting Rooms**.
+2. Go to **Apps → Service Apps** and locate **BETTERMEETINGROOMS**.
 3. Review the requested permissions (read-only access to your organization's locations and workspaces) and click **Authorize**.
 
 :::note
@@ -33,7 +39,7 @@ The app only ever **reads** locations and workspaces. It does not modify anythin
 
 ## Step 2 — Connect your organization
 
-1. In BMR, open **Organization → Integrations → Webex**.
+1. In BMR, open your organisation → **Integrations → Webex Sync**.
 2. Paste the organization's **refresh token** into the **Connect Webex Organization** form — it is available on [developer.webex.com](https://developer.webex.com) after the authorization (your BMR contact can help with this step).
 3. Click **Connect**. The token is verified against Webex; your Webex organization's name appears when the connection succeeds.
 
@@ -46,23 +52,31 @@ The app only ever **reads** locations and workspaces. It does not modify anythin
 | **Sync locations** | Imports and updates locations from Control Hub. |
 | **Sync workspaces (rooms)** | Imports and updates rooms from Control Hub workspaces. |
 | **Soft-delete items removed from Webex** | If a location/room disappears from Webex, it is archived here too. |
-| **Default location** | Where rooms land when their workspace has no location in Webex. |
+| **Default location** | Where rooms land when their workspace has no location in Webex. Left at **Use first available location**, they go to the organisation's first location. |
 
 :::warning Before your first sync
-If some of your Webex rooms already exist in BMR (created manually), the first sync will import them **again as duplicates**. Prevent this by adding the Webex workspace ID to each existing room first — see [Avoiding duplicate rooms](#avoiding-duplicate-rooms) below.
+If some of your Webex locations or rooms already exist in BMR (created manually), the first sync will import them **again as duplicates**. Prevent this by adding the Webex ID to each existing location and room first — see [Avoiding duplicate rooms](#avoiding-duplicate-rooms) below.
 :::
 
 Click **Save Settings**, then use **Sync Now** to run the first import immediately.
 
 ## Avoiding duplicate rooms
 
-If you already created rooms manually **before** connecting Webex, the sync would import their Webex counterparts as new, duplicate rooms. To prevent that, link each existing room to its workspace first:
+Created locations or rooms manually **before** connecting Webex? Link each one to Webex first, or the sync imports it again as a duplicate.
 
-1. Open the room for editing and find the **Control Hub Id** field.
-2. Paste the room's **Webex workspace ID** (your BMR contact can provide the list). The helper line below the field decodes the ID so you can double-check it matches the workspace shown in Control Hub.
-3. Save. On the next sync the room is updated in place instead of duplicated.
+| Link a… | Field | Paste |
+|---|---|---|
+| **Location** (Edit Location) | **Control Hub Id** | The **Webex location ID** |
+| **Room** (Edit all details) | **Control Hub Id** | The **Webex workspace ID** |
 
-Rooms and locations that came from Webex show a **Webex** badge and their synced fields (name, capacity) are managed by the sync.
+Your BMR contact can provide the IDs. The line below the field decodes the ID, so you can check it matches Control Hub. Save — the next sync updates it in place.
+
+Locations and rooms that came from Webex show a **Webex** badge. The sync manages these fields — edit them in Control Hub, not in BMR:
+
+| | Synced from Webex |
+|---|---|
+| **Location** | Name, street address, city, state, postal code, country, latitude and longitude |
+| **Room** | Name, capacity (people) and location |
 
 ## Monitoring and troubleshooting
 
@@ -77,8 +91,8 @@ The Webex Sync panel shows the last sync time, status, and counts of created/upd
 
 ## Disconnecting
 
-1. In **Organization → Integrations → Webex**, click **Deactivate**. This stops syncing and deletes the stored token.
-2. To fully revoke the app's access, your Webex administrator should also remove the *Better Meeting Rooms* authorization in **Control Hub → Apps → Service Apps**.
+1. In **Integrations → Webex Sync**, click **Deactivate**. This stops syncing and deletes the stored token.
+2. To fully revoke the app's access, your Webex administrator should also remove the *BETTERMEETINGROOMS* authorization in **Control Hub → Apps → Service Apps**.
 
 :::info
 Deactivating keeps all already-imported rooms and locations — only the connection is removed.

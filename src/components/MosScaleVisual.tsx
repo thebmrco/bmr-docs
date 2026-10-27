@@ -1,10 +1,13 @@
 import React from 'react';
 
-// Rating colors — matched to the MOS score circle shown in BMR Mobile.
-const ORANGE = '#C2571E'; // Poor
-const GOLD = '#C79A1E'; // Fair
-const GREEN_DARK = '#2E6B3E'; // Good
-const GREEN = '#3E9E55'; // Excellent
+// Rating colours — matched to the MOS score in BMR Mobile and on the web:
+// Poor red, Fair amber, Good and Excellent the same green. Ring = fill, label = text shade.
+const RED = '#D5453C';
+const RED_TEXT = '#B73027';
+const AMBER = '#E8A13C';
+const AMBER_TEXT = '#935E11';
+const GREEN = '#07C229';
+const GREEN_TEXT = '#047819';
 
 type Level = {
   label: string;
@@ -12,13 +15,14 @@ type Level = {
   /** Fraction of the ring to fill (0–1) */
   fill: number;
   color: string;
+  textColor: string;
 };
 
 const levels: Level[] = [
-  { label: 'Poor',      range: '1.0 – 2.9', fill: 0.25, color: ORANGE },
-  { label: 'Fair',      range: '3.0 – 3.5', fill: 0.50, color: GOLD },
-  { label: 'Good',      range: '3.6 – 4.5', fill: 0.75, color: GREEN_DARK },
-  { label: 'Excellent', range: '4.6 – 5.0', fill: 1.0,  color: GREEN },
+  { label: 'Poor',      range: '1.0 – 2.9', fill: 0.25, color: RED,   textColor: RED_TEXT },
+  { label: 'Fair',      range: '3.0 – 3.5', fill: 0.50, color: AMBER, textColor: AMBER_TEXT },
+  { label: 'Good',      range: '3.6 – 4.5', fill: 0.75, color: GREEN, textColor: GREEN_TEXT },
+  { label: 'Excellent', range: '4.6 – 5.0', fill: 1.0,  color: GREEN, textColor: GREEN_TEXT },
 ];
 
 /** A full 360° ring, filled clockwise from the top — matching the app's MOS score circle. */
@@ -75,7 +79,7 @@ export default function MosScaleVisual() {
             <span style={{
               fontWeight: 700,
               fontSize: '0.85rem',
-              color: level.color,
+              color: level.textColor,
               fontFamily: 'var(--ifm-font-family-base)',
             }}>
               {level.label}

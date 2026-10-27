@@ -16,17 +16,18 @@
  *   <IllustratedSteps steps={[{illustration, title, hint, link}]} done={[...]} />
  *       Numbered step cards for hub pages, each linking to its detail page.
  *
- *   <IconRow items={[{icon: 'Smartphone', label: 'BMR Mobile installed'}]} />
- *       A checklist as one row of icons (names listed in RowIcons below).
+ *   <Checklist items={[{icon: 'Smartphone', label: 'BMR Mobile installed'}]}>note</Checklist>
+ *       A tickable checklist, one item per line (icon names listed in RowIcons
+ *       below). <IconRow> is the older name for the same thing.
  *
  *   <FixList items={[{problem, fix}]} />
  *       Problem → fix, one line each, for "Stuck?" sections.
  */
-import React, {type ReactNode} from 'react';
+import React, {useEffect, useState, type ReactNode} from 'react';
 import Link from '@docusaurus/Link';
 import {
   Check, Smartphone, Tablet, Laptop, Mail, Speaker, BatteryCharging, Wifi, DoorClosed,
-  KeyRound, Users, Clock, Ruler, Camera, Volume2,
+  KeyRound, Users, Clock, Ruler, Camera, Volume2, Search,
 } from 'lucide-react';
 import type {LucideIcon} from 'lucide-react';
 import {Facets} from './parts';
@@ -83,17 +84,19 @@ export function PageIntro({
 
 type Step = {illustration: string; title: string; hint?: string; link?: string};
 
-export function IllustratedSteps({steps, done}: {steps: Step[]; done?: string[]}) {
+/** `numbered={false}` drops the step numbers, for cards that are not a sequence. */
+export function IllustratedSteps({steps, done, numbered = true}: {steps: Step[]; done?: string[]; numbered?: boolean}) {
   return (
     <>
       <ol className={styles.steps} style={{'--step-count': steps.length > 5 ? 3 : steps.length} as React.CSSProperties}>
         {steps.map((s, i) => {
           const body = (
             <>
-              <span className={styles.stepNumber}>{i + 1}</span>
+              {numbered && <span className={styles.stepNumber}>{i + 1}</span>}
               <Illustration name={s.illustration} className={styles.stepArt} />
               <strong>{s.title}</strong>
               {s.hint && <span className={styles.stepHint}>{s.hint}</span>}
+              {s.link && <span className={styles.stepMore}>Read more →</span>}
             </>
           );
           return (
@@ -122,24 +125,75 @@ export function IllustratedSteps({steps, done}: {steps: Step[]; done?: string[]}
 /** Icons IconRow accepts. Add here when a page needs another one. */
 const RowIcons: Record<string, LucideIcon> = {
   Smartphone, Tablet, Laptop, Mail, Speaker, BatteryCharging, Wifi, DoorClosed,
-  KeyRound, Users, Clock, Ruler, Camera, Volume2,
+  KeyRound, Users, Clock, Ruler, Camera, Volume2, Search,
 };
 
-export function IconRow({items}: {items: {icon: string; label: string}[]}) {
+/**
+ * A "have you got everything?" list: one item per line with a tick box the
+ * reader can tick, like a paper checklist. An item can link to the page
+ * that explains how to check it. Ticks are remembered in this
+ * browser only. Children become a note at the bottom of the list.
+ */
+export function Checklist({
+  items,
+  children,
+}: {
+  items: {icon?: string; label: string; link?: string; linkLabel?: string}[];
+  children?: ReactNode;
+}) {
+  const key = `bmr-checklist:${items.map((i) => i.label).join('|')}`;
+  const [ticked, setTicked] = useState<string[]>([]);
+  useEffect(() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem(key) ?? '[]');
+      if (Array.isArray(saved)) setTicked(saved);
+    } catch {
+      // storage blocked: start unticked
+    }
+  }, [key]);
+  const toggle = (label: string) => {
+    const next = ticked.includes(label) ? ticked.filter((l) => l !== label) : [...ticked, label];
+    setTicked(next);
+    try {
+      localStorage.setItem(key, JSON.stringify(next));
+    } catch {
+      // storage blocked: ticks last until the page closes
+    }
+  };
+  const allDone = ticked.length === items.length;
   return (
-    <ul className={styles.iconRow}>
-      {items.map(({icon, label}) => {
-        const Icon = RowIcons[icon];
-        return (
-          <li key={label}>
-            <span className={styles.iconCircle}>{Icon && <Icon size={22} aria-hidden="true" />}</span>
-            {label}
-          </li>
-        );
-      })}
-    </ul>
+    <div className={styles.checklist}>
+      <ul>
+        {items.map(({icon, label, link, linkLabel}) => {
+          const Icon = icon ? RowIcons[icon] : undefined;
+          const on = ticked.includes(label);
+          return (
+            <li key={label} className={on ? styles.checked : undefined}>
+              <label>
+                <input type="checkbox" checked={on} onChange={() => toggle(label)} />
+                <span className={styles.checkBox} aria-hidden="true">
+                  {on && <Check size={14} strokeWidth={3} />}
+                </span>
+                <span className={styles.checkLabel}>{label}</span>
+              </label>
+              {link && (
+                <Link to={link} className={styles.checkLink}>
+                  {linkLabel ?? 'How to check'} →
+                </Link>
+              )}
+              {Icon && <Icon size={18} className={styles.checkIcon} aria-hidden="true" />}
+            </li>
+          );
+        })}
+      </ul>
+      {allDone && <div className={styles.checklistFoot}>All set. Off you go.</div>}
+      {children && <div className={styles.checklistNote}>{children}</div>}
+    </div>
   );
 }
+
+/** Older name for Checklist. */
+export const IconRow = Checklist;
 
 /** Every illustration with its name, for the contributor gallery. */
 export function IllustrationGallery() {

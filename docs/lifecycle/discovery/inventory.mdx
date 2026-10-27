@@ -1,0 +1,174 @@
+---
+title: Room Inventory
+sidebar_label: Inventory
+description: Turn the close-up markers from the room into a list of what is in it, on the web (recommended) or in BMR Mobile.
+---
+
+import Icon from '@site/src/components/Icon'
+import Figure from '@site/src/components/Figure'
+import StepTabs, { DocImg } from '@site/src/components/StepTabs'
+
+# <Icon name="list-checks" size="1em" /> Room Inventory
+
+<PageIntro illustration="inventory" meta={['Web, recommended', 'BMR Mobile, Beta']}>
+
+What is in the room, built from your **close-up markers**.
+
+</PageIntro>
+
+First: [take close-up markers →](./markers#-taking-a-good-marker)
+
+---
+
+## <Icon name="laptop" size="1em" /> On the web (recommended) {#on-the-web}
+
+<StepTabs id="web" steps={[
+  {
+    title: "Open",
+    content: (
+      <>
+        <h3>1) Open the inventory</h3>
+        <p>Room → <strong>Documents</strong> → <strong>Inventory</strong> → <strong>Review markers</strong>.</p>
+        <div className="web-screenshot">
+          <DocImg src="/img/release/2026-10-documents-inventory-start.jpg" alt="An empty inventory in the Documents tab, marked Not verified yet, with a Review markers button and Carry over the items of the previous inventory" />
+        </div>
+        <p>Rescanned, nothing changed? <strong>Carry over</strong> the previous inventory.</p>
+      </>
+    ),
+  },
+  {
+    title: "Say what it shows",
+    content: (
+      <>
+        <h3>2) Say what it shows</h3>
+        <p>Type, or click a suggestion.</p>
+        <div className="web-screenshot">
+          <DocImg src="/img/inventory/web-review-suggest.jpg" alt="Review marker: a photo of a ceiling vent on the right, and on the left the question What does this photo show? with suggestions such as Display, Speaker and Power outlet" />
+        </div>
+        <p>An overview, or nothing to list? <strong>Nothing to record</strong>.</p>
+      </>
+    ),
+  },
+  {
+    title: "Pick the match",
+    content: (
+      <>
+        <h3>3) Pick the match</h3>
+        <p>Click <strong>Add</strong>.</p>
+        <div className="web-screenshot">
+          <DocImg src="/img/inventory/web-review-match.jpg" alt="Review marker: a search for power outlet with the catalog item Power Outlet and an Add button" />
+        </div>
+        <p>Not in the catalog? <strong>Add without catalog match</strong>.</p>
+      </>
+    ),
+  },
+  {
+    title: "Set how many",
+    content: (
+      <>
+        <h3>4) Set how many</h3>
+        <p>With <strong>− / +</strong>. Unsure it's the right model? <strong>View in 3D</strong>.</p>
+        <div className="web-screenshot">
+          <DocImg src="/img/inventory/web-review-quantity.jpg" alt="Review marker: the catalog Power Outlet in 3D next to the marker photo, linked with a quantity and a View in 3D button" />
+        </div>
+      </>
+    ),
+  },
+  {
+    title: "More in the photo?",
+    content: (
+      <>
+        <h3>5) More in the photo?</h3>
+        <p><strong>Add another item</strong>. Then <strong>Done, next</strong>.</p>
+        <div className="web-screenshot">
+          <DocImg src="/img/inventory/web-review-another.jpg" alt="Review marker with two linked items, a power outlet and an ethernet outlet, and an Add another item field" />
+        </div>
+      </>
+    ),
+  },
+  {
+    title: "Verified",
+    content: (
+      <>
+        <h3>6) Inventory verified</h3>
+        <p>Every marker reviewed. Overviews show as nothing to record.</p>
+        <div className="web-screenshot">
+          <DocImg src="/img/release/2026-10-documents-inventory-verified.jpg" alt="A verified inventory listing outlets, light switches and an air vent with category, manufacturer, quantity, verification and the marker each came from" />
+        </div>
+      </>
+    ),
+  },
+]} />
+
+---
+
+## <Icon name="smartphone" size="1em" /> In BMR Mobile <FeatureToggleTag /> {#in-the-app}
+
+<FeatureToggle />
+
+Still in the room? Room → **Documents +**. **Beta**: check the result on the web.
+
+<StepTabs id="app" steps={[
+  {
+    title: "Say what it shows",
+    content: (
+      <>
+        <h3>1) Say what it shows</h3>
+        <p>Type, or search the catalog.</p>
+        <div className="phone-screenshot">
+          <DocImg src="/img/inventory/app-review-search.jpg" alt="BMR Mobile: Marker 1 of 8 with the photo at the top, Linked components, a search field and the buttons Room feature and Nothing to record" />
+        </div>
+        <p>Overview? <strong>Nothing to record</strong>. Not equipment, like a window? <strong>Room feature</strong>.</p>
+      </>
+    ),
+  },
+  {
+    title: "Pick the match",
+    content: (
+      <>
+        <h3>2) Pick the match</h3>
+        <p>Tap <strong>Add</strong>.</p>
+        <div className="phone-screenshot">
+          <DocImg src="/img/inventory/app-review-match.jpg" alt="BMR Mobile: a search for Ether with the catalog item Ethernet Outlet and an Add button, and Add without catalog match below" />
+        </div>
+        <p>Not in the catalog? <strong>Add without catalog match</strong>.</p>
+      </>
+    ),
+  },
+  {
+    title: "Set how many",
+    content: (
+      <>
+        <h3>3) Set how many</h3>
+        <p>With <strong>− / +</strong>, then <strong>Next</strong>.</p>
+        <div className="phone-screenshot">
+          <DocImg src="/img/inventory/app-review-quantity.jpg" alt="BMR Mobile: Ethernet Outlet linked with a quantity of 1, and the Next button" />
+        </div>
+      </>
+    ),
+  },
+  {
+    title: "Same item again?",
+    content: (
+      <>
+        <h3>4) Same item again?</h3>
+        <p>Tap <strong>Same item +</strong>. Last marker done? Check the result on the web.</p>
+        <div className="phone-screenshot">
+          <DocImg src="/img/inventory/app-review-same-item.jpg" alt="BMR Mobile: Marker 2 of 8 with Ethernet Outlet under Recent and a Same item + button" />
+        </div>
+      </>
+    ),
+  },
+]} />
+
+---
+
+## <Icon name="help-circle" size="1em" /> Stuck?
+
+<FixList items={[
+  { problem: 'Forgot a marker', fix: 'Room → Markers → +, while still in the room' },
+  { problem: 'Close-up too far away', fix: 'Take a new close-up with Markers → +' },
+  { problem: 'Wrong item linked', fix: 'Click ✕ on the item and search again' },
+]} />
+
+Still stuck? [Send feedback →](../../getting-started/send-feedback)

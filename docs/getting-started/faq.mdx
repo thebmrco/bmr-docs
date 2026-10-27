@@ -1,11 +1,17 @@
 ---
 title: FAQ
-description: Short answers to the questions we are asked most — accounts, devices, the lifecycle phases, and support.
+description: Short answers to the questions we are asked most — accounts, devices, the lifecycle, and support.
 ---
 
 import Icon from '@site/src/components/Icon'
 
 # <Icon name="help-circle" size="1em" /> Frequently Asked Questions
+
+<PageIntro illustration="help">
+
+Short answers to the questions we hear most. Not here? [Send Feedback](send-feedback).
+
+</PageIntro>
 
 ---
 
@@ -15,7 +21,7 @@ import Icon from '@site/src/components/Icon'
 
 **BMR Mobile** is available on the **Apple App Store**, and the web platform is at **[app.bettermeetingrooms.com](https://app.bettermeetingrooms.com)**. There are two ways in:
 
-- **With an invitation** — if a colleague or the BMR team has invited you, use the invitation link so you land in the correct organisation. Sign in with your company email and password, or via Google or Cisco Webex SSO. See [Account Setup](account-setup).
+- **With an invitation** — if a colleague or the BMR team has invited you, use the invitation link so you land in the correct organisation. Sign in with your company email and password, or via single sign-on (SSO). See [Account Setup](account-setup).
 - **Without an invitation** — you can sign up on your own on the Web or in BMR Mobile. After signing up you first **confirm your email address** via the confirmation email you receive; then a short onboarding wizard guides you through creating your first **Organisation**, **Location**, and **Room**, so you land in a ready-to-use workspace instead of an empty account.
 
 If you are joining a company that already uses BMR, prefer the invitation route (or use your company email) so you see the same rooms and data as your colleagues.
@@ -34,7 +40,7 @@ Use **BMR Mobile**, now available publicly on the **Apple App Store**. The earli
 
 ### <Icon name="circle-question-mark" size="1em" /> Which devices support room scanning?
 
-iPhones and iPads with **LiDAR** — iPhone 12 Pro or newer (Pro / Pro Max), iPad Pro 11" (2nd gen, 2020) or newer, iPad Pro 12.9" (4th gen, 2020) or newer. See [System Requirements](system-requirements) for the full list.
+iPhones and iPads with **LiDAR**. We recommend an **iPhone 15 Pro** or newer, or an **iPad Pro (M4, 2024)** or newer, on the latest iOS. The minimum is an iPhone 12 Pro or an iPad Pro from 2020 on iOS 26. See [System Requirements](system-requirements).
 
 ### <Icon name="circle-question-mark" size="1em" /> Can I access BMR on the web?
 
@@ -42,31 +48,31 @@ Yes. Go to **[app.bettermeetingrooms.com](https://app.bettermeetingrooms.com)** 
 
 ---
 
-## <Icon name="lifecycle" size="1em" /> Lifecycle Phases
+## <Icon name="lifecycle" size="1em" /> Lifecycle {#-lifecycle-phases}
 
-### <Icon name="circle-question-mark" size="1em" /> What is the Discovery Phase?
+### <Icon name="circle-question-mark" size="1em" /> What is Discovery? {#-what-is-the-discovery-phase}
 
-Discovery is where you capture the room with an iPhone — a scan, markers and photos, and a guided acoustic measurement. All of this becomes the room's **Room Data**, which every later phase builds on.
+Discovery is where you capture the room with an iPhone — a scan, markers and photos, and a guided acoustic measurement. All of this becomes the room's **Room Data**, which Design and Maintenance build on.
 
 ### <Icon name="circle-question-mark" size="1em" /> Should I use the Advanced or Basic acoustic measurement flow?
 
-We recommend **Advanced**. It captures the **position of each measurement and of the speaker** (including a photo) during the flow — data we use to improve measurement quality, and which will enable **Auralisation** (hearing how a room sounds) in future releases. **Basic** runs the measurement without capturing those positions. Advanced needs a **room scan** and an **internet connection**; you choose the mode in **Settings → Acoustic Settings**.
+We recommend **Advanced**. It captures the **position of each measurement and of the speaker** (including a photo) during the flow — data we use to improve measurement quality, and which will enable **Auralisation** (hearing how a room sounds) in future releases. **Basic** runs the measurement without capturing those positions. Advanced needs a **room scan** and an **internet connection**. Your Admin sets the default for the organisation (**Preferences → Acoustic**); a switch in BMR Mobile (**Settings → Acoustic Settings**) overrides it on your device. See [how the mode is decided](../structure/organisation#acoustic).
 
-### <Icon name="circle-question-mark" size="1em" /> What is the Design Phase?
+### <Icon name="circle-question-mark" size="1em" /> What is Design? {#-what-is-the-design-phase}
 
-Design turns your Room Data into a validated room setup. There are **two ways to start**: create a design on the **web** — in **BMR Studio**, or via **VRC (Workspace Designer)** — or place equipment in **AR** on your iPhone or iPad. Both end up in **BMR Studio**, where you refine and version the design (best done **on a computer**). You can design the room yourself — placing equipment from the catalog, reviewing coverage overlays, and managing versions — or use [Send Feedback](send-feedback) to ask the BMR team for help. See [Design Phase](../lifecycle/design/).
+Design turns your Room Data into a validated room setup. There are **two ways to start**: create a design on the **web** — in **BMR Studio**, or via **VRC (Workspace Designer)** <FeatureToggleTag /> — or place equipment in **AR** on your iPhone or iPad. Both end up in **BMR Studio**, where you refine and version the design (best done **on a computer**). You can design the room yourself — placing equipment from the catalog, reviewing coverage overlays, and managing versions — or use [Send Feedback](send-feedback) to ask the BMR team for help. When it's ready, **Activate** it. See [Design](../lifecycle/design/) and [Deploy](../lifecycle/deploy/).
 
 ### <Icon name="circle-question-mark" size="1em" /> Is BMR Studio available to me?
 
-Yes — BMR Studio is in **Beta** but enabled for everyone. It is designed for the **web on a computer**, which gives the best experience for detailed design; it also runs in BMR Mobile on **iPad** (good for reviewing, less suited to detailed work) and **iPhone** (preview only). Open any room, go to **Design**, and click **Open Studio** to get started.
+Yes — BMR Studio is in **Beta** but enabled for everyone. It is designed for the **web on a computer**, which gives the best experience for detailed design; it also runs in BMR Mobile on **iPad** (good for reviewing, less suited to detailed work) and **iPhone** (preview only). Open any room, go to the **Designs** tab, and click a design — or **New Design** — to get started.
 
 ### <Icon name="circle-question-mark" size="1em" /> What is AR Design, and do I need to save it?
 
-AR Design lets you place equipment directly in the physical room, at real scale, using your iPhone or iPad. You never name or manually save it — a design is created and **saved automatically** as you work, and **uploaded when you tap Upload & Exit**. It is then imported into **BMR Studio** to refine. A **room scan is required first**. See the [AR Design guide](../lifecycle/design/ar-design-guide).
+AR Design lets you place equipment directly in the physical room, at real scale, using your iPhone or iPad. You don't name it. Tap **Upload & Exit** to send it to **BMR Studio**, where you refine it. Leaving with **Exit** throws the session away — upload before you leave. Scan the room first: without a scan, only photos upload. See the [AR Design guide](../lifecycle/design/ar-design-guide).
 
 ### <Icon name="circle-question-mark" size="1em" /> Can I add notes to rooms and other elements?
 
-Yes. You can add notes to organisations, locations, rooms, scans, markers, acoustic measurements, and designs — on both the web platform and the app. You can also add a note to a **group** of related acoustic measurements (for example a bundled three-position measurement), not just to individual ones. Notes are visible to all team members with access.
+Yes — to rooms, scans, markers, acoustic measurements, designs and inventory items, on the web and in BMR Mobile. Everyone with access to the room sees them.
 
 ### <Icon name="circle-question-mark" size="1em" /> What is a Default Room Configuration?
 
@@ -82,11 +88,11 @@ Maintenance uses the **Active Design** — the live record of the room as instal
 
 ### <Icon name="circle-question-mark" size="1em" /> How do I move a room to a different organisation or location?
 
-Open the room and go to the **Overview** page. Tap **Edit** to enter edit mode — you can then select a new organisation and location for the room. Save your changes to apply the move.
+On the web, open the room and click the **pencil** next to **Where**. Pick another **location** and save. A room moves only between locations of **its own organisation** — the organisation can't be changed. See [Moving a room](../structure/room#-moving-a-room).
 
 ### <Icon name="circle-question-mark" size="1em" /> How do I delete a location?
 
-Open the **Organisation** page and go to the **Locations** tab. Each location entry has a **garbage bin** icon — tap it to delete that location.
+Open the organisation, then **Directory → Locations**. Click the **bin** next to the location. Only an **Admin** can delete a location, and it takes the location's rooms with it.
 
 ---
 
@@ -102,4 +108,4 @@ No. The app runs only on iOS devices with LiDAR. The BMR web platform works in a
 
 ### <Icon name="circle-question-mark" size="1em" /> Who do I contact if I get stuck?
 
-Use **[Send Feedback](send-feedback)** to send a Bug report, Feature request, Question, or Other message directly to the BMR team. It is in the **header** on the Web (labelled *Report an Issue*) and under **Settings** in BMR Mobile (labelled *Send Feedback*). The team monitors this channel actively, so it is the fastest way to get a reply.
+Use **[Send Feedback](send-feedback)** to send a Bug report, Feature request, Question, or Other message directly to the BMR team. It is in the **header** on the Web and under **Settings** in BMR Mobile. The team monitors this channel actively, so it is the fastest way to get a reply.

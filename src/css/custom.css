@@ -1418,3 +1418,53 @@ details.bmr-details > summary.bmr-summary::marker {
   background: rgba(95, 196, 120, 0.15);
   color: var(--bmr-light-green);
 }
+
+/* Room scan: two phones side by side, button → open list */
+.scan-tips-pair {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 0.75rem 0 1rem;
+}
+.scan-tips-pair figure {
+  margin: 0;
+  flex: 0 1 200px;
+  text-align: center;
+}
+.scan-tips-pair img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.14);
+}
+.scan-tips-pair figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+.scan-tips-arrow {
+  font-size: 1.75rem;
+  color: var(--ifm-color-primary);
+  flex: none;
+}
+
+/* Web screenshots in tutorial guides: wider than phones, still framed */
+.web-screenshot {
+  text-align: center;
+  margin: 1.25rem 0;
+}
+.web-screenshot img {
+  max-width: 560px;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Markers page: capture table beside the phone, stacked on narrow screens */
+@media (max-width: 700px) {
+  .markers-capture {
+    grid-template-columns: 1fr !important;
+  }
+}

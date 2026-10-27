@@ -4,97 +4,108 @@ description: Placing equipment at real scale in the physical room with AR on iPh
 ---
 
 import Icon from '@site/src/components/Icon'
-import useBaseUrl from '@docusaurus/useBaseUrl'
 import StepFlow from '@site/src/components/StepFlow'
 
 # <Icon name="3d-ar-design" size="1em" /> AR Design Guide
 
 <PageIntro illustration="ar-design" meta={['BMR Mobile', 'Beta']}>
 
-Place equipment directly into the physical room using augmented reality on your iPhone or iPad. Items are positioned at real scale in the actual space, and the result is saved as a design — ready to continue refining in BMR Studio.
+Place equipment at real scale in the room, with AR on iPhone or iPad. Upload it as a design and continue in BMR Studio.
 
 </PageIntro>
 
-<Notice kind="preview" />
-<Notice kind="design" />
+<Notice kind={['design', 'preview']} />
 
-:::info Designs save themselves
-You never name or manually save an AR Design. One is created automatically — **Design 1** (rename any time with the pencil) — and kept **saved locally** as you work. Upload it with **Upload & Exit** when you are done. If you tap **✕** to leave, you are asked whether to **Save and leave**, **Discard**, or **Go back** and keep designing.
+:::caution Upload before you leave
+An AR Design is kept **only while the session is open**. Nothing is saved on the device until you upload. **Design 1** is created for you; rename it with the pencil.
 :::
 
 ---
 
 ## <Icon name="alert-triangle" size="1em" /> Before you start
 
-A **room scan is required** before starting an AR Design. The scan provides the coordinate space that links AR-placed items to the room model. If no scan exists, the app prompts you to scan the room first.
+| The room has… | What happens |
+|---|---|
+| **A scan** | The app recognises the room, then you design. Full upload. |
+| **No scan** | **Scan Recommended**: tap **Do Scan First**, or **Continue** in *limited mode*. |
+
+**Limited mode:** only your photos can be uploaded. They go to the room's markers, without coordinates. Placed items are **not** uploaded.
 
 ---
 
-## <Icon name="scan" size="1em" /> Room verification
+## <Icon name="scan" size="1em" /> Recognising the room {#-room-verification}
 
-When you start an AR Design in a scanned room, BMR Mobile first **relocalizes against the original scan** — so whatever you place is anchored to the correct spatial position. Move the device slowly around the space so it can match what it sees to the room scan.
+The app matches the camera view to the room's [AR World Map](../../technology/ar-world-map), so items land in the scan's coordinates.
 
-You will see:
+| You see | Do this |
+|---|---|
+| **Recognising this room** with a **% of room seen** ring | Turn slowly round the room. |
+| **Keep turning left** / **Keep turning right** | Turn that way. |
+| **Room recognised** | Wait: the design session opens by itself. |
+| **Still can't recognise this room** (after about 20 s) | **Try again**, **Continue without positioning**, **Re-scan the room** or **Learn why this happens**. |
 
-- **Verifying room…** while it looks for a match.
-- **Room verified** once relocalization succeeds — you can then place equipment with confidence that it is anchored correctly.
-- If it cannot find the room, you can **Retry** or **Continue without verification**.
+:::warning Skip positioning = limited mode
+**Skip positioning** or **Continue without positioning** puts the design in limited mode. The banner says **Room not positioned, only images can be uploaded**: take photos with the shutter, as placed items are not uploaded.
+:::
 
-<div style={{display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', margin: '1rem 0'}}>
-  <div className="phone-screenshot" style={{flex: '0 0 200px'}}>
-    <img src={useBaseUrl('/img/release/2026-07-verifying-room.jpg')} alt="Verifying room card overlay while BMR Mobile relocalizes against the original scan" style={{width: '100%', borderRadius: '12px'}} />
-  </div>
-  <div className="phone-screenshot" style={{flex: '0 0 200px'}}>
-    <img src={useBaseUrl('/img/release/2026-07-room-verified.jpg')} alt="Room verified confirmation card overlay after successful relocalization" style={{width: '100%', borderRadius: '12px'}} />
-  </div>
-</div>
-
-The same verification also runs when you add a new **marker** or start a new **acoustic measurement** in a scanned room.
+The same screen appears when you add **markers** or start an **acoustic measurement** in a scanned room.
 
 ---
 
 ## <Icon name="scan" size="1em" /> The AR Design flow
 
-Once the room is verified you are in the design session. There is no naming step — start placing straight away.
-
 <StepFlow steps={[
-  { label: "Once the room is verified you are in the design session, with a placement guide on the surface in front of you. Tap the green + to add equipment, or the shutter at any time to capture a photo of the design.", image: "/img/ar-design/AR-Design-starter-screen.jpg", alt: "Empty AR Design session showing a yellow placement guide, with the shutter and add-item buttons below" },
-  { label: "Tap the green + to open the AR catalog (BMR Standard Catalog - AR). Search, or filter by category — Acoustics, Boards, Bundles, Cameras, and more — then choose an item.", image: "/img/ar-design/AR-Design-placing-object.jpg", alt: "AR catalog showing the BMR Standard Catalog - AR with a search field, category tabs, and item thumbnails" },
-  { label: "Position the item at the right place in the physical space. Move and rotate it until the placement is right. Add more items with +, and capture the current view with the shutter.", image: "/img/ar-design/AR-Design-item-placed.jpg", alt: "A video collaboration display placed on the wall in AR, with the shutter and add-item buttons below" },
-  { label: "For screens and displays, open the design drawer and tap the wand on the item to set what the screen shows — a still image or a video. Changes apply instantly to the placed screen, and the media stays on your device.", image: "/img/ar-design/AR-Design-Selecting-content-display.jpg", alt: "Screen content picker offering photos and videos to display on a placed screen" },
-  { label: "The design drawer lists every placed item — delete one with the trash icon, or tap the wand to change a screen. Any photos you capture are listed here too. Finish with Upload & Exit, or Add Design to create a variant.", image: "/img/ar-design/AR-Design-reviwing-items-placed.jpg", alt: "Design drawer listing placed items with delete and screen-content controls, plus Add Design and Upload & Exit" },
-  { label: "Add Design creates a variant of the current design — Start empty to clear the room and place from scratch, or Continue to keep everything placed and add more. Either way, your first design stays saved.", image: "/img/ar-design/Adding-a-new-AR-Design.jpg", alt: "Add Design sheet offering Start empty or Continue from the current design" },
+  { label: "A placement guide appears on the surface in front of you. Green + adds equipment; the shutter captures a photo of the design.", image: "/img/ar-design/AR-Design-starter-screen.jpg", alt: "Empty AR Design session showing a yellow placement guide, with the shutter and add-item buttons below" },
+  { label: "Search, or filter by category. Tap the catalog name to switch catalog: Favourites (starred) first, then All Catalogs A–Z. The Recent tab lists the ones you used.", image: "/img/ar-design/AR-Design-placing-object.jpg", alt: "AR catalog showing the BMR Standard Catalog - AR with a search field, category tabs, and item thumbnails" },
+  { label: "Move and rotate the item into place. Add more with +.", image: "/img/ar-design/AR-Design-item-placed.jpg", alt: "A video collaboration display placed on the wall in AR, with the shutter and add-item buttons below" },
+  { label: "Screens: tap the wand in the design drawer to show a photo or video. The media stays on your device.", image: "/img/ar-design/AR-Design-Selecting-content-display.jpg", alt: "Screen content picker offering photos and videos to display on a placed screen" },
+  { label: "The design drawer lists items and photos. Trash removes one. Finish with Upload & Exit, or Add Design for a variant.", image: "/img/ar-design/AR-Design-reviwing-items-placed.jpg", alt: "Design drawer listing placed items with delete and screen-content controls, plus Add Design and Upload & Exit" },
+  { label: "Add Design: Start empty, or Continue from Design 1 to keep everything placed. Design 1 stays either way.", image: "/img/ar-design/Adding-a-new-AR-Design.jpg", alt: "Add Design sheet offering Start empty or Continue from Design 1, noting Design 1 stays saved either way" },
 ]} />
 
 ---
 
 ## <Icon name="circle-check" size="1em" /> Finishing up
 
-When you are done, upload your work from the design drawer.
-
-- **One design** — tap **Upload & Exit** and it uploads directly.
-- **Several designs** — the drawer's **All designs** tab lists them all (the one you are editing is marked **Current**), and the button becomes **Review & upload all**.
+- **One design**: **Upload & Exit**.
+- **Several**: the **All designs** tab, then **Review & upload all**.
 
 <StepFlow steps={[
-  { label: "With more than one design, switch to the All designs tab to see them all. Tap Review & upload all to continue.", image: "/img/ar-design/Multiple-designs.jpg", alt: "All designs tab listing Design 1 and Design 2, with the current one marked Current and a Review & upload all button" },
-  { label: "The Design Preview lists every design and the items it contains. Remove a whole design with the trash icon, then tap Upload all — or go Back to designing.", image: "/img/ar-design/Review-multiple-design.jpg", alt: "Design Preview review step listing each design and its items, with Upload all and Back to designing buttons" },
+  { label: "All designs lists every design; the open one is marked Current. Tap Review & upload all.", image: "/img/ar-design/Multiple-designs.jpg", alt: "All designs tab listing Design 1 and Design 2, with the current one marked Current and a Review & upload all button" },
+  { label: "Design Preview: remove a design with the trash icon, then Upload all, or Back to designing.", image: "/img/ar-design/Review-multiple-design.jpg", alt: "Design Preview review step listing each design and its items, with Upload all and Back to designing buttons" },
 ]} />
 
-Tapping the **✕** button doesn't discard straight away — it asks whether to **Save and leave** (keep the design for later), **Discard** it, or **Go back** and keep designing.
+**✕** asks **Leave AR Design?**:
 
-Once uploaded, the AR Design appears in the room's **Designs** section alongside any designs created in BMR Studio. From there you can:
+| Button | Does |
+|---|---|
+| **Save & Exit** | Opens the review, then uploads. Shown only when there is something to upload. |
+| **Exit** | Leaves and **discards** every design in the session. |
+| **Go Back** | Back to designing. |
 
-- Open it in **BMR Studio** to add more equipment, adjust placement, or refine the layout
-- Compare it with other design versions for the same room
-- Move it through approval and mark it as the **Active Design** when installed
+Uploaded designs appear in the room's **Designs**. Open one in **BMR Studio** to refine, compare it with other versions, and make it the **Active Design** once installed.
 
 ---
 
 ## <Icon name="star" size="1em" /> Tips
 
-- **Scan first, design second** — without a scan, AR-placed items cannot be anchored to the room model.
-- **Good lighting** helps the app match the room faster during verification.
-- **Walk around slowly** during verification so the app can recognise surfaces from the original scan.
-- **Place items one at a time** — position each piece before adding the next for the most accurate result.
-- **Bring screens to life** — use the wand to set screen content and preview how the room looks in use.
-- AR Design is best for **initial placement and visualisation**. For detailed configuration, cabling, and coverage analysis, continue in **BMR Studio**.
+- **Scan first, design second**: without a scan only photos upload.
+- **Good light, slow turns**: the room is recognised faster.
+- **One item at a time**: place each piece before adding the next.
+- **Bring screens to life** with the wand.
+- For cabling, coverage and detail, continue in **BMR Studio**.
+
+---
+
+## <Icon name="help-circle" size="1em" /> Stuck?
+
+<FixList items={[
+  { problem: 'No New AR Design button', fix: 'Open the room, then its Designs tab. The button is at the bottom' },
+  { problem: 'Unsupported device', fix: 'AR Design needs an iPhone or iPad with LiDAR' },
+  { problem: 'Still can\'t recognise this room', fix: 'Try again from a corner with detail. See AR World Map' },
+  { problem: 'Banner: only images can be uploaded', fix: 'Positioning was skipped, or there is no scan. Take photos, or scan and start again' },
+  { problem: 'Take a photo to enable uploading', fix: 'Limited mode uploads photos only: use the shutter' },
+  { problem: 'No Save & Exit when leaving', fix: 'Nothing to upload yet. Exit discards the session' },
+]} />
+
+More on recognition: [AR World Map](../../technology/ar-world-map#-if-it-still-cant-find-the-room).

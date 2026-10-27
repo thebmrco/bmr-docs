@@ -5,29 +5,33 @@ description: The top level of the structure — what an organisation holds, and 
 ---
 
 import Icon from '@site/src/components/Icon'
+import Figure from '@site/src/components/Figure'
 
 # <Icon name="organization" size="1em" /> Organisation
 
-The **organisation** is the top of the [structure](./): your company or business unit. It contains every [location](./location) and, through them, every [room](./room) — and it is the boundary for access, preferences and integrations.
+<PageIntro illustration="organise" meta={['Web platform', 'Admins']}>
 
-Anything set here applies to everything inside it.
+Your company or business unit — the top of the [structure](./). Everything set here applies to every [location](./location) and [room](./room) inside it.
+
+</PageIntro>
 
 ---
 
 ## <Icon name="admin-settings" size="1em" /> The admin area
 
-Open your organisation on the web and choose **Organization settings**. The admin area is one pill row, and the groups that hold more than one page show a second row of tabs beneath it.
+Open your organisation on the web. One row of groups runs along the top; groups with more than one page show a second row of tabs beneath.
 
-| Group | What it is for |
-|---|---|
-| **Overview** | Counts, Data Completeness, Recent Activity and the location list |
-| **Users** | Who has access, and with which role — see [Inviting Users](../getting-started/inviting-users) |
-| **Directory** | The [locations](./location) and [rooms](./room) in the organisation |
-| **Preferences** | Organisation-wide settings — the tabs below |
-| **Integrations** | [Webex Control Hub Sync](../integrations/webex-control-hub-sync) and [Microsoft 365](../integrations/microsoft-365) |
+| Group | Tabs | What it is for |
+|---|---|---|
+| **Overview** | — | Counts, Data Completeness, Recent Activity and the location list |
+| **Users** | — | Who has access, and with which role — see [Inviting Users](../getting-started/inviting-users) |
+| **Directory** | Locations · Rooms | The [locations](./location) and [rooms](./room) in the organisation |
+| **Preferences** | General · Acoustic · Catalog · Branding | Organisation-wide settings — [below](#-preferences) |
+| **Integrations** | Webex Sync · Microsoft 365 | [Webex Control Hub Sync](../integrations/webex-control-hub-sync) and [Microsoft 365](../integrations/microsoft-365) |
+| **Room Configurations** | Yours · BMR Defaults | Recommended equipment per room size — [below](#room-configurations) |
 
 :::note Who can change these
-Organisation settings require edit access to the organisation — in practice, an **Org Admin**.
+Changing these needs an **Admin**.
 :::
 
 ---
@@ -36,40 +40,82 @@ Organisation settings require edit access to the organisation — in practice, a
 
 ### General
 
-The organisation's identity and its most destructive action.
+| Setting | What it does |
+|---|---|
+| **Organization ID** | The identifier to quote when you contact support |
+| **Cat figures** · **Monster figures** | Offer cats or friendly monsters as figure styles for the chairs in BMR Studio |
+| **Trash retention** <FeatureToggleTag /> | How long deleted rooms, scans, designs and acoustics can be restored |
+| **Delete this organization** | Moves the organisation, its locations, rooms and everything in them to the trash |
 
-- **Organization ID** — the identifier to quote when contacting support.
-- **Delete this organization** — removes the organisation together with its locations, rooms and everything in them. This cannot be undone.
-
-### Room Configurations
-
-The default equipment recommendations applied to rooms by size band — for example a Room Bar and a single display for a small huddle room. When a designer opens a room in BMR Studio, the configuration matching the room's size is suggested automatically.
-
-Fully documented in **[Default Room Configuration](../lifecycle/design/default-room-configuration)**.
+:::danger Deleting an organisation
+You type the organisation's name to confirm. The other Admins get an email. Restoring from the **Trash** is a <FeatureToggleTag /> feature. Without it, there is no way back in the app.
+:::
 
 ### Acoustic
 
-Defaults applied when taking acoustic measurements in this organisation. Measurements already taken are not changed.
+Defaults for acoustic measurements in this organisation. Measurements already taken are not changed.
 
 | Setting | What it does |
 |---|---|
-| **Default measurement mode** | Whether measurements run in **Advanced** or **Basic** — see [Acoustic Measurement](../acoustics/acoustics-guide) |
-| **Target MOS** | The Mean Opinion Score the organisation aims for, from 1.0 to 5.0. Data analysis views flag rooms that fall below it |
+| **Default measurement mode** | **Advanced** or **Basic** — see [Acoustic Measurement](../acoustics/acoustics-guide) |
+| **Target MOS** | The score the organisation aims for, from 1.0 to 5.0. Data analysis views flag rooms below it |
 | **Default room usage type** | The DIN 18041 usage class pre-selected when a room is created |
+| **Default acoustics catalog** | The catalog whose acoustic items acoustic measurement uses |
 
 :::tip How the measurement mode is decided
-The app resolves the mode in this order: a **device setting** in BMR Mobile (Settings → Acoustic Settings → Advanced Measurement Mode) wins if it has been set; otherwise the **organisation default** from this tab applies; otherwise **Advanced**. Set it here to steer everyone in the organisation, and leave the app toggle alone.
+1. A **device setting** in BMR Mobile (Settings → Acoustic Settings → Advanced Measurement Mode), if set.
+2. Otherwise this **organisation default**.
+3. Otherwise **Advanced**.
+
+Set it here to steer everyone, and leave the app switch alone.
 :::
 
 ### Catalog
 
-The equipment catalogs available to the organisation, with the number of items in each. Catalogs are **view only** — they are curated and maintained by BETTERMEETINGROOMS. Select one to see the equipment it contains.
+The equipment catalogs your organisation can use, with the number of items in each. Click one to see what it holds.
 
-See [Catalog & 3D Models](../catalog/) for what a catalog item holds and how to request an addition.
+- Catalogs curated by BETTERMEETINGROOMS are **view only**.
+- A catalog your organisation **owns** can be managed here.
+
+See [Catalog & 3D Models](../catalog/) for what an item holds and how to request one.
+
+### Bundles <FeatureToggleTag /> {#bundles}
+
+<FeatureToggle />
+
+Every reusable kit your organisation can place — its own, public ones and ones shared with it. Your own can be edited here. How bundles work: [Release 2.4](../release-notes/2026-10-release-2.4).
+
+<Figure
+  src="/img/release/2026-10-bundles-list.jpg"
+  alt="Organisation › Preferences › Bundles: a searchable list of bundles with a thumbnail, name, number of items, what each mounts to, the catalogs it is in and its owner"
+  caption="Preferences › Bundles."
+/>
 
 ### Branding
 
-Upload the organisation's **logo**, which can then be placed and resized in designs in BMR Studio.
+| Section | What it does |
+|---|---|
+| **Logos** | Upload artwork. It becomes a 3D logo you can place in any room in BMR Studio. Replace or delete it here. |
+| **Panel murals** | Spread one picture across a grid of acoustic panels. **New mural** to start; print files are made when you download. |
+
+<Figure
+  src="/img/release/2026-10-panel-murals-branding.jpg"
+  alt="Organisation › Preferences › Branding, with Logos at the top and Panel murals below, with a print density setting and a New mural button"
+  caption="Branding: logos and panel murals."
+/>
+
+---
+
+## <Icon name="sliders-horizontal" size="1em" /> Room Configurations {#room-configurations}
+
+Recommended equipment for each room size — for example a video bar and one display for a small huddle room. When you design a room in BMR Studio, the matching configuration is suggested.
+
+| Tab | What it holds |
+|---|---|
+| **Yours** | Your organisation's own configurations — **Add a room configuration** to make one |
+| **BMR Defaults** | Configurations from BETTERMEETINGROOMS, used when none of yours fits |
+
+Fully documented in **[Default Room Configuration](../lifecycle/design/default-room-configuration)**.
 
 ---
 

@@ -8,6 +8,7 @@ import Icon from '@site/src/components/Icon'
 import useBaseUrl from '@docusaurus/useBaseUrl'
 import Admonition from '@theme/Admonition'
 import StepTabs, { DocImg } from '@site/src/components/StepTabs'
+import { FeatureToggleTag } from '@site/src/components/FeatureToggle'
 
 # <Icon name="scan" size="1em" /> Room Scan
 
@@ -29,19 +30,20 @@ The scan is the **first thing you do in a room** and the foundation for everythi
 
 ### What the scan unlocks
 
-Without a scan, the room works in a limited way:
+Without a scan, BMR Mobile shows **Scan Recommended** first. Continue anyway and:
 
-- **Markers** are stored as photos only, without coordinates.
-- **Acoustic measurements** run in the Basic flow — no speaker or measurement positions.
-- **AR Design** can be explored but designs cannot be saved.
+| | Without a scan |
+|---|---|
+| **Markers** | Photos only, no coordinates |
+| **Acoustics** | Basic flow, no positions. No MOS score: it needs the room volume |
+| **AR Design** | Explore only. Designs can't be saved, only images shared |
 
-This is why the app's guidance starts with **"Start here — Scan the room"**, and why scanning and marker capture are best done in the same visit.
+So the app starts with **Start here: Scan the room**. Scan and mark in the same visit.
 
 ### What you need
 
-- An iPhone or iPad with **LiDAR** — iPhone 12 Pro or newer, iPad Pro (2020) or newer
-- **iOS 26** or newer
-- Reasonable lighting — LiDAR works in the dark, but the camera needs light to texture the scan
+- A **LiDAR** iPhone or iPad (iPhone 12 Pro / 2020 iPad Pro or newer, iOS 26) — see [System Requirements](../../getting-started/system-requirements#-iphone--ipad)
+- Light — LiDAR works in the dark, but the camera needs light to texture the scan
 
 ---
 
@@ -55,14 +57,9 @@ This is the **Scan → Markers → Upload** flow in BMR Mobile. Click any step n
     content: (
       <>
         <h3>1) Start scan</h3>
-        <p>Open the room and begin a new scan.</p>
-        <ul>
-          <li>Navigate to the correct room</li>
-          <li>Go to <strong>Scans</strong></li>
-          <li>Tap <strong>New Scan</strong></li>
-        </ul>
+        <p>Open the room and tap <strong>Scan the room</strong>.</p>
         <div className="phone-screenshot">
-          <DocImg src="/img/tutorials/scan-marker-flow/1-Start-scan.jpg" alt="Start scan" />
+          <DocImg src="/img/tutorials/scan-marker-flow/v2-room-start-scan.jpg" alt="The room page in BMR Mobile with Start here: Scan the room, and empty Scans, Markers, Documents and Acoustics rows" />
         </div>
         <Admonition type="tip" title="Good practice">
           Make sure you have enough light and a stable connection — syncing starts automatically after capture.
@@ -75,14 +72,9 @@ This is the **Scan → Markers → Upload** flow in BMR Mobile. Click any step n
     content: (
       <>
         <h3>2) Scanning starts</h3>
-        <p>Move the device to initialize tracking.</p>
-        <ul>
-          <li>Move in a smooth, steady motion</li>
-          <li>Avoid fast pans / sudden movement</li>
-          <li>Keep edges (walls/doors) in view where possible</li>
-        </ul>
+        <p>Follow the hint on screen. Point at the <strong>top edge of a wall</strong> and move slowly.</p>
         <div className="phone-screenshot">
-          <DocImg src="/img/tutorials/scan-marker-flow/2-Scanning-starting.jpg" alt="Scanning starts" />
+          <DocImg src="/img/tutorials/scan-marker-flow/v2-scanning-starts.jpg" alt="Scanning starts: a frame with a phone animation and the hint Point camera at top edge of wall, with Tips for markers, the camera button and Finish at the bottom" />
         </div>
       </>
     ),
@@ -92,24 +84,20 @@ This is the **Scan → Markers → Upload** flow in BMR Mobile. Click any step n
     content: (
       <>
         <h3>3) Scan in progress</h3>
-        <p>Continue capturing the space until the model is complete.</p>
-        <ul>
-          <li>Capture all walls and corners</li>
-          <li>Include major furniture blocks (as applicable)</li>
-          <li>Ensure entrances/doorways are captured clearly</li>
-        </ul>
-        <div className="phone-screenshot">
-          <DocImg src="/img/tutorials/scan-marker-flow/3-Scanning-ongoing-generating-model.jpg" alt="Scan in progress" />
+        <p>Walk the room. Every wall, every corner. The model grows at the bottom.</p>
+        <p>Markers while you scan:</p>
+        <div className="scan-tips-pair">
+          <figure>
+            <DocImg src="/img/tutorials/scan-marker-flow/v2-scan-in-progress-tips.jpg" alt="Scan in progress: white lines trace the walls, a small 3D model of the room grows above the camera button, and the Tips for markers button is circled" />
+            <figcaption><strong>1</strong> Tap <strong>Tips for markers</strong></figcaption>
+          </figure>
+          <span className="scan-tips-arrow" aria-hidden="true">→</span>
+          <figure>
+            <DocImg src="/img/tutorials/scan-marker-flow/v2-what-to-capture.jpg" alt="Tips for markers open: the What to capture list with Power outlets and Existing AV ticked" />
+            <figcaption><strong>2</strong> Shoot an item, tick its row</figcaption>
+          </figure>
         </div>
-        <Admonition type="note" title="If tracking drops">
-          Pause and point the camera at a stable, textured surface until tracking recovers.
-        </Admonition>
-        <Admonition type="tip" title="Marker checklist">
-          A <strong>&quot;What to capture&quot;</strong> checklist guides you while scanning, so you finish with all the key room elements marked — <strong>power outlets, network points, existing AV, walls, and ceiling</strong>. Work through it before you leave the room.
-          <div className="phone-screenshot" style={{ maxWidth: 200, marginTop: '0.75rem' }}>
-            <DocImg src="/img/release/2026-07-marker-checklist.jpg" alt="What to capture checklist during scanning listing power outlets, network points, existing AV, walls, and ceiling" />
-          </div>
-        </Admonition>
+        <p><a href="./markers#-taking-a-good-marker">Close-ups and overviews →</a></p>
       </>
     ),
   },
@@ -118,14 +106,9 @@ This is the **Scan → Markers → Upload** flow in BMR Mobile. Click any step n
     content: (
       <>
         <h3>4) Review scan</h3>
-        <p>Inspect the scan and verify coverage before saving.</p>
-        <ul>
-          <li>Rotate and inspect the model</li>
-          <li>Check for missing walls/holes</li>
-          <li>Confirm the scan is usable before continuing</li>
-        </ul>
+        <p>All walls there? Green dots are your markers. Gaps? <strong>Retake</strong>. Missing a marker? <strong>Continue scan</strong> <FeatureToggleTag />.</p>
         <div className="phone-screenshot">
-          <DocImg src="/img/tutorials/scan-marker-flow/4-Review-scan-with-laser-tags.jpg" alt="Review scan" />
+          <DocImg src="/img/tutorials/scan-marker-flow/v2-review-scan-markers.jpg" alt="The saved scan in 3D with green marker dots, and the buttons Retake, Continue scan and Save" />
         </div>
       </>
     ),
@@ -135,18 +118,11 @@ This is the **Scan → Markers → Upload** flow in BMR Mobile. Click any step n
     content: (
       <>
         <h3>5) Review markers</h3>
-        <p>Validate marker captures and ensure they are positioned correctly.</p>
-        <ul>
-          <li>Open each marker and confirm the photo is clear</li>
-          <li>Retake if the target is blurry/partially occluded</li>
-          <li>Ensure markers represent meaningful room data points</li>
-        </ul>
+        <p>Tap a dot to check the photo. All good? <strong>Save</strong>.</p>
+        <p>Fewer than 5 markers, or items on the list not ticked? The app asks first: <strong>Continue scan</strong> <FeatureToggleTag /> or <strong>Save anyway</strong>.</p>
         <div className="phone-screenshot">
-          <DocImg src="/img/tutorials/scan-marker-flow/5-Review-markers-taken.jpg" alt="Review markers" />
+          <DocImg src="/img/tutorials/scan-marker-flow/v2-review-marker-photo.jpg" alt="A marker photo of a ceiling vent opened from its dot on the scan, with Retake, Continue scan and Save" />
         </div>
-        <Admonition type="tip" title="Tip">
-          Prefer markers with clear context (what/where) rather than close-ups that are hard to interpret later.
-        </Admonition>
       </>
     ),
   },
@@ -155,17 +131,16 @@ This is the **Scan → Markers → Upload** flow in BMR Mobile. Click any step n
     content: (
       <>
         <h3>6) Syncing (background upload)</h3>
-        <p>Uploads run automatically in the background with status feedback.</p>
+        <p>The upload runs in the background. You can move on.</p>
         <ul>
-          <li>Uploads continue even if you navigate away</li>
-          <li>Status is visible via the sync banner</li>
-          <li>If an upload fails, the app keeps data locally for retry</li>
+          <li>The <strong>Syncing</strong> banner shows progress</li>
+          <li><strong>Upload Failed</strong>? Nothing is lost: <strong>Open Notifications Centre</strong> and retry</li>
         </ul>
         <div className="phone-screenshot">
           <DocImg src="/img/tutorials/scan-marker-flow/6-Scan-markers-syncing.jpg" alt="Syncing" />
         </div>
         <Admonition type="note" title="Offline / poor connectivity">
-          Complete the capture first — uploads can be retried later without losing the data. This applies across scan, markers, and acoustics: an <strong>acoustic measurement taken offline</strong> queues in the <strong>Notifications</strong> tab, where you can upload it and assign it to the right room once you are back online.
+          Complete the capture first. Offline work in a room uploads automatically once you are back online. Work saved without a room waits in <strong>Notifications</strong> (bell icon): tap <strong>Assign Room</strong>.
         </Admonition>
       </>
     ),
@@ -175,14 +150,10 @@ This is the **Scan → Markers → Upload** flow in BMR Mobile. Click any step n
     content: (
       <>
         <h3>7) Uploaded (complete)</h3>
-        <p>Upload is finished and the data is available to the platform.</p>
-        <ul>
-          <li>Scan appears in the room's <strong>Scans</strong> list</li>
-          <li>Markers appear under <strong>Markers</strong></li>
-          <li>Continue with Acoustic, AR Design, or Web workflows</li>
-        </ul>
+        <p><strong>Scans</strong> and <strong>Markers</strong> are ticked. Next step: the acoustics.</p>
+        <p><strong>Documents</strong> <FeatureToggleTag />: build the <a href="./inventory">inventory</a> from your markers.</p>
         <div className="phone-screenshot">
-          <DocImg src="/img/tutorials/scan-marker-flow/7-Scan-markers-uploaded.jpg" alt="Uploaded" />
+          <DocImg src="/img/tutorials/scan-marker-flow/v2-room-after-scan.jpg" alt="The room page after the scan: Scans 1 and Markers 8 ticked, Documents with Build inventory, and Next step: Measure the acoustics" />
         </div>
       </>
     ),
@@ -218,7 +189,7 @@ This is the **Scan → Markers → Upload** flow in BMR Mobile. Click any step n
 **After the scan**
 
 - Review the scan preview in the app before leaving the room — check for obvious holes or misaligned geometry
-- If the scan has gaps, **run a second pass** focused on the missing areas while still on site
+- If the scan has gaps, tap **Continue scan** <FeatureToggleTag /> and fill them while still on site — your scan and markers stay, the new part merges in
 - Capture [markers](./markers) immediately after scanning while you still have access to the room
 
 ### Common problem areas

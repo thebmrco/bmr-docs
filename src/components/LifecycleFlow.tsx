@@ -17,7 +17,7 @@ type Phase = {
 const phases: Phase[] = [
   { icon: Search,   name: 'Discovery', label: 'Scan, measure & document the space' },
   { icon: Rotate3d, name: 'Design',    label: 'Model, validate & deploy in BMR Studio' },
-  { icon: Wrench,   name: 'Maintain',  label: 'Monitor, maintain & improve' },
+  { icon: Wrench,   name: 'Maintenance', label: 'Monitor, maintain & improve' },
 ];
 
 export default function LifecycleFlow() {

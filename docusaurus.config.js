@@ -1,7 +1,6 @@
 // docusaurus.config.js
 // Clean JavaScript version for universal build compatibility (Node 18–22)
 
-const isCI = !!process.env.CI;
 // Google Analytics (gtag) only injects its script in production builds. Enabling
 // it in dev makes client-side navigation throw "window.gtag is not a function",
 // so restrict it to production.
@@ -67,19 +66,16 @@ module.exports = {
         ],
       },
     ],
-    // ✅ Disable local search in CI builds to prevent Node File API error
-    ...(!isCI
-      ? [
-          [
-            require.resolve('@easyops-cn/docusaurus-search-local'),
-            {
-              indexPages: true,
-              hashed: true,
-              language: ['en'],
-            },
-          ],
-        ]
-      : []),
+    // Local search. It used to be switched off in CI because of a Node File
+    // API error; it builds fine on Node 22, which the deploy workflow uses.
+    [
+      require.resolve('@easyops-cn/docusaurus-search-local'),
+      {
+        indexPages: true,
+        hashed: true,
+        language: ['en'],
+      },
+    ],
   ],
 
   themeConfig: {

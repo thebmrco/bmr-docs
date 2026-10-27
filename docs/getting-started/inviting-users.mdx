@@ -5,31 +5,35 @@ description: How an organisation Admin invites team members, the roles available
 ---
 
 import Icon from '@site/src/components/Icon'
-import useBaseUrl from '@docusaurus/useBaseUrl'
+import Figure, { FigurePair } from '@site/src/components/Figure'
 
 # <Icon name="users" size="1em" /> Inviting Users to an Organisation
 
 <PageIntro illustration="invite" meta={['Web platform', 'Admins']}>
 
-As an **Admin** of an organisation, you can invite new team members directly from the **Users** tab on the Organisation page. Each invitee gets an email with sign-up instructions, and once they set a password they land inside the organisation with the role you assigned.
+Invite your team from the organisation's **Users** tab. They get an email, set a password, and land in your organisation with the role you chose.
 
 </PageIntro>
 
-You can also invite people with narrower access — a **Location Manager** who only sees one location, or a **Room Manager** scoped to a single room.
+<IllustratedSteps steps={[
+  { illustration: 'organise', title: 'Open Users', hint: 'Your organisation → Users' },
+  { illustration: 'invite', title: 'Email, role, target', hint: 'Then click Add' },
+  { illustration: 'account', title: 'Confirm and send', hint: 'Type the email twice' },
+]} done={['The user shows as Invited']} />
 
 ---
 
 ## <Icon name="key" size="1em" /> Roles
 
-BMR has three roles you can grant when inviting a user:
+Three roles. Pick the narrowest one that fits.
 
 | Role | Scope | What they can do |
 |---|---|---|
-| **Admin** | Whole organisation | Full access — manage all locations and rooms, invite and remove users, edit organisation settings. |
-| **Location Manager** | A specific location | Manage the rooms and data inside that single location. Cannot invite users or edit the wider organisation. |
-| **Room Manager** | A specific room | Work on that single room — scans, markers, measurements, and designs. Cannot invite users or manage other rooms. |
+| **Admin** | Whole organisation | Everything — all locations and rooms, users, organisation settings. |
+| **Location Manager** | One location | The rooms and data in that location. No users, no organisation settings. |
+| **Room Manager** | One room | That room — scans, markers, measurements and designs. |
 
-Pick the narrowest role that fits — it keeps each person focused on the spaces they are responsible for and reduces accidental changes elsewhere.
+See [Structure](../structure/#-what-each-level-is-for) for how roles follow the levels.
 
 ---
 
@@ -37,68 +41,87 @@ Pick the narrowest role that fits — it keeps each person focused on the spaces
 
 ### 1. Open the Organisation page and go to the Users tab
 
-From the Web platform, open the organisation you want to invite the user into and click the **Users** tab. You will see everyone who already has access, their role, their target (org / location / room), and whether they are Active or still Invited.
+On the web, open your organisation and click **Users**. You see everyone with access, their **Role**, their **Target** (organisation, location or room) and whether they are **Active** or **Invited**.
 
-<img src={useBaseUrl('/img/inviting-users/01-users-tab.png')} alt="Users tab on the Organisation page showing the existing admin and an empty invite row at the bottom" style={{width: '100%', maxWidth: '1000px', borderRadius: '8px', border: '1px solid #E5E5D5', margin: '1rem 0'}} />
+<Figure
+  src="/img/inviting-users/01-users-tab.png"
+  alt="Users tab on the Organisation page showing the existing admin and an empty invite row at the bottom"
+  caption="The Users tab, with the invite row at the bottom."
+/>
 
 ### 2. Enter the email and pick a role
 
-In the row at the bottom of the users table, type the invitee's **email address**, then open the **Role** dropdown and choose **Admin**, **Location Manager**, or **Room Manager**.
+In the row at the bottom, type the **email address**, then pick **Admin**, **Location Manager** or **Room Manager**.
 
-<img src={useBaseUrl('/img/inviting-users/02-role-dropdown.png')} alt="Role dropdown open showing Admin, Location Manager, and Room Manager options" style={{width: '100%', maxWidth: '1000px', borderRadius: '8px', border: '1px solid #E5E5D5', margin: '1rem 0'}} />
+<Figure
+  src="/img/inviting-users/02-role-dropdown.png"
+  alt="Role dropdown open showing Admin, Location Manager, and Room Manager options"
+  caption="The three roles."
+/>
 
 ### 3. Choose the target
 
-Once you pick a role, a **target** dropdown appears next to it. The target depends on the role:
+Once you pick a role, a **target** dropdown appears:
 
-- **Admin** — the target is the current organisation.
-- **Location Manager** — pick which location the invitee should manage.
-- **Room Manager** — pick which room the invitee should manage.
+| Role | Target |
+|---|---|
+| **Admin** | This organisation (filled in for you) |
+| **Location Manager** | A location |
+| **Room Manager** | A room |
 
-Select the target and click **Add**.
+When there is only one choice, it is filled in for you. Click **Add**.
 
-<img src={useBaseUrl('/img/inviting-users/03-target-selected.png')} alt="Role set to Admin and target dropdown showing the organisation, with the Add button ready" style={{width: '100%', maxWidth: '1000px', borderRadius: '8px', border: '1px solid #E5E5D5', margin: '1rem 0'}} />
+<Figure
+  src="/img/inviting-users/03-target-selected.png"
+  alt="Role set to Admin and target dropdown showing the organisation, with the Add button ready"
+  caption="Role and target set — click Add."
+/>
 
 ### 4. Confirm the email address
 
-An **Invite New User** dialog opens. It reminds you that the user does not yet exist in BETTERMEETINGROOMS, and that an invitation email will be sent to the address you provided.
+New to BETTERMEETINGROOMS? The **Invite New User** dialog opens and shows the role you are giving. Type the address again in the second field. **Send Invitation** only works when both match.
 
-Type the address a second time in the **Confirm email address** field. The **Send Invitation** button stays disabled until both entries match — this is a deliberate safety net against typos in the invited address.
+Already a BMR user? A **Confirm role change** dialog asks you to confirm the role instead. No email is needed.
 
-<div style={{display: 'flex', gap: '24px', justifyContent: 'center', flexWrap: 'wrap', margin: '1.5rem 0'}}>
-  <img src={useBaseUrl('/img/inviting-users/04-confirm-modal.png')} alt="Invite New User dialog with only the first email field pre-filled and Send Invitation disabled" style={{width: '100%', maxWidth: '360px', borderRadius: '8px', border: '1px solid #E5E5D5'}} />
-  <img src={useBaseUrl('/img/inviting-users/05-confirm-modal-filled.png')} alt="Invite New User dialog with both email fields matching and Send Invitation enabled" style={{width: '100%', maxWidth: '360px', borderRadius: '8px', border: '1px solid #E5E5D5'}} />
-</div>
+<FigurePair
+  a={{src: '/img/inviting-users/04-confirm-modal.png', alt: 'Invite New User dialog with only the first email field pre-filled and Send Invitation disabled', label: 'Not confirmed'}}
+  b={{src: '/img/inviting-users/05-confirm-modal-filled.png', alt: 'Invite New User dialog with both email fields matching and Send Invitation enabled', label: 'Both match'}}
+  caption="Send Invitation unlocks only when the two addresses match."
+/>
 
 ### 5. Send the invitation
 
-Click **Send Invitation**. The dialog closes and the new user appears in the Users table with status **Invited** (orange). They will move to **Active** (green) as soon as they finish signing up.
+Click **Send Invitation**. The user appears as **Invited** (orange) and turns **Active** (green) once they have signed up.
 
-<img src={useBaseUrl('/img/inviting-users/06-invited-status.png')} alt="Users tab now showing the newly invited user with status Invited alongside the existing Active admin" style={{width: '100%', maxWidth: '1000px', borderRadius: '8px', border: '1px solid #E5E5D5', margin: '1rem 0'}} />
+<Figure
+  src="/img/inviting-users/06-invited-status.png"
+  alt="Users tab now showing the newly invited user with status Invited alongside the existing Active admin"
+  caption="Invited until they sign up."
+/>
 
 :::caution Match the address they will sign up with
-The invitation is bound to the exact email address you enter. If the invitee signs up with a different address (say, `firstname.lastname@` vs `firstname@`) they will end up in a separate account and will not see the same rooms and data as the rest of the organisation. Confirm the address is correct — including the domain — before sending.
+The invitation is bound to the exact address. If they sign up with another one (`firstname.lastname@` vs `firstname@`), they get a separate account and won't see your rooms.
 :::
 
 ---
 
 ## <Icon name="mail" size="1em" /> What the invitee sees
 
-The invitee receives an email from BMR with a **sign-up link**. Opening the link takes them to the Welcome screen where they set a password. Once done, they can log in via **BMR Mobile** or the **Web** and will see the organisation, location, or room they were invited to.
-
-For the invitee's side of the flow, see [Account Setup](account-setup).
+An email with a **Set Your Password** button. They set a password, then log in on **BMR Mobile** or the **Web** and see what you gave them access to. Their side: [Account Setup](account-setup#by-invitation).
 
 :::info No invitation needed to get started
-Users can also **sign up without an invitation** and create their own Organisation, Location, and Room through a guided onboarding wizard. Inviting them into your organisation is still the right choice when you want them working in **your** existing workspace — see [Signing up without an invitation](account-setup#signing-up-without-an-invitation) for the self-serve path.
+People can also sign up on their own and create their own organisation. Invite them when they should work in **your** organisation — see [Start your own](account-setup#create-your-own).
 :::
 
 ---
 
 ## <Icon name="alert-triangle" size="1em" /> Managing existing users
 
-The Users table also lets you review and remove access:
+The **Actions** column on the Users tab:
 
-- **Status** — **Active** (green) means the user has completed sign-up; **Invited** (orange) means the invitation is still pending.
-- **Remove** — the **bin icon** in the Actions column revokes a user's access. For users still in **Invited** state this cancels the invitation; for **Active** users it removes them from the organisation.
+| Button | What it does |
+|---|---|
+| <Icon name="mail" size="1em" /> **Resend Invite** | Sends the invitation email again. Only shown for users who have never logged in. |
+| <Icon name="delete" size="1em" /> **Remove** | Removes this role. A **Confirm role change** dialog asks first. For an invited user, this cancels the invitation. |
 
-Adding the same email again later will send a fresh invitation.
+To change someone's role, remove the old one and add the new one.

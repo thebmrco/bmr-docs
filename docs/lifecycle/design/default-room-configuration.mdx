@@ -1,106 +1,108 @@
 ---
 title: Default Room Configuration
-description: How organisation admins define recommended equipment setups per room size, and how they surface in BMR Studio's Guidelines panel.
+description: Recommended room setups per room size — set up under Organisation › Room Configurations, offered in BMR Studio's Guidelines tab and placed in one go.
 ---
 
 import Icon from '@site/src/components/Icon'
-import useBaseUrl from '@docusaurus/useBaseUrl'
+import Figure from '@site/src/components/Figure'
 
 # <Icon name="catalog" size="1em" /> Default Room Configuration
 
-Default Room Configurations let organisation admins define **recommended equipment setups** for a given **room size range**. When a user designs a room in BMR Studio whose size falls within that range, the matching configuration surfaces automatically — making it fast to apply consistent standards across an entire portfolio.
+<PageIntro illustration="admin-work" meta={['Web platform', 'Admin']}>
+
+Define the right setup for each room size once. BMR Studio offers it for every room that fits.
+
+</PageIntro>
 
 <Notice kind="design" />
 
-There are two stages:
-
-1. **Set up a configuration** — an organisation admin defines it once, on the Organisation page.
-2. **Use it in BMR Studio** — when someone designs a matching room, the recommendation surfaces in the Guidelines panel, ready to place.
+<IllustratedSteps steps={[
+  { illustration: 'organise', title: 'Set it up', hint: 'Organisation › Room Configurations', link: '#-part-1--setting-up-a-configuration' },
+  { illustration: 'design-studio', title: 'Place it', hint: 'BMR Studio › Guidelines', link: '#-part-2--placing-the-equipment-in-bmr-studio' },
+]} />
 
 ---
 
 ## <Icon name="admin-settings" size="1em" /> Part 1 — Setting up a configuration
 
-Default Room Configurations are set up under the **Default Room Configurations** tab on the Organisation page at **[app.bettermeetingrooms.com](https://app.bettermeetingrooms.com)**. Existing configurations are listed here, and **Create New Room Configuration** starts a new one.
+Organisation › **Room Configurations**. Two tabs:
 
-<img
-  src={useBaseUrl('/img/release/2026-07-drc-list.png')}
-  alt="Default Room Configurations tab on the Organisation page listing an existing configuration, with a Create New Room Configuration button"
-  style={{width: '100%', borderRadius: '10px', border: '1px solid #E5E5D5', margin: '1rem 0'}}
-/>
+| Tab | Holds |
+|---|---|
+| **Yours** | Your organisation's own setups. Designers see these **first**. |
+| **BMR Defaults** | Complete setups maintained by BMR, offered to every organisation. |
 
-1. **Define the configuration** — set a **name**, a **room size range** (minimum and maximum square meters), and a **description**.
-2. **Select suggested equipment** — search the **catalog** and add the recommended items with quantities. Equipment is organised by category (displays, video bars, tables, chairs, control devices, etc.), and your selection builds up in the **Selected** panel on the left.
-3. **Save** — the configuration is stored at the organisation level and applies to all rooms in the organisation.
+**Add a room configuration** — **Start from scratch**, or **Start from an existing one** (yours or a BMR Default) to copy and change it.
 
-:::danger The size range is what triggers the configuration
-The **minimum** and **maximum size in square meters** are the most important settings — they decide **which rooms this configuration applies to**. A configuration only surfaces in BMR Studio when the room's size falls **within that range**.
+| Setting | What it does |
+|---|---|
+| **Name** | Shown in BMR Studio's Guidelines. |
+| **Size range (m²)** | *Studio offers it for rooms of* — the rooms it applies to. |
+| **For a group of** *(optional)* | How many people it is meant for. |
 
-- **Both values are required.** Set the minimum *and* the maximum — a configuration without a valid range will not trigger for any room.
-- **Ranges can overlap.** More than one configuration can apply to the same room size, so a room can match **several configurations** at once — all matching ones surface in BMR Studio.
-- A room whose size falls outside every configured range simply gets no recommendation.
+A configuration holds two kinds of equipment:
+
+| Part | Built | In the design |
+|---|---|---|
+| **Placed** | **Edit in BMR Studio**, in a sample room of this size | Placed in one go — walls, floor, ceiling |
+| **Unplaced** | **Add items** from a list — can include kits | A list the designer places item by item |
+
+:::danger The size range decides where it is offered
+A configuration is offered only when the room's **floor area** falls within the range. A room with **no floor area set** gets no configuration. Floor area comes from the scan.
 :::
-
-<img
-  src={useBaseUrl('/img/release/2026-07-drc-create-form.png')}
-  alt="Create New Room Configuration form with name, minimum and maximum size, description, and the suggested equipment picker"
-  style={{width: '100%', borderRadius: '10px', border: '1px solid #E5E5D5', margin: '1rem 0'}}
-/>
-
-<img
-  src={useBaseUrl('/img/release/2026-07-drc-equipment.png')}
-  alt="Suggested equipment selected in a room configuration, grouped by category in the Selected panel with quantities"
-  style={{width: '100%', borderRadius: '10px', border: '1px solid #E5E5D5', margin: '1rem 0'}}
-/>
 
 ---
 
 ## <Icon name="palette" size="1em" /> Part 2 — Placing the equipment in BMR Studio
 
-When a user opens **BMR Studio** to design a room, any configuration whose size range covers that room appears in the **Guidelines** panel. The panel tracks progress against the configuration:
+Open the **Guidelines** tab in BMR Studio.
 
-- **Fulfilled categories** are marked as met, so you can see at a glance what the design already covers.
-- **Missing categories** are listed with a **Place in room** action — one click adds the recommended item directly, without switching to the Catalog.
+1. **Pick a configuration** — the first match is selected for you.
+2. **Place configuration** — the whole placed layout lands on the wall you point at. Press **R** to turn it to the next wall. Check items afterwards: rooms differ in shape.
+3. **Fill the gaps** — missing categories have **Place in room**.
 
-The user can follow the guidelines exactly, place only the missing items, or choose their own equipment instead — the recommendation is a starting point, not a lock.
+The status shows how the design compares:
 
-<img
-  src={useBaseUrl('/img/release/2026-07-guidelines-default-room-config.png')}
-  alt="Guidelines panel showing Default Room Configuration categories with fulfilled and missing items and a Place in room action"
-  style={{width: '100%', borderRadius: '10px', border: '1px solid #E5E5D5', margin: '1rem 0'}}
+| Status | Means |
+|---|---|
+| **Following guidelines** | All categories met. |
+| **Quantities met, different equipment** | Right counts, other models. |
+| **Below guidelines** | Something is missing. |
+
+It's a starting point, not a lock — change anything you like.
+
+<Figure
+  src="/img/release/2026-07-guidelines-default-room-config.png"
+  alt="Guidelines tab in BMR Studio: a configuration selected, the status Below guidelines, and categories with counts such as Chairs 2 / 4 and Displays 1 / 1"
+  caption="The Guidelines tab, with each category's count."
 />
 
 ---
 
-## <Icon name="star" size="1em" /> Why It Matters
+## <Icon name="star" size="1em" /> Why it matters
 
-**Expert standards, at any scale.** Instead of relying on each designer to know the right setup for every room size, the organisation defines it once. Every room of a similar size gets the same recommendation — whether you're deploying 10 rooms or 10,000.
-
-**Faster design.** Starting from a recommended configuration is significantly faster than browsing the full catalog from scratch. The user still has full flexibility to adjust, but the baseline is already there.
-
-**Consistency.** Rooms of similar size and purpose get similar setups. This reduces rework, simplifies procurement, and makes support easier — because the equipment is predictable.
+- **Same standard everywhere** — every room of a size gets the same recommendation.
+- **Faster design** — start from a full layout, not an empty room.
+- **Predictable equipment** — easier procurement and support.
 
 ---
 
 ## <Icon name="scan" size="1em" /> Example
 
-An organisation could define the following configurations:
-
-| Configuration | Size Range | Suggested Equipment |
+| Configuration | Size range | Equipment |
 |---|---|---|
-| Small Huddle | <U m2={[10,20]} /> | Room Bar, single 55" display, 4 chairs, 1 table |
-| Medium Meeting | <U m2={[20,40]} /> | Room Bar, dual 65" displays, 6 chairs, 1 table |
-| Large Boardroom | <U m2={[40,80]} /> | Codec, 3 ceiling mics, dual 75" displays, 14 chairs, 1 table |
+| Small Huddle | <U m2={[10,20]} /> | Room Bar, 55" display, 4 chairs, table |
+| Medium Meeting | <U m2={[20,40]} /> | Room Bar, dual 65" displays, 6 chairs, table |
+| Large Boardroom | <U m2={[40,80]} /> | Codec, 3 ceiling mics, dual 75" displays, 14 chairs, table |
 
-When a designer opens a **<U m2={30} />** room in BMR Studio, its size falls in the 20–40 m² band, so the **"Medium Meeting"** recommendation appears automatically. Ranges can overlap — if another configuration also covered 30 m², both would surface, and the designer chooses which to follow. A room outside every band gets no recommendation.
+A **<U m2={30} />** room gets **Medium Meeting**. If ranges overlap, all matches are listed: **yours first, then BMR Defaults**, each by name.
 
 ---
 
-## <Icon name="edit" size="1em" /> Managing Configurations
+## <Icon name="edit" size="1em" /> Managing configurations
 
-From the same **Default Room Configurations** tab, organisation admins can also:
+On the **Yours** tab:
 
-- Edit existing configurations (size range, equipment, quantities)
-- Delete configurations that are no longer needed
-
-Changes apply to all future design sessions across the organisation. Existing designs are not affected.
+- **Edit** the size, people range or equipment.
+- **Save as new room configuration** to branch off a copy.
+- **Delete** — removed for every location. Designs that already used it keep their equipment.

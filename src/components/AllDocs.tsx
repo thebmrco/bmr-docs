@@ -25,12 +25,12 @@ type Entry = {href: string; label: string; guide: Guide};
 
 const AreaIcons: Record<string, LucideIcon> = {
   'General Information': Info,
-  'Room Capture': Scan,
+  Discovery: Scan,
   Acoustics: AudioLines,
   Design: Palette,
   'Organisation and Users': Users,
   Integrations: Puzzle,
-  'Deploy and Maintain': Wrench,
+  Maintenance: Wrench,
   'Catalog & 3D Models': Boxes,
   'Trust and Security': ShieldCheck,
   'Product Updates': Megaphone,

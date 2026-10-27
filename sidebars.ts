@@ -61,12 +61,13 @@ const sidebars: SidebarsConfig = {
     ]),
     {
       type: 'category',
-      label: 'Room Capture',
+      label: 'Discovery',
       link: {type: 'doc', id: 'lifecycle/discovery/index'},
       items: [
         updatedDoc('user-guides/room-capture'),
         'lifecycle/discovery/room-scan',
         'lifecycle/discovery/markers',
+        newDoc('lifecycle/discovery/inventory'),
       ],
     },
     area('Acoustics', [
@@ -85,6 +86,7 @@ const sidebars: SidebarsConfig = {
         'lifecycle/design/ar-design-guide',
         updatedDoc('lifecycle/design/bmr-studio'),
         'lifecycle/design/default-room-configuration',
+        'lifecycle/deploy/index',
       ],
     },
     {
@@ -103,7 +105,7 @@ const sidebars: SidebarsConfig = {
       'integrations/webex-control-hub-sync',
       'integrations/cisco-vrc',
     ]),
-    area('Deploy and Maintain', ['lifecycle/deploy/index', 'lifecycle/maintenance/index']),
+    area('Maintenance', ['lifecycle/maintenance/index']),
     {
       type: 'category',
       label: 'Catalog & 3D Models',
@@ -175,17 +177,29 @@ const sidebars: SidebarsConfig = {
       items: [
         {
           type: 'category',
+          label: 'Discovery',
+          link: {type: 'doc', id: 'lifecycle/discovery/index'},
+          items: [
+            'lifecycle/discovery/room-scan',
+            'lifecycle/discovery/markers',
+            'acoustics/acoustics-guide',
+            newDoc('lifecycle/discovery/inventory'),
+          ],
+        },
+        {
+          type: 'category',
           label: 'Design',
           link: {
             type: 'doc',
             id: 'lifecycle/design/index',
           },
           items: [
+            'lifecycle/design/ar-design-guide',
             updatedDoc('lifecycle/design/bmr-studio'),
             'lifecycle/design/default-room-configuration',
+            'lifecycle/deploy/index',
           ],
         },
-        'lifecycle/deploy/index',
         'lifecycle/maintenance/index',
       ],
     },
@@ -242,6 +256,7 @@ const sidebars: SidebarsConfig = {
       items: [
         'lifecycle/discovery/room-scan',
         'lifecycle/discovery/markers',
+        newDoc('lifecycle/discovery/inventory'),
         'acoustics/acoustics-guide',
         'acoustics/speakers-for-acoustics',
         'acoustics/loudspeaker-check/index',

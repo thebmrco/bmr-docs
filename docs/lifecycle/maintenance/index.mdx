@@ -1,44 +1,53 @@
 ---
-title: Maintenance Phase
-description: How the Active Design keeps IT, facilities and support teams working from one live record of the room after installation.
+title: Maintenance
+description: How the Active Design, the room's documents and its Room Data timeline keep IT, facilities and support teams working from one live record of the room after installation.
 ---
 
 import Icon from '@site/src/components/Icon'
 
-# <Icon name="wrench" size="1em" /> Maintenance Phase
+# <Icon name="wrench" size="1em" /> Maintenance
 
-The **Maintenance Phase** ensures that rooms remain effective and reliable after deployment.
-It builds on the data captured during Discovery and Design, providing a foundation for troubleshooting, upgrades, and lifecycle management.
+<PageIntro illustration="room-state" meta={['Web platform']}>
 
----
+Keep rooms working after installation. Everyone works from **one live record** of the room — what is there, where, and how it connects.
 
-## Current Scope
-
-At this stage, Maintenance is primarily supported by the information collected during **Discovery** and **Design**, including:
-
-- <Icon name="palette" size="1em" /> **Active Design** — the authoritative record of the room as installed (equipment, layout, cabling)
-- **Equipment list** associated with the Active Design
-- <Icon name="audio-lines" size="1em" /> **Acoustic measurements** and recommendations
-- **Room history** (activities, design versions, updates, approvals)
-
-**IT, facilities, and support teams** all work from the same live source of truth about the room — what is installed, where, and how it connects — accessible without manual upkeep.
+</PageIntro>
 
 ---
 
-## Roadmap
+## Current scope {#current-scope}
 
-Future Maintenance features will expand to include:
+Maintenance builds on what Discovery and Design captured. Today you use these, all on the [Room page](../../structure/room#-the-room-page):
+
+| Tool | Where | What it gives you |
+|---|---|---|
+| <Icon name="palette" size="1em" /> **Active Design** | **Designs** tab | The record of the room as installed — equipment, layout, cabling |
+| <Icon name="circle-check" size="1em" /> **Mark verified** | **Designs** tab, on the active design | Confirms the room was checked against the design |
+| <Icon name="list-checks" size="1em" /> **Inventory** | **Documents** tab | What is in the room today, built from the markers and kept as versions — see [Room Inventory](../discovery/inventory) |
+| <Icon name="equipment" size="1em" /> **BOM** | **Documents** tab | What the active design needs, cables included — compare versions or designs |
+| <Icon name="activity-log" size="1em" /> **Room history** | **Room Data** tab | A timeline of every scan, marker, measurement and design. **Actives** shows what is current; tick two scans or measurements to compare them |
+| <Icon name="audio-lines" size="1em" /> **Acoustic measurements** | **Room Data** tab | The measured score and the recommendations |
+
+**IT, facilities and support teams** all work from the same record, without manual upkeep.
+
+<Notice kind="design" />
+
+---
+
+## Roadmap {#roadmap}
+
+Planned for Maintenance:
 
 - **Live integration** with external platforms
 - **Automated status monitoring** of installed devices
-- **Troubleshooting workflows** directly linked to the room's Active Design
-- **Upgrade requests** to initiate new Design cycles
-- **Lifecycle analytics** to track performance and usage over time
+- **Troubleshooting workflows** linked to the room's Active Design
+- **Upgrade requests** that start a new Design cycle
+- **Lifecycle analytics** on performance and usage over time
 
 ---
 
-## Outputs of Maintenance
+## Outputs of Maintenance {#outputs-of-maintenance}
 
-- Centralised **room record** with all data accessible
-- Faster **troubleshooting** and reduced downtime
-- A clear path for **room upgrades** and continuous improvement
+- A central **room record**, with all data in one place
+- Faster **troubleshooting** and less downtime
+- A clear path to **room upgrades**

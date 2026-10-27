@@ -1,62 +1,91 @@
 ---
 title: Ports, Devices & Configurator
 sidebar_label: Ports & Devices
-description: How the 3D Equipment Configurator records where an item's connectors and active parts sit, so cable routing and coverage work.
+description: How the 3D Equipment Configurator records where an item's connectors, active parts and mounting points sit, so cabling, coverage and mounting work.
 ---
 
 import Icon from '@site/src/components/Icon'
 
 # <Icon name="link" size="1em" /> Ports, Devices & Configurator
 
-For items that connect to other equipment or sense the room — mainly the [AV & video collaboration family](category-requirements) — a 3D model isn't enough on its own. The platform also needs to know **where the connectors are** and **where the active parts sit**. That's what the **3D Equipment Configurator** captures.
+<PageIntro illustration="catalog" meta={['Reference', 'Set up by BMR']}>
 
-The configurator sits on the item's 3D model and holds two kinds of information: **ports** and **placed devices**.
+A model alone isn't enough. BMR also needs **where the connectors are**, **where the active parts sit** and **where other equipment attaches**.
+
+</PageIntro>
+
+The **3D Equipment Configurator** records three things on the item's model:
+
+| On the model | Drives |
+|---|---|
+| **Ports** | Connections and cables in Cable mode |
+| **Placed devices** | Coverage overlays in BMR Studio |
+| **Mounting points** | Equipment snapping onto a mount |
 
 ---
 
 ## <Icon name="link" size="1em" /> Ports
 
-A **port** is a physical connector on the item. Each port has:
+A **port** is a physical connector on the item.
 
-- **Name** — a label, e.g. *HDMI 1*, *Power 1*
-- **Type** — the connector kind, e.g. HDMI, Power
-- **Direction** — **In**, **Out**, or both
+| Attribute | Values |
+|---|---|
+| **Name** | A label, e.g. *HDMI 1*, *Power 1* |
+| **Type** | Ethernet · Power · USB-C · USB-A · USB-B · HDMI · Analog-Audio · Optical · GPIO · RS232 · Custom |
+| **Direction** | **In**, **Out**, or both |
+| **PoE** | The port carries **Power over Ethernet** — supplied by a device with its own power (a codec, a switch), received by one without (a microphone, a camera) |
+| **Required** | It must be connected. Cable mode proposes and checks it. A power input is required by default |
 
-Ports drive **cable routing**. When two items are connected in a design, their ports determine which cables are needed and how they run. **Outlets** are modelled the same way — their ports appear in the Cable Guide as the room's connection points.
+Ports fill the **Connections** panel in Cable mode: required connections are drawn for you, and a missing one shows a warning on the device, such as *Power missing* or *PoE missing*. **Outlets** have ports too — they are the room's connection points, and Ethernet always runs through one.
 
 ---
 
 ## <Icon name="scan" size="1em" /> Placed devices
 
-A **device** is an active component positioned on the model — a **camera**, **microphone**, **speaker**, or **screen**. Placing a device records *where* on the item it lives, so the platform can reason about what it covers.
+A **device** is an active part positioned on the model. Each one drives a coverage overlay in BMR Studio:
 
-Placed devices drive **coverage overlays** in BMR Studio:
-
-- a **camera** contributes a field of view,
-- a **microphone** a pickup range,
-- a **speaker** a coverage area,
-- a **screen** a visibility zone.
+| Device | Overlay | Data from the datasheet |
+|---|---|---|
+| **Camera** | Field of view | Horizontal field of view at 1× zoom, zoom, min and max distance |
+| **Microphone** | Pickup range | Pickup pattern, radius |
+| **Speaker** | Coverage area | Dispersion, horizontal and vertical angle, distance |
+| **Screen** | Visibility zone | Screen size (inches), aspect ratio |
 
 <Notice kind="simulation" />
 
 ---
 
+## <Icon name="marker" size="1em" /> Mounting points
+
+A **mount** (an item with **Is Mount**) carries one or more **mounting points**: where equipment attaches, and which way it faces.
+
+| Attribute | Values |
+|---|---|
+| **Type** | **VESA** (displays) · **Rack** (rack-mount equipment) · **Camera screw** (¼"-20) |
+| **Alignment** | Centred on the point · above it (bottom on the point) · below it (top on the point) |
+| **Capacity** | How many items the point can hold |
+
+In BMR Studio, equipment with a matching mounting type **snaps onto the point** and moves with the mount. A mount without mounting points holds equipment on top of it.
+
+---
+
 ## <Icon name="rotate-3d" size="1em" /> How it's configured
 
-Ports and devices are positioned directly on the 3D model using the configurator: pick **Place Port** (or the device type), then click the point on the model surface where it belongs. Each placement is saved with the item, so every instance dropped into a room carries the same connectors and coverage.
+Pick **Place Port** or **Place Device** (camera, microphone, speaker, screen or mounting point), then click the spot on the model. Each placement is saved with the item, so every copy in every room has the same connectors, coverage and mounting points.
 
 :::info Set up by BMR
-Like the rest of an item's data, ports and placed devices are configured by the **BMR team** when the item is added to the catalog.
+The **BMR team** configures ports, devices and mounting points when the item is added. **Ports verified** marks an item whose port positions have been checked against the real device.
 :::
 
 ---
 
 ## <Icon name="info" size="1em" /> Which items need this
 
-| Family | Ports | Placed devices |
-|---|:--:|:--:|
-| AV & Video Collaboration | ● | ● |
-| Connectivity (Outlets) | ● | — |
-| Acoustic, Furniture, Mounting | — | — |
+| Family | Ports | Placed devices | Mounting points |
+|---|:--:|:--:|:--:|
+| AV & Video Collaboration | ● | ● | — |
+| Connectivity (Outlets) | ● | — | — |
+| Mounts | — | — | ● |
+| Acoustic, Furniture | — | — | — |
 
 See [Requirements by Category](category-requirements) for the full picture.

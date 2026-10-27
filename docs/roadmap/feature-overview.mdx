@@ -26,7 +26,7 @@ Features for capturing the current state of a room.
 | [Marker](../lifecycle/discovery/markers) | iOS | ✅ β01 | ✅ β01 | ✅ 1.4 | Photo markers for outlets, displays, cables. Can be added independently of scan since β04. Guided "what to capture" checklist added 1.4. |
 | Marker 360 | iOS | 🔧 In development | 🗓 Planned | 🗓 Planned | 360° photo capture for richer spatial context at marker locations. |
 | [Compass](../lifecycle/discovery/room-scan#compass-orientation) | iOS · Web | ✅ β09 | ✅ β09 | ✅ 1.4 | Captures room orientation during scan. Displayed in BMR Studio to reference walls by cardinal direction and inform layout decisions. |
-| Room detection & relocalization | iOS | ✅ 1.4 | ✅ 1.4 | ✅ 1.4 | Relocalizes against the original scan when adding a marker, AR design, or acoustic measurement — "Verifying room / Room verified", with Retry or Continue without verification. Pinpoints speaker and measurement positions. |
+| Room detection & relocalization | iOS | ✅ 1.4 | ✅ 1.4 | ✅ 1.4 | Relocalizes against the original scan when adding a marker, AR design, or acoustic measurement. Pinpoints speaker and measurement positions. Redesigned in [2.2](../release-notes/2026-09-release-2.2): "% of room seen", direction hints and "Room recognised". |
 | Improved object detection | iOS | 🔧 In development | 🗓 Planned | 🗓 Planned | Enhanced recognition accuracy and reduced manual corrections during room capture. |
 | Room measurements | iOS · Web | ✅ β03 | ✅ β03 | ✅ 1.4 | Floor area, volume, and dimensions calculated from scan data and shown in the room overview. |
 | [Acoustic measurement](../acoustics/acoustics-guide) | iOS | ✅ β01 | ✅ β01 | ✅ 1.4 | Sweep (recommended) and balloon/impulse methods. Returns RT60 + MOS score. Guided flow added β08. Spatial position recording added β09. Confirm Room step, measurement positions, ambient noise on impulse, and full offline flow added 1.4. |
@@ -42,12 +42,13 @@ Features for planning what a room should become.
 | BMR Studio | Web | ✅ β09 | ✅ β09 | ✅ 1.4 | Single web-based 3D environment for room design. Multiple guided modes expose only relevant tools per workflow. |
 | Design versioning | Web | ✅ 1.4 | ✅ 1.4 | ✅ 1.4 | Versions created automatically on save or mode change. Review, rename, activate, or delete from the Versions tab. Save as New Design for a separate design. |
 | Presentation mode | Web | ✅ 2.3 | ✅ 2.3 | ✅ 2.3 | Full-screen, step-by-step presentation of a design (**Shift + F**). Standard views first, then your own saved views, managed from the Presentation tab in View mode. Read-only shares can present too. |
-| Render modes | Web | ✅ 2.3 | ✅ 2.3 | ✅ 2.3 | Standard and High quality rendering, chosen from the toolbar in View mode. High quality adds bounce lighting and ambient occlusion. Finer settings in the Rendering panel. Viewer runs on WebGPU where supported. |
+| Render modes | Web | ✅ 2.3 | ✅ 2.3 | ✅ 2.3 | Standard and High quality rendering, chosen from the toolbar in View mode. High quality adds bounce lighting and ambient occlusion. Finer settings in the Rendering panel. Viewer runs on WebGPU where supported. Photoreal (path-traced) rendering is 🔀 switched on per organisation. |
 | Design comparison *(legacy)* | Web | ✅ β04 | ✅ β04 | ✅ 1.4 | Side-by-side comparison of designs in the previous design view. Covers acoustics, layout, and equipment differences. Not available in BMR Studio. |
 | Design comparison in BMR Studio | Web | 🗓 Planned | 🗓 Planned | 🗓 Planned | Side-by-side view mode comparison within BMR Studio. Planned for a future release. |
 | AR design | iOS | ✅ β01 | ✅ β01 | ✅ 1.4 | Real-time 3D equipment placement via LiDAR on iOS. Design can be continued in BMR Studio on web. |
 | Cisco VRC | Web | ✅ Available | 🔀 Toggle | 🔀 Toggle | Video Room Calculator — Cisco's 2D room design tool, integrated as a second design path focused on Cisco devices. Web-only; BMR Mobile shows a web-only message for VRC designs. |
-| Active design | Web | ✅ β09 | ✅ β09 | ✅ 1.4 | The approved, installed design — the authoritative record of the room as it currently exists. Used as the reference for maintenance, troubleshooting, and future design cycles. |
+| Active design | Web | ✅ β09 | ✅ β09 | ✅ 1.4 | The design set with **Activate** — the authoritative record of the room as it currently exists. Used as the reference for maintenance, troubleshooting, and future design cycles. |
+| [Acoustic optimisation proposal](../release-notes/2026-10-release-2.4) | Web | 🔀 Toggle | 🔀 Toggle | 🔀 Toggle | Simulates acoustic treatment from your catalog for a measured room and scores the result. **Create new acoustic design in BMR Studio** turns it into a design. |
 | Room auralizations | Web | 🗓 Planned | 🗓 Planned | 🗓 Planned | Simulated room acoustics to validate design decisions before deployment. On the 3–6 month roadmap. |
 
 :::info BMR Studio modes
@@ -57,9 +58,9 @@ BMR Studio uses guided modes that expose only the tools relevant for each workfl
 |---|---|---|---|---|
 | View | ✅ β09 | ✅ β09 | ✅ 1.4 | Browse and inspect the 3D room model. Default entry point. Render mode control and the Presentation tab live here; the View menu opens automatically. |
 | Structurals | ✅ 1.4 | ✅ 1.4 | ✅ 1.4 | Edit room geometry — walls, windows, and doors shown by default. Improved resizing; surface materials and colors applied from the scan. |
-| Equipment | ✅ 1.4 | ✅ 1.4 | ✅ 1.4 | Place and configure equipment from the catalog. Place Default Room Configuration items directly from the Guidelines panel. |
-| Cables *(Beta)* | ✅ 1.4 | ✅ 1.4 | ✅ 1.4 | Cable routing between devices, with outlets in the Cable Guide. The mode carries a **Beta** label since 2.3, as do Auto-Route and Tidy Bundles. |
-| Acoustic | 🔧 In development | 🗓 Planned | 🗓 Planned | Guided acoustic design wizard. Only acoustic-relevant tools shown. |
+| Equipment | ✅ 1.4 | ✅ 1.4 | ✅ 1.4 | Place and configure equipment from the catalog. **Place configuration** in the Guidelines panel drops a Room Configuration into the design. |
+| Cables *(Beta)* | ✅ 1.4 | ✅ 1.4 | ✅ 1.4 | Rebuilt in [2.4](../release-notes/2026-10-release-2.4) around a **Connections** panel: required connections drawn for you, warnings on the device, cable-type filters and an unfolded-room 2D view. Auto-Route, Tidy Bundles and Draw Cable were removed in 2.4. **Beta** label since 2.3. |
+| Acoustics | 🔀 Toggle | 🔀 Toggle | 🔀 Toggle | Guided acoustic design. Only acoustic-relevant tools shown. Opened from an [acoustic optimisation proposal](../release-notes/2026-10-release-2.4). |
 :::
 
 ---
@@ -70,10 +71,13 @@ Tools for managing the equipment that goes into rooms.
 
 | Feature | Platform | Internal | Beta | Release | Notes |
 |---|---|---|---|---|---|
-| Catalog | Web | ✅ β01 | ✅ β01 | ✅ 1.4 | Equipment catalog used in Studio for placing cameras, screens, speakers, codecs, and furniture. Catalog picker is one searchable list with starred favourites, owner, and item count since 2.3. |
-| Default Room Configuration | Web | ✅ β10 | ✅ β10 | ✅ 1.4 | Org-defined recommended setups by room size. Surface in the Guidelines panel showing fulfilled vs. missing categories, with a Place in room action. |
-| Catalog builder for org admins | Web | 🗓 Planned | 🗓 Planned | 🗓 Planned | Admin tooling to define equipment standards and room templates per organisation. |
-| Equipment list | Web | ✅ β06 | ✅ β06 | ✅ 1.4 | Auto-generated from placed equipment in designs. Reads CatalogID from 3D models — no manual entry needed. |
+| [Catalog](../catalog) | Web | ✅ β01 | ✅ β01 | ✅ 1.4 | Equipment catalog used in Studio for placing cameras, screens, speakers, codecs, and furniture. Catalog picker is one searchable list with starred favourites, owner, and item count since 2.3. **Organisation › Preferences › Catalog** lists the organisation's catalogs, view only. |
+| [Room Configurations](../lifecycle/design/default-room-configuration) | Web | ✅ β10 | ✅ β10 | ✅ 1.4 | Org-defined recommended setups by room size, next to BMR Defaults. Reworked in [2.4](../release-notes/2026-10-release-2.4): placed and unplaced equipment, and **Place configuration** in a design. |
+| Catalog builder for Admins | Web | 🗓 Planned | 🗓 Planned | 🗓 Planned | Admin tooling to define equipment standards per organisation. Room Configurations (above) have shipped; catalogs are still managed by BMR. |
+| [Equipment bundles](../release-notes/2026-10-release-2.4) | Web | 🔀 Toggle | 🔀 Toggle | 🔀 Toggle | Save a set of equipment as a bundle and place it in one go, from the **Bundles** tab in Equipment mode. Can be shared with other organisations. |
+| [Acoustic panel murals](../release-notes/2026-10-release-2.4) | Web | ✅ 2.4 | ✅ 2.4 | ✅ 2.4 | Your own picture across a grid of acoustic panels, placed from the **Branding** tab, with print files. |
+| Equipment list | Web | ✅ β06 | ✅ β06 | ✅ 1.4 | Auto-generated from placed equipment in designs. Reads CatalogID from 3D models — no manual entry needed. Since [2.4](../release-notes/2026-10-release-2.4), the **BOM** in the room's **Documents** tab, with cables, download and compare. |
+| [Inventory](../lifecycle/discovery/inventory) | Web | ✅ 2.4 | ✅ 2.4 | ✅ 2.4 | What is in the room today, built by reviewing its marker photos against the catalog. In the room's **Documents** tab. |
 
 ---
 
@@ -93,15 +97,16 @@ Cross-cutting features that support the full room lifecycle.
 
 | Feature | Platform | Internal | Beta | Release | Notes |
 |---|---|---|---|---|---|
-| Room Overview | iOS · Web | ✅ 1.4 | ✅ 1.4 | ✅ 1.4 | Redesigned room page — details, ratings, and capabilities at a glance, plus an Active section previewing the active Design and its linked scan, acoustics, and markers. MOS always shown. |
+| Room Overview | iOS · Web | ✅ 1.4 | ✅ 1.4 | ✅ 1.4 | Redesigned room page — details and capabilities at a glance, plus an Active section previewing the active Design and its linked scan, acoustics, and markers. MOS always shown. New top area with **Where**, **Room** and **Size** in [2.4](../release-notes/2026-10-release-2.4). |
 | Linked scans, measurements & designs | Web | ✅ 2.3 | ✅ 2.3 | ✅ 2.3 | Every scan, marker, measurement, and design shows what it is **Linked to** or **Built on**, with **Link to a scan** for unlinked items. Shown in the room and on the Designs, Scans, and Acoustic Measurements pages. |
+| Guided tours | Web | ✅ 2.4 | ✅ 2.4 | ✅ 2.4 | Short tours for new users: a Welcome tour of the navigation, and BMR Studio tours of Structurals, Equipment and Cables. See [2.4](../release-notes/2026-10-release-2.4). |
 | Onboarding | iOS · Web | ✅ 1.4 | ✅ 1.4 | ✅ 1.4 | Users who sign up without an invitation are guided through creating their first Organisation, Location, and Room. |
 | Library | iOS · Web | ✅ β02 | ✅ β02 | ✅ 1.4 | Cross-room access to scans, designs, acoustic measurements, and markers. Sorted by last modified. Direct room navigation added β09. |
 | Global search | Web | ✅ β02 | ✅ β02 | ✅ 1.4 | Search across scans, designs, measurements, rooms, orgs, and locations. Persistent results since β04. |
 | Offline mode | iOS | ✅ β03 | ✅ β03 | ✅ 1.4 | Full offline support on iOS. Full acoustic measurements — including the three-position flow — work offline since 1.4, queued in Notifications and uploaded when connectivity returns. |
-| Notifications | iOS | ✅ 1.4 | ✅ 1.4 | ✅ 1.4 | Bell badge reflects real state — unread notifications, tasks, pending no-room archives, failed uploads, and incomplete measurements. |
+| [Notifications](../getting-started/notifications) | iOS · Web | ✅ 1.4 | ✅ 1.4 | ✅ 1.4 | Bell badge reflects real state — unread notifications, tasks, pending no-room archives, failed uploads, and incomplete measurements. On the Web Platform, the bell sits in the header. |
 | Task management | iOS · Web | ✅ β03 | ✅ β03 | ✅ 1.4 | Assign and track Discovery/Design tasks per room. Visible on iOS since β07. Scheduling and assignment expansion planned. |
-| Room progress | iOS · Web | ✅ β03 | ✅ β03 | ✅ 1.4 | Visual progress across Discovery and Design phases. Shows completed steps and pending actions per room. |
+| Room progress | iOS · Web | ✅ β03 | ✅ β03 | ✅ 1.4 | Visual progress across Discovery and Design. Shows completed steps and pending actions per room. |
 | Activity log | Web | ✅ β08 | ✅ β08 | ✅ 1.4 | Recent activity per room — shows latest changes, who performed each action, and a timeline of progress. |
 | Notes | iOS · Web | ✅ 1.4 | ✅ 1.4 | ✅ 1.4 | Persistent notes attachable to markers, scans, acoustics, and designs — including on a group of acoustic measurements. Includes speech-to-text input. |
 

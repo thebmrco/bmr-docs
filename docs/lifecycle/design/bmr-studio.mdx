@@ -1,223 +1,294 @@
 ---
 title: BMR Studio
-description: The 3D environment where rooms are modelled — its modes, render modes, design versions, and how to present a design.
+description: The 3D environment where rooms are designed. Everything happens in a mode (View, Structurals, Equipment, Cables), plus saving, versions, activating and presenting.
 ---
 
 import Icon from '@site/src/components/Icon'
-import useBaseUrl from '@docusaurus/useBaseUrl'
+import Figure, { FigurePair } from '@site/src/components/Figure'
+import Callouts from '@site/src/components/Callouts'
+import StudioModes from '@site/src/components/StudioModes'
 
 # <Icon name="palette" size="1em" /> BMR Studio
 
-<PageIntro illustration="design-studio" meta={['Web platform', 'Beta']}>
+<PageIntro illustration="design-studio" meta={['Web platform, on a computer', 'Beta, on for everyone']}>
 
-**BMR Studio** is the single 3D environment used for all room design work in BMR. It is designed to be used **on the web, on a computer** — that is where detailed design work belongs. It also runs inside **BMR Mobile** on **iPad** and **iPhone** for reviewing designs on-site. BMR Studio is where you model rooms, place equipment, manage design versions, and mark a design as **Active**.
+Design the room in 3D. **Pick a mode, and the Studio gives you the tools for that job.**
 
 </PageIntro>
 
-<Notice kind="design" />
+<Notice kind={['design', 'preview']} />
 
-:::info Beta feature — available to all users
-BMR Studio is currently in **Beta**, but enabled for everyone. A full public release is coming soon.
+## <Icon name="layout" size="1em" /> The screen at a glance {#the-screen}
+
+<Callouts
+  src="/img/design/bmr-studio-ui.png"
+  alt="BMR Studio in Equipment mode: a 3D meeting room with a display, a table and four chairs, the toolbar along the top with Save and Save New Version, the sidebar tabs on the right and the mode switcher at the bottom"
+  caption="BMR Studio. The toolbar is at the top, the sidebar tabs on the right and the modes at the bottom."
+  pins={[
+    {x: 32.8, y: 1.6, title: 'Save', text: 'Saves your changes as a new version.'},
+    {x: 36.1, y: 1.6, title: 'Save as New Design', text: 'Copies the design into a separate one.'},
+    {x: 42.8, y: 1.6, title: 'Render mode', text: 'Standard or High quality, in View mode.'},
+    {x: 92, y: 6, title: 'Sidebar tabs', text: 'Properties, Equipment, Versions, BOM, Guidelines and more.'},
+    {x: 44.2, y: 96.2, title: 'Modes', text: 'View, Structurals, Equipment, Cables, then Present.'},
+  ]}
+/>
+
+---
+
+## <Icon name="scan" size="1em" /> Modes: how the Studio works {#-modes}
+
+Every job has its own **mode**. Switch at the bottom of the screen. The mode decides:
+
+- **what you can select and change.** Everything else stays visible, but locked.
+- **which tabs the sidebar shows**, and which tools you get.
+
+<StudioModes />
+
+<FixList items={[
+  { problem: 'Clicked something, nothing happens', fix: 'It belongs to another mode. The Studio says which: tap Switch' },
+  { problem: 'No modes at the bottom', fix: 'You can view, not edit. Shared designs and read-only access open in View only' },
+]} />
+
+A design opens in **View**. **Versions** and **BOM** are in the sidebar in the four main modes. The first time you open each mode, a short **guided tour** shows you around.
+
+<a id="-what-you-can-do" />
+
+---
+
+## <Icon name="eye" size="1em" /> View {#view}
+
+Look around and present. Nothing can move, so it's safe for reviews. Select anything to read its properties.
+
+- **View menu** (the eye): **2D / 3D**, **In room** (walk through at eye height), **Coverage** and **Layers** (dimensions, labels, cables …).
+- **Markers** from the scan: their own button in the toolbar.
+- **Presentation tab:** save views to [present](#presenting-a-design).
+
+### Render modes {#render-modes}
+
+In the toolbar, in **View** mode.
+
+<FigurePair
+  a={{src: '/img/release/2026-10-render-standard.webp', alt: 'A meeting room design in BMR Studio drawn in Standard render mode, with flat, even lighting', label: 'Standard'}}
+  b={{src: '/img/release/2026-10-render-high-quality.webp', alt: 'The same meeting room design in High quality render mode, with bounce lighting and soft shadows under the chairs and table', label: 'High quality'}}
+  caption="High quality adds bounce lighting and ambient occlusion. Standard is quicker to work in."
+/>
+
+Finer settings: **Room** tab › **Rendering**. The 3D view uses **WebGPU** where the browser supports it — see [System Requirements](../../getting-started/system-requirements).
+
+#### Photoreal <FeatureToggleTag /> {#photoreal}
+
+<FeatureToggle />
+
+A third render mode: a **path-traced**, photo-like picture. It refines while the camera is still (*Rendering 12 / 64*), then denoises.
+
+- Needs **WebGPU** and the **3D** view (not the floor plan).
+- Passes and denoising: **Room** tab › **Rendering**.
+
+---
+
+## <Icon name="brick-wall" size="1em" /> Structurals {#structurals}
+
+Walls, doors, windows and openings. Draw them from the **Build** tab. Surface materials and colours come from the scan.
+
+<a id="-editing-in-the-3d-view" />
+
+<FigurePair
+  a={{src: '/img/release/2026-10-studio-door.jpg', alt: 'A door selected in BMR Studio, seen from above, with its swing drawn on the floor, and the Properties panel showing Hinge side (from inside) Left or Right and Opens Inward or Outward', label: 'Doors'}}
+  b={{src: '/img/release/2026-10-studio-wall-handles.jpg', alt: 'A wall selected in BMR Studio, highlighted, with handles at both ends and a centre handle, next to the Properties panel with rotation, wall material and wall colour', label: 'Walls'}}
+  caption="Doors have a hinge side and opening direction. A selected wall shows its end and centre handles."
+/>
+
+- **Live dimensions** on walls, doors and windows while you draw or resize.
+- Hold **Shift** to snap wall ends to 22.5°. **Arrow keys** nudge doors and windows along their wall.
+- Items **stop at walls and the ceiling**, then give way if you keep pushing.
+
+<Figure
+  src="/img/release/2026-07-structural-mode.png"
+  alt="Room design in Structurals mode with doors and windows visible and surface materials applied from the scan"
+  caption="Structurals mode, with doors, windows and the scan's surface materials."
+/>
+
+---
+
+## <Icon name="equipment" size="1em" /> Equipment {#equipment}
+
+Place and arrange equipment, furniture, outlets, logos and murals. The **Guidelines** tab shows your organisation's setup for this room, see [Default Room Configuration](default-room-configuration).
+
+### Equipment tabs {#equipment-tabs}
+
+| Tab | Holds |
+|---|---|
+| **Generic** | Placeholder items — a display, a chair — when the model doesn't matter yet. |
+| **Catalog** | Your organisation's [Equipment Catalog](../../catalog/). |
+| **Bundles** <FeatureToggleTag /> | Saved sets of equipment, placed in one go. |
+| **Branding** | Your logos and [panel murals](#panel-murals). |
+
+Equipment **snaps onto mounts** (VESA, rack, camera screw) and moves with them. Drag it off to detach.
+
+### Bundles <FeatureToggleTag /> {#bundles}
+
+<FeatureToggle />
+
+A **bundle** is a reusable kit — for example a video bar, display, mount and table microphone.
+
+1. Select **at least two** items in the room.
+2. Choose **Create bundle**, name it, tick the **catalogs** and what it **Mounts to**.
+3. **Save bundle**. Place it from the **Bundles** tab.
+
+The placed copy is independent: editing the bundle later doesn't change rooms that already use it.
+
+<Figure
+  src="/img/release/2026-10-bundle-editor.jpg"
+  alt="A bundle open in BMR Studio in its own small room — one wall with the floor in front of it — holding two displays, a video bar and a stand, with the Equipment sidebar showing the Generic, Catalog, Bundles and Branding tabs"
+  caption="A bundle opens in its own one-wall room. Note the four Equipment tabs on the right."
+/>
+
+### Panel murals {#panel-murals}
+
+A panel mural is your own picture printed across a group of acoustic panels. Create it under **Organisation › Preferences › Branding**, then place it from the **Branding** tab like any other item. It shows in the BOM as **Custom print**.
+
+---
+
+## <Icon name="cable" size="1em" /> Cables {#cable-mode}
+
+Cabling starts from **what needs to be connected**, not from drawing cables.
+
+Here you change cables, outlets and boxes. Other equipment stays put: click a device to see what's plugged in.
+
+<Figure
+  src="/img/release/2026-10-cable-connections-3d.jpg"
+  alt="Cable mode in BMR Studio: the Connections panel on the left lists each device's ports with the connected port, cable type filters at the top and short warnings such as no free port, next to a see-through 3D room with the cables drawn in colour"
+  caption="The Connections panel, next to the see-through 3D room."
+/>
+
+- **Connections panel** — each device lists its connections, **required** ones first. Pick a port, **Connect to another port**, or delete a cable. **Reset connections** starts over.
+- **Required connections are drawn for you** when you open Cable mode. Ethernet runs through an outlet; **PoE** is supported.
+- **Warnings sit on the device** — *Power missing*, *PoE missing*, *no free port* — with the fix one click away.
+- **Filter by cable type** — Power, HDMI, Network, USB, Other — each with its own colour, also in **Plans**.
+- **Cables save as you go.**
+
+**2D, Split or 3D.** The 2D view is the **unfolded room**: walls, floor and ceiling laid out flat. Select a cable to reshape it on the grid; move sockets and equipment along guides (arrow keys nudge).
+
+<Figure
+  src="/img/release/2026-10-cable-split-view.jpg"
+  alt="Cable mode in Split view: the unfolded room on the left, with the walls laid out in a row between the ceiling and the floor and the cables drawn on them, and the same room in 3D on the right"
+  caption="Split view: the unfolded room next to 3D."
+/>
+
+:::info Cables is marked Beta
+Check a route before you build from it.
 :::
 
-<Notice kind="preview" />
+---
 
-<img
-  src={useBaseUrl('/img/design/bmr-studio-ui.png')}
-  alt="BMR Studio — 3D room design environment"
-  style={{width: '100%', borderRadius: '10px', border: '1px solid #E5E5D5', margin: '1rem 0', boxShadow: '0 4px 20px rgba(0,0,0,0.1)'}}
+## <Icon name="audio-lines" size="1em" /> Acoustics <FeatureToggleTag /> {#acoustics}
+
+<FeatureToggle />
+
+Recommends absorbers for the room and simulates the result against the **DIN 18041** target. You choose where treatment may go, then place and move the absorbers. Built on the room's [acoustic measurement](../../acoustics/acoustics-guide).
+
+---
+
+## <Icon name="copy" size="1em" /> Design versions
+
+A room can have several **designs**, and each design keeps its own **versions**.
+
+### Save and Save as New Design {#automatic-versioning}
+
+| Button | What it does |
+|---|---|
+| **Save** | Saves your changes as a **new version** (*Version 2*, *Version 3* …). Earlier versions are kept. |
+| **Save as New Design** | Makes a **separate design**, not linked to this one. |
+
+- **Switching mode saves too**, as a new version, if you have unsaved changes.
+- Cable changes **save automatically**.
+- If a save fails, BMR Studio says why and offers **Retry**. Unsaved changes from an earlier session can be **restored** when you reopen the design.
+- The **Versions** tab lists every version: **Activate** one to make it current, **Rename** or **Delete** the others.
+
+<Figure
+  src="/img/release/2026-07-design-versions.png"
+  alt="Versions tab listing the versions of a design, the current one marked Active, with Activate, Rename and Delete buttons on the others"
+  variant="inset"
+  maxWidth={340}
+  caption="The Versions tab."
 />
+
+---
+
+## <Icon name="monitor" size="1em" /> Presenting a design {#presenting-a-design}
+
+**Present** (Shift + F), next to the modes, takes the design full screen and steps through it one view at a time.
+
+- **Standard views** first (Overview, Floor plan, …), then **your saved views**.
+- **← / →** to step, jump to any view from the bar, **take a screenshot**, **Esc** to stop.
+- People you share a design with read-only can present it too.
+
+### Saving your own views
+
+In **View** mode, open the **Presentation** tab, set up the camera and click **Save current view**. Views can be renamed, reordered, replaced or removed.
+
+<Figure
+  src="/img/release/2026-10-presentation-bar.webp"
+  alt="A meeting room design presented full screen in BMR Studio, with the presentation bar at the bottom showing the view counter, previous and next arrows, render options, a screenshot button and close"
+  caption="Presenting, with the presentation bar at the bottom."
+/>
+
+---
+
+## <Icon name="circle-check" size="1em" /> Reviewing and activating a design {#-reviewing-and-approving-a-design}
+
+The same for Studio designs and AR Designs:
+
+1. Open the room's **Designs** tab.
+2. Check the 3D layout, the cables and the **BOM**.
+3. When the room is built to it, **Activate** the design — or **Set as active design** in BMR Studio's **Room** tab.
+
+The Active Design is the room's record. See [Deploy](../deploy/).
+
+---
+
+## <Icon name="circle-check" size="1em" /> How to open BMR Studio
+
+### On the web
+
+1. Open the room at **[app.bettermeetingrooms.com](https://app.bettermeetingrooms.com)**.
+2. Go to the **Designs** tab and pick a design — or create one with **New Design**. It opens in BMR Studio, full screen.
+
+The room's Overview also links to **the active design in the Studio**.
+
+### On iPhone or iPad
+
+1. Open the room in BMR Mobile.
+2. Go to **Designs** and open a design.
+
+BMR Mobile opens existing designs. To start a new one in the app, use [AR Design](ar-design-guide).
 
 ---
 
 ## <Icon name="smartphone" size="1em" /> BMR Studio on iPad and iPhone
 
-BMR Studio also runs inside **BMR Mobile** on iPad and iPhone, so you can open and review the same 3D design environment while on-site. Each device fits a different use case:
+BMR Studio also opens inside **BMR Mobile**, for reviewing a design on-site.
 
-<div style={{display: 'flex', gap: '24px', alignItems: 'flex-start', flexWrap: 'wrap'}}>
-<div style={{flex: '1 1 350px'}}>
+| Device | Use it for |
+|---|---|
+| **Computer (web)** | All design work. **Recommended.** |
+| **iPad** | Reviewing on-site. Editing works, but is harder. |
+| **iPhone** | Preview only. |
 
-- **Web (on a computer)** — the primary design environment, with the screen space and precise pointer that detailed design needs. **Recommended for all real design work.**
-- **iPad** — it runs, but is **not recommended** for detailed design: the touch interface and smaller screen make precise editing harder. Best for **reviewing** a design on-site.
-- **iPhone** — **preview only**. The screen is too small for editing and the interface is not optimised for it. Use the iPhone to walk a room while reviewing a design, then switch to a computer for any actual changes.
-
-While viewing a design in BMR Mobile you can switch between **2D** and **3D** views and toggle **Measurements**, **Cables**, **POIs**, and the **Legend** overlays — the same controls as on the Web.
-
-</div>
-<div style={{flex: '0 0 220px'}}>
-
-<div className="phone-screenshot">
-<img src={useBaseUrl('/img/release/2026-05-design-preview-app.jpg')} alt="BMR Studio opened in BMR Mobile showing the 3D room view" style={{width: '100%', borderRadius: '12px'}} />
-</div>
-
-</div>
-</div>
-
----
-
-## <Icon name="scan" size="1em" /> Modes
-
-BMR Studio uses dedicated modes so you can focus on one thing at a time:
-
-- **View** — explore the room and review designs. Navigate the 3D model, inspect placed equipment, and get an overview of the current design state. The **View menu** opens automatically in this mode and stays collapsed in the editing modes, out of your way. View mode is also where you choose a [render mode](#render-modes) and manage the [saved views used when presenting](#presenting-a-design).
-- **Structurals** — adjust structural components such as walls, windows, doors, and other building elements. **Windows and doors are shown by default** when you enter the mode, room resizing is smoother, and **surface materials and colours from the scan are applied to the generated design** — so the model more closely resembles the real room.
-- **Equipment** — add and remove equipment and furniture in the design. Browse the full catalog, place items, configure quantities, and position everything in the room. Recommended items from a matching [Default Room Configuration](default-room-configuration) can be placed straight from the **Guidelines** panel.
-- **Cables** *(Beta)* — plan and document cable routing between devices. **Outlets are shown in the Cable Guide** for a complete picture of the room's connection points, and two tools speed up routing: **Auto-Route** bundles cables that share a path, branching off only at the final drop, and **Tidy Bundles** cleans up existing routing.
-
-More modes will be added over time, and existing modes will continue to be refined.
-
-<img
-  src={useBaseUrl('/img/release/2026-07-structural-mode.png')}
-  alt="Room design in Structurals mode with doors and windows visible and surface materials applied from the scan"
-  style={{width: '100%', borderRadius: '10px', border: '1px solid #E5E5D5', margin: '1rem 0'}}
+<Figure
+  src="/img/release/2026-05-design-preview-app.jpg"
+  alt="BMR Studio opened in BMR Mobile showing the 3D room view"
+  variant="phone"
+  maxWidth={240}
+  caption="A design opened in BMR Mobile."
 />
-
-:::info Cables is marked Beta
-The **Cables** mode carries a **Beta** label, as do its **Auto-Route** and **Tidy Bundles** tools. Cabling works exactly as before — the label is a reminder to **check a route before you build from it**. Results are easy to review and adjust by hand.
-:::
-
-<img
-  src={useBaseUrl('/img/release/2026-07-cables-menu.png')}
-  alt="Cables mode menu with Draw Cable, Auto-Route (BETA), Edit Cables, Tidy Bundles (BETA), and Outlets options"
-  style={{width: '100%', maxWidth: '340px', display: 'block', margin: '1rem auto', borderRadius: '8px', border: '1px solid #E5E5D5'}}
-/>
-
----
-
-## <Icon name="sliders-horizontal" size="1em" /> Render Modes {#render-modes}
-
-In **View** mode, the **render mode control** in the toolbar sets how the room is drawn:
-
-- **Standard** — plain rendering, the quickest to work with. Use it while you design.
-- **High quality** — adds bounce lighting and ambient occlusion for a more realistic look, without waiting for a render.
-
-<div style={{display: 'flex', gap: '16px', flexWrap: 'wrap', margin: '1rem 0'}}>
-  <figure style={{flex: '1 1 260px', margin: 0}}>
-    <img src={useBaseUrl('/img/release/2026-10-render-standard.webp')} alt="A meeting room design in BMR Studio drawn in Standard render mode, with flat, even lighting" style={{width: '100%', aspectRatio: '3 / 2', objectFit: 'cover', borderRadius: '10px', border: '1px solid #E5E5D5'}} />
-    <figcaption style={{textAlign: 'center', fontSize: '0.9em'}}>Standard</figcaption>
-  </figure>
-  <figure style={{flex: '1 1 260px', margin: 0}}>
-    <img src={useBaseUrl('/img/release/2026-10-render-high-quality.webp')} alt="The same meeting room design in High quality render mode, with bounce lighting and soft shadows under the chairs and table" style={{width: '100%', aspectRatio: '3 / 2', objectFit: 'cover', borderRadius: '10px', border: '1px solid #E5E5D5'}} />
-    <figcaption style={{textAlign: 'center', fontSize: '0.9em'}}>High quality</figcaption>
-  </figure>
-</div>
-
-The finer settings — quality presets, bounce light, ambient occlusion, exposure, and colour response — are in the **Rendering** panel in the sidebar.
-
-:::info Rendered with WebGPU
-The 3D viewer runs on **WebGPU** in browsers that support it, and falls back automatically in those that do not. See [System Requirements](../../getting-started/system-requirements).
-:::
-
----
-
-## <Icon name="edit" size="1em" /> Editing in the 3D View
-
-The model is built to behave the way you expect while you work:
-
-- **Walls and the ceiling push back** — an item you drag stops at a wall or the ceiling, then gives way if you keep pushing.
-- **A hint in View mode** — try to drag equipment in View mode and BMR Studio tells you how to switch to Equipment mode.
-- **2D plan view** — switching to 2D centres the room and fits it to the canvas, with equipment and furniture drawn as clear outlines.
-- **Added walls** reach the ceiling and snap to the existing walls.
-- **Arrow keys nudge** doors, windows, and openings along their wall.
-
----
-
-## <Icon name="equipment" size="1em" /> What You Can Do
-
-- **Place and configure equipment** from the catalog — cameras, screens, speakers, codecs, furniture, and more. Equipment **stays selected while you rotate it**, and newly placed devices are **auto-selected** with their **Advanced properties** shown by default.
-- **Adjust room structure** — walls, windows, doors, and other building elements, with surface materials applied from the scan
-- **Plan cable routing** between devices, including outlets and auto-routing
-- **Work with automatic design versions** for the same room — every save creates a version you can review, rename, activate, or delete
-- **Generate an equipment list** automatically from placed items
-- **Move a design through approval** and mark it as Active when installed
-- **Present a design** full screen, stepping through the standard views and your own saved views
-- **Follow Default Room Configuration guidelines** — when a room matches a defined size range, the **Guidelines** panel shows fulfilled and missing categories with a one-click **Place in room** action
-
----
-
-## <Icon name="circle-check" size="1em" /> How to Open BMR Studio
-
-### On the Web
-
-1. Go to **[app.bettermeetingrooms.com](https://app.bettermeetingrooms.com)**
-2. Open the room
-3. Navigate to **Design**
-4. Click **Open Studio** — the 3D editor loads with your room scan as the base
-
-### On iPhone or iPad
-
-1. Open the room in BMR Mobile
-2. Go to the **Designs** tab
-3. Open an existing design or create a new one — BMR Studio loads inside the app
-
----
-
-## <Icon name="copy" size="1em" /> Design Versions
-
-Each room can have **multiple design versions** in BMR Studio, and your work is **never overwritten**. This lets you:
-
-- Explore different equipment configurations or layout options side by side
-- Preserve historical versions as the room evolves
-- Track which version was actually deployed
-
-### Automatic versioning
-
-Versions are **created automatically** whenever you save or change mode — you do not have to remember to snapshot your work. Every previous version can be reviewed, **renamed**, **activated**, or **deleted** at any time from the **Versions** tab.
-
-- **Save as New Design** — in the top menu, for when you want a separate design rather than another version of the current one.
-- **Designs are shown as a list** in the room design view, making it easier to identify and open the right one.
-
-<img
-  src={useBaseUrl('/img/release/2026-07-design-versions.png')}
-  alt="Versions tab showing the automatic version history of a design with Activate, Rename, and Delete actions"
-  style={{width: '100%', maxWidth: '340px', display: 'block', margin: '1rem auto', borderRadius: '8px', border: '1px solid #E5E5D5'}}
-/>
-
-One design version can be designated as the **Active Design** — the authoritative record of the room as it currently exists. All other versions represent proposed or historical states.
-
----
-
-## <Icon name="monitor" size="1em" /> Presenting a Design {#presenting-a-design}
-
-The **Present** button sits at the end of the mode switcher at the bottom (shortcut **Shift + F**). It takes the design full screen and steps through it one view at a time — ready to walk a customer or a colleague through the room.
-
-- The presentation shows the **standard views** first (Overview, Floor plan, …), then **your saved views**, in the order you set.
-- Step with **← / →** (or Page Up / Page Down), **jump to any view** from the presentation bar, **take a screenshot**, and press **Esc** to stop.
-- The presentation bar also carries the **High quality** and **Photoreal** options, so you can raise the fidelity while presenting.
-- People you share a design with **read-only can present it too**.
-
-### Saving your own views
-
-Open the **Presentation** tab in **View** mode, position the camera, and click **Save current view**. Saved views can be **renamed**, **reordered**, **replaced** with the current camera position, or **removed**.
-
-<img
-  src={useBaseUrl('/img/release/2026-10-presentation-bar.webp')}
-  alt="A meeting room design presented full screen in BMR Studio, with the presentation bar at the bottom showing the view counter, previous and next arrows, the High quality and Photoreal options, a screenshot button and close"
-  style={{width: '100%', borderRadius: '10px', border: '1px solid #E5E5D5', margin: '1rem 0'}}
-/>
-
----
-
-## <Icon name="circle-check" size="1em" /> Reviewing and Approving a Design
-
-Whether created in BMR Studio, via AR Design, or delivered by a BMR designer, the review process is the same:
-
-1. Open the room's **Design** section to view available versions
-2. Inspect the 3D layout, coverage visuals, and equipment list
-3. Add comments or request adjustments
-4. **Approve** the design when ready
-5. Once physically installed, **mark it as Active** — it becomes the Active Design and the room's live record
 
 ---
 
 ## <Icon name="star" size="1em" /> Tips
 
-:::tip
-The richer your Discovery data — scan quality, marker coverage, acoustic measurements — the more accurately BMR Studio reflects the real room.
-:::
-
-- **Start with a scan** — BMR Studio uses the 3D scan as the foundation. A high-quality scan means more accurate placement.
-- **Use modes** — switch between modes rather than trying to do everything at once. Each mode surfaces the tools relevant to that task.
-- **Use versions freely** — every save is captured automatically, so you can explore options without fear of losing earlier work. Use **Save as New Design** when you want a separate design rather than another version.
-- **Check Default Room Configurations** — if your organisation has defined recommended setups, they appear automatically in the sidebar when the room size matches.
-- **Save your views before a meeting** — set up the camera angles you want to show, then present them in order with **Shift + F** instead of navigating live.
+- **Can't select something?** It's in another mode. Tap **Switch**.
+- **Review in View**: nothing moves by accident.
+- **Start from a scan**: a good scan means less fixing in Structurals.
+- **Every Save is a version**: go back from the **Versions** tab.
+- **Save your views before a meeting**, then present with **Shift + F**.

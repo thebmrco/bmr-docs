@@ -43,13 +43,14 @@ const activities: Activity[] = [
     description: 'Photograph key elements — power outlets, displays, cameras, cabling — and add notes.',
     bullets: [
       'Tap the camera button while scanning',
-      'Photograph the item and add a short note',
+      'Close-ups for the inventory, overviews for context',
       'Aim for at least 10 across the room',
     ],
-    image: '/img/lifecycle/markers-app.jpg',
+    image: '/img/tutorials/scan-marker-flow/v2-what-to-capture.jpg',
     imageAlt: 'Marker placement in the app',
     links: [
       { label: 'Markers', href: '/docs/lifecycle/discovery/markers' },
+      { label: 'Build the inventory', href: '/docs/lifecycle/discovery/inventory' },
     ],
   },
   {
