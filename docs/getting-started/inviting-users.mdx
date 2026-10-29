@@ -6,6 +6,7 @@ description: How an organisation Admin invites team members, the roles available
 
 import Icon from '@site/src/components/Icon'
 import Figure, { FigurePair } from '@site/src/components/Figure'
+import { RolesMatrix } from '@site/src/components/Structure'
 
 # <Icon name="users" size="1em" /> Inviting Users to an Organisation
 
@@ -25,15 +26,11 @@ Invite your team from the organisation's **Users** tab. They get an email, set a
 
 ## <Icon name="key" size="1em" /> Roles
 
-Three roles. Pick the narrowest one that fits.
+Three roles, each given on one level. Pick the narrowest one that fits.
 
-| Role | Scope | What they can do |
-|---|---|---|
-| **Admin** | Whole organisation | Everything — all locations and rooms, users, organisation settings. |
-| **Location Manager** | One location | The rooms and data in that location. No users, no organisation settings. |
-| **Room Manager** | One room | That room — scans, markers, measurements and designs. |
+<RolesMatrix />
 
-See [Structure](../structure/#-what-each-level-is-for) for how roles follow the levels.
+How roles follow the levels: [Organisation, Location & Room](../structure/#roles).
 
 ---
 

@@ -132,11 +132,12 @@ module.exports = {
           ],
         },
         {
-          // Add Terms of Use here once it is published (see the legal action plan).
+          // Terms and Conditions live in the docs, under Legal.
           title: 'Legal',
           items: [
             { label: 'Privacy Policy', href: 'https://www.bettermeetingrooms.com/privacy-policy' },
             { label: 'Impressum', href: 'https://www.bettermeetingrooms.com/impressum' },
+            { label: 'Terms and Conditions', to: '/docs/legal/terms' },
             { label: 'Trust & Security', to: '/docs/trust' },
           ],
         },
