@@ -120,6 +120,7 @@ const sidebars: SidebarsConfig = {
       ],
     },
     area('Trust and Security', [newDoc('trust/index'), 'security/index']),
+    {...area('Legal', [newDoc('legal/terms')]), customProps: {guide: 'General'}},
     {...area('Product Updates', ['roadmap/index', releaseNotes]), customProps: {guide: 'General'}},
   ],
 
@@ -228,6 +229,11 @@ const sidebars: SidebarsConfig = {
     },
     newDoc('trust/index'),
     'security/index',
+    {
+      type: 'category',
+      label: 'Legal',
+      items: [newDoc('legal/terms')],
+    },
     {
       type: 'category',
       label: 'Product Updates',

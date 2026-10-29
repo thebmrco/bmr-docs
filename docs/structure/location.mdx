@@ -6,20 +6,19 @@ description: What a location holds, the Location page on the web and in BMR Mobi
 
 import Icon from '@site/src/components/Icon'
 import Figure from '@site/src/components/Figure'
+import { StructurePath } from '@site/src/components/Structure'
 
 # <Icon name="location" size="1em" /> Location
 
 <PageIntro illustration="organise" meta={['Web platform', 'BMR Mobile']}>
 
-A physical site — an office, a building, a campus. It holds the rooms at that site, their floors, and the site's address.
+A building or site. **It holds its rooms, their floors, and the address.** Managed by a **Location Manager** or an Admin.
 
 </PageIntro>
 
-**[Organisation](./organisation) → Location → [Room](./room)** · see [Structure](./).
+<StructurePath current="location" />
 
----
-
-## <Icon name="laptop" size="1em" /> The Location page on the web
+## <Icon name="laptop" size="1em" /> The Location page on the web {#-the-location-page-on-the-web}
 
 <Figure
   src="/img/structure/location-page-web.png"
@@ -27,36 +26,30 @@ A physical site — an office, a building, a campus. It holds the rooms at that 
   caption="The Overview tab of a location."
 />
 
-| Section | What it shows |
+| Part | What it shows |
 |---|---|
-| **Map** | The site pinned at its coordinates |
-| **Location Details** | Room and user counts, the full address, the owning organisation |
-| **Data Completeness** | How many rooms are scanned, have markers, an acoustic measurement and a design — each row links to those rooms |
-| **Recent Activity** | The latest changes, with who made them |
-| **Advanced** | Integration IDs and raw coordinates |
-
-| Tab or button | For |
-|---|---|
-| **Rooms** | The rooms themselves, with a **Floor** column — and **Create a new Room** |
-| **Edit Location** | The address, and the **Floors** tab |
+| **Map** | The site at its coordinates |
+| **Location Details** | Rooms, users, address, organisation |
+| **Data Completeness** | How many rooms have a scan, markers, acoustics and a design. Click a row to see those rooms |
+| **Recent Activity** | Latest changes, and who made them |
+| **Rooms** tab | Every room, with its floor. **Create a new Room** |
+| **Edit Location** | Address, and the **Floors** tab |
 
 ---
 
 ## <Icon name="layout" size="1em" /> Floors {#floors}
 
-A floor is simply a name the rooms carry — a number, *Ground*, *B1* or *Mezzanine*.
+A floor is a name the rooms carry: *3*, *Ground*, *B1*, *Mezzanine*. It exists while rooms are on it.
 
-| Where | What you do |
+| To | Go to |
 |---|---|
-| **Rooms** tab | Filter by floor with the chips above the list, or sort by the **Floor** column |
-| **Edit Location → Floors** | Add a floor name, then pick the rooms to move onto it. Rename a floor in one go. |
-| The room's **Where** pencil | Set the floor of a single room — see [Room](./room#-moving-a-room) |
-
-A floor exists as long as rooms are on it.
+| Filter by floor | **Rooms** tab, the chips above the list |
+| Add or rename a floor, move rooms onto it | **Edit Location → Floors** |
+| Set one room's floor | The room's **Where** pencil, see [Room](./room#-moving-a-room) |
 
 ---
 
-## <Icon name="smartphone" size="1em" /> The Location page in BMR Mobile
+## <Icon name="smartphone" size="1em" /> The Location page in BMR Mobile {#-the-location-page-in-bmr-mobile}
 
 <div style={{display: 'flex', gap: '20px', justifyContent: 'center', flexWrap: 'wrap'}}>
   <Figure
@@ -75,23 +68,19 @@ A floor exists as long as rooms are on it.
   />
 </div>
 
-The map, the address, then every room with its counts — scans, markers, acoustic measurements and designs. **Add Room** creates a room here.
+Map, address, then every room with its counts. **Add Room** creates a room here.
 
 ---
 
-## <Icon name="map-pin" size="1em" /> Set the address from where you are standing
+## <Icon name="map-pin" size="1em" /> Set the address from where you are standing {#-set-the-address-from-where-you-are-standing}
 
-Fill in the address **on site** — BMR Mobile takes it from the phone's GPS.
+On site, BMR Mobile fills in the address from the phone's GPS.
 
-1. Open the location and tap the **pencil** beside its name.
-2. Tap **Update data to current location**.
-3. Confirm — *"This will update the address fields using your current location. Location permission is required."*
-4. The app fills in **Street Address**, **City**, **Postal Code**, **State / Province**, **Latitude** and **Longitude**.
-5. Check the fields, fix anything that's wrong, and tap **Save**.
+1. **Pencil** beside the location's name.
+2. **Update data to current location**, then confirm.
+3. Check the address and coordinates it filled in. **Save**.
 
 <FixList items={[
   {problem: 'iOS asks for Location permission', fix: 'Allow it — the first time only.'},
   {problem: 'A neighbouring address appears', fix: 'The street is looked up from the coordinates. On a large site, correct it by hand before you save.'},
 ]} />
-
-The coordinates place the site on the map, on the web and in the app.

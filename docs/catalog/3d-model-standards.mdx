@@ -25,9 +25,27 @@ A catalog item is **data** (see [Anatomy of a Catalog Item](item-anatomy)) plus 
 | **Format** | Single **.glb** with embedded textures (preferred). **.usdz** accepted if fully self-contained. |
 | **Geometry** | ≤ 50,000 triangles. Origin at the object centre. Model faces **−Y**. Scale & rotation **applied**; location **not** applied. Static geometry only. |
 | **UVs** | One UV channel per mesh, valid and non-overlapping. Screen surfaces fill the full **0–1** UV space. |
-| **Materials** | **PBR metallic-roughness** only. Each material uniquely named — `ProductName_PartName` (e.g. `EasyRoomDesk_Frame`). Any screen material's name must start with `Screen` (e.g. `Screen_ProductName`). |
+| **Materials** | **PBR metallic-roughness** only. Each material uniquely named — `ProductName_PartName` (e.g. `EasyRoomDesk_Frame`). The screen material is the exception: its name starts with `screen_content` — see [Screen material](#screen-material). |
 | **Textures** | PNG or JPEG, embedded, sized **512 / 1024 / 2048 px** square. **Never above 2048.** Normal maps use the **OpenGL (+Y)** convention, not DirectX. |
 | **Scene** | Mesh + materials only. No lights, cameras, hidden objects, rigs, animation, drivers, or custom properties. |
+
+---
+
+## <Icon name="monitor" size="1em" /> Screen material {#screen-material}
+
+**Mandatory for every model with the Screen flag** (displays, touch panels). This is how BMR Mobile finds the surface to show screen content on in AR Design.
+
+| Name starts with | Use it | Example |
+|---|---|---|
+| `screen_content` | **Always.** The material on the screen surface | `screen_content_Display55` |
+| `screen_both` | Only if the model has no `screen_content` material. BMR Mobile falls back to it | `screen_both_Display55` |
+
+- **Case doesn't matter**: `Screen_Content_Display55` works too. Lowercase is clearer.
+- `screen_content` wins: if a mesh has both, the screen content goes on `screen_content`.
+
+:::warning No correctly named screen material?
+BMR Mobile does not warn. It puts the screen content on the model's **second material**, which is often the bezel, the back or the stand.
+:::
 
 ---
 
@@ -42,7 +60,7 @@ Tick every box before you send — this is the definition of *done*.
   {label: 'One UV channel per mesh, valid and non-overlapping'},
   {label: 'Screen surface (if any) fills the full 0–1 UV space'},
   {label: 'PBR metallic-roughness materials, uniquely named'},
-  {label: 'Screen material (if any) starts with "Screen"'},
+  {label: 'Screen material (if any) starts with "screen_content"'},
   {label: 'Textures are PNG or JPEG, embedded, ≤ 2048 × 2048 px'},
   {label: 'Normal maps use the OpenGL (+Y) convention'},
   {label: 'No lights, cameras or hidden objects in the scene'},

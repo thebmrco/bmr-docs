@@ -6,20 +6,21 @@ description: The top level of the structure — what an organisation holds, and 
 
 import Icon from '@site/src/components/Icon'
 import Figure from '@site/src/components/Figure'
+import { StructurePath } from '@site/src/components/Structure'
 
 # <Icon name="organization" size="1em" /> Organisation
 
 <PageIntro illustration="organise" meta={['Web platform', 'Admins']}>
 
-Your company or business unit — the top of the [structure](./). Everything set here applies to every [location](./location) and [room](./room) inside it.
+Your company. **Set it once here, and it applies to every location and room inside.**
 
 </PageIntro>
 
----
+<StructurePath current="organisation" />
 
-## <Icon name="admin-settings" size="1em" /> The admin area
+## <Icon name="admin-settings" size="1em" /> The admin area {#-the-admin-area}
 
-Open your organisation on the web. One row of groups runs along the top; groups with more than one page show a second row of tabs beneath.
+Open the organisation on the web. Groups along the top, tabs beneath. Only an **Admin** can change things here.
 
 | Group | Tabs | What it is for |
 |---|---|---|
@@ -30,15 +31,11 @@ Open your organisation on the web. One row of groups runs along the top; groups 
 | **Integrations** | Webex Sync · Microsoft 365 | [Webex Control Hub Sync](../integrations/webex-control-hub-sync) and [Microsoft 365](../integrations/microsoft-365) |
 | **Room Configurations** | Yours · BMR Defaults | Recommended equipment per room size — [below](#room-configurations) |
 
-:::note Who can change these
-Changing these needs an **Admin**.
-:::
-
 ---
 
-## <Icon name="admin-settings" size="1em" /> Preferences
+## <Icon name="sliders-horizontal" size="1em" /> Preferences {#-preferences}
 
-### General
+### General {#general}
 
 | Setting | What it does |
 |---|---|
@@ -51,9 +48,9 @@ Changing these needs an **Admin**.
 You type the organisation's name to confirm. The other Admins get an email. Restoring from the **Trash** is a <FeatureToggleTag /> feature. Without it, there is no way back in the app.
 :::
 
-### Acoustic
+### Acoustic {#acoustic}
 
-Defaults for acoustic measurements in this organisation. Measurements already taken are not changed.
+Defaults for new measurements. Earlier ones don't change.
 
 | Setting | What it does |
 |---|---|
@@ -62,28 +59,19 @@ Defaults for acoustic measurements in this organisation. Measurements already ta
 | **Default room usage type** | The DIN 18041 usage class pre-selected when a room is created |
 | **Default acoustics catalog** | The catalog whose acoustic items acoustic measurement uses |
 
-:::tip How the measurement mode is decided
-1. A **device setting** in BMR Mobile (Settings → Acoustic Settings → Advanced Measurement Mode), if set.
-2. Otherwise this **organisation default**.
-3. Otherwise **Advanced**.
-
-Set it here to steer everyone, and leave the app switch alone.
+:::tip Which measurement mode is used?
+The device setting in BMR Mobile wins (**Settings → Acoustic Settings**). Then this default. Then **Advanced**.
 :::
 
-### Catalog
+### Catalog {#catalog}
 
-The equipment catalogs your organisation can use, with the number of items in each. Click one to see what it holds.
-
-- Catalogs curated by BETTERMEETINGROOMS are **view only**.
-- A catalog your organisation **owns** can be managed here.
-
-See [Catalog & 3D Models](../catalog/) for what an item holds and how to request one.
+The catalogs you can use, with their item counts. BETTERMEETINGROOMS catalogs are **view only**; your own can be managed here. See [Catalog & 3D Models](../catalog/).
 
 ### Bundles <FeatureToggleTag /> {#bundles}
 
 <FeatureToggle />
 
-Every reusable kit your organisation can place — its own, public ones and ones shared with it. Your own can be edited here. How bundles work: [Release 2.4](../release-notes/2026-10-release-2.4).
+Reusable sets of equipment: yours, public ones and ones shared with you. Edit your own here. How they work: [BMR Studio › Bundles](../lifecycle/design/bmr-studio#bundles).
 
 <Figure
   src="/img/release/2026-10-bundles-list.jpg"
@@ -91,7 +79,7 @@ Every reusable kit your organisation can place — its own, public ones and ones
   caption="Preferences › Bundles."
 />
 
-### Branding
+### Branding {#branding}
 
 | Section | What it does |
 |---|---|
@@ -108,7 +96,7 @@ Every reusable kit your organisation can place — its own, public ones and ones
 
 ## <Icon name="sliders-horizontal" size="1em" /> Room Configurations {#room-configurations}
 
-Recommended equipment for each room size — for example a video bar and one display for a small huddle room. When you design a room in BMR Studio, the matching configuration is suggested.
+Recommended equipment per room size, suggested when you design a room.
 
 | Tab | What it holds |
 |---|---|
@@ -119,8 +107,8 @@ Fully documented in **[Default Room Configuration](../lifecycle/design/default-r
 
 ---
 
-## <Icon name="chevron-right" size="1em" /> Related
+## <Icon name="chevron-right" size="1em" /> Related {#-related}
 
-- **[Structure](./)** — how Organisation, Location and Room fit together.
-- **[Location](./location)** — the sites inside this organisation.
-- **[Inviting Users](../getting-started/inviting-users)** — roles and what each one can see.
+- [Roles](./#roles): who can do what.
+- [Inviting Users](../getting-started/inviting-users).
+- [Location](./location): the sites inside the organisation.
