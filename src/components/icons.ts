@@ -117,6 +117,7 @@ export const iconMap: Record<string, LucideIcon> = {
   "add-new": CirclePlus,
   "library": BookOpen,
   "catalog": Shapes,
+  "mesh": Shapes,
   "more": Ellipsis,
 
   // Spaces
