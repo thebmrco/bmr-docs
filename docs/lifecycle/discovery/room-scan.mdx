@@ -134,7 +134,7 @@ This is the **Scan → Markers → Upload** flow in BMR Mobile. Click any step n
       <>
         <h3>6) Syncing (background upload)</h3>
         <p>The upload runs in the background. You can move on.</p>
-        <p>With <a href="#mesh">Mesh upload</a> on, the scan also carries its 3D mesh, often several MB, so this step takes longer on a slow connection.</p>
+        <p>A scan that carries its <a href="#mesh">3D mesh</a> is often several MB bigger, so this step takes longer on a slow connection.</p>
         <ul>
           <li>The <strong>Syncing</strong> banner shows progress</li>
           <li><strong>Upload Failed</strong>? Nothing is lost: <strong>Open Notifications Centre</strong> and retry</li>
@@ -262,8 +262,12 @@ In **BMR Studio** the room appears in its true geographic orientation, with a co
 
 ## <Icon name="mesh" size="1em" /> The 3D mesh {#mesh}
 
-:::tip[New: the textured 3D mesh]
-Scans can now carry a **textured 3D mesh**: the room as the camera saw it, with its real surfaces, furniture and colours. An Admin turns it on or off for the whole organisation.
+<a id="mesh-upload-setting"></a>
+
+:::info[Not every scan has a mesh yet]
+With the **current version of BMR Mobile**, mesh upload is **not on by default**, so many scans have no mesh. The **Mesh** view and the features below appear only for scans that carry one.
+
+A setting to choose this for your organisation comes with the **next version of BMR Mobile**.
 :::
 
 <Figure
@@ -289,34 +293,13 @@ Scans can now carry a **textured 3D mesh**: the room as the camera saw it, with 
 
 The mesh is raw: holes, rough edges and stray bits are normal. Scan slowly and cover every corner for a cleaner one. See [Best practices](#best-practices).
 
-### Turn it on or off {#mesh-upload-setting}
-
-**Organisation › Preferences › General › Capture App › Mesh upload.** Admins only.
-
-<Figure
-  src="/img/structure/org-mesh-upload-setting.png"
-  alt="Organisation Preferences, General tab, with the Capture App group and the Mesh upload switch: Upload the textured 3D mesh of the room with every scan. Off, scans carry room geometry only, and per-surface images are unavailable."
-  caption="Preferences › General › Mesh upload."
-/>
-
-| Mesh upload | Every new scan |
-|---|---|
-| **On** | Uploads the textured mesh with the scan. A bigger upload, so syncing takes longer |
-| **Off** | Room geometry only. No Mesh view, no per-surface images |
-
-| Organisation | Starts as |
-|---|---|
-| **Created from now on** | **On** |
-| **Created earlier** | **Off**. An Admin can turn it on |
-
-The switch applies to scans made from then on. Earlier scans keep what they were made with.
+### Upload size {#mesh-upload-size}
 
 :::caution[The mesh makes the upload bigger]
-A mesh is often **several MB**, much more than the room geometry alone. With Mesh upload on, each scan takes **longer to upload**, most of all on a weak or slow connection.
+A mesh is often **several MB**, much more than the room geometry alone. A scan with a mesh takes **longer to upload**, most of all on a weak or slow connection.
 
 - The upload runs in the background, so you can keep working. On a poor connection it can take a while.
 - Offline, it uploads once you are back online. If it fails, retry from **Notifications**. See [Syncing](#capture-flow).
-- Don't need the mesh? An Admin can turn Mesh upload off.
 :::
 
 ---
