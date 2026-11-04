@@ -9,6 +9,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl'
 import Admonition from '@theme/Admonition'
 import StepTabs, { DocImg } from '@site/src/components/StepTabs'
 import { FeatureToggleTag } from '@site/src/components/FeatureToggle'
+import Figure from '@site/src/components/Figure'
 
 # <Icon name="scan" size="1em" /> Room Scan
 
@@ -27,6 +28,7 @@ The scan is the **first thing you do in a room** and the foundation for everythi
 | **3D geometry** (walls, floor, ceiling, openings) | The room model in BMR Studio; room volume for acoustic calculations |
 | **Compass orientation** | Referencing walls by direction — see [Compass orientation](#compass-orientation) below |
 | **AR world map** | Recognising the room on later visits, so markers, acoustic measurements and AR designs land in their true positions |
+| **Textured 3D mesh** <span className="badge badge--success">New</span> | The room as it really looks, in the **Mesh** view on the web; real wall materials in new designs. See [The 3D mesh](#mesh) |
 
 ### What the scan unlocks
 
@@ -132,6 +134,7 @@ This is the **Scan → Markers → Upload** flow in BMR Mobile. Click any step n
       <>
         <h3>6) Syncing (background upload)</h3>
         <p>The upload runs in the background. You can move on.</p>
+        <p>With <a href="#mesh">Mesh upload</a> on, the scan also carries its 3D mesh, often several MB, so this step takes longer on a slow connection.</p>
         <ul>
           <li>The <strong>Syncing</strong> banner shows progress</li>
           <li><strong>Upload Failed</strong>? Nothing is lost: <strong>Open Notifications Centre</strong> and retry</li>
@@ -254,6 +257,67 @@ Automatically, during the scan — no separate step. BMR Mobile uses the device'
 :::
 
 In **BMR Studio** the room appears in its true geographic orientation, with a compass widget showing north. The orientation is part of the room's Room Data and is visible wherever the room is displayed, in BMR Mobile and on the web.
+
+---
+
+## <Icon name="mesh" size="1em" /> The 3D mesh {#mesh}
+
+:::tip[New: the textured 3D mesh]
+Scans can now carry a **textured 3D mesh**: the room as the camera saw it, with its real surfaces, furniture and colours. An Admin turns it on or off for the whole organisation.
+:::
+
+<Figure
+  src="/img/lifecycle/scan-mesh-view.jpg"
+  alt="A scan on the web with the 3D View, 2D View and Mesh buttons and Turn into Design. Mesh is selected and shows the textured 3D mesh of a meeting room: acoustic panels on the back wall, a table with chairs and a display on the right wall"
+  caption="Open a scan on the web and choose Mesh."
+/>
+
+| View | Shows |
+|---|---|
+| **3D View** | The clean room model: walls, openings and furniture |
+| **2D View** | The floor plan from above |
+| **Mesh** | The textured mesh: the room as it really looks, gaps and all |
+
+### What the mesh gives you {#mesh-uses}
+
+| | |
+|---|---|
+| **See the real room** | Check panels, screens, furniture and finishes without going back on site |
+| **Real materials in new designs** | When you create a design from the scan, each wall, the floor and the ceiling are read from the mesh, so the design opens with their real materials |
+| **Per-surface images** | **Room Data**: the image button on the scan downloads one image of each surface |
+| **Measurement positions** | The **3D mesh** view in [acoustic results](../../acoustics/reading-acoustic-results#-room-scan--measurement-positions-beta) |
+
+The mesh is raw: holes, rough edges and stray bits are normal. Scan slowly and cover every corner for a cleaner one. See [Best practices](#best-practices).
+
+### Turn it on or off {#mesh-upload-setting}
+
+**Organisation › Preferences › General › Capture App › Mesh upload.** Admins only.
+
+<Figure
+  src="/img/structure/org-mesh-upload-setting.png"
+  alt="Organisation Preferences, General tab, with the Capture App group and the Mesh upload switch: Upload the textured 3D mesh of the room with every scan. Off, scans carry room geometry only, and per-surface images are unavailable."
+  caption="Preferences › General › Mesh upload."
+/>
+
+| Mesh upload | Every new scan |
+|---|---|
+| **On** | Uploads the textured mesh with the scan. A bigger upload, so syncing takes longer |
+| **Off** | Room geometry only. No Mesh view, no per-surface images |
+
+| Organisation | Starts as |
+|---|---|
+| **Created from now on** | **On** |
+| **Created earlier** | **Off**. An Admin can turn it on |
+
+The switch applies to scans made from then on. Earlier scans keep what they were made with.
+
+:::caution[The mesh makes the upload bigger]
+A mesh is often **several MB**, much more than the room geometry alone. With Mesh upload on, each scan takes **longer to upload**, most of all on a weak or slow connection.
+
+- The upload runs in the background, so you can keep working. On a poor connection it can take a while.
+- Offline, it uploads once you are back online. If it fails, retry from **Notifications**. See [Syncing](#capture-flow).
+- Don't need the mesh? An Admin can turn Mesh upload off.
+:::
 
 ---
 

@@ -65,7 +65,7 @@ const sidebars: SidebarsConfig = {
       link: {type: 'doc', id: 'lifecycle/discovery/index'},
       items: [
         updatedDoc('user-guides/room-capture'),
-        'lifecycle/discovery/room-scan',
+        updatedDoc('lifecycle/discovery/room-scan'),
         'lifecycle/discovery/markers',
         newDoc('lifecycle/discovery/inventory'),
       ],
@@ -181,7 +181,7 @@ const sidebars: SidebarsConfig = {
           label: 'Discovery',
           link: {type: 'doc', id: 'lifecycle/discovery/index'},
           items: [
-            'lifecycle/discovery/room-scan',
+            updatedDoc('lifecycle/discovery/room-scan'),
             'lifecycle/discovery/markers',
             'acoustics/acoustics-guide',
             newDoc('lifecycle/discovery/inventory'),
@@ -260,7 +260,7 @@ const sidebars: SidebarsConfig = {
         id: 'lifecycle/discovery/index',
       },
       items: [
-        'lifecycle/discovery/room-scan',
+        updatedDoc('lifecycle/discovery/room-scan'),
         'lifecycle/discovery/markers',
         newDoc('lifecycle/discovery/inventory'),
         'acoustics/acoustics-guide',
