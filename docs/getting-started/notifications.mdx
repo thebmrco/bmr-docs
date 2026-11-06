@@ -1,7 +1,7 @@
 ---
 title: Notifications
 sidebar_label: Notifications
-description: The bell on Home in BMR Mobile and in the Web header — what the badge counts, how offline captures wait for upload, and how to clear notifications.
+description: The bell on Home in BMR Mobile and in the Web header — what the badge counts, how to upload offline captures, and how to clear notifications.
 ---
 
 import Icon from '@site/src/components/Icon'
@@ -17,7 +17,7 @@ Everything that needs you, behind the **bell**. The number on it says how much.
 
 | Where | Open it |
 |---|---|
-| **BMR Mobile** | Tap the **bell** at the top of **Home** |
+| **BMR Mobile** | Tap the **bell** in the top right corner of **Home** |
 | **Web** | Click the **bell** in the header · **View all notifications** for the full list |
 
 ---
@@ -30,7 +30,7 @@ In BMR Mobile the number adds up:
 |---|---|
 | **Tasks** | Tasks assigned to you |
 | **Unread notifications** | New messages, such as a task completed |
-| **No-room archives** | Captures saved offline, still without a room |
+| **No-room archives** | Captures saved offline, not uploaded yet |
 | **Failed uploads** | Uploads that need another try |
 
 **0** means nothing is waiting. On the Web, the badge counts unread notifications.
@@ -39,13 +39,16 @@ In BMR Mobile the number adds up:
 
 ## <Icon name="offline-mode" size="1em" /> Offline captures queue here {#-offline-captures-queue-here}
 
-What happens to work you did **offline** depends on whether BMR knew the room:
+Work you did **offline** is **not uploaded automatically**, not even when you are back online. It waits here, with the note you added, until you upload it.
 
-| You captured… | When you are back online |
-|---|---|
-| In a **known room** | Uploads **automatically**. Nothing to do. |
-| **Without a room** — for example an [acoustic measurement taken offline](../acoustics/acoustics-guide#measuring-offline) | Waits under **No Room Archives**, with the note you added. Tap **Assign Room**, then upload. |
-| Something that **failed to upload** | Waits under **Failed Archives**. Tap it to try again. |
+Back online:
+
+1. Tap the **bell** in the top right corner of **Home**.
+2. Tap an item under **No Room Archives** (**Assign Room**).
+3. Pick the **Organisation**, **Location** and **Room** it belongs to.
+4. Upload it. Repeat for **each item**, one at a time.
+
+Something that **failed to upload** waits under **Failed Archives**. Tap it to try again.
 
 <Figure
   src="/img/release/2026-07-notifications-pending.jpg"
@@ -70,4 +73,4 @@ What happens to work you did **offline** depends on whether BMR knew the room:
 ## <Icon name="chevron-right" size="1em" /> Related
 
 - [BMR Mobile Acoustics Tutorial](../acoustics/acoustics-guide) — including the offline measurement flow.
-- [Room Scan](../lifecycle/discovery/room-scan#capture-flow) — how offline scan and marker uploads are retried.
+- [Room Scan](../lifecycle/discovery/room-scan#capture-flow) — uploading scans and markers, and retrying a failed upload.
