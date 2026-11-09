@@ -54,6 +54,7 @@ const sidebars: SidebarsConfig = {
     area('General Information', [
       'getting-started/account-setup',
       'getting-started/system-requirements',
+      'getting-started/webgpu',
       'getting-started/notifications',
       'getting-started/faq',
       'getting-started/send-feedback',
@@ -143,6 +144,7 @@ const sidebars: SidebarsConfig = {
         'getting-started/inviting-users',
         'getting-started/notifications',
         'getting-started/system-requirements',
+        'getting-started/webgpu',
         'getting-started/send-feedback',
         'getting-started/faq',
       ],
