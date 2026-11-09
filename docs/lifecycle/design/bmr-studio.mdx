@@ -1,6 +1,6 @@
 ---
 title: BMR Studio
-description: The 3D environment where rooms are designed. Everything happens in a mode (View, Structurals, Equipment, Cables), plus saving, versions, activating and presenting.
+description: The 3D environment where rooms are designed. Everything happens in a mode (View, Structurals, Equipment, Cables), plus Photoreal rendering, saving, versions, activating and presenting.
 ---
 
 import Icon from '@site/src/components/Icon'
@@ -73,16 +73,29 @@ In the toolbar, in **View** mode.
   caption="High quality adds bounce lighting and ambient occlusion. Standard is quicker to work in."
 />
 
-Finer settings: **Room** tab › **Rendering**. The 3D view uses **WebGPU** where the browser supports it — see [System Requirements](../../getting-started/system-requirements).
+Finer settings: **Room** tab › **Rendering**. The 3D view uses **WebGPU** where the browser supports it — see [WebGPU support](../../getting-started/webgpu).
 
-#### Photoreal <FeatureToggleTag /> {#photoreal}
+**Photoreal** <FeatureToggleTag /> is a third mode, for photo-like pictures. See [Photoreal rendering](#photoreal) below.
+
+---
+
+## <Icon name="photo" size="1em" /> Photoreal rendering <FeatureToggleTag /> {#photoreal}
 
 <FeatureToggle />
 
-A third render mode: a **path-traced**, photo-like picture. It refines while the camera is still (*Rendering 12 / 64*), then denoises.
+A third render mode: a **path-traced**, photo-like picture of the design, with real light, shadows and reflections. Use it to show a customer the finished room, or for a still image. For everyday editing, Standard and High quality are quicker.
 
-- Needs **WebGPU** and the **3D** view (not the floor plan).
-- Passes and denoising: **Room** tab › **Rendering**.
+| You need | |
+|---|---|
+| **Photoreal on** for your organisation | Ask your BMR contact |
+| **A browser with WebGPU** | Recent Chrome, Edge, Safari or Firefox. See [WebGPU support](../../getting-started/webgpu#browsers) |
+| **The 3D view** | Not the floor plan |
+
+1. In **View** mode, pick **Photoreal** in the toolbar, or in the bar while [presenting](#presenting-a-design).
+2. Keep the camera still. The picture refines (*Rendering 12 / 64*), then denoises.
+3. Passes and denoising: **Room** tab › **Rendering**.
+
+Photoreal missing, won't start or looks grainy? See [WebGPU support › Fix common problems](../../getting-started/webgpu#fix-common-problems).
 
 ---
 
@@ -220,7 +233,7 @@ A room can have several **designs**, and each design keeps its own **versions**.
 **Present** (Shift + F), next to the modes, takes the design full screen and steps through it one view at a time.
 
 - **Standard views** first (Overview, Floor plan, …), then **your saved views**.
-- **← / →** to step, jump to any view from the bar, **take a screenshot**, **Esc** to stop.
+- **← / →** to step, jump to any view from the bar, switch to **High quality** or **[Photoreal](#photoreal)**, **take a screenshot**, **Esc** to stop.
 - People you share a design with read-only can present it too.
 
 ### Saving your own views

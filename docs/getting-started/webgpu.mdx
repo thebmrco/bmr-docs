@@ -1,0 +1,90 @@
+---
+title: WebGPU support
+description: Which browsers and computers run the BMR Studio 3D view on WebGPU, what changes when they don't, and how to fix a slow, blank or missing Photoreal view.
+---
+
+import Icon from '@site/src/components/Icon'
+import StepFlow from '@site/src/components/StepFlow'
+import {FeatureToggleTag} from '@site/src/components/FeatureToggle'
+
+# <Icon name="laptop" size="1em" /> WebGPU support
+
+<PageIntro illustration="help" meta={['BMR Studio, on a computer', 'Web platform']}>
+
+**WebGPU** is the graphics system behind the 3D view in BMR Studio. When your browser supports it, the 3D view uses it. When it doesn't, BMR Studio falls back automatically. Only [**Photoreal**](../lifecycle/design/bmr-studio#photoreal), the photo-like render mode in BMR Studio, needs WebGPU.
+
+So this page matters if you use **Photoreal**, or if the 3D view is slow or blank.
+
+</PageIntro>
+
+---
+
+## <Icon name="circle-check" size="1em" /> Which browsers support it {#browsers}
+
+| Browser | Where WebGPU works | Version needed |
+|---|---|---|
+| **Chrome** and **Edge** | Windows, macOS, ChromeOS | 113 or later |
+| **Safari** | macOS, iOS (iPhone and iPad) | 26 or later |
+| **Firefox** | Windows, and Macs with Apple silicon | 141 on Windows, 145 on Apple silicon |
+
+**Linux** is not covered yet. Browser support there is still being added, so a Linux computer uses the fallback.
+
+Browser support changes with each release. If your browser is older than the version above, update it first. The [WebGPU implementation status](https://github.com/gpuweb/gpuweb/wiki/implementation-status) lists the latest.
+
+---
+
+## <Icon name="monitor" size="1em" /> What changes without WebGPU {#fallback}
+
+| Feature | Needs WebGPU? |
+|---|---|
+| The 3D view, with Standard and High quality rendering | No. BMR Studio falls back automatically |
+| [**Photoreal**](../lifecycle/design/bmr-studio#photoreal) render mode <FeatureToggleTag /> | Yes. It needs WebGPU and the 3D view |
+
+Standard and High quality work in every browser. Photoreal is switched on per organisation. Ask your BMR contact to turn it on for yours.
+
+---
+
+## <Icon name="list-checks" size="1em" /> Check your setup {#check-setup}
+
+Work through these in order. Most problems are fixed by the first two.
+
+<StepFlow steps={[
+  { label: 'Update the browser to a version in the table above, then restart it' },
+  { label: 'Turn on hardware acceleration. In Chrome or Edge, go to Settings › System and switch on Use graphics acceleration when available. In Firefox, check Settings › General › Performance for Use hardware acceleration when available' },
+  { label: 'Update the graphics driver on a Windows PC, or macOS on a Mac' },
+  { label: 'Check that WebGPU is on. Open chrome://gpu in Chrome or edge://gpu in Edge and find the WebGPU line. Hardware accelerated means it is working' },
+  { label: 'Reopen the design in BMR Studio and compare. If the computer is below the recommended specification, see System Requirements' },
+]} />
+
+---
+
+## <Icon name="alert-triangle" size="1em" /> Fix common problems {#fix-common-problems}
+
+<FixList items={[
+  {problem: 'The 3D view is slow or stutters', fix: 'Close other tabs and apps that use the graphics card, and work in Standard render mode. A dedicated GPU and 16 GB of RAM help most.'},
+  {problem: 'Photoreal is missing from the render modes', fix: 'Check whether your organisation has the feature toggle on, and whether your browser supports WebGPU (see the table above). Ask your BMR contact to enable it if needed.'},
+  {problem: 'Photoreal does not start', fix: 'It needs the 3D view, not the floor plan. Switch to 3D first.'},
+  {problem: 'Photoreal looks grainy', fix: 'It refines while the camera is still. Keep the camera still and let the counter reach 64 before you judge the picture.'},
+  {problem: 'The 3D view is blank or shows an error', fix: 'Reload the page. If it stays blank, try the same design in Chrome or Edge, then send a report (below).'},
+  {problem: 'It works on one computer but not another', fix: 'Compare the browser version and the operating system. A Linux computer uses the fallback until browser support arrives.'},
+]} />
+
+---
+
+## <Icon name="comments" size="1em" /> Report a problem {#report}
+
+If the steps above don't help, send the BMR team the details with [Send Feedback](send-feedback). Choose **Bug** and include:
+
+- The **browser name and version**, and the operating system.
+- The **computer and graphics card**. On Windows, Task Manager › Performance › GPU shows the card.
+- Whether the **3D view** or **Photoreal** is affected, and the exact message on screen. Many errors have a **Report this issue** button that fills in the details for you.
+- A screenshot.
+
+---
+
+## <Icon name="star" size="1em" /> Related
+
+- [System Requirements](system-requirements): the recommended computer for BMR Studio.
+- [Photoreal in BMR Studio](../lifecycle/design/bmr-studio#photoreal): what it is and how to use it.
+- [BMR Studio render modes](../lifecycle/design/bmr-studio#render-modes): Standard and High quality.
+- [FAQ](faq): short answers to the questions we are asked most.
