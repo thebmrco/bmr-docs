@@ -11,7 +11,9 @@ import {FeatureToggleTag} from '@site/src/components/FeatureToggle'
 
 <PageIntro illustration="help" meta={['BMR Studio, on a computer', 'Web platform']}>
 
-**WebGPU** is the graphics system behind the 3D view in BMR Studio. When your browser supports it, the 3D view uses it. When it doesn't, BMR Studio falls back automatically. Only the **Photoreal** render mode needs WebGPU.
+**WebGPU** is the graphics system behind the 3D view in BMR Studio. When your browser supports it, the 3D view uses it. When it doesn't, BMR Studio falls back automatically. Only [**Photoreal**](../lifecycle/design/bmr-studio#photoreal), the photo-like render mode in BMR Studio, needs WebGPU.
+
+So this page matters if you use **Photoreal**, or if the 3D view is slow or blank.
 
 </PageIntro>
 
@@ -22,7 +24,7 @@ import {FeatureToggleTag} from '@site/src/components/FeatureToggle'
 | Browser | Where WebGPU works | Version needed |
 |---|---|---|
 | **Chrome** and **Edge** | Windows, macOS, ChromeOS | 113 or later |
-| **Safari** | macOS, iPadOS, iOS | 26 or later |
+| **Safari** | macOS, iOS (iPhone and iPad) | 26 or later |
 | **Firefox** | Windows, and Macs with Apple silicon | 141 on Windows, 145 on Apple silicon |
 
 **Linux** is not covered yet. Browser support there is still being added, so a Linux computer uses the fallback.
@@ -36,7 +38,7 @@ Browser support changes with each release. If your browser is older than the ver
 | Feature | Needs WebGPU? |
 |---|---|
 | The 3D view, with Standard and High quality rendering | No. BMR Studio falls back automatically |
-| **Photoreal** render mode <FeatureToggleTag /> | Yes. It needs WebGPU and the 3D view |
+| [**Photoreal**](../lifecycle/design/bmr-studio#photoreal) render mode <FeatureToggleTag /> | Yes. It needs WebGPU and the 3D view |
 
 Standard and High quality work in every browser. Photoreal is switched on per organisation. Ask your BMR contact to turn it on for yours.
 
@@ -83,5 +85,6 @@ If the steps above don't help, send the BMR team the details with [Send Feedback
 ## <Icon name="star" size="1em" /> Related
 
 - [System Requirements](system-requirements): the recommended computer for BMR Studio.
-- [BMR Studio](../lifecycle/design/bmr-studio): the 3D environment, its render modes and Photoreal.
+- [Photoreal in BMR Studio](../lifecycle/design/bmr-studio#photoreal): what it is and how to use it.
+- [BMR Studio render modes](../lifecycle/design/bmr-studio#render-modes): Standard and High quality.
 - [FAQ](faq): short answers to the questions we are asked most.

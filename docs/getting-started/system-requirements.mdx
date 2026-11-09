@@ -35,10 +35,13 @@ Any modern browser works. Recommended for the best 3D performance:
 
 | | Recommended |
 |---|---|
-| **Browser** | Latest **Chrome**, **Edge**, **Safari** or **Firefox** |
+| **Browser** | Latest **Chrome**, **Edge**, **Safari** or **Firefox**, with **hardware acceleration** on |
+| **For [Photoreal](../lifecycle/design/bmr-studio#photoreal)** <FeatureToggleTag /> | A browser with **WebGPU**: Chrome or Edge 113+, Safari 26+, Firefox 141+ on Windows or 145+ on Apple Silicon |
 | **Mac** | Apple Silicon (**M2 or newer**), **16 GB** RAM, macOS Ventura (13) or newer |
 | **PC** | Intel i5 / AMD Ryzen 5 or better, **16 GB** RAM, a dedicated GPU |
 | **Screen** | 1920×1080 or higher |
 | **Internet** | 50 Mbps or faster |
 
-The 3D viewer in BMR Studio uses **WebGPU** where the browser supports it, and falls back automatically where it doesn't. Only the **Photoreal** render mode <FeatureToggleTag /> needs WebGPU. Which browsers support it, and what to do when the 3D view is slow or blank, is on [WebGPU support](webgpu).
+The 3D view in BMR Studio uses **WebGPU** where the browser supports it, and falls back automatically where it doesn't. Everything works without it except [**Photoreal**](../lifecycle/design/bmr-studio#photoreal), the photo-like render mode, so WebGPU only matters if you use Photoreal. On **Linux** the 3D view always uses the fallback for now.
+
+3D view slow, blank or missing Photoreal? See [WebGPU support](webgpu).
