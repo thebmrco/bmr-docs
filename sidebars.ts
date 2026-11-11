@@ -120,8 +120,15 @@ const sidebars: SidebarsConfig = {
         'catalog/requesting-items',
       ],
     },
-    area('Trust and Security', [newDoc('trust/index'), 'security/index']),
-    {...area('Legal', [newDoc('legal/terms')]), customProps: {guide: 'General'}},
+    {
+      ...area('Trust, Security & Legal', [
+        {type: 'doc' as const, id: 'trust/index', customProps: {guide: 'Admin'}},
+        {type: 'doc' as const, id: 'security/index', customProps: {guide: 'Admin'}},
+        'legal/terms',
+      ]),
+      link: {type: 'doc', id: 'legal/index'},
+      customProps: {guide: 'General'},
+    },
     {...area('Product Updates', ['roadmap/index', releaseNotes]), customProps: {guide: 'General'}},
   ],
 
@@ -229,12 +236,11 @@ const sidebars: SidebarsConfig = {
         },
       ],
     },
-    newDoc('trust/index'),
-    'security/index',
     {
       type: 'category',
-      label: 'Legal',
-      items: [newDoc('legal/terms')],
+      label: 'Trust, Security & Legal',
+      link: {type: 'doc', id: 'legal/index'},
+      items: ['trust/index', 'security/index', 'legal/terms'],
     },
     {
       type: 'category',

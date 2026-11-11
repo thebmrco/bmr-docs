@@ -11,7 +11,7 @@ import Link from '@docusaurus/Link';
 import {useDocsVersion} from '@docusaurus/plugin-content-docs/client';
 import type {PropSidebar, PropSidebarItem} from '@docusaurus/plugin-content-docs';
 import {
-  Info, Scan, AudioLines, Palette, Users, Puzzle, Wrench, Boxes, ShieldCheck, Megaphone, Folder, Scale} from 'lucide-react';
+  Info, Scan, AudioLines, Palette, Users, Puzzle, Wrench, Boxes, ShieldCheck, Megaphone, Folder} from 'lucide-react';
 import type {LucideIcon} from 'lucide-react';
 import styles from './AllDocs.module.css';
 
@@ -31,9 +31,8 @@ const AreaIcons: Record<string, LucideIcon> = {
   Integrations: Puzzle,
   Maintenance: Wrench,
   'Catalog & 3D Models': Boxes,
-  'Trust and Security': ShieldCheck,
+  'Trust, Security & Legal': ShieldCheck,
   'Product Updates': Megaphone,
-  Legal: Scale,
 };
 
 // Release notes: show the latest few, the rest are in the menu.
