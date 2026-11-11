@@ -5,8 +5,8 @@
  *
  * Every part is drawn at its own origin and placed with x/y, so scenes stay
  * short. Devices take children drawn in their screen's own coordinates:
- *   Phone           screen 36 × 92
- *   PhoneLandscape  screen 92 × 48
+ *   Phone           screen 40 × 92 (body 48 × 100, iPhone Pro Max proportions)
+ *   PhoneLandscape  screen 92 × 40 (body 100 × 48)
  *   Laptop          screen 112 × 66
  */
 import React, {useId, type ReactNode} from 'react';
@@ -55,9 +55,9 @@ function Screen({w, h, rx, children}: {w: number; h: number; rx: number; childre
 export function Phone({x = 0, y = 0, children}: At & {children?: ReactNode}) {
   return (
     <g transform={`translate(${x} ${y})`}>
-      <rect width="44" height="100" rx="10" fill={C.bezel} />
+      <rect width="48" height="100" rx="11" fill={C.bezel} />
       <g transform="translate(4 4)">
-        <Screen w={36} h={92} rx={7}>{children}</Screen>
+        <Screen w={40} h={92} rx={8}>{children}</Screen>
       </g>
     </g>
   );
@@ -66,9 +66,9 @@ export function Phone({x = 0, y = 0, children}: At & {children?: ReactNode}) {
 export function PhoneLandscape({x = 0, y = 0, children}: At & {children?: ReactNode}) {
   return (
     <g transform={`translate(${x} ${y})`}>
-      <rect width="100" height="56" rx="10" fill={C.bezel} />
+      <rect width="100" height="48" rx="11" fill={C.bezel} />
       <g transform="translate(4 4)">
-        <Screen w={92} h={48} rx={7}>{children}</Screen>
+        <Screen w={92} h={40} rx={8}>{children}</Screen>
       </g>
     </g>
   );
