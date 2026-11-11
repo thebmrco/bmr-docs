@@ -144,18 +144,30 @@ Data is stored, processed, and managed through cloud services hosted in the EU. 
 
 ## What third-party services are involved?
 
-| Service | Purpose | Data Involvement |
+### Sub-processors {#sub-processors}
+
+**Last updated:** 11 November 2026. This is the list the [Terms and Conditions](../legal/terms) (5.4) refer to. We tell your Organisation Admins before we add or replace a sub-processor, so you can object.
+
+| Service | Purpose | Data involved |
 |---|---|---|
-| Auth0 (EU tenant) | Authentication & identity management | Login credentials, email, profile |
-| AWS (S3, SES, CloudFront, ECS) | Hosting, file storage, email, CDN | All application data (EU-hosted) |
-| Cisco Webex | Read-only import of locations and workspaces from Webex Control Hub, when the integration is set up | Location and workspace data, encrypted tokens |
-| OpenAI | Marker titles and descriptions, surface material detection | Marker photos and images rendered from the room scan |
-| Sentry (EU) | Error monitoring & alerting | Error context and stack traces, with the user's email and username |
+| AWS (S3, SES, CloudFront, ECS) | Hosting, file storage, email, CDN | All application data, hosted in the EU (Frankfurt) |
+| Auth0 (EU tenant) | Sign-in and identity management | Login credentials, email, profile |
+| Sentry (EU) | Error monitoring and alerting | Error context and stack traces, with the user's email and username |
+| TelemetryDeck (EU) | Usage analytics in BMR Mobile | Anonymised usage events, no personal identifiers |
 | Flagsmith | Feature flags | Username and email address, to target features |
 | JetBrains YouTrack | Helpdesk for feedback and support | Feedback messages, sender's email, attachments |
-| OpenStreetMap | Map tiles on location pages | The map area being viewed |
+| OpenAI (EU) | Marker titles and descriptions, surface material detection | Marker photos and images rendered from the room scan, processed in the EU. Not used by OpenAI to train its models |
 
-All third-party services are selected for GDPR compliance. Data processing agreements are in place where applicable.
+All sub-processors are selected for GDPR compliance, with data processing agreements in place.
+
+### Services you connect, or that load in your browser {#connected-services}
+
+These receive data only when you set up the integration or open the page that uses them.
+
+| Service | Purpose | Data involved |
+|---|---|---|
+| Cisco Webex | Read-only import of locations and workspaces from Webex Control Hub, when you set up the [integration](../integrations/webex-control-hub-sync) | Location and workspace data, encrypted tokens |
+| OpenStreetMap | Map tiles on location pages | The map area being viewed |
 
 ---
 
