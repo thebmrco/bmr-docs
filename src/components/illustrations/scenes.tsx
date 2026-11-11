@@ -21,11 +21,11 @@ export const Scenes: Record<string, Scene> = {
   'find-room': {
     label: 'A phone listing rooms, one selected',
     draw: () => (
-      <Phone x={58} y={5}>
-        <rect x="3" y="7" width="30" height="8" rx="4" fill="#fff" />
+      <Phone x={56} y={5}>
+        <rect x="3" y="7" width="34" height="8" rx="4" fill="#fff" />
         <circle cx="8" cy="11" r="2" fill="none" stroke={C.mid} strokeWidth="1.2" />
         {[23, 37, 51, 65].map((y) => (
-          <rect key={y} x="3" y={y} width="30" height="10" rx="2" fill={y === 37 ? C.brand : '#fff'} />
+          <rect key={y} x="3" y={y} width="34" height="10" rx="2" fill={y === 37 ? C.brand : '#fff'} />
         ))}
       </Phone>
     ),
@@ -33,9 +33,9 @@ export const Scenes: Record<string, Scene> = {
   scan: {
     label: 'A phone scanning a meeting room',
     draw: () => (
-      <Phone x={58} y={5}>
-        <RoomView w={36} h={92} />
-        <ScanFrame x={5} y={23} w={26} h={30} />
+      <Phone x={56} y={5}>
+        <RoomView w={40} h={92} />
+        <ScanFrame x={7} y={23} w={26} h={30} />
       </Phone>
     ),
   },
@@ -43,11 +43,11 @@ export const Scenes: Record<string, Scene> = {
     label: 'A phone showing a room with marker pins on the walls',
     draw: () => (
       <>
-        <Phone x={58} y={5}>
-          <RoomView w={36} h={92} table={false} />
-          <Pin x={5} y={46} size={0.5} />
-          <Pin x={18} y={40} size={0.5} />
-          <Pin x={31} y={50} size={0.5} />
+        <Phone x={56} y={5}>
+          <RoomView w={40} h={92} table={false} />
+          <Pin x={7} y={46} size={0.5} />
+          <Pin x={20} y={40} size={0.5} />
+          <Pin x={33} y={50} size={0.5} />
         </Phone>
         <Pin x={127} y={45} />
       </>
@@ -77,10 +77,10 @@ export const Scenes: Record<string, Scene> = {
   'save-scan': {
     label: 'A phone showing the finished 3D scan with a save button',
     draw: () => (
-      <Phone x={58} y={5}>
-        <Box3D x={18} y={22} s={14} />
-        <rect x="4" y="73" width="28" height="11" rx="5.5" fill={C.brand} />
-        <path d="M13 78.5 l3 3 l6 -6" fill="none" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      <Phone x={56} y={5}>
+        <Box3D x={20} y={22} s={14} />
+        <rect x="6" y="73" width="28" height="11" rx="5.5" fill={C.brand} />
+        <path d="M15 78.5 l3 3 l6 -6" fill="none" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
       </Phone>
     ),
   },
@@ -89,9 +89,9 @@ export const Scenes: Record<string, Scene> = {
     draw: () => (
       <>
         <Phone x={40} y={5}>
-          <Ring cx={18} cy={35} r={12} value={0.75} />
-          <TextLine x={4} y={57} w={28} />
-          <TextLine x={4} y={65} w={20} />
+          <Ring cx={20} cy={35} r={12} value={0.75} />
+          <TextLine x={6} y={57} w={28} />
+          <TextLine x={6} y={65} w={20} />
         </Phone>
         <Waves x={108} y={55} />
         <Speaker x={114} y={35} />
@@ -101,9 +101,9 @@ export const Scenes: Record<string, Scene> = {
   'room-photo': {
     label: 'A phone held sideways, photographing the whole room',
     draw: () => (
-      <PhoneLandscape x={30} y={27}>
-        <RoomView w={92} h={48} />
-        <circle cx="86" cy="24" r="4.5" fill="#fff" />
+      <PhoneLandscape x={30} y={31}>
+        <RoomView w={92} h={40} />
+        <circle cx="86" cy="20" r="4.5" fill="#fff" />
       </PhoneLandscape>
     ),
   },
@@ -111,9 +111,9 @@ export const Scenes: Record<string, Scene> = {
     label: 'A phone placing a piece of equipment into the room in AR',
     draw: () => (
       <>
-        <Phone x={58} y={5}>
-          <RoomView w={36} h={92} table={false} />
-          <Box3D x={18} y={42} s={11} />
+        <Phone x={56} y={5}>
+          <RoomView w={40} h={92} table={false} />
+          <Box3D x={20} y={42} s={11} />
         </Phone>
         <CheckBadge cx={120} cy={40} />
       </>
@@ -122,11 +122,11 @@ export const Scenes: Record<string, Scene> = {
   account: {
     label: 'A phone showing a sign-in screen',
     draw: () => (
-      <Phone x={58} y={5}>
-        <circle cx="18" cy="22" r="8" fill={C.light} />
-        <rect x="4" y="40" width="28" height="8" rx="2" fill="#fff" />
-        <rect x="4" y="52" width="28" height="8" rx="2" fill="#fff" />
-        <rect x="4" y="66" width="28" height="9" rx="4.5" fill={C.brand} />
+      <Phone x={56} y={5}>
+        <circle cx="20" cy="22" r="8" fill={C.light} />
+        <rect x="6" y="40" width="28" height="8" rx="2" fill="#fff" />
+        <rect x="6" y="52" width="28" height="8" rx="2" fill="#fff" />
+        <rect x="6" y="66" width="28" height="9" rx="4.5" fill={C.brand} />
       </Phone>
     ),
   },
@@ -296,10 +296,10 @@ export const Scenes: Record<string, Scene> = {
       <>
         <Waves x={208} y={114} />
         <Speaker x={216} y={84} />
-        <g transform="translate(100 10) scale(1.5)">
+        <g transform="translate(97 10) scale(1.5)">
           <Phone>
-            <RoomView w={36} h={92} />
-            <ScanFrame x={5} y={23} w={26} h={30} />
+            <RoomView w={40} h={92} />
+            <ScanFrame x={7} y={23} w={26} h={30} />
           </Phone>
         </g>
       </>
