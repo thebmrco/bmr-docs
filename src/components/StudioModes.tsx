@@ -23,7 +23,7 @@ type Mode = {
 const MODES: Mode[] = [
   {name: 'View', icon: Eye, change: 'Nothing. Look around, present', tabs: 'Properties · Room · Presentation', link: '#view'},
   {name: 'Structurals', icon: BrickWall, change: 'Walls, doors, windows, openings', tabs: 'Build · Guides · Room', link: '#structurals'},
-  {name: 'Equipment', icon: Package, change: 'Equipment, furniture, outlets, logos', tabs: 'Equipment · Guidelines · Room', link: '#equipment'},
+  {name: 'Equipment', icon: Package, change: 'Equipment, furniture, outlets, logos', tabs: 'Equipment · Room\u00A0Configuration · Room', link: '#equipment'},
   {name: 'Cables', icon: Cable, change: 'Cables, outlets, boxes', tabs: 'Cables', link: '#cable-mode', beta: true},
   {name: 'Acoustics', icon: AudioLines, change: 'Absorbers', tabs: 'Acoustics · Based on · Diagnostics', link: '#acoustics', toggle: true},
 ];
