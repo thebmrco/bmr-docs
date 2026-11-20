@@ -15,11 +15,12 @@ module.exports = {
   projectName: 'bmr-docs', // GitHub repo
   favicon: 'img/favicon.png',
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
-  onBrokenAnchors: 'ignore', 
-
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenAnchors: 'throw',
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+    },
+  },
 
   i18n: {
     defaultLocale: 'en',
@@ -90,7 +91,7 @@ module.exports = {
         { type: 'docSidebar', sidebarId: 'adminSidebar', label: 'Manage & Design', position: 'left' },
         // Every page, by area. Pages keep the view you chose (see src/components/guideView.ts).
         { type: 'docSidebar', sidebarId: 'allSidebar', label: 'All docs', position: 'left' },
-        { label: "What's new", to: '/docs/release-notes/2026-10-release-2.4', position: 'left' },
+        { label: "What's new", to: '/docs/release-notes', position: 'left' },
         { type: 'search', position: 'right' },
       ],
     },
@@ -118,7 +119,7 @@ module.exports = {
         {
           title: 'Product',
           items: [
-            { label: "What's new", to: '/docs/release-notes/2026-10-release-2.4' },
+            { label: "What's new", to: '/docs/release-notes' },
             { label: 'Roadmap', to: '/docs/roadmap/' },
             { label: 'Trust & security', to: '/docs/trust' },
           ],

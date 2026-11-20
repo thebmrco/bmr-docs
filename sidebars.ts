@@ -17,6 +17,12 @@ const updatedDoc = (id: string) => ({type: 'doc' as const, id, className: 'badge
 const releaseNotes = {
   type: 'category' as const,
   label: 'Release Notes',
+  link: {
+    type: 'generated-index' as const,
+    title: 'Release notes',
+    description: 'What changed in each release of the web platform and BMR Mobile, newest first.',
+    slug: '/release-notes',
+  },
   items: [
     newDoc('release-notes/2026-10-release-2.4'),
     updatedDoc('release-notes/2026-10-release-2.3'),
@@ -245,7 +251,8 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Product Updates',
-      items: ['roadmap/index', releaseNotes],
+      // The release notes index page exists once, in allSidebar.
+      items: ['roadmap/index', {...releaseNotes, link: undefined}],
     },
   ],
 
