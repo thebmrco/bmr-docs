@@ -119,6 +119,7 @@ const sidebars: SidebarsConfig = {
       className: 'badge-updated',
       link: {type: 'doc', id: 'catalog/index'},
       items: [
+        'catalog/equipment-page',
         'catalog/item-anatomy',
         'catalog/category-requirements',
         'catalog/3d-model-standards',
@@ -233,6 +234,7 @@ const sidebars: SidebarsConfig = {
             id: 'catalog/index',
           },
           items: [
+            'catalog/equipment-page',
             'catalog/item-anatomy',
             'catalog/category-requirements',
             'catalog/3d-model-standards',

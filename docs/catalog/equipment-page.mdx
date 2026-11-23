@@ -1,0 +1,75 @@
+---
+title: The Equipment Page
+sidebar_label: Equipment Page
+description: The read-only list of every item your organisation can use. Who sees it, what it shows, how to search it, and what only BMR can change.
+---
+
+import Icon from '@site/src/components/Icon'
+
+# <Icon name="equipment" size="1em" /> The Equipment Page
+
+<PageIntro illustration="catalog" meta={['Web Platform', 'Admins · read only']}>
+
+Every item your organisation can use, in one list. **Look things up here. BMR keeps the items up to date.**
+
+</PageIntro>
+
+Open **Library › Equipment**. The page is for **Admins**. Everyone else meets equipment where they use it: in an Inventory, in a catalog and in BMR Studio.
+
+:::info Read only
+You can't add, edit or delete equipment here. **BMR** manages it. See [Requesting a Catalog Item](requesting-items).
+:::
+
+---
+
+## <Icon name="circle-check" size="1em" /> What the List Shows
+
+An item is on your list when it is:
+
+- **In one of your catalogs.** BMR's catalogs your organisation uses, and catalogs shared with it.
+- **Public.** BMR made it visible to every organisation.
+- **Yours.** Added in one of your Inventories. See [your organisation's own catalog](index.mdx#your-organisations-own-catalog).
+
+Each row shows:
+
+| Column | Shows |
+|---|---|
+| **Name** | The item. Click to open it |
+| **Brand** | The manufacturer |
+| **Owner** | **BETTERMEETINGROOMS** for BMR's items, or the organisation that owns it. A **lock** means **Not public** |
+| **Category** | The catalog category |
+| **BOM & Inventory category** | Where the item is listed in the BOM and in an Inventory |
+| **Features** | What it can do: **Screen**, **Touch**, **Camera**, **Microphone**, **Acoustic** and more |
+
+---
+
+## <Icon name="search" size="1em" /> Search
+
+Type in the search box to find items by name. **Advanced Search** adds filters in three groups:
+
+| Group | Filters |
+|---|---|
+| **Product** | Name, brand and colour |
+| **Categories** | Category and BOM & Inventory category |
+| **Features** | Tick what an item must have: **Screen**, **Touch**, **Reflectivity**, **Camera**, **Microphone** or **Acoustic**. A feature you leave unticked means *any* |
+
+---
+
+## <Icon name="circle-question-mark" size="1em" /> Open an Item
+
+Click a row for the item's page:
+
+- **Picture and facts**: material, colour, average price and measurements
+- **Owner** and **Visibility**: **Public** means every organisation sees it
+- **Link** and **description**
+- **Catalogs**: which of your catalogs hold the item, and when it was added
+
+Ports, properties and files aren't shown here.
+
+---
+
+## <Icon name="mail" size="1em" /> Something Wrong or Missing?
+
+Only BMR changes equipment. Use **[Send Feedback](../getting-started/send-feedback)** with the item's **name**, **brand** and **SKU**. Need a new item? See [Requesting a Catalog Item](requesting-items).
+
+Your organisation's **Bundles** <FeatureToggleTag /> have their own tab on this page.
