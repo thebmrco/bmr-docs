@@ -18,6 +18,42 @@ Design the room in 3D. **Pick a mode, and the Studio gives you the tools for tha
 
 <Notice kind="design" />
 
+## <Icon name="add-new" size="1em" /> Starting a design {#starting-a-design}
+
+In a room's **Designs** tab, press **New Design**. On a scan, **Turn into Design** opens the same dialog with that scan chosen. Name the design and choose what it is **based on**:
+
+| Based on | What you get |
+|---|---|
+| **Scan** | The room as scanned (walls, floor, doors, windows and openings), furnished with a model for each object found |
+| **Existing Design** | A copy of another design in the room |
+| **Custom Room** | A rectangular room from its length, width and height, to shape in the Studio |
+| **Cisco file** | A room from Cisco Workspace Designer or the Video Room Calculator. It appears once an Admin has turned on **Cisco room import**. See [Import a Cisco room](../../integrations/cisco-vrc#import-a-cisco-room) |
+
+**Furnished** means each object the scan found becomes one model of its kind: your organisation's own, set under [Scan models](../../structure/organisation#scan-models), or else a generic one. It is coloured like the real object where a marker photo or the scan's mesh shows its colour. What doesn't belong in a meeting room, such as a bed or a kitchen appliance, is left out.
+
+A scanned **display** with no model of yours is a screen scaled to the size the scan found, with a cart under it if it stands on the floor. The [BOM](#bom) counts the screen as a generic display with its size, for example **Generic display 65"**.
+
+### The welcome {#the-welcome}
+
+The first time a design from a scan, or a Custom Room, opens in the Studio, **Welcome to BMR Studio** asks how to start. Pick one and press **Start**.
+
+| Start | What the design holds |
+|---|---|
+| **Placeholder blocks** | The scan's objects as simple blocks, coloured by type |
+| **Generic equipment** | The scan's objects as models, as described above |
+| **Remove everything** | Only the room: walls, floor, doors, windows and openings |
+| **Start from a default room configuration** | The empty room with the setup you pick placed in it. **Show** opens the list. Those sized for the room's floor area come first, marked **Recommended**. Each says whose it is: **Your organisation**, **Shared with you** or **BMR default**. See [Default Room Configuration](default-room-configuration) |
+
+A **Custom Room** has no scanned objects, so it offers **Empty room**, with the configurations already open.
+
+You can't skip the question. **Exit**, or **Esc**, asks **Exit BMR Studio?** and leaves the Studio, and the welcome is there again the next time you open the design. Copies of a design, imported Cisco files and older designs don't ask.
+
+:::info Automatic design from scans
+An Admin can have every new room scan make a design by itself: **Preferences › General › Automatic design from scans**. It is off by default. The design is named **From scan** and the date, is furnished as above, and becomes the room's **Active** design, in place of the current one. Until it is there, a few minutes after the scan arrives, the room says **New scan added, design being generated**. Its first open in the Studio shows the welcome. A scan that arrives while the setting is off never gets one, even if you turn it on later. See [Organisation](../../structure/organisation#general).
+:::
+
+---
+
 ## <Icon name="layout" size="1em" /> The screen at a glance {#the-screen}
 
 <Callouts
@@ -422,7 +458,7 @@ The Active Design is the room's record. See [Deploy](../deploy/).
 ### On the web
 
 1. Open the room at **[app.bettermeetingrooms.com](https://app.bettermeetingrooms.com)**.
-2. Go to the **Designs** tab and pick a design — or create one with **New Design**. It opens in BMR Studio, full screen.
+2. Go to the **Designs** tab and pick a design — or create one with **New Design**. It opens in BMR Studio, full screen. See [Starting a design](#starting-a-design).
 
 The room's Overview also links to **the active design in the Studio**.
 

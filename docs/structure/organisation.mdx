@@ -27,7 +27,7 @@ Open the organisation on the web. Groups along the top, tabs beneath. Only an **
 | **Overview** | — | Counts, Data Completeness, Recent Activity and the location list |
 | **Users** | — | Who has access, and with which role — see [Inviting Users](../getting-started/inviting-users) |
 | **Directory** | Locations · Rooms | The [locations](./location) and [rooms](./room) in the organisation |
-| **Preferences** | General · Acoustic · Catalog · Branding | Organisation-wide settings — [below](#-preferences) |
+| **Preferences** | General · Acoustic · Catalog · Scan models · Bundles <FeatureToggleTag /> · Branding | Organisation-wide settings — [below](#-preferences) |
 | **Integrations** | Webex Sync · Microsoft 365 | [Webex Control Hub Sync](../integrations/webex-control-hub-sync) and [Microsoft 365](../integrations/microsoft-365) |
 | **Room Configurations** | Yours · Shared with you · BMR Defaults | Recommended equipment per room size — [below](#room-configurations) |
 
@@ -41,6 +41,7 @@ Open the organisation on the web. Groups along the top, tabs beneath. Only an **
 |---|---|
 | **Organization ID** | The identifier to quote when you contact support |
 | **Mesh upload** <FeatureToggleTag /> | Under **Capture app**. On: BMR Mobile uploads the textured 3D mesh with every scan. Off: the room geometry only. See [Mesh upload](../lifecycle/discovery/room-scan#mesh-upload-setting) |
+| **Automatic design from scans** | Under **Capture app**. On: every new room scan makes a furnished design and makes it the room's **Active** design, in place of the current one. Off (the default): a design is made only with **Turn into Design** or **New Design**. A scan that arrives while it is off never gets one, even if you turn it on later. See [Starting a design](../lifecycle/design/bmr-studio#starting-a-design) |
 | **Cat figures** · **Monster figures** | Offer cats or friendly monsters as figure styles for the chairs in BMR Studio |
 | **Cisco room import** | Offer a Cisco Workspace Designer or Video Room Calculator file as the basis of a new design. Off until an Admin turns it on. See [Import a Cisco room](../integrations/cisco-vrc#import-a-cisco-room) |
 | **Trash retention** <FeatureToggleTag /> | How long deleted rooms, scans, designs and acoustics can be restored |
@@ -68,6 +69,20 @@ The device setting in BMR Mobile wins (**Settings → Acoustic Settings**). Then
 ### Catalog {#catalog}
 
 The catalogs you can use, with their item counts. BETTERMEETINGROOMS catalogs are **view only**; your own can be managed here. See [Catalog & 3D Models](../catalog/).
+
+### Scan models {#scan-models}
+
+A room scan finds the chairs, tables, cupboards, sofas and displays in the room, and a design made from it places a model for each. **Scan models** says which model, for each kind of object.
+
+| | |
+|---|---|
+| **Kinds** | **Chair**, **Swivel chair**, **Stool**, **Rectangular table**, **Round or oval table**, **Cupboard**, **Shelf**, **Sofa** and **Display** |
+| **Generic model** | What a kind uses until you choose one |
+| **Choose…** | Pick an item from the catalog. Only items with a 3D model are offered |
+| **Use generic** | Goes back to the generic model |
+| **Fallbacks** | With no model of its own, a swivel chair or a stool takes the Chair's, a round table the Rectangular table's, a shelf the Cupboard's |
+
+Only an **Admin** can change them. A display left on generic becomes a screen scaled to the size in the scan. See [Starting a design](../lifecycle/design/bmr-studio#starting-a-design).
 
 ### Bundles <FeatureToggleTag /> {#bundles}
 
