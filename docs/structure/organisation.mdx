@@ -26,10 +26,12 @@ Open the organisation on the web. Groups along the top, tabs beneath. Only an **
 |---|---|---|
 | **Overview** | — | Counts, Data Completeness, Recent Activity and the location list |
 | **Users** | — | Who has access, and with which role — see [Inviting Users](../getting-started/inviting-users) |
-| **Directory** | Locations · Rooms | The [locations](./location) and [rooms](./room) in the organisation |
+| **Directory** | Locations · Rooms | The [locations](./location) and [rooms](./room) you can reach in the organisation |
 | **Preferences** | General · Acoustic · Catalog · Scan models · Bundles <FeatureToggleTag /> · Branding | Organisation-wide settings — [below](#-preferences) |
 | **Integrations** | Webex Sync · Microsoft 365 | [Webex Control Hub Sync](../integrations/webex-control-hub-sync) and [Microsoft 365](../integrations/microsoft-365) |
 | **Room Configurations** | Yours · Shared with you · BMR Defaults | Recommended equipment per room size — [below](#room-configurations) |
+
+The **Directory** shows what you can reach. With a role only on a room, you see that room, and its location as plain text, with no link and no menu.
 
 ---
 
@@ -45,10 +47,14 @@ Open the organisation on the web. Groups along the top, tabs beneath. Only an **
 | **Cat figures** · **Monster figures** | Offer cats or friendly monsters as figure styles for the chairs in BMR Studio |
 | **Cisco room import** | Offer a Cisco Workspace Designer or Video Room Calculator file as the basis of a new design. Off until an Admin turns it on. See [Import a Cisco room](../integrations/cisco-vrc#import-a-cisco-room) |
 | **Trash retention** <FeatureToggleTag /> | How long deleted rooms, scans, designs and acoustics can be restored |
-| **Delete this organization** | Moves the organisation, its locations, rooms and everything in them to the trash |
+| **Delete this organization** | Moves the organisation, its locations, rooms and everything in them to the Trash, all at once |
 
 :::danger Deleting an organisation
-You type the organisation's name to confirm. The other Admins get an email. Restoring from the **Trash** is a <FeatureToggleTag /> feature. Without it, there is no way back in the app.
+The dialog first shows what goes with it: how many **locations**, **rooms**, **designs**, **scans** and **markers**, and how many **users lose access**. Click the users to see who. You type the organisation's name to confirm. The other Admins get an email.
+
+Every role in the organisation is removed: on the organisation, on its locations and on its rooms. So **only the person who deleted it, or BMR, can restore it**, from the **Trash**. Whoever restores it becomes its Admin. Restoring brings back everything that went with it, and leaves alone what was in the Trash before.
+
+Restoring is a <FeatureToggleTag /> feature. Without it, there is no way back in the app.
 :::
 
 ### Acoustic {#acoustic}
