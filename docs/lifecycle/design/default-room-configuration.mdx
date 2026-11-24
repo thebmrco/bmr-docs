@@ -25,12 +25,13 @@ Define the right setup for each room size once. BMR Studio offers it for every r
 
 ## <Icon name="admin-settings" size="1em" /> Part 1 — Setting up a configuration
 
-Organisation › **Room Configurations**. Two tabs:
+Organisation › **Room Configurations**. Three tabs:
 
 | Tab | Holds |
 |---|---|
 | **Yours** | Your organisation's own setups. Designers see these **first**. |
-| **BMR Defaults** | Complete setups maintained by BMR, offered to every organisation. |
+| **Shared with you** | Setups other organisations shared with yours. Place them as they are, or save a copy to adapt. They can't be changed. |
+| **BMR Defaults** | Complete setups maintained by BMR, offered to every organisation. Check which sizes they cover, and add your own for the rest. |
 
 **Add a room configuration** — **Start from scratch**, or **Start from an existing one** (yours or a BMR Default) to copy and change it.
 
@@ -48,34 +49,49 @@ A configuration holds two kinds of equipment:
 | **Unplaced** | **Add items** from a list — can include kits | A list the designer places item by item |
 
 :::danger The size range decides where it is offered
-A configuration is offered only when the room's **floor area** falls within the range. A room with **no floor area set** gets no configuration. Floor area comes from the scan.
+A configuration is offered to a room only when the room's **floor area** falls within the range. A room with **no floor area set** matches none. Floor area comes from the scan. Designers can still pick any configuration with **Browse all**.
 :::
 
 ---
 
 ## <Icon name="palette" size="1em" /> Part 2 — Placing the equipment in BMR Studio
 
-Open the **Room Configuration** tab in BMR Studio. It was called **Guidelines** before the November 2026 release.
+Open the **Room Configuration** tab in **Equipment** mode. It was called **Guidelines** before the November 2026 release. A badge on the tab counts the categories the design already meets: **4/7** is four of seven.
 
-1. **Pick a configuration** — the first match is selected for you.
-2. **Place configuration** — the whole placed layout lands on the wall you point at. Press **R** to turn it to the next wall. Check items afterwards: rooms differ in shape.
-3. **Fill the gaps** — missing categories have **Place in room**.
+<Figure
+  src="/img/design/studio-room-configuration.jpg"
+  alt="The Room Configuration tab in BMR Studio with a 4/7 badge. Two cards: Small room Stand-up, selected, BMR, 13 items, and Small room standard, BMR, 14 items. Below them the red status Below the room configuration, a Place configuration button with a hint, and categories with counts such as Chairs 10 / 4, Tables 0 / 2 and Video Bars 1 / 1"
+  variant="inset"
+  maxWidth={340}
+  caption="The Room Configuration tab: the cards, the status, Place configuration and the categories."
+/>
 
-The status shows how the design compares:
+1. **Pick a configuration.** A card shows the name, whose it is (**BMR** or **Custom**) and how many items it holds. The first match is selected for you.
+2. **Place configuration.** The placed layout goes onto the wall it fits best, or into the middle of the room when nothing of it hangs on a wall. [What happens](#placing-the-configuration).
+3. **Fill the gaps.** Open a category to see its items. The missing ones have **Place in room**, and so do the **Suggested kits**.
 
-| Status | Means |
-|---|---|
-| **Following the room configuration** | All categories met. |
-| **Quantities met, different equipment** | Right counts, other models. |
-| **Below the room configuration** | Something is missing. |
+**Browse all** also shows the configurations outside the room's size, marked **Doesn't fit this room's size**. **Matching only** goes back. If nothing matches, the tab says **No room configurations match this room's size**: the floor area is outside every range, or not set.
+
+The status shows how the design compares. Each category has the same three states, with its count (*in the design / asked for*):
+
+| Status | Colour | Means |
+|---|---|---|
+| **Following the room configuration** | Green | Every category met, with the configuration's own equipment. |
+| **Quantities met, different equipment** | Amber | Right counts, other models. |
+| **Below the room configuration** | Red | Something is missing. |
+
+Only items from a catalog count. **Chairs 10 / 4** in amber means ten chairs where four are asked for, none of them the configuration's own picks.
 
 It's a starting point, not a lock — change anything you like.
 
-<Figure
-  src="/img/release/2026-07-guidelines-default-room-config.png"
-  alt="Guidelines tab in BMR Studio: a configuration selected, the status Below guidelines, and categories with counts such as Chairs 2 / 4 and Displays 1 / 1"
-  caption="The Guidelines tab, with each category's count."
-/>
+### What Place configuration does {#placing-the-configuration}
+
+- **It picks the wall.** Each outer wall is checked for the layout's width, the room in front of it, and clear space around doors and windows. The best fit wins. A layout with nothing on the walls goes to the middle of the room.
+- **It asks first if something is in the way.** The Studio lists the items. **Remove them and place** clears them. **Place anyway** goes ahead, and what overlaps is marked.
+- **It places one group**, named after the configuration. While it is selected, the other walls it fits on light up. Click one, or pick it under **Move to another wall** in the **Properties** tab, to move it there. One undo brings it back.
+- **It marks what doesn't fit.** An item that doesn't fit is labelled **Does not fit**, in the room and in the [BOM](bmr-studio#bom), with the reason. This is saved with the design and checked again after every change.
+
+Rooms differ in shape. Look over what lands on the other walls.
 
 ---
 
@@ -95,14 +111,15 @@ It's a starting point, not a lock — change anything you like.
 | Medium Meeting | <U m2={[20,40]} /> | Room Bar, dual 65" displays, 6 chairs, table |
 | Large Meeting | <U m2={[40,80]} /> | Codec, 3 ceiling mics, dual 75" displays, 14 chairs, table |
 
-A **<U m2={30} />** room gets **Medium Meeting**. If ranges overlap, all matches are listed: **yours first, then BMR Defaults**, each by name.
+A **<U m2={30} />** room gets **Medium Meeting**. If ranges overlap, all matches are listed: **yours first, then the ones shared with you, then BMR Defaults**, each by name.
 
 ---
 
 ## <Icon name="edit" size="1em" /> Managing configurations
 
-On the **Yours** tab:
+On the **Yours** tab, open a configuration to:
 
-- **Edit** the size, people range or equipment.
-- **Save as new room configuration** to branch off a copy.
-- **Delete** — removed for every location. Designs that already used it keep their equipment.
+- **Edit** the name, size, people range or equipment.
+- **Delete** it, from the **⋮** menu — removed for every location. Designs that already used it keep their equipment.
+
+**Shared with you** and **BMR Defaults** can't be changed. Open one and choose **Save as new room configuration** for a copy of your own.

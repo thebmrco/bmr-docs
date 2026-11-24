@@ -21,15 +21,16 @@ Design the room in 3D. **Pick a mode, and the Studio gives you the tools for tha
 ## <Icon name="layout" size="1em" /> The screen at a glance {#the-screen}
 
 <Callouts
-  src="/img/design/bmr-studio-ui.png"
-  alt="BMR Studio in Equipment mode: a 3D meeting room with a display, a table and four chairs, the toolbar along the top with Save and Save New Version, the sidebar tabs on the right and the mode switcher at the bottom"
-  caption="BMR Studio. The toolbar is at the top, the sidebar tabs on the right and the modes at the bottom."
+  src="/img/design/studio-screen.jpg"
+  alt="BMR Studio in View mode with a showroom design in 3D. The BOM is open on the left, the toolbar runs along the top with the design name, the view controls and a Share button, the sidebar tabs are on the right and the modes are at the bottom"
+  caption="BMR Studio in View mode, with the BOM open on the left."
   pins={[
-    {x: 32.8, y: 1.6, title: 'Save', text: 'Saves your changes as a new version.'},
-    {x: 36.1, y: 1.6, title: 'Save as New Design', text: 'Copies the design into a separate one.'},
-    {x: 42.8, y: 1.6, title: 'Render mode', text: 'Standard or High quality, in View mode.'},
-    {x: 92, y: 6, title: 'Sidebar tabs', text: 'Properties, Equipment, Versions, BOM, Room Configuration and more.'},
-    {x: 44.2, y: 96.2, title: 'Modes', text: 'View, Structurals, Equipment, Cables, then Present.'},
+    {x: 18.5, y: 3.1, title: 'Design name', text: 'Opens a menu: Rename, Set as active design, Duplicate, Export, Version history, Share and Delete.'},
+    {x: 6.5, y: 9.4, title: 'BOM', text: <>Every item in the room, in View and Equipment. See <a href="#bom">BOM</a>.</>},
+    {x: 50, y: 9.6, title: 'View controls', text: <>2D · Split · 3D, View settings, Coverage, Camera, Render mode and Measure. See <a href="#view">View</a>.</>},
+    {x: 97.1, y: 9.6, title: 'Share', text: 'A view-only link for people without an account.'},
+    {x: 90, y: 15.3, title: 'Sidebar tabs', text: 'Properties, Presentation and Versions in View. Each mode has its own tabs.'},
+    {x: 18.5, y: 95.2, title: 'Modes', text: 'View, Structurals, Equipment, Cables, then Present. Extra modes, like Acoustics, show when they are switched on for your organisation.'},
   ]}
 />
 
@@ -37,9 +38,9 @@ Design the room in 3D. **Pick a mode, and the Studio gives you the tools for tha
 
 | Where | What |
 |---|---|
-| **Left** | **Back**, the design's thumbnail and its **name**. The name opens a menu: **Rename**, **Set as active design** (while it isn't), **Duplicate**, **Export**, **Version history** and **Delete**. |
+| **Left** | **Back**, the design's thumbnail and its **name**. The name opens a menu: **Rename**, **Set as active design** (while it isn't), **Duplicate**, **Export**, **Version history**, **Share** and **Delete**. |
 | **Middle** | How you look: the [view controls](#view). |
-| **Right** | **Undo** and **Redo** in the editing modes, **Save** (**Save as New Design** is in the menu beside it), who else has the design open, and **Help**. |
+| **Right** | **Undo** and **Redo** in the editing modes, **Save** (**Save as New Design** is in the menu beside it), who else has the design open, **Help** and **Share**. |
 
 ---
 
@@ -82,6 +83,14 @@ Next to them: **Render mode** (View mode only, see [Render modes](#render-modes)
 
 <Icon name="sliders-horizontal" size="1em" /> opens **Space Configuration** beside the 3D view. Every switch applies at once, and each section folds away.
 
+<Figure
+  src="/img/design/studio-view-settings.jpg"
+  alt="The View settings button lit in the toolbar, with the Space Configuration panel open on the left beside the 3D room: the sections Dimensions and guides, People, Room and Equipment, each with its switches"
+  variant="inset"
+  maxWidth={460}
+  caption="Space Configuration, opened from View settings."
+/>
+
 | Section | What you switch |
 |---|---|
 | **Dimensions & guides** | Wall dimensions, measurements, guides, placement warnings |
@@ -105,8 +114,16 @@ Switches appear only when the room has something to switch: no acoustic treatmen
 | **Speaker** <FeatureToggleTag /> | Which chairs the loudspeakers reach evenly. See [Loudspeaker coverage](#speaker-coverage) |
 | **Camera** | Each camera's field of view. What is inside it is framed at the far end |
 
+<Figure
+  src="/img/design/studio-coverage-menu.png"
+  alt="The Coverage menu open under the toolbar, listing None, Display, Microphone, Speaker and Camera, with None ticked"
+  variant="inset"
+  maxWidth={480}
+  caption="The Coverage menu. Speaker appears when it is switched on for your organisation."
+/>
+
 - The coverage is named on the picture, with an **i** that explains it in a few lines.
-- A type the design has no device of is greyed out: **None in this design**.
+- A type the design has no device of is greyed out. Hover to see **None in this design**.
 - In **In room** and **Camera view** the menu is off, because coverage isn't drawn there.
 - Ceiling items that aren't part of the coverage (lights, projectors, ceiling acoustic panels, the suspended ceiling) turn see-through. The coverage's own devices stay in view, highlighted.
 
@@ -121,18 +138,35 @@ Do the chairs hear the loudspeakers evenly? Each chair is rated against the best
 - **Green**: within 6 dB of the best chair. Speech is clear there.
 - **Red**: more than 6 dB below it. Speech is harder to understand and listening takes more effort.
 
-The bar at the bottom says **Recommended coverage** and counts the chairs: *n covered*, *n not covered*. The floor shows where the sound is within 6 dB of the best chair. Without chairs, the area is drawn from the loudest place in the room.
+The bar under the title says **Recommended coverage** and counts the chairs: *n covered*, *n not covered*. The floor shows where the sound is within 6 dB of the best chair. Without chairs, the area is drawn from the loudest place in the room.
 
-**Details** opens more:
+<Figure
+  src="/img/design/studio-speaker-coverage.jpg"
+  alt="A meeting room with chairs and loudspeakers in BMR Studio. A bar over the room reads Loudspeaker coverage, then Recommended coverage, 13 covered, 4 not covered and Details. The floor is orange, and green rings mark the covered chairs and red rings the others"
+  variant="inset"
+  maxWidth={500}
+  caption="Loudspeaker coverage: 13 chairs covered, 4 not."
+/>
 
-| Detail | What it shows |
+**Details** opens a second bar and draws **rings** on the floor: thin lines 3, 6, 9 and 12 dB below the best chair.
+
+<Figure
+  src="/img/design/studio-speaker-coverage-details.jpg"
+  alt="The same room with Details open. A second bar shows 1 kHz and 4 kHz, with 4 kHz picked, Evenness uneven and Data estimated, and thin orange rings are drawn on the floor"
+  variant="inset"
+  maxWidth={500}
+  caption="The same room with Details open."
+/>
+
+In the second bar:
+
+| | What it shows |
 |---|---|
-| **Frequency** | **1 kHz** or **4 kHz** (the default). Most loudspeakers get narrower as the frequency rises. |
-| **Rings** | Lines at 3, 6, 9 and 12 dB below the best chair |
-| **Evenness** | Loudest to quietest chair: **very even** (up to 3 dB), **even** (up to 6), **noticeably uneven** (up to 8), **uneven** (up to 12) or **very uneven** (more). The classes are the coverage envelope of AVIXA A102.01. |
-| **Data** | Where each loudspeaker's pattern comes from: **manufacturer**, **estimated** or **none, 90° assumed**. Shown when a loudspeaker has no manufacturer data. |
+| **Frequency** | **1 kHz** or **4 kHz**: what the picture is drawn for. **4 kHz** is the default. Most loudspeakers get narrower as the frequency rises. |
+| **Evenness** | With chairs: loudest to quietest chair, as **very even** (up to 3 dB), **even** (up to 6), **noticeably uneven** (up to 8), **uneven** (up to 12) or **very uneven** (more). The classes are the coverage envelope of AVIXA A102.01. |
+| **Data** | Where the loudspeakers' patterns come from: **manufacturer**, **estimated** or **none, 90° assumed**. It shows only when a loudspeaker has no manufacturer data, and counts each kind when they mix. |
 
-**manufacturer** is the directivity from the datasheet, which BMR adds for some loudspeakers. **estimated** comes from the coverage angle in the catalog item. With **none**, a 90° angle is assumed. For a better picture, keep the coverage angle filled in on your [catalog items](../../catalog/ports-and-devices#placed-devices).
+**manufacturer** is the directivity from the datasheet, which BMR adds for some loudspeakers. **estimated** comes from the coverage angle on the catalog item. With **none**, a 90° angle is assumed. A loudspeaker missing its coverage angle? Tell BMR with [Send Feedback](../../getting-started/send-feedback). How BMR fills it: [Placed devices](../../catalog/ports-and-devices#placed-devices).
 
 ### Render modes {#render-modes}
 
@@ -150,10 +184,20 @@ Finer settings: **View settings** › **Lighting & environment**. The 3D view us
 
 ### BOM {#bom}
 
-In **View** and **Equipment** the **BOM** opens in a panel on the left. It lists **every item in the room**, from a catalog or not: picture, name, category and maker, SKU and quantity, and the ceiling's materials. Cables are in it too.
+In **View** and **Equipment** the **BOM** opens in a panel on the left. It lists **every item in the room**, from a catalog or not. The sections are the [four categories](../discovery/inventory#categories) of the Inventory: **Equipment**, **Infrastructure**, **Accessories** and **Cables**. Each line has the picture, name, category and maker, SKU and quantity. Cables are counted by type, with their lengths, and the ceiling's materials come last.
 
+<Figure
+  src="/img/design/studio-bom.png"
+  alt="The BOM panel with the sections Equipment 16, Infrastructure 5, Accessories 3 and Cables 8, each line with a picture, name, category and maker, SKU and quantity. One line, a table, is marked Not in catalog with its size"
+  variant="inset"
+  maxWidth={320}
+  caption="The BOM. The amber line is an item with no catalog model."
+/>
+
+- **Click a line** to select its items in the room.
 - A line with no catalog model says **Not in catalog**, adds **Detected** if the scan found it, and gives its size.
-- **Download as PDF** or **Excel** from the panel's header. Not-in-catalog lines are included.
+- An item of a placed [room configuration](default-room-configuration#placing-the-configuration) that doesn't fit is marked **Does not fit**. Hover for the reason.
+- **Download as PDF** or **Excel** from the panel's header. Not-in-catalog lines are included. The same row has **collapse all**.
 - **Hide BOM** closes the panel, **Show BOM** on the slim rail brings it back. Drag its edge to resize it.
 
 ---
@@ -204,7 +248,7 @@ Walls, doors, windows and openings. Draw them from the **Build** tab. Surface ma
 
 ## <Icon name="equipment" size="1em" /> Equipment {#equipment}
 
-Place and arrange equipment, furniture, outlets, logos and murals. The **Room Configuration** tab shows your organisation's setup for this room, see [Default Room Configuration](default-room-configuration).
+Place and arrange equipment, furniture, outlets, logos and murals. The **Room Configuration** tab offers ready-made setups for the room's size: yours, ones shared with you and BMR's. See [Default Room Configuration](default-room-configuration).
 
 ### Equipment tabs {#equipment-tabs}
 
@@ -289,8 +333,16 @@ A room can have several **designs**, and each design keeps its own **versions**.
 
 | Button | What it does |
 |---|---|
-| **Save** | Saves your changes as a **new version** (*Version 2*, *Version 3* …). Earlier versions are kept. |
+| **Save** | Saves your changes as a **new version** (*Version 2*, *Version 3* …). Earlier versions are kept. Greyed out while there is nothing to save. |
 | **Save as New Design** (in the menu beside **Save**) | Makes a **separate design**, not linked to this one. |
+
+<Figure
+  src="/img/design/studio-save-menu.png"
+  alt="The right end of the toolbar: Undo and Redo, a greyed-out Save button with an arrow beside it that opens a menu with Save as New Design, then Help and Share"
+  variant="inset"
+  maxWidth={460}
+  caption="Save as New Design is in the menu beside Save."
+/>
 
 - **Switching mode saves too**, as a new version, if you have unsaved changes.
 - Cable changes **save automatically**.
