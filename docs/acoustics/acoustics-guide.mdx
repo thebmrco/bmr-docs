@@ -39,7 +39,8 @@ The mode comes from the **organisation default** on the web (**Organization sett
 
 | Situation | What BMR Mobile does |
 |---|---|
-| Room has no scan | Asks you to scan first (**Scan Recommended**). **Continue** runs Basic, with no MOS score: it needs the room volume from a scan |
+| Room has no scan | Asks you to scan first (**Scan Needed**). **Continue Anyway** runs Basic, with no MOS score: it needs the room volume from a scan |
+| Room has a scan, but no AR Map | Asks you to scan again (**Re-scan Needed**). **Continue Anyway** runs Basic, and the MOS score will be invalid. See [AR World Map](../technology/ar-world-map#what-the-app-says) |
 | You are offline | Runs Basic and shows a hint |
 | Advanced turned off in Settings | Runs Basic and shows a hint on how to turn it on |
 
