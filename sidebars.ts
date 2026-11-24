@@ -60,6 +60,9 @@ const sidebars: SidebarsConfig = {
     // the rest.
     area('General Information', [
       'getting-started/account-setup',
+      newDoc('getting-started/web-platform'),
+      newDoc('getting-started/my-tasks'),
+      newDoc('getting-started/profile'),
       'getting-started/system-requirements',
       'getting-started/webgpu',
       'getting-started/notifications',
@@ -93,6 +96,7 @@ const sidebars: SidebarsConfig = {
       items: [
         'lifecycle/design/ar-design-guide',
         updatedDoc('lifecycle/design/bmr-studio'),
+        newDoc('lifecycle/design/share-a-design'),
         'lifecycle/design/default-room-configuration',
         'lifecycle/deploy/index',
       ],
@@ -113,7 +117,12 @@ const sidebars: SidebarsConfig = {
       'integrations/webex-control-hub-sync',
       'integrations/cisco-vrc',
     ]),
-    area('Maintenance', ['lifecycle/maintenance/index']),
+    {
+      type: 'category',
+      label: 'Maintenance',
+      link: {type: 'doc', id: 'lifecycle/maintenance/index'},
+      items: [newDoc('lifecycle/maintenance/data-analysis')],
+    },
     {
       type: 'category',
       label: 'Catalog & 3D Models',
@@ -156,6 +165,9 @@ const sidebars: SidebarsConfig = {
       label: 'Getting Started',
       items: [
         'getting-started/account-setup',
+        newDoc('getting-started/web-platform'),
+        newDoc('getting-started/my-tasks'),
+        newDoc('getting-started/profile'),
         'getting-started/inviting-users',
         'getting-started/notifications',
         'getting-started/system-requirements',
@@ -214,11 +226,17 @@ const sidebars: SidebarsConfig = {
           items: [
             'lifecycle/design/ar-design-guide',
             updatedDoc('lifecycle/design/bmr-studio'),
+            newDoc('lifecycle/design/share-a-design'),
             'lifecycle/design/default-room-configuration',
             'lifecycle/deploy/index',
           ],
         },
-        'lifecycle/maintenance/index',
+        {
+          type: 'category',
+          label: 'Maintenance',
+          link: {type: 'doc', id: 'lifecycle/maintenance/index'},
+          items: [newDoc('lifecycle/maintenance/data-analysis')],
+        },
       ],
     },
     {
@@ -267,6 +285,7 @@ const sidebars: SidebarsConfig = {
       items: [
         updatedDoc('user-guides/room-capture'),
         'getting-started/account-setup',
+        newDoc('getting-started/my-tasks'),
         'getting-started/system-requirements',
       ],
     },

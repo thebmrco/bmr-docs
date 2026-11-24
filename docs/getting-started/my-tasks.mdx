@@ -1,0 +1,94 @@
+---
+title: My Tasks
+sidebar_label: My Tasks
+description: Tasks assigned to you in the web platform and in BMR Mobile, and how to assign a task to someone else.
+---
+
+import Icon from '@site/src/components/Icon'
+
+# <Icon name="my-tasks" size="1em" /> My Tasks
+
+<PageIntro illustration="organise" meta={['Web platform', 'BMR Mobile']}>
+
+The work someone asked you to do, in one list. Open it, pick one, go.
+
+</PageIntro>
+
+| Where | Open it |
+|---|---|
+| **Web platform** | **My Tasks** in the menu, or **Open Tasks** on [Home](./web-platform#home) |
+| **BMR Mobile** | The **My Tasks** tab |
+
+---
+
+## <Icon name="laptop" size="1em" /> On the web {#on-the-web}
+
+**My Tasks** lists every task assigned to you.
+
+| Column | What it is |
+|---|---|
+| **Room** | The room the task belongs to |
+| **Task Name** | What to do, such as *Create Scan* |
+| **Target** | What the task is about |
+| **Assignment Date** | When it was given to you |
+| **Completion Date** | When it was done. Empty while it is open |
+| **Last Updated** | The last change |
+
+Search by **Task Name** and filter by **Status**: **All Tasks**, **Pending** or **Completed**. Nothing for you? The list says *No tasks assigned to you.*
+
+---
+
+## <Icon name="smartphone" size="1em" /> In BMR Mobile {#in-bmr-mobile}
+
+The **My Tasks** tab shows your **Open tasks**. Nothing waiting says *No tasks*.
+
+Tap a task and the app opens its room on the right tab, so you can start:
+
+| Task | What you do |
+|---|---|
+| **Create Scan** | [Scan the room](../lifecycle/discovery/room-scan) |
+| **Create Marker** | [Take the markers](../lifecycle/discovery/markers) |
+| **Create Acoustic Measurement** | [Measure the room](../acoustics/acoustics-guide) |
+| **Create AR Design** | [Place equipment in AR](../lifecycle/design/ar-design-guide) |
+
+Every other task is done on the web. The app says so: *Web only action. Go to app.bettermeetingrooms.com for this task.*
+
+---
+
+## <Icon name="users" size="1em" /> Give a task to someone {#assign}
+
+Two places, one idea: pick the person, they get the task in **My Tasks**.
+
+| From | How |
+|---|---|
+| **A room** | On the [Room page](../structure/room#-the-room-page), the **Assign Task** panel lists the tasks that fit the room. Pick one, choose a person under **Select user...**, then **Assign** |
+| **An inventory item** | On a [marker in the Inventory](../lifecycle/discovery/inventory#assign-a-marker-task), **Assign a marker task** |
+
+The person list shows people who have access to the room. Nobody to pick? Give them access first, see [Inviting users](./inviting-users).
+
+Once a task is assigned, the panel shows who has it. From there:
+
+| To | Use |
+|---|---|
+| Hand it to someone else | **Reassign** |
+| Take it back | **Cancel assignment** |
+| Open a finished task again | **Reopen Task** |
+
+Done tasks show the date and the person who did them.
+
+---
+
+## <Icon name="notifications" size="1em" /> When it is done {#when-done}
+
+When a task is completed, the right person hears about it: a **Task Completed** [notification](./notifications).
+
+- Someone else did the work: **the person it was assigned to** is told.
+- The assigned person did it: the **Room Manager** is told. No Room Manager on the room? The **Location Manager**, then the **Admin**.
+
+---
+
+## <Icon name="chevron-right" size="1em" /> Next {#next}
+
+- [The web platform at a glance](./web-platform)
+- [Notifications](./notifications)
+- [Room Inventory](../lifecycle/discovery/inventory)
