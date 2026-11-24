@@ -46,10 +46,12 @@ A **device** is an active part positioned on the model. Each one drives a covera
 
 | Device | Overlay | Data from the datasheet |
 |---|---|---|
-| **Camera** | Field of view | Horizontal field of view at 1× zoom, zoom, min and max distance |
+| **Camera** | Field of view | Horizontal and vertical field of view, optical and digital zoom, pan and tilt ranges, sensor width, min and max distance |
 | **Microphone** | Pickup range | Pickup pattern, radius |
 | **Speaker** | Coverage area | Dispersion, horizontal and vertical angle, distance |
 | **Screen** | Visibility zone | Screen size (inches), aspect ratio |
+
+A **camera** can have several lenses. Studio draws them together as one coverage area.
 
 For a **speaker**, the coverage uses the **horizontal angle**, read as the angle where the level has dropped 6 dB. Where BMR has the manufacturer's directivity, that is used instead. Without either, Studio assumes 90°. See [Loudspeaker coverage](../lifecycle/design/bmr-studio#speaker-coverage).
 

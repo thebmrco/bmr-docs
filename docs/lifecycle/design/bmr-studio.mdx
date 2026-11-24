@@ -51,6 +51,8 @@ Every job has its own **mode**. Switch at the bottom of the screen. The mode dec
 - **what you can select and change.** Everything else stays visible, but locked.
 - **which tabs the sidebar shows**, and which tools you get.
 
+The modes read left to right, as the steps a room is designed in. A green arrow marks the current one and slides along when the mode changes, whichever way it changed. Where there is little room, the strip shows icons only.
+
 <StudioModes />
 
 <FixList items={[
@@ -75,9 +77,34 @@ The controls for looking sit together in the middle of the toolbar, in every mod
 | **2D · Split · 3D** | The floor plan, the 3D room, or both side by side. **Split** needs a wide screen and is in Cables mode for now. |
 | <Icon name="sliders-horizontal" size="1em" /> **View settings** | What the room shows, and how it is lit. See [View settings](#view-settings). |
 | <Icon name="radar" size="1em" /> **Coverage** | What the cameras, microphones, displays and loudspeakers reach. See [Coverage](#coverage). |
-| <Icon name="video" size="1em" /> **Camera** | Preset views (**Overview**, **Top**, four **Sides**) and your saved ones. **In room** (View mode) walks the room at eye height, **Camera view** sees what a device camera sees, **Center camera on object** frames your selection. |
+| <Icon name="video" size="1em" /> **Camera** | Preset views (**Overview**, **Top**, four **Sides**) and your saved ones. **In room** (View mode) walks the room at eye height, **Camera view** sees what a device camera sees, **Center camera on object** frames your selection. See [Moving the camera](#camera). |
 
 Next to them: **Render mode** (View mode only, see [Render modes](#render-modes)), **Measure**, and **Markers** from the scan once the room has some. The **Presentation tab** saves views to [present](#presenting-a-design).
+
+### Moving the camera {#camera}
+
+Above the modes, in 3D and in 2D:
+
+<Figure
+  src="/img/design/studio-camera-toolbar.png"
+  alt="The camera toolbar above the mode bar: a preset stepper with arrows left and right, a Focus button, and zoom in and zoom out around the level 128%. Under it the mode bar: View, current under a green arrow, then Structurals, Equipment, Cables with a Beta badge, Acoustics, Analysis and Present"
+  variant="inset"
+  maxWidth={560}
+  caption="The camera toolbar, above the mode bar."
+/>
+
+| Control | What it does |
+|---|---|
+| **Preset** | The arrows step through the preset views: **Overview**, **Top** and four **Sides**. A design opens in a view of its own, turned to the walls, so no preset is named until you pick one. Not in 2D. |
+| **Focus** | Centres on what is selected. With nothing selected it goes to **Overview** (in 2D, to the whole plan). |
+| **Zoom** | **+** and **−**, with the level between them. **100%** is the whole design in view. |
+
+- **Center camera on object** (in the **Camera** menu), or the **F** key, shows the selected object whole, with space around it, in the part of the screen no panel covers. **F** with nothing selected fits the whole design.
+- The camera looks at the object head-on, from the side it faces: a wall from inside the room, equipment from the front, a ceiling item from below, a table from the side. It stays inside the room, so a long wall in a narrow room fills the screen edge to edge. Small items come with about 1.5 m of their surroundings.
+- From the 3D view, picking a device in **Camera view** flies the view into it, and out again when you leave. **Back to 3D** (or **Esc**) returns.
+- **Camera view** lists one entry per camera device and looks through its widest lens. Zoom in up to the lens's optical × digital zoom. The view pans and tilts within the lens's range.
+
+**Compass.** At the top right of the 3D view. Its needle turns with the view, so the red half always points north. Click **N**, **E**, **S** or **W** to look that way, also in a shared view. It is greyed out when the room was scanned without a compass bearing. The scan's 3D viewer shows the same compass, but doesn't turn the view.
 
 ### View settings {#view-settings}
 
@@ -112,7 +139,7 @@ Switches appear only when the room has something to switch: no acoustic treatmen
 | **Display** | Where the screen stays legible for detailed content, from the AVIXA DISCAS viewing-distance rule |
 | **Microphone** | How far each microphone picks up speech at full level, and where it starts to fall off |
 | **Speaker** <FeatureToggleTag /> | Which chairs the loudspeakers reach evenly. See [Loudspeaker coverage](#speaker-coverage) |
-| **Camera** | Each camera's field of view. What is inside it is framed at the far end |
+| **Camera** | Each camera device's field of view, with all its lenses together, as far as its farthest lens. What is inside it is framed at the far end |
 
 <Figure
   src="/img/design/studio-coverage-menu.png"
@@ -417,6 +444,8 @@ BMR Studio also opens inside **BMR Mobile**, for reviewing a design on-site.
 | **Computer (web)** | All design work. **Recommended.** |
 | **iPad** | Reviewing on-site. Editing works, but is harder. |
 | **iPhone** | Preview only. |
+
+On a phone-sized screen every panel starts collapsed, so the room comes first. Only one panel is open at a time: opening the **BOM** folds the sidebar to its rail, and opening a sidebar tab hides the **BOM**.
 
 <Figure
   src="/img/release/2026-05-design-preview-app.jpg"
