@@ -58,15 +58,15 @@ An Admin can have every new room scan make a design by itself: **Preferences ›
 
 <Callouts
   src="/img/design/studio-screen.jpg"
-  alt="BMR Studio in View mode with a showroom design in 3D. The BOM is open on the left, the toolbar runs along the top with the design name, the view controls and a Share button, the sidebar tabs are on the right and the modes are at the bottom"
+  alt="BMR Studio in View mode with the Aquarium design in 3D. The BOM is open on the left, the toolbar runs along the top with the design name, the view controls and a Share button, the Properties tab is open on the right and the modes are along the bottom"
   caption="BMR Studio in View mode, with the BOM open on the left."
   pins={[
-    {x: 18.5, y: 3.1, title: 'Design name', text: 'Opens a menu: Rename, Set as active design, Duplicate, Export, Version history, Share and Delete.'},
-    {x: 6.5, y: 9.4, title: 'BOM', text: <>Every item in the room, in View and Equipment. See <a href="#bom">BOM</a>.</>},
-    {x: 50, y: 9.6, title: 'View controls', text: <>2D · Split · 3D, View settings, Coverage, Camera, Render mode and Measure. See <a href="#view">View</a>.</>},
-    {x: 97.1, y: 9.6, title: 'Share', text: 'A view-only link for people without an account.'},
-    {x: 90, y: 15.3, title: 'Sidebar tabs', text: 'Properties, Presentation and Versions in View. Each mode has its own tabs.'},
-    {x: 18.5, y: 95.2, title: 'Modes', text: 'View, Structurals, Equipment, Cables, then Present. Extra modes, like Acoustics, show when they are switched on for your organisation.'},
+    {x: 16.0, y: 4.8, title: 'Design name', text: 'Opens a menu: Rename, Set as active design, Duplicate, Export, Version history, Share and Delete.'},
+    {x: 18.5, y: 9.0, title: 'BOM', text: <>Every item in the room, in View and Equipment. See <a href="#bom">BOM</a>.</>},
+    {x: 49.9, y: 7.8, title: 'View controls', text: <>2D · Split · 3D, View settings, Coverage, Camera, Render mode and Measure. See <a href="#view">View</a>.</>},
+    {x: 90.8, y: 2.9, title: 'Share', text: 'A view-only link for people without an account.'},
+    {x: 96.4, y: 9.1, title: 'Sidebar tabs', text: 'Properties, Presentation and Versions in View. Each mode has its own tabs.'},
+    {x: 77.4, y: 95.5, title: 'Modes', text: 'View, Structurals, Equipment, Cables, then Present. Extra modes, like Acoustics, show when they are switched on for your organisation.'},
   ]}
 />
 
@@ -123,7 +123,7 @@ Above the modes, in 3D and in 2D:
 
 <Figure
   src="/img/design/studio-camera-toolbar.png"
-  alt="The camera toolbar above the mode bar: a preset stepper with arrows left and right, a Focus button, and zoom in and zoom out around the level 128%. Under it the mode bar: View, current under a green arrow, then Structurals, Equipment, Cables with a Beta badge, Acoustics, Analysis and Present"
+  alt="The camera toolbar above the mode bar: a preset stepper with arrows left and right, a Focus button, and zoom in and zoom out around the level 93%. Under it the mode bar: View, current under a green arrow, then Structurals, Equipment, Cables with a Beta badge, Acoustics, Analysis and Present"
   variant="inset"
   maxWidth={560}
   caption="The camera toolbar, above the mode bar."
@@ -156,7 +156,7 @@ Above the modes, in 3D and in 2D:
 
 | Section | What you switch |
 |---|---|
-| **Dimensions & guides** | Wall dimensions, measurements, guides, placement warnings |
+| **Dimensions & guides** | Wall dimensions, measurements, guides, and placement warnings while the design has any |
 | **People** | Mannequins on the chairs: who they are, and how many chairs are taken |
 | **Room** | Doors & windows, wall transparency, interior wall transparency |
 | **Equipment** | Cables, ceiling equipment, acoustic treatment, equipment labels |
@@ -204,17 +204,17 @@ The bar under the title says **Recommended coverage** and counts the chairs: *n 
 
 <Figure
   src="/img/design/studio-speaker-coverage.jpg"
-  alt="A meeting room with chairs and loudspeakers in BMR Studio. A bar over the room reads Loudspeaker coverage, then Recommended coverage, 13 covered, 4 not covered and Details. The floor is orange, and green rings mark the covered chairs and red rings the others"
+  alt="A meeting room with chairs and loudspeakers in BMR Studio. A bar over the room reads Loudspeaker coverage, then Recommended coverage, 5 covered, 0 not covered and Details. The floor is orange, and green rings mark the covered chairs"
   variant="inset"
   maxWidth={500}
-  caption="Loudspeaker coverage: 13 chairs covered, 4 not."
+  caption="Loudspeaker coverage: all 5 chairs covered."
 />
 
 **Details** opens a second bar and draws **rings** on the floor: thin lines 3, 6, 9 and 12 dB below the best chair.
 
 <Figure
   src="/img/design/studio-speaker-coverage-details.jpg"
-  alt="The same room with Details open. A second bar shows 1 kHz and 4 kHz, with 4 kHz picked, Evenness uneven and Data estimated, and thin orange rings are drawn on the floor"
+  alt="The same room with Details open. A second bar shows 1 kHz and 4 kHz, with 4 kHz picked, Evenness very even and Data estimated, and thin orange rings are drawn on the floor"
   variant="inset"
   maxWidth={500}
   caption="The same room with Details open."
@@ -235,8 +235,8 @@ In the second bar:
 In the toolbar, in **View** mode.
 
 <FigurePair
-  a={{src: '/img/release/2026-10-render-standard.webp', alt: 'A meeting room design in BMR Studio drawn in Standard render mode, with flat, even lighting', label: 'Standard'}}
-  b={{src: '/img/release/2026-10-render-high-quality.webp', alt: 'The same meeting room design in High quality render mode, with bounce lighting and soft shadows under the chairs and table', label: 'High quality'}}
+  a={{src: '/img/design/studio-render-standard.jpg', alt: 'A meeting room design in BMR Studio drawn in Standard render mode, with flat, even lighting', label: 'Standard'}}
+  b={{src: '/img/design/studio-render-high-quality.jpg', alt: 'The same meeting room design in High quality render mode, with bounce lighting and soft shadows under the chairs and table', label: 'High quality'}}
   caption="High quality adds bounce lighting and ambient occlusion. Standard is quicker to work in."
 />
 
@@ -250,7 +250,7 @@ In **View** and **Equipment** the **BOM** opens in a panel on the left. It lists
 
 <Figure
   src="/img/design/studio-bom.png"
-  alt="The BOM panel with the sections Equipment 16, Infrastructure 5, Accessories 3 and Cables 8, each line with a picture, name, category and maker, SKU and quantity. One line, a table, is marked Not in catalog with its size"
+  alt="The BOM panel with the sections Equipment 12, Infrastructure 4, Accessories 1 and Cables 7, each line with a picture, name, category and maker, SKU and quantity. One line, a cupboard, is marked Not in catalog and Detected, with its size"
   variant="inset"
   maxWidth={320}
   caption="The BOM. The amber line is an item with no catalog model."
@@ -291,20 +291,21 @@ Walls, doors, windows and openings. Draw them from the **Build** tab. Surface ma
 
 <a id="-editing-in-the-3d-view" />
 
-<FigurePair
-  a={{src: '/img/release/2026-10-studio-door.jpg', alt: 'A door selected in BMR Studio, seen from above, with its swing drawn on the floor, and the Properties panel showing Hinge side (from inside) Left or Right and Opens Inward or Outward', label: 'Doors'}}
-  b={{src: '/img/release/2026-10-studio-wall-handles.jpg', alt: 'A wall selected in BMR Studio, highlighted, with handles at both ends and a centre handle, next to the Properties panel with rotation, wall material and wall colour', label: 'Walls'}}
-  caption="Doors have a hinge side and opening direction. A selected wall shows its end and centre handles."
+<Figure
+  src="/img/design/studio-wall-handles.jpg"
+  alt="A wall selected in BMR Studio, highlighted in pink, with handles at both ends and in the centre. Above the room is the wall's toolbar: Center camera on Object, Rotate, Resize, Duplicate, Select all of type, Reset, Split and Delete"
+  caption="A selected wall, with handles at its ends and centre and its tools above it."
 />
 
 - **Live dimensions** on walls, doors and windows while you draw or resize.
+- A **door** has a **Door type** (Glass or Solid), a **Hinge side (from inside)**, Left or Right, and **Opens** Inward or Outward. Its swing shows on the floor.
 - Hold **Shift** to snap wall ends to 22.5°. **Arrow keys** nudge doors and windows along their wall.
 - Items **stop at walls and the ceiling**, then give way if you keep pushing.
 
 <Figure
-  src="/img/release/2026-07-structural-mode.png"
-  alt="Room design in Structurals mode with doors and windows visible and surface materials applied from the scan"
-  caption="Structurals mode, with doors, windows and the scan's surface materials."
+  src="/img/design/studio-structurals.jpg"
+  alt="The Aquarium design in Structurals mode. The Build tab is open on the right, with Draw walls (Horizontal Wall, Vertical Wall), Openings (Door, Window) and Shapes (Box, Cylinder)"
+  caption="Structurals mode, with the Build tab on the right."
 />
 
 ---
@@ -356,6 +357,12 @@ In **View**, if you can edit the design, an item you pick gets two buttons: **Ed
 
 The editing modes give more. Which buttons show depends on the item and the mode. [Cable mode](#cable-mode) has its own tools.
 
+<Figure
+  src="/img/design/studio-selection-toolbar.jpg"
+  alt="A chair selected in BMR Studio's Equipment mode, drawn in pink among the other chairs, with its toolbar above the room: Center camera on Object, Rotate, Resize, Duplicate, Repeat, Select all of type, Reset, Replace and Delete"
+  caption="A selected chair, with its tools above it."
+/>
+
 | Button | What it does |
 |---|---|
 | **Center camera on Object** | Frames the item. Also **F**. See [Moving the camera](#camera) |
@@ -387,6 +394,14 @@ Pick one or more items and press **Replace**. It works on equipment and on scann
 
 The new item takes the place, the turn and the mounting of the old one. **Cancel** leaves things as they were.
 
+<Figure
+  src="/img/design/studio-replace.png"
+  alt="The Equipment tab in replace mode: a banner reading Replacing Organic Conference Chair with a Cancel button, the catalog and category filters, and under Same type: Chairs the cards of other chairs"
+  variant="inset"
+  maxWidth={340}
+  caption="Replace: items of the same type come first."
+/>
+
 ### Repeat, Distribute and Align {#arrange}
 
 For columns, beams, chairs and anything else that comes in rows.
@@ -410,7 +425,7 @@ While you move an item in a row, a gap that is nearly the same as its neighbour'
 - A floor item snaps **flush against a wall**. With the grid on, it snaps by its **sides**.
 - A new wall item lands on a **free part of the wall**, or in front of what covers it.
 - Whatever stands between the camera and the selected item turns **see-through**, so you can see where a new item went.
-- A warning marks two items that really clash. They must share height as well as floor area, so a laptop on a table or a panel on the ceiling is left out. **View settings › Dimensions & guides › Placement warnings** hides the labels.
+- A warning marks two items that really clash. They must share height as well as floor area, so a laptop on a table or a panel on the ceiling is left out. **View settings › Dimensions & guides › Placement warnings** hides the labels. That switch shows only while the design has a warning.
 
 ### Properties {#properties}
 
@@ -426,6 +441,14 @@ The **Properties** tab is in every mode. It reads name on the left, value on the
 The **Design name** is editable here. It renames the design, as in the toolbar.
 
 **An item selected.** The head shows its picture, name and category. Below: **Name**, **Label**, **Category**, **Brand**, **Colour** and **Mounting**. Only **Label** is yours to edit: it is numbered when the item is placed, and once you edit it, it stays as you wrote it.
+
+<Figure
+  src="/img/design/studio-properties-item.png"
+  alt="The Properties tab with a chair selected: its picture, name and category at the top, then Name, Label, Category, Brand, Colour and Mounting, and the Layout section with Dimensions, Position and Rotation. A red Delete Element button closes the panel"
+  variant="inset"
+  maxWidth={340}
+  caption="Properties of a selected chair."
+/>
 
 **Layout**, open by default, holds the numbers:
 
@@ -445,24 +468,72 @@ Cabling starts from **what needs to be connected**, not from drawing cables.
 Here you change cables, outlets and boxes. Other equipment stays put: click a device to see what's plugged in.
 
 <Figure
-  src="/img/release/2026-10-cable-connections-3d.jpg"
-  alt="Cable mode in BMR Studio: the Connections panel on the left lists each device's ports with the connected port, cable type filters at the top and short warnings such as no free port, next to a see-through 3D room with the cables drawn in colour"
-  caption="The Connections panel, next to the see-through 3D room."
+  src="/img/design/studio-cables.jpg"
+  alt="Cable mode in BMR Studio: the Connections panel on the left lists each device's ports and the connected port, with the cable type filters at the top, next to a see-through 3D room with the cables drawn in colour. The right panel says to select an element to view its properties"
+  caption="Cable mode: the Connections panel, and the see-through 3D room."
 />
 
 - **Connections panel** — each device lists its connections, **required** ones first. Pick a port, **Connect to another port**, or delete a cable. **Reset connections** starts over.
 - **Required connections are drawn for you** when you open Cable mode. Ethernet runs through an outlet; **PoE** is supported.
 - **Warnings sit on the device** — *Power missing*, *PoE missing*, *no free port* — with the fix one click away.
 - **Filter by cable type** — Power, HDMI, Network, USB, Other — each with its own colour, also in **Plans**.
-- **Cables save as you go.**
+- **Cables save as you go**: the connections, [Route via](#cable-route) and a table cable's drop point. A run you slide by hand is kept for the session only.
+
+<Figure
+  src="/img/design/studio-connections.png"
+  alt="The Connections panel: a filter for each cable type with its count, then each device with its ports. The Ceiling Microphone Pro gray has Ethernet 1, required, connected to Ethernet 3 on the Room Bar Pro black. The Interactive Display 65 inch has HDMI 1 and Power 1"
+  variant="inset"
+  maxWidth={320}
+  caption="The Connections panel: cable types on top, then each device and its ports."
+/>
 
 **2D, Split or 3D.** The 2D view is the **unfolded room**: walls, floor and ceiling laid out flat. Select a cable to reshape it on the grid; move sockets and equipment along guides (arrow keys nudge).
 
 <Figure
-  src="/img/release/2026-10-cable-split-view.jpg"
-  alt="Cable mode in Split view: the unfolded room on the left, with the walls laid out in a row between the ceiling and the floor and the cables drawn on them, and the same room in 3D on the right"
+  src="/img/design/studio-cables-split.jpg"
+  alt="Cable mode in Split view: the unfolded room on the left, with the ceiling above, the walls in a row and the floor below, and a selected cable drawn in purple with round handles. The same room in 3D is on the right, and the Properties tab shows the cable's route options"
   caption="Split view: the unfolded room next to 3D."
 />
+
+### Shaping a route {#cable-route}
+
+Select a cable. Its **Properties** tab opens and the cable shows handles. Every change re-routes the cable, and a run you moved by hand stays where you put it.
+
+**Where a cable goes.** It leaves a wall device onto its wall, and a ceiling device up to the ceiling. From a device on a stand it goes down the mast, or onto the wall the stand is against. From a device on a table it runs along the top to a **drop point**, then down. The two ends then meet on the floor, or on the ceiling for ceiling devices. A run that sidesteps by less than 10 cm is folded away.
+
+**Route via** chooses the plane the ends meet on:
+
+- **Auto** runs the cable on the floor, or on the ceiling for ceiling devices.
+- **Floor** or **Ceiling** forces it.
+- When both ends are on the same wall, the cable stays on that wall. The panel says so.
+
+<Figure
+  src="/img/design/studio-cable-properties.png"
+  alt="The Properties tab with an Ethernet cable selected: its length, 10.51 m, a label field, Route via with Auto, Floor and Ceiling, the note that Auto runs the cable on the floor or on the ceiling for ceiling devices, the two endpoints and a red Delete button"
+  variant="inset"
+  maxWidth={340}
+  caption="A selected cable: Route via, its two ends and Delete."
+/>
+
+**Handles in 3D.** A green **pill** sits on each run that can move. Drag it to slide the run across itself, on its surface. It snaps to 5 cm. Hold **Alt** to move it freely. A run in a corner can slide along either face, and the way you first drag picks which.
+
+<Figure
+  src="/img/design/studio-cable-selected.jpg"
+  alt="A cable selected in the see-through 3D room, drawn in teal with green pills on its runs. A Delete button sits above the room"
+  variant="inset"
+  maxWidth={560}
+  caption="A selected cable, with a pill on each run you can slide."
+/>
+
+A cable to a device on a table has a round **drop-point** handle. Move it anywhere on the table top. A drop away from the edge is a grommet.
+
+**Handles in 2D.** The unfolded room draws the same handles. Drag one to slide that part of the cable along its panel. **Double-click** a handle to split a segment in two. There is no drop-point handle in 2D, because it draws no table tops.
+
+**Reset route** in the cable's Properties, and in the bar above the room, removes every change by hand and goes back to the automatic route. It shows once you have changed a route by hand.
+
+- **Route via** and the drop point are saved with the cable. A run you slide by hand is kept for this session only. It is forgotten when you undo the move, press **Reset route** or change a port.
+- In Cable mode the walls facing the camera are cut away, so you look into the room. The other walls stay solid.
+- Cables are never drawn thinner than 5 px on screen, so they stay visible from far away.
 
 :::info Cables is marked Beta
 Check a route before you build from it.
@@ -503,8 +574,8 @@ A room can have several **designs**, and each design keeps its own **versions**.
 - The **Versions** tab lists every version: **Activate** one to make it current, **Rename** or **Delete** the others.
 
 <Figure
-  src="/img/release/2026-07-design-versions.png"
-  alt="Versions tab listing the versions of a design, the current one marked Active, with Activate, Rename and Delete buttons on the others"
+  src="/img/design/studio-versions.png"
+  alt="The Versions tab listing the versions of a design, from Version 6 down to Initial Import. The current one is marked Active and has only Rename. The others have Activate, Rename and Delete"
   variant="inset"
   maxWidth={340}
   caption="The Versions tab."
@@ -525,7 +596,15 @@ A room can have several **designs**, and each design keeps its own **versions**.
 In **View** mode, open the **Presentation** tab, set up the camera and click **Save current view**. Views can be renamed, reordered, replaced or removed.
 
 <Figure
-  src="/img/release/2026-10-presentation-bar.webp"
+  src="/img/design/studio-presentation-tab.png"
+  alt="The Presentation tab in View mode: a Present button, the standard views Overview, Floor plan and Room Bar Pro black in order, then Saved views with a name field reading View 1 and a Save current view button"
+  variant="inset"
+  maxWidth={340}
+  caption="The Presentation tab: standard views first, then your saved views."
+/>
+
+<Figure
+  src="/img/design/studio-present.jpg"
   alt="A meeting room design presented full screen in BMR Studio, with the presentation bar at the bottom showing the view counter, previous and next arrows, render options, a screenshot button and close"
   caption="Presenting, with the presentation bar at the bottom."
 />
