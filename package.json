@@ -9,6 +9,8 @@
     "swizzle": "docusaurus swizzle",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
+    "build:private": "node scripts/access/build-private.mjs",
+    "serve:private": "node scripts/access/server.mjs",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "typecheck": "tsc",

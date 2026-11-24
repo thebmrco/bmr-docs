@@ -6,6 +6,35 @@
 // so restrict it to production.
 const isProd = process.env.NODE_ENV === 'production';
 
+// Protected local preview (npm run build:private, see scripts/access): no sitemap, no
+// analytics, noindex on every page and a trap link for crawlers. The public build is unchanged.
+// BMR_DOCS_SEARCH=off leaves out the full-text search index as well.
+const isPrivate = process.env.BMR_DOCS_PRIVATE === '1';
+const withSearch = process.env.BMR_DOCS_SEARCH !== 'off';
+
+const noIndexDirectives = 'noindex, nofollow, noarchive, nosnippet, noimageindex, noai, noimageai';
+const crawlerTrap = () => ({
+  name: 'bmr-crawler-trap',
+  // Off-screen and hidden from assistive technology; a request to it bans the caller (policy.mjs).
+  injectHtmlTags() {
+    return {
+      postBodyTags: [
+        {
+          tagName: 'a',
+          attributes: {
+            href: '/internal-archive/',
+            rel: 'nofollow noindex',
+            tabindex: '-1',
+            'aria-hidden': 'true',
+            style: 'position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden',
+          },
+          innerHTML: 'Archive',
+        },
+      ],
+    };
+  },
+});
+
 module.exports = {
   title: 'BETTERMEETINGROOMS',
   tagline: 'Documentation',
@@ -14,6 +43,7 @@ module.exports = {
   organizationName: 'thebmrco', // GitHub org/user
   projectName: 'bmr-docs', // GitHub repo
   favicon: 'img/favicon.png',
+  noIndex: isPrivate,
   onBrokenLinks: 'throw',
   onBrokenAnchors: 'throw',
   markdown: {
@@ -38,7 +68,8 @@ module.exports = {
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
-        gtag: isProd
+        sitemap: isPrivate ? false : undefined,
+        gtag: isProd && !isPrivate
           ? {
               trackingID: 'G-BQ0J57GZ8K',
               anonymizeIP: true,
@@ -69,17 +100,23 @@ module.exports = {
     ],
     // Local search. It used to be switched off in CI because of a Node File
     // API error; it builds fine on Node 22, which the deploy workflow uses.
-    [
-      require.resolve('@easyops-cn/docusaurus-search-local'),
-      {
-        indexPages: true,
-        hashed: true,
-        language: ['en'],
-      },
-    ],
+    ...(withSearch
+      ? [
+          [
+            require.resolve('@easyops-cn/docusaurus-search-local'),
+            {
+              indexPages: true,
+              hashed: true,
+              language: ['en'],
+            },
+          ],
+        ]
+      : []),
+    ...(isPrivate ? [crawlerTrap] : []),
   ],
 
   themeConfig: {
+    metadata: isPrivate ? [{ name: 'robots', content: noIndexDirectives }] : [],
     navbar: {
       title: 'BETTERMEETINGROOMS',
       logo: {
@@ -92,7 +129,7 @@ module.exports = {
         // Every page, by area. Pages keep the view you chose (see src/components/guideView.ts).
         { type: 'docSidebar', sidebarId: 'allSidebar', label: 'All docs', position: 'left' },
         { label: "What's new", to: '/docs/release-notes', position: 'left' },
-        { type: 'search', position: 'right' },
+        ...(withSearch ? [{ type: 'search', position: 'right' }] : []),
       ],
     },
     footer: {

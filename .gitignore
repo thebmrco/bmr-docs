@@ -4,6 +4,10 @@
 # Production
 /build
 
+# Protected local preview (scripts/access): the build and the generated sign-in
+/build-private
+.docs-access.local.json
+
 # Generated files
 .docusaurus
 .cache-loader
