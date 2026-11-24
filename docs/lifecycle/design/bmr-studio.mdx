@@ -347,6 +347,23 @@ The placed copy is independent: editing the bundle later doesn't change rooms th
 
 A panel mural is your own picture printed across a group of acoustic panels. Create it under **Organisation › Preferences › Branding**, then place it from the **Branding** tab like any other item. It shows in the BOM as **Custom print**.
 
+### LED walls {#led-walls}
+
+Some displays in the catalog are LED cabinets. Place one and it becomes an **LED wall**: a grid of that cabinet, 4 × 4 to start with. Select it and the **Properties** tab has an **LED wall** block.
+
+| | |
+|---|---|
+| **Columns**, **Rows** | The grid, from 1 to 40 each. You type them |
+| **Cabinets** | How many: columns × rows |
+| **Size** | Width × height in metres, and the diagonal in inches |
+| **Resolution** | In pixels, with the format |
+| **Pixel pitch** | The distance between pixels, in mm |
+| **Viewing distance** | The closest comfortable seat, shown as **≥** a number of metres: one metre for each millimetre of pitch |
+| **Weight**, **Power** | The totals, when the cabinet's data states them. Power reads *typ.* and *max* |
+
+- The [BOM](#bom) counts every cabinet: a 4 × 4 wall is 16.
+- **[Replace](#replace)** swaps the cabinet and keeps the columns and rows.
+
 ---
 
 ## <Icon name="edit" size="1em" /> Editing {#editing}
@@ -546,6 +563,26 @@ Check a route before you build from it.
 <FeatureToggle />
 
 Recommends absorbers for the room and simulates the result against the **DIN 18041** target. You choose where treatment may go, then place and move the absorbers. Built on the room's [acoustic measurement](../../acoustics/acoustics-guide).
+
+### Room modes {#room-modes}
+
+In the **Diagnostics** tab, **Room modes** shows the notes the room booms on. Below the **Schroeder frequency** a single mode stands out, and bass traps treat it. Above it the modes blend into reverberation.
+
+<Figure
+  src="/img/design/studio-room-modes.png"
+  alt="The Room modes panel. Two chips, Before 155 Hz and After: place absorbers, then Details open. A chart of orange peaks from 20 Hz up to a dashed line at the Schroeder frequency, 155 Hz, with the strongest peaks named: 24 Hz, 41 Hz, 72 Hz and 144 Hz. Below it a strip of mode counts per third octave and the three kinds of mode: axial, tangential and oblique"
+  variant="inset"
+  maxWidth={340}
+  caption="Room modes before treatment. The Schroeder frequency is 155 Hz."
+/>
+
+- **Before** and **After** show the room as it is, and with the absorbers you placed. Each carries its Schroeder frequency. Until you place absorbers, **After** reads **place absorbers**.
+- Each mode is a peak, and the strongest are named by their frequency. A treatment makes the peaks lower and wider.
+- A strip under the chart counts the modes in each **third octave**. The count should rise from one band to the next. Point at a bar for the count and the number expected. A band with fewer modes than the one below says so.
+- The kinds are pictograms. **Axial** modes run between one pair of opposite surfaces. They are the strongest, and the ones bass traps treat first. **Tangential** modes go around four surfaces, **oblique** modes through all six, the weakest. Point at a kind to bring it forward.
+- **Details** adds the **RT60** the Schroeder frequency comes from, the mean of 500 and 1000 Hz, and the **box** the room is estimated as.
+- **Point at a peak**, or tap it, and the plan shows where in the room that note is loud: darker is louder. A mode that runs floor to ceiling is the same at every seat, and loudest at the floor and the ceiling.
+- It is an estimate for a box with rigid walls. A room that is not rectangular is estimated as the box around it, and the panel says **Not rectangular: an estimate**. Treat it as a guide.
 
 ---
 
