@@ -33,6 +33,14 @@ Design the room in 3D. **Pick a mode, and the Studio gives you the tools for tha
   ]}
 />
 
+**The toolbar, left to right:**
+
+| Where | What |
+|---|---|
+| **Left** | **Back**, the design's thumbnail and its **name**. The name opens a menu: **Rename**, **Set as active design** (while it isn't), **Duplicate**, **Export**, **Version history** and **Delete**. |
+| **Middle** | How you look: the [view controls](#view). |
+| **Right** | **Undo** and **Redo** in the editing modes, **Save** (**Save as New Design** is in the menu beside it), who else has the design open, and **Help**. |
+
 ---
 
 ## <Icon name="scan" size="1em" /> Modes: how the Studio works {#-modes}
@@ -49,7 +57,7 @@ Every job has its own **mode**. Switch at the bottom of the screen. The mode dec
   { problem: 'No modes at the bottom', fix: 'You can view, not edit. Shared designs and read-only access open in View only' },
 ]} />
 
-A design opens in **View**. **Versions** and **BOM** are in the sidebar in the four main modes. The first time you open each mode, a short **guided tour** shows you around.
+A design opens in **View**. **Versions** is in the sidebar in the four main modes. The **BOM** is not a tab: in **View** and **Equipment** it [opens on the left](#bom). The first time you open each mode, a short **guided tour** shows you around.
 
 <a id="-what-you-can-do" />
 
@@ -59,9 +67,72 @@ A design opens in **View**. **Versions** and **BOM** are in the sidebar in the f
 
 Look around and present. Nothing can move, so it's safe for reviews. Select anything to read its properties.
 
-- **View menu** (the eye): **2D / 3D**, **In room** (walk through at eye height), **Coverage** and **Layers** (dimensions, labels, cables …).
-- **Markers** from the scan: their own button in the toolbar.
-- **Presentation tab:** save views to [present](#presenting-a-design).
+The controls for looking sit together in the middle of the toolbar, in every mode:
+
+| Control | What it does |
+|---|---|
+| **2D · Split · 3D** | The floor plan, the 3D room, or both side by side. **Split** needs a wide screen and is in Cables mode for now. |
+| <Icon name="sliders-horizontal" size="1em" /> **View settings** | What the room shows, and how it is lit. See [View settings](#view-settings). |
+| <Icon name="radar" size="1em" /> **Coverage** | What the cameras, microphones, displays and loudspeakers reach. See [Coverage](#coverage). |
+| <Icon name="video" size="1em" /> **Camera** | Preset views (**Overview**, **Top**, four **Sides**) and your saved ones. **In room** (View mode) walks the room at eye height, **Camera view** sees what a device camera sees, **Center camera on object** frames your selection. |
+
+Next to them: **Render mode** (View mode only, see [Render modes](#render-modes)), **Measure**, and **Markers** from the scan once the room has some. The **Presentation tab** saves views to [present](#presenting-a-design).
+
+### View settings {#view-settings}
+
+<Icon name="sliders-horizontal" size="1em" /> opens **Space Configuration** beside the 3D view. Every switch applies at once, and each section folds away.
+
+| Section | What you switch |
+|---|---|
+| **Dimensions & guides** | Wall dimensions, measurements, guides, placement warnings |
+| **People** | Mannequins on the chairs: who they are, and how many chairs are taken |
+| **Room** | Doors & windows, wall transparency, interior wall transparency |
+| **Equipment** | Cables, ceiling equipment, acoustic treatment, equipment labels |
+| **Collisions**, **Grid** | In the editing modes: what stops a move, and the grid items snap to |
+| **Ceiling grid** | The suspended ceiling's tile grid: set up in the editing modes, shown or hidden anywhere |
+| **Lighting & environment** | Lighting, background colour and the render settings. See [Render modes](#render-modes) |
+
+Switches appear only when the room has something to switch: no acoustic treatment, no switch for it.
+
+### Coverage {#coverage}
+
+<Icon name="radar" size="1em" /> shows what the devices in the design reach, one type at a time: **None** (the default), **Display**, **Microphone**, **Speaker** <FeatureToggleTag /> or **Camera**.
+
+| Pick | What it draws |
+|---|---|
+| **Display** | Where the screen stays legible for detailed content, from the AVIXA DISCAS viewing-distance rule |
+| **Microphone** | How far each microphone picks up speech at full level, and where it starts to fall off |
+| **Speaker** <FeatureToggleTag /> | Which chairs the loudspeakers reach evenly. See [Loudspeaker coverage](#speaker-coverage) |
+| **Camera** | Each camera's field of view. What is inside it is framed at the far end |
+
+- The coverage is named on the picture, with an **i** that explains it in a few lines.
+- A type the design has no device of is greyed out: **None in this design**.
+- In **In room** and **Camera view** the menu is off, because coverage isn't drawn there.
+- Ceiling items that aren't part of the coverage (lights, projectors, ceiling acoustic panels, the suspended ceiling) turn see-through. The coverage's own devices stay in view, highlighted.
+
+<Notice kind="simulation" />
+
+#### Loudspeaker coverage <FeatureToggleTag /> {#speaker-coverage}
+
+<FeatureToggle />
+
+Do the chairs hear the loudspeakers evenly? Each chair is rated against the best-served chair, on direct sound only (no reflections), at 4 kHz.
+
+- **Green**: within 6 dB of the best chair. Speech is clear there.
+- **Red**: more than 6 dB below it. Speech is harder to understand and listening takes more effort.
+
+The bar at the bottom says **Recommended coverage** and counts the chairs: *n covered*, *n not covered*. The floor shows where the sound is within 6 dB of the best chair. Without chairs, the area is drawn from the loudest place in the room.
+
+**Details** opens more:
+
+| Detail | What it shows |
+|---|---|
+| **Frequency** | **1 kHz** or **4 kHz** (the default). Most loudspeakers get narrower as the frequency rises. |
+| **Rings** | Lines at 3, 6, 9 and 12 dB below the best chair |
+| **Evenness** | Loudest to quietest chair: **very even** (up to 3 dB), **even** (up to 6), **noticeably uneven** (up to 8), **uneven** (up to 12) or **very uneven** (more). The classes are the coverage envelope of AVIXA A102.01. |
+| **Data** | Where each loudspeaker's pattern comes from: **manufacturer**, **estimated** or **none, 90° assumed**. Shown when a loudspeaker has no manufacturer data. |
+
+**manufacturer** is the directivity from the datasheet, which BMR adds for some loudspeakers. **estimated** comes from the coverage angle in the catalog item. With **none**, a 90° angle is assumed. For a better picture, keep the coverage angle filled in on your [catalog items](../../catalog/ports-and-devices#placed-devices).
 
 ### Render modes {#render-modes}
 
@@ -73,9 +144,17 @@ In the toolbar, in **View** mode.
   caption="High quality adds bounce lighting and ambient occlusion. Standard is quicker to work in."
 />
 
-Finer settings: **Room** tab › **Rendering**. The 3D view uses **WebGPU** where the browser supports it — see [WebGPU support](../../getting-started/webgpu).
+Finer settings: **View settings** › **Lighting & environment**. The 3D view uses **WebGPU** where the browser supports it — see [WebGPU support](../../getting-started/webgpu).
 
 **Photoreal** <FeatureToggleTag /> is a third mode, for photo-like pictures. See [Photoreal rendering](#photoreal) below.
+
+### BOM {#bom}
+
+In **View** and **Equipment** the **BOM** opens in a panel on the left. It lists **every item in the room**, from a catalog or not: picture, name, category and maker, SKU and quantity, and the ceiling's materials. Cables are in it too.
+
+- A line with no catalog model says **Not in catalog**, adds **Detected** if the scan found it, and gives its size.
+- **Download as PDF** or **Excel** from the panel's header. Not-in-catalog lines are included.
+- **Hide BOM** closes the panel, **Show BOM** on the slim rail brings it back. Drag its edge to resize it.
 
 ---
 
@@ -93,7 +172,7 @@ A third render mode: a **path-traced**, photo-like picture of the design, with r
 
 1. In **View** mode, pick **Photoreal** in the toolbar, or in the bar while [presenting](#presenting-a-design).
 2. Keep the camera still. The picture refines (*Rendering 12 / 64*), then denoises.
-3. Passes and denoising: **Room** tab › **Rendering**.
+3. Passes and denoising: **View settings** › **Lighting & environment**.
 
 Photoreal missing, won't start or looks grainy? See [WebGPU support › Fix common problems](../../getting-started/webgpu#fix-common-problems).
 
@@ -211,7 +290,7 @@ A room can have several **designs**, and each design keeps its own **versions**.
 | Button | What it does |
 |---|---|
 | **Save** | Saves your changes as a **new version** (*Version 2*, *Version 3* …). Earlier versions are kept. |
-| **Save as New Design** | Makes a **separate design**, not linked to this one. |
+| **Save as New Design** (in the menu beside **Save**) | Makes a **separate design**, not linked to this one. |
 
 - **Switching mode saves too**, as a new version, if you have unsaved changes.
 - Cable changes **save automatically**.
@@ -254,7 +333,7 @@ The same for Studio designs and AR Designs:
 
 1. Open the room's **Designs** tab.
 2. Check the 3D layout, the cables and the **BOM**.
-3. When the room is built to it, **Activate** the design — or **Set as active design** in BMR Studio's **Room** tab.
+3. When the room is built to it, **Activate** the design — or **Set as active design** in BMR Studio, from the design's name menu in the toolbar.
 
 The Active Design is the room's record. See [Deploy](../deploy/).
 

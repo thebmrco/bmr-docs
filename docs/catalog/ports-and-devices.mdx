@@ -40,9 +40,9 @@ Ports fill the **Connections** panel in Cable mode: required connections are dra
 
 ---
 
-## <Icon name="scan" size="1em" /> Placed devices
+## <Icon name="scan" size="1em" /> Placed devices {#placed-devices}
 
-A **device** is an active part positioned on the model. Each one drives a coverage overlay in BMR Studio:
+A **device** is an active part positioned on the model. Each one drives a coverage overlay in BMR Studio, from the [**Coverage** menu](../lifecycle/design/bmr-studio#coverage):
 
 | Device | Overlay | Data from the datasheet |
 |---|---|---|
@@ -50,6 +50,8 @@ A **device** is an active part positioned on the model. Each one drives a covera
 | **Microphone** | Pickup range | Pickup pattern, radius |
 | **Speaker** | Coverage area | Dispersion, horizontal and vertical angle, distance |
 | **Screen** | Visibility zone | Screen size (inches), aspect ratio |
+
+For a **speaker**, the coverage uses the **horizontal angle**, read as the angle where the level has dropped 6 dB. Where BMR has the manufacturer's directivity, that is used instead. Without either, Studio assumes 90°. See [Loudspeaker coverage](../lifecycle/design/bmr-studio#speaker-coverage).
 
 <Notice kind="simulation" />
 

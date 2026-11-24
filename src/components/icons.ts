@@ -106,7 +106,7 @@ import {
   Key, Smartphone, CircleCheck, Laptop, MapPin, Volume2, Monitor,
   Wrench, Users, Puzzle, Globe, AlertTriangle, HelpCircle, Star, Brain,
   Target, Compass, SlidersHorizontal, Video, ListChecks,
-  Eye, BrickWall, Cable, ClipboardCheck,
+  Eye, BrickWall, Cable, ClipboardCheck, Radar,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -196,6 +196,7 @@ export const iconMap: Record<string, LucideIcon> = {
   "volume-2": Volume2,
   "sliders-horizontal": SlidersHorizontal,
   "video": Video,
+  "radar": Radar,
   "monitor": Monitor,
   "wrench": Wrench,
   "users": Users,
