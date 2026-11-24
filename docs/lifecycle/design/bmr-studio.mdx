@@ -104,7 +104,7 @@ A design opens in **View**. **Versions** is in the sidebar in the four main mode
 
 ## <Icon name="eye" size="1em" /> View {#view}
 
-Look around and present. Nothing can move, so it's safe for reviews. Select anything to read its properties.
+Look around and present. Items can't be dragged here, so it's safe for reviews. Select anything to read its [properties](#properties). If you can edit the design, **Edit** and **Delete** appear above the item: see [Editing](#editing).
 
 The controls for looking sit together in the middle of the toolbar, in every mode:
 
@@ -257,6 +257,7 @@ In **View** and **Equipment** the **BOM** opens in a panel on the left. It lists
 />
 
 - **Click a line** to select its items in the room.
+- The list **follows your edits** as you make them: adding, replacing, deleting, undo and redo. You don't need to save first.
 - A line with no catalog model says **Not in catalog**, adds **Detected** if the scan found it, and gives its size.
 - An item of a placed [room configuration](default-room-configuration#placing-the-configuration) that doesn't fit is marked **Does not fit**. Hover for the reason.
 - **Download as PDF** or **Excel** from the panel's header. Not-in-catalog lines are included. The same row has **collapse all**.
@@ -344,6 +345,96 @@ The placed copy is independent: editing the bundle later doesn't change rooms th
 ### Panel murals {#panel-murals}
 
 A panel mural is your own picture printed across a group of acoustic panels. Create it under **Organisation › Preferences › Branding**, then place it from the **Branding** tab like any other item. It shows in the BOM as **Custom print**.
+
+---
+
+## <Icon name="edit" size="1em" /> Editing {#editing}
+
+Pick an item and its tools stand right above it. They step aside while you drag, resize or rotate it, and come back when you let go. The selection stays when you change mode.
+
+In **View**, if you can edit the design, an item you pick gets two buttons: **Edit**, which opens the mode that edits it, with the item still selected and the camera where it was, and **Delete**, which removes it at once and offers **Undo**. **Del** and undo work there too.
+
+The editing modes give more. Which buttons show depends on the item and the mode. [Cable mode](#cable-mode) has its own tools.
+
+| Button | What it does |
+|---|---|
+| **Center camera on Object** | Frames the item. Also **F**. See [Moving the camera](#camera) |
+| **Rotate**, **Resize**, **Reset** | Turn it, change its size, put its rotation back to zero. A wall item goes back square to its wall |
+| **Duplicate**, **Repeat** | A copy. A row or a grid of copies: [see below](#arrange) |
+| **Select all of type** | Every item like this one: [see below](#select-all-of-type) |
+| **Distribute**, **Align in a row**, **Align in a column** | For two or more free-standing items: [see below](#arrange) |
+| **Move to mount** | For equipment on a mount: choose another mount it fits |
+| **Replace** | Swap it for another item: [see below](#replace) |
+| **Split**, **Close gap** | For walls. **Split** cuts a wall in two where you click, **Esc** cancels. **Close gap** draws the wall between two selected walls that don't meet |
+| **Group**, **Ungroup** | Several items that select and move as one. **Detach from group** takes a single item out |
+| **Create bundle** <FeatureToggleTag /> | Saves the selection as a [bundle](#bundles) |
+| **Delete** | Removes the item. **Del** does the same |
+
+### Select all of type {#select-all-of-type}
+
+Pick one item and press **Select all of type**. Every item like it is selected: the same catalog item, the same shape, or the same kind of thing, such as all the walls or all the doors. Only what the current mode lets you pick. Then change, move or delete them together.
+
+A wall that the camera cuts away so you can look into the room is included, and shows see-through while it is selected. Items you hid yourself are not.
+
+### Replace {#replace}
+
+Pick one or more items and press **Replace**. It works on equipment and on scanned objects: chairs, tables, sofas, displays and the rest.
+
+1. The **Equipment** sidebar opens in replace mode, with a banner: **Replacing Lounge chair**, or **Replacing 15 items**, and **Cancel**.
+2. Items of the same kind come first, under **Same type: Chairs**, then **Other items**. Items that can't be mounted the way the original is are left out. A mixed selection has no same-type group.
+3. **Hover** a card for a moment: the item appears in place of every selected item, so you see it in the room first. Move away and the originals come back.
+4. **Click** the card, or its **Replace** icon, to swap.
+
+The new item takes the place, the turn and the mounting of the old one. **Cancel** leaves things as they were.
+
+### Repeat, Distribute and Align {#arrange}
+
+For columns, beams, chairs and anything else that comes in rows.
+
+**Repeat** copies one item into a row. A panel opens on the canvas:
+
+| Setting | What it does |
+|---|---|
+| **Count & spacing** | **Number in a row**, the original included, and **Spacing** from centre to centre. Direction buttons set which way the row runs. **Bend** curves the row along an arc and turns each item with it |
+| **Between walls** | Click the two walls to fill between. The row spreads between them, with the **Gap at the walls** set to **Equal**, **Half** or **None**. If it doesn't fit, the panel says so |
+| **Rows**, **Row spacing** | As many rows again, for a grid |
+
+The copies show as grey ghosts until you press **Apply**, which adds them as one undo step. A wall item's row runs along the wall or up it, and an item on a table keeps its height.
+
+**Distribute** spreads two or more free-standing items between two walls you click, with equal gaps and the same **Gap at the walls** choice. **Align in a row** and **Align in a column** line them up along the room's own axes. Each is one undo step.
+
+While you move an item in a row, a gap that is nearly the same as its neighbour's snaps to match it, and equal gaps are drawn as dimension lines with their length, such as **= 2.40 m**. A pillar or beam also shows its gaps to its neighbours and the walls.
+
+### Placing {#placing}
+
+- A floor item snaps **flush against a wall**. With the grid on, it snaps by its **sides**.
+- A new wall item lands on a **free part of the wall**, or in front of what covers it.
+- Whatever stands between the camera and the selected item turns **see-through**, so you can see where a new item went.
+- A warning marks two items that really clash. They must share height as well as floor area, so a laptop on a table or a panel on the ceiling is left out. **View settings › Dimensions & guides › Placement warnings** hides the labels.
+
+### Properties {#properties}
+
+The **Properties** tab is in every mode. It reads name on the left, value on the right: read-only values in grey boxes, editable ones outlined. Sections fold, and the panel remembers which.
+
+**Nothing selected, in View:**
+
+| Section | Shows |
+|---|---|
+| **Room details** | Room size as length, width and height, floor area, seats, the number of equipment items and the cables |
+| **Project details** | Organisation, location, room, the **Design name**, who created it, when it was created and last updated, and what it is based on |
+
+The **Design name** is editable here. It renames the design, as in the toolbar.
+
+**An item selected.** The head shows its picture, name and category. Below: **Name**, **Label**, **Category**, **Brand**, **Colour** and **Mounting**. Only **Label** is yours to edit: it is numbered when the item is placed, and once you edit it, it stays as you wrote it.
+
+**Layout**, open by default, holds the numbers:
+
+- **Dimensions** as L, W and H (T for a wall's thickness, Ø for a round top), **Position** as X, Y and Z (Y only in 3D) and **Rotation**, in metres and degrees. Where they apply: distance from the ceiling, height on the wall and screen content.
+- Each number takes a typed value (a comma works as the decimal mark), **↑** and **↓** for 0.01 (**Shift** for 0.1), or a drag on its **letter**, left and right. Dragging a position moves the item as you go and counts as one undo step. A dimension applies when you let go.
+
+Further down, where they apply: the absorber options, a video device's settings, an LED wall, materials and colours, table and shape settings, and outlets.
+
+A generic display has a **Size** from standard diagonals and a **Mounting**: **On the wall** or **On a stand**. When a scan placed it, the tab also shows what the scan measured, and **Check the size** if it found the display wider than usual. Press **Checked** once you have.
 
 ---
 
