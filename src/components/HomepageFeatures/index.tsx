@@ -97,16 +97,16 @@ function DoorCard({role, title, tasks, typical, device, cta, link, variant}: Doo
    ================================================================ */
 
 const LatestRelease = {
-  date: 'October 2026',
-  title: 'Release 2.4: cables by connection, bundles and acoustic proposals',
-  text: 'Cable mode rebuilt around a Connections panel, reusable equipment bundles, acoustic optimisation proposals, and a Documents tab with inventory and bill of materials.',
-  link: '/docs/release-notes/2026-10-release-2.4',
+  date: 'November 2026',
+  title: 'BMR Studio opens in View mode, and cables follow the room',
+  text: 'A new Studio header, a choice of how a design starts, Replace and Repeat, room modes, a catalog of your own, Data Analysis, and Continue scan in BMR Mobile 2.4.',
+  link: '/docs/release-notes/2026-11-release',
 };
 
 const EarlierReleases = [
+  {date: 'Oct 2026', title: '2.4: cables by connection, bundles and acoustic proposals', link: '/docs/release-notes/2026-10-release-2.4'},
   {date: 'Oct 2026', title: '2.3: BMR Mobile 2.3 room photo and clearer acoustics, presentation mode in Studio', link: '/docs/release-notes/2026-10-release-2.3'},
   {date: 'Sep 2026', title: '2.2: room recognition, Basic or Advanced acoustics, in-app guidance', link: '/docs/release-notes/2026-09-release-2.2'},
-  {date: 'Sep 2026', title: '2.1: BMR Mobile in the App Store, new acoustics view on the web', link: '/docs/release-notes/2026-09-release-2.1'},
 ];
 
 function WhatsNew() {
@@ -131,7 +131,7 @@ function WhatsNew() {
               </Link>
             ))}
             <div className={styles.newsMore}>
-              <Link to="/docs/release-notes/2026-10-release-2.4">All release notes →</Link>
+              <Link to="/docs/release-notes">All release notes →</Link>
               <Link to="/docs/roadmap/"><Map size={14} aria-hidden="true" /> Roadmap →</Link>
             </div>
           </div>

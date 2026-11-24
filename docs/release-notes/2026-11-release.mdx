@@ -1,0 +1,468 @@
+---
+title: "November 2026: web 2026.11.x, BMR Mobile 2.4"
+sidebar_label: November 2026
+description: BMR Studio opens in View mode with a new header, you choose how a design starts, Replace, Repeat and Distribute speed up editing, cables follow the room, Room modes show where a room booms, every organisation gets a catalog of its own, and BMR Mobile 2.4 adds Continue scan.
+---
+
+import Icon from '@site/src/components/Icon'
+import Figure from '@site/src/components/Figure'
+
+# November 2026: web 2026.11.x, BMR Mobile 2.4
+
+This release is about working in **BMR Studio**. It opens in **View mode**, with a new header and one **Space Configuration** panel, and you choose how a design starts. **Replace**, **Repeat**, **Distribute** and **Align** make editing faster, **cables** follow the room, and **Room modes** show where a room booms. Every organisation gets a **catalog of its own**, and **Data Analysis** gives exact numbers per organisation, location and room. In **BMR Mobile 2.4**, **Continue scan** replaces Retake.
+
+The web update is 2026.11.x, live on 24 November 2026. The matching app release is [BMR Mobile 2.4](#bmr-mobile-24). The release before this one is [Release 2.4 of October 2026](2026-10-release-2.4).
+
+Features marked <FeatureToggleTag /> are switched on per organisation.
+
+---
+
+## Web Platform (2026.11.x) {#web-platform}
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Icon name="studio" size="1.1em" /> BMR Studio opens in View mode, with a new header
+  </span>
+</summary>
+
+- **Studio opens in View mode.** Pick an item and **Edit** and **Delete** appear above it. **Edit** opens the mode that edits it, with the item still selected and the camera where it was. **Delete** removes it at once, with **Undo**. **Del** does the same. See [Editing](../lifecycle/design/bmr-studio#editing).
+- **The modes read as the steps of a design:** View, Structurals, Equipment, Cables and Acoustics. A green arrow marks the current one and slides along when the mode changes.
+- **A new header.** The design file control (thumbnail, breadcrumb and file menu), the view switcher (**2D**, **Split**, **3D**) with undo and redo, and at the far right who else is in the design, **Help** and **Share**. The mode alert in View mode and the configuration pill are gone.
+- **A camera toolbar** above the modes: the preset views (**Overview**, **Top** and four **Sides**; Dollhouse is now **Overview**), **Focus** and zoom. Going to a preset or to a device's camera flies the view there, and **In room** and **Camera view** have a way back to 3D. See [Moving the camera](../lifecycle/design/bmr-studio#camera).
+- **Center camera on object** and **F** show the object whole, head-on, with space around it.
+- **Camera view** lists one entry per camera device and looks through its widest lens. Zoom goes as far as the lens's optical and digital zoom reach, and the view pans and tilts within the lens's range.
+- **The classic compass** shows in every 3D view. The red half of the needle points north, and a click on **N**, **E**, **S** or **W** looks that way.
+- **One Space Configuration panel** holds everything the room shows. The **Room** tab is gone. Each design also has its own **Background colour**, under **Lighting & environment**.
+- **Coverage is in the header,** one type at a time: **None**, **Display**, **Microphone**, **Speaker** (when it is switched on for your organisation) or **Camera**.
+- **Guidelines is now Room Configuration.**
+- **On a phone,** every panel starts collapsed and only one opens at a time, so the room comes first.
+- **Shared designs** open in a read-only Studio with the same controls: presets, **In room**, device cameras, the BOM and Properties. Cables are not shown in a shared design for now.
+
+<Figure
+  src="/img/release/2026-11-studio-view.jpg"
+  alt="BMR Studio in View mode with the Aquarium design in 3D. The BOM is open on the left, the toolbar runs along the top with the design name, the view controls and a Share button, the Properties tab is open on the right and the modes are along the bottom"
+  caption="BMR Studio in View mode, with the BOM open on the left."
+/>
+
+<Figure
+  src="/img/release/2026-11-studio-camera-toolbar.png"
+  alt="The camera toolbar above the mode bar: a preset stepper with arrows left and right, a Focus button, and zoom in and zoom out around the level 93%. Under it the mode bar: View, current under a green arrow, then Structurals, Equipment, Cables with a Beta badge, Acoustics, Analysis and Present"
+  caption="The camera toolbar, above the mode bar."
+/>
+
+<Figure
+  src="/img/release/2026-11-studio-view-settings.jpg"
+  alt="The View settings button lit in the toolbar, with the Space Configuration panel open on the left beside the 3D room: the sections Dimensions and guides, People, Room and Equipment, each with its switches"
+  caption="Space Configuration, opened from View settings."
+/>
+
+<Notice kind="design" />
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Icon name="add-new" size="1.1em" /> Choose how a design starts
+  </span>
+</summary>
+
+- **Welcome to BMR Studio.** The first time you open a design from a scan, you choose how it starts: **Placeholder blocks** (chairs blue, tables green, other objects purple), **Generic equipment** or **Remove everything**. Or pick a **room configuration**, with the ones recommended for the room's size first. A Custom Room gets the same choice: the empty room, or a room configuration. The Studio tour waits until you have chosen, and no tour starts over a dialog. See [the welcome](../lifecycle/design/bmr-studio#the-welcome).
+- **Automatic design from scans** is an organisation setting, off by default. An Admin switches it on in **Preferences › General**. Then a processed scan builds the room's design and makes it the **Active design**: each object the scan found becomes a generic 3D model of its type, at its size and place and in its colour. Walls, floor, doors, windows and openings come from the scan. Things that don't belong in a meeting room, such as a bed, a bath, kitchen appliances, stairs or a fireplace, are left out. A new scan makes a new baseline: it becomes the Active design, and the previous one stays as a version.
+- **Scan models.** Under **Preferences**, choose which catalog item a scanned chair, table, cupboard, sofa or display becomes. See [Scan models](../structure/organisation#scan-models).
+- **A scanned display keeps the size the scan found.** It stands on a cart when it stood on the floor, and the BOM counts it as a generic display.
+- **A design you create from a scan** starts with the default equipment, like the generated one.
+- **Room configurations place themselves.** Add one and BMR Studio puts it where it fits: against the best-fitting wall, or centred on the floor when nothing is wall-mounted. Other walls where it fits are offered, and what doesn't fit is marked **Does not fit**. If items are in the way, Studio offers to remove them first. A room configuration keeps its wall colours and materials when you reopen the design.
+
+<Notice kind="design" />
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Icon name="edit" size="1.1em" /> Place and arrange faster
+  </span>
+</summary>
+
+- **Replace** shows the whole catalog with the items of the same type first. Hover a card and the item appears in place of the selection, so you see it before you swap. See [Replace](../lifecycle/design/bmr-studio#replace).
+- **Repeat, Select all of type, Distribute and Align.** **Repeat** works for every item: wall items repeat along or up their wall, table items at their own height. **Select all of type** picks every item like the one you clicked, also a wall the camera cuts away, shown see-through. **Distribute** spaces items out between two walls you click, and **Align** lines them up in a row or a column. See [Repeat, Distribute and Align](../lifecycle/design/bmr-studio#arrange).
+- **Structurals: Box and Cylinder,** with guides, wall snapping, Scale, Repeat, Distribute and Align.
+- **Rotate and Orient are one tool.** In the Rotate panel, **Point to** a wall or screen, and selected chairs turn to face it, or **Rotate individually**.
+- **Every floor item snaps flush to a wall,** and the grid snaps items by their sides.
+- **New equipment lands in view:** inside the room or the bundle area, on its own surface, clear of other items and outlined. Items face you while you place them, and a wall item finds a free spot on the wall. What stands between the camera and the selection turns see-through.
+- **Placement warnings only for real clashes** — not for a laptop on a table. An item outside the room says so, and placing holds at the walls.
+- **Live wall lengths,** with end dots and arrows to drag a wall end along its own line. A wall that nearly lines up with another no longer stretches towards infinity when the other wall moves.
+- **Fixed-size chairs, round and oval tables,** and table resizing.
+- **Hidden objects** can't be picked, in any mode.
+- **The Properties tab reads as name and value,** in every mode. With nothing selected it shows the room and the project: size, floor area, seats, equipment, cables, who created the design and when. With an item selected it shows its head, its details and a **Layout** section for dimensions, position and rotation. See [Properties](../lifecycle/design/bmr-studio#properties).
+- **The BOM lists every item in the room,** catalog or not, in a panel on the left. It follows every add, replace, remove, undo and redo at once, without saving first. See [BOM](../lifecycle/design/bmr-studio#bom).
+
+<Figure
+  src="/img/release/2026-11-studio-selection-toolbar.jpg"
+  alt="A chair selected in BMR Studio's Equipment mode, drawn in pink among the other chairs, with its toolbar above the room: Center camera on Object, Rotate, Resize, Duplicate, Repeat, Select all of type, Reset, Replace and Delete"
+  caption="A selected chair, with its tools above it."
+/>
+
+<Figure
+  src="/img/release/2026-11-studio-replace.png"
+  alt="The Equipment tab in replace mode: a banner reading Replacing Organic Conference Chair with a Cancel button, the catalog and category filters, and under Same type: Chairs the cards of other chairs"
+  caption="Replace: items of the same type come first."
+  variant="inset"
+  maxWidth={340}
+/>
+
+<Figure
+  src="/img/release/2026-11-studio-properties.png"
+  alt="The Properties tab with a chair selected: its picture, name and category at the top, then Name, Label, Category, Brand, Colour and Mounting, and the Layout section with Dimensions, Position and Rotation. A red Delete Element button closes the panel"
+  caption="Properties of a selected chair."
+  variant="inset"
+  maxWidth={340}
+/>
+
+<Figure
+  src="/img/release/2026-11-studio-bom.png"
+  alt="The BOM panel with the sections Equipment 12, Infrastructure 4, Accessories 1 and Cables 7, each line with a picture, name, category and maker, SKU and quantity. One line, a cupboard, is marked Not in catalog and Detected, with its size"
+  caption="The BOM. The amber line is an item with no catalog model."
+  variant="inset"
+  maxWidth={300}
+/>
+
+<Notice kind="design" />
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Icon name="cable" size="1.1em" /> Cable mode: cables follow the room
+  </span>
+</summary>
+
+Cable mode is still **Beta**. Check a route before you build from it.
+
+- **Cables follow the room.** Routing runs on a graph of the room's edges and corners, and it is the new default. Cables follow angled walls instead of zigzagging on the grid, and run along the ceiling, walls or floor depending on where their ends are.
+- **Shape a route.** Select a cable and a green pill sits on each run you can slide, in 3D and in the unfolded 2D view. A cable to a device on a table has a drop-point handle, and every segment has a handle you can grab. **Route via** sets whether the cable meets on the floor or the ceiling, and **Reset route** goes back to the automatic one. A run you slide by hand is kept for this session only. See [Shaping a route](../lifecycle/design/bmr-studio#cable-route).
+- **Five groups of cable types,** each with one icon and one colour, everywhere, and one cable type dropdown.
+- **Hover and select on cables,** with **Re-route** and **Delete**. The panel and the room share the same hover and selection, and cables get default labels.
+- **A tidier Connections panel.** The header has hide, add equipment, **Unselect all** and **Reset to default**. Every connection row looks the same: **Select** or **Connection missing**. A removed connection frees its far port for other devices, and a clicked component is selected on its own, not with its group.
+- **Cable properties** show type and length at the top, your own label and only free ports, with **Undo** after a delete.
+
+<Figure
+  src="/img/release/2026-11-studio-cables.jpg"
+  alt="Cable mode in BMR Studio: the Connections panel on the left lists each device's ports and the connected port, with the cable type filters at the top, next to a see-through 3D room with the cables drawn in colour. The right panel says to select an element to view its properties"
+  caption="Cable mode: the Connections panel, and the see-through 3D room."
+/>
+
+<Figure
+  src="/img/release/2026-11-studio-cable-route.jpg"
+  alt="A cable selected in the see-through 3D room, drawn in teal with green pills on its runs. A Delete button sits above the room"
+  caption="A selected cable, with a pill on each run you can slide."
+/>
+
+<Notice kind="design" />
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Icon name="audio-lines" size="1.1em" /> Acoustics: Room modes and loudspeaker coverage <FeatureToggleTag />
+  </span>
+</summary>
+
+<FeatureToggle />
+
+- **Room modes, before and after.** In the **Diagnostics** tab of Acoustics mode, one switch shows the room before and after treatment. Each mode is drawn as its resonance, and the booming ones are named. Pictograms and **Details** replace the text. Point at a mode, or tap it, and the plan shows where in the room it is loud. See [Room modes](../lifecycle/design/bmr-studio#room-modes).
+- **Loudspeaker coverage rates every seat.** Directivity per frequency band, with a **1 kHz / 4 kHz** switch. A seat off a speaker's axis gets quieter instead of being cut off, and the rings are measured from the loudest place in the room. It is the **Speaker** choice in the **Coverage** menu. See [Loudspeaker coverage](../lifecycle/design/bmr-studio#speaker-coverage).
+- **Every score says which one it is.** **Score** and **With proposal** in Room Data, **Your design** on the overview, and the proposal named as such. Measured and simulated rooms share one score panel.
+- **A proposal that helps nothing says so,** says what holds the score back and where the room can still improve. A simulated room's no-gain panel offers **Contact BMR**.
+- **Measurement charts.** The ambient noise chart draws the hearing threshold. The hearing threshold, RT60 and noise come first, **Show average** draws only the average, noise is averaged as energy, and tab names follow your language.
+- **One term per thing** in English, German and French. The German terms come from DIN 18041.
+- **Treatment rows** pick their product from a searchable list.
+
+<Figure
+  src="/img/release/2026-11-studio-room-modes.png"
+  alt="The Room modes panel. Two chips, Before 155 Hz and After: place absorbers, then Details open. A chart of orange peaks from 20 Hz up to a dashed line at the Schroeder frequency, 155 Hz, with the strongest peaks named: 24 Hz, 41 Hz, 72 Hz and 144 Hz. Below it a strip of mode counts per third octave and the three kinds of mode: axial, tangential and oblique"
+  caption="Room modes before treatment. The Schroeder frequency is 155 Hz."
+  variant="inset"
+  maxWidth={340}
+/>
+
+<Figure
+  src="/img/release/2026-11-studio-speaker-coverage.jpg"
+  alt="A meeting room with chairs and loudspeakers in BMR Studio. A bar over the room reads Loudspeaker coverage, then Recommended coverage, 5 covered, 0 not covered and Details. The floor is orange, and green rings mark the covered chairs"
+  caption="Loudspeaker coverage: all 5 chairs covered."
+/>
+
+<Notice kind="acoustics" />
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Icon name="marker" size="1.1em" /> Inventory and markers
+  </span>
+</summary>
+
+- **Marker review is now Build inventory.** The button on **Documents › Inventory** says **Build inventory**. The 3D preview fits the screen. The duplicates step only appears when there are duplicates, and its button says **Next**. The last screen sums up what you did: verified, confirmed without a marker, removed and merged. **Carry over the items…** only shows when there is an earlier inventory to carry over from.
+- **One marker review everywhere.** Build inventory, and a marker opened from Room Data, the 3D view or an AR design, share one dialog: the markers as tiles or as dots on the scan's own mesh (**Tiles | 3D**), the photo enlargeable, and the name and description edited in place.
+- **For every marker, choose Record equipment or Nothing to record.** **Next** always moves on to the next marker.
+- **Marker actions sit right under the marker:** delete, download, **Previous** and **Next** stay in view, and **Done** is at the bottom right. The arrow keys step through the markers, also in the enlarged photo.
+- **Possible duplicates are found across the whole inventory** and merged, with their photos kept.
+- **A count you set by hand verifies the item.**
+- **Search forgives typos.** Equipment search is ranked and typo-tolerant, and marker suggestions and the inventory list search the same way.
+- **Items without a 3D model** are marked **placed as a box** in the catalog grid and the equipment picker in Studio.
+
+See [Inventory](../lifecycle/discovery/inventory).
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Icon name="catalog" size="1.1em" /> Your own catalog, and sharing
+  </span>
+</summary>
+
+- **Every organisation gets a catalog of its own.** BMR creates it the first time it is needed, names it after your organisation and keeps it for your organisation only. Items you type into an inventory are kept in it.
+- **Equipment is read-only for your Admins.** Organisation Admins see an **Equipment** page in the Library section with the items they can use. BMR adds and changes equipment. New equipment goes through BMR for now. See [Equipment page](../catalog/equipment-page).
+- **Share with connected organisations:** catalogs, bundles, room configurations and panel murals.
+- **Connection requests say what they did.**
+- **Lists remember your settings** — sort, page size and filters — per user, not per browser. They were reset once, and a feature you untick in a filter now means any, so it no longer hides items.
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Icon name="organization" size="1.1em" /> Organisation, Directory and deleting
+  </span>
+</summary>
+
+- **Delete shows what goes.** Deleting an organisation, a location or a room shows what goes with it, how many users lose access, and who they are. Deleting an organisation or a location asks you to type its name. An organisation takes its locations and rooms to the **Trash** with it, and restoring it brings them back. See [Deleting a location](../structure/location#deleting-a-location).
+- **The Directory shows a room-only user their rooms.** The room's location shows as plain text, with no link and no menu.
+- **Filter each column** in the Directory.
+- **Edit the name** of any location, floor or room from the Directory.
+- **A new location, floor or room** is shown and highlighted as soon as you create it.
+- **Organisations:** search and paging, and **All Organizations** is a row like any other, with an icon and totals.
+- **Settings in General preferences:** **Automatic design from scans** and **Mesh upload** <FeatureToggleTag />. See [Organisation](../structure/organisation#general).
+- **One status page for every full-page error:** not authorised, not found, sign-in failed, load failed.
+- **A clear message when a 3D view can't start,** and why Photoreal is off.
+- **Synced rooms** no longer sort first when you sort by last activity. Changes to documents, designs and markers show as the room's activity.
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Icon name="activity-log" size="1.1em" /> Data Analysis and shared designs <FeatureToggleTag />
+  </span>
+</summary>
+
+<FeatureToggle />
+
+- **Scans, Markers, Designs and Inventory tabs** give exact numbers per organisation, location and room.
+- **What each tab shows.** Scans: rooms scanned, total scans, average per room, re-scanned rooms. Markers: by marker type and review state. Designs: rooms with a design, Active designs, rooms deployed without verified inventory, and the bill of materials per component and where. Inventory: items, verified share, by category and by source (catalog or typed), and what is deployed, per component and where.
+- **The Overview** has coverage cards that open their tab and a new **Room sizes** card, and you can expand a location for its rooms.
+- **Filters on every tab** — location, room size, and category, type or component where they apply — change every number on the tab. Room sizes follow BMR's Default Room Configurations. The **Acoustics** tab is unchanged.
+- **Shared designs are counted.** The share dialog shows how often a link has been opened. **Organisation › Shared designs** lists every share link with its views and expiry, and lets you remove access.
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Icon name="export" size="1.1em" /> Cisco Workspace Designer and Video Room Calculator import
+  </span>
+</summary>
+
+**Bring a Cisco room into BMR Studio.** Import a room from **Workspace Designer** or the **Video Room Calculator**. The room and what is in it come across — doors, furniture and Cisco devices such as the Desk Pro and the Room Vision camera — and notes in the file show in Studio. A failed import stays in the dialog instead of a short message that disappears. An Admin turns on **Cisco room import** in **Preferences › General**. See [Import a Cisco room](../integrations/cisco-vrc#import-a-cisco-room).
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Icon name="palette" size="1.1em" /> Dark theme <FeatureToggleTag />
+  </span>
+</summary>
+
+<FeatureToggle />
+
+**Light, dark or system,** from the user menu. The 3D and 2D views stay light.
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Icon name="sync-now" size="1.1em" /> Also live since 30 October (web 2026.10.3)
+  </span>
+</summary>
+
+These shipped on 30 October without release notes.
+
+- **Inventory** lists identical items on one line, with every marker they come from. A list or grid toggle is one tap away, and **Add item** takes a photo. The inventory says when a more recent scan is available. The categories **Equipment**, **Infrastructure**, **Accessories** and **Cables** are on the catalog items and show on the web.
+- **Directory:** locations, floors and rooms in one tree. A room and a location are edited in pop-ups, and floors are on the **Rooms** tab.
+- **A catalog item is edited in place** on its Details card, with breadcrumbs.
+- **LED walls.** An LED cabinet from the catalog is placed as a wall you size in columns and rows. See [LED walls](../lifecycle/design/bmr-studio#led-walls).
+- **Room configurations** show preview cards, and **Browse all** lists the ones that don't fit them. See [Default Room Configuration](../lifecycle/design/default-room-configuration).
+- **Doors** are glass or solid, chosen in the door's properties.
+- **Stacking:** equipment rests on the floor or on another item's top, never inside it. Chairs follow a replaced or rotated table.
+- **Ceiling items** have a distance below the ceiling you can set. The **View** menu shows or hides ceiling equipment.
+- **Properties edits what several selected items have in common.**
+- **Cable panel:** a row for every port, with **In** and **Out** per signal and PoE as the power signal's direction.
+- **Studio on phones:** the side panels are rails that open over the canvas.
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Icon name="permissions" size="1.1em" /> Security
+  </span>
+</summary>
+
+- **A Java vulnerability is mitigated on our servers** (CVE-2026-114938, "Java4Shell").
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Icon name="delete" size="1.1em" /> Removed
+  </span>
+</summary>
+
+- The **Analyze Materials** button on markers: creating a design already runs the marker analysis.
+- The **Room** tab in BMR Studio: its settings are in the Space Configuration panel.
+- The mode alert in View mode, and the configuration pill in the header.
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Icon name="wrench" size="1.1em" /> Fixes and smaller improvements
+  </span>
+</summary>
+
+- **Studio's Delete** says why the Active design can't be deleted.
+- **Floor:** the catalog's floor texture is back after you reload a design.
+- **Bundle editor** opens facing its wall, and items added in it no longer land behind the wall.
+- **Pages and dialogs:** a new page opens at the top and Back returns you to where you were. Dialogs open at the top, not scrolled to the bottom.
+- **Mural editor:** the picture stays in view while the controls scroll.
+- **Messages** show above the full-screen Studio viewer.
+- **Photoreal** builds heavy scenes in the background, so the page doesn't freeze, and copes with scenes whose meshes share attributes. If the GPU refuses work, Photoreal is left instead of the page failing.
+- **Studio treatment rows:** the first edit no longer pushes the rows down, the product picker's placeholder fits its field, and the RT60 panel opens below the view caption.
+- **The loading spinner** no longer sits on a grey box, and the preset menu in the camera toolbar is drawn like the rest of the bar, not with the browser's own look.
+- **Connection field:** side by side when it fits, stacked when it doesn't, with no broken words.
+- **Organisation directory** no longer crashes when a request is refused, and a refused organisation no longer opens its tabs.
+
+</details>
+
+---
+
+## BMR Mobile (2.4) {#bmr-mobile-24}
+
+BMR Mobile 2.4 follows [BMR Mobile 2.3](2026-10-release-2.3#bmr-mobile-23).
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Icon name="scan" size="1.1em" /> Scan
+  </span>
+</summary>
+
+- **Continue scan replaces Retake.** When a scan ends, one bar offers **Continue scan** and a checkmark to save. **Continue scan** reopens the camera in the same room: your scan, markers and photos stay, everything new merges in and markers stay on their walls. The **i** button explains the three uses: add markers, extend the room, fix a gap. <FeatureToggleTag />
+- **A live model while you scan.** A small model of the room builds as you scan and carries over when you continue. <FeatureToggleTag />
+- **A scan that stops by itself says why** and what to do next: the device lost its position, is too hot, ran low on memory or reached the size limit. <FeatureToggleTag />
+- **Tips for markers** are a plain list of icons: power outlets, network points, displays and AV, tables, chairs and lamps.
+- **One dialog says why a scan is missing.** Before an acoustic measurement, new markers or an AR Design, the app names the problem: **Scan Needed** (no scan yet), **Re-scan Needed** (the scan has no AR Map), **Scan Not Uploaded Yet** (it is still waiting to upload) or **AR Map Unavailable** (it could not be loaded). It says what happens if you carry on without it: an invalid MOS score, markers saved as photos only, or designs that can't be saved. It offers to scan or re-scan right away, to try again, or to **Continue Anyway**.
+- **Your organisation decides whether the mesh is captured.** The app reads the setting before each scan. On: the 3D mesh is captured and uploaded with the scan. Off: it is not. Change it on the Web Platform and it applies to the next scan, with no app update. <FeatureToggleTag />
+- **The scan and the AR world map upload first,** ahead of marker photos and everything else. Once they are confirmed you can start AR Design, or open the room on the web, while the rest keeps uploading in the background.
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Icon name="3d-ar-design" size="1.1em" /> AR Design
+  </span>
+</summary>
+
+- **One sheet for your session.** A sheet at the bottom shows item thumbnails, the item and photo counts and **Tap to review and upload**. Open it for two tabs, **This design** and **All designs**. Swipe an item left to delete it. Tap one to see its name, category and where it mounts, and for a screen, to choose what it shows. **Add Design** starts another, and **Review & upload all** works once every design has a photo.
+- **Bundles place as one group,** all their parts together. <FeatureToggleTag />
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Icon name="audio-lines" size="1.1em" /> Acoustics
+  </span>
+</summary>
+
+- **The optimisation proposal comes from BMR's servers,** so the app and the Web Platform show the same one. <FeatureToggleTag />
+
+</details>
+
+---
+
+<details className="bmr-details">
+<summary className="bmr-summary">
+  <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
+    <Icon name="wrench" size="1.1em" /> Fixes
+  </span>
+</summary>
+
+- **People count and info sheets** no longer open and close in a loop on acoustic results.
+- **Speaker measurement** starts again when the audio engine failed to start, and audio setup runs in the background.
+- **The speaker picker** shows the right icon for the connection type.
+- **Ambient noise chart:** zones and filled circles are drawn correctly. **Expert mode** no longer freezes the impulse chart.
+- **No crash** after saving acoustic results, or when a device without LiDAR tries to start a scan.
+- **AirPlay picker** opens on iOS 27.2.
+- **A scan that isn't ready yet** says so, instead of failing to load.
+- **A new user with no family name** can sign in again.
+- **Two uploads of an AR world map for one room** no longer collide on the version.
+
+</details>
+
+---
+
+<p className="release-end">End of Release Notes</p>

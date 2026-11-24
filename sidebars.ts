@@ -24,8 +24,9 @@ const releaseNotes = {
     slug: '/release-notes',
   },
   items: [
-    newDoc('release-notes/2026-10-release-2.4'),
-    updatedDoc('release-notes/2026-10-release-2.3'),
+    newDoc('release-notes/2026-11-release'),
+    updatedDoc('release-notes/2026-10-release-2.4'),
+    'release-notes/2026-10-release-2.3',
     'release-notes/2026-09-release-2.2',
     'release-notes/2026-09-release-2.1',
     'release-notes/2026-08-release-2.0',
