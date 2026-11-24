@@ -8,7 +8,7 @@
  *   import Figure, { FigurePair } from '@site/src/components/Figure'
  *
  *   <Figure
- *     src="/img/design/bmr-studio-ui.webp"
+ *     src="/img/design/studio-screen.jpg"
  *     alt="The BMR Studio window with the mode switcher at the bottom"
  *     caption="BMR Studio opens in View mode."
  *   />
