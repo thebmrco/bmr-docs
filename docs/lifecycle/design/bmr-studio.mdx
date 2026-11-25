@@ -35,18 +35,28 @@ A scanned **display** with no model of yours is a screen scaled to the size the 
 
 ### The welcome {#the-welcome}
 
-The first time a design from a scan, or a Custom Room, opens in the Studio, **Welcome to BMR Studio** asks how to start. Pick one and press **Start**.
+The first time a design from a scan, or a Custom Room, opens in the Studio, **Welcome to BMR Studio** asks how to start. Pick one of three starts, **or** a default room configuration, and press **Start**.
+
+<Figure
+  src="/img/design/studio-welcome.png"
+  alt="The Welcome to BMR Studio dialog, Choose how to start your design. Three cards, each with a picture of the room: Placeholder blocks, Generic equipment and Remove everything. Below an OR line, Start from a default room configuration reads None recommended for 27 m², with a Show button. The Start button, still grey, is at the bottom right"
+  caption="Welcome to BMR Studio: three starts, or a default room configuration."
+/>
 
 | Start | What the design holds |
 |---|---|
 | **Placeholder blocks** | The scan's objects as simple blocks, coloured by type |
 | **Generic equipment** | The scan's objects as models, as described above |
 | **Remove everything** | Only the room: walls, floor, doors, windows and openings |
-| **Start from a default room configuration** | The empty room with the setup you pick placed in it. **Show** opens the list. Those sized for the room's floor area come first, marked **Recommended**. Each says whose it is: **Your organisation**, **Shared with you** or **BMR default**. See [Default Room Configuration](default-room-configuration) |
+| **Start from a default room configuration** | The same empty room, with the configuration you pick placed in it. **Show** opens the list. Those sized for the room's floor area come first, marked **Recommended**. Each says whose it is: **Your organisation**, **Shared with you** or **BMR default**. See [Default Room Configuration](default-room-configuration) |
+
+**A default room configuration removes everything in the room too.** It starts from the same empty room as **Remove everything**. The Studio then opens **Equipment** mode on the **Room Configuration** tab and places the configuration, and what doesn't fit is marked **Does not fit**. See [What Place configuration does](default-room-configuration#placing-the-configuration).
+
+It is one choice: picking a configuration clears a start you picked, and the other way round. **Start** stays grey until you choose.
 
 A **Custom Room** has no scanned objects, so it offers **Empty room**, with the configurations already open.
 
-You can't skip the question. **Exit**, or **Esc**, asks **Exit BMR Studio?** and leaves the Studio, and the welcome is there again the next time you open the design. Copies of a design, imported Cisco files and older designs don't ask.
+You can't skip the question. The **X**, or **Esc**, asks **Exit BMR Studio?** **Exit** leaves the Studio and **Stay** goes back to the choice. The welcome is there again the next time you open the design. Copies of a design, imported Cisco files and older designs don't ask.
 
 :::info Automatic design from scans
 An Admin can have every new room scan make a design by itself: **Preferences › General › Automatic design from scans**. It is off by default. The design is named **From scan** and the date, is furnished as above, and becomes the room's **Active** design, in place of the current one. Until it is there, a few minutes after the scan arrives, the room says **New scan added, design being generated**. Its first open in the Studio shows the welcome. A scan that arrives while the setting is off never gets one, even if you turn it on later. See [Organisation](../../structure/organisation#general).
