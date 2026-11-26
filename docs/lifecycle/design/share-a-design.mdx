@@ -1,0 +1,105 @@
+---
+title: Share a Design
+sidebar_label: Share a Design
+description: Send a read-only link to anyone, no account needed. Who can share, what the person sees, how long the link lasts and how to take it back.
+---
+
+import Icon from '@site/src/components/Icon'
+
+# <Icon name="link" size="1em" /> Share a Design
+
+<PageIntro illustration="invite" meta={['Web platform', 'Admins']}>
+
+Show a design to someone outside BMR. **One link. No account. View only.**
+
+</PageIntro>
+
+Anyone with the link sees **this design and nothing else**: not the room, not the location, not the rest of your organisation. They cannot change a thing.
+
+---
+
+## <Icon name="key" size="1em" /> Who can share {#who}
+
+Only an organisation **Admin**. Location Managers and Room Managers don't see the button, whatever their rights in the room.
+
+Why so strict? A link leaves your organisation. Hand it out on purpose.
+
+---
+
+## <Icon name="link" size="1em" /> Create a link {#create}
+
+1. Open the design in [BMR Studio](./bmr-studio).
+2. Press **Share**, top right in the header.
+3. Press **Create share link**.
+4. **Copy link** and send it.
+
+:::warning Copy it now
+The link is shown **once**. BMR keeps only a fingerprint of it, so a lost link can't be brought back. Lost it? Remove access and create a new one.
+:::
+
+You can make as many links as you need, one for each person if you like. Each is listed in the same window.
+
+---
+
+## <Icon name="eye" size="1em" /> What the person sees {#recipient}
+
+They open the link in a browser. No sign-in. The design opens with a **View only** badge, and the header shows where it is and what it's called.
+
+| Mode | What it does |
+|---|---|
+| **Overview** | The whole room at a glance. Look from any side with the compass |
+| **In Room** | Walk through it. Pick the eye height: **Walking, adult**, **On a chair** or **Wheelchair** |
+| **Camera View** | Look through a camera of the design. **Previous camera**, **Next camera**, pan and tilt |
+| **Coverage** | The marked area: what the cameras see, where the microphones pick up voices, where the speakers are heard well and the display can be read. Switch between **Camera**, **Microphone**, **Speaker** and **Display** |
+
+Also in reach: the equipment list (**BOM**), the properties of what they click, a **Screenshot**, **Full screen**, and the BOM as **PDF** or **Excel**.
+
+What they don't get:
+
+- **Editing.** Nothing can be moved, added or saved.
+- **Cables.** They are not shown in a shared design.
+- **The people.** Who made the design is left out.
+
+:::note Not every design can be shared
+A [VRC design](../../integrations/cisco-vrc) <FeatureToggleTag /> can't be opened through a link yet. The person sees *This design can't be shared*.
+:::
+
+---
+
+## <Icon name="activity-log" size="1em" /> Keep an eye on it {#manage}
+
+Press **Share** again to see the links that still work:
+
+| You see | It means |
+|---|---|
+| **Expires** *date* | A link works for **30 days** |
+| **Not opened yet**, **Opened once**, **Opened 4 times** | How often the person came. *last on* gives the day |
+| **Extend 30 days** | Another 30 days from today. The link stays the same |
+| **Remove access** | The link stops working **at once**. Confirm with **Remove access?** |
+
+Above the list, **Opened 7 times through its links, old ones included** adds up the views of every link the design ever had, the ended ones too.
+
+Someone opens an old link? They see *This link is no longer valid*. Ask the sender for a new one.
+
+---
+
+## <Icon name="organization" size="1em" /> Every link of the organisation {#organisation}
+
+Admins also get one list for the whole organisation: **Organisation › Shared designs**.
+
+| Column | What it shows |
+|---|---|
+| **Design** | The design, with its room and location. Click it to open it |
+| **Shared by** | Who made the link, and when |
+| **Views** | How many times it was opened, and the last day |
+| **Expires** | The last day, or **Expired** or **Access removed** |
+
+Search by design, room or location. **Show expired and removed links** brings the old ones back into the list. **Remove access** works from here too.
+
+---
+
+## <Icon name="chevron-right" size="1em" /> Next {#next}
+
+- [BMR Studio](./bmr-studio): where the design is made
+- [Deploy](../deploy/): make a design the reality of the room
+- [Organisation](../../structure/organisation): where the list of links lives

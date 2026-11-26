@@ -15,7 +15,7 @@ import {
 
 # Release 9 (BETA) 2026 February
 
-This release strengthens the overall **platform consistency**, improves reliability in the Discovery workflow, enhances navigation between Library and Room contexts, and introduces the first step toward spatially aware acoustic documentation inside the Digital Twin.
+This release strengthens the overall **platform consistency**, improves reliability in the Discovery workflow, enhances navigation between Library and Room contexts, and introduces the first step toward spatially aware acoustic documentation inside the room scan.
 
 The update also aligns the Web interface with the new design language introduced in BMR Mobile.
 
@@ -93,16 +93,16 @@ This eliminates unnecessary back-navigation and improves workflow efficiency whe
 <details className="bmr-details">
 <summary className="bmr-summary">
   <span style={{display:"inline-flex", alignItems:"center", gap:"10px"}}>
-    <MapPin size={18} /> Acoustic Test Records Position Coordinates (Digital Twin Validation)
+    <MapPin size={18} /> Acoustic Test Records Position Coordinates (Room Scan Check)
   </span>
 </summary>
 
-Acoustic measurements now capture spatial position data when performed inside a room containing a Digital Twin.
+Acoustic measurements now capture spatial position data when performed inside a room that has been scanned.
 
 **New functionality**
 - The phone’s position is recorded when the acoustic test begins  
-- The system verifies the presence of a Digital Twin before enabling spatial recording  
-- Position data will be visualized inside the Digital Twin  
+- The system checks that the room has been scanned before enabling spatial recording  
+- Position data will be visualized inside the room scan  
 
 This marks the first step toward a fully spatial acoustic documentation flow, where speaker + measurement locations can be visualized and compared over time.
 

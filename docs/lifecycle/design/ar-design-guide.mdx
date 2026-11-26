@@ -27,7 +27,10 @@ An AR Design is kept **only while the session is open**. Nothing is saved on the
 | The room has… | What happens |
 |---|---|
 | **A scan** | The app recognises the room, then you design. Full upload. |
-| **No scan** | **Scan Recommended**: tap **Do Scan First**, or **Continue** in *limited mode*. |
+| **No scan** | **Scan Needed**: tap **Scan Now**, or **Continue Anyway** in *limited mode*. |
+| **A scan, but no AR Map** | **Re-scan Needed**: tap **Re-scan Now**, or **Continue Anyway** in *limited mode*. |
+
+Other messages (**Scan Not Uploaded Yet**, **AR Map Unavailable**): see [AR World Map](../../technology/ar-world-map#what-the-app-says).
 
 **Limited mode:** only your photos can be uploaded. They go to the room's markers, without coordinates. Placed items are **not** uploaded.
 
@@ -59,7 +62,7 @@ The same screen appears when you add **markers** or start an **acoustic measurem
   { label: "Search, or filter by category. Tap the catalog name to switch catalog: Favourites (starred) first, then All Catalogs A–Z. The Recent tab lists the ones you used.", image: "/img/ar-design/AR-Design-placing-object.jpg", alt: "AR catalog showing the BMR Standard Catalog - AR with a search field, category tabs, and item thumbnails" },
   { label: "Move and rotate the item into place. Add more with +.", image: "/img/ar-design/AR-Design-item-placed.jpg", alt: "A video collaboration display placed on the wall in AR, with the shutter and add-item buttons below" },
   { label: "Screens: tap the wand in the design drawer to show a photo or video. The media stays on your device.", image: "/img/ar-design/AR-Design-Selecting-content-display.jpg", alt: "Screen content picker offering photos and videos to display on a placed screen" },
-  { label: "The design drawer lists items and photos. Trash removes one. Finish with Upload & Exit, or Add Design for a variant.", image: "/img/ar-design/AR-Design-reviwing-items-placed.jpg", alt: "Design drawer listing placed items with delete and screen-content controls, plus Add Design and Upload & Exit" },
+  { label: "The design drawer lists items and photos. Trash removes one. Finish with Review & upload all, or Add Design for a variant.", image: "/img/ar-design/AR-Design-reviwing-items-placed.jpg", alt: "Design drawer listing placed items with delete and screen-content controls, plus Add Design and Upload & Exit" },
   { label: "Add Design: Start empty, or Continue from Design 1 to keep everything placed. Design 1 stays either way.", image: "/img/ar-design/Adding-a-new-AR-Design.jpg", alt: "Add Design sheet offering Start empty or Continue from Design 1, noting Design 1 stays saved either way" },
 ]} />
 
@@ -67,8 +70,7 @@ The same screen appears when you add **markers** or start an **acoustic measurem
 
 ## <Icon name="circle-check" size="1em" /> Finishing up
 
-- **One design**: **Upload & Exit**.
-- **Several**: the **All designs** tab, then **Review & upload all**.
+Tap **Review & upload all**. The number is how many designs go up. With several, the **All designs** tab lists them first.
 
 <StepFlow steps={[
   { label: "All designs lists every design; the open one is marked Current. Tap Review & upload all.", image: "/img/ar-design/Multiple-designs.jpg", alt: "All designs tab listing Design 1 and Design 2, with the current one marked Current and a Review & upload all button" },

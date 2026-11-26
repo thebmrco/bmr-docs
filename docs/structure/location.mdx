@@ -21,31 +21,47 @@ A building or site. **It holds its rooms, their floors, and the address.** Manag
 ## <Icon name="laptop" size="1em" /> The Location page on the web {#-the-location-page-on-the-web}
 
 <Figure
-  src="/img/structure/location-page-web.png"
-  alt="Location page on the web showing the map, location details, data completeness per room, and recent activity"
+  src="/img/structure/web-location.jpg"
+  alt="The Overview tab of a location on the web: the map and Location Details at the top, Data Completeness and Recent Activity below"
   caption="The Overview tab of a location."
 />
 
 | Part | What it shows |
 |---|---|
 | **Map** | The site at its coordinates |
-| **Location Details** | Rooms, users, address, organisation |
+| **Location Details** | Rooms, users, address, organisation. The **pencil** edits the address and coordinates |
 | **Data Completeness** | How many rooms have a scan, markers, acoustics and a design. Click a row to see those rooms |
 | **Recent Activity** | Latest changes, and who made them |
-| **Rooms** tab | Every room, with its floor. **Create a new Room** |
-| **Edit Location** | Address, and the **Floors** tab |
+| **Rooms** tab | Every room, grouped by floor. **Create a new Room** and **+ Floor** |
+| **Pencil** by the name | Renames the location |
 
 ---
 
 ## <Icon name="layout" size="1em" /> Floors {#floors}
 
-A floor is a name the rooms carry: *3*, *Ground*, *B1*, *Mezzanine*. It exists while rooms are on it.
+A floor belongs to the location, and it stays when its last room leaves: *3*, *Ground*, *B1*, *Mezzanine*. Add the floors first and the rooms can follow.
 
 | To | Go to |
 |---|---|
 | Filter by floor | **Rooms** tab, the chips above the list |
-| Add or rename a floor, move rooms onto it | **Edit Location → Floors** |
-| Set one room's floor | The room's **Where** pencil, see [Room](./room#-moving-a-room) |
+| Add a floor | **Rooms** tab › **+ Floor** |
+| Rename a floor | **Rooms** tab, the pencil next to the floor name |
+| Find floors with no rooms | **Empty floors**, under the room list |
+| Delete a floor | **Empty floors**, the bin next to the name. Only a floor with no rooms can be deleted there |
+| Move a room onto a floor | The room's **Where** pencil, see [Room](./room#-moving-a-room) |
+
+Renaming and deleting are for people who can edit the location.
+
+---
+
+## <Icon name="delete" size="1em" /> Deleting a location {#deleting-a-location}
+
+In the organisation, **Directory → Locations**, the **bin** next to the location. Only an **Admin** can.
+
+The dialog shows what goes with it: the **rooms** in it and their **designs**, **scans** and **markers**, and how many **users lose access**. Click the users to see who. You **type the location's name** to confirm.
+
+- A user whose only role is on this location can be **moved to another location**, or **lose access**. You choose for each.
+- The location goes to the Trash with its rooms, and so does everything in them. Restoring is a <FeatureToggleTag /> feature. Without it, there is no way back in the app.
 
 ---
 

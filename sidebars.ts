@@ -17,9 +17,16 @@ const updatedDoc = (id: string) => ({type: 'doc' as const, id, className: 'badge
 const releaseNotes = {
   type: 'category' as const,
   label: 'Release Notes',
+  link: {
+    type: 'generated-index' as const,
+    title: 'Release notes',
+    description: 'What changed in each release of the web platform and BMR Mobile, newest first.',
+    slug: '/release-notes',
+  },
   items: [
-    newDoc('release-notes/2026-10-release-2.4'),
-    updatedDoc('release-notes/2026-10-release-2.3'),
+    newDoc('release-notes/2026-11-release'),
+    updatedDoc('release-notes/2026-10-release-2.4'),
+    'release-notes/2026-10-release-2.3',
     'release-notes/2026-09-release-2.2',
     'release-notes/2026-09-release-2.1',
     'release-notes/2026-08-release-2.0',
@@ -53,6 +60,9 @@ const sidebars: SidebarsConfig = {
     // the rest.
     area('General Information', [
       'getting-started/account-setup',
+      newDoc('getting-started/web-platform'),
+      newDoc('getting-started/my-tasks'),
+      newDoc('getting-started/profile'),
       'getting-started/system-requirements',
       'getting-started/webgpu',
       'getting-started/notifications',
@@ -86,6 +96,7 @@ const sidebars: SidebarsConfig = {
       items: [
         'lifecycle/design/ar-design-guide',
         updatedDoc('lifecycle/design/bmr-studio'),
+        newDoc('lifecycle/design/share-a-design'),
         'lifecycle/design/default-room-configuration',
         'lifecycle/deploy/index',
       ],
@@ -106,13 +117,19 @@ const sidebars: SidebarsConfig = {
       'integrations/webex-control-hub-sync',
       'integrations/cisco-vrc',
     ]),
-    area('Maintenance', ['lifecycle/maintenance/index']),
+    {
+      type: 'category',
+      label: 'Maintenance',
+      link: {type: 'doc', id: 'lifecycle/maintenance/index'},
+      items: [newDoc('lifecycle/maintenance/data-analysis')],
+    },
     {
       type: 'category',
       label: 'Catalog & 3D Models',
       className: 'badge-updated',
       link: {type: 'doc', id: 'catalog/index'},
       items: [
+        'catalog/equipment-page',
         'catalog/item-anatomy',
         'catalog/category-requirements',
         'catalog/3d-model-standards',
@@ -148,6 +165,9 @@ const sidebars: SidebarsConfig = {
       label: 'Getting Started',
       items: [
         'getting-started/account-setup',
+        newDoc('getting-started/web-platform'),
+        newDoc('getting-started/my-tasks'),
+        newDoc('getting-started/profile'),
         'getting-started/inviting-users',
         'getting-started/notifications',
         'getting-started/system-requirements',
@@ -206,11 +226,17 @@ const sidebars: SidebarsConfig = {
           items: [
             'lifecycle/design/ar-design-guide',
             updatedDoc('lifecycle/design/bmr-studio'),
+            newDoc('lifecycle/design/share-a-design'),
             'lifecycle/design/default-room-configuration',
             'lifecycle/deploy/index',
           ],
         },
-        'lifecycle/maintenance/index',
+        {
+          type: 'category',
+          label: 'Maintenance',
+          link: {type: 'doc', id: 'lifecycle/maintenance/index'},
+          items: [newDoc('lifecycle/maintenance/data-analysis')],
+        },
       ],
     },
     {
@@ -227,6 +253,7 @@ const sidebars: SidebarsConfig = {
             id: 'catalog/index',
           },
           items: [
+            'catalog/equipment-page',
             'catalog/item-anatomy',
             'catalog/category-requirements',
             'catalog/3d-model-standards',
@@ -245,7 +272,8 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Product Updates',
-      items: ['roadmap/index', releaseNotes],
+      // The release notes index page exists once, in allSidebar.
+      items: ['roadmap/index', {...releaseNotes, link: undefined}],
     },
   ],
 
@@ -257,6 +285,7 @@ const sidebars: SidebarsConfig = {
       items: [
         updatedDoc('user-guides/room-capture'),
         'getting-started/account-setup',
+        newDoc('getting-started/my-tasks'),
         'getting-started/system-requirements',
       ],
     },

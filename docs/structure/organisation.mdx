@@ -26,10 +26,14 @@ Open the organisation on the web. Groups along the top, tabs beneath. Only an **
 |---|---|---|
 | **Overview** | — | Counts, Data Completeness, Recent Activity and the location list |
 | **Users** | — | Who has access, and with which role — see [Inviting Users](../getting-started/inviting-users) |
-| **Directory** | Locations · Rooms | The [locations](./location) and [rooms](./room) in the organisation |
-| **Preferences** | General · Acoustic · Catalog · Branding | Organisation-wide settings — [below](#-preferences) |
+| **Directory** | Locations · Rooms | The [locations](./location) and [rooms](./room) you can reach in the organisation |
+| **Preferences** | General · Acoustic · Catalog · Scan models · Bundles <FeatureToggleTag /> · Branding | Organisation-wide settings — [below](#-preferences) |
 | **Integrations** | Webex Sync · Microsoft 365 | [Webex Control Hub Sync](../integrations/webex-control-hub-sync) and [Microsoft 365](../integrations/microsoft-365) |
-| **Room Configurations** | Yours · BMR Defaults | Recommended equipment per room size — [below](#room-configurations) |
+| **Connections** | — | Share with other organisations, or receive from them — [below](#connections) |
+| **Shared designs** | — | Every read-only link to your designs — [below](#shared-designs) |
+| **Room Configurations** | Yours · Shared with you · BMR Defaults | Recommended equipment per room size — [below](#room-configurations) |
+
+The **Directory** shows what you can reach. With a role only on a room, you see that room, and its location as plain text, with no link and no menu.
 
 ---
 
@@ -40,12 +44,19 @@ Open the organisation on the web. Groups along the top, tabs beneath. Only an **
 | Setting | What it does |
 |---|---|
 | **Organization ID** | The identifier to quote when you contact support |
+| **Mesh upload** <FeatureToggleTag /> | Under **Capture app**. On: BMR Mobile uploads the textured 3D mesh with every scan. Off: the room geometry only. See [Mesh upload](../lifecycle/discovery/room-scan#mesh-upload-setting) |
+| **Automatic design from scans** | Under **Capture app**. On: every new room scan makes a furnished design and makes it the room's **Active** design, in place of the current one. Off (the default): a design is made only with **Turn into Design** or **New Design**. A scan that arrives while it is off never gets one, even if you turn it on later. See [Starting a design](../lifecycle/design/bmr-studio#starting-a-design) |
 | **Cat figures** · **Monster figures** | Offer cats or friendly monsters as figure styles for the chairs in BMR Studio |
+| **Cisco room import** | Offer a Cisco Workspace Designer or Video Room Calculator file as the basis of a new design. Off until an Admin turns it on. See [Import a Cisco room](../integrations/cisco-vrc#import-a-cisco-room) |
 | **Trash retention** <FeatureToggleTag /> | How long deleted rooms, scans, designs and acoustics can be restored |
-| **Delete this organization** | Moves the organisation, its locations, rooms and everything in them to the trash |
+| **Delete this organization** | Moves the organisation, its locations, rooms and everything in them to the Trash, all at once |
 
 :::danger Deleting an organisation
-You type the organisation's name to confirm. The other Admins get an email. Restoring from the **Trash** is a <FeatureToggleTag /> feature. Without it, there is no way back in the app.
+The dialog first shows what goes with it: how many **locations**, **rooms**, **designs**, **scans** and **markers**, and how many **users lose access**. Click the users to see who. You type the organisation's name to confirm. The other Admins get an email.
+
+Every role in the organisation is removed: on the organisation, on its locations and on its rooms. So **only the person who deleted it, or BMR, can restore it**, from the **Trash**. Whoever restores it becomes its Admin. Restoring brings back everything that went with it, and leaves alone what was in the Trash before.
+
+Restoring is a <FeatureToggleTag /> feature. Without it, there is no way back in the app.
 :::
 
 ### Acoustic {#acoustic}
@@ -55,7 +66,7 @@ Defaults for new measurements. Earlier ones don't change.
 | Setting | What it does |
 |---|---|
 | **Default measurement mode** | **Advanced** or **Basic** — see [Acoustic Measurement](../acoustics/acoustics-guide) |
-| **Target MOS** | The score the organisation aims for, from 1.0 to 5.0. Data analysis views flag rooms below it |
+| **Target MOS** | The score the organisation aims for, from 1.0 to 5.0. [Data Analysis](../lifecycle/maintenance/data-analysis#acoustics) <FeatureToggleTag /> flags rooms below it |
 | **Default room usage type** | The DIN 18041 usage class pre-selected when a room is created |
 | **Default acoustics catalog** | The catalog whose acoustic items acoustic measurement uses |
 
@@ -67,6 +78,20 @@ The device setting in BMR Mobile wins (**Settings → Acoustic Settings**). Then
 
 The catalogs you can use, with their item counts. BETTERMEETINGROOMS catalogs are **view only**; your own can be managed here. See [Catalog & 3D Models](../catalog/).
 
+### Scan models {#scan-models}
+
+A room scan finds the chairs, tables, cupboards, sofas and displays in the room, and a design made from it places a model for each. **Scan models** says which model, for each kind of object.
+
+| | |
+|---|---|
+| **Kinds** | **Chair**, **Swivel chair**, **Stool**, **Rectangular table**, **Round or oval table**, **Cupboard**, **Shelf**, **Sofa** and **Display** |
+| **Generic model** | What a kind uses until you choose one |
+| **Choose…** | Pick an item from the catalog. Only items with a 3D model are offered |
+| **Use generic** | Goes back to the generic model |
+| **Fallbacks** | With no model of its own, a swivel chair or a stool takes the Chair's, a round table the Rectangular table's, a shelf the Cupboard's |
+
+Only an **Admin** can change them. A display left on generic becomes a screen scaled to the size in the scan. See [Starting a design](../lifecycle/design/bmr-studio#starting-a-design).
+
 ### Bundles <FeatureToggleTag /> {#bundles}
 
 <FeatureToggle />
@@ -74,8 +99,8 @@ The catalogs you can use, with their item counts. BETTERMEETINGROOMS catalogs ar
 Reusable sets of equipment: yours, public ones and ones shared with you. Edit your own here. How they work: [BMR Studio › Bundles](../lifecycle/design/bmr-studio#bundles).
 
 <Figure
-  src="/img/release/2026-10-bundles-list.jpg"
-  alt="Organisation › Preferences › Bundles: a searchable list of bundles with a thumbnail, name, number of items, what each mounts to, the catalogs it is in and its owner"
+  src="/img/structure/web-org-bundles.jpg"
+  alt="Organisation › Preferences › Bundles: a searchable list of bundles with a thumbnail, name, description, number of items, what each mounts to, the catalogs it is in, its owner and row actions, with New bundle at the top"
   caption="Preferences › Bundles."
 />
 
@@ -87,10 +112,32 @@ Reusable sets of equipment: yours, public ones and ones shared with you. Edit yo
 | **Panel murals** | Spread one picture across a grid of acoustic panels. **New mural** to start; print files are made when you download. |
 
 <Figure
-  src="/img/release/2026-10-panel-murals-branding.jpg"
-  alt="Organisation › Preferences › Branding, with Logos at the top and Panel murals below, with a print density setting and a New mural button"
+  src="/img/structure/web-org-branding.jpg"
+  alt="Organisation › Preferences › Branding: Logos with an Upload logo button, and Panel murals below with a print density setting and a New mural button"
   caption="Branding: logos and panel murals."
 />
+
+---
+
+## <Icon name="organization" size="1em" /> Connections {#connections}
+
+Share catalogs, bundles <FeatureToggleTag />, room configurations and murals with another organisation, or receive theirs. **Nothing is shared until the other side accepts.** Only an **Admin** sees this group.
+
+| To | Do this |
+|---|---|
+| **Give your code** | Copy **Your connection code** and send it to an Admin of the other organisation. **New code** replaces it: the old one stops working, and existing connections stay |
+| **Ask to connect** | **Connect to another organization**. Enter **Their connection code**, choose **We want to share with them** or **We want to receive from them**, then **Send request**. Changed your mind? **Cancel request** |
+| **Answer a request** | Under **Waiting for your answer**: **Accept** or **Decline** |
+| **See who is connected** | **Your connections** lists each organisation, the relationship and since when |
+| **End a connection** | **End**. Everything shared through it is removed. Items already placed in rooms stay there, but can't be placed again |
+
+When you share a catalog, a bundle, a room configuration or a mural, the list offers only the organisations that accepted a connection.
+
+---
+
+## <Icon name="link" size="1em" /> Shared designs {#shared-designs}
+
+Every read-only link to your designs in one list: who shared it, how often it was opened and until when it works. **Remove access** takes effect at once. Only an **Admin** sees it. How links are made: [Share a Design](../lifecycle/design/share-a-design).
 
 ---
 
@@ -101,7 +148,8 @@ Recommended equipment per room size, suggested when you design a room.
 | Tab | What it holds |
 |---|---|
 | **Yours** | Your organisation's own configurations — **Add a room configuration** to make one |
-| **BMR Defaults** | Configurations from BETTERMEETINGROOMS, used when none of yours fits |
+| **Shared with you** | Configurations other organisations shared with yours |
+| **BMR Defaults** | Configurations from BETTERMEETINGROOMS, offered to every organisation |
 
 Fully documented in **[Default Room Configuration](../lifecycle/design/default-room-configuration)**.
 

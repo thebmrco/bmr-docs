@@ -27,12 +27,16 @@ First: [take close-up markers →](./markers#-taking-a-good-marker)
     title: "Open",
     content: (
       <>
-        <h3>1) Open the inventory</h3>
-        <p>Room → <strong>Documents</strong> → <strong>Inventory</strong> → <strong>Review markers</strong>.</p>
-        <div className="web-screenshot">
-          <DocImg src="/img/release/2026-10-documents-inventory-start.jpg" alt="An empty inventory in the Documents tab, marked Not verified yet, with a Review markers button and Carry over the items of the previous inventory" />
-        </div>
-        <p>Rescanned, nothing changed? <strong>Carry over</strong> the previous inventory.</p>
+        <h3>1) Open Build inventory</h3>
+        <p>Room → <strong>Documents</strong> → <strong>Inventory</strong> → <strong>Build inventory</strong>, on the card with your markers to review.</p>
+        <Figure
+          variant="full"
+          src="/img/inventory/web-build-overview.jpg"
+          alt="The Build inventory window: the scan's markers as tiles on the left, a marker photo of a wall socket and cables in the middle, and on the right the choice Record equipment or Nothing to record with a search field"
+          caption="The markers on the left, the photo in the middle, what it adds to the inventory on the right."
+        />
+        <p>Pick a marker, or go on with <strong>Next</strong>. <strong>3D</strong> shows where each one was taken.</p>
+        <p>Each scan has its own inventory. Rescanned, nothing changed? <strong>Carry over</strong> the previous one.</p>
       </>
     ),
   },
@@ -41,11 +45,10 @@ First: [take close-up markers →](./markers#-taking-a-good-marker)
     content: (
       <>
         <h3>2) Say what it shows</h3>
-        <p>Type, or click a suggestion.</p>
+        <p>Type what you see, like <em>power outlet</em>. Your own words come first, the catalog's matches below.</p>
         <div className="web-screenshot">
-          <DocImg src="/img/inventory/web-review-suggest.jpg" alt="Review marker: a photo of a ceiling vent on the right, and on the left the question What does this photo show? with suggestions such as Display, Speaker and Power outlet" />
+          <DocImg src="/img/inventory/web-build-search.jpg" alt="Build inventory: a search for power. The first row is the typed text, marked Not in the catalog, new item. Below it are catalog matches such as Power Outlet, Light Switch and a Blaze PowerZone, each with its category and a plus button" />
         </div>
-        <p>An overview, or nothing to list? <strong>Nothing to record</strong>.</p>
       </>
     ),
   },
@@ -54,22 +57,9 @@ First: [take close-up markers →](./markers#-taking-a-good-marker)
     content: (
       <>
         <h3>3) Pick the match</h3>
-        <p>Click <strong>Add</strong>.</p>
+        <p>Click <strong>+</strong>. Count what the photo shows with <strong>− / +</strong>. Unsure it's the right model? <strong>View in 3D</strong>.</p>
         <div className="web-screenshot">
-          <DocImg src="/img/inventory/web-review-match.jpg" alt="Review marker: a search for power outlet with the catalog item Power Outlet and an Add button" />
-        </div>
-        <p>Not in the catalog? <strong>Add without catalog match</strong>.</p>
-      </>
-    ),
-  },
-  {
-    title: "Set how many",
-    content: (
-      <>
-        <h3>4) Set how many</h3>
-        <p>With <strong>− / +</strong>. Unsure it's the right model? <strong>View in 3D</strong>.</p>
-        <div className="web-screenshot">
-          <DocImg src="/img/inventory/web-review-quantity.jpg" alt="Review marker: the catalog Power Outlet in 3D next to the marker photo, linked with a quantity and a View in 3D button" />
+          <DocImg src="/img/inventory/web-build-pick.jpg" alt="Build inventory: the catalog item Power Outlet added to the marker, with its picture and a View in 3D button, and a count of 1 with minus and plus buttons" />
         </div>
       </>
     ),
@@ -78,27 +68,84 @@ First: [take close-up markers →](./markers#-taking-a-good-marker)
     title: "More in the photo?",
     content: (
       <>
-        <h3>5) More in the photo?</h3>
-        <p><strong>Add another item</strong>. Then <strong>Done, next</strong>.</p>
+        <h3>4) More in the photo?</h3>
+        <p>Search again. Then <strong>Next</strong>.</p>
         <div className="web-screenshot">
-          <DocImg src="/img/inventory/web-review-another.jpg" alt="Review marker with two linked items, a power outlet and an ethernet outlet, and an Add another item field" />
+          <DocImg src="/img/inventory/web-build-more.jpg" alt="Build inventory: Power Outlet counted three times, and a new search for network outl showing the typed text and an Ethernet Outlet match" />
         </div>
       </>
     ),
   },
   {
-    title: "Verified",
+    title: "New item",
     content: (
       <>
-        <h3>6) Inventory verified</h3>
-        <p>Every marker reviewed. Overviews show as nothing to record.</p>
+        <h3>5) Not in the catalog?</h3>
+        <p>Click the first row, the one with your own words. Pick a <strong>Category</strong> (the <strong>i</strong> shows what goes where, see <a href="#categories">The Four Categories</a>). Manufacturer and SKU are optional. Then <strong>Add</strong>.</p>
         <div className="web-screenshot">
-          <DocImg src="/img/release/2026-10-documents-inventory-verified.jpg" alt="A verified inventory listing outlets, light switches and an air vent with category, manufacturer, quantity, verification and the marker each came from" />
+          <DocImg src="/img/inventory/web-build-new-item.jpg" alt="Build inventory: the New item form with the name 2 seat sofa, the categories Equipment, Infrastructure, Accessories and Cabling, optional Manufacturer and SKU fields, and Cancel and Add buttons" />
+        </div>
+        <p>It is saved to your organisation's own catalog, so every room in your organisation finds it. Check the spelling and the category first: only BMR can change them afterwards.</p>
+        <div className="web-screenshot">
+          <DocImg src="/img/inventory/web-build-new-item-added.jpg" alt="Build inventory: the new item 2 seat sofa on the marker with a placeholder picture, a count of 1 and a remove button" />
         </div>
       </>
     ),
   },
+  {
+    title: "Nothing to list?",
+    content: (
+      <>
+        <h3>6) Nothing to list?</h3>
+        <p>An overview, a bare wall? Choose <strong>Nothing to record</strong>. Items already on the marker are removed, and you are asked first.</p>
+        <div className="web-screenshot">
+          <DocImg src="/img/inventory/web-build-nothing.jpg" alt="Build inventory: Nothing to record selected, with the note Nothing in this marker to add to the inventory" />
+        </div>
+      </>
+    ),
+  },
+  {
+    title: "Finish",
+    content: (
+      <>
+        <h3>7) Finish</h3>
+        <p>Click <strong>Done</strong> to leave at any time. Your work is saved, and you pick up where you stopped. Every marker answered? <strong>Done</strong> finishes the inventory.</p>
+        <p>Two markers taken at the same spot that show the same item? You are asked whether it is the same one: <strong>Yes, the same</strong>, <strong>No, different</strong> or <strong>Some are the same</strong>. Then you see what you built.</p>
+        <div className="web-screenshot">
+          <DocImg src="/img/inventory/web-build-built.jpg" alt="Inventory built: 7 units verified with a photo, 0 confirmed without marker, 0 removed and 0 duplicates merged, with an Inventory button" />
+        </div>
+      </>
+    ),
+  },
+  {
+    title: "Check the list",
+    content: (
+      <>
+        <h3>8) Check the list</h3>
+        <p>Your items by <a href="#categories">category</a>, each with its status. <strong>Needs attention</strong> shows what no photo confirms yet: items added by hand, items carried over, items the design has more of than you counted, and possible duplicates.</p>
+        <Figure
+          variant="full"
+          src="/img/inventory/web-build-list.jpg"
+          alt="The Inventory tab of a room: seven items in the categories Equipment and Infrastructure, each with category, manufacturer, SKU, quantity and the status Verified, and the filters All 7 and Needs attention 0"
+          caption="The Inventory tab: everything is verified, so Needs attention is empty."
+        />
+        <p>Click an item to answer it: confirm it without a marker, ask someone to take one, or remove it. <strong>Add item</strong> adds one by hand. Add a photo, or it stays under Needs attention.</p>
+      </>
+    ),
+  },
 ]} />
+
+---
+
+## <Icon name="users" size="1em" /> Ask someone to take a marker {#assign-a-marker-task}
+
+No photo confirms an item yet? Send someone to take one. The item is **verified when the marker is taken**.
+
+1. Click the item, then **Assign a marker task**.
+2. Under **Assign to**, pick a person. The list holds everyone with access to the room: admins, location managers and room managers. Search by name.
+3. Click **Assign**.
+
+The task lands in their BMR app, under [My Tasks](../../getting-started/my-tasks). The item shows **Marker task assigned** and is verified as soon as the marker is in. Changed your mind? **Cancel task** puts it back to not checked.
 
 ---
 
@@ -163,12 +210,37 @@ Still in the room? Room → **Documents +**. **Beta**: check the result on the w
 
 ---
 
+## <Icon name="equipment" size="1em" /> The Four Categories {#categories}
+
+Every item belongs to one of four categories. The category decides where the item is listed in an Inventory and in the BOM.
+
+| Category | What it is |
+|---|---|
+| **Equipment** | Anything in the room that is relatively simple to replace, like a room bar, display, chair or table |
+| **Infrastructure** | Things that are more fixed in the room, like an air conditioning unit, power outlet or fixed control panel |
+| **Accessories** | Anything that is neither Equipment nor Infrastructure, normally there to make the room look better, like a plant, picture or laptop |
+| **Cabling** | All cables, like HDMI and network cables |
+
+In the Inventory, **Accessories** and **Cabling** start closed: click the heading to open one. The **Category** column is something else, the catalog category, like Speakers or Outlets.
+
+Marked a window as a **Room feature** in BMR Mobile? It is listed under **Infrastructure**.
+
+---
+
 ## <Icon name="help-circle" size="1em" /> Stuck?
 
 <FixList items={[
   { problem: 'Forgot a marker', fix: 'Room → Markers → +, while still in the room' },
   { problem: 'Close-up too far away', fix: 'Take a new close-up with Markers → +' },
   { problem: 'Wrong item linked', fix: 'Click ✕ on the item and search again' },
+  { problem: 'Typo in a new item', fix: 'Click ✕ and add it again. Tell BMR with Send Feedback, so the old one is removed' },
 ]} />
 
 Still stuck? [Send feedback →](../../getting-started/send-feedback)
+
+---
+
+## <Icon name="chevron-right" size="1em" /> Next {#next}
+
+- [Measure the acoustics](../../acoustics/acoustics-guide) of the room.
+- [Turn the captured room into a design](../design/), on the web or in AR on your phone.

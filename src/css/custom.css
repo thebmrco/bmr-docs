@@ -311,6 +311,13 @@ h3 {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
+/* Index cards (release notes): wrap the text instead of cutting it at one line */
+[class*='docCardListItem'] .card .text--truncate {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+}
+
 /* Sidebar */
 .menu {
   font-size: 0.95rem;

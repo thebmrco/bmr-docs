@@ -21,11 +21,11 @@ type Mode = {
 };
 
 const MODES: Mode[] = [
-  {name: 'View', icon: Eye, change: 'Nothing. Look around, present', tabs: 'Properties · Room · Presentation', link: '#view'},
-  {name: 'Structurals', icon: BrickWall, change: 'Walls, doors, windows, openings', tabs: 'Build · Guides · Room', link: '#structurals'},
-  {name: 'Equipment', icon: Package, change: 'Equipment, furniture, outlets, logos', tabs: 'Equipment · Guidelines · Room', link: '#equipment'},
-  {name: 'Cables', icon: Cable, change: 'Cables, outlets, boxes', tabs: 'Cables', link: '#cable-mode', beta: true},
-  {name: 'Acoustics', icon: AudioLines, change: 'Absorbers', tabs: 'Acoustics · Based on · Diagnostics', link: '#acoustics', toggle: true},
+  {name: 'View', icon: Eye, change: 'Nothing. Look around, present', tabs: 'Properties · Presentation', link: '#view'},
+  {name: 'Structurals', icon: BrickWall, change: 'Walls, doors, windows, openings', tabs: 'Properties · Build · Guides', link: '#structurals'},
+  {name: 'Equipment', icon: Package, change: 'Equipment, furniture, outlets, logos', tabs: 'Properties · Equipment · Room\u00A0Configuration', link: '#equipment'},
+  {name: 'Cables', icon: Cable, change: 'Cables, outlets, boxes', tabs: 'Properties · Cables', link: '#cable-mode', beta: true},
+  {name: 'Acoustics', icon: AudioLines, change: 'Absorbers', tabs: 'Acoustics · Properties · Based on · Diagnostics · BOM', link: '#acoustics', toggle: true},
 ];
 
 export default function StudioModes() {

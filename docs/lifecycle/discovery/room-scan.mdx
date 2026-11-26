@@ -28,11 +28,11 @@ The scan is the **first thing you do in a room** and the foundation for everythi
 | **3D geometry** (walls, floor, ceiling, openings) | The room model in BMR Studio; room volume for acoustic calculations |
 | **Compass orientation** | Referencing walls by direction — see [Compass orientation](#compass-orientation) below |
 | **AR world map** | Recognising the room on later visits, so markers, acoustic measurements and AR designs land in their true positions |
-| **Textured 3D mesh** <span className="badge badge--success">New</span> | The room as it really looks, in the **Mesh** view on the web; real wall materials in new designs. See [The 3D mesh](#mesh) |
+| **Textured 3D mesh** <span className="badge badge--success">New</span> | When your organisation has **Mesh upload** on: the room as it really looks, in the **Mesh** view on the web; real wall materials in new designs. See [The 3D mesh](#mesh) |
 
 ### What the scan unlocks
 
-Without a scan, BMR Mobile shows **Scan Recommended** first. Continue anyway and:
+Without a scan, BMR Mobile shows **Scan Needed** first. Tap **Continue Anyway** and:
 
 | | Without a scan |
 |---|---|
@@ -108,7 +108,7 @@ This is the **Scan → Markers → Upload** flow in BMR Mobile. Click any step n
     content: (
       <>
         <h3>4) Review scan</h3>
-        <p>All walls there? Green dots are your markers. Gaps? <strong>Retake</strong>. Missing a marker? <strong>Continue scan</strong> <FeatureToggleTag />.</p>
+        <p>All walls there? Green dots are your markers. Gaps or a missing marker? <strong>Continue scan</strong> <FeatureToggleTag /> reopens the camera in the same room, and what you add merges in. Without it, the bar offers <strong>Retake</strong>.</p>
         <div className="phone-screenshot">
           <DocImg src="/img/tutorials/scan-marker-flow/v2-review-scan-markers.jpg" alt="The saved scan in 3D with green marker dots, and the buttons Retake, Continue scan and Save" />
         </div>
@@ -121,7 +121,7 @@ This is the **Scan → Markers → Upload** flow in BMR Mobile. Click any step n
       <>
         <h3>5) Review markers</h3>
         <p>Tap a dot to check the photo. All good? <strong>Save</strong>.</p>
-        <p>Fewer than 5 markers, or items on the list not ticked? The app asks first: <strong>Continue scan</strong> <FeatureToggleTag /> or <strong>Save anyway</strong>.</p>
+        <p>Fewer markers than the room needs? Take them now: aim for at least 10, spread over the whole room. <a href="./markers#check-before-you-leave">Check before you leave →</a></p>
         <div className="phone-screenshot">
           <DocImg src="/img/tutorials/scan-marker-flow/v2-review-marker-photo.jpg" alt="A marker photo of a ceiling vent opened from its dot on the scan, with Retake, Continue scan and Save" />
         </div>
@@ -262,12 +262,8 @@ In **BMR Studio** the room appears in its true geographic orientation, with a co
 
 ## <Icon name="mesh" size="1em" /> The 3D mesh {#mesh}
 
-<a id="mesh-upload-setting"></a>
-
-:::info[Not every scan has a mesh yet]
-With the **current version of BMR Mobile**, mesh upload is **not on by default**, so many scans have no mesh. The **Mesh** view and the features below appear only for scans that carry one.
-
-A setting to choose this for your organisation comes with the **next version of BMR Mobile**.
+:::info[Not every scan has a mesh]
+It depends on your organisation's **Mesh upload** setting, [explained below](#mesh-upload-setting). The **Mesh** view and the features below appear only for scans that carry one.
 :::
 
 <Figure
@@ -293,12 +289,27 @@ A setting to choose this for your organisation comes with the **next version of 
 
 The mesh is raw: holes, rough edges and stray bits are normal. Scan slowly and cover every corner for a cleaner one. See [Best practices](#best-practices).
 
+### Mesh upload {#mesh-upload-setting}
+
+An **Admin** sets it for the whole organisation, under **Preferences → General → Mesh upload** <FeatureToggleTag />. See [Organisation](../../structure/organisation#general).
+
+| Organisation | Mesh upload |
+|---|---|
+| **New** | On |
+| **Existing** | Off, until an Admin turns it on |
+
+- **On**: BMR Mobile 2.4 or newer captures the mesh and uploads it with every new scan.
+- **Off**: scans carry the room geometry only, so the **Mesh** view and the features above are not available.
+
+BMR Mobile reads the setting when it opens and when you switch organisation. Offline, it uses the last setting it saw.
+
 ### Upload size {#mesh-upload-size}
 
 :::caution[The mesh makes the upload bigger]
 A mesh is often **several MB**, much more than the room geometry alone. A scan with a mesh takes **longer to upload**, most of all on a weak or slow connection.
 
 - The upload runs in the background, so you can keep working. On a poor connection it can take a while.
+- Uploads too heavy for your connections? An Admin can turn **Mesh upload** off, see [above](#mesh-upload-setting).
 - Offline, nothing is uploaded automatically. Back online, upload it yourself from **Notifications** (the bell, top right), and retry a failed upload there too. See [Notifications](../../getting-started/notifications#-offline-captures-queue-here).
 :::
 
@@ -308,3 +319,4 @@ A mesh is often **several MB**, much more than the room geometry alone. A scan w
 
 - **[Markers](./markers)** — capture the context the mesh cannot show.
 - **[Acoustic Measurement](../../acoustics/acoustics-guide)** — measure the room's RT60 and MOS score.
+- **[Starting a design](../design/bmr-studio#starting-a-design)** — press **Turn into Design** on the scan on the web to make a design from it.

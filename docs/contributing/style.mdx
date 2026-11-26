@@ -101,7 +101,7 @@ Never write `<img>` with an inline `style` object. Every image goes through `<Fi
 import Figure, { FigurePair } from '@site/src/components/Figure'
 
 <Figure
-  src="/img/design/bmr-studio-ui.webp"
+  src="/img/design/studio-screen.jpg"
   alt="The BMR Studio window with the mode switcher at the bottom"
   caption="BMR Studio opens in View mode."
 />
@@ -129,8 +129,8 @@ Here is `inset` in use — the variant for a dialog:
 
 ```jsx
 <FigurePair
-  a={{src: '/img/design/render-standard.webp', alt: '…', label: 'Standard'}}
-  b={{src: '/img/design/render-high-quality.webp', alt: '…', label: 'High quality'}}
+  a={{src: '/img/design/studio-render-standard.jpg', alt: '…', label: 'Standard'}}
+  b={{src: '/img/design/studio-render-high-quality.jpg', alt: '…', label: 'High quality'}}
   caption="High quality adds bounce lighting and contact shadows under the furniture."
 />
 ```
@@ -145,7 +145,7 @@ Both images must share a crop and a size, or the reader compares the framing ins
 import Callouts from '@site/src/components/Callouts'
 
 <Callouts
-  src="/img/design/bmr-studio-ui.webp"
+  src="/img/design/studio-screen.jpg"
   alt="The BMR Studio window"
   caption="BMR Studio in View mode."
   pins={[
@@ -159,13 +159,13 @@ And in use:
 
 <Callouts
   src="/img/design/catalog-overview.png"
-  alt="The Equipment Catalog page for the BMR Standard Catalog — Studio, with an item count, a searchable Available Equipment panel on the left, and Catalog Contents on the right"
+  alt="The Equipment Catalog page for the BMR Standard Catalog — Studio, with its tabs, a searchable Available Equipment panel on the left, and Catalog Contents on the right"
   caption="The Equipment Catalog, with four pins instead of four bullets."
   pins={[
-    {x: 24.5, y: 14, title: 'Item count', text: 'How many items this catalog holds.'},
-    {x: 16.5, y: 28.5, title: 'Search and filter', text: 'Find equipment by name or category.'},
-    {x: 47, y: 24.5, title: 'Catalog contents', text: 'What the catalog contains — drag equipment here to add it.'},
-    {x: 90.5, y: 35, title: 'Row actions', text: 'Comment on, tag, or remove an item.'},
+    {x: 37.4, y: 10.1, title: 'Tabs', text: 'Details holds the item count. Items is this page.'},
+    {x: 34.5, y: 27.1, title: 'Search and filter', text: 'Find equipment by name or category.'},
+    {x: 48.8, y: 22.5, title: 'Catalog contents', text: 'What the catalog contains — drag equipment here to add it.'},
+    {x: 85, y: 35.4, title: 'Row actions', text: 'Comment on, tag, or remove an item.'},
   ]}
 />
 

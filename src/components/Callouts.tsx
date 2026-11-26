@@ -9,7 +9,7 @@
  *   import Callouts from '@site/src/components/Callouts'
  *
  *   <Callouts
- *     src="/img/design/bmr-studio-ui.webp"
+ *     src="/img/design/studio-screen.jpg"
  *     alt="The BMR Studio window"
  *     caption="BMR Studio in View mode."
  *     pins={[

@@ -1,0 +1,71 @@
+---
+title: Your Profile
+sidebar_label: Profile
+description: Change your name, see which roles you hold on which organisations, locations and rooms, and create personal API tokens.
+---
+
+import Icon from '@site/src/components/Icon'
+
+# <Icon name="user" size="1em" /> Your Profile
+
+<PageIntro illustration="account" meta={['Web platform']}>
+
+Who you are here, and what you can reach. **Open it from your picture, top right.**
+
+</PageIntro>
+
+Press your picture in the header, then **Profile**. **Logout** is in the same menu.
+
+---
+
+## <Icon name="edit-rename" size="1em" /> Personal information {#personal-information}
+
+| Field | |
+|---|---|
+| **First Name** | Press the pencil, type, save. Cancel with the cross |
+| **Last Name** | The same. Shows *Not set* until you add one |
+| **Email** | Read only |
+| **Login** | Read only |
+
+---
+
+## <Icon name="permissions" size="1em" /> Your roles {#roles}
+
+Three lists show what you can reach and with which role:
+
+| List | Opens |
+|---|---|
+| **Organization Assignments** | The organisation's admin area |
+| **Location Assignments** | The location |
+| **Room Assignments** | The room |
+
+Each row is a place with your role beside it: **Admin**, **Location Manager** or **Room Manager**. Click a row to go there. A list you have no role for isn't shown.
+
+Missing a place you should see? Ask an Admin to invite you, see [Inviting users](./inviting-users). What each role can do: [Roles](../structure/#roles).
+
+---
+
+## <Icon name="key" size="1em" /> API tokens {#api-tokens}
+
+A **personal API token** lets a script of yours call BMR as you, with your permissions. Treat it like a password.
+
+The **API Tokens** card shows only if your account has **API access**. BMR grants it: ask your BMR contact.
+
+| To | Do this |
+|---|---|
+| **Create one** | Give it a **Name**, choose **Expires after** (30 days, 90 days, 180 days or 1 year), tick **Read-only** if the script only reads, then **Create** |
+| **Copy it** | Right away. It **isn't shown again**. Send it in the `X-API-KEY` header |
+| **Check it** | Each token lists when it was created, when it expires and when it was last used |
+| **End it** | **Revoke**, then confirm |
+
+An expired token is marked **Expired**. No API access any more? Your tokens stop working.
+
+More on how tokens are stored: [Security & Data Protection](../security/).
+
+---
+
+## <Icon name="chevron-right" size="1em" /> Next {#next}
+
+- [The web platform at a glance](./web-platform)
+- [My Tasks](./my-tasks)
+- [Notifications](./notifications)

@@ -1,0 +1,134 @@
+---
+title: Data Analysis
+sidebar_label: Data Analysis
+description: See across all your rooms at once. How much is scanned, marked, measured and designed, which rooms miss the acoustic target, and what the designs still need.
+---
+
+import Icon from '@site/src/components/Icon'
+
+# <Icon name="list-checks" size="1em" /> Data Analysis <FeatureToggleTag />
+
+<PageIntro illustration="analyse" meta={['Web platform']}>
+
+One room is a record. A hundred rooms are a picture. **Data Analysis** shows where the gaps are, and which rooms need you next.
+
+</PageIntro>
+
+<FeatureToggle />
+
+Open **Data Analysis** in the [menu](../../getting-started/web-platform#menu). It covers the organisations you have access to. The header says how many locations and rooms are in it.
+
+Six tabs, one question each:
+
+| Tab | The question |
+|---|---|
+| **Overview** | How complete is the room data? |
+| **Acoustics** | Which rooms miss the acoustic target? |
+| **Scans** | Which rooms are scanned, and how often? |
+| **Markers** | Which rooms have markers, and are they reviewed? |
+| **Designs** | Which rooms have a design, and what do the deployments need? |
+| **Inventory** | What is in the rooms, and is it verified? |
+
+---
+
+## <Icon name="circle-check" size="1em" /> Overview {#overview}
+
+| Block | What it shows |
+|---|---|
+| **Data coverage by area** | For **Scanned**, **Markers captured**, **Acoustic measurement**, **Design created** and **Inventory**: how many rooms have it, as *n of total* |
+| **Coverage by location** | The same areas per location, each marked **Complete**, **Partial** or **None**. Filter by name |
+| **Acoustics highlights** | The latest [MOS](../../acoustics/mos-score) of each measured room: how many rooms are measured and how many are below target |
+| **Room sizes** | How your rooms spread over the size windows of BMR's [Default Room Configurations](../design/default-room-configuration) |
+
+An empty area is a to-do. **Open analysis →** takes you to the tab behind it.
+
+---
+
+## <Icon name="acoustics" size="1em" /> Acoustics {#acoustics}
+
+The top row: **Measurement coverage**, **Below target** with the **Target MOS** beside it, and **Measurements**.
+
+The target is the score your organisation aims for. An **Admin** presses **Change** and sets it in **Set target MOS**; rooms scoring below it are flagged across the organisation. Everyone else sees *set by organization admin*. The same setting lives in [Organisation › Preferences › Acoustic](../../structure/organisation#acoustic).
+
+| Block | What it answers |
+|---|---|
+| **Needs attention** | Rooms below the target, and rooms not measured yet. Switch between **Rooms** and **By location** |
+| **MOS distribution** | How the latest scores spread over **Poor**, **Fair**, **Good** and **Excellent** |
+| **By parameter** | What costs the score: **Reverberation** is the base (1 to 5), **Bass balance** adds or takes up to 1, **Background noise** takes off up to 4 |
+| **Room lookup** | Find rooms by the parameter that costs them most. Show rooms **With an issue (below target)**, **Worst cases only** or **All measured rooms**. **Next step** is **Open in Designer**, **View guidance** or **View room** |
+| **By location** | Score bands and coverage per location. Grey means not measured yet |
+| **Acoustic evolution** | First against latest MOS for rooms measured more than once. A room measured once shows its baseline |
+| **Speaker types** | The average MOS per speaker used for playback: **TV / display (AirPlay)**, **Bluetooth speaker**, **Built-in speakers** or **Other / unknown** |
+| **Measurements** | Every measurement, with filters for description, room, type (**Averaged group** or **Single measurement**), location and dates |
+
+In **Measurements**, tick measurements and open **Compare (n)** to read them side by side. **Open** shows one, **Download** saves it. **Analysis pending** means the result is not ready yet.
+
+How to read a score: [MOS score](../../acoustics/mos-score).
+
+---
+
+## <Icon name="scan" size="1em" /> Scans {#scans}
+
+**Rooms scanned**, **Scans**, the **Average per scanned room** and **Rooms scanned more than once**. Below: scans per room size and **Scans by location**.
+
+Scan quality is not analysed yet. The tab says so.
+
+---
+
+## <Icon name="marker" size="1em" /> Markers {#markers}
+
+**Rooms with markers**, **Markers** and the **Average per room**. Two blocks tell you what to chase:
+
+- **Scanned rooms without markers** means discovery is not finished.
+- **Markers by review state**: **Identified**, **Not reviewed** or **Nothing to record**. How much of the discovery is reviewed.
+
+**Markers by type** counts **Camera**, **Codec**, **Control panel**, **Access point** and **Other**. Click a type to filter the tab to it.
+
+---
+
+## <Icon name="design" size="1em" /> Designs {#designs}
+
+**Rooms designed**, **Designs**, **Rooms with an Active Design**. Two numbers to watch:
+
+- **Deployed, not verified**: an [Active Design](../deploy/) and nothing in the inventory verified yet.
+- **Scanned, not designed**: the rooms waiting for a design.
+
+**Bill of materials: what the deployments need** adds up the BOMs. Choose the scope:
+
+| Scope | Counts |
+|---|---|
+| **Not yet deployed (to procure)** | The newest design of each room that is not Active yet: what still has to be bought and installed |
+| **Active (deployed)** | The Active Design of each room: what is deployed |
+
+You get **Designs in scope**, **Components**, the **Average per design** and the **Catalog share**, then a table of the components and for which rooms. Open an item to see where.
+
+---
+
+## <Icon name="equipment" size="1em" /> Inventory {#inventory}
+
+**Rooms with inventory**, **Items**, the **Average per room** and how many rooms are **Verified**. **Items by category** counts **Equipment**, **Infrastructure**, **Accessories** and **Cabling**.
+
+**Catalog items and manual items** tells you how the inventory was built: linked to a catalog item, with a 3D model, SKU and category, or typed by hand. The manual ones are candidates for new catalog items. See [Room Inventory](../discovery/inventory).
+
+The table **Components deployed** counts each component and where it is. Open an item to see the locations and rooms.
+
+---
+
+## <Icon name="filter" size="1em" /> Filters {#filters}
+
+On four tabs the filters at the top apply to **every number on the tab**. **Clear** resets them.
+
+| Tab | Filters |
+|---|---|
+| **Scans** | **Location**, **Room size** |
+| **Markers** | **Marker type**, **Review state**, **Location**, **Room size** |
+| **Designs** | **BOM scope**, **Category**, **Component**, **Location**, **Room size** |
+| **Inventory** | **Category**, **Source**, **Verified**, **Component**, **Location**, **Room size** |
+
+---
+
+## <Icon name="chevron-right" size="1em" /> Next {#next}
+
+- [Maintenance](./): what else keeps a room current
+- [MOS score](../../acoustics/mos-score): what the number means
+- [Organisation](../../structure/organisation): where the target is set

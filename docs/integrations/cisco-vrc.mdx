@@ -1,6 +1,6 @@
 ---
 title: Cisco Video Room Calculator
-description: Designing with Cisco's Video Room Calculator inside BMR, and exporting any BMR Studio design to Cisco Workspace Designer.
+description: Designing with Cisco's Video Room Calculator inside BMR, importing Cisco rooms into BMR Studio, and exporting any BMR Studio design to Cisco Workspace Designer.
 ---
 
 import Icon from '@site/src/components/Icon'
@@ -9,16 +9,17 @@ import Icon from '@site/src/components/Icon'
 
 <PageIntro illustration="integrations" meta={['Web platform']}>
 
-Plan Cisco rooms with Cisco's **Video Room Calculator (VRC)** inside BMR, and open BMR designs in **Cisco Workspace Designer**.
+Plan Cisco rooms with Cisco's **Video Room Calculator (VRC)** inside BMR, bring Cisco rooms into BMR Studio, and open BMR designs in **Cisco Workspace Designer**.
 
 </PageIntro>
 
 <Notice kind="design" />
 
-| Path | What it is | Where |
-|---|---|---|
-| **VRC design** <FeatureToggleTag /> | A design made in Cisco's Video Room Calculator, stored in BMR | Room › Designs › **New Design** › Design Method **VRC (Workspace Designer)** |
-| **Export to Workspace Designer** | Any BMR Studio design you can edit, opened in Cisco Workspace Designer | BMR Studio › **Export** › **Workspace Designer** |
+| Path | What it is, and where |
+|---|---|
+| **VRC design** <FeatureToggleTag /> | A design made in Cisco's Video Room Calculator, stored in BMR.<br />Room › Designs › **New Design** › Design Method **VRC (Workspace Designer)** |
+| **Import a Cisco room** | A room saved from Cisco Workspace Designer or the Video Room Calculator, as a BMR Studio design. An Admin turns it on first.<br />Room › Designs › **New Design** › Based on **Cisco file** |
+| **Export to Workspace Designer** | Any BMR Studio design you can edit, opened in Cisco Workspace Designer.<br />BMR Studio › **Export** › **Workspace Designer** |
 
 :::info Web only
 VRC designs are created and edited on the web at **[app.bettermeetingrooms.com](https://app.bettermeetingrooms.com)**. BMR Mobile shows them with a web-only message.
@@ -44,6 +45,50 @@ In BMR Studio, **Export** (toolbar) → **Workspace Designer** copies the room a
 - Cisco's planning and configuration tools.
 
 BMR stays the record: versions, room data and the Active Design are kept in BMR.
+
+---
+
+## <Icon name="studio" size="1em" /> Import a Cisco room {#import-a-cisco-room}
+
+Planned the room in **Cisco Workspace Designer** or the **Video Room Calculator** already? Bring it into BMR Studio as a design.
+
+An **Admin** turns it on first, under **Preferences › General › Cisco room import**. It is off until then, see [Organisation](../structure/organisation#general).
+
+1. Save the room from Cisco's tool as a JSON file.
+2. Room › **Designs** › **New Design**. Under **Based on**, choose **Cisco file**.
+3. Pick the file. BMR shows which kind of room it is, and suggests its name.
+4. **Save**. The design opens in BMR Studio.
+
+A Video Room Calculator file takes a few seconds, as the calculator converts it first.
+
+### What comes across {#what-comes-across}
+
+| In the Cisco file | In BMR Studio |
+|---|---|
+| **The room**: walls, doors, windows, columns | The room, with its doors and windows |
+| **Cisco devices**, like video devices, cameras, microphones, screens and loudspeakers | The matching **catalog item**, from the catalogs your organisation can use |
+| A device **your catalogs do not have** | A **labelled box** in its place. Swap it for a catalog item |
+| **Furniture**: chairs, tables, sofas, storage, displays | Plain shapes you can swap for catalog items |
+| **Plants** | A plant from your catalog. Without one, it is left out |
+| **People, carpets, laptops** | Left out |
+
+- A **Room Kit EQX**, the frame and its two screens, comes in as the one catalog item, if your catalogs have it.
+- Tables come in rectangular or round.
+
+When it is done, BMR Studio tells you how many items were placed from the catalog, which devices became boxes, and what was left out. The two lists stay up for about 20 seconds. The boxes keep their labels in the design.
+
+:::tip Check the result
+Look the design over in BMR Studio. Wall-mounted and ceiling devices may need a small nudge.
+:::
+
+### Stuck? {#import-stuck}
+
+| You see | Do this |
+|---|---|
+| No **Cisco file** under **Based on** | An Admin has not turned on **Cisco room import** yet |
+| **This is not a Workspace Designer room or a Video Room Calculator save** | Pick the JSON file saved from one of the two tools |
+| **We couldn't read the Video Room Calculator room** | Save the room from the calculator as a Workspace Designer file, and import that |
+| **The import did not go through** | The fault is on our side, not in your file. Try again in a moment |
 
 ---
 
